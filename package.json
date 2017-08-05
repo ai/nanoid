@@ -1,11 +1,12 @@
 {
   "name": "nanoid",
   "version": "0.0.0",
-  "description": "Very small unique ID generator",
+  "description": "Very small secure URL-friendly unique ID generator",
   "keywords": [
     "uuid",
     "random",
-    "id"
+    "id",
+    "url"
   ],
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
