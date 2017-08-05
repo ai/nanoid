@@ -11,6 +11,9 @@
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
   "repository": "ai/nanoid",
+  "browser": {
+    "./random.js": "./random-browser.js"
+  },
   "devDependencies": {
     "docdash": "^0.4.0",
     "eslint": "^4.3.0",
@@ -23,11 +26,13 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^3.0.1",
+    "html-webpack-plugin": "^2.30.1",
     "jest": "^20.0.4",
     "jsdoc": "^3.5.4",
     "lint-staged": "^4.0.2",
     "pre-commit": "^1.2.2",
     "size-limit": "^0.8.0",
+    "webpack-dev-server": "^2.6.1",
     "yaspeller-ci": "^0.6.0"
   },
   "scripts": {
@@ -35,7 +40,8 @@
     "spellcheck": "yarn docs && yaspeller-ci *.md docs/*.html",
     "docs": "jsdoc --configure .jsdocrc *.js",
     "lint": "eslint *.js test/*.js",
-    "test": "jest --coverage && yarn lint && yarn spellcheck && size-limit"
+    "test": "jest --coverage && yarn lint && yarn spellcheck && size-limit",
+    "demo": "webpack-dev-server --config test/demo/webpack.config"
   },
   "jest": {
     "coverageThreshold": {
@@ -50,7 +56,7 @@
   "size-limit": [
     {
       "path": "index.js",
-      "limit": "100 KB"
+      "limit": "320 B"
     }
   ],
   "lint-staged": {
