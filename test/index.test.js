@@ -1,13 +1,5 @@
 var nanoid = require('../')
-var generate = require('../generate')
-
-it('has URL friendly alphabet', function () {
-  expect(typeof nanoid.url).toEqual('string')
-})
-
-it('has generate function', function () {
-  expect(nanoid.generate).toBe(generate)
-})
+var url = require('../url')
 
 it('generates URL-friendly IDs', function () {
   var id
@@ -15,7 +7,7 @@ it('generates URL-friendly IDs', function () {
     id = nanoid()
     expect(id.length).toEqual(22)
     for (var j = 0; j < id.length; j++) {
-      expect(nanoid.url.indexOf(id[j])).not.toEqual(-1)
+      expect(url.indexOf(id[j])).not.toEqual(-1)
     }
   }
 })

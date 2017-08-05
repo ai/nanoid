@@ -1,4 +1,5 @@
 var random = require('./random')
+var format = require('./format')
 
 /**
  * Low-level function to change alphabet and ID size.
@@ -16,17 +17,5 @@ var random = require('./random')
  * model.id = generate('0123456789абвгдеё', 5) //=> "8ё56а"
  */
 module.exports = function (alphabet, size) {
-  var bytes, byte
-  var id = ''
-  while (id.length !== size) {
-    bytes = random(size)
-    for (var i = 0; i < bytes.length; i++) {
-      byte = bytes[i]
-      if (byte < alphabet.length) {
-        id += alphabet[byte]
-        if (id.length === size) break
-      }
-    }
-  }
-  return id
+  return format(random, alphabet, size)
 }

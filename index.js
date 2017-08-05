@@ -13,6 +13,3 @@ var url = require('./url')
 module.exports = function () {
   return generate(url, 22)
 }
-
-module.exports.generate = generate
-module.exports.url = url
