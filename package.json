@@ -1,0 +1,59 @@
+{
+  "name": "nanoid",
+  "version": "0.0.0",
+  "description": "Very small unique ID generator",
+  "keywords": [
+    "uuid",
+    "random",
+    "id"
+  ],
+  "author": "Andrey Sitnik <andrey@sitnik.ru>",
+  "license": "MIT",
+  "repository": "ai/nanoid",
+  "devDependencies": {
+    "eslint": "^4.3.0",
+    "eslint-config-logux": "^16.0.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-es5": "^1.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jest": "^20.0.3",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "jest": "^20.0.4",
+    "lint-staged": "^4.0.2",
+    "pre-commit": "^1.2.2",
+    "size-limit": "^0.8.0",
+    "yaspeller-ci": "^0.6.0"
+  },
+  "scripts": {
+    "lint-staged": "lint-staged",
+    "spellcheck": "yaspeller-ci *.md",
+    "lint": "eslint *.js test/*.js",
+    "test": "jest --coverage && yarn lint && yarn spellcheck && size-limit"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "statements": 100
+      }
+    }
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-logux/browser"
+  },
+  "size-limit": [
+    {
+      "path": "index.js",
+      "limit": "5 B"
+    }
+  ],
+  "lint-staged": {
+    "*.md": "yaspeller-ci",
+    "*.js": "eslint"
+  },
+  "pre-commit": [
+    "lint-staged"
+  ]
+}

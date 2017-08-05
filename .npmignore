@@ -1,0 +1,14 @@
+.gitignore
+.npmignore
+.editorconfig
+
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn.lock
+
+*.test.js
+coverage/
+.travis.yml
+
+.yaspellerrc
