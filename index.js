@@ -1,2 +1,18 @@
-module.exports = function nanoid () {
+var generate = require('./generate')
+var url = require('./url')
+
+/**
+ * Generate secure URL-friendly unique ID with same bits length as UUID.
+ *
+ * @return {string} Random string with 22 URL-friendly symbols.
+ *
+ * @example
+ * var nanoid = require('nanoid')
+ * model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
+ */
+module.exports = function () {
+  return generate(url, 22)
 }
+
+module.exports.generate = generate
+module.exports.url = url
