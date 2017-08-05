@@ -12,3 +12,4 @@ coverage/
 .travis.yml
 
 .yaspellerrc
+docs/

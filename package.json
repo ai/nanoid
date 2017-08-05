@@ -12,6 +12,7 @@
   "license": "MIT",
   "repository": "ai/nanoid",
   "devDependencies": {
+    "docdash": "^0.4.0",
     "eslint": "^4.3.0",
     "eslint-config-logux": "^16.0.0",
     "eslint-config-standard": "^10.2.1",
@@ -23,6 +24,7 @@
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^3.0.1",
     "jest": "^20.0.4",
+    "jsdoc": "^3.5.4",
     "lint-staged": "^4.0.2",
     "pre-commit": "^1.2.2",
     "size-limit": "^0.8.0",
@@ -30,7 +32,8 @@
   },
   "scripts": {
     "lint-staged": "lint-staged",
-    "spellcheck": "yaspeller-ci *.md",
+    "spellcheck": "yarn docs && yaspeller-ci *.md docs/*.html",
+    "docs": "jsdoc --configure .jsdocrc *.js",
     "lint": "eslint *.js test/*.js",
     "test": "jest --coverage && yarn lint && yarn spellcheck && size-limit"
   },
