@@ -7,7 +7,7 @@ npm-debug.log
 yarn-error.log
 yarn.lock
 
-*.test.js
+test/
 coverage/
 .travis.yml
 
