@@ -13,6 +13,7 @@
     "nanoid",
     "gzipped",
     "Crypto",
-    "bruteforcing"
+    "bruteforcing",
+    "cryptographically"
   ]
 }

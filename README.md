@@ -7,11 +7,12 @@ var nanoid = require('nanoid')
 model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
 ```
 
-**Safe.** It uses safe native random function and tests symbols distribution.
+**Safe.** It uses cryptographically-strong random APIs
+and tests symbols distribution.
 
-**Small.** Only 258 bytes (minified and gzipped).
+**Small.** Only 258 bytes (minified and gzipped). Zero-dependency.
 
-**Compact.** Instead of UUID it uses more symbols (`A-Za-z0-9_~`)
+**Compact.** It uses more symbols than UUID (`A-Za-z0-9_~`)
 and have same uniqueness in 22 symbols instead of 36.
 
 Generator supports Node.js and [all browsers] from IE 11.
@@ -36,7 +37,7 @@ and Web Crypto API in browsers.
 ### Uniformity
 
 `random % alphabet` is a popular mistake in ID generator. Change to get some
-symbols will be lower and it will reduce amount of guesses in bruteforcing.
+symbols will be lower and it will reduce amount of guesses in bruteforcing.
 
 Nano ID use [better algorithm] and test uniformity:
 
@@ -50,7 +51,7 @@ Nano ID use [better algorithm] and test uniformity:
 ### Normal
 
 Main module uses URL-friendly symbols (`A-Za-z0-9_~`) and return ID
-with 22 characters (to have same uniqueness as UUID).
+with 22 characters (to have same uniqueness as UUID).
 
 ```js
 var nanoid = require('nanoid')
