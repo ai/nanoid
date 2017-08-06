@@ -9,6 +9,8 @@ var url = require('./url')
  * @example
  * var nanoid = require('nanoid')
  * model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
+ *
+ * @name nanoid
  */
 module.exports = function () {
   return generate(url, 22)

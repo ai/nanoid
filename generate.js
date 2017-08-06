@@ -15,6 +15,8 @@ var format = require('./format')
  * @example
  * var generate = require('nanoid/generate')
  * model.id = generate('0123456789абвгдеё', 5) //=> "8ё56а"
+ *
+ * @name generate
  */
 module.exports = function (alphabet, size) {
   return format(random, alphabet, size)

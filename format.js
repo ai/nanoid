@@ -20,6 +20,8 @@
  * }
  *
  * format(random, "abcdef", 5) //=> "fbaef"
+ *
+ * @name format
  */
 module.exports = function (random, alphabet, size) {
   var bytes, byte

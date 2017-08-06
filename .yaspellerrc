@@ -8,6 +8,8 @@
     "Versioning",
     "docdash",
     "JSDoc",
-    "js"
+    "js",
+    "UUID",
+    "nanoid"
   ]
 }
