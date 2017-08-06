@@ -10,6 +10,7 @@
     "JSDoc",
     "js",
     "UUID",
-    "nanoid"
+    "nanoid",
+    "gzipped"
   ]
 }
