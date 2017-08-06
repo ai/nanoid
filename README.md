@@ -1,18 +1,18 @@
 # Nano ID
 
-It's a very small and secure a URL-friendly unique ID generator.
+Very small and secure a URL-friendly unique ID generator for JavaScript.
 
 ```js
 var nanoid = require('nanoid')
 model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
 ```
 
-**Safe.** It uses cryptographically-strong random APIs
-and tests symbols distribution.
+**Safe.** It uses cryptographically strong random APIs
+and guarantees a proper distribution of symbols.
 
-**Small.** Only 258 bytes (minified and gzipped). Zero-dependency.
+**Small.** Only 258 bytes (minified and gzipped). No dependencies.
 
-**Compact.** It uses more symbols than UUID (`A-Za-z0-9_~`) 
+**Compact.** It uses more symbols than UUID (`A-Za-z0-9_~`)
 and has the same number of unique options in just 22 symbols instead of 36.
 
 The generator supports Node.js and [all browsers] starting from IE 11.
@@ -31,13 +31,15 @@ The generator supports Node.js and [all browsers] starting from IE 11.
 
 ### Unpredictability
 
-Instead of unsafe `Math.random()` Nano ID uses `crypto` module in Node.js 
+Instead of unsafe `Math.random()` Nano ID uses `crypto` module in Node.js
 and Web Crypto API in browsers.
 
 ### Uniformity
 
-`random % alphabet` is a popular mistake in ID generator. Change to get some
-symbols will be lower and it will reduce amount of guesses in bruteforcing.
+`random % alphabet` is a popular mistake to make when coding an ID generator.
+The spread will not be even; there will be a lower chance for some symbols
+to appear compared to others—so it will reduce the number of tries
+when brute-forcing.
 
 Nano ID uses a [better algorithm] and tests uniformity:
 
@@ -51,28 +53,28 @@ Nano ID uses a [better algorithm] and tests uniformity:
 ### Normal
 
 The main module uses URL-friendly symbols (`A-Za-z0-9_~`) and returns an ID
-with 22 characters (which matches uniqueness of UUID).
+with 22 characters (to have the same uniqueness as UUID).
 
 ```js
 var nanoid = require('nanoid')
 model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
 ```
 
-Symbols such as `-,.()` aren't encoded in URL, but in the end of a link
+Symbols `-,.()` are not encoded in URL, but in the end of a link
 they could be identified as a punctuation symbol.
 
 ### Custom Alphabet or Length
 
-If you want to change the ID alphabet or the length you can use low-level `generate`
-module.
+If you want to change the ID alphabet or the length
+you can use low-level `generate` module.
 
 ```js
 var generate = require('nanoid/generate')
 model.id = generate('1234567890abcdef', 10) //=> "4f90d13a42"
 ```
 
-If you want to use the same URL-friendly symbols pool and just change the length, 
-you can use the default alphabet from `url` module:
+If you want to use the same URL-friendly symbols and just change the length,
+you can get default alphabet from the `url` module:
 
 ```js
 var url = require('nanoid/url')
@@ -96,4 +98,5 @@ function random (size) {
 format(random, "abcdef", 10) //=> "fbaefaadeb"
 ```
 
-`random` callback must accept an array size and return an array with random numbers.
+`random` callback must accept the array size and return an array
+with random numbers.
