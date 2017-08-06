@@ -24,7 +24,7 @@
  * @name format
  */
 module.exports = function (random, alphabet, size) {
-  var step = Math.ceil(1.2 * 256 / alphabet.length * size)
+  var step = Math.ceil(310 / alphabet.length * size)
 
   var bytes, byte
   var id = ''
