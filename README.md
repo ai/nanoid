@@ -39,7 +39,7 @@ and Web Crypto API in browsers.
 `random % alphabet` is a popular mistake to make when coding an ID generator.
 The spread will not be even; there will be a lower chance for some symbols
 to appear compared to others—so it will reduce the number of tries
-when brute-forcing.
+when brute-forcing.
 
 Nano ID uses a [better algorithm] and tests uniformity:
 
