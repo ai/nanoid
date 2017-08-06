@@ -18,13 +18,13 @@ function print (title, chars) {
   var width = 100 / length
 
   var dots = ''
-  for (var l in chars) {
+  Object.keys(chars).sort().forEach(function (l) {
     var distribution = (chars[l] * length) / (COUNT * LENGTH)
     dots += '<div class="dot" style="' +
       'background: hsl(' + (200 * distribution) + ', 100%, 50%); ' +
       'width: ' + width + '%; ' +
     '">' + l + '</div>'
-  }
+  })
 
   document.body.innerHTML += '<section>' +
     '<h2>' + title + '</h2>' +
