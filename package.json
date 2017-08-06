@@ -29,7 +29,7 @@
     "html-webpack-plugin": "^2.30.1",
     "jest": "^20.0.4",
     "jsdoc": "^3.5.4",
-    "lint-staged": "^4.0.2",
+    "lint-staged": "^4.0.3",
     "pre-commit": "^1.2.2",
     "size-limit": "^0.8.0",
     "webpack-dev-server": "^2.6.1",
