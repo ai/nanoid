@@ -1,5 +1,5 @@
 /**
- * Symbols that could be safely used in URL.
+ * URL safe symbols.
  *
  * @name url
  * @type {string}

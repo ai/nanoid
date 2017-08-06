@@ -4,11 +4,11 @@ var format = require('./format')
 /**
  * Low-level function to change alphabet and ID size.
  *
- * Alphabet must contain 256 symbols or less. Otherwise generator
+ * Alphabet must contain 256 symbols or less. Otherwise, the generator
  * will not be secure.
  *
- * @param {string} alphabet String with chars for ID.
- * @param {number} size Chars count in new ID.
+ * @param {string} alphabet Symbols to be used in ID.
+ * @param {number} size The number of symbols in ID.
  *
  * @return {string} Unique ID.
  *

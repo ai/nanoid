@@ -2,7 +2,7 @@ var generate = require('./generate')
 var url = require('./url')
 
 /**
- * Generate secure URL-friendly unique ID with same bits length as UUID.
+ * Generate secure URL-friendly unique ID.
  *
  * @return {string} Random string with 22 URL-friendly symbols.
  *

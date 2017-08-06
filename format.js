@@ -1,10 +1,10 @@
 /**
- * Secure custom alphabet random generator.
+ * Secure random string generator with custom alphabet.
  *
- * Alphabet must contain 256 symbols or less. Otherwise generator
+ * Alphabet must contain 256 symbols or less. Otherwise, the generator
  * will not be secure.
  *
- * @param {generator} random The random number generator.
+ * @param {generator} random The random bytess generator.
  * @param {string} alphabet Symbols to be used in new random string.
  * @param {size} size The number of symbols in new random string.
  *
