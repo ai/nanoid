@@ -11,6 +11,8 @@
     "js",
     "UUID",
     "nanoid",
-    "gzipped"
+    "gzipped",
+    "Crypto",
+    "bruteforcing"
   ]
 }

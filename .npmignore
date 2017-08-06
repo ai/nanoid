@@ -14,5 +14,6 @@ coverage/
 .yaspellerrc
 .jsdocrc
 docs/
+*.png
 
 benchmark

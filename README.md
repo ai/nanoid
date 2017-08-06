@@ -22,3 +22,25 @@ Generator supports Node.js and [all browsers] from IE 11.
   <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg"
        alt="Sponsored by Evil Martians" width="236" height="54">
 </a>
+
+## Security
+
+*Good article about random generators theory:
+[Secure random values (in Node.js)]*
+
+### Unpredictability
+
+Nano ID doesn’t use unsafe `Math.random()`. It use `crypto` module in Node.js
+and Web Crypto API in browsers.
+
+### Uniformity
+
+`random % alphabet` is a popular mistake in ID generator. Change to get some
+symbols will be lower and it will reduce amount of guesses in bruteforcing.
+
+Nano ID use [better algorithm] and test uniformity:
+
+<img src="distribution.png" alt="Nano ID uniformity" width="340" height="135">
+
+[Secure random values (in Node.js)]: https://gist.github.com/joepie91/7105003c3b26e65efcea63f3db82dfba
+[better algorithm]: https://github.com/ai/nanoid/blob/master/format.js
