@@ -12,6 +12,7 @@ coverage/
 .travis.yml
 
 .yaspellerrc
+.jsdocrc
 docs/
 
 benchmark
