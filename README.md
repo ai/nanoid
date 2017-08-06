@@ -13,7 +13,7 @@ and guarantees a proper distribution of symbols.
 **Small.** Only 258 bytes (minified and gzipped). No dependencies.
 
 **Compact.** It uses more symbols than UUID (`A-Za-z0-9_~`)
-and has the same number of unique options in just 22 symbols instead of 36.
+and has the same number of unique options in just 22 symbols instead of 36.
 
 The generator supports Node.js and [all browsers] starting from IE 11.
 
@@ -37,7 +37,7 @@ and Web Crypto API in browsers.
 ### Uniformity
 
 `random % alphabet` is a popular mistake to make when coding an ID generator.
-The spread will not be even; there will be a lower chance for some symbols
+The spread will not be even; there will be a lower chance for some symbols
 to appear compared to others—so it will reduce the number of tries
 when brute-forcing.
 
@@ -53,7 +53,7 @@ Nano ID uses a [better algorithm] and tests uniformity:
 ### Normal
 
 The main module uses URL-friendly symbols (`A-Za-z0-9_~`) and returns an ID
-with 22 characters (to have the same uniqueness as UUID).
+with 22 characters (to have the same uniqueness as UUID).
 
 ```js
 var nanoid = require('nanoid')
@@ -74,7 +74,7 @@ model.id = generate('1234567890abcdef', 10) //=> "4f90d13a42"
 ```
 
 If you want to use the same URL-friendly symbols and just change the length,
-you can get default alphabet from the `url` module:
+you can get default alphabet from the `url` module:
 
 ```js
 var url = require('nanoid/url')
@@ -84,7 +84,7 @@ model.id = generate(url, 10) //=> "Uakgb_J5m9"
 ### Custom Random Bytes Generator
 
 You can replace the default safe random generator using the `format` module.
-It could be useful if you need a seed-based generator.
+For instance, to use seed-based generator.
 
 ```js
 var format = require('nanoid/format')
