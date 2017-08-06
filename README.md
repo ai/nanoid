@@ -7,10 +7,12 @@ var nanoid = require('nanoid')
 model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
 ```
 
-* **Safe.** It uses safe native random function and tests symbols distribution.
-* **Small.** Only 258 bytes (minified and gzipped).
-* **Compact.** Instead of UUID it uses more symbols (`A-Za-z0-9_~`)
-  and have same uniqueness in 22 symbols instead of 36.
+**Safe.** It uses safe native random function and tests symbols distribution.
+
+**Small.** Only 258 bytes (minified and gzipped).
+
+**Compact.** Instead of UUID it uses more symbols (`A-Za-z0-9_~`)
+and have same uniqueness in 22 symbols instead of 36.
 
 Generator supports Node.js and [all browsers] from IE 11.
 
