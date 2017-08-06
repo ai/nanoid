@@ -53,7 +53,7 @@ Nano ID uses a [better algorithm] and tests uniformity:
 ### Normal
 
 The main module uses URL-friendly symbols (`A-Za-z0-9_~`) and returns an ID
-with 22 characters (to have the same uniqueness as UUID).
+with 22 characters (to have the same uniqueness as UUID v4).
 
 ```js
 var nanoid = require('nanoid')
