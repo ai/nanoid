@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+var nanoid = require('./')
+var generate = require('./generate')
+
+var start = Date.now()
+for (var i = 0; i < 100000; i++) {
+  nanoid()
+  generate('1234567890abcdef', 10)
+}
+var end = Date.now()
+
+process.stdout.write(end - start + ' ms\n')

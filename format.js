@@ -24,10 +24,12 @@
  * @name format
  */
 module.exports = function (random, alphabet, size) {
+  var step = Math.ceil(1.2 * 256 / alphabet.length * size)
+
   var bytes, byte
   var id = ''
   while (id.length !== size) {
-    bytes = random(size)
+    bytes = random(step)
     for (var i = 0; i < bytes.length; i++) {
       byte = bytes[i]
       if (byte < alphabet.length) {
@@ -36,6 +38,7 @@ module.exports = function (random, alphabet, size) {
       }
     }
   }
+
   return id
 }
 
