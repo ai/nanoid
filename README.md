@@ -1,6 +1,6 @@
 # Nano ID
 
-Very small and secure a URL-friendly unique ID generator for JavaScript.
+A tiny, secure URL-friendly unique string ID generator for JavaScript.
 
 ```js
 var nanoid = require('nanoid')
