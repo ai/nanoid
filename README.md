@@ -60,7 +60,7 @@ in ID, so it has same collision probability:
 
 There are only 2 differences between Nano ID and UUID v4:
 
-1. Nano ID is more compact. It uses bigger alphabet for ID, so same random bits
+1. Nano ID uses bigger alphabet for ID, so same random bits
    are packed just in 22 symbols instead of 36.
 2. Code of Nano ID has 2 times smaller size compare to `uuid/v4` package:
    258 bytes instead of 435.
