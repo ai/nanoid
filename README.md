@@ -19,7 +19,7 @@ and has the same number of unique options in just 22 symbols instead of 36.
 The generator supports Node.js and [all browsers] starting from IE 11.
 
 [all browsers]: http://caniuse.com/#feat=getrandomvalues
-[Size Limit]:   https://github.com/ai/nanoid
+[Size Limit]:   https://github.com/ai/size-limit
 
 <a href="https://evilmartians.com/?utm_source=nanoid">
   <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg"
