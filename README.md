@@ -50,6 +50,21 @@ Nano ID uses a [better algorithm] and tests uniformity:
 [Secure random values (in Node.js)]: https://gist.github.com/joepie91/7105003c3b26e65efcea63f3db82dfba
 [better algorithm]: https://github.com/ai/nanoid/blob/master/format.js
 
+## Comparison with UUID
+
+Nano ID is similar to UUID v4 (random-based). It uses same number of random bits
+in ID, so it has same collision probability:
+
+> For there to be a one in a billion chance of duplication,
+> 103 trillion version 4 IDs must be generated.
+
+There are only 2 differences between Nano ID and UUID v4:
+
+1. Nano ID is more compact. It uses bigger alphabet for ID, so same random bits
+   are packed just in 22 symbols instead of 36.
+2. Code of Nano ID has 2 times smaller size compare to `uuid/v4` package:
+   258 bytes instead of 435.
+
 ## Usage
 
 ### Normal
