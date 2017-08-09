@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "docdash": "^0.4.0",
-    "eslint": "^4.4.0",
+    "eslint": "^4.4.1",
     "eslint-config-logux": "^16.0.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-es5": "^1.1.0",
@@ -31,8 +31,8 @@
     "jsdoc": "^3.5.4",
     "lint-staged": "^4.0.3",
     "pre-commit": "^1.2.2",
-    "size-limit": "^0.8.0",
-    "webpack-dev-server": "^2.6.1",
+    "size-limit": "^0.8.1",
+    "webpack-dev-server": "^2.7.1",
     "yaspeller-ci": "^0.6.0"
   },
   "scripts": {
