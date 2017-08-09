@@ -14,6 +14,7 @@
   "browser": {
     "./random.js": "./random-browser.js"
   },
+  "types": "./index.d.ts",
   "devDependencies": {
     "docdash": "^0.4.0",
     "eslint": "^4.4.0",

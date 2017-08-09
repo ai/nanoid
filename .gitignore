@@ -1,4 +1,5 @@
 .DS_Store
+.alm
 *~
 
 node_modules/
