@@ -24,12 +24,12 @@
  * @name format
  */
 module.exports = function (random, alphabet, size) {
-  var step = 310 / alphabet.length * size | 0
+  var step = 310 * size / alphabet.length | 0
   var id = ''
   while (true) {
     var bytes = random(step)
     for (var i = 0; i < step; i++) {
-      if (bytes[i] < alphabet.length) {
+      if (alphabet[bytes[i]]) {
         id += alphabet[bytes[i]]
         if (!--size) return id
       }
