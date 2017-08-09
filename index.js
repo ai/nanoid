@@ -1,4 +1,5 @@
-var generate = require('./generate')
+var format = require('./format')
+var random = require('./random')
 var url = require('./url')
 
 /**
@@ -13,5 +14,5 @@ var url = require('./url')
  * @name nanoid
  */
 module.exports = function () {
-  return generate(url, 22)
+  return format(random, url, 22)
 }

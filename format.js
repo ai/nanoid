@@ -28,18 +28,16 @@ module.exports = function (random, alphabet, size) {
 
   var bytes, byte
   var id = ''
-  while (id.length !== size) {
+  while (true) {
     bytes = random(step)
     for (var i = 0; i < bytes.length; i++) {
       byte = bytes[i]
       if (byte < alphabet.length) {
         id += alphabet[byte]
-        if (id.length === size) break
+        if (id.length === size) return id
       }
     }
   }
-
-  return id
 }
 
 /**
