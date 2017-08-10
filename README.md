@@ -90,6 +90,8 @@ var generate = require('nanoid/generate')
 model.id = generate('1234567890abcdef', 10) //=> "4f90d13a42"
 ```
 
+Alphabet must contain less than 256 symbols.
+
 If you want to use the same URL-friendly symbols and just change the length,
 you can get default alphabet from the `url` module:
 
