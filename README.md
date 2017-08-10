@@ -10,7 +10,7 @@ model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
 **Safe.** It uses cryptographically strong random APIs
 and guarantees a proper distribution of symbols.
 
-**Small.** Only 246 bytes (minified and gzipped). No dependencies.
+**Small.** Only 181 bytes (minified and gzipped). No dependencies.
 It uses [Size Limit] to control size.
 
 **Compact.** It uses more symbols than UUID (`A-Za-z0-9_~`)
@@ -63,7 +63,7 @@ There are only 2 differences between Nano ID and UUID v4:
 1. Nano ID uses bigger alphabet for ID, so same random bits
    are packed just in 22 symbols instead of 36.
 2. Code of Nano ID has 2 times smaller size compare to `uuid/v4` package:
-   246 bytes instead of 435.
+   181 bytes instead of 435.
 
 ## Usage
 
