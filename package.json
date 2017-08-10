@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "benchmark": "^2.1.4",
+    "chalk": "^2.1.0",
     "docdash": "^0.4.0",
     "eslint": "^4.4.1",
     "eslint-config-logux": "^16.0.0",
@@ -33,7 +34,9 @@
     "lint-staged": "^4.0.3",
     "microtime": "^2.1.6",
     "pre-commit": "^1.2.2",
+    "shortid": "^2.2.8",
     "size-limit": "^0.8.1",
+    "uuid": "^3.1.0",
     "webpack-dev-server": "^2.7.1",
     "yaspeller-ci": "^0.6.0"
   },

@@ -1,16 +1,34 @@
 #!/usr/bin/env node
 var benchmark = require('benchmark')
-var nanoid = require('./')
+var shortid = require('shortid')
+var uuid4 = require('uuid/v4')
+var chalk = require('chalk')
+
 var generate = require('./generate')
+var nanoid = require('./')
 
 var suite = new benchmark.Suite()
 
+function formatNumber (number) {
+  return String(number).replace(/\d\d\d$/, ',$&')
+}
+
 suite
-  .add('nanoid#generate', function () {
+  .add('nanoid', function () {
+    nanoid()
+  })
+  .add('nanoid/generate', function () {
     generate('1234567890abcdef', 10)
-    return nanoid()
+  })
+  .add('uuid/v4', function () {
+    uuid4()
+  })
+  .add('shortid', function () {
+    shortid()
   })
   .on('cycle', function (event) {
-    console.log(String(event.target))
+    var name = event.target.name.padEnd('nanoid/generate'.length)
+    var hz = formatNumber(event.target.hz.toFixed(0)).padStart(7)
+    process.stdout.write(name + ' ' + chalk.bold(hz) + ' ops/sec \n')
   })
   .run()
