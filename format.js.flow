@@ -1,0 +1,5 @@
+// @flow
+
+declare const format: (random: (size: number) => string[], alphabet: string, size: number) => string;
+
+export default format;
