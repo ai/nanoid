@@ -10,3 +10,13 @@ it('generates URL-friendly IDs', function () {
     }
   }
 })
+
+it('has no collisions', function () {
+  var COUNT = 100 * 1000
+  var used = { }
+  for (var i = 0; i < COUNT; i++) {
+    var id = nanoid()
+    expect(used[id]).not.toBeDefined()
+    used[id] = true
+  }
+})
