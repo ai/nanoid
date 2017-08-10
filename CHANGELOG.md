@@ -1,6 +1,11 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 0.2
+* Add `size` argument to `nanoid()`.
+* Improve performance by 50%.
+* Reduce library size by 26% (by Vsevolod Rodionov and Oleg Mokhov).
+
 ## 0.1.1
 * Reduce library size by 5%.
 
