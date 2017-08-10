@@ -70,7 +70,7 @@ There are only 2 differences between Nano ID and UUID v4:
 ### Normal
 
 The main module uses URL-friendly symbols (`A-Za-z0-9_~`) and returns an ID
-with 22 characters (to have the same uniqueness as UUID v4).
+with 22 characters (to have the same collisions probability as UUID v4).
 
 ```js
 var nanoid = require('nanoid')
