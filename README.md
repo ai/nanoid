@@ -80,6 +80,13 @@ model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
 Symbols `-,.()` are not encoded in URL, but in the end of a link
 they could be identified as a punctuation symbol.
 
+If you want to reduce ID length (and increase collisions probability),
+you can pass length as argument:
+
+```js
+nanoid(10) //=> "IRFa~VaY2b"
+```
+
 ### Custom Alphabet or Length
 
 If you want to change the ID alphabet or the length
@@ -91,14 +98,6 @@ model.id = generate('1234567890abcdef', 10) //=> "4f90d13a42"
 ```
 
 Alphabet must contain less than 256 symbols.
-
-If you want to use the same URL-friendly symbols and just change the length,
-you can get default alphabet from the `url` module:
-
-```js
-var url = require('nanoid/url')
-model.id = generate(url, 10) //=> "Uakgb_J5m9"
-```
 
 ### Custom Random Bytes Generator
 
