@@ -119,3 +119,11 @@ format(random, "abcdef", 10) //=> "fbaefaadeb"
 
 `random` callback must accept the array size and return an array
 with random numbers.
+
+If you want to use the same URL-friendly symbols with `format`,
+you can get default alphabet from the `url` module:
+
+```js
+var url = require('nanoid/url')
+format(random, url, 10) //=> "93ce_Ltuub"
+```
