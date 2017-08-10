@@ -1,0 +1,5 @@
+// @flow
+
+declare const generate: (alphabet: string, size: number) => string;
+
+export default generate;
