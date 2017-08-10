@@ -1,3 +1,6 @@
+var shortid = require('shortid')
+var uuid4 = require('uuid/v4')
+
 var generate = require('../../generate')
 var random = require('../../random')
 var nanoid = require('../../')
@@ -15,14 +18,17 @@ var LENGTH = ALPHABET.length
 
 function print (title, chars) {
   var length = Object.keys(chars).length
-  var width = 100 / length
-
   var dots = ''
+
+  var average = Object.keys(chars).reduce(function (all, l) {
+    return all + chars[l]
+  }, 0) / length
+
   Object.keys(chars).sort().forEach(function (l) {
-    var distribution = (chars[l] * length) / (COUNT * LENGTH)
+    var distribution = chars[l] / average
     dots += '<div class="dot" style="' +
       'background: hsl(' + (200 * distribution) + ', 100%, 50%); ' +
-      'width: ' + width + '%; ' +
+      'width: ' + (100 / length) + '%; ' +
     '">' + l + '</div>'
   })
 
@@ -71,7 +77,22 @@ var tasks = [
   },
   function () {
     return printDistribution('nanoid', function () {
+      return nanoid()
+    })
+  },
+  function () {
+    return printDistribution('nanoid/generate', function () {
       return generate(ALPHABET, LENGTH)
+    })
+  },
+  function () {
+    return printDistribution('shortid', function () {
+      return shortid()
+    })
+  },
+  function () {
+    return printDistribution('uuid/v4', function () {
+      return uuid4().replace(/-./g, '')
     })
   },
   function () {
