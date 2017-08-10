@@ -15,6 +15,7 @@
     "./random.js": "./random-browser.js"
   },
   "devDependencies": {
+    "benchmark": "^2.1.4",
     "docdash": "^0.4.0",
     "eslint": "^4.4.1",
     "eslint-config-logux": "^16.0.0",
@@ -30,6 +31,7 @@
     "jest": "^20.0.4",
     "jsdoc": "^3.5.4",
     "lint-staged": "^4.0.3",
+    "microtime": "^2.1.6",
     "pre-commit": "^1.2.2",
     "size-limit": "^0.8.1",
     "webpack-dev-server": "^2.7.1",

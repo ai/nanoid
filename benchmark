@@ -1,13 +1,16 @@
 #!/usr/bin/env node
-
+var benchmark = require('benchmark')
 var nanoid = require('./')
 var generate = require('./generate')
 
-var start = Date.now()
-for (var i = 0; i < 100000; i++) {
-  nanoid()
-  generate('1234567890abcdef', 10)
-}
-var end = Date.now()
+var suite = new benchmark.Suite()
 
-process.stdout.write(end - start + ' ms\n')
+suite
+  .add('nanoid#generate', function () {
+    generate('1234567890abcdef', 10)
+    return nanoid()
+  })
+  .on('cycle', function (event) {
+    console.log(String(event.target))
+  })
+  .run()
