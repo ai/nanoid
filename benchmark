@@ -18,7 +18,7 @@ suite
     nanoid()
   })
   .add('nanoid/generate', function () {
-    generate('1234567890abcdef', 10)
+    generate('1234567890abcdef-', 10)
   })
   .add('uuid/v4', function () {
     uuid4()
