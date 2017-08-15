@@ -35,7 +35,7 @@
     "microtime": "^2.1.6",
     "pre-commit": "^1.2.2",
     "shortid": "^2.2.8",
-    "size-limit": "^0.8.2",
+    "size-limit": "^0.9.0",
     "uuid": "^3.1.0",
     "webpack-dev-server": "^2.7.1",
     "yaspeller-ci": "^0.6.0"
@@ -61,11 +61,11 @@
   "size-limit": [
     {
       "path": "index.js",
-      "limit": "181 B"
+      "limit": "179 B"
     },
     {
       "path": "generate.js",
-      "limit": "197 B"
+      "limit": "196 B"
     }
   ],
   "lint-staged": {
