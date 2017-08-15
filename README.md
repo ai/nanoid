@@ -52,8 +52,8 @@ Nano ID uses a [better algorithm] and tests uniformity:
 
 ## Comparison with UUID
 
-Nano ID is similar to UUID v4 (random-based). It uses the same number of random bits
-in ID, so it has the same collision probability:
+Nano ID is similar to UUID v4 (random-based). It uses the same number
+of random bits in ID, so it has the same collision probability:
 
 > For there to be a one in a billion chance of duplication,
 > 103 trillion version 4 IDs must be generated.
