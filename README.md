@@ -126,3 +126,7 @@ you can get default alphabet from the `url` module:
 var url = require('nanoid/url')
 format(random, url, 10) //=> "93ce_Ltuub"
 ```
+
+## Nanoid in ohter programming languages
+
+- [PHP](https://github.com/hidehalo/nanoid-php) via [@hidehalo](https://github.com/hidehalo) and the [@contributors](https://github.com/hidehalo/nanoid-php/graphs/contributors)
