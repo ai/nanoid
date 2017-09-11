@@ -127,6 +127,6 @@ var url = require('nanoid/url')
 format(random, url, 10) //=> "93ce_Ltuub"
 ```
 
-## Nanoid in other programming languages
+## Other Programming Languages
 
-- [PHP](https://github.com/hidehalo/nanoid-php) via [@Hidehalo](https://github.com/hidehalo) and the [@contributors](https://github.com/hidehalo/nanoid-php/graphs/contributors)
+* [PHP](https://github.com/hidehalo/nanoid-php)
