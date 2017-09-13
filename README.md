@@ -129,5 +129,8 @@ format(random, url, 10) //=> "93ce_Ltuub"
 
 ## Other Programming Languages
 
-* [Go](https://github.com/matoous/go-nanoid)
-* [PHP](https://github.com/hidehalo/nanoid-php)
+* Go
+  * [matoous/go-nanoid](https://github.com/matoous/go-nanoid) (uses a different API)
+  * [jkomyno/nanoid](https://github.com/jkomyno/nanoid) (uses pretty much the same API as this original repo)
+* PHP
+  * [hidehalo/nanoid-php](https://github.com/hidehalo/nanoid-php)
