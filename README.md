@@ -132,3 +132,4 @@ format(random, url, 10) //=> "93ce_Ltuub"
 * [Go](https://github.com/matoous/go-nanoid)
 * [PHP](https://github.com/hidehalo/nanoid-php)
 * [Python](https://github.com/puyuan/py-nanoid)
+* [Ruby](https://github.com/radeno/nanoid.rb)
