@@ -65,6 +65,17 @@ There are only 2 differences between Nano ID and UUID v4:
 2. Nano ID code is 2 times smaller in size than `uuid/v4` package:
    179 bytes instead of 435.
 
+## Benchmark
+
+```
+$ ./benchmark
+nanoid          375,840 ops/sec
+nanoid/generate 268,747 ops/sec
+uuid/v4         374,767 ops/sec
+shortid          41,260 ops/sec
+```
+
+
 ## Usage
 
 ### Normal
