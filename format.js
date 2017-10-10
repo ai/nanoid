@@ -1,5 +1,3 @@
-var masks = [15, 31, 63, 127, 255]
-
 /**
  * Secure random string generator with custom alphabet.
  *
@@ -26,9 +24,7 @@ var masks = [15, 31, 63, 127, 255]
  * @name format
  */
 module.exports = function (random, alphabet, size) {
-  var mask = masks.find(function (i) {
-    return i >= alphabet.length - 1
-  })
+  var mask = (2 << Math.log(alphabet.length - 1) / Math.LN2) - 1
   var step = Math.ceil(1.6 * mask * size / alphabet.length)
 
   var id = ''
