@@ -67,7 +67,7 @@
     },
     {
       "path": "generate.js",
-      "limit": "196 B"
+      "limit": "184 B"
     }
   ],
   "lint-staged": {
