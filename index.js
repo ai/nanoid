@@ -5,7 +5,8 @@ var url = '_~0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 /**
  * Generate secure URL-friendly unique ID.
  *
- * By default, ID will have 21 symbols to have a collision probability similar to UUID v4.
+ * By default, ID will have 21 symbols to have a collision probability similar
+ * to UUID v4.
  *
  * @param {number} [size=21] The number of symbols in ID.
  *
