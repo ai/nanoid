@@ -34,7 +34,7 @@ The generator supports Node.js and [all browsers] starting from IE 11.
 ### Unpredictability
 
 Instead of using the unsafe `Math.random()`, Nano ID uses the `crypto` module
-in Node.js and the Web Crypto API in browsers.
+in Node.js and the Web Crypto API in browsers.
 
 ### Uniformity
 
@@ -54,14 +54,14 @@ Nano ID uses a [better algorithm] and is tested for uniformity:
 
 Nano ID is quite comparable to UUID v4 (random-based).
 It has a similar number of random bits in the ID
-(126 in Nano ID and 122 in UUID), so it has a similar collision probability:
+(126 in Nano ID and 122 in UUID), so it has a similar collision probability:
 
 > For there to be a one in a billion chance of duplication,
 > 103 trillion version 4 IDs must be generated.
 
 There are two main differences between Nano ID and UUID v4:
 
-1. Nano ID uses a bigger alphabet for the ID, so a similar number of random bits
+1. Nano ID uses a bigger alphabet, so a similar number of random bits
    are packed in just 21 symbols instead of 36.
 2. Nano ID code is less than half the size of the `uuid/v4` package:
    179 bytes instead of 435.
