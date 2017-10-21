@@ -13,8 +13,8 @@ and guarantees a proper distribution of symbols.
 **Small.** Only 179 bytes (minified and gzipped). No dependencies.
 It uses [Size Limit] to control size.
 
-**Compact.** It uses more symbols than UUID (`A-Za-z0-9_~`)
-and has the same number of unique options in just 22 symbols instead of 36.
+**Compact.** It uses a larger alphabet than UUID (`A-Za-z0-9_~`)
+and has a similar number of unique options in just 21 symbols instead of 36.
 
 The generator supports Node.js and [all browsers] starting from IE 11.
 
@@ -52,16 +52,16 @@ Nano ID uses a [better algorithm] and tests uniformity:
 
 ## Comparison with UUID
 
-Nano ID is similar to UUID v4 (random-based). It uses the same number
-of random bits in ID, so it has the same collision probability:
+Nano ID is similar to UUID v4 (random-based). It uses a similar number
+of random bits in the ID, so it has similar collision probability:
 
 > For there to be a one in a billion chance of duplication,
 > 103 trillion version 4 IDs must be generated.
 
 There are only 2 differences between Nano ID and UUID v4:
 
-1. Nano ID uses a bigger alphabet for ID, so the same random bits
-   are packed in just 22 symbols instead of 36.
+1. Nano ID uses a bigger alphabet for ID, so a similar number of random bits
+   are packed in just 21 symbols instead of 36.
 2. Nano ID code is 2 times smaller in size than `uuid/v4` package:
    179 bytes instead of 435.
 
@@ -81,7 +81,7 @@ shortid          41,260 ops/sec
 ### Normal
 
 The main module uses URL-friendly symbols (`A-Za-z0-9_~`) and returns an ID
-with 22 characters (to have the same collisions probability as UUID v4).
+with 21 characters (to have similar collision probability to UUID v4).
 
 ```js
 var nanoid = require('nanoid')
