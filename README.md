@@ -1,6 +1,6 @@
 # Nano ID
 
-A tiny, secure URL-friendly unique string ID generator for JavaScript.
+A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 
 ```js
 var nanoid = require('nanoid')
@@ -13,8 +13,8 @@ and guarantees a proper distribution of symbols.
 **Small.** Only 179 bytes (minified and gzipped). No dependencies.
 It uses [Size Limit] to control size.
 
-**Compact.** It uses more symbols than UUID (`A-Za-z0-9_~`)
-and has the same number of unique options in just 22 symbols instead of 36.
+**Compact.** It uses a larger alphabet than UUID (`A-Za-z0-9_~`)
+and has a similar number of unique IDs in just 21 symbols instead of 36.
 
 The generator supports Node.js and [all browsers] starting from IE 11.
 
@@ -33,8 +33,8 @@ The generator supports Node.js and [all browsers] starting from IE 11.
 
 ### Unpredictability
 
-Instead of unsafe `Math.random()` Nano ID uses `crypto` module in Node.js
-and Web Crypto API in browsers.
+Instead of using the unsafe `Math.random()`API, Nano ID uses the `crypto` module in Node.js
+and the Web Crypto API in browsers.
 
 ### Uniformity
 
@@ -43,7 +43,7 @@ The spread will not be even; there will be a lower chance for some symbols
 to appear compared to others—so it will reduce the number of tries
 when brute-forcing.
 
-Nano ID uses a [better algorithm] and tests uniformity:
+Nano ID uses a [better algorithm] and is tested for uniformity:
 
 <img src="distribution.png" alt="Nano ID uniformity" width="340" height="135">
 
@@ -52,17 +52,17 @@ Nano ID uses a [better algorithm] and tests uniformity:
 
 ## Comparison with UUID
 
-Nano ID is similar to UUID v4 (random-based). It uses the same number
-of random bits in ID, so it has the same collision probability:
+Nano ID is quite comparable to UUID v4 (random-based). It has a similar number of random bits in the
+ID (126 vs 122), so it has a similar collision probability:
 
 > For there to be a one in a billion chance of duplication,
 > 103 trillion version 4 IDs must be generated.
 
-There are only 2 differences between Nano ID and UUID v4:
+There are two main differences between Nano ID and UUID v4:
 
-1. Nano ID uses a bigger alphabet for ID, so the same random bits
-   are packed in just 22 symbols instead of 36.
-2. Nano ID code is 2 times smaller in size than `uuid/v4` package:
+1. Nano ID uses a bigger alphabet for the ID, so a similar number of random bits
+   are packed in just 21 symbols instead of 36.
+2. Nano ID code is less than half the size of the `uuid/v4` package:
    179 bytes instead of 435.
 
 ## Benchmark
@@ -81,18 +81,18 @@ shortid          41,260 ops/sec
 ### Normal
 
 The main module uses URL-friendly symbols (`A-Za-z0-9_~`) and returns an ID
-with 22 characters (to have the same collisions probability as UUID v4).
+with 21 characters (to have a collision probability similar to UUID v4).
 
 ```js
 var nanoid = require('nanoid')
 model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
 ```
 
-Symbols `-,.()` are not encoded in URL, but in the end of a link
+Symbols `-,.()` are not encoded in the URL. If used at the end of a link
 they could be identified as a punctuation symbol.
 
 If you want to reduce ID length (and increase collisions probability),
-you can pass length as argument:
+you can pass the length as an argument:
 
 ```js
 nanoid(10) //=> "IRFa~VaY2b"
@@ -100,20 +100,20 @@ nanoid(10) //=> "IRFa~VaY2b"
 
 ### Custom Alphabet or Length
 
-If you want to change the ID alphabet or the length
-you can use low-level `generate` module.
+If you want to change the ID's alphabet or length
+you can use the low-level `generate` module.
 
 ```js
 var generate = require('nanoid/generate')
 model.id = generate('1234567890abcdef', 10) //=> "4f90d13a42"
 ```
 
-Alphabet must contain less than 256 symbols.
+The alphabet must contain less than 256 symbols.
 
 ### Custom Random Bytes Generator
 
 You can replace the default safe random generator using the `format` module.
-For instance, to use seed-based generator.
+For instance, to use a seed-based generator.
 
 ```js
 var format = require('nanoid/format')
@@ -131,7 +131,7 @@ format(random, "abcdef", 10) //=> "fbaefaadeb"
 with random numbers.
 
 If you want to use the same URL-friendly symbols with `format`,
-you can get default alphabet from the `url` module:
+you can get the default alphabet from the `url` module:
 
 ```js
 var url = require('nanoid/url')
