@@ -109,7 +109,8 @@ var generate = require('nanoid/generate')
 model.id = generate('1234567890abcdef', 10) //=> "4f90d13a42"
 ```
 
-Only alphabets with less than 256 symbols are supported.
+Alphabet must contain 256 symbols or less.
+Otherwise, the generator will not be secure.
 
 
 ### Custom Random Bytes Generator
