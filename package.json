@@ -12,7 +12,8 @@
   "license": "MIT",
   "repository": "ai/nanoid",
   "browser": {
-    "./random.js": "./random-browser.js"
+    "./random.js": "./random-browser.js",
+    "./index.js": "./index-browser.js"
   },
   "devDependencies": {
     "benchmark": "^2.1.4",
@@ -63,7 +64,7 @@
   "size-limit": [
     {
       "path": "index.js",
-      "limit": "179 B"
+      "limit": "121 B"
     },
     {
       "path": "generate.js",
