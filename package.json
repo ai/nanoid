@@ -58,7 +58,10 @@
     }
   },
   "eslintConfig": {
-    "extends": "eslint-config-logux/browser"
+    "extends": "eslint-config-logux/browser",
+    "rules": {
+      "yoda": "off"
+    }
   },
   "size-limit": [
     {
