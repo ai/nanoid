@@ -22,8 +22,12 @@ module.exports = function (size) {
   size = size || 21
   var id = ''
   var bytes = random(size)
-  for (var i = 0; i < size; i++) {
-    id += url[bytes[i] & 63]
+
+  // `i-- > 0` becomes `i-- >0` when minified
+  // `0 < i--` becomes `0<i--`
+  // eslint-disable-next-line yoda
+  while (0 < size--) {
+    id += url[bytes[size] & 63]
   }
   return id
 }
