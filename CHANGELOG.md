@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.0.1
+* Reduce `nanoid/index` size (by Anton Khlynovskiy).
+
 ## 1.0
 * Use 21 symbols by default (by David Klebanoff).
 
