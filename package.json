@@ -36,9 +36,9 @@
     "pre-commit": "^1.2.2",
     "rimraf": "^2.6.2",
     "shortid": "^2.2.8",
-    "size-limit": "^0.12.0",
+    "size-limit": "^0.12.1",
     "uuid": "^3.1.0",
-    "webpack-dev-server": "^2.9.3",
+    "webpack-dev-server": "^2.9.4",
     "yaspeller-ci": "^0.7.0"
   },
   "scripts": {
