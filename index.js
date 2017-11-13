@@ -1,6 +1,5 @@
 var random = require('./random')
-
-var url = '_~0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+var url = require('./url')
 
 /**
  * Generate secure URL-friendly unique ID.
