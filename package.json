@@ -19,6 +19,7 @@
     "chalk": "^2.3.0",
     "docdash": "^0.4.0",
     "eslint": "^4.10.0",
+    "eslint-ci": "^0.1.0",
     "eslint-config-logux": "^16.2.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-es5": "^1.1.0",
@@ -46,7 +47,7 @@
     "spellcheck": "yarn docs && yaspeller-ci *.md docs/*.html",
     "clean": "rimraf docs/ coverage/",
     "docs": "jsdoc --configure .jsdocrc *.js",
-    "lint": "eslint *.js test/*.js",
+    "lint": "eslint-ci *.js test/*.js",
     "test": "jest --coverage && yarn lint && size-limit && yarn spellcheck",
     "demo": "webpack-dev-server --config test/demo/webpack.config"
   },

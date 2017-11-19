@@ -1610,6 +1610,12 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
+eslint-ci@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-ci/-/eslint-ci-0.1.0.tgz#7cadd548bbbda8e7e00fb1d05c437b5215078552"
+  dependencies:
+    ci-job-number "^0.3.0"
+
 eslint-config-logux@^16.2.0:
   version "16.2.0"
   resolved "https://registry.yarnpkg.com/eslint-config-logux/-/eslint-config-logux-16.2.0.tgz#f86abbf6aa4fcccb9647ccc32fd6b69b8ccc8182"
