@@ -146,8 +146,8 @@ format(random, url, 10) //=> "93ce_Ltuub"
 
 * [C#](https://github.com/codeyu/nanoid-net)
 * [Go](https://github.com/matoous/go-nanoid)
+* [Elixir](https://github.com/railsmechanic/nanoid)
 * [Java](https://github.com/aventrix/jnanoid)
 * [PHP](https://github.com/hidehalo/nanoid-php)
 * [Python](https://github.com/puyuan/py-nanoid)
 * [Ruby](https://github.com/radeno/nanoid.rb)
-* [Elixir](https://github.com/railsmechanic/nanoid)
