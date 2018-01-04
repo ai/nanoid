@@ -145,6 +145,7 @@ format(random, url, 10) //=> "93ce_Ltuub"
 ## Other Programming Languages
 
 * [C#](https://github.com/codeyu/nanoid-net)
+* [Crystal](https://github.com/mamantoha/nanoid.cr)
 * [Go](https://github.com/matoous/go-nanoid)
 * [Elixir](https://github.com/railsmechanic/nanoid)
 * [Java](https://github.com/aventrix/jnanoid)
