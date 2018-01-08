@@ -18,7 +18,7 @@
     "benchmark": "^2.1.4",
     "chalk": "^2.3.0",
     "docdash": "^0.4.0",
-    "eslint": "^4.14.0",
+    "eslint": "^4.15.0",
     "eslint-ci": "^0.1.1",
     "eslint-config-logux": "^17.0.0",
     "eslint-config-standard": "^10.2.1",
@@ -39,7 +39,7 @@
     "shortid": "^2.2.8",
     "size-limit": "^0.13.2",
     "uuid": "^3.1.0",
-    "webpack-dev-server": "^2.9.7",
+    "webpack-dev-server": "^2.10.0",
     "yaspeller-ci": "^1.0.0"
   },
   "scripts": {
