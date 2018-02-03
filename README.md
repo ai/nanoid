@@ -4,7 +4,7 @@ A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 
 ```js
 var nanoid = require('nanoid')
-model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
+model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B~myT"
 ```
 
 **Safe.** It uses cryptographically strong random APIs
