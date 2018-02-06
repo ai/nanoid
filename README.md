@@ -104,6 +104,11 @@ you can pass the length as an argument:
 nanoid(10) //=> "IRFa~VaY2b"
 ```
 
+Don’t forget to check safety of your ID length
+in our [ID collision probability] calculator.
+
+[ID collision probability]: https://alex7kom.github.io/nano-nanoid-cc/
+
 
 ### Custom Alphabet or Length
 
@@ -115,8 +120,13 @@ var generate = require('nanoid/generate')
 model.id = generate('1234567890abcdef', 10) //=> "4f90d13a42"
 ```
 
+Check safety of your custom alphabet and ID length
+in our [ID collision probability] calculator.
+
 Alphabet must contain 256 symbols or less.
 Otherwise, the generator will not be secure.
+
+[ID collision probability]: https://alex7kom.github.io/nano-nanoid-cc/
 
 
 ### Custom Random Bytes Generator
