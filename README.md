@@ -26,15 +26,18 @@ The generator supports Node.js and [all browsers] starting from IE 11.
        alt="Sponsored by Evil Martians" width="236" height="54">
 </a>
 
+
 ## Security
 
 *See a good article about random generators theory:
 [Secure random values (in Node.js)]*
 
+
 ### Unpredictability
 
 Instead of using the unsafe `Math.random()`, Nano ID uses the `crypto` module
 in Node.js and the Web Crypto API in browsers.
+
 
 ### Uniformity
 
@@ -49,6 +52,7 @@ Nano ID uses a [better algorithm] and is tested for uniformity:
 
 [Secure random values (in Node.js)]: https://gist.github.com/joepie91/7105003c3b26e65efcea63f3db82dfba
 [better algorithm]: https://github.com/ai/nanoid/blob/master/format.js
+
 
 ## Comparison with UUID
 
@@ -65,6 +69,7 @@ There are two main differences between Nano ID and UUID v4:
    are packed in just 21 symbols instead of 36.
 2. Nano ID code is less than half the size of the `uuid/v4` package:
    179 bytes instead of 435.
+
 
 ## Benchmark
 
@@ -98,6 +103,7 @@ you can pass the length as an argument:
 ```js
 nanoid(10) //=> "IRFa~VaY2b"
 ```
+
 
 ### Custom Alphabet or Length
 
