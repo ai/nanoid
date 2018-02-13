@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.0.2
+* Fix Web Workers support (by Zachary Golba).
+
 ## 1.0.1
 * Reduce `nanoid/index` size (by Anton Khlynovskiy).
 
