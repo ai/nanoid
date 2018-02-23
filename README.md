@@ -109,6 +109,9 @@ in our [ID collision probability] calculator.
 
 [ID collision probability]: https://alex7kom.github.io/nano-nanoid-cc/
 
+### From the command line
+
+To generate ids from the command line, try the [nanoid-cli](https://npm.im/nanoid-cli) package
 
 ### Custom Alphabet or Length
 
