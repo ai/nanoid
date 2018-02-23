@@ -157,6 +157,27 @@ var url = require('nanoid/url')
 format(random, url, 10) //=> "93ce_Ltuub"
 ```
 
+### CLI
+
+You can use `nanoid` from the command line:
+
+```sh
+$ nanoid
+Znb2I~ePaxz5flnzdFkDV
+```
+
+To use a different alphabet, supply the `--alphabet` or `-a` option:
+
+```sh
+$ nanoid --alphabet "_~0123456789abcdefghijklmnopqrstuvwxyz"
+```
+
+To generate a different size id, supply the `--size` or `-s` option:
+
+```sh
+$ nanoid --size 32
+```
+
 
 ## Other Programming Languages
 
