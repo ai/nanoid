@@ -18,26 +18,26 @@
     "benchmark": "^2.1.4",
     "chalk": "^2.3.1",
     "docdash": "^0.4.0",
-    "eslint": "^4.17.0",
+    "eslint": "^4.18.1",
     "eslint-ci": "^0.1.1",
-    "eslint-config-logux": "^19.0.0",
-    "eslint-config-standard": "^10.2.1",
+    "eslint-config-logux": "^21.0.0",
+    "eslint-config-standard": "^11.0.0",
     "eslint-plugin-es5": "^1.2.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jest": "^21.12.1",
-    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jest": "^21.12.2",
+    "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^3.0.1",
     "html-webpack-plugin": "^2.30.1",
-    "jest": "^22.3.0",
+    "jest": "^22.4.2",
     "jsdoc": "^3.5.5",
-    "lint-staged": "^6.1.0",
+    "lint-staged": "^7.0.0",
     "microtime": "^2.1.7",
     "pre-commit": "^1.2.2",
     "rimraf": "^2.6.2",
     "shortid": "^2.2.8",
-    "size-limit": "^0.14.1",
+    "size-limit": "^0.15.0",
     "uuid": "^3.2.1",
     "webpack-dev-server": "^2.11.1",
     "yaspeller-ci": "^1.0.0"
@@ -68,11 +68,11 @@
   "size-limit": [
     {
       "path": "index.js",
-      "limit": "172 B"
+      "limit": "170 B"
     },
     {
       "path": "generate.js",
-      "limit": "181 B"
+      "limit": "185 B"
     }
   ],
   "lint-staged": {

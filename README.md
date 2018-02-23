@@ -10,7 +10,7 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B~myT"
 **Safe.** It uses cryptographically strong random APIs
 and guarantees a proper distribution of symbols.
 
-**Small.** Only 172 bytes (minified and gzipped). No dependencies.
+**Small.** Only 170 bytes (minified and gzipped). No dependencies.
 It uses [Size Limit] to control size.
 
 **Compact.** It uses a larger alphabet than UUID (`A-Za-z0-9_~`)
