@@ -37,7 +37,7 @@
     "pre-commit": "^1.2.2",
     "rimraf": "^2.6.2",
     "shortid": "^2.2.8",
-    "size-limit": "^0.15.0",
+    "size-limit": "^0.15.1",
     "uuid": "^3.2.1",
     "webpack-dev-server": "^2.11.1",
     "yaspeller-ci": "^1.0.0"

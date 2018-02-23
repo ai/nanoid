@@ -5798,9 +5798,9 @@ simple-get@^2.7.0:
     once "^1.3.1"
     simple-concat "^1.0.0"
 
-size-limit@^0.15.0:
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/size-limit/-/size-limit-0.15.0.tgz#7b967ed7319882a0a85c087552ef52d3dc7d1bc0"
+size-limit@^0.15.1:
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/size-limit/-/size-limit-0.15.1.tgz#7c8b7bf46d3a3ea487738d2b0804d53edc56cb38"
   dependencies:
     bytes "^3.0.0"
     chalk "^2.3.1"
