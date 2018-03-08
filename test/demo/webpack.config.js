@@ -15,6 +15,7 @@ module.exports = {
     })
   ],
   devServer: {
-    contentBase: path.join(__dirname, 'build')
+    contentBase: path.join(__dirname, 'build'),
+    demo: true
   }
 }
