@@ -49,7 +49,7 @@
     "docs": "jsdoc --configure .jsdocrc *.js",
     "lint": "eslint-ci *.js test/*.js",
     "test": "jest --coverage && yarn lint && size-limit && yarn spellcheck",
-    "demo": "webpack-dev-server --config test/demo/webpack.config"
+    "start": "webpack-dev-server --config test/demo/webpack.config"
   },
   "jest": {
     "testEnvironment": "node",
