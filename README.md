@@ -162,6 +162,7 @@ format(random, url, 10) //=> "93ce_Ltuub"
 
 * [C#](https://github.com/codeyu/nanoid-net)
 * [Crystal](https://github.com/mamantoha/nanoid.cr)
+* [Dart](https://github.com/pd4d10/nanoid)
 * [Go](https://github.com/matoous/go-nanoid)
 * [Elixir](https://github.com/railsmechanic/nanoid)
 * [Haskell](https://github.com/4e6/nanoid-hs)
@@ -170,7 +171,6 @@ format(random, url, 10) //=> "93ce_Ltuub"
 * [Python](https://github.com/puyuan/py-nanoid)
 * [Ruby](https://github.com/radeno/nanoid.rb)
 * [Rust](https://github.com/nikolay-govorov/nanoid)
-* [Dart](https://github.com/pd4d10/nanoid)
 
 Also, [CLI tool] is available to generate IDs from command line.
 
