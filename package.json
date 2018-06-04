@@ -1,7 +1,7 @@
 {
   "name": "nanoid",
   "version": "1.0.2",
-  "description": "A tiny (172 bytes), secure URL-friendly unique string ID generator",
+  "description": "A tiny (162 bytes), secure URL-friendly unique string ID generator",
   "keywords": [
     "uuid",
     "random",
@@ -70,11 +70,11 @@
   "size-limit": [
     {
       "path": "index.js",
-      "limit": "170 B"
+      "limit": "162 B"
     },
     {
       "path": "generate.js",
-      "limit": "185 B"
+      "limit": "179 B"
     }
   ],
   "lint-staged": {
