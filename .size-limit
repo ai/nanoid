@@ -1,0 +1,10 @@
+[
+  {
+    "path": "index.js",
+    "limit": "162 B"
+  },
+  {
+    "path": "generate.js",
+    "limit": "179 B"
+  }
+]

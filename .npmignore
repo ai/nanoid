@@ -9,6 +9,9 @@ test/
 coverage/
 .travis.yml
 
+.eslintrc
+.size-limit
+.lintstagedrc
 .yaspellerrc
 .jsdocrc
 docs/

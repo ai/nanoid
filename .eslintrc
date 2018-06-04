@@ -1,0 +1,6 @@
+{
+  "extends": "eslint-config-logux/browser",
+  "rules": {
+    "yoda": "off"
+  }
+}
