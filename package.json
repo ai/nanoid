@@ -53,14 +53,6 @@
     "test": "jest --coverage && yarn lint && size-limit && yarn spellcheck",
     "start": "webpack-dev-server --config test/demo/webpack.config"
   },
-  "jest": {
-    "testEnvironment": "node",
-    "coverageThreshold": {
-      "global": {
-        "statements": 100
-      }
-    }
-  },
   "pre-commit": [
     "lint-staged"
   ]
