@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.0.4
+* Reduce npm package size.
+
 ## 1.0.3
 * Reduce npm package size.
 
