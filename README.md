@@ -161,6 +161,7 @@ format(random, url, 10) //=> "93ce_Ltuub"
 ## Other Programming Languages
 
 * [C#](https://github.com/codeyu/nanoid-net)
+* [Clojure(Script)](https://github.com/zelark/nano-id)
 * [Crystal](https://github.com/mamantoha/nanoid.cr)
 * [Dart](https://github.com/pd4d10/nanoid)
 * [Go](https://github.com/matoous/go-nanoid)
