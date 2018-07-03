@@ -16,6 +16,6 @@ coverage/
 .jsdocrc
 jest.config.js
 docs/
-*.png
+img/
 
 benchmark

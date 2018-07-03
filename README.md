@@ -48,7 +48,8 @@ when brute-forcing.
 
 Nano ID uses a [better algorithm] and is tested for uniformity:
 
-<img src="distribution.png" alt="Nano ID uniformity" width="340" height="135">
+<img src="img/distribution.png" alt="Nano ID uniformity"
+     width="340" height="135">
 
 [Secure random values (in Node.js)]: https://gist.github.com/joepie91/7105003c3b26e65efcea63f3db82dfba
 [better algorithm]: https://github.com/ai/nanoid/blob/master/format.js
