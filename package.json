@@ -38,8 +38,8 @@
     "rimraf": "^2.6.2",
     "shortid": "^2.2.8",
     "size-limit": "^0.18.3",
-    "uuid": "^3.3.0",
-    "webpack": "^4.13.0",
+    "uuid": "^3.3.2",
+    "webpack": "^4.14.0",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4",
     "yaspeller-ci": "^1.0.0"
