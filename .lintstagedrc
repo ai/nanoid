@@ -1,7 +1,7 @@
 {
   "*.md": "yaspeller-ci",
   "*.js": "eslint",
-  ".svg": [
+  "*.svg": [
     "svgo",
     "git add"
   ]
