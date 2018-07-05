@@ -180,3 +180,10 @@ format(random, url, 10) //=> "93ce_Ltuub"
 Also, [CLI tool] is available to generate IDs from command line.
 
 [CLI tool]: https://github.com/twhitbeck/nanoid-cli
+
+
+## See also
+
+* [nanoid-dictionary] — a set of predefined strings to use with nanoid generator
+
+[nanoid-dictionary]: https://github.com/CyberAP/nanoid-dictionary
