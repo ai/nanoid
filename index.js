@@ -1,6 +1,6 @@
 var random = require('./random')
 
-var url = '_~0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+var url = '_~getRandomVcryp0123456789bfhijklqsuvwxzABCDEFGHIJKLMNOPQSTUWXYZ'
 
 /**
  * Generate secure URL-friendly unique ID.
