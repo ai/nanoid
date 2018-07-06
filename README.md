@@ -130,7 +130,10 @@ in our [ID collision probability] calculator.
 Alphabet must contain 256 symbols or less.
 Otherwise, the generator will not be secure.
 
+You can find popular alphabets in [`nanoid-dictionary`].
+
 [ID collision probability]: https://alex7kom.github.io/nano-nanoid-cc/
+[`nanoid-dictionary`]:      https://github.com/CyberAP/nanoid-dictionary
 
 
 ### Custom Random Bytes Generator
@@ -162,6 +165,15 @@ format(random, url, 10) //=> "93ce_Ltuub"
 ```
 
 
+## Tools
+
+* [Website to choice ID size] and keep ID collision probability low.
+* [`nanoid-dictionary`] with popular alphabets to use with `nanoid/generate`.
+* [`nanoid-cli`] to generate ID from CLI.
+
+[`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
+
+
 ## Other Programming Languages
 
 * [C#](https://github.com/codeyu/nanoid-net)
@@ -181,10 +193,3 @@ format(random, url, 10) //=> "93ce_Ltuub"
 Also, [CLI tool] is available to generate IDs from command line.
 
 [CLI tool]: https://github.com/twhitbeck/nanoid-cli
-
-
-## See also
-
-* [nanoid-dictionary] — a set of predefined strings to use with nanoid generator
-
-[nanoid-dictionary]: https://github.com/CyberAP/nanoid-dictionary
