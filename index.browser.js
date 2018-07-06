@@ -1,5 +1,6 @@
-var random = require('./random')
-var url = require('./url')
+var crypto = self.crypto || self.msCrypto
+
+var url = '_~getRandomVcryp0123456789bfhijklqsuvwxzABCDEFGHIJKLMNOPQSTUWXYZ'
 
 /**
  * Generate secure URL-friendly unique ID.
@@ -20,7 +21,7 @@ var url = require('./url')
 module.exports = function (size) {
   size = size || 21
   var id = ''
-  var bytes = random(size)
+  var bytes = crypto.getRandomValues(new Uint8Array(size))
   while (0 < size--) {
     id += url[bytes[size] & 63]
   }
