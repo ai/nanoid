@@ -30,7 +30,7 @@
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^3.1.0",
     "html-webpack-plugin": "^3.2.0",
-    "jest": "^23.2.0",
+    "jest": "^23.3.0",
     "jsdoc": "^3.5.5",
     "lint-staged": "^7.2.0",
     "microtime": "^2.1.8",
@@ -40,7 +40,7 @@
     "size-limit": "^0.18.3",
     "svgo": "^1.0.5",
     "uuid": "^3.3.2",
-    "webpack": "^4.14.0",
+    "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4",
     "yaspeller-ci": "^1.0.0"
