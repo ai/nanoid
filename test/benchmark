@@ -4,8 +4,8 @@ var shortid = require('shortid')
 var uuid4 = require('uuid/v4')
 var chalk = require('chalk')
 
-var generate = require('./generate')
-var nanoid = require('./')
+var generate = require('../generate')
+var nanoid = require('../')
 
 var suite = new benchmark.Suite()
 
