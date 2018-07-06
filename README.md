@@ -79,10 +79,10 @@ There are two main differences between Nano ID and UUID v4:
 
 ```
 $ ./benchmark
-nanoid          375,840 ops/sec
-nanoid/generate 268,747 ops/sec
-uuid/v4         374,767 ops/sec
-shortid          41,260 ops/sec
+nanoid          332,991 ops/sec
+nanoid/generate 326,636 ops/sec
+uuid/v4         315,344 ops/sec
+shortid          31,559 ops/sec
 ```
 
 
