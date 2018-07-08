@@ -4337,6 +4337,10 @@ nan@2.10.x, nan@^2.9.2:
   version "2.10.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.10.0.tgz#96d0cd610ebd58d4b4de9cc0c6828cda99c7548f"
 
+nanoid@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-1.0.5.tgz#4a45db5a53c02ae29188d6b136fbf069eecbd000"
+
 nanomatch@^1.2.9:
   version "1.2.13"
   resolved "https://registry.yarnpkg.com/nanomatch/-/nanomatch-1.2.13.tgz#b87a8aa4fc0de8fe6be88895b38983ff265bd119"
@@ -5885,9 +5889,11 @@ shellwords@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
 
-shortid@^2.2.8:
-  version "2.2.8"
-  resolved "https://registry.yarnpkg.com/shortid/-/shortid-2.2.8.tgz#033b117d6a2e975804f6f0969dbe7d3d0b355131"
+shortid@^2.2.9:
+  version "2.2.9"
+  resolved "https://registry.yarnpkg.com/shortid/-/shortid-2.2.9.tgz#59313f51ae35c05d1c4569882ea7feeda71e5f19"
+  dependencies:
+    nanoid "^1.0.5"
 
 showdown@^1.8.6:
   version "1.8.6"

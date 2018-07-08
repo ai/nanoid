@@ -82,7 +82,7 @@ $ ./benchmark
 nanoid          332,991 ops/sec
 nanoid/generate 326,636 ops/sec
 uuid/v4         315,344 ops/sec
-shortid          31,559 ops/sec
+shortid          83,250 ops/sec
 ```
 
 
