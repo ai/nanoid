@@ -1,7 +1,7 @@
 # Nano ID
 
-<img src="img/logo.svg" alt="Nano ID logo by Anton Lovchikov"
-     width="180" height="94" align="right">
+<img src="https://ai.github.io/nanoid/logo.svg" align="right"
+     alt="Nano ID logo by Anton Lovchikov" width="180" height="94">
 
 A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 
