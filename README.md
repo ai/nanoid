@@ -173,6 +173,7 @@ format(random, url, 10) //=> "93ce_Ltuub"
 * [`nanoid-cli`] to generate ID from CLI.
 
 [`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
+[`nanoid-cli`]: https://github.com/twhitbeck/nanoid-cli
 
 
 ## Other Programming Languages
