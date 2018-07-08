@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.0.7
+* Fix documentation.
+
 ## 1.0.6
 * Fix documentation.
 
