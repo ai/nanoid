@@ -6,7 +6,7 @@
 A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 
 **Safe.** It uses cryptographically strong random APIs
-and tests distribution of symbols.
+and tests distribution of symbols.
 
 **Small.** 146 bytes (minified and gzipped). No dependencies.
 It uses [Size Limit] to control size.
