@@ -29,6 +29,7 @@
     "CLI",
     "npm",
     "Clojure",
-    "ClojureScript"
+    "ClojureScript",
+    "cli"
   ]
 }

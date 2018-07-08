@@ -168,13 +168,13 @@ format(random, url, 10) //=> "93ce_Ltuub"
 
 ## Tools
 
-* [*Website to choice ID size*] and keep ID collision probability low.
-* [*`nanoid-dictionary`*] with popular alphabets to use with `nanoid/generate`.
-* [*`nanoid-cli`*] to generate ID from CLI.
+* **[ID size calculator]** to choice smaller ID size depends on your case.
+* **[nanoid-dictionary]** with popular alphabets to use with `nanoid/generate`.
+* **[nanoid-cli]** to generate ID from CLI.
 
-[*Website to choice ID size*]: https://alex7kom.github.io/nano-nanoid-cc/
-[*`nanoid-dictionary`*]:       https://github.com/CyberAP/nanoid-dictionary
-[*`nanoid-cli`*]:              https://github.com/twhitbeck/nanoid-cli
+[ID size calculator]: https://alex7kom.github.io/nano-nanoid-cc/
+[nanoid-dictionary]:  https://github.com/CyberAP/nanoid-dictionary
+[nanoid-cli]:         https://github.com/twhitbeck/nanoid-cli
 
 
 ## Other Programming Languages
