@@ -3,23 +3,23 @@
 <img src="https://ai.github.io/nanoid/logo.svg" align="right"
      alt="Nano ID logo by Anton Lovchikov" width="180" height="94">
 
-A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
+A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 
 **Safe.** It uses cryptographically strong random APIs
 and tests distribution of symbols.
 
-**Small.** 146 bytes (minified and gzipped). No dependencies.
-It uses [Size Limit] to control size.
+**Small.** 146 bytes (minified and gzipped). No dependencies.
+It uses [Size Limit] to control size.
 
-**Compact.** It uses a larger alphabet than UUID (`A-Za-z0-9_~`).
-As result it could reduce ID size from 36 to 21 symbols.
+**Compact.** It uses a larger alphabet than UUID (`A-Za-z0-9_~`).
+As result it could reduce ID size from 36 to 21 symbols.
 
 ```js
 var nanoid = require('nanoid')
 model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B~myT"
 ```
 
-The generator supports Node.js and [all browsers] starting from IE 11.
+The generator supports Node.js and [all browsers] starting from IE 11.
 
 [all browsers]: http://caniuse.com/#feat=getrandomvalues
 [Size Limit]:   https://github.com/ai/size-limit
