@@ -16,6 +16,7 @@ var url = require('./url')
  * model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqL"
  *
  * @name nanoid
+ * @function
  */
 module.exports = function (size) {
   size = size || 21

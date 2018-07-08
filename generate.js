@@ -17,6 +17,7 @@ var format = require('./format')
  * model.id = generate('0123456789абвгдеё', 5) //=> "8ё56а"
  *
  * @name generate
+ * @function
  */
 module.exports = function (alphabet, size) {
   return format(random, alphabet, size)

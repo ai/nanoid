@@ -22,6 +22,7 @@
  * format(random, "abcdef", 5) //=> "fbaef"
  *
  * @name format
+ * @function
  */
 module.exports = function (random, alphabet, size) {
   var mask = (2 << Math.log(alphabet.length - 1) / Math.LN2) - 1
