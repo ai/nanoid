@@ -172,8 +172,9 @@ format(random, url, 10) //=> "93ce_Ltuub"
 * [`nanoid-dictionary`] with popular alphabets to use with `nanoid/generate`.
 * [`nanoid-cli`] to generate ID from CLI.
 
-[`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
-[`nanoid-cli`]: https://github.com/twhitbeck/nanoid-cli
+[Website to choice ID size]: https://alex7kom.github.io/nano-nanoid-cc/
+[`nanoid-dictionary`]:       https://github.com/CyberAP/nanoid-dictionary
+[`nanoid-cli`]:              https://github.com/twhitbeck/nanoid-cli
 
 
 ## Other Programming Languages
