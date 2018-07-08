@@ -39,7 +39,8 @@ The generator supports Node.js and [all browsers] starting from IE 11.
 ### Unpredictability
 
 Instead of using the unsafe `Math.random()`, Nano ID uses the `crypto` module
-in Node.js and the Web Crypto API in browsers.
+in Node.js and the Web Crypto API in browsers. This modules use unpredictable
+hardware random generator.
 
 
 ### Uniformity
