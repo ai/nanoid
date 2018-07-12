@@ -5,8 +5,9 @@ it('generates URL-friendly IDs', function () {
   for (var i = 0; i < 10; i++) {
     var id = nanoid()
     expect(id).toHaveLength(21)
+    expect(typeof id).toEqual('string')
     for (var j = 0; j < id.length; j++) {
-      expect(url.indexOf(id[j])).not.toEqual(-1)
+      expect(url).toContain(id[j])
     }
   }
 })
