@@ -4,18 +4,24 @@ var shortid = require('shortid')
 var uuid4 = require('uuid/v4')
 var chalk = require('chalk')
 
+var nonSecure = require('../non-secure')
 var generate = require('../generate')
 var nanoid = require('../')
 
 var suite = new benchmark.Suite()
 
 function formatNumber (number) {
-  return String(number).replace(/\d\d\d$/, ',$&')
+  return String(number)
+    .replace(/\d\d\d$/, ',$&')
+    .replace(/^(\d)(\d\d\d)/, '$1,$2')
 }
 
 suite
   .add('nanoid', function () {
     nanoid()
+  })
+  .add('nanoid/non-secure', function () {
+    nonSecure()
   })
   .add('nanoid/generate', function () {
     generate('1234567890abcdef-', 10)
@@ -27,8 +33,8 @@ suite
     shortid()
   })
   .on('cycle', function (event) {
-    var name = event.target.name.padEnd('nanoid/generate'.length)
-    var hz = formatNumber(event.target.hz.toFixed(0)).padStart(7)
-    process.stdout.write(name + ' ' + chalk.bold(hz) + ' ops/sec \n')
+    var name = event.target.name.padEnd('nanoid/non-secure'.length)
+    var hz = formatNumber(event.target.hz.toFixed(0)).padStart(9)
+    process.stdout.write(name + '   ' + chalk.bold(hz) + ' ops/sec\n')
   })
   .run()

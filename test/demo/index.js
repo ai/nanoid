@@ -1,6 +1,7 @@
 var shortid = require('shortid')
 var uuid4 = require('uuid/v4')
 
+var nonSecure = require('../../non-secure')
 var generate = require('../../generate')
 var random = require('../../random')
 var nanoid = require('../../')
@@ -15,7 +16,7 @@ var COUNT = 50 * 1000
 var ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
 var LENGTH = ALPHABET.length
 
-function format (number) {
+function print (number) {
   return String(Math.floor(number * 100))
     .replace(/\d\d\d\d\d\d$/, ',$&')
     .replace(/\d\d\d$/, ',$&')
@@ -39,7 +40,7 @@ function printDistribution (title, fn) {
     })
 
     document.body.innerHTML += '<section>' +
-      '<span>' + format(COUNT * 1000 / data.time) + ' ops/sec</span>' +
+      '<span>' + print(COUNT * 1000 / data.time) + ' ops/sec</span>' +
       '<h2>' + data.title + '</h2>' +
       dots +
     '</section>'
@@ -84,6 +85,11 @@ var tasks = [
   function () {
     return printDistribution('nanoid', function () {
       return nanoid()
+    })
+  },
+  function () {
+    return printDistribution('nanoid/non-secure', function () {
+      return nonSecure()
     })
   },
   function () {

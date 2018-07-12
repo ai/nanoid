@@ -79,11 +79,12 @@ There are two main differences between Nano ID and UUID v4:
 ## Benchmark
 
 ```
-$ ./benchmark
-nanoid          332,991 ops/sec
-nanoid/generate 326,636 ops/sec
-uuid/v4         315,344 ops/sec
-shortid         33,717 ops/sec
+$ ./test/benchmark
+nanoid                353,737 ops/sec
+nanoid/non-secure   2,043,665 ops/sec
+nanoid/generate       348,442 ops/sec
+uuid/v4               350,075 ops/sec
+shortid                85,107 ops/sec
 ```
 
 
@@ -113,6 +114,22 @@ Don’t forget to check safety of your ID length
 in our [ID collision probability] calculator.
 
 [ID collision probability]: https://alex7kom.github.io/nano-nanoid-cc/
+
+
+### React Native and Web Workers
+
+React Native and Web Worker don’t have access to secure random generator.
+
+Security is important in ID, when ID should be unpredictable. For instance,
+in “access by URL” link generation.
+
+If you don’t need unpredictable IDs, but you need React Native
+or Web Workers support, you can use non-secure ID generator:
+
+```js
+var nanoid = require('nanoid/non-secure')
+model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
+```
 
 
 ### Custom Alphabet or Length

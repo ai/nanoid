@@ -6,5 +6,9 @@
   {
     "path": "generate.js",
     "limit": "179 B"
+  },
+  {
+    "path": "non-secure.js",
+    "limit": "135 B"
   }
 ]
