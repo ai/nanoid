@@ -42,5 +42,5 @@ it('has flat distribution', function () {
     if (distribution > max) max = distribution
     if (distribution < min) min = distribution
   }
-  expect(max - min).toBeLessThanOrEqual(0.5)
+  expect(max - min).toBeLessThanOrEqual(0.05)
 })
