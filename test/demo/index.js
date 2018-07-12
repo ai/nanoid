@@ -74,9 +74,11 @@ function calcDistribution (title, fn) {
 var tasks = [
   function () {
     return printDistribution('ideal', function () {
-      return Array(LENGTH).fill().map(function (_, index) {
-        return ALPHABET[index]
-      })
+      var result = []
+      for (var j = 0; j < LENGTH; j++) {
+        result.push(ALPHABET[j])
+      }
+      return result
     })
   },
   function () {
