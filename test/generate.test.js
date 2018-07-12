@@ -19,8 +19,12 @@ it('has flat distribution', function () {
     }
   }
 
+  var max = 0
+  var min = Number.MAX_SAFE_INTEGER
   for (var k in chars) {
     var distribution = (chars[k] * ALPHABET.length) / (COUNT * LENGTH)
-    expect(distribution).toBeCloseTo(1, 1)
+    if (distribution > max) max = distribution
+    if (distribution < min) min = distribution
   }
+  expect(max - min).toBeLessThanOrEqual(0.05)
 })
