@@ -2,7 +2,7 @@ var nanoid = require('../')
 var url = require('../url')
 
 it('generates URL-friendly IDs', function () {
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 100; i++) {
     var id = nanoid()
     expect(id).toHaveLength(21)
     expect(typeof id).toEqual('string')
