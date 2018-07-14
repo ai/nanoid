@@ -187,10 +187,12 @@ format(random, url, 10) //=> "93ce_Ltuub"
 * [ID size calculator] to choice smaller ID size depends on your case.
 * [`nanoid-dictionary`] with popular alphabets to use with `nanoid/generate`.
 * [`nanoid-cli`] to generate ID from CLI.
+* [`nanoid-good`] to be sure that your ID doesn't contain any obscene words
 
 [`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
 [ID size calculator]:  https://alex7kom.github.io/nano-nanoid-cc/
 [`nanoid-cli`]:        https://github.com/twhitbeck/nanoid-cli
+[`nanoid-good`]:       https://github.com/y-gagar1n/nanoid-good
 
 
 ## Other Programming Languages
