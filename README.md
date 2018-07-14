@@ -50,7 +50,7 @@ The spread will not be even; there will be a lower chance for some symbols
 to appear compared to others—so it will reduce the number of tries
 when brute-forcing.
 
-Nano ID uses a [better algorithm] and is tested for uniformity:
+Nano ID uses a [better algorithm] and is tested for uniformity.
 
 <img src="img/distribution.png" alt="Nano ID uniformity"
      width="340" height="135">
@@ -104,7 +104,7 @@ Symbols `-,.()` are not encoded in the URL. If used at the end of a link
 they could be identified as a punctuation symbol.
 
 If you want to reduce ID length (and increase collisions probability),
-you can pass the length as an argument:
+you can pass the length as an argument.
 
 ```js
 nanoid(10) //=> "IRFa~VaY2b"
@@ -124,7 +124,7 @@ Security is important in ID, when ID should be unpredictable. For instance,
 in “access by URL” link generation.
 
 If you don’t need unpredictable IDs, but you need React Native
-or Web Workers support, you can use non‑secure ID generator:
+or Web Workers support, you can use non‑secure ID generator.
 
 ```js
 var nanoid = require('nanoid/non-secure')
@@ -144,11 +144,10 @@ model.id = generate('1234567890abcdef', 10) //=> "4f90d13a42"
 
 Check safety of your custom alphabet and ID length
 in our [ID collision probability] calculator.
+You can find popular alphabets in [`nanoid-dictionary`].
 
 Alphabet must contain 256 symbols or less.
 Otherwise, the generator will not be secure.
-
-You can find popular alphabets in [`nanoid-dictionary`].
 
 [ID collision probability]: https://alex7kom.github.io/nano-nanoid-cc/
 [`nanoid-dictionary`]:      https://github.com/CyberAP/nanoid-dictionary
@@ -175,7 +174,7 @@ format(random, "abcdef", 10) //=> "fbaefaadeb"
 with random numbers.
 
 If you want to use the same URL-friendly symbols with `format`,
-you can get the default alphabet from the `url` module:
+you can get the default alphabet from the `url` file.
 
 ```js
 var url = require('nanoid/url')
