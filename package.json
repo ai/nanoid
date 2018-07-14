@@ -18,6 +18,7 @@
   "devDependencies": {
     "benchmark": "^2.1.4",
     "chalk": "^2.4.1",
+    "clean-publish": "^1.0.6",
     "eslint": "^5.1.0",
     "eslint-ci": "^0.1.1",
     "eslint-config-logux": "^23.0.2",
