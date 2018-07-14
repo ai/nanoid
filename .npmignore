@@ -9,11 +9,6 @@ test/
 coverage/
 .travis.yml
 
-.eslintrc
-.size-limit
-.lintstagedrc
-.yaspellerrc
 .jsdocrc
-jest.config.js
 docs/
 img/

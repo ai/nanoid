@@ -19,7 +19,7 @@
     "benchmark": "^2.1.4",
     "chalk": "^2.4.1",
     "docdash": "^0.4.0",
-    "eslint": "^5.0.1",
+    "eslint": "^5.1.0",
     "eslint-ci": "^0.1.1",
     "eslint-config-logux": "^23.0.2",
     "eslint-config-standard": "^11.0.0",
@@ -31,17 +31,17 @@
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^3.1.0",
     "html-webpack-plugin": "^3.2.0",
-    "jest": "^23.3.0",
+    "jest": "^23.4.1",
     "jsdoc": "^3.5.5",
     "lint-staged": "^7.2.0",
     "microtime": "^2.1.8",
     "pre-commit": "^1.2.2",
     "rimraf": "^2.6.2",
-    "shortid": "^2.2.9",
-    "size-limit": "^0.18.3",
+    "shortid": "^2.2.12",
+    "size-limit": "^0.18.5",
     "svgo": "^1.0.5",
     "uuid": "^3.3.2",
-    "webpack": "^4.15.1",
+    "webpack": "^4.16.0",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4",
     "yaspeller-ci": "^1.0.0"
@@ -55,7 +55,77 @@
     "test": "jest --coverage && yarn lint && size-limit && yarn spellcheck",
     "start": "webpack-dev-server --config test/demo/webpack.config"
   },
+  "size-limit": [
+    {
+      "path": "index.js",
+      "limit": "143 B"
+    },
+    {
+      "path": "generate.js",
+      "limit": "179 B"
+    },
+    {
+      "path": "non-secure.js",
+      "limit": "135 B"
+    }
+  ],
+  "eslintConfig": {
+    "extends": "eslint-config-logux/browser",
+    "rules": {
+      "yoda": "off"
+    }
+  },
+  "lint-staged": {
+    "*.md": "yaspeller-ci",
+    "*.js": "eslint",
+    "*.svg": [
+      "svgo",
+      "git add"
+    ]
+  },
   "pre-commit": [
     "lint-staged"
-  ]
+  ],
+  "jest": {
+    "testEnvironment": "node",
+    "coverageThreshold": {
+      "global": {
+        "statements": 100
+      }
+    }
+  },
+  "yaspeller": {
+    "lang": "en",
+    "ignoreCapitalization": true,
+    "excludeFiles": [
+      "docs/*.js.html"
+    ],
+    "dictionary": [
+      "Versioning",
+      "docdash",
+      "JSDoc",
+      "js",
+      "UUID",
+      "nanoid",
+      "gzipped",
+      "Crypto",
+      "bruteforcing",
+      "cryptographically",
+      "v4",
+      "Vsevolod",
+      "Rodionov",
+      "Mokhov",
+      "Anton",
+      "Khlynovskiy",
+      "Klebanoff",
+      "IE 11",
+      "Haskell",
+      "Zachary",
+      "Golba",
+      "CLI",
+      "npm",
+      "Clojure",
+      "ClojureScript"
+    ]
+  }
 }
