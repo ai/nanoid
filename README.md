@@ -124,7 +124,7 @@ Security is important in ID, when ID should be unpredictable. For instance,
 in “access by URL” link generation.
 
 If you don’t need unpredictable IDs, but you need React Native
-or Web Workers support, you can use non-secure ID generator:
+or Web Workers support, you can use non‑secure ID generator:
 
 ```js
 var nanoid = require('nanoid/non-secure')
