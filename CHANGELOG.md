@@ -1,6 +1,11 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.1
+* Add non-secure ID generator.
+* Suggest to use non-secure ID generator for React Native developers.
+* Reduce size.
+
 ## 1.0.7
 * Fix documentation.
 
