@@ -144,7 +144,7 @@ model.id = generate('1234567890abcdef', 10) //=> "4f90d13a42"
 
 Check safety of your custom alphabet and ID length
 in our [ID collision probability] calculator.
-You can find popular alphabets in [`nanoid-dictionary`].
+You can find popular alphabets in [`nanoid-dictionary`].
 
 Alphabet must contain 256 symbols or less.
 Otherwise, the generator will not be secure.
