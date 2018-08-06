@@ -83,6 +83,7 @@ $ ./test/benchmark
 nanoid                353,737 ops/sec
 nanoid/non-secure   2,043,665 ops/sec
 nanoid/generate       348,442 ops/sec
+uid.sync              325,680 ops/sec
 uuid/v4               350,075 ops/sec
 shortid                85,107 ops/sec
 ```

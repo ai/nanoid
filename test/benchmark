@@ -3,6 +3,7 @@ var benchmark = require('benchmark')
 var shortid = require('shortid')
 var uuid4 = require('uuid/v4')
 var chalk = require('chalk')
+var uid = require('uid-safe')
 
 var nonSecure = require('../non-secure')
 var generate = require('../generate')
@@ -25,6 +26,9 @@ suite
   })
   .add('nanoid/generate', function () {
     generate('1234567890abcdef-', 10)
+  })
+  .add('uid.sync', function () {
+    uid.sync(21)
   })
   .add('uuid/v4', function () {
     uuid4()
