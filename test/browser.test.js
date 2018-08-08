@@ -22,3 +22,7 @@ it('generates URL-friendly IDs', function () {
     }
   }
 })
+
+it('changes ID length', function () {
+  expect(nanoid(10)).toHaveLength(10)
+})

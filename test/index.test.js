@@ -12,10 +12,13 @@ it('generates URL-friendly IDs', function () {
   }
 })
 
+it('changes ID length', function () {
+  expect(nanoid(10)).toHaveLength(10)
+})
+
 it('has no collisions', function () {
-  var COUNT = 100 * 1000
   var used = { }
-  for (var i = 0; i < COUNT; i++) {
+  for (var i = 0; i < 100 * 1000; i++) {
     var id = nanoid()
     expect(used[id]).not.toBeDefined()
     used[id] = true
