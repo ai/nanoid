@@ -9,6 +9,7 @@ var uid = require('uid-safe')
 var nonSecure = require('../non-secure')
 var generate = require('../generate')
 var nanoid = require('../')
+var async = require('../async')
 
 var suite = new benchmark.Suite()
 
@@ -33,6 +34,22 @@ suite
   })
   .add('shortid', function () {
     shortid()
+  })
+  .add('uid', {
+    defer: true,
+    fn: function (defer) {
+      uid(21).then(function () {
+        defer.resolve()
+      })
+    }
+  })
+  .add('nanoid/async', {
+    defer: true,
+    fn: function (defer) {
+      async().then(function () {
+        defer.resolve()
+      })
+    }
   })
   .add('rndm', function () {
     rndm(21)

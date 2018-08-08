@@ -13,7 +13,8 @@
   "repository": "ai/nanoid",
   "browser": {
     "./random.js": "./random.browser.js",
-    "./index.js": "./index.browser.js"
+    "./index.js": "./index.browser.js",
+    "./async.js": "./async.browser.js"
   },
   "devDependencies": {
     "benchmark": "^2.1.4",
@@ -68,6 +69,10 @@
     {
       "path": "non-secure.js",
       "limit": "118 B"
+    },
+    {
+      "path": "async.js",
+      "limit": "157 B"
     }
   ],
   "eslintConfig": {

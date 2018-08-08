@@ -85,6 +85,8 @@ nanoid/generate       352,418 ops/sec
 uid.sync              332,502 ops/sec
 uuid/v4               345,867 ops/sec
 shortid                34,193 ops/sec
+uid                    78,343 ops/sec
+nanoid/async           79,173 ops/sec
 rndm                2,557,778 ops/sec
 nanoid/non-secure   2,578,934 ops/sec
 ```
@@ -132,6 +134,24 @@ or Web Workers support, you can use non‑secure ID generator.
 var nanoid = require('nanoid/non-secure')
 model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
 ```
+
+
+## Async
+
+To generate hardware random bytes, CPU will collect electromagnetic noise.
+During the collection, CPU doesn’t work. So if we will use asynchronous API
+for hardware random generator, your other code could be executed durring
+the entropy collection.
+
+```js
+var nanoid = require('nanoid/async')
+nanoid.then(function (id) {
+  model.id = id
+})
+```
+
+Unfortunately, you will not have any benefits in browser, since Web Crypto API
+doesn’t have asynchronous API.
 
 
 ### Custom Alphabet or Length
