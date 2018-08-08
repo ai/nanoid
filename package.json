@@ -37,6 +37,7 @@
     "microtime": "^2.1.8",
     "pre-commit": "^1.2.2",
     "rimraf": "^2.6.2",
+    "rndm": "^1.2.0",
     "shortid": "^2.2.12",
     "size-limit": "^0.18.5",
     "uid-safe": "^2.1.5",
@@ -66,7 +67,7 @@
     },
     {
       "path": "non-secure.js",
-      "limit": "135 B"
+      "limit": "116 B"
     }
   ],
   "eslintConfig": {

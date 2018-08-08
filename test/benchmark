@@ -3,6 +3,7 @@ var benchmark = require('benchmark')
 var shortid = require('shortid')
 var uuid4 = require('uuid/v4')
 var chalk = require('chalk')
+var rndm = require('rndm')
 var uid = require('uid-safe')
 
 var nonSecure = require('../non-secure')
@@ -21,9 +22,6 @@ suite
   .add('nanoid', function () {
     nanoid()
   })
-  .add('nanoid/non-secure', function () {
-    nonSecure()
-  })
   .add('nanoid/generate', function () {
     generate('1234567890abcdef-', 10)
   })
@@ -35,6 +33,12 @@ suite
   })
   .add('shortid', function () {
     shortid()
+  })
+  .add('nanoid/non-secure', function () {
+    nonSecure()
+  })
+  .add('rndm', function () {
+    rndm(21)
   })
   .on('cycle', function (event) {
     var name = event.target.name.padEnd('nanoid/non-secure'.length)
