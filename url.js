@@ -5,7 +5,7 @@
  * @type {string}
  *
  * @example
- * var url = require('nanoid/url')
+ * const url = require('nanoid/url')
  * generate(url, 10) //=> "Uakgb_J5m9"
  */
 module.exports =

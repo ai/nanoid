@@ -100,7 +100,7 @@ The main module uses URL-friendly symbols (`A-Za-z0-9_~`) and returns an ID
 with 21 characters (to have a collision probability similar to UUID v4).
 
 ```js
-var nanoid = require('nanoid')
+const nanoid = require('nanoid')
 model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
 ```
 
@@ -131,7 +131,7 @@ If you don’t need unpredictable IDs, but you need React Native
 or Web Workers support, you can use non‑secure ID generator.
 
 ```js
-var nanoid = require('nanoid/non-secure')
+const nanoid = require('nanoid/non-secure')
 model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
 ```
 
@@ -144,8 +144,8 @@ for hardware random generator, your other code could be executed durring
 the entropy collection.
 
 ```js
-var nanoid = require('nanoid/async')
-nanoid.then(function (id) {
+const nanoid = require('nanoid/async')
+nanoid.then(id => {
   model.id = id
 })
 ```
@@ -160,7 +160,7 @@ If you want to change the ID's alphabet or length
 you can use the low-level `generate` module.
 
 ```js
-var generate = require('nanoid/generate')
+const generate = require('nanoid/generate')
 model.id = generate('1234567890abcdef', 10) //=> "4f90d13a42"
 ```
 
@@ -181,11 +181,13 @@ You can replace the default safe random generator using the `format` module.
 For instance, to use a seed-based generator.
 
 ```js
-var format = require('nanoid/format')
+const format = require('nanoid/format')
 
 function random (size) {
-  var result = []
-  for (var i = 0; i < size; i++) result.push(randomByte())
+  const result = []
+  for (let i = 0; i < size; i++) {
+    result.push(randomByte())
+  }
   return result
 }
 
@@ -199,7 +201,7 @@ If you want to use the same URL-friendly symbols with `format`,
 you can get the default alphabet from the `url` file.
 
 ```js
-var url = require('nanoid/url')
+const url = require('nanoid/url')
 format(random, url, 10) //=> "93ce_Ltuub"
 ```
 

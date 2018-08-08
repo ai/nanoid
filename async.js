@@ -13,8 +13,8 @@ var url = require('./url')
  * @return {Promise} Promise with random string.
  *
  * @example
- * var nanoidAsync = require('nanoid/async')
- * nanoidAsync.then(function (id) {
+ * const nanoidAsync = require('nanoid/async')
+ * nanoidAsync.then(id => {
  *   model.id = id
  * })
  *
