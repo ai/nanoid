@@ -127,7 +127,9 @@
       "CLI",
       "npm",
       "Clojure",
-      "ClojureScript"
+      "ClojureScript",
+      "async",
+      "nonSecure"
     ]
   }
 }
