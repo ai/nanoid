@@ -80,19 +80,19 @@ There are two main differences between Nano ID and UUID v4:
 
 ```
 $ ./test/benchmark
-nanoid                363,539 ops/sec
-nanoid/generate       352,418 ops/sec
-uid.sync              332,502 ops/sec
-uuid/v4               345,867 ops/sec
-shortid                34,193 ops/sec
+nanoid                354,201 ops/sec
+nanoid/generate       348,467 ops/sec
+uid.sync              325,347 ops/sec
+uuid/v4               322,328 ops/sec
+shortid                33,277 ops/sec
 
 Async:
-uid                    78,343 ops/sec
-nanoid/async           79,173 ops/sec
+uid                    71,998 ops/sec
+nanoid/async           72,836 ops/sec
 
 Non-secure:
-rndm                2,557,778 ops/sec
-nanoid/non-secure   2,578,934 ops/sec
+rndm                2,495,324 ops/sec
+nanoid/non-secure   2,746,033 ops/sec
 ```
 
 
