@@ -3,12 +3,12 @@
 <img src="https://ai.github.io/nanoid/logo.svg" align="right"
      alt="Nano ID logo by Anton Lovchikov" width="180" height="94">
 
-用于 JavaScript 的唯一字符串 ID 生成器，它迷你、安全，并且对 URL 友好。
+一个用于 JavaScript 的唯一字符串 ID 生成器，它迷你、安全，并且对 URL 友好。
 
 **安全：** It uses cryptographically strong random APIs
 and tests distribution of symbols. 它使用了一系列密码学上的非常健壮的 API，并且测试了各种符号的分布。
 
-**体积小：** 压缩并打包后仅占 145 bytes，无依赖，它使用 [Size Limit] 来控制体积。
+**体积小：** 压缩并打包后仅占 145 字节，无依赖，它使用 [Size Limit] 来控制体积。
 
 **紧凑的：** 它使用了一个比 UUID 更大的字符表 (`A-Za-z0-9_~`)。因此，他可以将 ID 长度从 36 缩减至 21。
 
@@ -34,7 +34,7 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B~myT"
 
 ### 不可预测性
 
-Nano ID 使用了 `crypto` Node.js 模块和浏览器的 Web Crypto API，而不是不安全的 `Math.random()`。这些安全的模块使用了不可预测的硬件随机生成器。
+Nano ID 使用了 `crypto` Node.js 模块和浏览器的 Web Crypto API，而不是不安全的 `Math.random()`。这些安全的模块使用了不可被预测的硬件随机生成器。
 
 
 ### Uniformity一致性
@@ -53,7 +53,7 @@ Nano ID 使用了一个[更好的算法]，并被测试了字符分布的一致�
 
 ## 与 UUID 比较
 
-Nano ID 与 UUID v4 (random-based) 非常有可比性。 它与 UUID 有类似长度的随机位数（Nano ID: 126, UUID: 122），所以他们有一个类似的碰撞概率：
+Nano ID 与 UUID v4 (random-based) 非常有可比性。 它与 UUID 有类似长度的随机位数（Nano ID: 126, UUID: 122），所以他们有一个类似的碰撞概率：
 
 > 想要在十亿分之一的重复的可能性下找到重复，必须生成 1.03^15 个 v4 ID。
 
@@ -61,7 +61,7 @@ Nano ID 与 UUID v4 (random-based) 非常有可比性。 它与 UUID 有类似�
 Nano ID 和 UUID v4 有两个主要的区别:
 
 1. Nano ID 使用了一个更大的字符表，因此一个类似长度的随机位数可以被封装到 21 个字符里，而不是 36 个。
-2. Nano ID 的代码体积大小比 `uuid/v4` 小三倍: 145 bytes 而不是 435。
+2. Nano ID 的代码体积大小比 `uuid/v4` 小三倍: 145 字节，而不是 435 字节。
 
 
 ## 性能基准（Benchmark）
@@ -103,8 +103,6 @@ model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
 nanoid(10) //=> "IRFa~VaY2b"
 ```
 
-Don’t forget to check safety of your ID length
-in our [ID collision probability] calculator.
 不要忘记在我们的 [ID 碰撞概率计算器] 检查你的 ID 长度的安全性。
 
 [ID 碰撞概率计算器]: https://alex7kom.github.io/nano-nanoid-cc/
@@ -146,7 +144,7 @@ const generate = require('nanoid/generate')
 model.id = generate('1234567890abcdef', 10) //=> "4f90d13a42"
 ```
 
-你可以使用我们的 [ID 碰撞概率计算器] 来检查你的字符表和 ID 长度的安全性。你也可以在 [`nanoid-字典`] 找到常用的字符表。
+你可以使用我们的 [ID 碰撞概率计算器] 来检查你的字符表和 ID 长度的安全性。你也可以在 [`nanoid-字典`] 找到常用的字符表。
 
 字符表必须小于等于 256 个字符，否则生成器会不再安全。
 
