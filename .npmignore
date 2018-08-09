@@ -9,6 +9,7 @@ test/
 coverage/
 .travis.yml
 
+README-*.md
 .jsdocrc
 docs/
 img/
