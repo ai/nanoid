@@ -5,8 +5,7 @@
 
 一个用于 JavaScript 的唯一字符串 ID 生成器，它迷你、安全，并且对 URL 友好。
 
-**安全：** It uses cryptographically strong random APIs
-and tests distribution of symbols. 它使用了一系列密码学上的非常健壮的 API，并且测试了各种符号的分布。
+**安全：** 它使用了一系列密码学上的非常健壮的 API，并且测试了各种符号的分布。
 
 **体积小：** 压缩并打包后仅占 145 字节，无依赖，它使用 [Size Limit] 来控制体积。
 
