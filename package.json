@@ -100,7 +100,8 @@
     "lang": "en",
     "ignoreCapitalization": true,
     "excludeFiles": [
-      "docs/*.js.html"
+      "docs/*.js.html",
+      "README-*.md"
     ],
     "dictionary": [
       "Versioning",
