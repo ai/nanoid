@@ -68,7 +68,7 @@
     },
     {
       "path": "non-secure.js",
-      "limit": "118 B"
+      "limit": "113 B"
     },
     {
       "path": "async.js",
@@ -129,7 +129,8 @@
       "Clojure",
       "ClojureScript",
       "async",
-      "nonSecure"
+      "nonSecure",
+      "Thu"
     ]
   }
 }
