@@ -27,7 +27,7 @@ suite
     generate('1234567890abcdef-', 10)
   })
   .add('uid.sync', function () {
-    uid.sync(21)
+    uid.sync(14)
   })
   .add('uuid/v4', function () {
     uuid4()
@@ -38,7 +38,7 @@ suite
   .add('uid', {
     defer: true,
     fn: function (defer) {
-      uid(21).then(function () {
+      uid(14).then(function () {
         defer.resolve()
       })
     }
