@@ -131,7 +131,10 @@
       "ClojureScript",
       "async",
       "nonSecure",
-      "Thu"
+      "Mon",
+      "Tue",
+      "Thu",
+      "Fri"
     ]
   }
 }
