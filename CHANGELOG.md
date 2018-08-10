@@ -1,6 +1,12 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.2
+* Add `nanoid/async`.
+* Fix `nanoid/non-secure` JSDoc.
+* Add Chinese documentation (by Wenliang Dai).
+* Speed up and reduce size of `nanoid/non-secure` (by Ori Livni).
+
 ## 1.1.1
 * Improve performance and reduce size of non-secure ID generator.
 

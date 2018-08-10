@@ -1,6 +1,6 @@
 {
   "name": "nanoid",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "A tiny (145 bytes), secure URL-friendly unique string ID generator",
   "keywords": [
     "uuid",
@@ -131,6 +131,10 @@
       "ClojureScript",
       "async",
       "nonSecure",
+      "Wenliang",
+      "Dai",
+      "Ori",
+      "Livni",
       "Mon",
       "Tue",
       "Thu",
