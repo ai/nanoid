@@ -121,7 +121,7 @@ nanoid(10) //=> "IRFa~VaY2b"
 Don’t forget to check safety of your ID length
 in our [ID collision probability] calculator.
 
-[ID collision probability]: https://alex7kom.github.io/nano-nanoid-cc/
+[ID collision probability]: https://zelark.github.io/nano-id-cc/
 
 
 ### React Native and Web Workers
@@ -218,7 +218,7 @@ format(random, url, 10) //=> "93ce_Ltuub"
 * [`nanoid-good`] to be sure that your ID doesn't contain any obscene words.
 
 [`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
-[ID size calculator]:  https://alex7kom.github.io/nano-nanoid-cc/
+[ID size calculator]:  https://zelark.github.io/nano-id-cc/
 [`nanoid-cli`]:        https://github.com/twhitbeck/nanoid-cli
 [`nanoid-good`]:       https://github.com/y-gagar1n/nanoid-good
 
