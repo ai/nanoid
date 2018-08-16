@@ -79,3 +79,22 @@ it('rejects Promise on error', function () {
     expect(e).toBe(error)
   })
 })
+
+it('has callback API', function (done) {
+  async(10, function (err, id) {
+    expect(id).toHaveLength(10)
+    done()
+  })
+})
+
+it('sends error to callback API', function (done) {
+  var error = new Error('test')
+  crypto.randomBytes = function (size, callback) {
+    callback(error)
+  }
+  async(10, function (err, id) {
+    expect(err).toBe(error)
+    expect(id).toBeUndefined()
+    done()
+  })
+})
