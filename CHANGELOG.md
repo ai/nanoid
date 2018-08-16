@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.2.1
+* Fix old Node.js support.
+
 ## 1.2
 * Add `nanoid/async`.
 * Fix `nanoid/non-secure` JSDoc.
