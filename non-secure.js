@@ -22,7 +22,7 @@ module.exports = function (size) {
   size = size || 21
   var id = ''
   while (0 < size--) {
-    id += url[Math.random() * 63 | 0]
+    id += url[Math.random() * 64 | 0]
   }
   return id
 }
