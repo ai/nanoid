@@ -52,13 +52,15 @@ it('has flat distribution', function () {
 
   var chars = { }
   return Promise.all(times(COUNT, function () {
-    var id = async()
-    for (var j = 0; j < id.length; j++) {
-      var char = id[j]
-      if (!chars[char]) chars[char] = 0
-      chars[char] += 1
-    }
+    return async().then(function (id) {
+      for (var j = 0; j < id.length; j++) {
+        var char = id[j]
+        if (!chars[char]) chars[char] = 0
+        chars[char] += 1
+      }
+    })
   })).then(function () {
+    expect(Object.keys(chars)).toHaveLength(url.length)
     var max = 0
     var min = Number.MAX_SAFE_INTEGER
     for (var k in chars) {
