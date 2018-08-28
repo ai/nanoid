@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.2.2
+* Fix distribution in `nanoid/non-secure` (by Eatall).
+
 ## 1.2.1
 * Fix old Node.js support.
 
