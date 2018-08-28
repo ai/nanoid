@@ -65,7 +65,7 @@ Nano ID 和 UUID v4 有两个主要的区别:
 
 ## 性能基准（Benchmark）
 
-```
+```rust
 $ ./test/benchmark
 nanoid                354,201 ops/sec
 nanoid/generate       348,467 ops/sec
