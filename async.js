@@ -9,7 +9,7 @@ var url = require('./url')
  * to UUID v4.
  *
  * @param {number} [size=21] The number of symbols in ID.
- * @param {function} callback for environments without `Promise`.
+ * @param {function} [callback] for environments without `Promise`.
  *
  * @return {Promise} Promise with random string.
  *
