@@ -19,8 +19,8 @@
   "devDependencies": {
     "benchmark": "^2.1.4",
     "chalk": "^2.4.1",
-    "clean-publish": "^1.0.9",
-    "eslint": "^5.4.0",
+    "clean-publish": "^1.0.10",
+    "eslint": "^5.5.0",
     "eslint-ci": "^0.1.1",
     "eslint-config-logux": "^25.0.1",
     "eslint-config-standard": "^12.0.0",
@@ -40,12 +40,12 @@
     "rimraf": "^2.6.2",
     "rndm": "^1.2.0",
     "shortid": "^2.2.13",
-    "size-limit": "^0.19.3",
+    "size-limit": "^0.20.0",
     "uid-safe": "^2.1.5",
     "uuid": "^3.3.2",
-    "webpack": "^4.17.1",
+    "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.6",
+    "webpack-dev-server": "^3.1.7",
     "yaspeller-ci": "^1.0.0"
   },
   "scripts": {
@@ -141,7 +141,8 @@
       "Tue",
       "Thu",
       "Fri",
-      "Eatall"
+      "Eatall",
+      "Sep"
     ]
   }
 }
