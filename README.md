@@ -21,7 +21,7 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B~myT"
 
 The generator supports Node.js, React Native, and [all browsers].
 
-[all browsers]: http://caniuse.com/#feat=getrandomvalues
+[all browsers]: http://caniuse.com/#feat=getrandomvalues
 [Size Limit]:   https://github.com/ai/size-limit
 
 <a href="https://evilmartians.com/?utm_source=nanoid">
