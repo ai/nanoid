@@ -149,9 +149,10 @@ the entropy collection.
 
 ```js
 const nanoid = require('nanoid/async')
-nanoid.then(id => {
-  model.id = id
-})
+
+async function createUser () {
+  user.id = await nanoid()
+}
 ```
 
 Unfortunately, you will not have any benefits in browser, since Web Crypto API
