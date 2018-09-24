@@ -127,9 +127,10 @@ model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
 
 ```js
 const nanoid = require('nanoid/async')
-nanoid.then(id => {
-  model.id = id
-})
+
+async function createUser () {
+  user.id = await nanoid()
+}
 ```
 
 不幸的事，在浏览器里你无法这么做，因为 Web Crypto API 没有异步接口。
