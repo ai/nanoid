@@ -91,7 +91,7 @@ it('has callback API', function (done) {
 
 it('sends error to callback API', function (done) {
   var error = new Error('test')
-  crypto.randomBytes = function (size, callback) {
+  crypto.randomFill = function (buf, offset, size, callback) {
     callback(error)
   }
   async(10, function (err, id) {
