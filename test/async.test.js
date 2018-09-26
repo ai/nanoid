@@ -11,9 +11,9 @@ function times (size, callback) {
   return array.map(callback)
 }
 
-var originRandom = crypto.randomBytes
+var originFill = crypto.randomFill
 afterEach(function () {
-  crypto.randomBytes = originRandom
+  crypto.randomFill = originFill
 })
 
 it('generates URL-friendly IDs', function () {
@@ -74,7 +74,7 @@ it('has flat distribution', function () {
 
 it('rejects Promise on error', function () {
   var error = new Error('test')
-  crypto.randomBytes = function (size, callback) {
+  crypto.randomFill = function (buffer, a, b, callback) {
     callback(error)
   }
   return async().catch(function (e) {
