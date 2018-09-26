@@ -24,8 +24,9 @@ var url = require('./url')
  */
 module.exports = function (size, callback) {
   size = size || 21
+  var buffer = Buffer.allocUnsafe(size)
   if (callback) {
-    crypto.randomBytes(size, function (err, bytes) {
+    crypto.randomFill(buffer, 0, size, function (err, bytes) {
       if (err) {
         callback(err)
       } else {
@@ -38,7 +39,7 @@ module.exports = function (size, callback) {
     })
   } else {
     return new Promise(function (resolve, reject) {
-      crypto.randomBytes(size, function (err, bytes) {
+      crypto.randomFill(buffer, 0, size, function (err, bytes) {
         if (err) {
           reject(err)
         } else {
