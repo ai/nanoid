@@ -35,14 +35,6 @@ suite
   .add('shortid', function () {
     shortid()
   })
-  .add('uid', {
-    defer: true,
-    fn: function (defer) {
-      uid(14).then(function () {
-        defer.resolve()
-      })
-    }
-  })
   .add('nanoid/async', {
     defer: true,
     fn: function (defer) {
@@ -51,18 +43,26 @@ suite
       })
     }
   })
-  .add('rndm', function () {
-    rndm(21)
+  .add('uid', {
+    defer: true,
+    fn: function (defer) {
+      uid(14).then(function () {
+        defer.resolve()
+      })
+    }
   })
   .add('nanoid/non-secure', function () {
     nonSecure()
   })
+  .add('rndm', function () {
+    rndm(21)
+  })
   .on('cycle', function (event) {
     var name = event.target.name.padEnd('nanoid/non-secure'.length)
     var hz = formatNumber(event.target.hz.toFixed(0)).padStart(9)
-    if (event.target.name === 'uid') {
+    if (event.target.name === 'nanoid/async') {
       name = '\nAsync:\n' + name
-    } else if (event.target.name === 'rndm') {
+    } else if (event.target.name === 'nanoid/non-secure') {
       name = '\nNon-secure:\n' + name
     }
     process.stdout.write(name + '   ' + chalk.bold(hz) + ' ops/sec\n')
