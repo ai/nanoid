@@ -43,9 +43,9 @@
     "size-limit": "^0.20.0",
     "uid-safe": "^2.1.5",
     "uuid": "^3.3.2",
-    "webpack": "^4.19.1",
+    "webpack": "^4.20.2",
     "webpack-cli": "^3.1.1",
-    "webpack-dev-server": "^3.1.8",
+    "webpack-dev-server": "^3.1.9",
     "yaspeller-ci": "^1.0.0"
   },
   "scripts": {
