@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.2.4
+* Speed up Node.js secure generators (by Dmitriy Tsvettsikh).
+
 ## 1.2.3
 * Fix JSDoc (by Hendry Sadrak).
 
