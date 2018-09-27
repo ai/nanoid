@@ -74,7 +74,7 @@ it('has flat distribution', function () {
 
 it('rejects Promise on error', function () {
   var error = new Error('test')
-  crypto.randomFill = function (buffer, a, b, callback) {
+  crypto.randomFill = function (buffer, callback) {
     callback(error)
   }
   return async().catch(function (e) {
@@ -91,7 +91,7 @@ it('has callback API', function (done) {
 
 it('sends error to callback API', function (done) {
   var error = new Error('test')
-  crypto.randomFill = function (buf, offset, size, callback) {
+  crypto.randomFill = function (buf, callback) {
     callback(error)
   }
   async(10, function (err, id) {
