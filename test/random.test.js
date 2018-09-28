@@ -1,5 +1,4 @@
 var crypto = require('crypto')
-
 var random = require('../random')
 
 var originFill = crypto.randomFill
@@ -8,10 +7,16 @@ var originFillSync = crypto.randomFillSync
 afterEach(function () {
   crypto.randomFill = originFill
   crypto.randomFillSync = originFillSync
+
+  jest.resetModules()
+  random = require('../random') // eslint-disable-line global-require
 })
 
 it('generates random buffers (slow & sync)', function () {
   delete crypto.randomFillSync
+
+  jest.resetModules()
+  random = require('../random') // eslint-disable-line global-require
 
   var numbers = { }
   var bytes = random(10000)
@@ -25,22 +30,25 @@ it('generates random buffers (slow & sync)', function () {
   }
 })
 
-it('generates random buffers (slow & async)', function () {
+it('generates random buffers (slow & async)', function (done) {
   delete crypto.randomFill
+
+  jest.resetModules()
+  random = require('../random') // eslint-disable-line global-require
 
   var numbers = { }
 
-  return random.async(10000)
-    .then(function (bytes) {
-      expect(bytes).toHaveLength(10000)
-      for (var i = 0; i < bytes.length; i++) {
-        if (!numbers[bytes[i]]) numbers[bytes[i]] = 0
-        numbers[bytes[i]] += 1
-        expect(typeof bytes[i]).toEqual('number')
-        expect(bytes[i]).toBeLessThanOrEqual(255)
-        expect(bytes[i]).toBeGreaterThanOrEqual(0)
-      }
-    })
+  random.async(10000, function (error, bytes) {
+    expect(bytes).toHaveLength(10000)
+    for (var i = 0; i < bytes.length; i++) {
+      if (!numbers[bytes[i]]) numbers[bytes[i]] = 0
+      numbers[bytes[i]] += 1
+      expect(typeof bytes[i]).toEqual('number')
+      expect(bytes[i]).toBeLessThanOrEqual(255)
+      expect(bytes[i]).toBeGreaterThanOrEqual(0)
+      done()
+    }
+  })
 })
 
 it('generates random buffers (fast & sync)', function () {
@@ -50,6 +58,9 @@ it('generates random buffers (fast & sync)', function () {
     return buffer
   }
 
+  jest.resetModules()
+  random = require('../random') // eslint-disable-line global-require
+
   var numbers = { }
   var bytes = random(10000)
   expect(bytes).toHaveLength(10000)
@@ -62,7 +73,7 @@ it('generates random buffers (fast & sync)', function () {
   }
 })
 
-it('generates random buffers (fast & async)', function () {
+it('generates random buffers (fast & async)', function (done) {
   crypto.randomFill = function (buffer, callback) {
     return crypto.randomBytes(buffer.length, function (err, data) {
       if (err) {
@@ -74,19 +85,22 @@ it('generates random buffers (fast & async)', function () {
     })
   }
 
+  jest.resetModules()
+  random = require('../random') // eslint-disable-line global-require
+
   var numbers = { }
 
-  return random.async(10000)
-    .then(function (bytes) {
-      expect(bytes).toHaveLength(10000)
-      for (var i = 0; i < bytes.length; i++) {
-        if (!numbers[bytes[i]]) numbers[bytes[i]] = 0
-        numbers[bytes[i]] += 1
-        expect(typeof bytes[i]).toEqual('number')
-        expect(bytes[i]).toBeLessThanOrEqual(255)
-        expect(bytes[i]).toBeGreaterThanOrEqual(0)
-      }
-    })
+  random.async(10000, function (error, bytes) {
+    expect(bytes).toHaveLength(10000)
+    for (var i = 0; i < bytes.length; i++) {
+      if (!numbers[bytes[i]]) numbers[bytes[i]] = 0
+      numbers[bytes[i]] += 1
+      expect(typeof bytes[i]).toEqual('number')
+      expect(bytes[i]).toBeLessThanOrEqual(255)
+      expect(bytes[i]).toBeGreaterThanOrEqual(0)
+      done()
+    }
+  })
 })
 
 it('passes error from crypto module (sync)', function () {
@@ -95,6 +109,9 @@ it('passes error from crypto module (sync)', function () {
     throw error
   }
 
+  jest.resetModules()
+  random = require('../random') // eslint-disable-line global-require
+
   try {
     random(10000)
   } catch (e) {
@@ -102,14 +119,17 @@ it('passes error from crypto module (sync)', function () {
   }
 })
 
-it('passes error from crypto module (async)', function () {
+it('passes error from crypto module (async)', function (done) {
   var error = new Error('test')
   crypto.randomFill = function (buffer, callback) {
     callback(error)
   }
 
-  return random.async(10000)
-    .catch(function (e) {
-      expect(e).toBe(error)
-    })
+  jest.resetModules()
+  random = require('../random') // eslint-disable-line global-require
+
+  return random.async(10000, function (e) {
+    expect(e).toBe(error)
+    done()
+  })
 })

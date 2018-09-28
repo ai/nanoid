@@ -14,6 +14,9 @@ function times (size, callback) {
 var originFill = crypto.randomFill
 afterEach(function () {
   crypto.randomFill = originFill
+
+  jest.resetModules()
+  async = require('../async') // eslint-disable-line global-require
 })
 
 it('generates URL-friendly IDs', function () {
@@ -77,6 +80,10 @@ it('rejects Promise on error', function () {
   crypto.randomFill = function (buffer, callback) {
     callback(error)
   }
+
+  jest.resetModules()
+  async = require('../async') // eslint-disable-line global-require
+
   return async().catch(function (e) {
     expect(e).toBe(error)
   })
@@ -94,6 +101,10 @@ it('sends error to callback API', function (done) {
   crypto.randomFill = function (buf, callback) {
     callback(error)
   }
+
+  jest.resetModules()
+  async = require('../async') // eslint-disable-line global-require
+
   async(10, function (err, id) {
     expect(err).toBe(error)
     expect(id).toBeUndefined()

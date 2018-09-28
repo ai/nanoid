@@ -1,23 +1,17 @@
 var crypto = require('crypto')
 
-module.exports = function (bytes) {
-  if (!crypto.randomFillSync) {
-    return crypto.randomBytes(bytes)
+if (crypto.randomFillSync) {
+  module.exports = function (bytes) {
+    return crypto.randomFillSync(Buffer.allocUnsafe(bytes))
   }
-
-  return crypto.randomFillSync(Buffer.allocUnsafe(bytes))
+} else {
+  module.exports = crypto.randomBytes
 }
 
-module.exports.async = function (bytes) {
-  return new Promise(function (resolve, reject) {
-    function callback (error, buffer) {
-      error ? reject(error) : resolve(buffer)
-    }
-
-    if (crypto.randomFill) {
-      crypto.randomFill(Buffer.allocUnsafe(bytes), callback)
-    } else {
-      crypto.randomBytes(bytes, callback)
-    }
-  })
+if (crypto.randomFill) {
+  module.exports.async = function (bytes, callback) {
+    return crypto.randomFill(Buffer.allocUnsafe(bytes), callback)
+  }
+} else {
+  module.exports.async = crypto.randomBytes
 }

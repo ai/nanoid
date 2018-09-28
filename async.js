@@ -24,24 +24,28 @@ var random = require('./random')
 module.exports = function (size, callback) {
   size = size || 21
 
-  var randomPromise = random.async(size)
-    .then(function (bytes) {
-      var id = ''
-      while (0 < size--) {
-        id += url[bytes[size] & 63]
-      }
-      return id
-    })
-
   if (!callback) {
-    return randomPromise
+    return new Promise(function (resolve, reject) {
+      module.exports(size, function (error, id) {
+        if (error) {
+          reject(error)
+        } else {
+          resolve(id)
+        }
+      })
+    })
   }
 
-  randomPromise
-    .then(function (buffer) {
-      callback(null, buffer)
-    })
-    .catch(function (error) {
-      callback(error)
-    })
+  random.async(size, function (error, bytes) {
+    if (error) {
+      return callback(error)
+    }
+
+    var id = ''
+    while (0 < size--) {
+      id += url[bytes[size] & 63]
+    }
+
+    callback(null, id)
+  })
 }
