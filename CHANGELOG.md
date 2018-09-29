@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.2.5
+* Fix Node.js 6.11.1 support (by Andrey Belym).
+
 ## 1.2.4
 * Speed up Node.js secure generators (by Dmitriy Tsvettsikh).
 
