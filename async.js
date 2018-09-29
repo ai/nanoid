@@ -1,6 +1,5 @@
-var crypto = require('crypto')
-
 var url = require('./url')
+var random = require('./random')
 
 /**
  * Generate secure URL-friendly unique ID. Non-blocking version.
@@ -24,32 +23,29 @@ var url = require('./url')
  */
 module.exports = function (size, callback) {
   size = size || 21
-  var buffer = Buffer.allocUnsafe(size)
-  if (callback) {
-    crypto.randomFill(buffer, 0, size, function (err, bytes) {
-      if (err) {
-        callback(err)
-      } else {
-        var id = ''
-        while (0 < size--) {
-          id += url[bytes[size] & 63]
-        }
-        callback(null, id)
-      }
-    })
-  } else {
+
+  if (!callback) {
     return new Promise(function (resolve, reject) {
-      crypto.randomFill(buffer, 0, size, function (err, bytes) {
-        if (err) {
-          reject(err)
+      module.exports(size, function (error, id) {
+        if (error) {
+          reject(error)
         } else {
-          var id = ''
-          while (0 < size--) {
-            id += url[bytes[size] & 63]
-          }
           resolve(id)
         }
       })
     })
   }
+
+  random.async(size, function (error, bytes) {
+    if (error) {
+      return callback(error)
+    }
+
+    var id = ''
+    while (0 < size--) {
+      id += url[bytes[size] & 63]
+    }
+
+    callback(null, id)
+  })
 }
