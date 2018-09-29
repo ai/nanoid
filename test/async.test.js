@@ -11,12 +11,15 @@ function times (size, callback) {
   return array.map(callback)
 }
 
+function mock (callback) {
+  crypto.randomFill = callback
+  jest.resetModules()
+  async = require('../async')
+}
+
 var originFill = crypto.randomFill
 afterEach(function () {
-  crypto.randomFill = originFill
-
-  jest.resetModules()
-  async = require('../async') // eslint-disable-line global-require
+  mock(originFill)
 })
 
 it('generates URL-friendly IDs', function () {
@@ -27,6 +30,15 @@ it('generates URL-friendly IDs', function () {
       for (var j = 0; j < id.length; j++) {
         expect(url).toContain(id[j])
       }
+    })
+  }))
+})
+
+it('supports old Node.js', function () {
+  mock(undefined)
+  return Promise.all(times(100, function () {
+    return async().then(function (id) {
+      expect(id).toHaveLength(21)
     })
   }))
 })
@@ -77,13 +89,9 @@ it('has flat distribution', function () {
 
 it('rejects Promise on error', function () {
   var error = new Error('test')
-  crypto.randomFill = function (buffer, callback) {
+  mock(function (buffer, callback) {
     callback(error)
-  }
-
-  jest.resetModules()
-  async = require('../async') // eslint-disable-line global-require
-
+  })
   return async().catch(function (e) {
     expect(e).toBe(error)
   })
@@ -98,13 +106,9 @@ it('has callback API', function (done) {
 
 it('sends error to callback API', function (done) {
   var error = new Error('test')
-  crypto.randomFill = function (buf, callback) {
+  mock(function (buffer, callback) {
     callback(error)
-  }
-
-  jest.resetModules()
-  async = require('../async') // eslint-disable-line global-require
-
+  })
   async(10, function (err, id) {
     expect(err).toBe(error)
     expect(id).toBeUndefined()

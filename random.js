@@ -7,11 +7,3 @@ if (crypto.randomFillSync) {
 } else {
   module.exports = crypto.randomBytes
 }
-
-if (crypto.randomFill) {
-  module.exports.async = function (bytes, callback) {
-    return crypto.randomFill(Buffer.allocUnsafe(bytes), callback)
-  }
-} else {
-  module.exports.async = crypto.randomBytes
-}

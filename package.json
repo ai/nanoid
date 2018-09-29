@@ -78,9 +78,17 @@
   "eslintConfig": {
     "extends": "eslint-config-logux/browser",
     "rules": {
-      "handle-callback-err": "off",
       "consistent-return": "off",
       "yoda": "off"
+    },
+    "overrides": {
+      "files": [
+        "test/*.js"
+      ],
+      "rules": {
+        "handle-callback-err": "off",
+        "global-require": "off"
+      }
     }
   },
   "lint-staged": {
