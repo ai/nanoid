@@ -1,4 +1,4 @@
-var url = '_~varfunctio0125634789bdegjhklmpqswxyzABCDEFGHIJKLNOPQRSTUVWXYZM'
+var url = '_~varfunctio0125634789bdegjhklmpqswxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 function random (size) {
   var result = []
