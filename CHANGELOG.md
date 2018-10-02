@@ -1,6 +1,30 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.2.5
+* Fix Node.js 6.11.1 support (by Andrey Belym).
+
+## 1.2.4
+* Speed up Node.js secure generators (by Dmitriy Tsvettsikh).
+
+## 1.2.3
+* Fix JSDoc (by Hendry Sadrak).
+
+## 1.2.2
+* Fix distribution in `nanoid/non-secure` (by Eatall).
+
+## 1.2.1
+* Fix old Node.js support.
+
+## 1.2
+* Add `nanoid/async`.
+* Fix `nanoid/non-secure` JSDoc.
+* Add Chinese documentation (by Wenliang Dai).
+* Speed up and reduce size of `nanoid/non-secure` (by Ori Livni).
+
+## 1.1.1
+* Improve performance and reduce size of non-secure ID generator.
+
 ## 1.1
 * Add non-secure ID generator.
 * Suggest to use non-secure ID generator for React Native developers.

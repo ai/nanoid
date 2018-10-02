@@ -11,10 +11,13 @@ it('generates URL-friendly IDs', function () {
   }
 })
 
+it('changes ID length', function () {
+  expect(nonSecure(10)).toHaveLength(10)
+})
+
 it('has no collisions', function () {
-  var COUNT = 100 * 1000
   var used = { }
-  for (var i = 0; i < COUNT; i++) {
+  for (var i = 0; i < 100 * 1000; i++) {
     var id = nonSecure()
     expect(used[id]).not.toBeDefined()
     used[id] = true
@@ -34,6 +37,8 @@ it('has flat distribution', function () {
       chars[char] += 1
     }
   }
+
+  expect(Object.keys(chars)).toHaveLength(url.length)
 
   var max = 0
   var min = Number.MAX_SAFE_INTEGER

@@ -19,6 +19,8 @@ it('has flat distribution', function () {
     }
   }
 
+  expect(Object.keys(chars)).toHaveLength(ALPHABET.length)
+
   var max = 0
   var min = Number.MAX_SAFE_INTEGER
   for (var k in chars) {

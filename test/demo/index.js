@@ -1,10 +1,14 @@
 var shortid = require('shortid')
 var uuid4 = require('uuid/v4')
+var rndm = require('rndm')
+var uid = require('uid-safe')
 
 var nonSecure = require('../../non-secure')
 var generate = require('../../generate')
 var random = require('../../random')
 var nanoid = require('../../')
+
+console.log(rndm.toString())
 
 var html = ''
 for (var i = 0; i < 10; i++) {
@@ -88,13 +92,13 @@ var tasks = [
     })
   },
   function () {
-    return printDistribution('nanoid/non-secure', function () {
-      return nonSecure()
+    return printDistribution('nanoid/generate', function () {
+      return generate(ALPHABET, LENGTH)
     })
   },
   function () {
-    return printDistribution('nanoid/generate', function () {
-      return generate(ALPHABET, LENGTH)
+    return printDistribution('uid.sync', function () {
+      return uid.sync(21)
     })
   },
   function () {
@@ -103,15 +107,25 @@ var tasks = [
     })
   },
   function () {
+    return printDistribution('shortid', function () {
+      return shortid()
+    })
+  },
+  function () {
+    return printDistribution('rndm', function () {
+      return rndm()
+    })
+  },
+  function () {
+    return printDistribution('nanoid/non-secure', function () {
+      return nonSecure()
+    })
+  },
+  function () {
     return printDistribution('random % alphabet', function () {
       return [].slice.call(random(LENGTH)).map(function (num) {
         return ALPHABET[num % ALPHABET.length]
       })
-    })
-  },
-  function () {
-    return printDistribution('shortid', function () {
-      return shortid()
     })
   }
 ]

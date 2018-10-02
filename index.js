@@ -12,7 +12,7 @@ var url = require('./url')
  * @return {string} Random string.
  *
  * @example
- * var nanoid = require('nanoid')
+ * const nanoid = require('nanoid')
  * model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqL"
  *
  * @name nanoid

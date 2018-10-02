@@ -1,7 +1,7 @@
 {
   "name": "nanoid",
-  "version": "1.1.0",
-  "description": "A tiny (143 bytes), secure URL-friendly unique string ID generator",
+  "version": "1.2.5",
+  "description": "A tiny (145 bytes), secure URL-friendly unique string ID generator",
   "keywords": [
     "uuid",
     "random",
@@ -13,36 +13,39 @@
   "repository": "ai/nanoid",
   "browser": {
     "./random.js": "./random.browser.js",
-    "./index.js": "./index.browser.js"
+    "./index.js": "./index.browser.js",
+    "./async.js": "./async.browser.js"
   },
   "devDependencies": {
     "benchmark": "^2.1.4",
     "chalk": "^2.4.1",
-    "clean-publish": "^1.0.7",
-    "eslint": "^5.1.0",
+    "clean-publish": "^1.0.10",
+    "eslint": "^5.6.1",
     "eslint-ci": "^0.1.1",
-    "eslint-config-logux": "^23.0.2",
-    "eslint-config-standard": "^11.0.0",
+    "eslint-config-logux": "^25.0.1",
+    "eslint-config-standard": "^12.0.0",
     "eslint-plugin-es5": "^1.3.1",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-jest": "^21.17.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.22.1",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-standard": "^3.1.0",
+    "eslint-plugin-standard": "^4.0.0",
     "html-webpack-plugin": "^3.2.0",
-    "jest": "^23.4.1",
+    "jest": "^23.6.0",
     "jsdoc": "^3.5.5",
-    "lint-staged": "^7.2.0",
+    "lint-staged": "^7.3.0",
     "microtime": "^2.1.8",
     "pre-commit": "^1.2.2",
     "rimraf": "^2.6.2",
-    "shortid": "^2.2.12",
-    "size-limit": "^0.18.5",
+    "rndm": "^1.2.0",
+    "shortid": "^2.2.13",
+    "size-limit": "^0.20.0",
+    "uid-safe": "^2.1.5",
     "uuid": "^3.3.2",
-    "webpack": "^4.16.0",
-    "webpack-cli": "^3.0.8",
-    "webpack-dev-server": "^3.1.4",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-server": "^3.1.9",
     "yaspeller-ci": "^1.0.0"
   },
   "scripts": {
@@ -61,17 +64,31 @@
     },
     {
       "path": "generate.js",
-      "limit": "179 B"
+      "limit": "177 B"
     },
     {
       "path": "non-secure.js",
-      "limit": "131 B"
+      "limit": "114 B"
+    },
+    {
+      "path": "async.js",
+      "limit": "157 B"
     }
   ],
   "eslintConfig": {
     "extends": "eslint-config-logux/browser",
     "rules": {
+      "consistent-return": "off",
       "yoda": "off"
+    },
+    "overrides": {
+      "files": [
+        "test/*.js"
+      ],
+      "rules": {
+        "handle-callback-err": "off",
+        "global-require": "off"
+      }
     }
   },
   "lint-staged": {
@@ -93,7 +110,8 @@
     "lang": "en",
     "ignoreCapitalization": true,
     "excludeFiles": [
-      "docs/*.js.html"
+      "docs/*.js.html",
+      "README-*.md"
     ],
     "dictionary": [
       "Versioning",
@@ -120,7 +138,26 @@
       "CLI",
       "npm",
       "Clojure",
-      "ClojureScript"
+      "ClojureScript",
+      "async",
+      "nonSecure",
+      "Wenliang",
+      "Dai",
+      "Ori",
+      "Livni",
+      "Mon",
+      "Tue",
+      "Thu",
+      "Fri",
+      "Eatall",
+      "Sep",
+      "Hendry",
+      "Sadrak",
+      "Dmitriy",
+      "Tsvettsikh",
+      "Belym",
+      "Oct",
+      "Nim"
     ]
   }
 }

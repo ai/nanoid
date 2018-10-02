@@ -3,10 +3,13 @@ var benchmark = require('benchmark')
 var shortid = require('shortid')
 var uuid4 = require('uuid/v4')
 var chalk = require('chalk')
+var rndm = require('rndm')
+var uid = require('uid-safe')
 
 var nonSecure = require('../non-secure')
 var generate = require('../generate')
 var nanoid = require('../')
+var async = require('../async')
 
 var suite = new benchmark.Suite()
 
@@ -20,11 +23,11 @@ suite
   .add('nanoid', function () {
     nanoid()
   })
-  .add('nanoid/non-secure', function () {
-    nonSecure()
-  })
   .add('nanoid/generate', function () {
     generate('1234567890abcdef-', 10)
+  })
+  .add('uid.sync', function () {
+    uid.sync(14)
   })
   .add('uuid/v4', function () {
     uuid4()
@@ -32,9 +35,36 @@ suite
   .add('shortid', function () {
     shortid()
   })
+  .add('nanoid/async', {
+    defer: true,
+    fn: function (defer) {
+      async().then(function () {
+        defer.resolve()
+      })
+    }
+  })
+  .add('uid', {
+    defer: true,
+    fn: function (defer) {
+      uid(14).then(function () {
+        defer.resolve()
+      })
+    }
+  })
+  .add('nanoid/non-secure', function () {
+    nonSecure()
+  })
+  .add('rndm', function () {
+    rndm(21)
+  })
   .on('cycle', function (event) {
     var name = event.target.name.padEnd('nanoid/non-secure'.length)
     var hz = formatNumber(event.target.hz.toFixed(0)).padStart(9)
+    if (event.target.name === 'nanoid/async') {
+      name = '\nAsync:\n' + name
+    } else if (event.target.name === 'nanoid/non-secure') {
+      name = '\nNon-secure:\n' + name
+    }
     process.stdout.write(name + '   ' + chalk.bold(hz) + ' ops/sec\n')
   })
   .run()

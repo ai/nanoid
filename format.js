@@ -11,11 +11,13 @@
  * @return {string} Random string.
  *
  * @example
- * var format = require('nanoid/format')
+ * const format = require('nanoid/format')
  *
  * function random (size) {
- *   var result = []
- *   for (var i = 0; i < size; i++) result.push(randomByte())
+ *   const result = []
+ *   for (let i = 0; i < size; i++) {
+ *     result.push(randomByte())
+ *   }
  *   return result
  * }
  *
