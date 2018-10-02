@@ -9,7 +9,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 var crypto = self.crypto || self.msCrypto
 
-var url = '_~getRandomVcryp0123456789bfhijklqsuvwxzABCDEFGHIJKLMNOPQSTUWXYZ'
+var url = '_~getRandomVsCrypwhil0214563789bcfjkquvxzABDEFGHIJKLMNOPQSTUWXYZ'
 
 module.exports = function (size) {
   size = size || 21
