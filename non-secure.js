@@ -1,4 +1,4 @@
-var url = '_~getRandomVcryp0123456789bfhijklqsuvwxzABCDEFGHIJKLMNOPQSTUWXYZ'
+var url = '_~varfunctio0125634789bdegjhklmpqswxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 /**
  * Generate URL-friendly unique ID. This method use non-secure predictable
