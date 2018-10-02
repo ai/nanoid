@@ -57,7 +57,7 @@
   "size-limit": [
     {
       "path": "index.js",
-      "limit": "143 B"
+      "limit": "142 B"
     },
     {
       "path": "generate.js",
@@ -65,7 +65,7 @@
     },
     {
       "path": "non-secure.js",
-      "limit": "135 B"
+      "limit": "131 B"
     }
   ],
   "eslintConfig": {
