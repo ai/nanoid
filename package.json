@@ -41,7 +41,7 @@
     "rimraf": "^2.6.2",
     "rndm": "^1.2.0",
     "shortid": "^2.2.13",
-    "size-limit": "^0.20.0",
+    "size-limit": "^0.20.1",
     "uid-safe": "^2.1.5",
     "uuid": "^3.3.2",
     "webpack": "^4.20.2",
