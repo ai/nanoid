@@ -6,6 +6,7 @@ var chalk = require('chalk')
 var rndm = require('rndm')
 var uid = require('uid-safe')
 
+var asyncGenerate = require('../async/generate')
 var nonSecure = require('../non-secure')
 var generate = require('../generate')
 var nanoid = require('../')
@@ -43,6 +44,14 @@ suite
       })
     }
   })
+  .add('nanoid/async/generate', {
+    defer: true,
+    fn: function (defer) {
+      asyncGenerate('1234567890abcdef-', 10).then(function () {
+        defer.resolve()
+      })
+    }
+  })
   .add('uid', {
     defer: true,
     fn: function (defer) {
@@ -58,7 +67,7 @@ suite
     rndm(21)
   })
   .on('cycle', function (event) {
-    var name = event.target.name.padEnd('nanoid/non-secure'.length)
+    var name = event.target.name.padEnd('nanoid/async/generate'.length)
     var hz = formatNumber(event.target.hz.toFixed(0)).padStart(9)
     if (event.target.name === 'nanoid/async') {
       name = '\nAsync:\n' + name
