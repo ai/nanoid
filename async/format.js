@@ -4,7 +4,7 @@
  * Alphabet must contain 256 symbols or less. Otherwise, the generator
  * will not be secure.
  *
- * @param {generator} random The random bytes generator.
+ * @param {asyncGenerator} random The random bytes generator.
  * @param {string} alphabet Symbols to be used in new random string.
  * @param {size} size The number of symbols in new random string.
  *
@@ -50,7 +50,7 @@ module.exports = function (random, alphabet, size) {
 }
 
 /**
- * @callback generator
+ * @callback asyncGenerator
  * @param {number} bytes The number of bytes to generate.
- * @return {number[]} Random bytes.
+ * @return {Promise} Promise with array of random bytes.
  */
