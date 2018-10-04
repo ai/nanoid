@@ -165,7 +165,8 @@
       "Nim",
       "rqrqrqrq",
       "formatAsync",
-      "generateAsync"
+      "generateAsync",
+      "asyncGenerator"
     ]
   }
 }
