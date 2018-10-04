@@ -35,6 +35,9 @@ module.exports = function (size, callback) {
   size = size || 21
 
   if (!callback) {
+    if (typeof Promise !== 'function') {
+      throw new Error('Function callback is required')
+    }
     return new Promise(function (resolve, reject) {
       module.exports(size, function (error, id) {
         if (error) {
