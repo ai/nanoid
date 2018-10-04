@@ -72,7 +72,7 @@
     },
     {
       "path": "async/index.js",
-      "limit": "157 B"
+      "limit": "155 B"
     }
   ],
   "eslintConfig": {
