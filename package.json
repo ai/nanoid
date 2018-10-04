@@ -52,8 +52,8 @@
     "lint-staged": "lint-staged",
     "spellcheck": "yarn docs && yaspeller-ci *.md docs/*.html",
     "clean": "rimraf docs/ coverage/",
-    "docs": "jsdoc -d docs *.js",
-    "lint": "eslint-ci *.js test/*.js test/**/*.js",
+    "docs": "jsdoc -d docs *.js async/*.js",
+    "lint": "eslint-ci *.js async/*.js test/*.js test/**/*.js",
     "test": "jest --coverage && yarn lint && size-limit && yarn spellcheck",
     "start": "webpack-dev-server --config test/demo/webpack.config"
   },
