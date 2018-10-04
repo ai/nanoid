@@ -13,3 +13,17 @@ it('generates random string', function () {
     expect(id).toEqual('cabc')
   })
 })
+
+it('is ready for errors', function () {
+  var error = new Error('test')
+  function random () {
+    return Promise.reject(error)
+  }
+
+  var catched
+  return format(random, 'abc', 4).catch(function (e) {
+    catched = e
+  }).then(function () {
+    expect(catched).toBe(error)
+  })
+})
