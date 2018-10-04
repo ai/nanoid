@@ -1,7 +1,7 @@
 var format = require('../format')
 
 it('generates random string', function () {
-  var sequence = [2, 255, 0, 1]
+  var sequence = [2, 255, 3, 7, 7, 7, 7, 7, 0, 1]
   function random (size) {
     var bytes = []
     for (var i = 0; i < size; i += sequence.length) {
@@ -9,5 +9,5 @@ it('generates random string', function () {
     }
     return bytes
   }
-  expect(format(random, 'abc', 4)).toEqual('cabc')
+  expect(format(random, 'abcde', 4)).toEqual('cdac')
 })
