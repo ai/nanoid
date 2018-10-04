@@ -1,5 +1,5 @@
 var crypto = require('crypto')
-var url = require('./url')
+var url = require('../url')
 
 var random
 if (crypto.randomFill) {

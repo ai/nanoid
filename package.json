@@ -14,7 +14,7 @@
   "browser": {
     "./random.js": "./random.browser.js",
     "./index.js": "./index.browser.js",
-    "./async.js": "./async.browser.js"
+    "./async/index.js": "./async/index.browser.js"
   },
   "devDependencies": {
     "benchmark": "^2.1.4",
@@ -71,7 +71,7 @@
       "limit": "110 B"
     },
     {
-      "path": "async.js",
+      "path": "async/index.js",
       "limit": "157 B"
     }
   ],

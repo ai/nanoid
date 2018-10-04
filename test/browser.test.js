@@ -10,7 +10,7 @@ global.self = {
 }
 
 var nanoid = require('../index.browser')
-var async = require('../async.browser')
+var async = require('../async/index.browser')
 var url = require('../url')
 
 function times (size, callback) {
