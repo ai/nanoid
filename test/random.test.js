@@ -12,6 +12,10 @@ afterEach(function () {
   mock(originFillSync)
 })
 
+it('generates small random buffers', function () {
+  expect(random(10)).toHaveLength(10)
+})
+
 it('generates random buffers', function () {
   var numbers = { }
   var bytes = random(10000)
