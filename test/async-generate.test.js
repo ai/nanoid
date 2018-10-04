@@ -22,6 +22,7 @@ it('has flat distribution', function () {
   var chars = { }
   return Promise.all(times(100, function () {
     return generate(ALPHABET, LENGTH).then(function (id) {
+      expect(id).toHaveLength(LENGTH)
       for (var j = 0; j < id.length; j++) {
         var char = id[j]
         if (!chars[char]) chars[char] = 0
