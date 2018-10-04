@@ -176,6 +176,15 @@ You can find popular alphabets in [`nanoid-dictionary`].
 Alphabet must contain 256 symbols or less.
 Otherwise, the generator will not be secure.
 
+Asynchronous API is also available:
+
+```js
+const generate = require('nanoid/async/generate')
+async function createUser () {
+  user.id = await generate('1234567890abcdef', 10)
+}
+```
+
 [ID collision probability]: https://alex7kom.github.io/nano-nanoid-cc/
 [`nanoid-dictionary`]:      https://github.com/CyberAP/nanoid-dictionary
 
@@ -208,6 +217,21 @@ you can get the default alphabet from the `url` file.
 ```js
 const url = require('nanoid/url')
 format(random, url, 10) //=> "93ce_Ltuub"
+```
+
+Asynchronous API is also available:
+
+```js
+const format = require('nanoid/async/format')
+const url = require('nanoid/url')
+
+function random (size) {
+  return new Promise(…)
+}
+
+async function createUser () {
+  user.id = await format(random, url, 10)
+}
 ```
 
 

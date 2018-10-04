@@ -12,9 +12,10 @@
   "license": "MIT",
   "repository": "ai/nanoid",
   "browser": {
-    "./random.js": "./random.browser.js",
     "./index.js": "./index.browser.js",
-    "./async/index.js": "./async/index.browser.js"
+    "./random.js": "./random.browser.js",
+    "./async/index.js": "./async/index.browser.js",
+    "./async/random.js": "./async/random.browser.js"
   },
   "devDependencies": {
     "benchmark": "^2.1.4",
@@ -73,6 +74,10 @@
     {
       "path": "async/index.js",
       "limit": "155 B"
+    },
+    {
+      "path": "async/generate.js",
+      "limit": "216 B"
     }
   ],
   "eslintConfig": {
@@ -158,7 +163,9 @@
       "Belym",
       "Oct",
       "Nim",
-      "rqrqrqrq"
+      "rqrqrqrq",
+      "formatAsync",
+      "generateAsync"
     ]
   }
 }
