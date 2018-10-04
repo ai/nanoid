@@ -43,7 +43,7 @@ module.exports = function (random, alphabet, size) {
           }
         }
         tick(id)
-      }).catch(reject)
+      }, reject)
     }
     tick('')
   })
