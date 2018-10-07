@@ -1,6 +1,9 @@
 /**
  * URL safe symbols.
  *
+ * This alphabet uses a-zA-Z0-9_~ symbols.
+ * (Symbols order was changed for better gzip compression.)
+ *
  * @name url
  * @type {string}
  *
@@ -9,6 +12,6 @@
  * generate(url, 10) //=> "Uakgb_J5m9"
  */
 module.exports =
-  '_~0123456789' +
-  'abcdefghijklmnopqrstuvwxyz' +
+  'functio_~0123456789' +
+  'abdeghjklmpqrsvwxyz' +
   'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
