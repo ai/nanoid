@@ -166,7 +166,8 @@
       "rqrqrqrq",
       "formatAsync",
       "generateAsync",
-      "asyncGenerator"
+      "asyncGenerator",
+      "gzip"
     ]
   }
 }
