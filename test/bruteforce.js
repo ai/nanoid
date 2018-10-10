@@ -1,12 +1,17 @@
-#!/usr/bin/env node
+#!/usr/bin/node --experimental-worker
 
+/* eslint-disable node/no-missing-require */
+
+var isMainThread = require('worker_threads').isMainThread
+var parentPort = require('worker_threads').parentPort
+var workerData = require('worker_threads').workerData
 var UglifyJS = require('uglify-js')
 var gzipSize = require('gzip-size')
+var Worker = require('worker_threads').Worker
 var chalk = require('chalk')
 var path = require('path')
 var fs = require('fs')
 
-var filePath = path.join(process.cwd(), process.argv[2])
 var file
 var used = { }
 
@@ -42,16 +47,17 @@ function factorial (number) {
   return total
 }
 
+var maxSteps = factorial(64)
+var totalSteps = 0
+
 var best = {
   value: '',
   size: Infinity
 }
 var lastString
-var step = 0
-var prevPercent = 0
-var maxSteps = factorial(64)
 
 function findInitialString () {
+  var filePath = path.join(process.cwd(), process.argv[2])
   file = fs.readFileSync(filePath, 'utf8')
   file = UglifyJS.minify(file).code.replace('module.', 'e.')
   file = '!function(e){var t={};function r(n){if(t[n])return t[n].exports;' +
@@ -76,7 +82,6 @@ function findInitialString () {
     process.stderr.write(chalk.red('Alphabet was not found') + '\n')
     process.exit(1)
   }
-  lastString = match[0]
 }
 
 function shuffleString () {
@@ -84,30 +89,53 @@ function shuffleString () {
   file = file.replace(/[A-Za-z0-9~_]{64}/, lastString)
 }
 
+var steps = 0
 function checkSize () {
-  step += 1
   gzipSize(file).then(function (size) {
     size = size - 461
     if (size < best.size) {
       best.value = lastString
       best.size = size
-      process.stdout.write(
-        chalk.green.bold(best.size + 'B') + ' ' + best.value + '\n')
-    } else {
-      var percent = Math.floor(10000 * step / maxSteps)
-      if (percent > prevPercent) {
-        prevPercent = percent
-        process.stdout.write(chalk.gray((percent / 10000.0) + '%') + '\n')
-      }
+      parentPort.postMessage(best)
     }
-    if (step === maxSteps) {
-      process.exit(0)
-    } else {
-      shuffleString()
-      checkSize()
+    steps += 1
+    if (steps === 100000) {
+      parentPort.postMessage({ steps: 100000 })
+      steps = 0
     }
+    shuffleString()
+    checkSize()
   })
 }
 
-findInitialString()
-checkSize()
+if (isMainThread) {
+  findInitialString()
+  var stepsReported = 0
+  for (var i = 0; i < 8; i++) {
+    var worker = new Worker(__filename, {
+      workerData: file
+    })
+    worker.on('message', function (data) {
+      if (data.steps) {
+        totalSteps += data.steps
+        stepsReported += 1
+        if (stepsReported === 8) {
+          stepsReported = 0
+          var percents = 100 * totalSteps / maxSteps
+          process.stdout.write(chalk.grey(percents + '%\n'))
+        }
+      } else if (data.size < best.size) {
+        best = data
+        process.stdout.write(
+          chalk.green.bold(best.size + 'B') + ' ' + best.value + '\n')
+      }
+    })
+    worker.on('error', function (e) {
+      throw e
+    })
+  }
+} else {
+  file = workerData
+  lastString = file.match(/[A-Za-z0-9~_]{64}/)[0]
+  checkSize()
+}
