@@ -1,52 +1,55 @@
 #!/usr/bin/env node
 
-var fs = require("fs");
-var spawnSync = require("child_process").spawnSync;
+var fs = require('fs')
+var spawnSync = require('child_process').spawnSync
 
-var filePath = process.argv[2];
+var filePath = process.argv[2]
 var bestResult = {
-  value: "",
+  value: '',
   size: Infinity
-};
-var lastString = "";
+}
+var lastString = ''
 
-function shuffle(a) {
-  var j, x, i;
+function shuffle (a) {
+  var j, x, i
   for (i = a.length - 1; i > 0; i--) {
-    j = Math.floor(Math.random() * (i + 1));
-    x = a[i];
-    a[i] = a[j];
-    a[j] = x;
+    j = Math.floor(Math.random() * (i + 1))
+    x = a[i]
+    a[i] = a[j]
+    a[j] = x
   }
-  return a;
+  return a
 }
 
-function saveFirstString() {
-  var data = fs.readFileSync(filePath, "utf8")
-  data.replace(/[A-Za-z0-9~_]{58}/g, function(match) {
+function saveFirstString () {
+  var data = fs.readFileSync(filePath, 'utf8')
+  data.replace(/[A-Za-z0-9~_]{58}/g, function (match) {
     lastString = match
-  });
+  })
 }
 
-function shuffleStringInFile() {
-  var data = fs.readFileSync(filePath, "utf8")
+function shuffleStringInFile () {
+  var data = fs.readFileSync(filePath, 'utf8')
 
-  var result = data.replace(/[A-Za-z0-9~_]{64}/g, function(match) {
-    lastString = shuffle(match.split("")).join("");
-    return lastString;
-  });
+  var result = data.replace(/[A-Za-z0-9~_]{64}/g, function (match) {
+    lastString = shuffle(match.split('')).join('')
+    return lastString
+  })
 
-  fs.writeFileSync(filePath + "", result, "utf8")
+  fs.writeFileSync(filePath + '', result, 'utf8')
 }
 
-function checkSize() {
-  var output = spawnSync("npx", ["size-limit", filePath]).output
-  var size = output.toString("utf8").match(/Package size: ([0-9]+)/);
-  if (size && size[1] != 0 && size[1] < bestResult.size) {
-    bestResult.value = lastString;
-    bestResult.size = size[1];
+function checkSize () {
+  var output = spawnSync('npx', ['size-limit', filePath]).output
+  var size = output.toString('utf8').match(/Package size: ([0-9]+)/)
+  if (size && size[1] !== 0 && size[1] < bestResult.size) {
+    bestResult.value = lastString
+    bestResult.size = size[1]
 
-    console.log('New best string has been founded: ' + bestResult.value + ' | size: ' + bestResult.size);
+    console.log(
+      'New best string has been founded: ' + bestResult.value +
+      ' | size: ' + bestResult.size
+    )
   }
 }
 
