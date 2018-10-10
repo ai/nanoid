@@ -15,33 +15,30 @@ It uses [Size Limit] to control size.
 As result it could reduce ID size from 36 to 21 symbols.
 
 ```js
-var nanoid = require('nanoid')
-model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B~myT"
+var nanoid = require("nanoid");
+model.id = nanoid(); //=> "V1StGXR8_Z5jdHi6B~myT"
 ```
 
 The generator supports Node.js, React Native, and [all browsers].
 
-[all browsers]: http://caniuse.com/#feat=getrandomvalues
-[Size Limit]:   https://github.com/ai/size-limit
+[all browsers]: http://caniuse.com/#feat=getrandomvalues
+[size limit]: https://github.com/ai/size-limit
 
 <a href="https://evilmartians.com/?utm_source=nanoid">
   <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg"
        alt="Sponsored by Evil Martians" width="236" height="54">
 </a>
 
-
 ## Security
 
-*See a good article about random generators theory:
-[Secure random values (in Node.js)]*
-
+_See a good article about random generators theory:
+[Secure random values (in Node.js)]_
 
 ### Unpredictability
 
 Instead of using the unsafe `Math.random()`, Nano ID uses the `crypto` module
 in Node.js and the Web Crypto API in browsers. This modules use unpredictable
 hardware random generator.
-
 
 ### Uniformity
 
@@ -55,9 +52,8 @@ Nano ID uses a [better algorithm] and is tested for uniformity.
 <img src="img/distribution.png" alt="Nano ID uniformity"
      width="340" height="135">
 
-[Secure random values (in Node.js)]: https://gist.github.com/joepie91/7105003c3b26e65efcea63f3db82dfba
+[secure random values (in node.js)]: https://gist.github.com/joepie91/7105003c3b26e65efcea63f3db82dfba
 [better algorithm]: https://github.com/ai/nanoid/blob/master/format.js
-
 
 ## Comparison with UUID
 
@@ -74,7 +70,6 @@ There are two main differences between Nano ID and UUID v4:
    are packed in just 21 symbols instead of 36.
 2. Nano ID code is 3 times less than `uuid/v4` package:
    143 bytes instead of 435.
-
 
 ## Benchmark
 
@@ -96,7 +91,6 @@ nanoid/non-secure       2,718,186 ops/sec
 rndm                    2,544,612 ops/sec
 ```
 
-
 ## Usage
 
 ### Normal
@@ -105,8 +99,8 @@ The main module uses URL-friendly symbols (`A-Za-z0-9_~`) and returns an ID
 with 21 characters (to have a collision probability similar to UUID v4).
 
 ```js
-const nanoid = require('nanoid')
-model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
+const nanoid = require("nanoid");
+model.id = nanoid(); //=> "Uakgb_J5m9g~0JDMbcJqLJ"
 ```
 
 Symbols `-,.()` are not encoded in the URL. If used at the end of a link
@@ -116,30 +110,52 @@ If you want to reduce ID length (and increase collisions probability),
 you can pass the length as an argument.
 
 ```js
-nanoid(10) //=> "IRFa~VaY2b"
+nanoid(10); //=> "IRFa~VaY2b"
 ```
 
 Don’t forget to check safety of your ID length
 in our [ID collision probability] calculator.
 
-[ID collision probability]: https://zelark.github.io/nano-id-cc/
+[id collision probability]: https://zelark.github.io/nano-id-cc/
 
+### React Native
 
-### React Native and Web Workers
-
-React Native and Web Worker don’t have access to secure random generator.
-
-Security is important in ID, when ID should be unpredictable. For instance,
-in “access by URL” link generation.
-
-If you don’t need unpredictable IDs, but you need React Native
-or Web Workers support, you can use non‑secure ID generator.
+To generate secure random IDs in React Native, you must use a native
+random generator like [react-native-securerandom](https://www.npmjs.com/package/react-native-securerandom). Since `react-native-securerandom`
+generates its random bytes on the native side, your React Native JS code must communicate with it over the JS bridge, so your code must generate and use the values asynchronously. For example, as follows:
 
 ```js
-const nanoid = require('nanoid/non-secure')
-model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
+import { generateSecureRandom } from "react-native-securerandom";
+import format from "nanoid/async/format";
+import url from "nanoid/url";
+
+// Using Promises
+format(generateSecureRandom, url, 21).then(id => {
+  // id is a random ID
+  console.log("random ID is", id); //=> xnCahQadzHuI1QjcbYHBE
+});
+
+// Using async/await
+async function useRandomID() {
+  // id is a random ID
+  const id = await format(generateSecureRandom, url, 21);
+  console.log("random ID is", id); //=> A6WZ9Kz6961u0Wc8h22O1
+}
 ```
 
+### Web Workers
+
+Web Workers don’t have access to a secure random generator.
+
+Security is important in IDs, when IDs should be unpredictable. For instance,
+in “access by URL” link generation.
+
+If you don’t need unpredictable IDs, but you need Web Workers support, you can use non‑secure ID generator.
+
+```js
+const nanoid = require("nanoid/non-secure");
+model.id = nanoid(); //=> "Uakgb_J5m9g~0JDMbcJqLJ"
+```
 
 ## Async
 
@@ -149,16 +165,15 @@ for hardware random generator, your other code could be executed during
 the entropy collection.
 
 ```js
-const nanoid = require('nanoid/async')
+const nanoid = require("nanoid/async");
 
-async function createUser () {
-  user.id = await nanoid()
+async function createUser() {
+  user.id = await nanoid();
 }
 ```
 
 Unfortunately, you will not have any benefits in browser, since Web Crypto API
 doesn’t have asynchronous API.
-
 
 ### Custom Alphabet or Length
 
@@ -166,8 +181,8 @@ If you want to change the ID's alphabet or length
 you can use the low-level `generate` module.
 
 ```js
-const generate = require('nanoid/generate')
-model.id = generate('1234567890abcdef', 10) //=> "4f90d13a42"
+const generate = require("nanoid/generate");
+model.id = generate("1234567890abcdef", 10); //=> "4f90d13a42"
 ```
 
 Check safety of your custom alphabet and ID length
@@ -180,15 +195,14 @@ Otherwise, the generator will not be secure.
 Asynchronous API is also available:
 
 ```js
-const generate = require('nanoid/async/generate')
-async function createUser () {
-  user.id = await generate('1234567890abcdef', 10)
+const generate = require("nanoid/async/generate");
+async function createUser() {
+  user.id = await generate("1234567890abcdef", 10);
 }
 ```
 
-[ID collision probability]: https://alex7kom.github.io/nano-nanoid-cc/
-[`nanoid-dictionary`]:      https://github.com/CyberAP/nanoid-dictionary
-
+[id collision probability]: https://alex7kom.github.io/nano-nanoid-cc/
+[`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
 
 ### Custom Random Bytes Generator
 
@@ -196,17 +210,17 @@ You can replace the default safe random generator using the `format` module.
 For instance, to use a seed-based generator.
 
 ```js
-const format = require('nanoid/format')
+const format = require("nanoid/format");
 
-function random (size) {
-  const result = []
+function random(size) {
+  const result = [];
   for (let i = 0; i < size; i++) {
-    result.push(randomByte())
+    result.push(randomByte());
   }
-  return result
+  return result;
 }
 
-format(random, "abcdef", 10) //=> "fbaefaadeb"
+format(random, "abcdef", 10); //=> "fbaefaadeb"
 ```
 
 `random` callback must accept the array size and return an array
@@ -216,8 +230,8 @@ If you want to use the same URL-friendly symbols with `format`,
 you can get the default alphabet from the `url` file.
 
 ```js
-const url = require('nanoid/url')
-format(random, url, 10) //=> "93ce_Ltuub"
+const url = require("nanoid/url");
+format(random, url, 10); //=> "93ce_Ltuub"
 ```
 
 Asynchronous API is also available:
@@ -235,37 +249,35 @@ async function createUser () {
 }
 ```
 
-
 ## Tools
 
-* [ID size calculator] to choice smaller ID size depends on your case.
-* [`nanoid-dictionary`] with popular alphabets to use with `nanoid/generate`.
-* [`nanoid-cli`] to generate ID from CLI.
-* [`nanoid-good`] to be sure that your ID doesn't contain any obscene words.
+- [ID size calculator] to choice smaller ID size depends on your case.
+- [`nanoid-dictionary`] with popular alphabets to use with `nanoid/generate`.
+- [`nanoid-cli`] to generate ID from CLI.
+- [`nanoid-good`] to be sure that your ID doesn't contain any obscene words.
 
 [`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
-[ID size calculator]:  https://zelark.github.io/nano-id-cc/
-[`nanoid-cli`]:        https://github.com/twhitbeck/nanoid-cli
-[`nanoid-good`]:       https://github.com/y-gagar1n/nanoid-good
-
+[id size calculator]: https://zelark.github.io/nano-id-cc/
+[`nanoid-cli`]: https://github.com/twhitbeck/nanoid-cli
+[`nanoid-good`]: https://github.com/y-gagar1n/nanoid-good
 
 ## Other Programming Languages
 
-* [C#](https://github.com/codeyu/nanoid-net)
-* [Clojure and ClojureScript](https://github.com/zelark/nano-id)
-* [Crystal](https://github.com/mamantoha/nanoid.cr)
-* [Dart](https://github.com/pd4d10/nanoid)
-* [Go](https://github.com/matoous/go-nanoid)
-* [Elixir](https://github.com/railsmechanic/nanoid)
-* [Haskell](https://github.com/4e6/nanoid-hs)
-* [Java](https://github.com/aventrix/jnanoid)
-* [Nim](https://github.com/icyphox/nanoid.nim)
-* [PHP](https://github.com/hidehalo/nanoid-php)
-* [Python](https://github.com/puyuan/py-nanoid)
-* [Ruby](https://github.com/radeno/nanoid.rb)
-* [Rust](https://github.com/nikolay-govorov/nanoid)
-* [Swift](https://github.com/antiflasher/NanoID)
+- [C#](https://github.com/codeyu/nanoid-net)
+- [Clojure and ClojureScript](https://github.com/zelark/nano-id)
+- [Crystal](https://github.com/mamantoha/nanoid.cr)
+- [Dart](https://github.com/pd4d10/nanoid)
+- [Go](https://github.com/matoous/go-nanoid)
+- [Elixir](https://github.com/railsmechanic/nanoid)
+- [Haskell](https://github.com/4e6/nanoid-hs)
+- [Java](https://github.com/aventrix/jnanoid)
+- [Nim](https://github.com/icyphox/nanoid.nim)
+- [PHP](https://github.com/hidehalo/nanoid-php)
+- [Python](https://github.com/puyuan/py-nanoid)
+- [Ruby](https://github.com/radeno/nanoid.rb)
+- [Rust](https://github.com/nikolay-govorov/nanoid)
+- [Swift](https://github.com/antiflasher/NanoID)
 
 Also, [CLI tool] is available to generate IDs from command line.
 
-[CLI tool]: https://github.com/twhitbeck/nanoid-cli
+[cli tool]: https://github.com/twhitbeck/nanoid-cli
