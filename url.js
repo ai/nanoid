@@ -12,6 +12,4 @@
  * generate(url, 10) //=> "Uakgb_J5m9"
  */
 module.exports =
-  'functio_~0123456789' +
-  'abdeghjklmpqrsvwxyz' +
-  'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  'functio_~0123456789abdeghjklmpqrsvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
