@@ -6,26 +6,51 @@ var path = require('path')
 var fs = require('fs')
 
 var filePath = path.join(process.cwd(), process.argv[2])
+var used = { }
+
+function shuffle (str) {
+  var j, x, i
+  for (i = str.length - 1; i > 0; i--) {
+    j = Math.floor(Math.random() * (i + 1))
+    x = str[i]
+    str[i] = str[j]
+    str[j] = x
+  }
+  return str
+}
+
+function shuffleUnique (str) {
+  var mixed
+  while (true) {
+    mixed = shuffle(str)
+    if (!used[mixed]) {
+      used[mixed] = true
+      return mixed
+    }
+  }
+}
+
+function factorial (number) {
+  var total = 1
+  while (number > 0) {
+    total *= number
+    number = number - 1
+  }
+  return total
+}
+
 var best = {
   value: '',
   size: Infinity
 }
 var lastString
+var step = 0
+var prevPercent = 0
+var maxSteps = factorial(64)
 
-function shuffle (a) {
-  var j, x, i
-  for (i = a.length - 1; i > 0; i--) {
-    j = Math.floor(Math.random() * (i + 1))
-    x = a[i]
-    a[i] = a[j]
-    a[j] = x
-  }
-  return a
-}
-
-function saveFirstString () {
+function findInitialString () {
   var data = fs.readFileSync(filePath, 'utf8')
-  data.replace(/[A-Za-z0-9~_]{58}/g, function (match) {
+  data.replace(/[A-Za-z0-9~_]{64}/, function (match) {
     lastString = match
   })
 }
@@ -33,8 +58,8 @@ function saveFirstString () {
 function shuffleStringInFile () {
   var data = fs.readFileSync(filePath, 'utf8')
 
-  var result = data.replace(/[A-Za-z0-9~_]{64}/g, function (match) {
-    lastString = shuffle(match.split('')).join('')
+  var result = data.replace(/[A-Za-z0-9~_]{64}/, function (match) {
+    lastString = shuffleUnique(match.split('')).join('')
     return lastString
   })
 
@@ -42,21 +67,33 @@ function shuffleStringInFile () {
 }
 
 function checkSize () {
+  step += 1
   sizeLimit(filePath).then(function (size) {
     if (size.gzip < best.size) {
       best.value = lastString
       best.size = size.gzip
       process.stdout.write(
         chalk.green.bold(best.size + 'B') + ' ' + best.value + '\n')
+    } else {
+      var percent = Math.floor(100 * step / maxSteps)
+      if (percent > prevPercent) {
+        prevPercent = percent
+        process.stdout.write(chalk.gray(percent + '%') + '\n')
+      }
     }
-    shuffleStringInFile()
-    checkSize()
+    if (step === maxSteps) {
+      process.exit(0)
+    } else {
+      shuffleStringInFile()
+      checkSize()
+    }
   })
 }
 
-saveFirstString()
+findInitialString()
 if (typeof lastString === 'undefined') {
   process.stderr.write(chalk.red('Alphabet was not found') + '\n')
   process.exit(1)
 }
+
 checkSize()
