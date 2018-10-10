@@ -1,14 +1,15 @@
 #!/usr/bin/env node
 
-var fs = require('fs')
 var spawnSync = require('child_process').spawnSync
+var chalk = require('chalk')
+var fs = require('fs')
 
 var filePath = process.argv[2]
-var bestResult = {
+var best = {
   value: '',
   size: Infinity
 }
-var lastString = ''
+var lastString
 
 function shuffle (a) {
   var j, x, i
@@ -42,18 +43,18 @@ function shuffleStringInFile () {
 function checkSize () {
   var output = spawnSync('npx', ['size-limit', filePath]).output
   var size = output.toString('utf8').match(/Package size: ([0-9]+)/)
-  if (size && size[1] !== 0 && size[1] < bestResult.size) {
-    bestResult.value = lastString
-    bestResult.size = size[1]
-
-    console.log(
-      'New best string has been founded: ' + bestResult.value +
-      ' | size: ' + bestResult.size
-    )
+  if (size && size[1] !== 0 && size[1] < best.size) {
+    best.value = lastString
+    best.size = size[1]
+    process.stdout.write(chalk.green.bold(best.size) + 'B ' + best.value + '\n')
   }
 }
 
 saveFirstString()
+if (typeof lastString === 'undefined') {
+  process.stderr.write(chalk.red('Alphabet was not found') + '\n')
+  process.exit(1)
+}
 checkSize()
 
 while (true) {
