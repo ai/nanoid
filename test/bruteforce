@@ -1,22 +1,25 @@
 #!/usr/bin/env node
 
-var sizeLimit = require('size-limit')
+var UglifyJS = require('uglify-js')
+var gzipSize = require('gzip-size')
 var chalk = require('chalk')
 var path = require('path')
 var fs = require('fs')
 
 var filePath = path.join(process.cwd(), process.argv[2])
+var file
 var used = { }
 
 function shuffle (str) {
+  var array = str.split('')
   var j, x, i
-  for (i = str.length - 1; i > 0; i--) {
+  for (i = array.length - 1; i > 0; i--) {
     j = Math.floor(Math.random() * (i + 1))
-    x = str[i]
-    str[i] = str[j]
-    str[j] = x
+    x = array[i]
+    array[i] = array[j]
+    array[j] = x
   }
-  return str
+  return array.join('')
 }
 
 function shuffleUnique (str) {
@@ -49,51 +52,62 @@ var prevPercent = 0
 var maxSteps = factorial(64)
 
 function findInitialString () {
-  var data = fs.readFileSync(filePath, 'utf8')
-  data.replace(/[A-Za-z0-9~_]{64}/, function (match) {
-    lastString = match
-  })
+  file = fs.readFileSync(filePath, 'utf8')
+  file = UglifyJS.minify(file).code.replace('module.', 'e.')
+  file = '!function(e){var t={};function r(n){if(t[n])return t[n].exports;' +
+          'var o=t[n]={i:n,l:!1,exports:{}};return ' +
+          'e[n].call(o.exports,o,o.exports,r),o.l=!0,o.exports}' +
+          'r.m=e,r.c=t,r.d=function(e,t,n){r.o(e,t)||' +
+          'Object.defineProperty(e,t,{enumerable:!0,get:n})},r.r=function(e){' +
+          '"undefined"!=typeof Symbol&&Symbol.toStringTag&&' +
+          'Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),' +
+          'Object.defineProperty(e,"__esModule",{value:!0})},' +
+          'r.t=function(e,t){if(1&t&&(e=r(e)),8&t)' +
+          'return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;' +
+          'var n=Object.create(null);if(r.r(n),Object.defineProperty(' +
+          'n,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)' +
+          'for(var o in e)r.d(n,o,function(t){return e[t]}.bind(null,o));' +
+          'return n},r.n=function(e){var t=e&&e.__esModule?function(){' +
+          'return e.default}:function(){return e};return r.d(t,"a",t),t}' +
+          ',r.o=function(e,t){return Object.prototype.hasOwnProperty' +
+          '.call(e,t)},r.p="",r(r.s=0)}([function(e,t){' + file + '}]);'
+  var match = file.match(/[A-Za-z0-9~_]{64}/)
+  if (!match) {
+    process.stderr.write(chalk.red('Alphabet was not found') + '\n')
+    process.exit(1)
+  }
+  lastString = match[0]
 }
 
-function shuffleStringInFile () {
-  var data = fs.readFileSync(filePath, 'utf8')
-
-  var result = data.replace(/[A-Za-z0-9~_]{64}/, function (match) {
-    lastString = shuffleUnique(match.split('')).join('')
-    return lastString
-  })
-
-  fs.writeFileSync(filePath + '', result, 'utf8')
+function shuffleString () {
+  lastString = shuffleUnique(lastString)
+  file = file.replace(/[A-Za-z0-9~_]{64}/, lastString)
 }
 
 function checkSize () {
   step += 1
-  sizeLimit(filePath).then(function (size) {
-    if (size.gzip < best.size) {
+  gzipSize(file).then(function (size) {
+    size = size - 461
+    if (size < best.size) {
       best.value = lastString
-      best.size = size.gzip
+      best.size = size
       process.stdout.write(
         chalk.green.bold(best.size + 'B') + ' ' + best.value + '\n')
     } else {
-      var percent = Math.floor(100 * step / maxSteps)
+      var percent = Math.floor(10000 * step / maxSteps)
       if (percent > prevPercent) {
         prevPercent = percent
-        process.stdout.write(chalk.gray(percent + '%') + '\n')
+        process.stdout.write(chalk.gray((percent / 10000.0) + '%') + '\n')
       }
     }
     if (step === maxSteps) {
       process.exit(0)
     } else {
-      shuffleStringInFile()
+      shuffleString()
       checkSize()
     }
   })
 }
 
 findInitialString()
-if (typeof lastString === 'undefined') {
-  process.stderr.write(chalk.red('Alphabet was not found') + '\n')
-  process.exit(1)
-}
-
 checkSize()
