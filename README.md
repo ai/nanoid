@@ -124,30 +124,24 @@ in our [ID collision probability] calculator.
 
 [ID collision probability]: https://zelark.github.io/nano-id-cc/
 
+
 ### React Native
 
-To generate secure random IDs in React Native, you must use a native
-random generator like [react-native-securerandom](https://www.npmjs.com/package/react-native-securerandom). Since `react-native-securerandom`
-generates its random bytes on the native side, your React Native JS code must communicate with it asynchronously over the JS bridge. For example, as follows:
+To generate secure random IDs in React Native, you must use
+[a native random generator] like and asynchronous API:
 
 ```js
-import { generateSecureRandom } from 'react-native-securerandom';
-import format from 'nanoid/async/format';
-import url from 'nanoid/url';
+const generateSecureRandom = require('react-native-securerandom').generateSecureRandom
+const format = require('nanoid/async/format')
+const url = require('nanoid/url')
 
-// Using Promises
-format(generateSecureRandom, url, 21).then(id => {
-  // id is a random ID
-  console.log('random ID is', id); //=> xnCahQadzHuI1QjcbYHBE
-});
-
-// Using async/await
-async function useRandomID() {
-  // id is a random ID
-  const id = await format(generateSecureRandom, url, 21);
-  console.log('random ID is', id); //=> A6WZ9Kz6961u0Wc8h22O1
+async function createUser () {
+  user.id = await format(generateSecureRandom, url, 21);
 }
 ```
+
+[a native random generator]: https://github.com/rh389/react-native-securerandom
+
 
 ### Web Workers
 
@@ -156,7 +150,7 @@ Web Workers don’t have access to a secure random generator.
 Security is important in IDs, when IDs should be unpredictable. For instance,
 in “access by URL” link generation.
 
-If you don’t need unpredictable IDs, but you need Web Workers support, 
+If you don’t need unpredictable IDs, but you need Web Workers support,
 you can use non‑secure ID generator.
 
 ```js
