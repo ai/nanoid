@@ -1,0 +1,98 @@
+#!/usr/bin/node --experimental-worker
+
+/* eslint-disable node/no-missing-require */
+
+var WORKERS = 8
+
+var spawnSync = require('child_process').spawnSync
+var Worker = require('worker_threads').Worker
+var chalk = require('chalk')
+var path = require('path')
+var fs = require('fs')
+
+if (!process.argv[2]) {
+  process.stderr.write(chalk.red('Pass a file with alphabet as argument\n'))
+  process.exit(1)
+}
+
+var input = path.join(process.cwd(), process.argv[2])
+var output = path.join(__dirname, '..', 'compiled.js')
+
+spawnSync('npx', ['webpack', '--mode', 'production', '--output', output, input])
+var js = fs.readFileSync(output).toString()
+fs.unlinkSync(output)
+
+var match = js.match(/[A-Za-z0-9~_]{30,}/)
+if (!match) {
+  process.stderr.write(chalk.red('Alphabet was not found\n'))
+  process.exit(1)
+}
+var alphabet = match[0].split('').sort().join('')
+
+var best = {
+  size: Infinity
+}
+
+var newline = false
+
+var all = js.length * js.length * js.length
+var step = 0
+var lastPart = 0
+
+function print (str) {
+  process.stdout.write(str)
+  newline = true
+}
+
+function printLine (str) {
+  if (newline) process.stdout.write('\n')
+  newline = false
+  process.stdout.write(str + '\n')
+}
+
+new Promise(function (resolve) {
+  for (var i = 0; i < WORKERS; i++) {
+    var finished = 0
+    var worker = new Worker(path.join(__dirname, 'alphabet-worker.js'), {
+      workerData: {
+        alphabet: alphabet,
+        start: i,
+        step: WORKERS,
+        js: js
+      }
+    })
+    worker.on('message', function (data) {
+      if (data.finished) {
+        finished += 1
+        if (finished === WORKERS) {
+          printLine(
+            chalk.bold(step) + ' variants were checked. The best alphabet:\n' +
+            chalk.green(best.alphabet)
+          )
+          resolve()
+        }
+      } else {
+        if (data.size && data.size < best.size) {
+          if (newline) process.stdout.write('\n')
+          newline = false
+          best = data
+          printLine(best.alphabet)
+        }
+        step += 1
+        var part = Math.floor(80 * 100 * step / all)
+        if (part > lastPart) {
+          lastPart = part
+          if (part % 80 === 0) {
+            print(chalk.gray('.'))
+            printLine(chalk.gray((part / 80) + '%'))
+          } else {
+            print(chalk.gray('.'))
+          }
+        }
+      }
+    })
+    worker.on('error', function (e) {
+      throw e
+    })
+  }
+})
