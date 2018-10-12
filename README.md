@@ -113,7 +113,7 @@ Symbols `-,.()` are not encoded in the URL. If used at the end of a link
 they could be identified as a punctuation symbol.
 
 If you want to reduce ID length (and increase collisions probability),
-you can pass the length as an argument.
+you can pass the length as an argument.
 
 ```js
 nanoid(10) //=> "IRFa~VaY2b"
@@ -128,7 +128,7 @@ in our [ID collision probability] calculator.
 ### React Native
 
 To generate secure random IDs in React Native, you must use
-[a native random generator] like and asynchronous API:
+[a native random generator] and asynchronous API:
 
 ```js
 const generateSecureRandom = require('react-native-securerandom').generateSecureRandom
@@ -162,7 +162,7 @@ model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
 ## Async
 
 To generate hardware random bytes, CPU will collect electromagnetic noise.
-During the collection, CPU doesn’t work. So if we will use asynchronous API
+During the collection, CPU doesn’t work. So if we will use asynchronous API
 for hardware random generator, your other code could be executed during
 the entropy collection.
 
@@ -178,7 +178,7 @@ Unfortunately, you will not have any benefits in browser, since Web Crypto API
 doesn’t have asynchronous API.
 
 
-### Custom Alphabet or Length
+## Custom Alphabet or Length
 
 If you want to change the ID's alphabet or length
 you can use the low-level `generate` module.
@@ -190,7 +190,7 @@ model.id = generate('1234567890abcdef', 10) //=> "4f90d13a42"
 
 Check safety of your custom alphabet and ID length
 in our [ID collision probability] calculator.
-You can find popular alphabets in [`nanoid-dictionary`].
+You can find popular alphabets in [`nanoid-dictionary`].
 
 Alphabet must contain 256 symbols or less.
 Otherwise, the generator will not be secure.
@@ -208,10 +208,10 @@ async function createUser () {
 [`nanoid-dictionary`]:      https://github.com/CyberAP/nanoid-dictionary
 
 
-### Custom Random Bytes Generator
+## Custom Random Bytes Generator
 
 You can replace the default safe random generator using the `format` module.
-For instance, to use a seed-based generator.
+For instance, to use a seed-based generator.
 
 ```js
 const format = require('nanoid/format')
