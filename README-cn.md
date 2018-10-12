@@ -198,13 +198,14 @@ format(random, url, 10) //=> "93ce_Ltuub"
 ## 其他编程语言
 
 * [C#](https://github.com/codeyu/nanoid-net)
-* [Clojure and ClojureScript](https://github.com/zelark/nano-id)
+* [Clojure, ClojureScript](https://github.com/zelark/nano-id)
 * [Crystal](https://github.com/mamantoha/nanoid.cr)
 * [Dart](https://github.com/pd4d10/nanoid)
 * [Go](https://github.com/matoous/go-nanoid)
 * [Elixir](https://github.com/railsmechanic/nanoid)
 * [Haskell](https://github.com/4e6/nanoid-hs)
 * [Java](https://github.com/aventrix/jnanoid)
+* [Nim](https://github.com/icyphox/nanoid.nim)
 * [PHP](https://github.com/hidehalo/nanoid-php)
 * [Python](https://github.com/puyuan/py-nanoid)
 * [Ruby](https://github.com/radeno/nanoid.rb)
