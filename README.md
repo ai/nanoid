@@ -46,7 +46,7 @@ hardware random generator.
 ### Uniformity
 
 `random % alphabet` is a popular mistake to make when coding an ID generator.
-The spread will not be even; there will be a lower chance for some symbols
+The spread will not be even; there will be a lower chance for some symbols
 to appear compared to others—so it will reduce the number of tries
 when brute-forcing.
 
@@ -164,8 +164,8 @@ model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
 To generate hardware random bytes, CPU will collect electromagnetic noise.
 During the collection, CPU doesn’t work.
 
-If we will use asynchronous API for hardware random generator,
-your other code could be executed during the entropy collection.
+If we will use async API for random generator,
+another code could be executed during the entropy collection.
 
 ```js
 const nanoid = require('nanoid/async')
