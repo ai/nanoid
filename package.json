@@ -32,6 +32,7 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.0",
+    "gzip-size": "^5.0.0",
     "html-webpack-plugin": "^3.2.0",
     "jest": "^23.6.0",
     "jsdoc": "^3.5.5",
@@ -54,7 +55,7 @@
     "spellcheck": "yarn docs && yaspeller-ci *.md docs/*.html",
     "clean": "rimraf docs/ coverage/",
     "docs": "jsdoc -d docs *.js async/*.js",
-    "lint": "eslint-ci *.js async/*.js test/{benchmark,bruteforce} test/*.js test/**/*.js",
+    "lint": "eslint-ci *.js async/*.js test/{benchmark,alphabet} test/*.js test/**/*.js",
     "test": "jest --coverage && yarn lint && size-limit && yarn spellcheck",
     "start": "webpack-dev-server --config test/demo/webpack.config"
   },

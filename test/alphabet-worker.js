@@ -7,6 +7,7 @@ var gzipSize = require('gzip-size')
 function getAlphabet (positions) {
   var alphabet = ''
   positions.forEach(function (pos) {
+    if (pos === -1) return
     while (pos < workerData.js.length) {
       var char = workerData.js[pos]
       if (workerData.alphabet.indexOf(char) === -1) break
@@ -27,7 +28,7 @@ function getAlphabet (positions) {
   return alphabet
 }
 
-var positions = [workerData.start, 0, 0]
+var positions = [workerData.start, -1, -1]
 
 function increase () {
   positions[2] += 1
@@ -35,7 +36,8 @@ function increase () {
     positions[2] = 0
     positions[1] += 1
     if (positions[1] >= workerData.js.length) {
-      positions[1] = 0
+      positions[2] = -1
+      positions[1] = -1
       positions[0] += workerData.step
       if (positions[0] >= workerData.js.length) {
         return false
@@ -45,22 +47,26 @@ function increase () {
   return true
 }
 
+var steps = 0
+
 function tick () {
   if (!increase(positions)) {
     parentPort.postMessage({ finished: true })
   } else {
+    steps += 1
     var alphabet = getAlphabet(positions)
     if (alphabet) {
       var file = workerData.js.replace(/[A-Za-z0-9~_]{30,}/, alphabet)
       gzipSize(file).then(function (size) {
         parentPort.postMessage({
           alphabet: alphabet,
+          steps: steps,
           size: size
         })
+        steps = 0
         tick()
       })
     } else {
-      parentPort.postMessage({ tick: true })
       tick()
     }
   }

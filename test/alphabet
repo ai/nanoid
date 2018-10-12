@@ -35,18 +35,11 @@ var best = {
 
 var newline = false
 
-var all = js.length * js.length * js.length
+var all = js.length * (js.length + 1) * (js.length + 1)
 var step = 0
 var lastPart = 0
 
 function print (str) {
-  process.stdout.write(str)
-  newline = true
-}
-
-function printLine (str) {
-  if (newline) process.stdout.write('\n')
-  newline = false
   process.stdout.write(str + '\n')
 }
 
@@ -65,29 +58,21 @@ new Promise(function (resolve) {
       if (data.finished) {
         finished += 1
         if (finished === WORKERS) {
-          printLine(
-            chalk.bold(step) + ' variants were checked. The best alphabet:\n' +
-            chalk.green(best.alphabet)
-          )
+          print('The best alphabet:\n' + chalk.bold.green(best.alphabet))
           resolve()
         }
       } else {
-        if (data.size && data.size < best.size) {
+        if (data.size < best.size) {
           if (newline) process.stdout.write('\n')
           newline = false
           best = data
-          printLine(best.alphabet)
+          print(best.alphabet)
         }
-        step += 1
-        var part = Math.floor(80 * 100 * step / all)
+        step += data.steps
+        var part = Math.floor(100 * step / all)
         if (part > lastPart) {
           lastPart = part
-          if (part % 80 === 0) {
-            print(chalk.gray('.'))
-            printLine(chalk.gray((part / 80) + '%'))
-          } else {
-            print(chalk.gray('.'))
-          }
+          print(chalk.gray(part + '%'))
         }
       }
     })
