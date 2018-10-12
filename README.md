@@ -63,7 +63,7 @@ Nano ID uses a [better algorithm] and is tested for uniformity.
 
 Nano ID is quite comparable to UUID v4 (random-based).
 It has a similar number of random bits in the ID
-(126 in Nano ID and 122 in UUID), so it has a similar collision probability:
+(126 in Nano ID and 122 in UUID), so it has a similar collision probability:
 
 > For there to be a one in a billion chance of duplication,
 > 103 trillion version 4 IDs must be generated.
@@ -162,9 +162,10 @@ model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
 ## Async
 
 To generate hardware random bytes, CPU will collect electromagnetic noise.
-During the collection, CPU doesn’t work. So if we will use asynchronous API
-for hardware random generator, your other code could be executed during
-the entropy collection.
+During the collection, CPU doesn’t work.
+
+If we will use asynchronous API for hardware random generator,
+your other code could be executed during the entropy collection.
 
 ```js
 const nanoid = require('nanoid/async')
