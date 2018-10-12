@@ -9,7 +9,7 @@ A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 It uses [Size Limit] to control size.
 * **Safe.** It uses cryptographically strong random APIs
 and tests distribution of symbols.
-* **Fast.** It’s 16% faster, than UUID.
+* **Fast.** It’s 16% faster than UUID.
 * **Compact.** It uses a larger alphabet than UUID (`A-Za-z0-9_~`).
 So ID size was reduced from 36 to 21 symbols.
 
@@ -38,7 +38,7 @@ The generator supports Node.js, React Native, and [all browsers].
 ### Unpredictability
 
 Instead of using the unsafe `Math.random()`, Nano ID uses the `crypto` module
-in Node.js and the Web Crypto API in browsers. This modules use unpredictable
+in Node.js and the Web Crypto API in browsers. These modules use unpredictable
 hardware random generator.
 
 
@@ -118,7 +118,7 @@ you can pass the length as an argument.
 nanoid(10) //=> "IRFa~VaY2b"
 ```
 
-Don’t forget to check safety of your ID length
+Don’t forget to check the safety of your ID length
 in our [ID collision probability] calculator.
 
 [ID collision probability]: https://zelark.github.io/nano-id-cc/
@@ -174,7 +174,7 @@ async function createUser () {
 }
 ```
 
-Unfortunately, you will not have any benefits in browser, since Web Crypto API
+Unfortunately, you will not have any benefits in a browser, since Web Crypto API
 doesn’t have asynchronous API.
 
 
@@ -188,7 +188,7 @@ const generate = require('nanoid/generate')
 model.id = generate('1234567890abcdef', 10) //=> "4f90d13a42"
 ```
 
-Check safety of your custom alphabet and ID length
+Check the safety of your custom alphabet and ID length
 in our [ID collision probability] calculator.
 You can find popular alphabets in [`nanoid-dictionary`].
 
@@ -284,6 +284,6 @@ async function createUser () {
 * [Rust](https://github.com/nikolay-govorov/nanoid)
 * [Swift](https://github.com/antiflasher/NanoID)
 
-Also, [CLI tool] is available to generate IDs from command line.
+Also, [CLI tool] is available to generate IDs from a command line.
 
 [CLI tool]: https://github.com/twhitbeck/nanoid-cli
