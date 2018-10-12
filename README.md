@@ -101,7 +101,7 @@ rndm                    2,544,612 ops/sec
 ### Normal
 
 The main module uses URL-friendly symbols (`A-Za-z0-9_~`) and returns an ID
-with 21 characters (to have a collision probability similar to UUID v4).
+with 21 characters (to have a collision probability similar to UUID v4).
 
 ```js
 const nanoid = require('nanoid')
