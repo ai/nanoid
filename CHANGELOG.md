@@ -1,6 +1,12 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.3
+* Add `nanoid/async/format` and `nanoid/async/generate`.
+* Improve synchronous API performance.
+* Reduce `url` size (by Daniil Poroshin).
+* Improve React Native docs (by joelgetaction).
+
 ## 1.2.6
 * Reduce library size (by rqrqrqrq).
 
