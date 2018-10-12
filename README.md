@@ -10,7 +10,7 @@ and tests distribution of symbols.
 * **Small.** 143 bytes (minified and gzipped). No dependencies.
 It uses [Size Limit] to control size.
 * **Compact.** It uses a larger alphabet than UUID (`A-Za-z0-9_~`).
-As result it could reduce ID size from 36 to 21 symbols.
+So ID size was reduced from 36 to 21 symbols.
 * **Fast.** It’s 16% faster, than UUID.
 
 ```js
