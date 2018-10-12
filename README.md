@@ -164,7 +164,7 @@ model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
 To generate hardware random bytes, CPU will collect electromagnetic noise.
 During the collection, CPU doesn’t work.
 
-If we will use async API for random generator,
+If we will use asynchronous API for random generator,
 another code could be executed during the entropy collection.
 
 ```js
