@@ -1,10 +1,15 @@
 #!/bin/sh
 
-currentver="$(node --version)"
-requiredver="v6.0.0"
+node="$(node --version)"
+npmi="v8.0.0"
+ci="v8.0.0"
 
-if [ "$(printf '%s\n' "$requiredver" "$currentver" | sort -V | head -n1)" = "$requiredver" ]; then
+if [ "$(printf '%s\n' "$ci" "$node" | sort -V | head -n1)" = "$ci" ]; then
   npm ci
- else
-  echo "Skip dependencies on old Node.js version"
- fi
+else
+  if [ "$(printf '%s\n' "$npmi" "$node" | sort -V | head -n1)" = "$npmi" ]; then
+    npm install
+  else
+    echo "Skip dependencies on old Node.js version"
+  fi
+fi
