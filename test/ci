@@ -1,0 +1,42 @@
+#!/usr/bin/env node
+/* eslint-disable global-require, no-inner-declarations */
+
+if (parseInt(process.versions.node) >= 6 && false) {
+  var spawn = require('child_process').spawn
+
+  spawn('npm', ['test'], { stdio: 'inherit' }).on('exit', function (code) {
+    if (code > 0) process.exit(code)
+  })
+} else {
+  var assert = require('assert')
+  var nonSecure = require('../non-secure')
+  var nanoid = require('../')
+  var async = require('../async')
+  var url = require('../url')
+
+  var used = { }
+  function test (id) {
+    assert.ok(typeof id === 'string')
+    assert.ok(id.length === 21)
+    for (var j = 0; j < id.length; j++) {
+      assert.ok(url.indexOf(id[j]) !== -1)
+    }
+    assert.ok(!used[id])
+    used[id] = true
+  }
+
+  for (var i = 0; i < 1000; i++) {
+    test(nanoid())
+    test(nonSecure())
+    async(21, function (err, id) {
+      assert.ok(err === null)
+      test(id)
+    })
+  }
+  assert.ok(nanoid(10).length === 10)
+  assert.ok(nonSecure(10).length === 10)
+  async(10, function (err, id) {
+    assert.ok(err === null)
+    assert.ok(id.length === 10)
+  })
+}
