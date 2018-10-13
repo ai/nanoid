@@ -1,4 +1,4 @@
-cache: yarn
+language: node_js
 node_js:
   - node
   - "8"
