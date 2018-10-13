@@ -1,5 +1,3 @@
-/* eslint-disable node/no-missing-require */
-
 var parentPort = require('worker_threads').parentPort
 var workerData = require('worker_threads').workerData
 var gzipSize = require('gzip-size')

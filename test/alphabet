@@ -1,7 +1,5 @@
 #!/usr/bin/node --experimental-worker
 
-/* eslint-disable node/no-missing-require */
-
 var WORKERS = 8
 
 var spawnSync = require('child_process').spawnSync
