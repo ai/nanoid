@@ -58,7 +58,9 @@ new Promise(function (resolve) {
       if (data.finished) {
         finished += 1
         if (finished === WORKERS) {
-          print('The best alphabet:\n' + chalk.bold.green(best.alphabet))
+          print('100%')
+          print('The best alphabet:')
+          print(chalk.bold.green(best.alphabet))
           resolve()
         }
       } else {
