@@ -12,4 +12,4 @@
  * generate(url, 10) //=> "Uakgb_J5m9"
  */
 module.exports =
-  'functio_~0123456789abdeghjklmpqrsvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  'SymboljecthasOwnPr0123456789ABCDEFGHIJKLMNQRTUVWXYZ_dfgikpquvxz~'

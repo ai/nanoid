@@ -5,7 +5,7 @@
 
 A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 
-* **Small.** 143 bytes (minified and gzipped). No dependencies.
+* **Small.** 142 bytes (minified and gzipped). No dependencies.
 It uses [Size Limit] to control size.
 * **Safe.** It uses cryptographically strong random APIs
 and tests distribution of symbols.
@@ -72,7 +72,7 @@ There are two main differences between Nano ID and UUID v4:
 1. Nano ID uses a bigger alphabet, so a similar number of random bits
    are packed in just 21 symbols instead of 36.
 2. Nano ID code is 3 times less than `uuid/v4` package:
-   143 bytes instead of 435.
+   142 bytes instead of 435.
 
 
 ## Benchmark

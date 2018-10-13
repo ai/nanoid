@@ -9,7 +9,11 @@ if (process.env.NODE_ENV !== 'production') {
 
 var crypto = self.crypto || self.msCrypto
 
-var url = '_~getRandomVsCrypwhil0214563789bcfjkquvxzABDEFGHIJKLMNOPQSTUWXYZ'
+/*
+ * This alphabet uses a-z A-Z 0-9 _~ symbols.
+ * Symbols order was changed for better gzip compression.
+ */
+var url = 'Uint8ArdomValuesObj012345679BCDEFGHIJKLMNPQRSTWXYZ_cfghkpqvwxyz~'
 
 module.exports = function (size) {
   size = size || 21

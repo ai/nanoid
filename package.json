@@ -62,7 +62,7 @@
   "size-limit": [
     {
       "path": "index.js",
-      "limit": "143 B"
+      "limit": "142 B"
     },
     {
       "path": "generate.js",
@@ -74,7 +74,7 @@
     },
     {
       "path": "async/index.js",
-      "limit": "155 B"
+      "limit": "154 B"
     },
     {
       "path": "async/generate.js",
