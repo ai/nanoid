@@ -2,7 +2,7 @@
  * URL safe symbols.
  *
  * This alphabet uses a-z A-Z 0-9 _~ symbols.
- * (Symbols order was changed for better gzip compression.)
+ * Symbols order was changed for better gzip compression.
  *
  * @name url
  * @type {string}
