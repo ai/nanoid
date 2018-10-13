@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* eslint-disable global-require, no-inner-declarations */
 
-if (parseInt(process.versions.node) >= 6 && false) {
+if (parseInt(process.versions.node) >= 6) {
   var spawn = require('child_process').spawn
 
   spawn('npm', ['test'], { stdio: 'inherit' }).on('exit', function (code) {
@@ -23,9 +23,10 @@ if (parseInt(process.versions.node) >= 6 && false) {
     }
     assert.ok(!used[id])
     used[id] = true
+    process.stdout.write('✔')
   }
 
-  for (var i = 0; i < 1000; i++) {
+  for (var i = 0; i < 100; i++) {
     test(nanoid())
     test(nonSecure())
     async(21, function (err, id) {
@@ -33,10 +34,12 @@ if (parseInt(process.versions.node) >= 6 && false) {
       test(id)
     })
   }
+
   assert.ok(nanoid(10).length === 10)
   assert.ok(nonSecure(10).length === 10)
   async(10, function (err, id) {
     assert.ok(err === null)
     assert.ok(id.length === 10)
   })
+  process.stdout.write('✔')
 }
