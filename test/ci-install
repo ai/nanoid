@@ -1,7 +1,7 @@
 #!/bin/sh
 
 currentver="$(node --version)"
-requiredver="6.0.0"
+requiredver="v6.0.0"
 
 if [ "$(printf '%s\n' "$requiredver" "$currentver" | sort -V | head -n1)" = "$requiredver" ]; then
   yarn install
