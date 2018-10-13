@@ -1,0 +1,10 @@
+#!/bin/sh
+
+currentver="$(node --version)"
+requiredver="6.0.0"
+
+if [ "$(printf '%s\n' "$requiredver" "$currentver" | sort -V | head -n1)" = "$requiredver" ]; then
+  yarn install
+ else
+  echo "Skip dependencies on old Node.js version"
+ fi

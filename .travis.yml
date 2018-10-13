@@ -10,6 +10,6 @@ node_js:
 git:
   depth: 5
 install:
-  - yarn install --ignore-engines
+  - ./test/ci-install
 script:
   - ./test/ci
