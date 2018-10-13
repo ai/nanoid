@@ -4,21 +4,27 @@ var parentPort = require('worker_threads').parentPort
 var workerData = require('worker_threads').workerData
 var gzipSize = require('gzip-size')
 
+var used = new Set()
+
 function getAlphabet (positions) {
   var alphabet = ''
   positions.forEach(function (pos) {
     if (pos === -1) return
+    var word = ''
     while (pos < workerData.js.length) {
       var char = workerData.js[pos]
       if (workerData.alphabet.indexOf(char) === -1) break
       if (alphabet.indexOf(char) !== -1) break
-      alphabet += char
+      if (word.indexOf(char) !== -1) break
+      word += char
       pos++
     }
+    if (word.length >= 3) alphabet += word
   })
-  if (alphabet.length <= 10) {
-    return false
-  }
+
+  if (alphabet.length <= 10 || used.has(alphabet)) return false
+  used.add(alphabet)
+
   for (var i = 0; i < workerData.alphabet.length; i++) {
     var char = workerData.alphabet[i]
     if (alphabet.indexOf(char) === -1) {
@@ -67,7 +73,7 @@ function tick () {
         tick()
       })
     } else {
-      tick()
+      Promise.resolve().then(tick)
     }
   }
 }
