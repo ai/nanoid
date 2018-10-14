@@ -52,11 +52,11 @@
   },
   "scripts": {
     "lint-staged": "lint-staged",
-    "spellcheck": "npm run docs && yaspeller-ci *.md docs/*.html",
+    "spellcheck": "yarn docs && yaspeller-ci *.md docs/*.html",
     "clean": "rimraf docs/ coverage/",
     "docs": "jsdoc -d docs *.js async/*.js",
     "lint": "eslint-ci *.js async/*.js test/{benchmark,alphabet} test/*.js test/**/*.js",
-    "test": "jest --coverage && npm run lint && size-limit && npm run spellcheck",
+    "test": "jest --coverage && yarn lint && size-limit && yarn spellcheck",
     "start": "webpack-dev-server --config test/demo/webpack.config"
   },
   "size-limit": [

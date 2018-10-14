@@ -4,7 +4,7 @@
 if (parseInt(process.versions.node) >= 6) {
   var spawn = require('child_process').spawn
 
-  spawn('npm', ['test'], { stdio: 'inherit' }).on('exit', function (code) {
+  spawn('yarn', ['test'], { stdio: 'inherit' }).on('exit', function (code) {
     if (code > 0) process.exit(code)
   })
 } else {
