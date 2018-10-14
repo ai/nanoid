@@ -8,7 +8,5 @@ node_js:
   - "0.8"
 git:
   depth: 5
-install:
-  - ./test/ci-install
 script:
   - ./test/ci
