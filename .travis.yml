@@ -10,8 +10,9 @@ script:
   - ./test/ci
 matrix:
   include:
+    - node_js: "4"
+      install: skip
     - node_js: "0.10"
       install: skip
     - node_js: "0.8"
       install: skip
-      
