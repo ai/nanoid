@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.3.1
+* Reduce library size.
+
 ## 1.3
 * Add `nanoid/async/format` and `nanoid/async/generate`.
 * Improve synchronous API performance.
