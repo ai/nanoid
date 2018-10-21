@@ -107,13 +107,30 @@ nanoid(10) //=> "IRFa~VaY2b"
 [ID 碰撞概率计算器]: https://alex7kom.github.io/nano-nanoid-cc/
 
 
-### React Native 和 Web Workers
+### React Native
 
-React Native 和 Web Worker 无法获取安全的随机生成器。
+为了在 React Native 生成安全的随机 ID，你必须使用[原生随机生成器]和异步 API:
 
-安全性对于 ID 来说是非常重要的，ID 应当是不可被预测的。比如说 “通过链接获取” 的链接生成。
+```js
+const generateSecureRandom = require('react-native-securerandom').generateSecureRandom
+const format = require('nanoid/async/format')
+const url = require('nanoid/url')
 
-如果你不需要不可预测的 ID，但你需要支持 React Native 或 Web Workers，你可以使用不安全的 ID 生成器。
+async function createUser () {
+  user.id = await format(generateSecureRandom, url, 21);
+}
+```
+
+[原生随机生成器]: https://github.com/rh389/react-native-securerandom
+
+
+### Web Workers
+
+Web Worker 无法获取安全的随机生成器。
+
+若 ID 应当不可预测，则安全性对于 ID 来说非常重要。比如说 “通过链接获取” 的链接生成。
+
+如果不需要不可预测的 ID，但需要支持 Web Workers，你可以使用不安全的 ID 生成器。
 
 ```js
 const nanoid = require('nanoid/non-secure')
