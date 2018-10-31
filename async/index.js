@@ -11,6 +11,24 @@ if (crypto.randomFill) {
   random = crypto.randomBytes
 }
 
+/* eslint-disable-next-line security/detect-pseudoRandomBytes */
+var ATTEMPTS = crypto.randomBytes === crypto.pseudoRandomBytes ? 1 : 3
+
+function safeRandom (size, attempt, callback) {
+  random(size, function (err, bytes) {
+    if (err) {
+      attempt -= 1
+      if (attempt === 0) {
+        callback(err)
+      } else {
+        setTimeout(safeRandom.bind(null, size, attempt, callback), 10)
+      }
+    } else {
+      callback(null, bytes)
+    }
+  })
+}
+
 /**
  * Generate secure URL-friendly unique ID. Non-blocking version.
  *
@@ -49,7 +67,7 @@ module.exports = function (size, callback) {
     })
   }
 
-  random(size, function (error, bytes) {
+  safeRandom(size, ATTEMPTS, function (error, bytes) {
     if (error) {
       return callback(error)
     }
