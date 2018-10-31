@@ -8,6 +8,15 @@
     "id",
     "url"
   ],
+  "scripts": {
+    "lint-staged": "lint-staged",
+    "spellcheck": "yarn docs && yaspeller-ci *.md docs/*.html",
+    "clean": "rimraf docs/ coverage/",
+    "docs": "jsdoc -d docs *.js async/*.js",
+    "lint": "eslint-ci *.js async/*.js test/{benchmark,alphabet} test/*.js test/**/*.js",
+    "test": "jest --coverage && yarn lint && size-limit && yarn spellcheck",
+    "start": "webpack-dev-server --config test/demo/webpack.config"
+  },
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
   "repository": "ai/nanoid",
@@ -49,15 +58,6 @@
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10",
     "yaspeller-ci": "^1.0.0"
-  },
-  "scripts": {
-    "lint-staged": "lint-staged",
-    "spellcheck": "yarn docs && yaspeller-ci *.md docs/*.html",
-    "clean": "rimraf docs/ coverage/",
-    "docs": "jsdoc -d docs *.js async/*.js",
-    "lint": "eslint-ci *.js async/*.js test/{benchmark,alphabet} test/*.js test/**/*.js",
-    "test": "jest --coverage && yarn lint && size-limit && yarn spellcheck",
-    "start": "webpack-dev-server --config test/demo/webpack.config"
   },
   "size-limit": [
     {
