@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.3.2
+* Fix random generator `not seeded` issue of old Node.js.
+
 ## 1.3.1
 * Reduce library size.
 
