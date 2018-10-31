@@ -85,6 +85,7 @@
     "extends": "eslint-config-logux/browser",
     "rules": {
       "consistent-return": "off",
+      "valid-jsdoc": "off",
       "yoda": "off"
     },
     "overrides": {

@@ -11,24 +11,6 @@ if (crypto.randomFill) {
   random = crypto.randomBytes
 }
 
-/* eslint-disable-next-line */
-var ATTEMPTS = crypto.randomBytes === crypto.pseudoRandomBytes ? 1 : 3
-
-function safeRandom (size, attempt, callback) {
-  random(size, function (err, bytes) {
-    if (err) {
-      attempt -= 1
-      if (attempt === 0) {
-        callback(err)
-      } else {
-        setTimeout(safeRandom.bind(null, size, attempt, callback), 10)
-      }
-    } else {
-      callback(null, bytes)
-    }
-  })
-}
-
 /**
  * Generate secure URL-friendly unique ID. Non-blocking version.
  *
@@ -49,7 +31,7 @@ function safeRandom (size, attempt, callback) {
  * @name async
  * @function
  */
-module.exports = function (size, callback) {
+module.exports = function (size, callback, attempt) {
   size = size || 21
 
   if (!callback) {
@@ -67,16 +49,21 @@ module.exports = function (size, callback) {
     })
   }
 
-  safeRandom(size, ATTEMPTS, function (error, bytes) {
-    if (error) {
-      return callback(error)
+  random(size, function (err, bytes) {
+    if (err) {
+      if (typeof attempt === 'undefined') attempt = 3
+      attempt -= 1
+      if (attempt === 0) {
+        callback(err)
+      } else {
+        setTimeout(module.exports.bind(null, size, callback, attempt), 10)
+      }
+    } else {
+      var id = ''
+      while (0 < size--) {
+        id += url[bytes[size] & 63]
+      }
+      callback(null, id)
     }
-
-    var id = ''
-    while (0 < size--) {
-      id += url[bytes[size] & 63]
-    }
-
-    callback(null, id)
   })
 }

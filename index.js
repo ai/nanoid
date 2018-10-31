@@ -18,12 +18,26 @@ var url = require('./url')
  * @name nanoid
  * @function
  */
-module.exports = function (size) {
+module.exports = function (size, attempt) {
   size = size || 21
+
+  var bytes
+  try {
+    bytes = random(size)
+  } catch (e) {
+    if (typeof attempt === 'undefined') attempt = 3
+    attempt -= 1
+    if (attempt === 0) {
+      throw e
+    } else {
+      return module.exports(size, attempt)
+    }
+  }
+
   var id = ''
-  var bytes = random(size)
   while (0 < size--) {
     id += url[bytes[size] & 63]
   }
+
   return id
 }
