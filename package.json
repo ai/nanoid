@@ -9,7 +9,6 @@
     "url"
   ],
   "scripts": {
-    "lint-staged": "lint-staged",
     "spellcheck": "yarn docs && yaspeller-ci *.md docs/*.html",
     "clean": "rimraf docs/ coverage/",
     "docs": "jsdoc -d docs *.js async/*.js",
@@ -47,7 +46,6 @@
     "jsdoc": "^3.5.5",
     "lint-staged": "^8.0.3",
     "microtime": "^2.1.8",
-    "pre-commit": "^1.2.2",
     "rimraf": "^2.6.2",
     "rndm": "^1.2.0",
     "shortid": "^2.2.13",
@@ -102,9 +100,11 @@
     "*.md": "yaspeller-ci",
     "*.js": "eslint"
   },
-  "pre-commit": [
-    "lint-staged"
-  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "jest": {
     "testEnvironment": "node",
     "coverageThreshold": {
