@@ -1,4 +1,4 @@
-var url = '_~varfunctio0125634789bdegjhklmpqswxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+var url = 'bjectxporhasOwnP0123456789ABCDEFGHIJKLMNQRSTUVWXYZ_dfgiklmquvyz~'
 
 /**
  * Generate URL-friendly unique ID. This method use non-secure predictable

@@ -68,7 +68,7 @@
     },
     {
       "path": "non-secure.js",
-      "limit": "110 B"
+      "limit": "107 B"
     },
     {
       "path": "async/index.js",
