@@ -94,8 +94,11 @@ it('rejects Promise on error', function () {
   mock(function (buffer, callback) {
     callback(error)
   })
+  var catched
   return async().catch(function (e) {
-    expect(e).toBe(error)
+    catched = e
+  }).then(function () {
+    expect(catched).toBe(error)
   })
 })
 
