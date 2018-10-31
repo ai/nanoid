@@ -11,7 +11,7 @@ if (crypto.randomFill) {
   random = crypto.randomBytes
 }
 
-/* eslint-disable-next-line security/detect-pseudoRandomBytes */
+/* eslint-disable-next-line */
 var ATTEMPTS = crypto.randomBytes === crypto.pseudoRandomBytes ? 1 : 3
 
 function safeRandom (size, attempt, callback) {
