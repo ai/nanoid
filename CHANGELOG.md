@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.3.3
+* Fix `nanoid/async` performance regression.
+* Fix old Node.js `not seeded` issue in synchronous version too.
+
 ## 1.3.2
 * Fix random generator `not seeded` issue of old Node.js.
 
