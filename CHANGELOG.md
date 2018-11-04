@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.3.4
+* Reduce `non-secure` size.
+* Add `async` callback type check.
+
 ## 1.3.3
 * Fix `nanoid/async` performance regression.
 * Fix old Node.js `not seeded` issue in synchronous version too.
