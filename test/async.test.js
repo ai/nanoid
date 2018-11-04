@@ -109,19 +109,6 @@ it('has callback API', function (done) {
   })
 })
 
-it('throws error without Promise and callback', function () {
-  global.Promise = undefined
-  expect(function () {
-    async(10)
-  }).toThrow(TypeError, /callback is required/)
-})
-
-it('throws error on non-function callback', function () {
-  expect(function () {
-    async(10, 3)
-  }).toThrow(TypeError, /Callback is not a function/)
-})
-
 it('sends error to callback API', function (done) {
   var error = new Error('test')
   mock(function (buffer, callback) {

@@ -35,9 +35,6 @@ module.exports = function (size, callback, attempt) {
   size = size || 21
 
   if (!callback) {
-    if (typeof Promise !== 'function') {
-      throw new TypeError('Function callback is required')
-    }
     return new Promise(function (resolve, reject) {
       module.exports(size, function (error, id) {
         if (error) {
@@ -47,8 +44,6 @@ module.exports = function (size, callback, attempt) {
         }
       })
     })
-  } else if (typeof callback !== 'function') {
-    throw new TypeError('Callback is not a function')
   }
 
   random(size, function (err, bytes) {
