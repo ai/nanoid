@@ -10,8 +10,10 @@ if (parseInt(process.versions.node) >= 6) {
 } else {
   var assert = require('assert')
   var nonSecure = require('../non-secure')
-  var nanoid = require('../')
+  var nonSecureGenerate = require('../non-secure/generate')
   var async = require('../async')
+  var nanoid = require('../')
+  var generate = require('../generate')
   var url = require('../url')
 
   var used = { }
@@ -41,5 +43,9 @@ if (parseInt(process.versions.node) >= 6) {
     assert.ok(err === null)
     assert.ok(id.length === 10)
   })
+  process.stdout.write('✔')
+
+  assert.ok(generate(url, 10).length === 10)
+  assert.ok(nonSecureGenerate(url, 10).length === 10)
   process.stdout.write('✔')
 }
