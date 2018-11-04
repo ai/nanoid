@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.0
+* Use `-` instead of `~` in default alphabet to by file name safe.
+* Add `nanoid/non-secure/generate`.
+
 ## 1.3.4
 * Reduce `non-secure` size.
 * Add `async` callback type check.
