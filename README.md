@@ -5,17 +5,17 @@
 
 A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 
-* **Small.** 142 bytes (minified and gzipped). No dependencies.
+* **Small.** 141 bytes (minified and gzipped). No dependencies.
 It uses [Size Limit] to control size.
 * **Safe.** It uses cryptographically strong random APIs
 and tests distribution of symbols.
 * **Fast.** It’s 16% faster than UUID.
-* **Compact.** It uses a larger alphabet than UUID (`A-Za-z0-9_~`).
+* **Compact.** It uses a larger alphabet than UUID (`A-Za-z0-9_-`).
 So ID size was reduced from 36 to 21 symbols.
 
 ```js
 var nanoid = require('nanoid')
-model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B~myT"
+model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
 The generator supports Node.js, React Native, and [all browsers].
@@ -72,7 +72,7 @@ There are two main differences between Nano ID and UUID v4:
 1. Nano ID uses a bigger alphabet, so a similar number of random bits
    are packed in just 21 symbols instead of 36.
 2. Nano ID code is 3 times less than `uuid/v4` package:
-   142 bytes instead of 435.
+   141 bytes instead of 435.
 
 
 ## Benchmark
@@ -100,12 +100,12 @@ rndm                    2,544,612 ops/sec
 
 ### Normal
 
-The main module uses URL-friendly symbols (`A-Za-z0-9_~`) and returns an ID
+The main module uses URL-friendly symbols (`A-Za-z0-9_-`) and returns an ID
 with 21 characters (to have a collision probability similar to UUID v4).
 
 ```js
 const nanoid = require('nanoid')
-model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
+model.id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
 Symbols `-,.()` are not encoded in the URL. If used at the end of a link
@@ -115,7 +115,7 @@ If you want to reduce ID length (and increase collisions probability),
 you can pass the length as an argument.
 
 ```js
-nanoid(10) //=> "IRFa~VaY2b"
+nanoid(10) //=> "IRFa-VaY2b"
 ```
 
 Don’t forget to check the safety of your ID length
@@ -154,7 +154,7 @@ you can use non‑secure ID generator.
 
 ```js
 const nanoid = require('nanoid/non-secure')
-model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqLJ"
+model.id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
 

@@ -1,7 +1,7 @@
 /**
  * URL safe symbols.
  *
- * This alphabet uses a-z A-Z 0-9 _~ symbols.
+ * This alphabet uses a-z A-Z 0-9 _- symbols.
  * Symbols order was changed for better gzip compression.
  *
  * @name url
@@ -12,4 +12,4 @@
  * generate(url, 10) //=> "Uakgb_J5m9"
  */
 module.exports =
-  'SymboljecthasOwnPr0123456789ABCDEFGHIJKLMNQRTUVWXYZ_dfgikpquvxz~'
+  'ModuleSymbhasOwnPr-0123456789ABCDEFGHIJKLNQRTUVWXYZ_cfgijkpqtvxz'

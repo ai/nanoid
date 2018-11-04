@@ -1,4 +1,4 @@
-var url = 'bjectxporhasOwnP0123456789ABCDEFGHIJKLMNQRSTUVWXYZ_dfgiklmquvyz~'
+var url = 'bjectSymhasOwnProp-0123456789ABCDEFGHIJKLMNQRTUVWXYZ_dfgiklquvxz'
 
 /**
  * Generate URL-friendly unique ID. This method use non-secure predictable
@@ -13,7 +13,7 @@ var url = 'bjectxporhasOwnP0123456789ABCDEFGHIJKLMNQRSTUVWXYZ_dfgiklmquvyz~'
  *
  * @example
  * const nanoid = require('nanoid/non-secure')
- * model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqL"
+ * model.id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqL"
  *
  * @name nonSecure
  * @function

@@ -13,7 +13,7 @@ var url = require('./url')
  *
  * @example
  * const nanoid = require('nanoid')
- * model.id = nanoid() //=> "Uakgb_J5m9g~0JDMbcJqL"
+ * model.id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqL"
  *
  * @name nanoid
  * @function
