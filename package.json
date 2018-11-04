@@ -11,8 +11,8 @@
   "scripts": {
     "spellcheck": "yarn docs && yaspeller-ci *.md docs/*.html",
     "clean": "rimraf docs/ coverage/",
-    "docs": "jsdoc -d docs *.js async/*.js",
-    "lint": "eslint-ci *.js async/*.js test/{benchmark,alphabet} test/*.js test/**/*.js",
+    "docs": "jsdoc -d docs *.js async/*.js non-secure/*.js",
+    "lint": "eslint-ci *.js {async,non-secure,test}/*.js test/{benchmark,alphabet,**/*.js}",
     "test": "jest --coverage && yarn lint && size-limit && yarn spellcheck",
     "start": "webpack-dev-server --config test/demo/webpack.config"
   },
@@ -71,7 +71,7 @@
       "limit": "64 B"
     },
     {
-      "path": "non-secure.js",
+      "path": "non-secure/index.js",
       "limit": "105 B"
     },
     {
