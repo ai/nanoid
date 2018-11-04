@@ -113,7 +113,13 @@ it('throws error without Promise and callback', function () {
   global.Promise = undefined
   expect(function () {
     async(10)
-  }).toThrow(/callback is required/)
+  }).toThrow(TypeError, /callback is required/)
+})
+
+it('throws error on non-function callback', function () {
+  expect(function () {
+    async(10, 3)
+  }).toThrow(TypeError, /Callback is not a function/)
 })
 
 it('sends error to callback API', function (done) {
