@@ -75,6 +75,10 @@
       "limit": "105 B"
     },
     {
+      "path": "non-secure/generate.js",
+      "limit": "47 B"
+    },
+    {
       "path": "async/index.js",
       "limit": "153 B"
     },

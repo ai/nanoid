@@ -195,13 +195,19 @@ You can find popular alphabets in [`nanoid-dictionary`].
 Alphabet must contain 256 symbols or less.
 Otherwise, the generator will not be secure.
 
-Asynchronous API is also available:
+Asynchronous and non-secure API is also available:
 
 ```js
 const generate = require('nanoid/async/generate')
 async function createUser () {
   user.id = await generate('1234567890abcdef', 10)
 }
+```
+
+```js
+const generate = require('nanoid/non-secure/generate')
+
+user.id = generate('1234567890abcdef', 10)
 ```
 
 [ID collision probability]: https://alex7kom.github.io/nano-nanoid-cc/
