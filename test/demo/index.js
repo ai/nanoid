@@ -8,8 +8,6 @@ var generate = require('../../generate')
 var random = require('../../random')
 var nanoid = require('../../')
 
-console.log(rndm.toString())
-
 var html = ''
 for (var i = 0; i < 10; i++) {
   html += '<div>' + nanoid() + '</div>'
