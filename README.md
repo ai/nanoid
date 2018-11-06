@@ -124,9 +124,8 @@ in our [ID collision probability] calculator.
 [ID collision probability]: https://zelark.github.io/nano-id-cc/
 
 ### React
-**Do not** use a nanoid for key prop because it contradicts the logic of the React.
-
-This is bad code:
+**Do not** use a nanoid for `key` prop. In React `key` should be consistence
+between renders. This is bad code:
 
 ```jsx
 <Item key={nanoid()} /> /* DON’T DO IT */
