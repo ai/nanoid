@@ -126,23 +126,24 @@ in our [ID collision probability] calculator.
 ### React
 **Do not** use a nanoid for key prop because it contradicts the logic of the React.
 
-**This is bad code**
+This is bad code:
+
 ```jsx
-<Item key={nanoid()} />
+<Item key={nanoid()} /> /* DON’T DO IT */
 ```
-**This is good code**
+
+This is **good** code. Note, that we added `'input'` string in front of `id`,
+because Nano ID could be started from number. HTML ID can’t be started
+from the number.
+
 ```jsx
-  constructor(props){
-    super(props)
-    this.id = nanoid()
-  }
-  render() {
-    return (
-      <div>
-        <label htmlFor={this.id}>Label text</label>
-        <input id={this.id} type="text"/>
-      </div>
-    );
+  id = 'input' + nanoid()
+
+  render () {
+    return <>
+      <label htmlFor={this.id}>Label text</label>
+      <input id={this.id} type="text"/>
+    </>;
   }
 }
 ```
