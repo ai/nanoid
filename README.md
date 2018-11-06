@@ -132,8 +132,8 @@ This is bad code:
 <Item key={nanoid()} /> /* DON’T DO IT */
 ```
 
-This is **good** code. Note, that we added `'input'` string in front of `id`,
-because Nano ID could be started from number. HTML ID can’t be started
+This is **good** code. Note, that we added `"input"` string in front of `id`,
+because Nano ID could be started from number. HTML ID can’t be started
 from the number.
 
 ```jsx
