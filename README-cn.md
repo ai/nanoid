@@ -206,7 +206,7 @@ format(random, url, 10) //=> "93ce_Ltuub"
 * [Java](https://github.com/aventrix/jnanoid)
 * [Nim](https://github.com/icyphox/nanoid.nim)
 * [PHP](https://github.com/hidehalo/nanoid-php)
-* [Python](https://github.com/puyuan/py-nanoid)
+* [Python](https://github.com/puyuan/py-nanoid), [py-nanoid-dictionary](https://github.com/aidarkhanov/py-nanoid-dictionary)
 * [Ruby](https://github.com/radeno/nanoid.rb)
 * [Rust](https://github.com/nikolay-govorov/nanoid)
 * [Swift](https://github.com/antiflasher/NanoID)
