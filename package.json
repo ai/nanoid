@@ -25,6 +25,7 @@
     "./async/index.js": "./async/index.browser.js",
     "./async/random.js": "./async/random.browser.js"
   },
+  "sideEffects": false,
   "devDependencies": {
     "@logux/eslint-config": "^27.0.0",
     "benchmark": "^2.1.4",
