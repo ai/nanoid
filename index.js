@@ -25,7 +25,7 @@ module.exports = function (size, attempt) {
   try {
     bytes = random(size)
   } catch (e) {
-    if (typeof attempt === 'undefined') attempt = 3
+    if (attempt === undefined) attempt = 3
     attempt -= 1
     if (attempt === 0) {
       throw e
