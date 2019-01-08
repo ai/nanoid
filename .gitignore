@@ -7,3 +7,4 @@ npm-debug.log
 coverage/
 docs/
 test/demo/build/
+.cache

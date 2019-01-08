@@ -14,7 +14,7 @@
     "docs": "jsdoc -d docs *.js async/*.js non-secure/*.js",
     "lint": "eslint-ci *.js {async,non-secure,test}/*.js test/{benchmark,alphabet,**/*.js}",
     "test": "jest --coverage && yarn lint && size-limit && yarn spellcheck",
-    "start": "webpack-dev-server --config test/demo/webpack.config"
+    "start": "parcel serve test/demo/index.html -d test/demo/build --open"
   },
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
@@ -42,21 +42,18 @@
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.0",
     "gzip-size": "^5.0.0",
-    "html-webpack-plugin": "^3.2.0",
     "husky": "^1.3.1",
     "jest": "^23.6.0",
     "jsdoc": "^3.5.5",
     "lint-staged": "^8.1.0",
     "microtime": "^2.1.8",
+    "parcel-bundler": "^1.11.0",
     "rimraf": "^2.6.3",
     "rndm": "^1.2.0",
     "shortid": "^2.2.14",
     "size-limit": "^0.21.1",
     "uid-safe": "^2.1.5",
     "uuid": "^3.3.2",
-    "webpack": "^4.28.1",
-    "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14",
     "yaspeller-ci": "^1.0.0"
   },
   "size-limit": [
