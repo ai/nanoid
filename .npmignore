@@ -13,3 +13,4 @@ README-*.md
 .jsdocrc
 docs/
 img/
+.cache
