@@ -98,7 +98,6 @@
         "test/*.js"
       ],
       "rules": {
-        "handle-callback-err": "off",
         "global-require": "off"
       }
     }
