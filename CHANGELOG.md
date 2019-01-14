@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.0.1
+* Reduce npm package size.
+* Mark package as not having side effects (by @xiaody).
+
 ## 2.0
 * Use `-` instead of `~` in default alphabet to by file name safe.
 * Add `nanoid/non-secure/generate`.
