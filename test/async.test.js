@@ -17,11 +17,9 @@ function mock (callback) {
   async = require('../async')
 }
 
-var originPromise = Promise
 var originFill = crypto.randomFill
 afterEach(function () {
   mock(originFill)
-  global.Promise = originPromise
 })
 
 it('generates URL-friendly IDs', function () {
@@ -99,24 +97,5 @@ it('rejects Promise on error', function () {
     catched = e
   }).then(function () {
     expect(catched).toBe(error)
-  })
-})
-
-it('has callback API', function (done) {
-  async(10, function (err, id) {
-    expect(id).toHaveLength(10)
-    done()
-  })
-})
-
-it('sends error to callback API', function (done) {
-  var error = new Error('test')
-  mock(function (buffer, callback) {
-    callback(error)
-  })
-  async(10, function (err, id) {
-    expect(err).toBe(error)
-    expect(id).toBeUndefined()
-    done()
   })
 })

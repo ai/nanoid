@@ -1,15 +1,5 @@
-var crypto = require('crypto')
-
+var random = require('./random')
 var url = require('../url')
-
-var random
-if (crypto.randomFill) {
-  random = function (bytes, callback) {
-    return crypto.randomFill(Buffer.allocUnsafe(bytes), callback)
-  }
-} else {
-  random = crypto.randomBytes
-}
 
 /**
  * Generate secure URL-friendly unique ID. Non-blocking version.
@@ -18,7 +8,6 @@ if (crypto.randomFill) {
  * to UUID v4.
  *
  * @param {number} [size=21] The number of symbols in ID.
- * @param {function} [callback] for environments without `Promise`.
  *
  * @return {Promise} Promise with random string.
  *
@@ -31,36 +20,13 @@ if (crypto.randomFill) {
  * @name async
  * @function
  */
-module.exports = function (size, callback, attempt) {
+module.exports = function (size) {
   size = size || 21
-
-  if (!callback) {
-    return new Promise(function (resolve, reject) {
-      module.exports(size, function (error, id) {
-        if (error) {
-          reject(error)
-        } else {
-          resolve(id)
-        }
-      })
-    })
-  }
-
-  random(size, function (err, bytes) {
-    if (err) {
-      if (typeof attempt === 'undefined') attempt = 3
-      attempt -= 1
-      if (attempt === 0) {
-        callback(err)
-      } else {
-        setTimeout(module.exports.bind(null, size, callback, attempt), 10)
-      }
-    } else {
-      var id = ''
-      while (0 < size--) {
-        id += url[bytes[size] & 63]
-      }
-      callback(null, id)
+  return random(size).then(function (bytes) {
+    var id = ''
+    while (0 < size--) {
+      id += url[bytes[size] & 63]
     }
+    return id
   })
 }
