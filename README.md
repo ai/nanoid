@@ -282,7 +282,19 @@ async function createUser () {
 }
 ```
 
+## Mongoose Unique Id
+```js
+const nanoId = require('nanoid');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
+const mySchema = new Schema({
+    _id: {
+        type: String,
+        default: () => nanoId()
+    }
+}
+```
 ## Tools
 
 * [ID size calculator] to choice smaller ID size depends on your case.
