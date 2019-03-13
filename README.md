@@ -165,6 +165,18 @@ async function createUser () {
 [a native random generator]: https://github.com/rh389/react-native-securerandom
 
 
+### Mongoose
+
+```js
+const mySchema = new Schema({
+  _id: {
+    type: String,
+    default: () => nanoid(10)
+  }
+})
+```
+
+
 ### Web Workers
 
 Web Workers don’t have access to a secure random generator.
@@ -282,19 +294,6 @@ async function createUser () {
 }
 ```
 
-## Mongoose Unique Id
-```js
-const nanoId = require('nanoid');
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-
-const mySchema = new Schema({
-    _id: {
-        type: String,
-        default: () => nanoId()
-    }
-}
-```
 ## Tools
 
 * [ID size calculator] to choice smaller ID size depends on your case.

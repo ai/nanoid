@@ -107,9 +107,34 @@ nanoid(10) //=> "IRFa-VaY2b"
 [ID 碰撞概率计算器]: https://alex7kom.github.io/nano-nanoid-cc/
 
 
-### React Native 和 Web Workers
+### React Native
 
-React Native 和 Web Worker 无法获取安全的随机生成器。
+```js
+const generateSecureRandom = require('react-native-securerandom').generateSecureRandom
+const format = require('nanoid/async/format')
+const url = require('nanoid/url')
+
+async function createUser () {
+  user.id = await format(generateSecureRandom, url, 21);
+}
+```
+
+
+### Mongoose
+
+```js
+const mySchema = new Schema({
+  _id: {
+    type: String,
+    default: () => nanoid(10)
+  }
+})
+```
+
+
+### Web Workers
+
+Web Worker 无法获取安全的随机生成器。
 
 安全性对于 ID 来说是非常重要的，ID 应当是不可被预测的。比如说 “通过链接获取” 的链接生成。
 
