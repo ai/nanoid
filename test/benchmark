@@ -34,11 +34,11 @@ suite
   .add('uuid/v4', function () {
     uuid4()
   })
-  .add('shortid', function () {
-    shortid()
-  })
   .add('secure-random-string', function () {
     srs()
+  })
+  .add('shortid', function () {
+    shortid()
   })
   .add('nanoid/async', {
     defer: true,
