@@ -50,6 +50,7 @@
     "parcel-bundler": "^1.12.1",
     "rimraf": "^2.6.3",
     "rndm": "^1.2.0",
+    "secure-random-string": "^1.1.0",
     "shortid": "^2.2.14",
     "size-limit": "^0.21.1",
     "uid-safe": "^2.1.5",

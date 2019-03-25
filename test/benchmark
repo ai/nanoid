@@ -4,6 +4,7 @@ var shortid = require('shortid')
 var uuid4 = require('uuid/v4')
 var chalk = require('chalk')
 var rndm = require('rndm')
+var srs = require('secure-random-string')
 var uid = require('uid-safe')
 
 var asyncGenerate = require('../async/generate')
@@ -36,6 +37,9 @@ suite
   .add('shortid', function () {
     shortid()
   })
+  .add('secure-random-string', function () {
+    srs()
+  })
   .add('nanoid/async', {
     defer: true,
     fn: function (defer) {
@@ -50,6 +54,12 @@ suite
       asyncGenerate('1234567890abcdef-', 10).then(function () {
         defer.resolve()
       })
+    }
+  })
+  .add('secure-random-string', {
+    defer: true,
+    fn: function (defer) {
+      srs(function () { defer.resolve() })
     }
   })
   .add('uid', {
