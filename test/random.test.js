@@ -1,4 +1,5 @@
 var crypto = require('crypto')
+
 var random = require('../random')
 
 function mock (callback) {
