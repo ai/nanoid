@@ -1,6 +1,6 @@
 {
   "name": "nanoid",
-  "version": "2.1.0-esm.0",
+  "version": "2.1.0-esm.1",
   "description": "A tiny (141 bytes), secure URL-friendly unique string ID generator",
   "module": "dist/index.js",
   "main": "dist/cjs/index.js",
