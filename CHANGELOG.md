@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.1.0-esm.0
+* es modules are available in `dist`  
+  commonjs is available in `source`
+
 ## 2.0.1
 * Reduce npm package size.
 * Mark package as not having side effects (by @xiaody).

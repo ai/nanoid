@@ -1,7 +1,9 @@
 {
   "name": "nanoid",
-  "version": "2.0.1",
+  "version": "2.1.0-esm.0",
   "description": "A tiny (141 bytes), secure URL-friendly unique string ID generator",
+  "module": "dist/index.js",
+  "main": "dist/cjs/index.js",
   "keywords": [
     "uuid",
     "random",
@@ -9,12 +11,16 @@
     "url"
   ],
   "scripts": {
+    "prepare": "run-s clean && run-p compile docs",
     "spellcheck": "yarn docs && yaspeller-ci *.md docs/*.html",
-    "clean": "rimraf docs/ coverage/",
-    "docs": "jsdoc -d docs *.js async/*.js non-secure/*.js",
-    "lint": "eslint-ci *.js {async,non-secure,test}/*.js test/{benchmark,alphabet,**/*.js}",
+    "clean": "rimraf dist coverage && mkdirp dist dist/cjs",
+    "docs": "jsdoc -d docs source/**/*.js",
+    "lint": "eslint-ci source/**/*.js",
+    "compile": "run-p compile-esm compile-cjs",
+    "compile-esm": "babel source --out-dir dist --plugins=transform-commonjs",
+    "compile-cjs": "babel source --out-dir dist/cjs",
     "test": "jest --coverage && yarn lint && size-limit && yarn spellcheck",
-    "start": "parcel serve test/demo/index.html -d test/demo/build --open"
+    "start": "parcel serve source/test/demo/index.html -d source/test/demo/build --open"
   },
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
@@ -27,7 +33,10 @@
   },
   "sideEffects": false,
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
     "@logux/eslint-config": "^28.0.0",
+    "babel-plugin-transform-commonjs": "^1.1.5",
     "benchmark": "^2.1.4",
     "chalk": "^2.4.2",
     "clean-publish": "^1.1.0",
@@ -48,6 +57,8 @@
     "jsdoc": "^3.5.5",
     "lint-staged": "^8.1.5",
     "microtime": "^3.0.0",
+    "mkdirp": "^0.5.1",
+    "npm-run-all": "^4.1.5",
     "parcel-bundler": "^1.12.3",
     "rimraf": "^2.6.3",
     "rndm": "^1.2.0",
@@ -60,31 +71,31 @@
   },
   "size-limit": [
     {
-      "path": "index.js",
+      "path": "source/index.js",
       "limit": "141 B"
     },
     {
-      "path": "generate.js",
+      "path": "source/generate.js",
       "limit": "177 B"
     },
     {
-      "path": "url.js",
+      "path": "source/url.js",
       "limit": "64 B"
     },
     {
-      "path": "non-secure/index.js",
+      "path": "source/non-secure/index.js",
       "limit": "105 B"
     },
     {
-      "path": "non-secure/generate.js",
+      "path": "source/non-secure/generate.js",
       "limit": "47 B"
     },
     {
-      "path": "async/index.js",
+      "path": "source/async/index.js",
       "limit": "153 B"
     },
     {
-      "path": "async/generate.js",
+      "path": "source/async/generate.js",
       "limit": "198 B"
     }
   ],
@@ -97,7 +108,7 @@
     },
     "overrides": {
       "files": [
-        "test/*.js"
+        "source/test/**/*.js"
       ],
       "rules": {
         "global-require": "off"
@@ -108,12 +119,14 @@
     "*.md": "yaspeller-ci",
     "*.js": "eslint"
   },
-  "husky": {
+  "husky---DISABLED": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
   "jest": {
+    "rootDir": "source",
+    "coverageDirectory": "../coverage",
     "testEnvironment": "node",
     "coverageThreshold": {
       "global": {
@@ -129,6 +142,9 @@
       "README-*.md"
     ],
     "dictionary": [
+      "esm",
+      "es",
+      "commonjs",
       "Versioning",
       "JSDoc",
       "GMT",
