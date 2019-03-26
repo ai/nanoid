@@ -156,8 +156,8 @@ To generate secure random IDs in React Native, you must use
 
 ```js
 const generateSecureRandom = require('react-native-securerandom').generateSecureRandom
-const format = require('nanoid/async/format')
-const url = require('nanoid/url')
+const format = require('nanoid/dist/cjs/async/format')
+const url = require('nanoid/dist/cjs/url')
 
 async function createUser () {
   user.id = await format(generateSecureRandom, url, 21);
@@ -190,10 +190,27 @@ If you don’t need unpredictable IDs, but you need Web Workers support,
 you can use non‑secure ID generator.
 
 ```js
-const nanoid = require('nanoid/non-secure')
+const nanoid = require('nanoid/dist/cjs/non-secure')
 model.id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
+### ES Modules
+
+in the browser, nanoid can now be loaded via es modules
+
+es modules are available under `nanoid/dist/`
+
+commonjs modules are available under `nanoid/dist/cjs/`
+
+[codepen example](https://codepen.io/ChaseMoskal/pen/XGQBBy?editors=1000)
+
+```html
+<script type="module">
+  import nanoid from "https://unpkg.com/nanoid-esm@2.1.0-esm.1/dist/index.browser.js"
+  console.log(nanoid())
+   //=> "17gt1A8xRyo6a7ZftdCxf"
+</script>
+```
 
 ## Async
 
@@ -204,7 +221,7 @@ If we will use asynchronous API for random generator,
 another code could be executed during the entropy collection.
 
 ```js
-const nanoid = require('nanoid/async')
+const nanoid = require('nanoid/dist/cjs/async')
 
 async function createUser () {
   user.id = await nanoid()
@@ -221,7 +238,7 @@ If you want to change the ID's alphabet or length
 you can use the low-level `generate` module.
 
 ```js
-const generate = require('nanoid/generate')
+const generate = require('nanoid/dist/cjs/generate')
 model.id = generate('1234567890abcdef', 10) //=> "4f90d13a42"
 ```
 
@@ -235,14 +252,14 @@ Otherwise, the generator will not be secure.
 Asynchronous and non-secure API is also available:
 
 ```js
-const generate = require('nanoid/async/generate')
+const generate = require('nanoid/dist/cjs/async/generate')
 async function createUser () {
   user.id = await generate('1234567890abcdef', 10)
 }
 ```
 
 ```js
-const generate = require('nanoid/non-secure/generate')
+const generate = require('nanoid/dist/cjs/non-secure/generate')
 
 user.id = generate('1234567890abcdef', 10)
 ```
@@ -257,7 +274,7 @@ You can replace the default safe random generator using the `format` module.
 For instance, to use a seed-based generator.
 
 ```js
-const format = require('nanoid/format')
+const format = require('nanoid/dist/cjs/format')
 
 function random (size) {
   const result = []
@@ -277,15 +294,15 @@ If you want to use the same URL-friendly symbols with `format`,
 you can get the default alphabet from the `url` file.
 
 ```js
-const url = require('nanoid/url')
+const url = require('nanoid/dist/cjs/url')
 format(random, url, 10) //=> "93ce_Ltuub"
 ```
 
 Asynchronous API is also available:
 
 ```js
-const format = require('nanoid/async/format')
-const url = require('nanoid/url')
+const format = require('nanoid/dist/cjs/async/format')
+const url = require('nanoid/dist/cjs/url')
 
 function random (size) {
   return new Promise(…)
@@ -299,7 +316,7 @@ async function createUser () {
 ## Tools
 
 * [ID size calculator] to choice smaller ID size depends on your case.
-* [`nanoid-dictionary`] with popular alphabets to use with `nanoid/generate`.
+* [`nanoid-dictionary`] with popular alphabets to use with `nanoid/dist/cjs/generate`.
 * [`nanoid-cli`] to generate ID from CLI.
 * [`nanoid-good`] to be sure that your ID doesn't contain any obscene words.
 
