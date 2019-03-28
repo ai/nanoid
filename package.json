@@ -2,6 +2,8 @@
   "name": "nanoid",
   "version": "2.0.1",
   "description": "A tiny (141 bytes), secure URL-friendly unique string ID generator",
+  "main": "index.js",
+  "module": "dist-esm/index.browser.js",
   "keywords": [
     "uuid",
     "random",
