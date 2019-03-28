@@ -53,7 +53,7 @@
     "rndm": "^1.2.0",
     "secure-random-string": "^1.1.0",
     "shortid": "^2.2.14",
-    "size-limit": "^0.21.1",
+    "size-limit": "^0.22.0",
     "uid-safe": "^2.1.5",
     "uuid": "^3.3.2",
     "yaspeller-ci": "^1.0.0"
