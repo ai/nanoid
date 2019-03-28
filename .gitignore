@@ -5,6 +5,7 @@ node_modules/
 npm-debug.log
 yarn-error.log
 
+/dist-esm
 coverage/
 docs/
 test/demo/build/

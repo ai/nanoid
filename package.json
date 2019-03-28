@@ -11,6 +11,7 @@
   "scripts": {
     "spellcheck": "yarn docs && yaspeller-ci *.md docs/*.html",
     "clean": "rimraf docs/ coverage/",
+    "compile-esm": "rimraf dist-esm && babel ./ --out-dir dist-esm --plugins=transform-commonjs --ignore node_modules --ignore dist-esm --ignore coverage --ignore docs --ignore test",
     "docs": "jsdoc -d docs *.js async/*.js non-secure/*.js",
     "lint": "eslint-ci *.js {async,non-secure,test}/*.js test/{benchmark,alphabet,**/*.js}",
     "test": "jest --coverage && yarn lint && size-limit && yarn spellcheck",
@@ -27,7 +28,10 @@
   },
   "sideEffects": false,
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.4.0",
     "@logux/eslint-config": "^28.0.0",
+    "babel-plugin-transform-commonjs": "^1.1.5",
     "benchmark": "^2.1.4",
     "chalk": "^2.4.2",
     "clean-publish": "^1.1.0",
