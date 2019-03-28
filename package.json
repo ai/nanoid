@@ -11,7 +11,7 @@
   "scripts": {
     "spellcheck": "yarn docs && yaspeller-ci *.md docs/*.html",
     "clean": "rimraf docs/ coverage/",
-    "compile-esm": "rimraf dist-esm && babel ./ --out-dir dist-esm --plugins=transform-commonjs --ignore node_modules --ignore dist-esm --ignore coverage --ignore docs --ignore test",
+    "compile-esm": "rimraf dist-esm && babel ./ --out-dir dist-esm --plugins=transform-commonjs --ignore node_modules --ignore dist-esm --ignore coverage --ignore docs --ignore test && eliminate-text-between '// <disabled-in-es-modules>' '// </>' dist-esm/index.browser.js",
     "docs": "jsdoc -d docs *.js async/*.js non-secure/*.js",
     "lint": "eslint-ci *.js {async,non-secure,test}/*.js test/{benchmark,alphabet,**/*.js}",
     "test": "jest --coverage && yarn lint && size-limit && yarn spellcheck",
@@ -35,6 +35,7 @@
     "benchmark": "^2.1.4",
     "chalk": "^2.4.2",
     "clean-publish": "^1.1.0",
+    "eliminate-text-between": "^0.0.4",
     "eslint": "^5.15.3",
     "eslint-ci": "^1.0.0",
     "eslint-config-standard": "^12.0.0",

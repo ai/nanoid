@@ -1,11 +1,15 @@
+// <disabled-in-es-modules>
 if (process.env.NODE_ENV !== 'production') {
+// </>
   if (typeof self === 'undefined' || (!self.crypto && !self.msCrypto)) {
     throw new Error(
       'Your browser does not have secure random generator. ' +
       'If you don’t need unpredictable IDs, you can use nanoid/non-secure.'
     )
   }
+// <disabled-in-es-modules>
 }
+// </>
 
 var crypto = self.crypto || self.msCrypto
 
