@@ -11,6 +11,7 @@
     "url"
   ],
   "scripts": {
+    "prepare": "yarn clean && yarn compile-esm && yarn docs && yarn test",
     "spellcheck": "yarn docs && yaspeller-ci *.md docs/*.html",
     "clean": "rimraf docs/ coverage/",
     "compile-esm": "rimraf dist-esm && babel ./ --out-dir dist-esm --plugins=transform-commonjs --ignore node_modules --ignore dist-esm --ignore coverage --ignore docs --ignore test && eliminate-text-between '// <disabled-in-es-modules>' '// </>' dist-esm/index.browser.js",
