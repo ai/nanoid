@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "docs": "documentation build *.js *.js async/*.js non-secure/*.js -f md -o api.md",
-    "spell": "yarn docs && yaspeller-ci *.md docs/*.html",
+    "spell": "yarn docs && yaspeller-ci *.md",
     "clean": "rimraf api.md coverage/",
     "lint": "eslint-ci *.js {async,non-secure,test}/*.js test/{benchmark,alphabet,**/*.js}",
     "test": "jest --coverage && yarn lint && size-limit && yarn spell",
