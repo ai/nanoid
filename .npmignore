@@ -11,6 +11,6 @@ coverage/
 
 README-*.md
 .jsdocrc
-docs/
+api.md
 img/
 .cache

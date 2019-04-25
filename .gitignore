@@ -6,6 +6,6 @@ npm-debug.log
 yarn-error.log
 
 coverage/
-docs/
+api.md
 test/demo/build/
 .cache
