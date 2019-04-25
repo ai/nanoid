@@ -125,7 +125,6 @@
     "lang": "en",
     "ignoreCapitalization": true,
     "excludeFiles": [
-      "docs/*.js.html",
       "README-*.md"
     ],
     "dictionary": [
