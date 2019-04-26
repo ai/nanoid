@@ -1240,10 +1240,10 @@
     "@types/istanbul-lib-coverage" "^2.0.0"
     "@types/yargs" "^12.0.9"
 
-"@logux/eslint-config@^28.1.0":
-  version "28.1.0"
-  resolved "https://registry.yarnpkg.com/@logux/eslint-config/-/eslint-config-28.1.0.tgz#11a502ada9c716548f3e0d7a83134df056c78c94"
-  integrity sha512-EnrjA+L6gWsWIfsPQZa4zuUqaxRdXCaNuk2vbREQLrPqq+UqW0WKBCbCDeuEFIlX/b8Khb1I2usOgeXC9ZrEjw==
+"@logux/eslint-config@^28.2.0":
+  version "28.2.0"
+  resolved "https://registry.yarnpkg.com/@logux/eslint-config/-/eslint-config-28.2.0.tgz#a0e3bc1e3a66edde4c40d2c2bcb1edb6c1e2d7e4"
+  integrity sha512-W3T+tFBKGjOo7G4I2EqXne3ZoI6r5XGmouXHvF/AB9bVO/CJ/IToRkGE/Zll2Ky8Epcsmc42ic5TmVhgrDIwuA==
   dependencies:
     globals "^11.11.0"
 

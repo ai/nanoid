@@ -27,7 +27,7 @@
   },
   "sideEffects": false,
   "devDependencies": {
-    "@logux/eslint-config": "^28.1.0",
+    "@logux/eslint-config": "^28.2.0",
     "benchmark": "^2.1.4",
     "chalk": "^2.4.2",
     "clean-publish": "^1.1.2",
@@ -92,7 +92,6 @@
     "extends": "@logux/eslint-config/browser",
     "rules": {
       "consistent-return": "off",
-      "valid-jsdoc": "off",
       "yoda": "off"
     },
     "overrides": {
