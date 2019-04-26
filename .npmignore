@@ -10,7 +10,6 @@ coverage/
 .travis.yml
 
 README-*.md
-.jsdocrc
 api.md
 img/
 .cache
