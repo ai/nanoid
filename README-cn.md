@@ -129,8 +129,6 @@ const nanoid = require('nanoid')
 model.id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
-字符 `-,.()` 不会在 URL 里转码，因为如果在链接末尾使用，他们会被识别成标点符号。
-
 如果你想要降低 ID 长度 (并会提高碰撞概率)，你可以把长度作为参数传递进去。
 
 ```js

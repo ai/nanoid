@@ -144,9 +144,6 @@ const nanoid = require('nanoid')
 model.id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
-Symbols `-,.()` are not encoded in the URL. If used at the end of a link
-they could be identified as a punctuation symbol.
-
 If you want to reduce ID length (and increase collisions probability),
 you can pass the length as an argument.
 
