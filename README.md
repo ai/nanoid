@@ -98,6 +98,41 @@ rndm                    2,413,565 ops/sec
 ```
 
 
+## Tools
+
+* [ID size calculator] to choice smaller ID size depends on your case.
+* [`nanoid-dictionary`] with popular alphabets to use with `nanoid/generate`.
+* [`nanoid-cli`] to generate ID from CLI.
+* [`nanoid-good`] to be sure that your ID doesn't contain any obscene words.
+
+[`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
+[ID size calculator]:  https://zelark.github.io/nano-id-cc/
+[`nanoid-cli`]:        https://github.com/twhitbeck/nanoid-cli
+[`nanoid-good`]:       https://github.com/y-gagar1n/nanoid-good
+
+
+## Other Programming Languages
+
+* [C#](https://github.com/codeyu/nanoid-net)
+* [Clojure and ClojureScript](https://github.com/zelark/nano-id)
+* [Crystal](https://github.com/mamantoha/nanoid.cr)
+* [Dart](https://github.com/pd4d10/nanoid)
+* [Go](https://github.com/matoous/go-nanoid)
+* [Elixir](https://github.com/railsmechanic/nanoid)
+* [Haskell](https://github.com/4e6/nanoid-hs)
+* [Java](https://github.com/aventrix/jnanoid)
+* [Nim](https://github.com/icyphox/nanoid.nim)
+* [PHP](https://github.com/hidehalo/nanoid-php)
+* [Python](https://github.com/puyuan/py-nanoid) with [dictionaries](https://github.com/aidarkhanov/py-nanoid-dictionary)
+* [Ruby](https://github.com/radeno/nanoid.rb)
+* [Rust](https://github.com/nikolay-govorov/nanoid)
+* [Swift](https://github.com/antiflasher/NanoID)
+
+Also, [CLI tool] is available to generate IDs from a command line.
+
+[CLI tool]: https://github.com/twhitbeck/nanoid-cli
+
+
 ## Usage
 
 ### Normal
@@ -126,6 +161,7 @@ in our [ID collision probability] calculator.
 [ID collision probability]: https://zelark.github.io/nano-id-cc/
 
 ### React
+
 **Do not** use a nanoid for `key` prop. In React `key` should be consistence
 between renders. This is bad code:
 
@@ -195,7 +231,7 @@ model.id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
 
-## Async
+### Async
 
 To generate hardware random bytes, CPU will collect electromagnetic noise.
 During the collection, CPU doesn’t work.
@@ -215,7 +251,7 @@ Unfortunately, you will not have any benefits in a browser, since Web Crypto A
 doesn’t have asynchronous API.
 
 
-## Custom Alphabet or Length
+### Custom Alphabet or Length
 
 If you want to change the ID's alphabet or length
 you can use the low-level `generate` module.
@@ -251,7 +287,7 @@ user.id = generate('1234567890abcdef', 10)
 [`nanoid-dictionary`]:      https://github.com/CyberAP/nanoid-dictionary
 
 
-## Custom Random Bytes Generator
+### Custom Random Bytes Generator
 
 You can replace the default safe random generator using the `format` module.
 For instance, to use a seed-based generator.
@@ -295,37 +331,3 @@ async function createUser () {
   user.id = await format(random, url, 10)
 }
 ```
-
-## Tools
-
-* [ID size calculator] to choice smaller ID size depends on your case.
-* [`nanoid-dictionary`] with popular alphabets to use with `nanoid/generate`.
-* [`nanoid-cli`] to generate ID from CLI.
-* [`nanoid-good`] to be sure that your ID doesn't contain any obscene words.
-
-[`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
-[ID size calculator]:  https://zelark.github.io/nano-id-cc/
-[`nanoid-cli`]:        https://github.com/twhitbeck/nanoid-cli
-[`nanoid-good`]:       https://github.com/y-gagar1n/nanoid-good
-
-
-## Other Programming Languages
-
-* [C#](https://github.com/codeyu/nanoid-net)
-* [Clojure and ClojureScript](https://github.com/zelark/nano-id)
-* [Crystal](https://github.com/mamantoha/nanoid.cr)
-* [Dart](https://github.com/pd4d10/nanoid)
-* [Go](https://github.com/matoous/go-nanoid)
-* [Elixir](https://github.com/railsmechanic/nanoid)
-* [Haskell](https://github.com/4e6/nanoid-hs)
-* [Java](https://github.com/aventrix/jnanoid)
-* [Nim](https://github.com/icyphox/nanoid.nim)
-* [PHP](https://github.com/hidehalo/nanoid-php)
-* [Python](https://github.com/puyuan/py-nanoid) with [dictionaries](https://github.com/aidarkhanov/py-nanoid-dictionary)
-* [Ruby](https://github.com/radeno/nanoid.rb)
-* [Rust](https://github.com/nikolay-govorov/nanoid)
-* [Swift](https://github.com/antiflasher/NanoID)
-
-Also, [CLI tool] is available to generate IDs from a command line.
-
-[CLI tool]: https://github.com/twhitbeck/nanoid-cli

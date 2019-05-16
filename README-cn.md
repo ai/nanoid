@@ -85,6 +85,41 @@ rndm                    2,413,565 ops/sec
 ```
 
 
+## 工具
+
+* 使用 [ID 大小计算器] 来根据你的情况选择 ID 大小。
+* 用 [`nanoid-字典`] 选择常用的字符标，来配合使用 `nanoid/generate`。
+* [`nanoid-cli`] 在命令行生存 ID.
+* 用 [`nanoid-good`] 来保证你的 ID 里不会出现不好的词语。
+
+[`nanoid-字典`]: https://github.com/CyberAP/nanoid-dictionary
+[ID 大小计算器]:  https://alex7kom.github.io/nano-nanoid-cc/
+[`nanoid-cli`]:        https://github.com/twhitbeck/nanoid-cli
+[`nanoid-good`]:       https://github.com/y-gagar1n/nanoid-good
+
+
+## 其他编程语言
+
+* [C#](https://github.com/codeyu/nanoid-net)
+* [Clojure, ClojureScript](https://github.com/zelark/nano-id)
+* [Crystal](https://github.com/mamantoha/nanoid.cr)
+* [Dart](https://github.com/pd4d10/nanoid)
+* [Go](https://github.com/matoous/go-nanoid)
+* [Elixir](https://github.com/railsmechanic/nanoid)
+* [Haskell](https://github.com/4e6/nanoid-hs)
+* [Java](https://github.com/aventrix/jnanoid)
+* [Nim](https://github.com/icyphox/nanoid.nim)
+* [PHP](https://github.com/hidehalo/nanoid-php)
+* [Python](https://github.com/puyuan/py-nanoid), [py-nanoid-dictionary](https://github.com/aidarkhanov/py-nanoid-dictionary)
+* [Ruby](https://github.com/radeno/nanoid.rb)
+* [Rust](https://github.com/nikolay-govorov/nanoid)
+* [Swift](https://github.com/antiflasher/NanoID)
+
+另外， [CLI tool] 也可以用来在命令行里生成 ID。
+
+[CLI tool]: https://github.com/twhitbeck/nanoid-cli
+
+
 ## 使用方法
 
 ### 常规
@@ -148,7 +183,7 @@ model.id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
 
-## 异步
+### 异步
 
 为了生成硬件随机字节，CPU 将会收集电磁噪音。在收集期间，CPU 会停止工作。所以如果我们使用异步的硬件随机生成器接口，你的其他代码也可以在收集期间执行。
 
@@ -206,38 +241,3 @@ format(random, "abcdef", 10) //=> "fbaefaadeb"
 const url = require('nanoid/url')
 format(random, url, 10) //=> "93ce_Ltuub"
 ```
-
-
-## 工具
-
-* 使用 [ID 大小计算器] 来根据你的情况选择 ID 大小。
-* 用 [`nanoid-字典`] 选择常用的字符标，来配合使用 `nanoid/generate`。
-* [`nanoid-cli`] 在命令行生存 ID.
-* 用 [`nanoid-good`] 来保证你的 ID 里不会出现不好的词语。
-
-[`nanoid-字典`]: https://github.com/CyberAP/nanoid-dictionary
-[ID 大小计算器]:  https://alex7kom.github.io/nano-nanoid-cc/
-[`nanoid-cli`]:        https://github.com/twhitbeck/nanoid-cli
-[`nanoid-good`]:       https://github.com/y-gagar1n/nanoid-good
-
-
-## 其他编程语言
-
-* [C#](https://github.com/codeyu/nanoid-net)
-* [Clojure, ClojureScript](https://github.com/zelark/nano-id)
-* [Crystal](https://github.com/mamantoha/nanoid.cr)
-* [Dart](https://github.com/pd4d10/nanoid)
-* [Go](https://github.com/matoous/go-nanoid)
-* [Elixir](https://github.com/railsmechanic/nanoid)
-* [Haskell](https://github.com/4e6/nanoid-hs)
-* [Java](https://github.com/aventrix/jnanoid)
-* [Nim](https://github.com/icyphox/nanoid.nim)
-* [PHP](https://github.com/hidehalo/nanoid-php)
-* [Python](https://github.com/puyuan/py-nanoid), [py-nanoid-dictionary](https://github.com/aidarkhanov/py-nanoid-dictionary)
-* [Ruby](https://github.com/radeno/nanoid.rb)
-* [Rust](https://github.com/nikolay-govorov/nanoid)
-* [Swift](https://github.com/antiflasher/NanoID)
-
-另外， [CLI tool] 也可以用来在命令行里生成 ID。
-
-[CLI tool]: https://github.com/twhitbeck/nanoid-cli
