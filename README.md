@@ -136,8 +136,6 @@ Also, [CLI tool] is available to generate IDs from a command line.
 
 ## Usage
 
-### Normal
-
 The main module uses URL-friendly symbols (`A-Za-z0-9_-`) and returns an ID
 with 21 characters (to have a collision probability similar to UUID v4).
 
