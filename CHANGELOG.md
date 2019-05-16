@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.0.2
+* Improve docs (by Sylvanus Kateile and Mark Stosberg).
+
 ## 2.0.1
 * Reduce npm package size.
 * Mark package as not having side effects (by @xiaody).
