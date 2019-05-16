@@ -26,29 +26,6 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 </a>
 
 
-## 安全性
-
-*这里可以阅读一篇关于随机生成器理论的文章：[安全的随机数值（以 Node.js 为例）]*
-
-### 不可预测性
-
-Nano ID 使用了 `crypto` Node.js 模块和浏览器的 Web Crypto API，而不是不安全的 `Math.random()`。这些安全的模块使用了不可被预测的硬件随机生成器。
-
-
-### Uniformity一致性
-
-`random % alphabet` 是一个在编写一个 ID 生成器时常见的错误。
-这种写法会使得分布不均匀，某些字符的出现率会比其他字符低，这会降低使用蛮力（brute-force）破解的时间。
-
-Nano ID 使用了一个[更好的算法]，并被测试了字符分布的一致性。
-
-<img src="img/distribution.png" alt="Nano ID 一致性"
-     width="340" height="135">
-
-[安全的随机数值（以 Node.js 为例）]: https://gist.github.com/joepie91/7105003c3b26e65efcea63f3db82dfba
-[更好的算法]: https://github.com/ai/nanoid/blob/master/format.js
-
-
 ## 与 UUID 比较
 
 Nano ID 与 UUID v4 (random-based) 非常有可比性。 它与 UUID 有类似长度的随机位数（Nano ID: 126, UUID: 122），所以他们有一个类似的碰撞概率：
@@ -83,6 +60,29 @@ Non-secure:
 nanoid/non-secure       2,555,814 ops/sec
 rndm                    2,413,565 ops/sec
 ```
+
+
+## 安全性
+
+*这里可以阅读一篇关于随机生成器理论的文章：[安全的随机数值（以 Node.js 为例）]*
+
+### 不可预测性
+
+Nano ID 使用了 `crypto` Node.js 模块和浏览器的 Web Crypto API，而不是不安全的 `Math.random()`。这些安全的模块使用了不可被预测的硬件随机生成器。
+
+
+### Uniformity一致性
+
+`random % alphabet` 是一个在编写一个 ID 生成器时常见的错误。
+这种写法会使得分布不均匀，某些字符的出现率会比其他字符低，这会降低使用蛮力（brute-force）破解的时间。
+
+Nano ID 使用了一个[更好的算法]，并被测试了字符分布的一致性。
+
+<img src="img/distribution.png" alt="Nano ID 一致性"
+     width="340" height="135">
+
+[安全的随机数值（以 Node.js 为例）]: https://gist.github.com/joepie91/7105003c3b26e65efcea63f3db82dfba
+[更好的算法]: https://github.com/ai/nanoid/blob/master/format.js
 
 
 ## 工具
