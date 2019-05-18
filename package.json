@@ -119,7 +119,7 @@
       "README-*.md"
     ],
     "ignoreText": [
-      "\\(by [^ )]+( [^ )]+)*\\)"
+      " \\(by [^)]+\\)."
     ],
     "dictionary": [
       "Async",
