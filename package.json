@@ -93,14 +93,6 @@
     "rules": {
       "consistent-return": "off",
       "yoda": "off"
-    },
-    "overrides": {
-      "files": [
-        "test/*.js"
-      ],
-      "rules": {
-        "global-require": "off"
-      }
     }
   },
   "lint-staged": {
