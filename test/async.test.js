@@ -49,6 +49,13 @@ it('changes ID length', function () {
   })
 })
 
+it('throws on string', function () {
+  expect.assertions(1)
+  return async('10').catch(function (error) {
+    expect(error).toBeDefined()
+  })
+})
+
 it('has no collisions', function () {
   return Promise.all(times(100 * 1000, function () {
     return async()

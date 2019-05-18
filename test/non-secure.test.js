@@ -15,6 +15,10 @@ it('changes ID length', function () {
   expect(nonSecure(10)).toHaveLength(10)
 })
 
+it('accepts string', function () {
+  expect(nonSecure('10')).toHaveLength(10)
+})
+
 it('has no collisions', function () {
   var used = { }
   for (var i = 0; i < 100 * 1000; i++) {

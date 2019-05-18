@@ -14,6 +14,12 @@ it('has options', function () {
   })
 })
 
+it('accepts string', function () {
+  return generate('a', '5').then(function (id) {
+    expect(id).toEqual('aaaaa')
+  })
+})
+
 it('has flat distribution', function () {
   var COUNT = 100 * 1000
   var LENGTH = 5
