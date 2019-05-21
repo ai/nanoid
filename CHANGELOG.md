@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.0.3
+* Fix freeze on string in ID length.
+
 ## 2.0.2
 * Improve docs (by Sylvanus Kateile and Mark Stosberg).
 
