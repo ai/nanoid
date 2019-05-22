@@ -114,6 +114,9 @@ Nano ID uses a [better algorithm] and is tested for uniformity.
 
 ## Other Programming Languages
 
+Nano ID was ported to many languages. You can use these ports to have the same
+ID generators on client and server side.
+
 * [C#](https://github.com/codeyu/nanoid-net)
 * [Clojure and ClojureScript](https://github.com/zelark/nano-id)
 * [Crystal](https://github.com/mamantoha/nanoid.cr)
