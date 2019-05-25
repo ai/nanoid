@@ -44,7 +44,7 @@ There are three main differences between Nano ID and UUID v4:
    are packed in just 21 symbols instead of 36.
 2. Nano ID code is 3 times less than `uuid/v4` package:
    141 bytes instead of 435.
-3. Because of memory allocation tricks, Nano ID 16% faster than UUID.
+3. Because of memory allocation tricks, Nano ID is 16% faster than UUID.
 
 
 ## Benchmark
