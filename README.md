@@ -168,21 +168,25 @@ between renders. This is bad code:
 <Item key={nanoid()} /> /* DON’T DO IT */
 ```
 
-This is good code. Note, that we added `"input"` string in front of `id`,
-because Nano ID could be started from number. HTML ID can’t be started
-from the number.
+This is good code. `this.id` will be generated only once.
+Note, that we added `"input"` string in front of `id`, because Nano ID could
+be started from number. HTML ID can’t be started from the number.
 
 ```jsx
-  id = 'input' + nanoid()
-
+  id = nanoid()
   render () {
-    return <>
-      <label htmlFor={this.id}>Label text</label>
-      <input id={this.id} type="text"/>
-    </>;
+    return <Item key={this.id}>;
   }
 }
 ```
+
+If you want to use Nano ID for `id`, you must to set some string prefix.
+Nano ID could be started from number. HTML ID can’t be started from the number.
+
+```jsx
+<input id={'id' + this.id} type="text"/>
+```
+
 
 ### React Native
 
