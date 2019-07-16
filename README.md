@@ -39,6 +39,7 @@ The generator supports Node.js, React Native, and [all browsers].
    2. [React](#react)
    3. [React Native](#react-native)
    4. [Web Workers](#web-workers)
+   5. [PouchDB and CouchDB](#pouchdb-and-couchdb)
    5. [Mongoose](#mongoose)
    6. [Other Programming Languages](#other-programming-languages)
 7. API
@@ -200,13 +201,26 @@ async function createUser () {
 [a native random generator]: https://github.com/rh389/react-native-securerandom
 
 
+### PouchDB and CouchDB
+
+In these PouchDB and CouchDB ID can’t start from `_`. This is why you need
+to add some prefix, because Nano ID can contain `_` in any position.
+
+```js
+db.put({
+  _id: 'id' + nanoid(),
+  …
+})
+```
+
+
 ### Mongoose
 
 ```js
 const mySchema = new Schema({
   _id: {
     type: String,
-    default: () => nanoid(10)
+    default: () => nanoid()
   }
 })
 ```

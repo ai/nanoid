@@ -143,7 +143,9 @@
       "UUID",
       "v4",
       "Versioning",
-      "JS"
+      "JS",
+      "PouchDB",
+      "CouchDB"
     ]
   }
 }
