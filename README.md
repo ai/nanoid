@@ -28,6 +28,24 @@ The generator supports Node.js, React Native, and [all browsers].
        alt="Sponsored by Evil Martians" width="236" height="54">
 </a>
 
+## Table of Contents
+
+1. [Comparison with UUID](#comparison-with-uuid)
+2. [Benchmark](#benchmark)
+3. [Security](#security)
+4. [Tools](#tools)
+6. Usage
+   1. [JS](#js)
+   2. [React](#react)
+   3. [React Native](#react-native)
+   4. [Web Workers](#web-workers)
+   5. [Mongoose](#mongoose)
+   6. [Other Programming Languages](#other-programming-languages)
+7. API
+   1. [Async](#async)
+   2. [Custom Alphabet or Length](#custom-alphabet-or-length)
+   3. [Custom Random Bytes Generator](#custom-random-bytes-generator)
+
 
 ## Comparison with UUID
 
@@ -112,32 +130,9 @@ Nano ID uses a [better algorithm] and is tested for uniformity.
 [`nanoid-good`]:       https://github.com/y-gagar1n/nanoid-good
 
 
-## Other Programming Languages
-
-Nano ID was ported to many languages. You can use these ports to have the same
-ID generators on client and server side.
-
-* [C#](https://github.com/codeyu/nanoid-net)
-* [Clojure and ClojureScript](https://github.com/zelark/nano-id)
-* [Crystal](https://github.com/mamantoha/nanoid.cr)
-* [Dart](https://github.com/pd4d10/nanoid)
-* [Go](https://github.com/matoous/go-nanoid)
-* [Elixir](https://github.com/railsmechanic/nanoid)
-* [Haskell](https://github.com/4e6/nanoid-hs)
-* [Java](https://github.com/aventrix/jnanoid)
-* [Nim](https://github.com/icyphox/nanoid.nim)
-* [PHP](https://github.com/hidehalo/nanoid-php)
-* [Python](https://github.com/puyuan/py-nanoid) with [dictionaries](https://github.com/aidarkhanov/py-nanoid-dictionary)
-* [Ruby](https://github.com/radeno/nanoid.rb)
-* [Rust](https://github.com/nikolay-govorov/nanoid)
-* [Swift](https://github.com/antiflasher/NanoID)
-
-Also, [CLI tool] is available to generate IDs from a command line.
-
-[CLI tool]: https://github.com/twhitbeck/nanoid-cli
-
-
 ## Usage
+
+### JS
 
 The main module uses URL-friendly symbols (`A-Za-z0-9_-`) and returns an ID
 with 21 characters (to have a collision probability similar to UUID v4).
@@ -158,6 +153,7 @@ Don’t forget to check the safety of your ID length
 in our [ID collision probability] calculator.
 
 [ID collision probability]: https://zelark.github.io/nano-id-cc/
+
 
 ### React
 
@@ -231,6 +227,33 @@ const nanoid = require('nanoid/non-secure')
 model.id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
+
+### Other Programming Languages
+
+Nano ID was ported to many languages. You can use these ports to have the same
+ID generators on client and server side.
+
+* [C#](https://github.com/codeyu/nanoid-net)
+* [Clojure and ClojureScript](https://github.com/zelark/nano-id)
+* [Crystal](https://github.com/mamantoha/nanoid.cr)
+* [Dart](https://github.com/pd4d10/nanoid)
+* [Go](https://github.com/matoous/go-nanoid)
+* [Elixir](https://github.com/railsmechanic/nanoid)
+* [Haskell](https://github.com/4e6/nanoid-hs)
+* [Java](https://github.com/aventrix/jnanoid)
+* [Nim](https://github.com/icyphox/nanoid.nim)
+* [PHP](https://github.com/hidehalo/nanoid-php)
+* [Python](https://github.com/puyuan/py-nanoid) with [dictionaries](https://github.com/aidarkhanov/py-nanoid-dictionary)
+* [Ruby](https://github.com/radeno/nanoid.rb)
+* [Rust](https://github.com/nikolay-govorov/nanoid)
+* [Swift](https://github.com/antiflasher/NanoID)
+
+Also, [CLI tool] is available to generate IDs from a command line.
+
+[CLI tool]: https://github.com/twhitbeck/nanoid-cli
+
+
+## API
 
 ### Async
 
