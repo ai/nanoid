@@ -205,7 +205,9 @@ async function createUser () {
 
 ### PouchDB and CouchDB
 
-In PouchDB and CouchDB, IDs can’t with an underscore (_). A prefix is required to prevent this issue, as Nano ID might use a _ at the start of the ID by default.
+In PouchDB and CouchDB, IDs can’t with an underscore `_`.
+A prefix is required to prevent this issue, as Nano ID might use a `_`
+at the start of the ID by default.
 
 Override the default ID with the following option:
 
