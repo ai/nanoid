@@ -198,6 +198,24 @@ async function createUser () {
 }
 ```
 
+#### Expo
+
+If you are using expo, you can not use [a native random generator] because it requires native-linking. Anyway you can use [expo-random] as the secure number generator.
+
+```ts
+import { getRandomBytesAsync } from 'expo-random';
+import format from 'nanoid/async/format';
+import url from 'nanoid/url';
+
+// Only required if you use TypeScript to tell the compiler that the types are compatible.
+const random = (getRandomBytesAsync as unknown) as (byteCount: number) => Promise<number[]>;
+
+export const id = async () => format(random, url, 21);
+```
+
+Also, if you don't need secure id's there is still the non-secure version, which does not require a secure number generator (only use if you don't care about predictable IDs).
+
+[expo-random]: https://github.com/expo/expo/tree/master/packages/expo-random
 [a native random generator]: https://github.com/rh389/react-native-securerandom
 
 
