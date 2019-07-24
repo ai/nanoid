@@ -9,11 +9,11 @@
     "url"
   ],
   "scripts": {
-    "api": "documentation build *.js *.js async/*.js non-secure/*.js -f md -o api.md",
+    "api": "documentation build *.js {async,non-secure}/*.js -f md -o api.md",
     "spell": "yarn api && yaspeller-ci *.md",
     "clean": "rimraf api.md coverage/",
-    "lint": "eslint-ci *.js {async,non-secure,test}/*.js test/{benchmark,alphabet,**/*.js}",
-    "test": "jest --coverage && yarn lint && size-limit && yarn spell",
+    "lint": "eslint-ci . --ignore-pattern 'node_modules' --ignore-pattern 'test/demo/build'",
+    "test": "jest --coverage && yarn lint && yarn spell",
     "start": "parcel serve test/demo/index.html -d test/demo/build --open"
   },
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
@@ -27,24 +27,25 @@
   },
   "sideEffects": false,
   "devDependencies": {
-    "@logux/eslint-config": "^29.0.1",
+    "@logux/eslint-config": "^29.1.1",
+    "@logux/sharec-config": "^0.2.0",
     "benchmark": "^2.1.4",
     "chalk": "^2.4.2",
     "clean-publish": "^1.1.2",
-    "documentation": "^12.0.1",
-    "eslint": "^6.0.1",
+    "documentation": "^12.0.3",
+    "eslint": "^6.1.0",
     "eslint-ci": "^1.0.0",
     "eslint-config-standard": "^13.0.1",
     "eslint-plugin-es5": "^1.4.1",
-    "eslint-plugin-import": "^2.18.0",
+    "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-import-helpers": "^1.0.2",
-    "eslint-plugin-jest": "^22.8.0",
+    "eslint-plugin-jest": "^22.13.6",
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.0",
     "gzip-size": "^5.1.1",
-    "husky": "^3.0.0",
+    "husky": "^3.0.1",
     "jest": "^24.8.0",
     "lint-staged": "^9.2.0",
     "microtime": "^3.0.0",
@@ -118,9 +119,6 @@
     "excludeFiles": [
       "README-*.md"
     ],
-    "ignoreText": [
-      " \\(by [^)]+\\)."
-    ],
     "dictionary": [
       "Async",
       "asyncGenerator",
@@ -146,6 +144,12 @@
       "JS",
       "PouchDB",
       "CouchDB"
+    ],
+    "ignoreText": [
+      " \\(by [^)]+\\)."
     ]
+  },
+  "sharec": {
+    "version": "0.2.0"
   }
 }
