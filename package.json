@@ -12,8 +12,7 @@
     "api": "documentation build *.js {async,non-secure}/*.js -f md -o api.md",
     "spell": "yarn api && yaspeller-ci *.md",
     "clean": "rimraf api.md coverage/",
-    "lint": "eslint-ci . --ignore-pattern 'node_modules' --ignore-pattern 'test/demo/build'",
-    "test": "jest --coverage && yarn lint && yarn spell",
+    "test": "jest --coverage && eslint-ci . && size-limit && yarn spell",
     "start": "parcel serve test/demo/index.html -d test/demo/build --open"
   },
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
@@ -28,7 +27,7 @@
   "sideEffects": false,
   "devDependencies": {
     "@logux/eslint-config": "^29.1.1",
-    "@logux/sharec-config": "^0.2.0",
+    "@logux/sharec-config": "^0.3.0",
     "benchmark": "^2.1.4",
     "chalk": "^2.4.2",
     "clean-publish": "^1.1.2",
@@ -96,6 +95,10 @@
       "yoda": "off"
     }
   },
+  "eslintIgnore": [
+    "node_modules",
+    "test/demo/build"
+  ],
   "lint-staged": {
     "*.md": "yaspeller-ci",
     "*.js": "eslint"
@@ -118,6 +121,9 @@
     "ignoreCapitalization": true,
     "excludeFiles": [
       "README-*.md"
+    ],
+    "ignoreText": [
+      " \\(by [^)]+\\)."
     ],
     "dictionary": [
       "Async",
@@ -144,12 +150,9 @@
       "JS",
       "PouchDB",
       "CouchDB"
-    ],
-    "ignoreText": [
-      " \\(by [^)]+\\)."
     ]
   },
   "sharec": {
-    "version": "0.2.0"
+    "version": "0.3.0"
   }
 }

@@ -1255,10 +1255,10 @@
   dependencies:
     globals "^11.12.0"
 
-"@logux/sharec-config@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@logux/sharec-config/-/sharec-config-0.2.0.tgz#7f9c5c3db669f61807d4a0960d0ddfe98ae20630"
-  integrity sha512-0Nkrlb65jLpaDQNGtPmPf9AQ6s3bv9Ax1YpO2eiLEvB2eDkTdmMiu+ra0CBQv6uHDJs0KOAQS9tGKdUg7jaw9A==
+"@logux/sharec-config@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@logux/sharec-config/-/sharec-config-0.3.0.tgz#1d88ac3514e85111785620f3d601b0c217081566"
+  integrity sha512-JBYoXTSIm2rMgJ6k/zFEGZ3nVVrotFF9GR6oiW7pNkjYTANljxT9TDZGzFFNHGm+I6b4maQEZ66RrPQ2e+ZpqA==
   dependencies:
     sharec "^2.5.0-beta"
 
