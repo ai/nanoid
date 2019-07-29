@@ -1,11 +1,11 @@
-var crypto = require('crypto')
+let crypto = require('crypto')
 
-var async = require('../async')
-var url = require('../url')
+let async = require('../async')
+let url = require('../url')
 
 function times (size, callback) {
-  var array = []
-  for (var i = 0; i < 100; i++) {
+  let array = []
+  for (let i = 0; i < 100; i++) {
     array.push(1)
   }
   return array.map(callback)
@@ -17,92 +17,87 @@ function mock (callback) {
   async = require('../async')
 }
 
-var originFill = crypto.randomFill
-afterEach(function () {
+let originFill = crypto.randomFill
+afterEach(() => {
   mock(originFill)
 })
 
-it('generates URL-friendly IDs', function () {
-  return Promise.all(times(100, function () {
-    return async().then(function (id) {
-      expect(id).toHaveLength(21)
-      expect(typeof id).toEqual('string')
-      for (var j = 0; j < id.length; j++) {
-        expect(url).toContain(id[j])
-      }
-    })
-  }))
-})
-
-it('supports old Node.js', function () {
-  mock(undefined)
-  return Promise.all(times(100, function () {
-    return async().then(function (id) {
-      expect(id).toHaveLength(21)
-    })
-  }))
-})
-
-it('changes ID length', function () {
-  return async(10).then(function (id) {
-    expect(id).toHaveLength(10)
-  })
-})
-
-it('throws on string', function () {
-  expect.assertions(1)
-  return async('10').catch(function (error) {
-    expect(error).toBeDefined()
-  })
-})
-
-it('has no collisions', function () {
-  return Promise.all(times(100 * 1000, function () {
-    return async()
-  })).then(function (ids) {
-    ids.reduce(function (used, id) {
-      expect(used[id]).not.toBeDefined()
-      used[id] = true
-      return used
-    }, [])
-  })
-})
-
-it('has flat distribution', function () {
-  var COUNT = 100 * 1000
-  var LENGTH = async().length
-
-  var chars = { }
-  return Promise.all(times(COUNT, function () {
-    return async().then(function (id) {
-      for (var j = 0; j < id.length; j++) {
-        var char = id[j]
-        if (!chars[char]) chars[char] = 0
-        chars[char] += 1
-      }
-    })
-  })).then(function () {
-    expect(Object.keys(chars)).toHaveLength(url.length)
-    var max = 0
-    var min = Number.MAX_SAFE_INTEGER
-    for (var k in chars) {
-      var distribution = (chars[k] * url.length) / (COUNT * LENGTH)
-      if (distribution > max) max = distribution
-      if (distribution < min) min = distribution
+it('generates URL-friendly IDs', async () => {
+  await Promise.all(times(100, async () => {
+    let id = await async()
+    expect(id).toHaveLength(21)
+    expect(typeof id).toEqual('string')
+    for (let char of id) {
+      expect(url).toContain(char)
     }
-    expect(max - min).toBeLessThanOrEqual(0.05)
-  })
+  }))
 })
 
-it('rejects Promise on error', function () {
-  var error = new Error('test')
-  mock(function (buffer, callback) {
+it('supports old Node.js', async () => {
+  mock(undefined)
+  await Promise.all(times(100, async () => {
+    let id = await async()
+    expect(id).toHaveLength(21)
+  }))
+})
+
+it('changes ID length', async () => {
+  let id = await async(10)
+  expect(id).toHaveLength(10)
+})
+
+it('throws on string', async () => {
+  let error
+  try {
+    await async('10')
+  } catch (e) {
+    error = e
+  }
+  expect(error.message).toContain('must be of type number')
+})
+
+it('has no collisions', async () => {
+  let ids = await Promise.all(times(100 * 1000, () => async()))
+  ids.reduce((used, id) => {
+    expect(used[id]).toBeUndefined()
+    used[id] = true
+    return used
+  }, [])
+})
+
+it('has flat distribution', async () => {
+  let COUNT = 100 * 1000
+  let LENGTH = async().length
+
+  let chars = { }
+  await Promise.all(times(COUNT, async () => {
+    let id = await async()
+    for (let char of id) {
+      if (!chars[char]) chars[char] = 0
+      chars[char] += 1
+    }
+  }))
+  expect(Object.keys(chars)).toHaveLength(url.length)
+  let max = 0
+  let min = Number.MAX_SAFE_INTEGER
+  for (let k in chars) {
+    let distribution = (chars[k] * url.length) / (COUNT * LENGTH)
+    if (distribution > max) max = distribution
+    if (distribution < min) min = distribution
+  }
+  expect(max - min).toBeLessThanOrEqual(0.05)
+})
+
+it('rejects Promise on error', async () => {
+  let error = new Error('test')
+  mock((buffer, callback) => {
     callback(error)
   })
-  var catched
-  return async().catch(function (e) {
+  let catched
+  try {
+    await async()
+  } catch (e) {
     catched = e
-  }).then(function () {
-    expect(catched).toBe(error)
-  })
+  }
+  expect(catched).toBe(error)
 })

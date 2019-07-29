@@ -1,19 +1,20 @@
 #!/usr/bin/env node
-var benchmark = require('benchmark')
-var shortid = require('shortid')
-var uuid4 = require('uuid/v4')
-var chalk = require('chalk')
-var rndm = require('rndm')
-var srs = require('secure-random-string')
-var uid = require('uid-safe')
 
-var asyncGenerate = require('../async/generate')
-var nonSecure = require('../non-secure')
-var generate = require('../generate')
-var nanoid = require('../')
-var async = require('../async')
+let benchmark = require('benchmark')
+let shortid = require('shortid')
+let uuid4 = require('uuid/v4')
+let chalk = require('chalk')
+let rndm = require('rndm')
+let srs = require('secure-random-string')
+let uid = require('uid-safe')
 
-var suite = new benchmark.Suite()
+let asyncGenerate = require('../async/generate')
+let nonSecure = require('../non-secure')
+let generate = require('../generate')
+let nanoid = require('../')
+let async = require('../async')
+
+let suite = new benchmark.Suite()
 
 function formatNumber (number) {
   return String(number)
@@ -22,68 +23,70 @@ function formatNumber (number) {
 }
 
 suite
-  .add('nanoid', function () {
+  .add('nanoid', () => {
     nanoid()
   })
-  .add('nanoid/generate', function () {
+  .add('nanoid/generate', () => {
     generate('1234567890abcdef-', 10)
   })
-  .add('uid.sync', function () {
+  .add('uid.sync', () => {
     uid.sync(14)
   })
-  .add('uuid/v4', function () {
+  .add('uuid/v4', () => {
     uuid4()
   })
-  .add('secure-random-string', function () {
+  .add('secure-random-string', () => {
     srs()
   })
-  .add('shortid', function () {
+  .add('shortid', () => {
     shortid()
   })
   .add('nanoid/async', {
     defer: true,
-    fn: function (defer) {
-      async().then(function () {
+    fn (defer) {
+      async().then(() => {
         defer.resolve()
       })
     }
   })
   .add('nanoid/async/generate', {
     defer: true,
-    fn: function (defer) {
-      asyncGenerate('1234567890abcdef-', 10).then(function () {
+    fn (defer) {
+      asyncGenerate('1234567890abcdef-', 10).then(() => {
         defer.resolve()
       })
     }
   })
   .add('secure-random-string', {
     defer: true,
-    fn: function (defer) {
-      srs(function () { defer.resolve() })
-    }
-  })
-  .add('uid', {
-    defer: true,
-    fn: function (defer) {
-      uid(14).then(function () {
+    fn (defer) {
+      srs(() => {
         defer.resolve()
       })
     }
   })
-  .add('nanoid/non-secure', function () {
+  .add('uid', {
+    defer: true,
+    fn (defer) {
+      uid(14).then(() => {
+        defer.resolve()
+      })
+    }
+  })
+  .add('nanoid/non-secure', () => {
     nonSecure()
   })
-  .add('rndm', function () {
+  .add('rndm', () => {
     rndm(21)
   })
-  .on('cycle', function (event) {
-    var name = event.target.name.padEnd('nanoid/async/generate'.length)
-    var hz = formatNumber(event.target.hz.toFixed(0)).padStart(9)
+  .on('cycle', event => {
+    let name = event.target.name.padEnd('nanoid/async/generate'.length)
+    let hz = formatNumber(event.target.hz.toFixed(0)).padStart(9)
     if (event.target.name === 'nanoid/async') {
       name = '\nAsync:\n' + name
     } else if (event.target.name === 'nanoid/non-secure') {
       name = '\nNon-secure:\n' + name
     }
-    process.stdout.write(name + '   ' + chalk.bold(hz) + ' ops/sec\n')
+    process.stdout.write(`${ name }   ${ chalk.bold(hz) } ops/sec\n`)
   })
   .run()

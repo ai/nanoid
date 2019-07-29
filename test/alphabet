@@ -1,58 +1,58 @@
 #!/usr/bin/node --experimental-worker
 
-var WORKERS = 8
+const WORKERS = 8
 
-var spawnSync = require('child_process').spawnSync
-var Worker = require('worker_threads').Worker
-var chalk = require('chalk')
-var path = require('path')
-var fs = require('fs')
+let spawnSync = require('child_process').spawnSync
+let Worker = require('worker_threads').Worker
+let chalk = require('chalk')
+let path = require('path')
+let fs = require('fs')
 
 if (!process.argv[2]) {
   process.stderr.write(chalk.red('Pass a file with alphabet as argument\n'))
   process.exit(1)
 }
 
-var input = path.join(process.cwd(), process.argv[2])
-var output = path.join(__dirname, '..', 'compiled.js')
+let input = path.join(process.cwd(), process.argv[2])
+let output = path.join(__dirname, '..', 'compiled.js')
 
 spawnSync('npx', ['webpack', '--mode', 'production', '--output', output, input])
-var js = fs.readFileSync(output).toString()
+let js = fs.readFileSync(output).toString()
 fs.unlinkSync(output)
 
-var match = js.match(/[A-Za-z0-9-_]{30,}/)
+let match = js.match(/[A-Za-z0-9-_]{30,}/)
 if (!match) {
   process.stderr.write(chalk.red('Alphabet was not found\n'))
   process.exit(1)
 }
-var alphabet = match[0].split('').sort().join('')
+let alphabet = match[0].split('').sort().join('')
 
-var best = {
+let best = {
   size: Infinity
 }
 
-var newline = false
+let newline = false
 
-var all = js.length * (js.length + 1) * (js.length + 1)
-var step = 0
-var lastPart = 0
+let all = js.length * (js.length + 1) * (js.length + 1)
+let step = 0
+let lastPart = 0
 
 function print (str) {
   process.stdout.write(str + '\n')
 }
 
-new Promise(function (resolve) {
-  for (var i = 0; i < WORKERS; i++) {
-    var finished = 0
-    var worker = new Worker(path.join(__dirname, 'alphabet-worker.js'), {
+new Promise(resolve => {
+  for (let i = 0; i < WORKERS; i++) {
+    let finished = 0
+    let worker = new Worker(path.join(__dirname, 'alphabet-worker.js'), {
       workerData: {
-        alphabet: alphabet,
+        alphabet,
         start: i,
         step: WORKERS,
-        js: js
+        js
       }
     })
-    worker.on('message', function (data) {
+    worker.on('message', data => {
       if (data.finished) {
         finished += 1
         if (finished === WORKERS) {
@@ -69,14 +69,14 @@ new Promise(function (resolve) {
           print(best.alphabet)
         }
         step += data.steps
-        var part = Math.floor(100 * step / all)
+        let part = Math.floor(100 * step / all)
         if (part > lastPart) {
           lastPart = part
           print(chalk.gray(part + '%'))
         }
       }
     })
-    worker.on('error', function (e) {
+    worker.on('error', e => {
       throw e
     })
   }

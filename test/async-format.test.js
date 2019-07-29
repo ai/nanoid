@@ -1,29 +1,29 @@
-var format = require('../async/format')
+let format = require('../async/format')
 
-it('generates random string', function () {
-  var sequence = [2, 255, 3, 7, 7, 7, 7, 7, 0, 1]
-  function random (size) {
-    var bytes = []
-    for (var i = 0; i < size; i += sequence.length) {
+it('generates random string', async () => {
+  let sequence = [2, 255, 3, 7, 7, 7, 7, 7, 0, 1]
+  async function random (size) {
+    let bytes = []
+    for (let i = 0; i < size; i += sequence.length) {
       bytes = bytes.concat(sequence.slice(0, size - i))
     }
-    return Promise.resolve(bytes)
+    return bytes
   }
-  return format(random, 'abcde', 4).then(function (id) {
-    expect(id).toEqual('cdac')
-  })
+  let id = await format(random, 'abcde', 4)
+  expect(id).toEqual('cdac')
 })
 
-it('is ready for errors', function () {
-  var error = new Error('test')
-  function random () {
-    return Promise.reject(error)
+it('is ready for errors', async () => {
+  let error = new Error('test')
+  async function random () {
+    throw error
   }
 
-  var catched
-  return format(random, 'abc', 4).catch(function (e) {
+  let catched
+  try {
+    await format(random, 'abc', 4)
+  } catch (e) {
     catched = e
-  }).then(function () {
-    expect(catched).toBe(error)
-  })
+  }
+  expect(catched).toBe(error)
 })

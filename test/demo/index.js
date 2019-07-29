@@ -1,22 +1,16 @@
-var shortid = require('shortid')
-var uuid4 = require('uuid/v4')
-var rndm = require('rndm')
-var uid = require('uid-safe')
+let shortid = require('shortid')
+let uuid4 = require('uuid/v4')
+let rndm = require('rndm')
+let uid = require('uid-safe')
 
-var nonSecure = require('../../non-secure')
-var generate = require('../../generate')
-var random = require('../../random')
-var nanoid = require('../../')
+let nonSecure = require('../../non-secure')
+let generate = require('../../generate')
+let random = require('../../random')
+let nanoid = require('../../')
 
-var html = ''
-for (var i = 0; i < 10; i++) {
-  html += '<div>' + nanoid() + '</div>'
-}
-document.body.innerHTML = '<main>' + html + '</main>'
-
-var COUNT = 50 * 1000
-var ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
-var LENGTH = ALPHABET.length
+const COUNT = 50 * 1000
+const ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
+const LENGTH = ALPHABET.length
 
 function print (number) {
   return String(Math.floor(number * 100))
@@ -24,116 +18,82 @@ function print (number) {
     .replace(/\d\d\d$/, ',$&')
 }
 
-function printDistribution (title, fn) {
-  return calcDistribution(title, fn).then(function (data) {
-    var length = Object.keys(data.chars).length
-    var dots = ''
+function printDistr (title, fn) {
+  let data = calcDistr(title, fn)
+  let keys = Object.keys(data.chars)
+  let length = keys.length
+  let dots = ''
 
-    var average = Object.keys(data.chars).reduce(function (all, l) {
-      return all + data.chars[l]
-    }, 0) / length
+  let average = keys.reduce((all, l) => all + data.chars[l], 0) / length
 
-    Object.keys(data.chars).sort().forEach(function (l) {
-      var distribution = data.chars[l] / average
-      dots += '<div class="dot" style="' +
-        'background: hsl(' + (200 * distribution) + ', 100%, 50%); ' +
-        'width: ' + (100 / length) + '%; ' +
-      '">' + l + '</div>'
-    })
-
-    document.body.innerHTML += '<section>' +
-      '<span>' + print(COUNT * 1000 / data.time) + ' ops/sec</span>' +
-      '<h2>' + data.title + '</h2>' +
-      dots +
-    '</section>'
-  })
-}
-
-function calcDistribution (title, fn) {
-  var chars = { }
-
-  return new Promise(function (resolve) {
-    var ids = []
-    var j
-
-    var start = Date.now()
-    for (j = 0; j < COUNT; j++) ids.push(fn())
-    var end = Date.now()
-
-    for (j = 0; j < COUNT; j++) {
-      var id = ids[j]
-      if (title === 'uuid/v4') id = id.replace(/-./g, '')
-      for (var k = 0; k < id.length; k++) {
-        var char = id[k]
-        if (!chars[char]) chars[char] = 0
-        chars[char] += 1
-      }
-    }
-
-    resolve({ title: title, chars: chars, time: end - start })
-  })
-}
-
-var tasks = [
-  function () {
-    return printDistribution('ideal', function () {
-      var result = []
-      for (var j = 0; j < LENGTH; j++) {
-        result.push(ALPHABET[j])
-      }
-      return result
-    })
-  },
-  function () {
-    return printDistribution('nanoid', function () {
-      return nanoid()
-    })
-  },
-  function () {
-    return printDistribution('nanoid/generate', function () {
-      return generate(ALPHABET, LENGTH)
-    })
-  },
-  function () {
-    return printDistribution('uid.sync', function () {
-      return uid.sync(21)
-    })
-  },
-  function () {
-    return printDistribution('uuid/v4', function () {
-      return uuid4()
-    })
-  },
-  function () {
-    return printDistribution('shortid', function () {
-      return shortid()
-    })
-  },
-  function () {
-    return printDistribution('rndm', function () {
-      return rndm()
-    })
-  },
-  function () {
-    return printDistribution('nanoid/non-secure', function () {
-      return nonSecure()
-    })
-  },
-  function () {
-    return printDistribution('random % alphabet', function () {
-      return [].slice.call(random(LENGTH)).map(function (num) {
-        return ALPHABET[num % ALPHABET.length]
-      })
-    })
+  for (let l of keys.sort()) {
+    let distribution = data.chars[l] / average
+    dots += `<div class="dot" style="
+      background: hsl(${ 200 * distribution }, 100%, 50%);
+      width: ${ 100 / length }%;
+    ">${ l }</div>`
   }
+
+  document.body.innerHTML += `<section>
+    <span>${ print(COUNT * 1000 / data.time) } ops/sec</span>
+    <h2>${ data.title }</h2>
+    ${ dots }
+  </section>`
+}
+
+function calcDistr (title, fn) {
+  let chars = { }
+
+  let ids = []
+  let j
+
+  let start = Date.now()
+  for (j = 0; j < COUNT; j++) ids.push(fn())
+  let end = Date.now()
+
+  for (j = 0; j < COUNT; j++) {
+    let id = ids[j]
+    if (title === 'uuid/v4') id = id.replace(/-./g, '')
+    for (let char of id) {
+      if (!chars[char]) chars[char] = 0
+      chars[char] += 1
+    }
+  }
+
+  return { title, chars, time: end - start }
+}
+
+let tasks = [
+  () => printDistr('ideal', () => {
+    let result = []
+    for (let j = 0; j < LENGTH; j++) {
+      result.push(ALPHABET[j])
+    }
+    return result
+  }),
+  () => printDistr('nanoid', () => nanoid()),
+  () => printDistr('nanoid/generate', () => generate(ALPHABET, LENGTH)),
+  () => printDistr('uid.sync', () => uid.sync(21)),
+  () => printDistr('uuid/v4', () => uuid4()),
+  () => printDistr('shortid', () => shortid()),
+  () => printDistr('rndm', () => rndm()),
+  () => printDistr('nanoid/non-secure', () => nonSecure()),
+  () => printDistr('random % alphabet', () => {
+    return [...random(LENGTH)].map(i => ALPHABET[i % ALPHABET.length])
+  })
 ]
 
 function run () {
   if (tasks.length === 0) return
-  var task = tasks.shift()
-  task().then(function () {
-    setTimeout(run, 10)
-  })
+  let task = tasks.shift()
+  task()
+  setTimeout(run, 10)
 }
+
+let html = ''
+for (let i = 0; i < 10; i++) {
+  html += `<div>${ nanoid() }</div>`
+}
+document.body.innerHTML = `<main>${ html }</main>`
 
 run()

@@ -1,7 +1,7 @@
 global.self = {
   crypto: {
-    getRandomValues: function (array) {
-      for (var i = 0; i < array.length; i++) {
+    getRandomValues (array) {
+      for (let i = 0; i < array.length; i++) {
         array[i] = Math.floor(Math.random() * 256)
       }
       return array
@@ -9,47 +9,45 @@ global.self = {
   }
 }
 
-var nanoid = require('../index.browser')
-var async = require('../async/index.browser')
-var url = require('../url')
+let nanoid = require('../index.browser')
+let async = require('../async/index.browser')
+let url = require('../url')
 
 function times (size, callback) {
-  var array = []
-  for (var i = 0; i < 100; i++) {
+  let array = []
+  for (let i = 0; i < 100; i++) {
     array.push(1)
   }
   return array.map(callback)
 }
 
-it('generates URL-friendly IDs', function () {
-  for (var i = 0; i < 100; i++) {
-    var id = nanoid()
+it('generates URL-friendly IDs', () => {
+  for (let i = 0; i < 100; i++) {
+    let id = nanoid()
     expect(id).toHaveLength(21)
     expect(typeof id).toEqual('string')
-    for (var j = 0; j < id.length; j++) {
-      expect(url).toContain(id[j])
+    for (let char of id) {
+      expect(url).toContain(char)
     }
   }
 })
 
-it('changes ID length', function () {
+it('changes ID length', () => {
   expect(nanoid(10)).toHaveLength(10)
 })
 
-it('generates IDs with Promise', function () {
-  return Promise.all(times(100, function () {
-    return async().then(function (id) {
-      expect(id).toHaveLength(21)
-      expect(typeof id).toEqual('string')
-      for (var i = 0; i < id.length; i++) {
-        expect(url).toContain(id[i])
-      }
-    })
+it('generates IDs with Promise', async () => {
+  await Promise.all(times(100, async () => {
+    let id = await async()
+    expect(id).toHaveLength(21)
+    expect(typeof id).toEqual('string')
+    for (let char of id) {
+      expect(url).toContain(char)
+    }
   }))
 })
 
-it('changes ID length in async', function () {
-  return async(10).then(function (id) {
-    expect(id).toHaveLength(10)
-  })
+it('changes ID length in async', async () => {
+  let id = await async(10)
+  expect(id).toHaveLength(10)
 })

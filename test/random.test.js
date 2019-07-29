@@ -1,6 +1,6 @@
-var crypto = require('crypto')
+let crypto = require('crypto')
 
-var random = require('../random')
+let random = require('../random')
 
 function mock (callback) {
   crypto.randomFillSync = callback
@@ -8,39 +8,39 @@ function mock (callback) {
   random = require('../random')
 }
 
-var originFillSync = crypto.randomFillSync
-afterEach(function () {
+let originFillSync = crypto.randomFillSync
+afterEach(() => {
   mock(originFillSync)
 })
 
-it('generates small random buffers', function () {
+it('generates small random buffers', () => {
   expect(random(10)).toHaveLength(10)
 })
 
-it('generates random buffers', function () {
-  var numbers = { }
-  var bytes = random(10000)
+it('generates random buffers', () => {
+  let numbers = { }
+  let bytes = random(10000)
   expect(bytes).toHaveLength(10000)
-  for (var i = 0; i < bytes.length; i++) {
-    if (!numbers[bytes[i]]) numbers[bytes[i]] = 0
-    numbers[bytes[i]] += 1
-    expect(typeof bytes[i]).toEqual('number')
-    expect(bytes[i]).toBeLessThanOrEqual(255)
-    expect(bytes[i]).toBeGreaterThanOrEqual(0)
+  for (let byte of bytes) {
+    if (!numbers[byte]) numbers[byte] = 0
+    numbers[byte] += 1
+    expect(typeof byte).toEqual('number')
+    expect(byte).toBeLessThanOrEqual(255)
+    expect(byte).toBeGreaterThanOrEqual(0)
   }
 })
 
-it('supports old Node.js', function () {
+it('supports old Node.js', () => {
   mock(undefined)
 
-  var numbers = { }
-  var bytes = random(10000)
+  let numbers = { }
+  let bytes = random(10000)
   expect(bytes).toHaveLength(10000)
-  for (var i = 0; i < bytes.length; i++) {
-    if (!numbers[bytes[i]]) numbers[bytes[i]] = 0
-    numbers[bytes[i]] += 1
-    expect(typeof bytes[i]).toEqual('number')
-    expect(bytes[i]).toBeLessThanOrEqual(255)
-    expect(bytes[i]).toBeGreaterThanOrEqual(0)
+  for (let byte of bytes) {
+    if (!numbers[byte]) numbers[byte] = 0
+    numbers[byte] += 1
+    expect(typeof byte).toEqual('number')
+    expect(byte).toBeLessThanOrEqual(255)
+    expect(byte).toBeGreaterThanOrEqual(0)
   }
 })

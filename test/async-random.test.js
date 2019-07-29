@@ -1,6 +1,6 @@
-var crypto = require('crypto')
+let crypto = require('crypto')
 
-var random = require('../async/random')
+let random = require('../async/random')
 
 function mock (callback) {
   crypto.randomFill = callback
@@ -8,67 +8,67 @@ function mock (callback) {
   random = require('../async/random')
 }
 
-var originFill = crypto.randomFill
-var randomBytes = crypto.randomBytes
-afterEach(function () {
+let originFill = crypto.randomFill
+let randomBytes = crypto.randomBytes
+afterEach(() => {
   mock(originFill)
   crypto.randomBytes = randomBytes
 })
 
-it('generates random buffers', function () {
-  return random(10000).then(function (bytes) {
-    expect(bytes).toHaveLength(10000)
-    var numbers = { }
-    for (var i = 0; i < bytes.length; i++) {
-      if (!numbers[bytes[i]]) numbers[bytes[i]] = 0
-      numbers[bytes[i]] += 1
-      expect(typeof bytes[i]).toEqual('number')
-      expect(bytes[i]).toBeLessThanOrEqual(255)
-      expect(bytes[i]).toBeGreaterThanOrEqual(0)
-    }
-  })
+it('generates random buffers', async () => {
+  let bytes = await random(10000)
+  expect(bytes).toHaveLength(10000)
+  let numbers = { }
+  for (let byte of bytes) {
+    if (!numbers[byte]) numbers[byte] = 0
+    numbers[byte] += 1
+    expect(typeof byte).toEqual('number')
+    expect(byte).toBeLessThanOrEqual(255)
+    expect(byte).toBeGreaterThanOrEqual(0)
+  }
 })
 
-it('supports old Node.js', function () {
+it('supports old Node.js', async () => {
   mock(undefined)
-  return random(10000).then(function (bytes) {
-    expect(bytes).toHaveLength(10000)
-    var numbers = { }
-    for (var i = 0; i < bytes.length; i++) {
-      if (!numbers[bytes[i]]) numbers[bytes[i]] = 0
-      numbers[bytes[i]] += 1
-      expect(typeof bytes[i]).toEqual('number')
-      expect(bytes[i]).toBeLessThanOrEqual(255)
-      expect(bytes[i]).toBeGreaterThanOrEqual(0)
-    }
-  })
+  let bytes = await random(10000)
+  expect(bytes).toHaveLength(10000)
+  let numbers = { }
+  for (let byte of bytes) {
+    if (!numbers[byte]) numbers[byte] = 0
+    numbers[byte] += 1
+    expect(typeof byte).toEqual('number')
+    expect(byte).toBeLessThanOrEqual(255)
+    expect(byte).toBeGreaterThanOrEqual(0)
+  }
 })
 
-it('is ready for error', function () {
-  var error = new Error('test')
-  mock(function (size, callback) {
+it('is ready for error', async () => {
+  let error = new Error('test')
+  mock((size, callback) => {
     callback(error)
   })
 
-  var catched
-  return random(10000).catch(function (e) {
+  let catched
+  try {
+    await random(10000)
+  } catch (e) {
     catched = e
-  }).then(function () {
-    expect(catched).toBe(error)
-  })
+  }
+  expect(catched).toBe(error)
 })
 
-it('is ready for error from old API', function () {
-  var error = new Error('test')
+it('is ready for error from old API', async () => {
+  let error = new Error('test')
   mock(undefined)
   crypto.randomBytes = function (size, callback) {
     callback(error)
   }
 
-  var catched
-  return random(10000).catch(function (e) {
+  let catched
+  try {
+    await random(10000)
+  } catch (e) {
     catched = e
-  }).then(function () {
-    expect(catched).toBe(error)
-  })
+  }
+  expect(catched).toBe(error)
 })

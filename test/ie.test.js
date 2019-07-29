@@ -1,7 +1,7 @@
 global.self = {
   msCrypto: {
-    getRandomValues: function (array) {
-      for (var i = 0; i < array.length; i++) {
+    getRandomValues (array) {
+      for (let i = 0; i < array.length; i++) {
         array[i] = Math.floor(Math.random() * 256)
       }
       return array
@@ -9,8 +9,8 @@ global.self = {
   }
 }
 
-var nanoid = require('../index.browser')
+let nanoid = require('../index.browser')
 
-it('generates URL-friendly IDs', function () {
+it('generates URL-friendly IDs', () => {
   expect(typeof nanoid()).toEqual('string')
 })
