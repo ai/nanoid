@@ -53,7 +53,7 @@ it('throws on string', async () => {
   } catch (e) {
     error = e
   }
-  expect(error.message).toContain('must be of type number')
+  expect(error.message).toContain('"size" argument must be')
 })
 
 it('has no collisions', async () => {
