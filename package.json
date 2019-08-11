@@ -123,6 +123,9 @@
     "excludeFiles": [
       "README-*.md"
     ],
+    "ignoreText": [
+      " \\(by [^)]+\\)."
+    ],
     "dictionary": [
       "Async",
       "asyncGenerator",
@@ -149,9 +152,6 @@
       "PouchDB",
       "CouchDB",
       "async"
-    ],
-    "ignoreText": [
-      " \\(by [^)]+\\)."
     ]
   },
   "sharec": {
