@@ -24,6 +24,9 @@
     "./async/index.js": "./async/index.browser.js",
     "./async/random.js": "./async/random.browser.js"
   },
+  "react-native": {
+    "./async/random.js": "./async/random.reactnative.js"
+  },
   "sideEffects": false,
   "devDependencies": {
     "@logux/eslint-config": "^30.0.2",
