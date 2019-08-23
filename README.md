@@ -185,7 +185,7 @@ Nano ID could be started from number. HTML ID can’t be started from the numbe
 
 ### React Native
 
-To generate secure random IDs in React Native, you must use a native random 
+To generate secure random IDs in React Native, you must use a native random
 generator (like [`expo-random`] or [`react-native-securerandom`]) and the
 asynchronous API:
 
@@ -374,3 +374,10 @@ async function createUser () {
   user.id = await format(random, url, 10)
 }
 ```
+
+
+## Security
+
+To report a security vulnerability, please use the
+[Tidelift security contact](https://tidelift.com/security).
+Tidelift will coordinate the fix and disclosure.

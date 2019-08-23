@@ -154,7 +154,8 @@
       "JS",
       "PouchDB",
       "CouchDB",
-      "async"
+      "async",
+      "Tidelift"
     ]
   },
   "sharec": {
