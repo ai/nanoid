@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.0.4
+* Improve error text for React Native (by Sebastian Werner).
+
 ## 2.0.3
 * Fix freeze on string in ID length.
 
