@@ -29,38 +29,38 @@
   },
   "sideEffects": false,
   "devDependencies": {
-    "@logux/eslint-config": "^30.0.2",
-    "@logux/sharec-config": "^0.4.0",
-    "@size-limit/preset-small-lib": "^2.0.0",
+    "@logux/eslint-config": "^31.0.0",
+    "@logux/sharec-config": "^0.4.1",
+    "@size-limit/preset-small-lib": "^2.1.1",
     "benchmark": "^2.1.4",
     "chalk": "^2.4.2",
     "clean-publish": "^1.1.2",
     "documentation": "^12.1.1",
-    "eslint": "^6.1.0",
+    "eslint": "^6.2.1",
     "eslint-ci": "^1.0.0",
-    "eslint-config-standard": "^13.0.1",
+    "eslint-config-standard": "^14.0.0",
     "eslint-plugin-es5": "^1.4.1",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^22.15.0",
+    "eslint-plugin-jest": "^22.15.1",
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-prefer-let": "^1.0.1",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-standard": "^4.0.1",
     "gzip-size": "^5.1.1",
-    "husky": "^3.0.3",
-    "jest": "^24.8.0",
-    "lint-staged": "^9.2.1",
+    "husky": "^3.0.4",
+    "jest": "^24.9.0",
+    "lint-staged": "^9.2.3",
     "microtime": "^3.0.0",
     "parcel-bundler": "^1.12.3",
-    "rimraf": "^2.6.3",
+    "rimraf": "^3.0.0",
     "rndm": "^1.2.0",
     "secure-random-string": "^1.1.2",
     "shortid": "^2.2.14",
     "uid-safe": "^2.1.5",
-    "uuid": "^3.3.2",
-    "webpack": "^4.39.1",
-    "webpack-cli": "^3.3.6",
+    "uuid": "^3.3.3",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7",
     "yaspeller-ci": "^1.0.1"
   },
   "size-limit": [
@@ -101,7 +101,8 @@
     }
   },
   "eslintIgnore": [
-    "node_modules"
+    "node_modules",
+    "test/demo/build"
   ],
   "lint-staged": {
     "*.md": "yaspeller-ci",
@@ -159,6 +160,6 @@
     ]
   },
   "sharec": {
-    "version": "0.4.0"
+    "version": "0.4.1"
   }
 }
