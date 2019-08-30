@@ -27,19 +27,19 @@
   "sideEffects": false,
   "devDependencies": {
     "@logux/eslint-config": "^31.0.0",
-    "@logux/sharec-config": "^0.4.1",
+    "@logux/sharec-config": "^0.4.2",
     "@size-limit/preset-small-lib": "^2.1.1",
     "benchmark": "^2.1.4",
     "chalk": "^2.4.2",
     "clean-publish": "^1.1.2",
     "documentation": "^12.1.1",
-    "eslint": "^6.2.1",
+    "eslint": "^6.2.2",
     "eslint-ci": "^1.0.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-es5": "^1.4.1",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^22.15.1",
-    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-jest": "^22.16.0",
+    "eslint-plugin-node": "^9.2.0",
     "eslint-plugin-prefer-let": "^1.0.1",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
@@ -98,7 +98,6 @@
     }
   },
   "eslintIgnore": [
-    "node_modules",
     "test/demo/build"
   ],
   "lint-staged": {
@@ -157,6 +156,6 @@
     ]
   },
   "sharec": {
-    "version": "0.4.1"
+    "version": "0.4.2"
   }
 }
