@@ -9,6 +9,5 @@ coverage/
 .travis.yml
 api.md
 
-README-*.md
 img/
 .cache

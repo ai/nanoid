@@ -132,9 +132,6 @@
   "yaspeller": {
     "lang": "en",
     "ignoreCapitalization": true,
-    "excludeFiles": [
-      "README-*.md"
-    ],
     "ignoreText": [
       " \\(by [^)]+\\)."
     ],
