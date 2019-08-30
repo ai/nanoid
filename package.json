@@ -36,7 +36,7 @@
     "chalk": "^2.4.2",
     "clean-publish": "^1.1.2",
     "documentation": "^12.1.1",
-    "eslint": "^6.2.2",
+    "eslint": "^6.3.0",
     "eslint-ci": "^1.0.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-es5": "^1.4.1",
