@@ -24,6 +24,9 @@
     "./async/index.js": "./async/index.browser.js",
     "./async/random.js": "./async/random.browser.js"
   },
+  "react-native": {
+    "./async/random.js": "./random.rn.js"
+  },
   "sideEffects": false,
   "devDependencies": {
     "@logux/eslint-config": "^31.0.0",
@@ -95,7 +98,16 @@
     "rules": {
       "consistent-return": "off",
       "yoda": "off"
-    }
+    },
+    "overrides": [
+      {
+        "files": "*.rn.js",
+        "rules": {
+          "node/no-missing-require": "off",
+          "global-require": "off"
+        }
+      }
+    ]
   },
   "eslintIgnore": [
     "test/demo/build"

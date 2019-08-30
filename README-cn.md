@@ -143,12 +143,10 @@ nanoid(10) //=> "IRFa-VaY2b"
 ### React Native
 
 ```js
-const generateSecureRandom = require('react-native-securerandom').generateSecureRandom
-const format = require('nanoid/async/format')
-const url = require('nanoid/url')
+const nanoid = require('nanoid/async')
 
 async function createUser () {
-  user.id = await format(generateSecureRandom, url, 21);
+  user.id = await nanoid()
 }
 ```
 
@@ -192,6 +190,7 @@ async function createUser () {
 ```
 
 不幸的事，在浏览器里你无法这么做，因为 Web Crypto API 没有异步接口。
+
 
 ### 定制字符表或长度
 

@@ -185,22 +185,18 @@ Nano ID could be started from number. HTML ID can’t be started from the numbe
 
 ### React Native
 
-To generate secure random IDs in React Native, you must use a native random
-generator (like [`expo-random`] or [`react-native-securerandom`]) and the
-asynchronous API:
+React Native doesn’t have built-in random generator.
+
+1. Check [`expo-random`] docs and install it.
+2. Use `nanoid/async` instead of synchronous `nanoid`.
 
 ```js
-const getRandomBytesAsync = require('expo-random').getRandomBytesAsync
-const format = require('nanoid/async/format')
-const url = require('nanoid/url')
+const nanoid = require('nanoid/async')
 
 async function createUser () {
-  user.id = await format(getRandomBytesAsync, url, 21);
+  user.id = await nanoid()
 }
 ```
-
-[`expo-random`]: https://github.com/expo/expo/tree/master/packages/expo-random
-[`react-native-securerandom`]: https://github.com/rh389/react-native-securerandom
 
 
 ### PouchDB and CouchDB
