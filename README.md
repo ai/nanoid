@@ -251,7 +251,7 @@ ID generators on client and server side.
 * [C#](https://github.com/codeyu/nanoid-net)
 * [Clojure and ClojureScript](https://github.com/zelark/nano-id)
 * [Crystal](https://github.com/mamantoha/nanoid.cr)
-* [Dart](https://github.com/pd4d10/nanoid)
+* [Dart](https://github.com/pd4d10/nanoid-dart)
 * [Go](https://github.com/matoous/go-nanoid)
 * [Elixir](https://github.com/railsmechanic/nanoid)
 * [Haskell](https://github.com/4e6/nanoid-hs)
