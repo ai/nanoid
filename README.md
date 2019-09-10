@@ -32,8 +32,8 @@ Supports [all browsers], Node.js and React Native.
 
 1. [Comparison with UUID](#comparison-with-uuid)
 2. [Benchmark](#benchmark)
-3. [Security](#security)
 4. [Tools](#tools)
+3. [Security](#security)
 6. Usage
    1. [JS](#js)
    2. [React](#react)
@@ -89,6 +89,19 @@ rndm                    2,413,565 ops/sec
 ```
 
 
+## Tools
+
+* [ID size calculator] to choice smaller ID size depends on your case.
+* [`nanoid-dictionary`] with popular alphabets to use with `nanoid/generate`.
+* [`nanoid-cli`] to generate ID from CLI.
+* [`nanoid-good`] to be sure that your ID doesn't contain any obscene words.
+
+[`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
+[ID size calculator]:  https://zelark.github.io/nano-id-cc/
+[`nanoid-cli`]:        https://github.com/twhitbeck/nanoid-cli
+[`nanoid-good`]:       https://github.com/y-gagar1n/nanoid-good
+
+
 ## Security
 
 *See a good article about random generators theory:
@@ -118,17 +131,11 @@ Nano ID uses a [better algorithm] and is tested for uniformity.
 [better algorithm]: https://github.com/ai/nanoid/blob/master/format.js
 
 
-## Tools
+### Vulnerabilities
 
-* [ID size calculator] to choice smaller ID size depends on your case.
-* [`nanoid-dictionary`] with popular alphabets to use with `nanoid/generate`.
-* [`nanoid-cli`] to generate ID from CLI.
-* [`nanoid-good`] to be sure that your ID doesn't contain any obscene words.
-
-[`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
-[ID size calculator]:  https://zelark.github.io/nano-id-cc/
-[`nanoid-cli`]:        https://github.com/twhitbeck/nanoid-cli
-[`nanoid-good`]:       https://github.com/y-gagar1n/nanoid-good
+To report a security vulnerability, please use the
+[Tidelift security contact](https://tidelift.com/security).
+Tidelift will coordinate the fix and disclosure.
 
 
 ## Usage
@@ -370,10 +377,3 @@ async function createUser () {
   user.id = await format(random, url, 10)
 }
 ```
-
-
-## Security
-
-To report a security vulnerability, please use the
-[Tidelift security contact](https://tidelift.com/security).
-Tidelift will coordinate the fix and disclosure.
