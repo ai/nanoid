@@ -10,5 +10,5 @@ try {
 }
 
 module.exports = function (bytes) {
-  return random.getRandomBytesAsync(new Uint8Array(bytes))
+  return random.getRandomBytesAsync(bytes)
 }
