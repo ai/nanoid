@@ -44,8 +44,9 @@ Supports [all browsers], Node.js and React Native.
    6. [Other Programming Languages](#other-programming-languages)
 7. API
    1. [Async](#async)
-   2. [Custom Alphabet or Length](#custom-alphabet-or-length)
-   3. [Custom Random Bytes Generator](#custom-random-bytes-generator)
+   2. [Non-Secure](#non-secure)
+   3. [Custom Alphabet or Length](#custom-alphabet-or-length)
+   4. [Custom Random Bytes Generator](#custom-random-bytes-generator)
 
 
 ## Comparison with UUID
@@ -242,7 +243,8 @@ Security is important in IDs, when IDs should be unpredictable. For instance,
 in “access by URL” link generation.
 
 If you don’t need unpredictable IDs, but you need Web Workers support,
-you can use non‑secure ID generator.
+you can use non‑secure ID generator. Note, that they have bigger collision
+probability.
 
 ```js
 const nanoid = require('nanoid/non-secure')
@@ -295,6 +297,20 @@ async function createUser () {
 
 Unfortunately, you will not have any benefits in a browser, since Web Crypto API
 doesn’t have asynchronous API.
+
+
+### Non-Secure
+
+By default, Nano ID uses hardware random generator for security
+and low collision probability. If you don’t need it, you can use
+very fast non-secure generator.
+
+```js
+const nonSecure = require('nanoid/non-secure')
+const id = nonSecure() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
+```
+
+Note that it is predictable and have bigger collision probability.
 
 
 ### Custom Alphabet or Length
