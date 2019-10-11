@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.1.3
+* Improve performance (by Stephen Richardson).
+* Reduce size (by Stephen Richardson).
+
 ## 2.1.2
 * Improve docs.
 
