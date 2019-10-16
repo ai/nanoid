@@ -10,7 +10,7 @@ it('generates random string', async () => {
     return bytes
   }
   let id = await format(random, 'abcde', 4)
-  expect(id).toEqual('cdac')
+  expect(id).toEqual('adca')
 })
 
 it('is ready for errors', async () => {
