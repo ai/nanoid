@@ -24,7 +24,7 @@ module.exports = function (size) {
   size = size || 21
   return random(size).then(function (bytes) {
     var id = ''
-    while (0 < size--) {
+    while (size--) {
       id += url[bytes[size] & 63]
     }
     return id

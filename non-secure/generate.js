@@ -17,7 +17,7 @@
 module.exports = function (alphabet, size) {
   size = size || 21
   var id = ''
-  while (0 < size--) {
+  while (size--) {
     id += alphabet[Math.random() * alphabet.length | 0]
   }
   return id
