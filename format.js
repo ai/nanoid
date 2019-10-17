@@ -27,15 +27,15 @@
  * @function
  */
 module.exports = function (random, alphabet, size) {
+  var id = ''
   var mask = (2 << Math.log(alphabet.length - 1) / Math.LN2) - 1
   var step = Math.ceil(1.6 * mask * size / alphabet.length)
   size = +size
 
-  var id = ''
   while (true) {
     var bytes = random(step)
-    for (var i = 0; i < step; i++) {
-      var byte = bytes[i] & mask
+    for (var i = 0; i < step;) {
+      var byte = bytes[i++] & mask
       if (alphabet[byte]) {
         id += alphabet[byte]
         if (id.length === size) return id
