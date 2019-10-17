@@ -1,6 +1,13 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.1.4
+* Reduce `generate` size (by Vsevolod Rodionov).
+* Reduce `format` and `format` size (by Victor).
+* Reduce `async`, `non-secure` and `non-secure/generate` size.
+* Speed up `format` and `async/format` (by Max Graey).
+* Improve development process on Windows (by Stanislav Lashmanov).
+
 ## 2.1.3
 * Improve performance (by Stephen Richardson).
 * Reduce size (by Stephen Richardson).
