@@ -28,9 +28,8 @@
  */
 module.exports = function (random, alphabet, size) {
   size = +size
-  var len = alphabet.length
-  var mask = (2 << 31 - Math.clz32((len - 1) | 1)) - 1
-  var step = Math.ceil(1.6 * mask * size / len)
+  var mask = (2 << 31 - Math.clz32((alphabet.length - 1) | 1)) - 1
+  var step = Math.ceil(1.6 * mask * size / alphabet.length)
   var id = ''
 
   while (true) {
