@@ -9,5 +9,5 @@ it('generates random string', () => {
     }
     return bytes
   }
-  expect(format(random, 'abcde', 4)).toEqual('cdac')
+  expect(format(random, 'abcde', 4)).toEqual('adca')
 })

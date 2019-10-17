@@ -35,7 +35,7 @@ module.exports = function (random, alphabet, size) {
 
   while (true) {
     var bytes = random(step)
-    for (var i = 0; i < step; i++) {
+    for (var i = step; i--;) {
       var byte = bytes[i] & mask
       var alpha = alphabet[byte]
       if (alpha) {

@@ -18,7 +18,7 @@ var url = 'bjectSymhasOwnProp-0123456789ABCDEFGHIJKLMNQRTUVWXYZ_dfgiklquvxz'
 module.exports = function (size) {
   size = size || 21
   var id = ''
-  while (0 < size--) {
+  while (size--) {
     id += url[Math.random() * 64 | 0]
   }
   return id

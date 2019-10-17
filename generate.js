@@ -19,6 +19,4 @@ var format = require('./format')
  * @name generate
  * @function
  */
-module.exports = function (alphabet, size) {
-  return format(random, alphabet, size)
-}
+module.exports = format.bind(null, random)

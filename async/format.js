@@ -35,7 +35,7 @@ module.exports = function (random, alphabet, size) {
 
   function tick (id) {
     return random(step).then(function (bytes) {
-      for (var i = 0; i < step; i++) {
+      for (var i = step; i--;) {
         var byte = bytes[i] & mask
         if (alphabet[byte]) {
           id += alphabet[byte]
