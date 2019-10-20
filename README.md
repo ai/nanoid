@@ -14,7 +14,7 @@ A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
   So ID size was reduced from 36 to 21 symbols.
 
 ```js
-var nanoid = require('nanoid')
+const nanoid = require('nanoid')
 model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
@@ -161,6 +161,9 @@ nanoid(10) //=> "IRFa-VaY2b"
 Don’t forget to check the safety of your ID length
 in our [ID collision probability] calculator.
 
+You can also use [custom alphabet](#custom-alphabet-or-length)
+or [random generator](#custom-random-bytes-generator).
+
 [ID collision probability]: https://zelark.github.io/nano-id-cc/
 
 
@@ -248,7 +251,7 @@ probability.
 
 ```js
 const nanoid = require('nanoid/non-secure')
-model.id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
+nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
 
