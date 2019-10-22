@@ -31,15 +31,15 @@
 module.exports = function (random, alphabet, size) {
   var mask = (2 << 31 - Math.clz32((alphabet.length - 1) | 1)) - 1
   var step = Math.ceil(1.6 * mask * size / alphabet.length)
-  size = +size
 
   function tick (id) {
     return random(step).then(function (bytes) {
-      for (var i = step; i--;) {
-        var byte = bytes[i] & mask
-        if (alphabet[byte]) {
-          id += alphabet[byte]
-          if (id.length === size) return id
+      var i = step
+      while (i--) {
+        var alpha = alphabet[bytes[i] & mask]
+        if (alpha) {
+          id += alpha
+          if (id.length === +size) return id
         }
       }
       return tick(id)
