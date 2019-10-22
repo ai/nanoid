@@ -90,7 +90,7 @@
     },
     {
       "path": "async/generate.js",
-      "limit": "197 B"
+      "limit": "198 B"
     }
   ],
   "eslintConfig": {
