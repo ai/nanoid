@@ -41,7 +41,7 @@
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-es5": "^1.4.1",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^22.19.0",
+    "eslint-plugin-jest": "^22.20.0",
     "eslint-plugin-node": "^10.0.0",
     "eslint-plugin-prefer-let": "^1.0.1",
     "eslint-plugin-promise": "^4.2.1",
