@@ -70,7 +70,7 @@
     },
     {
       "path": "generate.js",
-      "limit": "170 B"
+      "limit": "168 B"
     },
     {
       "path": "url.js",
