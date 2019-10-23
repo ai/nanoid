@@ -1,13 +1,20 @@
 let format = require('../format')
+let random = require('../random')
 
-it('generates random string', () => {
+it('supports generator', () => {
   let sequence = [2, 255, 3, 7, 7, 7, 7, 7, 0, 1]
-  function random (size) {
+  function customRandom (size) {
     let bytes = []
     for (let i = 0; i < size; i += sequence.length) {
       bytes = bytes.concat(sequence.slice(0, size - i))
     }
     return bytes
   }
-  expect(format(random, 'abcde', 4)).toEqual('adca')
+  expect(format(customRandom, 'abcde', 4)).toEqual('adca')
+  expect(format(customRandom, 'abcde', 20)).toEqual('dcbadcbadcbadcbadcdc')
+})
+
+it('respects size', () => {
+  expect(format(random, 'abcde', 4)).toHaveLength(4)
+  expect(format(random, 'abcde', 20)).toHaveLength(20)
 })
