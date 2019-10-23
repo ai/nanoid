@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.1.5
+* Reduce size (by Max Graey).
+* Fix IE support.
+
 ## 2.1.4
 * Reduce `generate` size (by Vsevolod Rodionov).
 * Reduce `format` and `format` size (by Victor).
