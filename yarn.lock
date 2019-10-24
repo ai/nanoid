@@ -1112,10 +1112,10 @@
   dependencies:
     globals "^12.1.1"
 
-"@logux/sharec-config@^0.5.4":
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/@logux/sharec-config/-/sharec-config-0.5.4.tgz#e1e80f279ec0cc927bfe90cfde7389f2799bbcce"
-  integrity sha512-7Jj8MkokBnniZZp/lyEfHsKCI934ERfYtSULzWcruhnSDyMtXpdViAvDroDR2+Oj7cETLhVhtlIsJT5UHVB+Fg==
+"@logux/sharec-config@^0.5.5":
+  version "0.5.5"
+  resolved "https://registry.yarnpkg.com/@logux/sharec-config/-/sharec-config-0.5.5.tgz#61d097b8118f8aa2203aaddbf359af6c926df29e"
+  integrity sha512-BiUdXLRhNh8Nkbag3sLmOLbyjL6w1Kt1Z/D3T97sOhMWdvNj3mOODu4XADay3MJ/NmhAd5AKKwAGF3NKNe8wWg==
   dependencies:
     sharec "^2.12.1-beta"
 
