@@ -20,8 +20,10 @@
   "repository": "ai/nanoid",
   "browser": {
     "./index.js": "./index.browser.js",
+    "./format.js": "./format.browser.js",
     "./random.js": "./random.browser.js",
     "./async/index.js": "./async/index.browser.js",
+    "./async/format.js": "./async/format.browser.js",
     "./async/random.js": "./async/random.browser.js"
   },
   "react-native": {
@@ -90,7 +92,7 @@
     },
     {
       "path": "async/generate.js",
-      "limit": "198 B"
+      "limit": "197 B"
     }
   ],
   "eslintConfig": {
