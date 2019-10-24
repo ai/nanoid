@@ -11,7 +11,7 @@ it('supports generator', () => {
     return bytes
   }
   expect(format(customRandom, 'abcde', 4)).toEqual('adca')
-  expect(format(customRandom, 'abcde', 20)).toEqual('dcbadcbadcbadcbadcdc')
+  expect(format(customRandom, 'abcde', 18)).toEqual('cbadcbadcbadcbadcc')
 })
 
 it('respects size', () => {
