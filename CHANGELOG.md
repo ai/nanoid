@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.1.6
+* Reduce size (by Stas Lashmanov).
+* Return fast mask for Node.js.
+
 ## 2.1.5
 * Reduce size (by Max Graey).
 * Fix IE support.
