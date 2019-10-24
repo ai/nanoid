@@ -35,11 +35,8 @@ module.exports = function (random, alphabet, size) {
     var i = step
     var bytes = random(i)
     while (i--) {
-      var alpha = alphabet[bytes[i] & mask]
-      if (alpha) {
-        id += alpha
-        if (id.length === +size) return id
-      }
+      id += alphabet[bytes[i] & mask] || ''
+      if (id.length === +size) return id
     }
   }
 }
