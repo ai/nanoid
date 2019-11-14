@@ -4384,6 +4384,11 @@ gauge@~2.7.3:
     strip-ansi "^3.0.1"
     wide-align "^1.1.0"
 
+geneticalgorithm@^0.3.6:
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/geneticalgorithm/-/geneticalgorithm-0.3.6.tgz#1b35cac9cc6f3e3e65d0da7308b23c98d651546b"
+  integrity sha512-SGO/2OUchkbneUm+Ky2/RDCyqNGkPYR7qNP7FEJbufY69uHhzUy5hA5Xg+4jalEe9nnanJPXGrtx7PsuPUHlcA==
+
 get-caller-file@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-1.0.3.tgz#f978fa4c90d1dfe7ff2d6beda2a515e713bdcf4a"
