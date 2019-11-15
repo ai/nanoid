@@ -4,7 +4,7 @@ var crypto = self.crypto || self.msCrypto
  * This alphabet uses a-z A-Z 0-9 _- symbols.
  * Symbols order was changed for better gzip compression.
  */
-var url = 'Uint8ArModuleSymbhasOw-012345679BCDEFGHIJKLNPQRTVWXYZ_cfgjkpqvxz'
+var url = 'IUint8Ar21ModulvezGFYPCJ7_p0V4XSymbLBNH6fTqQ35xD9ZREghasOw-cjkWK'
 
 module.exports = function (size) {
   size = size || 21

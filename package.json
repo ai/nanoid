@@ -69,7 +69,7 @@
   "size-limit": [
     {
       "path": "index.js",
-      "limit": "139 B"
+      "limit": "137 B"
     },
     {
       "path": "generate.js",
@@ -81,7 +81,7 @@
     },
     {
       "path": "non-secure/index.js",
-      "limit": "103 B"
+      "limit": "102 B"
     },
     {
       "path": "non-secure/generate.js",

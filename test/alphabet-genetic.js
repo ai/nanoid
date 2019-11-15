@@ -25,8 +25,8 @@ if (!match) {
 let alphabet = match[0]
 
 function mutationFunction (phenotype) {
-  let i = Math.floor(Math.random() * phenotype.alphabet)
-  let j = Math.floor(Math.random() * phenotype.alphabet)
+  let i = Math.floor(Math.random() * phenotype.alphabet.length)
+  let j = Math.floor(Math.random() * phenotype.alphabet.length)
 
   return {
     alphabet: swapChars(phenotype.alphabet, i, j)
@@ -72,15 +72,15 @@ function addMissingCharacter (str, proto) {
 function fitnessFunction (phenotype) {
   let file = js.replace(/[A-Za-z0-9-_]{30,}/, phenotype.alphabet)
   let size = gzipSize.sync(file)
-
+  console.log(size, phenotype.alphabet)
   return -1 * size
 }
 
 function sameAlphabet (a, b) {
-  a = a.split('').sort().join('')
-  b = b.split('').sort().join('')
-  for (let i = 0; i < a.length; i++) {
-    if (a[i] !== b[i]) {
+  let ua = a.split('').sort().join('')
+  let ub = b.split('').sort().join('')
+  for (let i = 0; i < ua.length; i++) {
+    if (ua[i] !== ub[i]) {
       return false
     }
   }
@@ -94,7 +94,7 @@ const geneticAlgorithm = geneticAlgorithmConstructor({
   crossoverFunction,
   fitnessFunction,
   population: [firstPhenotype],
-  populationSize: 100
+  populationSize: 5000
 })
 
 console.log('Starting with:', firstPhenotype.alphabet)
