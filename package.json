@@ -50,6 +50,7 @@
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-unicorn": "^12.1.0",
+    "geneticalgorithm": "^0.3.6",
     "gzip-size": "^5.1.1",
     "husky": "^3.0.9",
     "jest": "^24.9.0",
@@ -68,7 +69,7 @@
   "size-limit": [
     {
       "path": "index.js",
-      "limit": "139 B"
+      "limit": "137 B"
     },
     {
       "path": "generate.js",
@@ -76,11 +77,11 @@
     },
     {
       "path": "url.js",
-      "limit": "64 B"
+      "limit": "63 B"
     },
     {
       "path": "non-secure/index.js",
-      "limit": "103 B"
+      "limit": "102 B"
     },
     {
       "path": "non-secure/generate.js",

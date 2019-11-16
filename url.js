@@ -12,4 +12,4 @@
  * generate(url, 10) //=> "Uakgb_J5m9"
  */
 module.exports =
-  'ModuleSymbhasOwnPr-0123456789ABCDEFGHIJKLNQRTUVWXYZ_cfgijkpqtvxz'
+  'ModuleSymbhasOwnPr-0123456789ABCDEFGHNRVfgctiUvz_KqYTJkLxpZXIjQW'

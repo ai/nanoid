@@ -1,4 +1,4 @@
-var url = 'bjectSymhasOwnProp-0123456789ABCDEFGHIJKLMNQRTUVWXYZ_dfgiklquvxz'
+var url = 'sOwnPropMN49CEiq-hXvHJdSymlFURTag61GQfuD8YIWz2Zk5xKB7LV30_Abject'
 
 /**
  * Generate URL-friendly unique ID. This method use non-secure predictable
