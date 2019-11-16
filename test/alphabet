@@ -1,9 +1,9 @@
-#!/usr/bin/node --experimental-worker
+#!/usr/bin/node
 
 const WORKERS = 8
 
-let spawnSync = require('child_process').spawnSync
-let Worker = require('worker_threads').Worker
+let { spawnSync } = require('child_process')
+let { Worker } = require('worker_threads')
 let chalk = require('chalk')
 let path = require('path')
 let fs = require('fs')

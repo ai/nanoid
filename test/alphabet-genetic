@@ -1,8 +1,10 @@
-let spawnSync = require('child_process').spawnSync
+#!/usr/bin/node
+
+let geneticAlgorithmConstructor = require('geneticalgorithm')
+let { spawnSync } = require('child_process')
 let chalk = require('chalk')
 let path = require('path')
 let fs = require('fs')
-let geneticAlgorithmConstructor = require('geneticalgorithm')
 let gzipSize = require('gzip-size')
 
 if (!process.argv[2]) {
@@ -27,35 +29,29 @@ let alphabet = match[0]
 function mutationFunction (phenotype) {
   let i = Math.floor(Math.random() * phenotype.alphabet.length)
   let j = Math.floor(Math.random() * phenotype.alphabet.length)
-
-  return {
-    alphabet: swapChars(phenotype.alphabet, i, j)
-  }
+  return { alphabet: swapChars(phenotype.alphabet, i, j) }
 }
 
 function swapChars (str, index1, index2) {
   let l = index1 < index2 ? index1 : index2
   let h = index1 > index2 ? index1 : index2
   return str.substring(0, l) +
-      str[h] +
-      str.substring(l + 1, h) +
-      str[l] +
-      str.substring(h + 1, str.length)
+    str[h] +
+    str.substring(l + 1, h) +
+    str[l] +
+    str.substring(h + 1, str.length)
 }
 
 function crossoverFunction (phenotypeA, phenotypeB) {
-  let alphabetA = phenotypeA.alphabet
-  let alphabetB = phenotypeB.alphabet
-  let indexA =
-      Math.floor(Math.random() * alphabetA.length / 2 + alphabetA.length / 2)
-  let indexB =
-      Math.floor(Math.random() + alphabetA.length / 2)
-  let newStrA = alphabetA.substring(indexA, alphabetA.length)
-  let newStrB = alphabetB.substring(0, indexB)
-
+  let a = phenotypeA.alphabet
+  let b = phenotypeB.alphabet
+  let indexA = Math.floor(Math.random() * a.length / 2 + a.length / 2)
+  let indexB = Math.floor(Math.random() + a.length / 2)
+  let newStrA = a.substring(indexA, a.length)
+  let newStrB = b.substring(0, indexB)
   return [
-    { alphabet: addMissingCharacter(newStrA, alphabetB) },
-    { alphabet: addMissingCharacter(newStrB, alphabetA) }
+    { alphabet: addMissingCharacter(newStrA, b) },
+    { alphabet: addMissingCharacter(newStrB, a) }
   ]
 }
 
@@ -104,9 +100,15 @@ for (let i = 0; i < 100; i++) {
 const best = geneticAlgorithm.best()
 console.log('Finished with:', best.alphabet)
 const isSame = sameAlphabet(firstPhenotype.alphabet, best.alphabet)
-console.log('Same set of characters:',
-  isSame ? chalk.green('true') : chalk.red('false'))
-console.log(chalk.green('Size new string:',
-  gzipSize.sync(js.replace(/[A-Za-z0-9-_]{30,}/, best.alphabet))))
-console.log(chalk.yellow('Size old string:',
-  gzipSize.sync(js.replace(/[A-Za-z0-9-_]{30,}/, firstPhenotype.alphabet))))
+console.log(
+  'Same set of characters:',
+  isSame ? chalk.green('true') : chalk.red('false')
+)
+console.log(chalk.green(
+  'Size new string:',
+  gzipSize.sync(js.replace(/[A-Za-z0-9-_]{30,}/, best.alphabet))
+))
+console.log(chalk.yellow(
+  'Size old string:',
+  gzipSize.sync(js.replace(/[A-Za-z0-9-_]{30,}/, firstPhenotype.alphabet)))
+)
