@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.1.7
+* Reduce `index`, `async` and `non-secure` size (by @polemius).
+
 ## 2.1.6
 * Reduce size (by Stas Lashmanov).
 * Return fast mask for Node.js.
