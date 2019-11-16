@@ -1,5 +1,4 @@
-let parentPort = require('worker_threads').parentPort
-let workerData = require('worker_threads').workerData
+let { parentPort, workerData } = require('worker_threads')
 let gzipSize = require('gzip-size')
 
 let used = new Set()
