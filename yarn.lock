@@ -1125,12 +1125,12 @@
   dependencies:
     globals "^12.2.0"
 
-"@logux/sharec-config@^0.5.5":
-  version "0.5.5"
-  resolved "https://registry.yarnpkg.com/@logux/sharec-config/-/sharec-config-0.5.5.tgz#61d097b8118f8aa2203aaddbf359af6c926df29e"
-  integrity sha512-BiUdXLRhNh8Nkbag3sLmOLbyjL6w1Kt1Z/D3T97sOhMWdvNj3mOODu4XADay3MJ/NmhAd5AKKwAGF3NKNe8wWg==
+"@logux/sharec-config@^0.5.6":
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/@logux/sharec-config/-/sharec-config-0.5.6.tgz#6eac457f7f128ae82b347e88d45dd7a21811ebd1"
+  integrity sha512-AZcoQNFyMYIWR0oxtvNQJLx3aCAK281ZafGLVgXWAv1HuHt04C64ri9fYpN7myT0FVma6rx6+JqvjUGpfLw+xg==
   dependencies:
-    sharec "^2.12.1-beta"
+    sharec "^2.13.0-beta"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -1651,11 +1651,11 @@ ansi-escapes@^3.0.0:
   integrity sha512-cBhpre4ma+U0T1oM5fXg7Dy1Jw7zzwv7lt/GoCpr+hDQJoYnKVPLL4dCvSEFMmQurOQvSrwT7SL/DAlhBI97RQ==
 
 ansi-escapes@^4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-4.2.1.tgz#4dccdb846c3eee10f6d64dea66273eab90c37228"
-  integrity sha512-Cg3ymMAdN10wOk/VYfLV7KCQyv7EDirJ64500sU7n9UlmioEtDuU5Gd+hj73hXSU/ex7tHJSssmyftDdkMLO8Q==
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-4.3.0.tgz#a4ce2b33d6b214b7950d8595c212f12ac9cc569d"
+  integrity sha512-EiYhwo0v255HUL6eDyuLrXEkTi7WwVCLAw+SeOQ7M7qdun1z1pum4DEm/nuqIVbPvi9RPPc9k9LbyBv6H0DwVg==
   dependencies:
-    type-fest "^0.5.2"
+    type-fest "^0.8.1"
 
 ansi-html@^0.0.7:
   version "0.0.7"
@@ -6858,9 +6858,9 @@ nan@^2.12.1:
   integrity sha512-INOFj37C7k3AfaNTtX8RhsTw7qRy7eLET14cROi9+5HAVbbHuIWUHEauBv5qT4Av2tWasiTY1Jw6puUNqRJXQg==
 
 nanoid@^2.1.0, nanoid@^2.1.6:
-  version "2.1.6"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-2.1.6.tgz#0665418f692e54cf44f34d4010761f3240a03314"
-  integrity sha512-2NDzpiuEy3+H0AVtdt8LoFi7PnqkOnIzYmJQp7xsEU6VexLluHQwKREuiz57XaQC5006seIadPrIZJhyS2n7aw==
+  version "2.1.7"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-2.1.7.tgz#d775e3e7c6470bbaaae3da9a647a80e228e0abf7"
+  integrity sha512-fmS3qwDldm4bE01HCIRqNk+f255CNjnAoeV3Zzzv0KemObHKqYgirVaZA9DtKcjogicWjYcHkJs4D5A8CjnuVQ==
 
 nanomatch@^1.2.9:
   version "1.2.13"
@@ -9134,10 +9134,10 @@ shallow-copy@~0.0.1:
   resolved "https://registry.yarnpkg.com/shallow-copy/-/shallow-copy-0.0.1.tgz#415f42702d73d810330292cc5ee86eae1a11a170"
   integrity sha1-QV9CcC1z2BAzApLMXuhurhoRoXA=
 
-sharec@^2.12.1-beta:
-  version "2.12.1-beta"
-  resolved "https://registry.yarnpkg.com/sharec/-/sharec-2.12.1-beta.tgz#cdd06ba1c7e296a5d3a58ab35d3108387bca373f"
-  integrity sha512-n/BUcfchsxDgNbNASK0XzunPy6vbBRUqSDNIZ22ufkUCIMbB9jn/4HbXcNi4sBk3eEbNZnI7V4w38YExzNBZeQ==
+sharec@^2.13.0-beta:
+  version "2.13.0-beta"
+  resolved "https://registry.yarnpkg.com/sharec/-/sharec-2.13.0-beta.tgz#10cb5e5077d497afdf82c2829ccbfc073dfb53b2"
+  integrity sha512-BBFxEvpRSx/OHhlb2b8daRXuEOgc17UDaZqZfLaObWPrVFHYZ7+HwnW1zXzmVCX87fCdocNj0urRlDo/Ij5QKQ==
   dependencies:
     boxen "^4.1.0"
     chalk "^2.4.2"
