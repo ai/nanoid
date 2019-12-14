@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.1.8
+* Improve React docs (by Nahum Zsilva).
+
 ## 2.1.7
 * Reduce `index`, `async` and `non-secure` size (by @polemius).
 
