@@ -18,8 +18,8 @@ let suite = new benchmark.Suite()
 
 function formatNumber (number) {
   return String(number)
-    .replace(/\d\d\d$/, ',$&')
-    .replace(/^(\d)(\d\d\d)/, '$1,$2')
+    .replace(/\d{3}$/, ',$&')
+    .replace(/^(\d)(\d{3})/, '$1,$2')
 }
 
 suite

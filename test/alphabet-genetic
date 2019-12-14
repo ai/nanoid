@@ -19,7 +19,7 @@ spawnSync('npx', ['webpack', '--mode', 'production', '--output', output, input])
 let js = fs.readFileSync(output).toString()
 fs.unlinkSync(output)
 
-let match = js.match(/[A-Za-z0-9-_]{30,}/)
+let match = js.match(/[\w-]{30,}/)
 if (!match) {
   process.stderr.write(chalk.red('Alphabet was not found\n'))
   process.exit(1)
@@ -66,7 +66,7 @@ function addMissingCharacter (str, proto) {
 }
 
 function fitnessFunction (phenotype) {
-  let file = js.replace(/[A-Za-z0-9-_]{30,}/, phenotype.alphabet)
+  let file = js.replace(/[\w-]{30,}/, phenotype.alphabet)
   let size = gzipSize.sync(file)
   console.log(size, phenotype.alphabet)
   return -1 * size
@@ -106,9 +106,9 @@ console.log(
 )
 console.log(chalk.green(
   'Size new string:',
-  gzipSize.sync(js.replace(/[A-Za-z0-9-_]{30,}/, best.alphabet))
+  gzipSize.sync(js.replace(/[\w-]{30,}/, best.alphabet))
 ))
 console.log(chalk.yellow(
   'Size old string:',
-  gzipSize.sync(js.replace(/[A-Za-z0-9-_]{30,}/, firstPhenotype.alphabet)))
+  gzipSize.sync(js.replace(/[\w-]{30,}/, firstPhenotype.alphabet)))
 )

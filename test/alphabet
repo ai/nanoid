@@ -20,7 +20,7 @@ spawnSync('npx', ['webpack', '--mode', 'production', '--output', output, input])
 let js = fs.readFileSync(output).toString()
 fs.unlinkSync(output)
 
-let match = js.match(/[A-Za-z0-9-_]{30,}/)
+let match = js.match(/[\w-]{30,}/)
 if (!match) {
   process.stderr.write(chalk.red('Alphabet was not found\n'))
   process.exit(1)
