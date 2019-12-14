@@ -186,13 +186,10 @@ This is good code. `this.id` will be generated only once:
 }
 ```
 
-or
+or with hooks
 
 ```jsx
-function Element() {
-   const id = React.useRef(nanoid()).current;
-   return <Item key={id} />
-} 
+const [id] = React.useState(nanoid)
 ```
 
 If you want to use Nano ID for `id`, you must to set some string prefix.
