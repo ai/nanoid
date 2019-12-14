@@ -186,6 +186,15 @@ This is good code. `this.id` will be generated only once:
 }
 ```
 
+or
+
+```jsx
+function Element() {
+   const id = React.useRef(nanoid()).current;
+   return <Item key={id} />
+} 
+```
+
 If you want to use Nano ID for `id`, you must to set some string prefix.
 Nano ID could be started from number. HTML ID can’t be started from the number.
 
