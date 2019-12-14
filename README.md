@@ -186,6 +186,12 @@ This is good code. `this.id` will be generated only once:
 }
 ```
 
+or with hooks
+
+```jsx
+const [id] = React.useState(nanoid)
+```
+
 If you want to use Nano ID for `id`, you must to set some string prefix.
 Nano ID could be started from number. HTML ID can’t be started from the number.
 
