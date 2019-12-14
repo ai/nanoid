@@ -50,7 +50,7 @@
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-unicorn": "^14.0.1",
-    "geneticalgorithm": "^0.3.6",
+    "geneticalgorithm": "^1.0.1",
     "gzip-size": "^5.1.1",
     "husky": "^3.1.0",
     "jest": "^24.9.0",
