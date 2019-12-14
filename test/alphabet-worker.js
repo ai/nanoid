@@ -59,7 +59,7 @@ function tick () {
     steps += 1
     let alphabet = getAlphabet(positions)
     if (alphabet) {
-      let file = workerData.js.replace(/[A-Za-z0-9-_]{30,}/, alphabet)
+      let file = workerData.js.replace(/[\w-]{30,}/, alphabet)
       gzipSize(file).then(size => {
         parentPort.postMessage({ alphabet, steps, size })
         steps = 0

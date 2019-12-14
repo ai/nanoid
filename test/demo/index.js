@@ -14,8 +14,8 @@ const LENGTH = ALPHABET.length
 
 function print (number) {
   return String(Math.floor(number * 100))
-    .replace(/\d\d\d\d\d\d$/, ',$&')
-    .replace(/\d\d\d$/, ',$&')
+    .replace(/\d{6}$/, ',$&')
+    .replace(/\d{3}$/, ',$&')
 }
 
 function printDistr (title, fn) {
