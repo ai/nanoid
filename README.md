@@ -176,20 +176,13 @@ between renders. This is bad code:
 <Item key={nanoid()} /> /* DON’T DO IT */
 ```
 
-This is good code. `this.id` will be generated only once:
+This is good code. `id` will be generated only once:
 
 ```jsx
-  id = nanoid()
-  render () {
-    return <Item key={this.id}>;
-  }
+const Element = () => {
+  const [id] = React.useState(nanoid)
+  return <Item key={id}>
 }
-```
-
-or with hooks
-
-```jsx
-const [id] = React.useState(nanoid)
 ```
 
 If you want to use Nano ID for `id`, you must to set some string prefix.
