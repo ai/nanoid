@@ -23,6 +23,7 @@ module.exports = function (size) {
   var bytes = random(size)
   var id = ''
   while (size--) {
+    // 63 means last 6 bits
     id += url[bytes[size] & 63]
   }
   return id

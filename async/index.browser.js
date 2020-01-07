@@ -11,6 +11,7 @@ module.exports = function (size) {
   var id = ''
   var bytes = crypto.getRandomValues(new Uint8Array(size))
   while (size--) {
+    // 63 means last 6 bits
     id += url[bytes[size] & 63]
   }
   return Promise.resolve(id)

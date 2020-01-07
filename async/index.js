@@ -25,6 +25,7 @@ module.exports = function (size) {
   return random(size).then(function (bytes) {
     var id = ''
     while (size--) {
+      // 63 means last 6 bits
       id += url[bytes[size] & 63]
     }
     return id
