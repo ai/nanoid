@@ -17,6 +17,7 @@
 module.exports = function (alphabet, size) {
   size = size || 21
   var id = ''
+  // compact alternative for `for (var i = 0; i < size; i++)`
   while (size--) {
     // TODO
     id += alphabet[Math.random() * alphabet.length | 0]

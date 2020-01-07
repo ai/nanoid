@@ -22,6 +22,7 @@ module.exports = function (size) {
   size = size || 21
   var bytes = random(size)
   var id = ''
+  // compact alternative for `for (var i = 0; i < size; i++)`
   while (size--) {
     // 1. 63 means last 6 bits
     // 2. there is no need in `|| ''` and `* 1.6` hacks in here,

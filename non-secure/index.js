@@ -18,6 +18,7 @@ var url = 'sOwnPropMN49CEiq-hXvHJdSymlFURTag61GQfuD8YIWz2Zk5xKB7LV30_Abject'
 module.exports = function (size) {
   size = size || 21
   var id = ''
+  // compact alternative for `for (var i = 0; i < size; i++)`
   while (size--) {
     // TODO
     id += url[Math.random() * 64 | 0]
