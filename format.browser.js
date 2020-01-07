@@ -1,5 +1,9 @@
 module.exports = function (random, alphabet, size) {
-  // TODO
+  // 1. To refuse fewer numbers bitmask is applied
+  // 2. It doesn’t solve all problems,
+  // because bitmask can reduce big bytes to a number
+  // which is close to `Math.pow(x, 2)`
+  // e.g. if we have 7 symbols in the alphabet, bitmask will pass 8 anyway
   var mask = (2 << Math.log(alphabet.length - 1) / Math.LN2) - 1
   // -~f => Math.ceil(f) if n is float number
   // -~i => i + 1 if n is integer number
