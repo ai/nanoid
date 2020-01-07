@@ -19,7 +19,7 @@ module.exports = function (alphabet, size) {
   var id = ''
   // compact alternative for `for (var i = 0; i < size; i++)`
   while (size--) {
-    // TODO
+    // `| 0` is compact alternative for `Math.round`
     id += alphabet[Math.random() * alphabet.length | 0]
   }
   return id

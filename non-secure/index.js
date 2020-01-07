@@ -20,7 +20,7 @@ module.exports = function (size) {
   var id = ''
   // compact alternative for `for (var i = 0; i < size; i++)`
   while (size--) {
-    // TODO
+    // `| 0` is compact alternative for `Math.round`
     id += url[Math.random() * 64 | 0]
   }
   return id
