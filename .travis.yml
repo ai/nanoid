@@ -5,3 +5,5 @@ node_js:
   - "12"
   - "10"
   - "8"
+install:
+ - yarn install --ignore-engines
