@@ -9,6 +9,7 @@ module.exports = function (random, alphabet, size) {
     return random(step).then(function (bytes) {
       var i = step
       while (i--) {
+        // '' is to refuse numbers bigger than the alphabet
         id += alphabet[bytes[i] & mask] || ''
         if (id.length === +size) return id
       }
