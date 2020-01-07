@@ -1,6 +1,7 @@
 var crypto = require('crypto')
 
 if (crypto.randomFillSync) {
+  // a single buffer is reused to avoid memory fragmentations
   var buffers = { }
   module.exports = function (bytes) {
     var buffer = buffers[bytes]
