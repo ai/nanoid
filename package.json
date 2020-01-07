@@ -27,6 +27,7 @@
     "./async/random.js": "./async/random.browser.js"
   },
   "react-native": {
+    "./index.js": "./index.js",
     "./async/random.js": "./async/random.rn.js"
   },
   "sideEffects": false,
