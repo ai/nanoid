@@ -27,6 +27,7 @@
  * @function
  */
 module.exports = function (random, alphabet, size) {
+  // TODO
   var mask = (2 << 31 - Math.clz32((alphabet.length - 1) | 1)) - 1
   var step = Math.ceil(1.6 * mask * size / alphabet.length)
   var id = ''

@@ -19,6 +19,7 @@ module.exports = function (size) {
   size = size || 21
   var id = ''
   while (size--) {
+    // TODO
     id += url[Math.random() * 64 | 0]
   }
   return id

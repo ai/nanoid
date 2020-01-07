@@ -29,6 +29,7 @@
  * @function
  */
 module.exports = function (random, alphabet, size) {
+  // TODO
   var mask = (2 << Math.log(alphabet.length - 1) / Math.LN2) - 1
   var step = Math.ceil(1.6 * mask * size / alphabet.length)
 
