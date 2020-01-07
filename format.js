@@ -38,7 +38,8 @@ module.exports = function (random, alphabet, size) {
   // because we need to wait for entropy collection
   // Hardware random generator needs entropy only for first random seed,
   // then it generates next bytes by the algorithm.
-  // This is why it is cheaper sometimes to ask for more bytes in the round to reduce calls.
+  // This is why it is cheaper sometimes to ask for more bytes
+  // in the round to reduce calls.
   // 2. `1.6` is a selected factor of how many extra bytes it's better to ask
   var step = Math.ceil(1.6 * mask * size / alphabet.length)
   var id = ''
