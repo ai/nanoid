@@ -26,7 +26,7 @@ module.exports = function (size) {
   while (size--) {
     // 1. 63 means last 6 bits
     // 2. there is no need in `|| ''` and `* 1.6` hacks in here,
-    // because there's 64 symbols in the default alphabet.
+    // because the default alphabet has 64 symbols in it.
     // 64 is Math.pow(2, 6), the bitmask works perfectly
     // without any bytes bigger than the alphabet
     id += url[bytes[size] & 63]
