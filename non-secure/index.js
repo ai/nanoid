@@ -1,3 +1,6 @@
+// This alphabet uses a-z A-Z 0-9 _- symbols. Symbols order was changed
+// for better gzip compression. We use genetic algorithm to find the best order.
+// Check generator code at test/alphabet-genetic.
 var url = 'sOwnPropMN49CEiq-hXvHJdSymlFURTag61GQfuD8YIWz2Zk5xKB7LV30_Abject'
 
 /**
@@ -18,9 +21,9 @@ var url = 'sOwnPropMN49CEiq-hXvHJdSymlFURTag61GQfuD8YIWz2Zk5xKB7LV30_Abject'
 module.exports = function (size) {
   size = size || 21
   var id = ''
-  // compact alternative for `for (var i = 0; i < size; i++)`
+  // Compact alternative for `for (var i = 0; i < size; i++)`
   while (size--) {
-    // `| 0` is compact alternative for `Math.round`
+    // `| 0` is compact and faster alternative for `Math.round()`
     id += url[Math.random() * 64 | 0]
   }
   return id

@@ -1,4 +1,8 @@
+// This file replaces `index.js` in bundlers like webpack or Rollup,
+// according to `browser` config in `package.json`.
+
 if (process.env.NODE_ENV !== 'production') {
+  // All bundlers will remove this block in production bundle
   if (typeof navigator !== 'undefined' && navigator.product === 'ReactNative') {
     throw new Error(
       'React Native does not have a built-in secure random generator. ' +
@@ -16,23 +20,21 @@ if (process.env.NODE_ENV !== 'production') {
 
 var crypto = self.crypto || self.msCrypto
 
-/*
- * This alphabet uses a-z A-Z 0-9 _- symbols.
- * Symbols order was changed for better gzip compression.
- */
+// This alphabet uses a-z A-Z 0-9 _- symbols. Symbols order was changed
+// for better gzip compression. We use genetic algorithm to find the best order.
+// Check generator code at test/alphabet-genetic.
 var url = 'QLUint8ARdomValuesObj0h6345-79BCrypgJzHKTNYDSMkXPZ_FfG1WcqvwxEI2'
 
 module.exports = function (size) {
   size = size || 21
   var id = ''
   var bytes = crypto.getRandomValues(new Uint8Array(size))
-  // compact alternative for `for (var i = 0; i < size; i++)`
+  // Compact alternative for `for (var i = 0; i < size; i++)`
   while (size--) {
-    // 1. 63 means last 6 bits
-    // 2. there is no need in `|| ''` and `* 1.6` hacks in here,
-    // because the default alphabet has 64 symbols in it.
-    // 64 is Math.pow(2, 6), the bitmask works perfectly
-    // without any bytes bigger than the alphabet
+    // We can’t use bytes bigger than the alphabet. 63 is 00111111 bitmask.
+    // This mask reduces random byte 0-255 to 0-63 values.
+    // There is no need in `|| ''` and `* 1.6` hacks in here,
+    // because bitmask trim bytes exact to alphabet size.
     id += url[bytes[size] & 63]
   }
   return id

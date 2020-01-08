@@ -1,8 +1,9 @@
+// This alphabet uses a-z A-Z 0-9 _- symbols. Symbols order was changed
+// for better gzip compression. We use genetic algorithm to find the best order.
+// Check generator code at test/alphabet-genetic.
+
 /**
  * URL safe symbols.
- *
- * This alphabet uses a-z A-Z 0-9 _- symbols.
- * Symbols order was changed for better gzip compression.
  *
  * @name url
  * @type {string}
