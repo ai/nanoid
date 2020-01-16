@@ -23,7 +23,7 @@ module.exports = function (size) {
   var id = ''
   // Compact alternative for `for (var i = 0; i < size; i++)`
   while (size--) {
-    // `| 0` is compact and faster alternative for `Math.round()`
+    // `| 0` is compact and faster alternative for `Math.floor()`
     id += url[Math.random() * 64 | 0]
   }
   return id
