@@ -29,7 +29,7 @@
 module.exports = function (random, alphabet, size) {
   // We can’t use bytes bigger than the alphabet. To make bytes values closer
   // to the alphabet, we apply bitmask on them. We look for the closest
-  // `x^^2 - 1` number, which will be bigger than alphabet size. If we have
+  // `2 ** x - 1` number, which will be bigger than alphabet size. If we have
   // 30 symbols in the alphabet, we will take 31 (00011111).
   var mask = (2 << 31 - Math.clz32((alphabet.length - 1) | 1)) - 1
   // Bitmask is not a perfect solution (in our example it will pass 31 bytes,
