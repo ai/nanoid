@@ -26,7 +26,7 @@ var crypto = self.crypto || self.msCrypto
 var url = 'QLUint8ARdomValuesObj0h6345-79BCrypgJzHKTNYDSMkXPZ_FfG1WcqvwxEI2'
 
 module.exports = function (size) {
-  size = size || 21
+  size = size | 0 || 21
   var id = ''
   var bytes = crypto.getRandomValues(new Uint8Array(size))
   // Compact alternative for `for (var i = 0; i < size; i++)`

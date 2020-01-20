@@ -46,14 +46,8 @@ it('changes ID length', async () => {
   expect(id).toHaveLength(10)
 })
 
-it('throws on string', async () => {
-  let error
-  try {
-    await async('10')
-  } catch (e) {
-    error = e
-  }
-  expect(error.message).toContain('"size" argument must be')
+it('accepts string', async () => {
+  await expect(async('10')).resolves.toHaveLength(10)
 })
 
 it('has no collisions', async () => {
@@ -100,4 +94,10 @@ it('rejects Promise on error', async () => {
     catched = e
   }
   expect(catched).toBe(error)
+})
+
+it('should cast wrong types to deafults', async () => {
+  await expect(async('foobar')).resolves.toHaveLength(21)
+  await expect(async({})).resolves.toHaveLength(21)
+  await expect(async('10foo')).resolves.toHaveLength(21)
 })

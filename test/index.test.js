@@ -53,3 +53,9 @@ it('has flat distribution', () => {
   }
   expect(max - min).toBeLessThanOrEqual(0.05)
 })
+
+it('should cast wrong types to deafults', () => {
+  expect(nanoid('foobar')).toHaveLength(21)
+  expect(nanoid({})).toHaveLength(21)
+  expect(nanoid('10foo')).toHaveLength(21)
+})

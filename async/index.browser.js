@@ -9,7 +9,7 @@ var crypto = self.crypto || self.msCrypto
 var url = 'IUint8Ar21ModulvezGFYPCJ7_p0V4XSymbLBNH6fTqQ35xD9ZREghasOw-cjkWK'
 
 module.exports = function (size) {
-  size = size || 21
+  size = size | 0 || 21
   var id = ''
   var bytes = crypto.getRandomValues(new Uint8Array(size))
   // Compact alternative for `for (var i = 0; i < size; i++)`

@@ -21,7 +21,7 @@ var url = require('../url')
  * @function
  */
 module.exports = function (size) {
-  size = size || 21
+  size = size | 0 || 21
   return random(size).then(function (bytes) {
     var id = ''
     // Compact alternative for `for (var i = 0; i < size; i++)`

@@ -19,7 +19,7 @@ var url = 'sOwnPropMN49CEiq-hXvHJdSymlFURTag61GQfuD8YIWz2Zk5xKB7LV30_Abject'
  * @function
  */
 module.exports = function (size) {
-  size = size || 21
+  size = size | 0 || 21
   var id = ''
   // Compact alternative for `for (var i = 0; i < size; i++)`
   while (size--) {
