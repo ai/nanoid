@@ -50,8 +50,6 @@
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-unicorn": "^15.0.1",
-    "geneticalgorithm": "^1.0.2",
-    "gzip-size": "^5.1.1",
     "husky": "^4.0.10",
     "jest": "^24.9.0",
     "lint-staged": "^10.0.1",
@@ -63,7 +61,6 @@
     "uid-safe": "^2.1.5",
     "uuid": "^3.4.0",
     "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10",
     "yaspeller-ci": "^1.0.1"
   },
   "size-limit": [
