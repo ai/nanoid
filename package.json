@@ -78,7 +78,7 @@
     },
     {
       "path": "non-secure/index.js",
-      "limit": "89 B"
+      "limit": "84 B"
     },
     {
       "path": "non-secure/generate.js",
