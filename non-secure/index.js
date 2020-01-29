@@ -2,12 +2,16 @@
 // Despite the fact the source code is quite long, its entropy
 // is low and there are lots of duplicates - just what compressors
 // like GZIP and Brotli likes the best.
-var i = 36
 var url = '-_'
 
+var i = 36
 while (i--) {
   url += i.toString(36)
-  i > 9 && (url += i.toString(36).toUpperCase())
+}
+
+i = 36
+while (i-- - 10) {
+  url += i.toString(36).toUpperCase()
 }
 
 /**
@@ -27,9 +31,9 @@ while (i--) {
  */
 module.exports = function (size) {
   var id = ''
-  size = size || 21
+  i = size || 21
   // Compact alternative for `for (var i = 0; i < size; i++)`
-  while (size--) {
+  while (i--) {
     // `| 0` is compact and faster alternative for `Math.floor()`
     id += url[Math.random() * 64 | 0]
   }
