@@ -29,9 +29,9 @@ var url = '-_'
 var i = 36
 while (i--) {
   // 36 is radix.
-  // Number.prototype.toString(36) returns number in Base36 representation
+  // Number.prototype.toString(36) returns number in Base36 representation.
   // Base36 is like hex,
-  // but Base36 is represented using the numerals 0–9 and the Latin letters A–Z
+  // but Base36 is represented using the numerals 0–9 and the Latin letters a-z
   url += i.toString(36)
 }
 
