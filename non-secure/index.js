@@ -1,15 +1,20 @@
 // This alphabet uses a-z A-Z 0-9 _- symbols.
-// Despite the fact the source code is quite long, its entropy
-// is low and there are lots of duplicates - just what compressors
-// like GZIP and Brotli likes the best.
+// Symbols are generated for better gzip compression.
+// Final url is
+// '-_zyxwvutsrqponmlkjihgfedcba9876543210ZYXWVUTSRQPONMLKJIHGFEDCBA'
 var url = '-_'
 
 var i = 36
 while (i--) {
+  // 36 is radix.
+  // Number.prototype.toString(36) returns number in Base36 representation
+  // Base36 is like hex,
+  // but Base36 is represented using the numerals 0–9 and the Latin letters A–Z
   url += i.toString(36)
 }
 
 i = 36
+// Loop from 36 to 10 (from Z to A in Base36)
 while (i-- - 10) {
   url += i.toString(36).toUpperCase()
 }
