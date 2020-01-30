@@ -14,13 +14,14 @@
  * generate(url, 10) //=> "Uakgb_J5m9"
  */
 
+// This alphabet uses a-z A-Z 0-9 _- symbols.
+// Symbols are generated for smaller size.
+// -_zyxwvutsrqponmlkjihgfedcba9876543210ZYXWVUTSRQPONMLKJIHGFEDCBA
 module.exports = '-_'
 var i = 36
 while (i--) {
-  // 36 is radix.
-  // Number.prototype.toString(36) returns number in Base36 representation.
-  // Base36 is like hex,
-  // but Base36 is represented using the numerals 0–9 and the Latin letters a-z
+  // 36 is radix. Number.prototype.toString(36) returns number
+  // in Base36 representation. Base36 is like hex, but it uses 0–9 and a-z.
   module.exports += i.toString(36)
   i > 9 && (module.exports += i.toString(36).toUpperCase())
 }
