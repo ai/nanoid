@@ -1,25 +1,23 @@
 // This alphabet uses a-z A-Z 0-9 _- symbols.
-// Despite the fact the source code is quite long, its entropy
-// is low and there are lots of duplicates - just what compressors
-// like GZIP and Brotli likes the best.
-var i
-var url = '_-' + String.fromCharCode(
-  // ASCII codes for 0...9
-  i = 48, i += 1, i += 1, i += 1, i += 1, i += 1, i += 1, i += 1,
-  i += 1, i += 1,
+// Symbols are generated for better gzip compression.
+// Final url is
+// '-_zyxwvutsrqponmlkjihgfedcba9876543210ZYXWVUTSRQPONMLKJIHGFEDCBA'
+var url = '-_'
 
-  // ASCII codes for A...Z
-  i += 8, i += 1, i += 1, i += 1, i += 1, i += 1, i += 1, i += 1,
-  i += 1, i += 1, i += 1, i += 1, i += 1, i += 1, i += 1, i += 1,
-  i += 1, i += 1, i += 1, i += 1, i += 1, i += 1, i += 1, i += 1,
-  i += 1, i += 1,
+var i = 36
+while (i--) {
+  // 36 is radix.
+  // Number.prototype.toString(36) returns number in Base36 representation.
+  // Base36 is like hex,
+  // but Base36 is represented using the numerals 0–9 and the Latin letters a-z
+  url += i.toString(36)
+}
 
-  // ASCII codes for a...z
-  i += 7, i += 1, i += 1, i += 1, i += 1, i += 1, i += 1, i += 1,
-  i += 1, i += 1, i += 1, i += 1, i += 1, i += 1, i += 1, i += 1,
-  i += 1, i += 1, i += 1, i += 1, i += 1, i += 1, i += 1, i += 1,
-  i += 1, i += 1
-)
+i = 36
+// Loop from 36 to 10 (from Z to A in Base36)
+while (i-- - 10) {
+  url += i.toString(36).toUpperCase()
+}
 
 /**
  * Generate URL-friendly unique ID. This method use non-secure predictable
@@ -37,10 +35,10 @@ var url = '_-' + String.fromCharCode(
  * @function
  */
 module.exports = function (size) {
-  size = size || 21
   var id = ''
+  i = size || 21
   // Compact alternative for `for (var i = 0; i < size; i++)`
-  while (size--) {
+  while (i--) {
     // `| 0` is compact and faster alternative for `Math.floor()`
     id += url[Math.random() * 64 | 0]
   }
