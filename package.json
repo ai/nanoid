@@ -33,7 +33,7 @@
   "devDependencies": {
     "@logux/eslint-config": "^35.0.3",
     "@logux/sharec-config": "^0.5.6",
-    "@size-limit/preset-small-lib": "^3.0.0",
+    "@size-limit/preset-small-lib": "^4.0.0",
     "benchmark": "^2.1.4",
     "chalk": "^3.0.0",
     "clean-publish": "^1.1.4",
@@ -58,6 +58,7 @@
     "rndm": "^1.2.0",
     "secure-random-string": "^1.1.2",
     "shortid": "^2.2.15",
+    "size-limit": "^4.0.0",
     "uid-safe": "^2.1.5",
     "uuid": "^3.4.0",
     "webpack": "^4.41.5",

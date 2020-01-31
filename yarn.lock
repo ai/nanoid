@@ -1287,35 +1287,34 @@
   dependencies:
     type-detect "4.0.8"
 
-"@size-limit/file@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@size-limit/file/-/file-3.0.0.tgz#afef0785a91baa48bcec4802c818d5e0d3476f67"
-  integrity sha512-HDurGZeDbhEzCnYo6XqGMr8JIoU6Af/97BijSoVVFzx83UsFOA9/lMFY2T7LVcjLYPWQ1ofirCMDlFG5+a7oxw==
+"@size-limit/file@4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@size-limit/file/-/file-4.0.0.tgz#ca62d84347f23ff3e153e90703c9b7ffa9dd8da3"
+  integrity sha512-v10KakpBmstJjbFp6yrhSpntNCDIvf4S/T7O8tmEkMC+lvifaQlEzBFQdW9Hbg/OZ0kkzxOJlmlWrJ/QWsf2Lg==
   dependencies:
     semver "7.1.1"
-    size-limit "3.0.0"
 
-"@size-limit/preset-small-lib@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@size-limit/preset-small-lib/-/preset-small-lib-3.0.0.tgz#42a1f99ef031909b5ff23a4edf5cddfc642adb3a"
-  integrity sha512-SHegC1lUIDnqq0cjG46FrUcL3F5/0xl6HPIpe0/LiQ5imgbvjNjSSijb2NLfXaZB5kjKbIVk9qzP2r7mRuH3Kw==
+"@size-limit/preset-small-lib@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@size-limit/preset-small-lib/-/preset-small-lib-4.0.0.tgz#aaebb1f4fc1df935c986538e657657566ceb76de"
+  integrity sha512-A2PpsFq8lfn8goMXl8UB5Jl4xTguEw8Kx8bAy24f+YqYMasPjzG4zwR04A+JsFon2Zk581ybf7/4lDEwh+2RuA==
   dependencies:
-    "@size-limit/file" "3.0.0"
-    "@size-limit/webpack" "3.0.0"
+    "@size-limit/file" "4.0.0"
+    "@size-limit/webpack" "4.0.0"
 
-"@size-limit/webpack@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@size-limit/webpack/-/webpack-3.0.0.tgz#2aa62e47c437024d6ecd43f8bfc4626522e3a959"
-  integrity sha512-Cl7gScqX/oFDT1iVsHslYRzGBAjUgKXyDJZfY7XQl+OihkXKFHMaAD591VkNve801l4l5iVecvad47NTB5C3vg==
+"@size-limit/webpack@4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@size-limit/webpack/-/webpack-4.0.0.tgz#ec043d8f3fbbef2a3cb42b6d030480eb88eee0f4"
+  integrity sha512-HastKn2I/g0mW23rtkWWTy8cTpdpjEjDpZ+LqmMI6IdRwh/LF0YYm2v3JqbW/xvwHuz/bP96Upf9vX6+KvkQFA==
   dependencies:
-    css-loader "^3.4.1"
+    css-loader "^3.4.2"
     escape-string-regexp "^2.0.0"
     file-loader "^5.0.2"
-    nanoid "^2.1.9"
+    nanoid "^2.1.11"
     optimize-css-assets-webpack-plugin "^5.0.3"
-    rimraf "^3.0.0"
-    size-limit "3.0.0"
-    style-loader "^1.1.2"
+    pnp-webpack-plugin "^1.6.0"
+    rimraf "^3.0.1"
+    style-loader "^1.1.3"
     webpack "^4.41.5"
     webpack-bundle-analyzer "^3.6.0"
 
@@ -2994,7 +2993,7 @@ css-declaration-sorter@^4.0.1:
     postcss "^7.0.1"
     timsort "^0.3.0"
 
-css-loader@^3.4.1:
+css-loader@^3.4.2:
   version "3.4.2"
   resolved "https://registry.yarnpkg.com/css-loader/-/css-loader-3.4.2.tgz#d3fdb3358b43f233b78501c5ed7b1c6da6133202"
   integrity sha512-jYq4zdZT0oS0Iykt+fqnzVLRIeiPWhka+7BqPn+oSIpWJAHak5tmB/WZrJ2a21JhCeFyNnnlroSl8c+MtVndzA==
@@ -6872,10 +6871,10 @@ nan@^2.12.1:
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.14.0.tgz#7818f722027b2459a86f0295d434d1fc2336c52c"
   integrity sha512-INOFj37C7k3AfaNTtX8RhsTw7qRy7eLET14cROi9+5HAVbbHuIWUHEauBv5qT4Av2tWasiTY1Jw6puUNqRJXQg==
 
-nanoid@^2.1.0, nanoid@^2.1.9:
-  version "2.1.10"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-2.1.10.tgz#66fb5ac664ee2d3017f451b9f0d26cfec3c034b5"
-  integrity sha512-ZPUHBAwrQ+BSwVV2Xh6hBOEStTzAf8LgohOY0kk22lDiDdI32582KjVPYCqgqj7834hTunGzwZOB4me9T6ZcnA==
+nanoid@^2.1.0, nanoid@^2.1.11:
+  version "2.1.11"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-2.1.11.tgz#ec24b8a758d591561531b4176a01e3ab4f0f0280"
+  integrity sha512-s/snB+WGm6uwi0WjsZdaVcuf3KJXlfGl2LcxgwkEwJF0D/BWzVWAZW/XY4bFaiR7s0Jk3FPvlnepg1H1b1UwlA==
 
 nanomatch@^1.2.9:
   version "1.2.13"
@@ -7737,6 +7736,13 @@ pn@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/pn/-/pn-1.1.0.tgz#e2f4cef0e219f463c179ab37463e4e1ecdccbafb"
   integrity sha512-2qHaIQr2VLRFoxe2nASzsV6ef4yOOH+Fi9FBOVH6cqeSgUnoyySPZkxzLuzd+RYOQTRpROA0ztTMqxROKSb/nA==
+
+pnp-webpack-plugin@^1.6.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/pnp-webpack-plugin/-/pnp-webpack-plugin-1.6.0.tgz#d5c068013a2fdc82224ca50ed179c8fba9036a8e"
+  integrity sha512-ZcMGn/xF/fCOq+9kWMP9vVVxjIkMCja72oy3lziR7UHy0hHFZ57iVpQ71OtveVbmzeCmphBg8pxNdk/hlK99aQ==
+  dependencies:
+    ts-pnp "^1.1.2"
 
 posix-character-classes@^0.1.0:
   version "0.1.1"
@@ -9217,10 +9223,10 @@ sisteransi@^1.0.3:
   resolved "https://registry.yarnpkg.com/sisteransi/-/sisteransi-1.0.4.tgz#386713f1ef688c7c0304dc4c0632898941cad2e3"
   integrity sha512-/ekMoM4NJ59ivGSfKapeG+FWtrmWvA1p6FBZwXrqojw90vJu8lBmrTxCMuBCydKtkaUe2zt4PlxeTKpjwMbyig==
 
-size-limit@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/size-limit/-/size-limit-3.0.0.tgz#948bf113fb30bb0dbbb1762dca4ca4fcc24f5932"
-  integrity sha512-J7g8dcd21uJ2EGW0iI0S71ua/1JmKkf47zLouEoDfdxlbKQNCpOV8Zv6/svFaaA4nYCltx+Pk9JwDBEDDVYAhw==
+size-limit@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/size-limit/-/size-limit-4.0.0.tgz#56a6e1687df83da33549b29d00398f7ccb429ad0"
+  integrity sha512-geYo+mriszY6duwxxnIKREpFKAFD0uffK7PiRjmWXQ65uQIAswcFNpXFwoMAJSt3UZytagduGEfh4cReSuGwBQ==
   dependencies:
     bytes "^3.1.0"
     chalk "^3.0.0"
@@ -9659,7 +9665,7 @@ strip-json-comments@^3.0.0, strip-json-comments@^3.0.1:
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-3.0.1.tgz#85713975a91fb87bf1b305cca77395e40d2a64a7"
   integrity sha512-VTyMAUfdm047mwKl+u79WIdrZxtFtn+nBxHeb844XBQ9uMNTuTHdx2hc5RiAJYqwTj3wc/xe5HLSdJSkJ+WfZw==
 
-style-loader@^1.1.2:
+style-loader@^1.1.3:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-1.1.3.tgz#9e826e69c683c4d9bf9db924f85e9abb30d5e200"
   integrity sha512-rlkH7X/22yuwFYK357fMN/BxYOorfnfq0eD7+vqlemSK4wEcejFF1dg4zxP0euBW8NrYx2WZzZ8PPFevr7D+Kw==
@@ -10031,6 +10037,11 @@ tryer@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/tryer/-/tryer-1.0.1.tgz#f2c85406800b9b0f74c9f7465b81eaad241252f8"
   integrity sha512-c3zayb8/kWWpycWYg87P71E1S1ZL6b6IJxfb5fvsUgsf0S2MVGaDhDXXjDMpdCpfWXqptc+4mXwmiy1ypXqRAA==
+
+ts-pnp@^1.1.2:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/ts-pnp/-/ts-pnp-1.1.5.tgz#840e0739c89fce5f3abd9037bb091dbff16d9dec"
+  integrity sha512-ti7OGMOUOzo66wLF3liskw6YQIaSsBgc4GOAlWRnIEj8htCxJUxskanMUoJOD6MDCRAXo36goXJZch+nOS0VMA==
 
 tslib@^1.8.1, tslib@^1.9.0:
   version "1.10.0"
