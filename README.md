@@ -395,3 +395,11 @@ async function createUser () {
   user.id = await format(random, url, 10)
 }
 ```
+
+## Contributing
+
+### Contribute using one click online setup
+
+You can use gitpod(a free online vscode like IDE) for contributing, with a single click it will launch a ready to code workspace with all the dependencies pre-installed, `index.browser.js` already openend and size-limit results showing in a linux terminal so that you can start coding straight away without wasting time on the setup.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/ai/nanoid/)

@@ -7,6 +7,7 @@ test/
 coverage/
 .travis.yml
 api.md
+.gitpod.yml
 
 img/
 .cache
