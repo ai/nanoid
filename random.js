@@ -7,7 +7,7 @@ if (crypto.randomFillSync) {
   module.exports = function (bytes) {
     var buffer = buffers[bytes]
     if (!buffer) {
-      // `Buffer.allocUnsafe()` faster because it don’t clean memory.
+      // `Buffer.allocUnsafe()` faster because it doesn’t clean memory.
       // We do not need it, since we will fill memory with new bytes anyway.
       buffer = Buffer.allocUnsafe(bytes)
       if (bytes <= 255) buffers[bytes] = buffer
