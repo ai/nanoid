@@ -5,7 +5,7 @@ if (crypto.randomFill) {
   // because we can use faster `Buffer.allocUnsafe()`.
   module.exports = function (bytes) {
     return new Promise(function (resolve, reject) {
-      // `Buffer.allocUnsafe()` faster because it don’t clean memory.
+      // `Buffer.allocUnsafe()` faster because it doesn’t clean memory.
       // We do not need it, since we will fill memory with new bytes anyway.
       crypto.randomFill(Buffer.allocUnsafe(bytes), function (err, buf) {
         if (err) {
