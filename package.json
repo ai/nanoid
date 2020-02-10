@@ -13,7 +13,9 @@
     "spell": "yarn api && yaspeller-ci *.md",
     "clean": "rimraf api.md coverage/",
     "test": "jest --coverage && eslint-ci . && size-limit && yarn spell",
-    "start": "parcel serve test/demo/index.html -d test/demo/build --open"
+    "start": "parcel serve test/demo/index.html -d test/demo/build --open",
+    "run-size-limit": "size-limit",
+    "nodemon": "nodemon --delay 100ms --exec yarn run run-size-limit"
   },
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
@@ -168,5 +170,8 @@
   "sharec": {
     "config": "@logux/sharec-config",
     "version": "0.5.6"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.2"
   }
 }
