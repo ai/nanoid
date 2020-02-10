@@ -37,9 +37,6 @@ Try to make us smaller in [online tool].
 * [Benchmark](#benchmark)
 * [Tools](#tools)
 * [Security](#security)
-  * [Unpredictability](#unpredictability)
-  * [Uniformity](#uniformity)
-  * [Vulnerabilities](#vulnerabilities)
 * [Usage](#usage)
   * [JS](#js)
   * [React](#react)
@@ -115,34 +112,23 @@ rndm                    2,413,565 ops/sec
 [Secure random values (in Node.js)]*
 
 
-### Unpredictability
+* **Unpredictability.** Instead of using the unsafe `Math.random()`, Nano ID
+  uses the `crypto` module in Node.js and the Web Crypto API in browsers.
+  These modules use unpredictable hardware random generator.
+* **Uniformity.** `random % alphabet` is a popular mistake to make when coding
+  an ID generator. The spread will not be even; there will be a lower chance
+  for some symbols to appear compared to others—so it will reduce the number
+  of tries when brute-forcing. Nano ID uses a [better algorithm] and is tested for uniformity.
 
-Instead of using the unsafe `Math.random()`, Nano ID uses the `crypto` module
-in Node.js and the Web Crypto API in browsers. These modules use unpredictable
-hardware random generator.
-
-
-### Uniformity
-
-`random % alphabet` is a popular mistake to make when coding an ID generator.
-The spread will not be even; there will be a lower chance for some symbols
-to appear compared to others—so it will reduce the number of tries
-when brute-forcing.
-
-Nano ID uses a [better algorithm] and is tested for uniformity.
-
-<img src="img/distribution.png" alt="Nano ID uniformity"
+  <img src="img/distribution.png" alt="Nano ID uniformity"
      width="340" height="135">
+
+* **Vulnerabilities:** to report a security vulnerability, please use
+  the [Tidelift security contact](https://tidelift.com/security).
+  Tidelift will coordinate the fix and disclosure.
 
 [Secure random values (in Node.js)]: https://gist.github.com/joepie91/7105003c3b26e65efcea63f3db82dfba
 [better algorithm]: https://github.com/ai/nanoid/blob/master/format.js
-
-
-### Vulnerabilities
-
-To report a security vulnerability, please use the
-[Tidelift security contact](https://tidelift.com/security).
-Tidelift will coordinate the fix and disclosure.
 
 
 ## Usage
