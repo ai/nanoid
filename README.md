@@ -20,7 +20,10 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 
 Supports [all browsers], Node.js and React Native.
 
+Try to make us smaller in [online tool].
+
 [all browsers]: http://caniuse.com/#feat=getrandomvalues
+[online tool]:  https://gitpod.io/#https://github.com/ai/nanoid/
 [Size Limit]:   https://github.com/ai/size-limit
 
 <a href="https://evilmartians.com/?utm_source=nanoid">
@@ -30,23 +33,26 @@ Supports [all browsers], Node.js and React Native.
 
 ## Table of Contents
 
-1. [Comparison with UUID](#comparison-with-uuid)
-2. [Benchmark](#benchmark)
-4. [Tools](#tools)
-3. [Security](#security)
-6. Usage
-   1. [JS](#js)
-   2. [React](#react)
-   3. [React Native](#react-native)
-   4. [Web Workers](#web-workers)
-   5. [PouchDB and CouchDB](#pouchdb-and-couchdb)
-   5. [Mongoose](#mongoose)
-   6. [Other Programming Languages](#other-programming-languages)
-7. API
-   1. [Async](#async)
-   2. [Non-Secure](#non-secure)
-   3. [Custom Alphabet or Length](#custom-alphabet-or-length)
-   4. [Custom Random Bytes Generator](#custom-random-bytes-generator)
+* [Comparison with UUID](#comparison-with-uuid)
+* [Benchmark](#benchmark)
+* [Tools](#tools)
+* [Security](#security)
+  * [Unpredictability](#unpredictability)
+  * [Uniformity](#uniformity)
+  * [Vulnerabilities](#vulnerabilities)
+* [Usage](#usage)
+  * [JS](#js)
+  * [React](#react)
+  * [React Native](#react-native)
+  * [PouchDB and CouchDB](#pouchdb-and-couchdb)
+  * [Mongoose](#mongoose)
+  * [Web Workers](#web-workers)
+  * [Other Programming Languages](#other-programming-languages)
+* [API](#api)
+  * [Async](#async)
+  * [Non-Secure](#non-secure)
+  * [Custom Alphabet or Length](#custom-alphabet-or-length)
+  * [Custom Random Bytes Generator](#custom-random-bytes-generator)
 
 
 ## Comparison with UUID
@@ -395,11 +401,3 @@ async function createUser () {
   user.id = await format(random, url, 10)
 }
 ```
-
-## Contributing
-
-### Contribute using one click online setup
-
-You can use gitpod(a free online vscode like IDE) for contributing, with a single click it will launch a ready to code workspace with all the dependencies pre-installed, `index.browser.js` already openend and size-limit results showing in a linux terminal so that you can start coding straight away without wasting time on the setup.
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/ai/nanoid/)

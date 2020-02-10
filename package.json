@@ -14,8 +14,7 @@
     "clean": "rimraf api.md coverage/",
     "test": "jest --coverage && eslint-ci . && size-limit && yarn spell",
     "start": "parcel serve test/demo/index.html -d test/demo/build --open",
-    "run-size-limit": "size-limit",
-    "nodemon": "nodemon --delay 100ms --exec yarn run run-size-limit"
+    "watch": "nodemon --delay 100ms --exec npx size-limit"
   },
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
@@ -55,6 +54,7 @@
     "husky": "^4.2.1",
     "jest": "^25.1.0",
     "lint-staged": "^10.0.7",
+    "nodemon": "^2.0.2",
     "parcel-bundler": "^1.12.4",
     "rimraf": "^3.0.2",
     "rndm": "^1.2.0",
@@ -170,8 +170,5 @@
   "sharec": {
     "config": "@logux/sharec-config",
     "version": "0.5.7"
-  },
-  "dependencies": {
-    "nodemon": "^2.0.2"
   }
 }
