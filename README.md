@@ -359,7 +359,7 @@ function random (size) {
   return result
 }
 
-format(random, "abcdef", 10) //=> "fbaefaadeb"
+format(random, 'abcdef', 10) //=> "fbaefaadeb"
 ```
 
 `random` callback must accept the array size and return an array
