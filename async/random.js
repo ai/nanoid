@@ -1,7 +1,7 @@
 let crypto = require('crypto')
 
 if (crypto.randomFill) {
-  // `crypto.randomFill()` is a little fatser than `crypto.randomBytes()`,
+  // `crypto.randomFill()` is a little faster than `crypto.randomBytes()`,
   // because we can use faster `Buffer.allocUnsafe()`.
   module.exports = bytes => new Promise((resolve, reject) => {
     // `Buffer.allocUnsafe()` faster because it doesn’t clean memory.
