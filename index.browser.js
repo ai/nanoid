@@ -10,6 +10,11 @@ if (process.env.NODE_ENV !== 'production') {
       'For secure ID install `expo-random` locally and use `nanoid/async`.'
     )
   }
+  if (typeof self !== 'undefined' && self.msCrypto && !self.crypto) {
+    throw new Error(
+      'Add self.crypto = self.msCrypto before Nano ID to fix IE 11 support'
+    )
+  }
   if (typeof self === 'undefined' || (!self.crypto && !self.msCrypto)) {
     throw new Error(
       'Your browser does not have secure random generator. ' +
@@ -18,14 +23,12 @@ if (process.env.NODE_ENV !== 'production') {
   }
 }
 
-var crypto = self.crypto || self.msCrypto
-
 // This alphabet uses a-z A-Z 0-9 _- symbols.
 // Symbols are generated for smaller size.
 // -_zyxwvutsrqponmlkjihgfedcba9876543210ZYXWVUTSRQPONMLKJIHGFEDCBA
-var url = '-_'
+let url = '-_'
 // Loop from 36 to 0 (from z to a and 9 to 0 in Base36).
-var i = 36
+let i = 36
 while (i--) {
   // 36 is radix. Number.prototype.toString(36) returns number
   // in Base36 representation. Base36 is like hex, but it uses 0–9 and a-z.
@@ -37,9 +40,9 @@ while (i-- - 10) {
   url += i.toString(36).toUpperCase()
 }
 
-module.exports = function (size) {
-  var id = ''
-  var bytes = crypto.getRandomValues(new Uint8Array(size || 21))
+module.exports = (size = 21) => {
+  let id = ''
+  let bytes = self.crypto.getRandomValues(new Uint8Array(size))
   i = size || 21
 
   // Compact alternative for `for (var i = 0; i < size; i++)`

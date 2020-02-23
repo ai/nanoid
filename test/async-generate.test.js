@@ -27,8 +27,7 @@ it('has flat distribution', async () => {
   await Promise.all(times(100, async () => {
     let id = await generate(ALPHABET, LENGTH)
     expect(id).toHaveLength(LENGTH)
-    for (let j = 0; j < id.length; j++) {
-      let char = id[j]
+    for (let char of id) {
       if (!chars[char]) chars[char] = 0
       chars[char] += 1
     }

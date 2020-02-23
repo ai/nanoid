@@ -1,4 +1,4 @@
-var random
+let random
 try {
   random = require('expo-random')
 } catch (e) {
@@ -9,6 +9,4 @@ try {
   )
 }
 
-module.exports = function (bytes) {
-  return random.getRandomBytesAsync(bytes)
-}
+module.exports = bytes => random.getRandomBytesAsync(bytes)

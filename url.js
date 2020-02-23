@@ -18,7 +18,7 @@
 // Symbols are generated for smaller size.
 // -_zyxwvutsrqponmlkjihgfedcba9876543210ZYXWVUTSRQPONMLKJIHGFEDCBA
 module.exports = '-_'
-var i = 36
+let i = 36
 while (i--) {
   // 36 is radix. Number.prototype.toString(36) returns number
   // in Base36 representation. Base36 is like hex, but it uses 0–9 and a-z.

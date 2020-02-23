@@ -1,11 +1,11 @@
-var crypto = require('crypto')
+let crypto = require('crypto')
 
 if (crypto.randomFillSync) {
   // We reuse buffers with the same size to avoid memory fragmentations
   // for better performance
-  var buffers = { }
-  module.exports = function (bytes) {
-    var buffer = buffers[bytes]
+  let buffers = { }
+  module.exports = bytes => {
+    let buffer = buffers[bytes]
     if (!buffer) {
       // `Buffer.allocUnsafe()` faster because it doesn’t clean memory.
       // We do not need it, since we will fill memory with new bytes anyway.

@@ -14,10 +14,9 @@
  * @name nonSecure
  * @function
  */
-module.exports = function (alphabet, size) {
-  size = size || 21
-  var id = ''
-  // Compact alternative for `for (var i = 0; i < size; i++)`
+module.exports = (alphabet, size = 21) => {
+  let id = ''
+  // Complet alternative for `for (var i = 0; i < size; i++)`
   while (size--) {
     // `| 0` is compact and faster alternative for `Math.floor()`
     id += alphabet[Math.random() * alphabet.length | 0]

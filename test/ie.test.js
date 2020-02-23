@@ -1,16 +1,9 @@
 global.self = {
-  msCrypto: {
-    getRandomValues (array) {
-      for (let i = 0; i < array.length; i++) {
-        array[i] = Math.floor(Math.random() * 256)
-      }
-      return array
-    }
-  }
+  msCrypto: { }
 }
 
-let nanoid = require('../index.browser')
-
-it('generates URL-friendly IDs', () => {
-  expect(typeof nanoid()).toEqual('string')
+it('shows error in IE', () => {
+  expect(() => {
+    require('../index.browser')
+  }).toThrow(/IE 11/)
 })

@@ -1,9 +1,9 @@
 // This alphabet uses a-z A-Z 0-9 _- symbols.
 // Symbols are generated for smaller size.
 // -_zyxwvutsrqponmlkjihgfedcba9876543210ZYXWVUTSRQPONMLKJIHGFEDCBA
-var url = '-_'
+let url = '-_'
 // Loop from 36 to 0 (from z to a and 9 to 0 in Base36).
-var i = 36
+let i = 36
 while (i--) {
   // 36 is radix. Number.prototype.toString(36) returns number
   // in Base36 representation. Base36 is like hex, but it uses 0–9 and a-z.
@@ -30,11 +30,10 @@ while (i-- - 10) {
  * @name nonSecure
  * @function
  */
-module.exports = function (size) {
-  var id = ''
-  i = size || 21
+module.exports = (size = 21) => {
+  let id = ''
   // Compact alternative for `for (var i = 0; i < size; i++)`
-  while (i--) {
+  while (size--) {
     // `| 0` is compact and faster alternative for `Math.floor()`
     id += url[Math.random() * 64 | 0]
   }

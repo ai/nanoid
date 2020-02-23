@@ -1,5 +1,5 @@
-var random = require('./random')
-var format = require('./format')
+let random = require('./random')
+let format = require('./format')
 
 /**
  * Low-level function to change alphabet and ID size.

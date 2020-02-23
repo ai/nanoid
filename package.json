@@ -32,12 +32,12 @@
   },
   "sideEffects": false,
   "devDependencies": {
-    "@logux/eslint-config": "^35.0.4",
+    "@logux/eslint-config": "^36.0.0",
     "@logux/sharec-config": "^0.5.7",
-    "@size-limit/preset-small-lib": "^4.0.1",
+    "@size-limit/preset-small-lib": "^4.0.2",
     "benchmark": "^2.1.4",
     "chalk": "^3.0.0",
-    "clean-publish": "^1.1.4",
+    "clean-publish": "^1.1.5",
     "documentation": "^12.1.4",
     "eslint": "^6.8.0",
     "eslint-ci": "^1.0.0",
@@ -50,8 +50,8 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-unicorn": "^16.0.0",
-    "husky": "^4.2.1",
+    "eslint-plugin-unicorn": "^16.1.1",
+    "husky": "^4.2.3",
     "jest": "^25.1.0",
     "lint-staged": "^10.0.7",
     "nodemon": "^2.0.2",
@@ -60,46 +60,47 @@
     "rndm": "^1.2.0",
     "secure-random-string": "^1.1.2",
     "shortid": "^2.2.15",
-    "size-limit": "^4.0.1",
+    "size-limit": "^4.0.2",
     "uid-safe": "^2.1.5",
     "uuid": "^3.4.0",
-    "webpack": "^4.41.5",
-    "yaspeller-ci": "^1.0.1"
+    "webpack": "^4.41.6",
+    "yaspeller-ci": "^1.0.2"
   },
   "size-limit": [
     {
       "path": "index.js",
-      "limit": "119 B"
+      "limit": "118 B"
     },
     {
       "path": "generate.js",
-      "limit": "168 B"
+      "limit": "157 B"
     },
     {
       "path": "url.js",
-      "limit": "47 B"
+      "limit": "50 B"
     },
     {
       "path": "non-secure/index.js",
-      "limit": "82 B"
+      "limit": "90 B"
     },
     {
       "path": "non-secure/generate.js",
-      "limit": "45 B"
+      "limit": "47 B"
     },
     {
       "path": "async/index.js",
-      "limit": "130 B"
+      "limit": "125 B"
     },
     {
       "path": "async/generate.js",
-      "limit": "193 B"
+      "limit": "177 B"
     }
   ],
   "eslintConfig": {
-    "extends": "@logux/eslint-config/browser",
+    "extends": "@logux/eslint-config",
     "rules": {
       "consistent-return": "off",
+      "func-style": "off",
       "yoda": "off"
     },
     "overrides": [
