@@ -12,7 +12,7 @@
     "api": "documentation build *.js {async,non-secure}/*.js -f md -o api.md",
     "spell": "yarn api && yaspeller-ci *.md",
     "clean": "rimraf api.md coverage/",
-    "test": "jest --coverage && eslint-ci . && size-limit && yarn spell",
+    "test": "jest-ci --coverage && eslint-ci . && size-limit && yarn spell",
     "start": "parcel serve test/demo/index.html -d test/demo/build --open",
     "watch": "nodemon --delay 100ms --exec npx size-limit"
   },
@@ -53,6 +53,7 @@
     "eslint-plugin-unicorn": "^16.1.1",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
+    "jest-ci": "^0.1.1",
     "lint-staged": "^10.0.8",
     "nodemon": "^2.0.2",
     "parcel-bundler": "^1.12.4",
