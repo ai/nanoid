@@ -3,11 +3,15 @@
 
 if (process.env.NODE_ENV !== 'production') {
   // All bundlers will remove this block in production bundle
-  if (typeof navigator !== 'undefined' && navigator.product === 'ReactNative') {
+  if (
+    typeof navigator !== 'undefined' &&
+    navigator.product === 'ReactNative' &&
+    !self.crypto
+  ) {
     throw new Error(
       'React Native does not have a built-in secure random generator. ' +
       'If you don’t need unpredictable IDs, you can use `nanoid/non-secure`. ' +
-      'For secure ID install `expo-random` locally and use `nanoid/async`.'
+      'For secure ID import `react-native-get-random-values` before Nano ID.'
     )
   }
   if (typeof self !== 'undefined' && self.msCrypto && !self.crypto) {
@@ -15,7 +19,7 @@ if (process.env.NODE_ENV !== 'production') {
       'Add self.crypto = self.msCrypto before Nano ID to fix IE 11 support'
     )
   }
-  if (typeof self === 'undefined' || (!self.crypto && !self.msCrypto)) {
+  if (typeof self === 'undefined' || !self.crypto) {
     throw new Error(
       'Your browser does not have secure random generator. ' +
       'If you don’t need unpredictable IDs, you can use nanoid/non-secure.'

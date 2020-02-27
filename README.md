@@ -189,16 +189,15 @@ Nano ID could be started from number. HTML ID can’t be started from the numbe
 
 React Native doesn’t have built-in random generator.
 
-1. Check [`expo-random`] docs and install it.
-2. Use `nanoid/async` instead of synchronous `nanoid`.
+1. Check [`react-native-get-random-values`] docs and install it.
+2. Import it before Nano ID.
 
 ```js
-const nanoid = require('nanoid/async')
-
-async function createUser () {
-  user.id = await nanoid()
-}
+import 'react-native-get-random-values'
+import nanoid from 'nanoid'
 ```
+
+[`react-native-get-random-values`]: https://github.com/LinusU/react-native-get-random-values
 
 
 ### PouchDB and CouchDB
