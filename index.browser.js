@@ -47,7 +47,7 @@ while (i-- - 10) {
 module.exports = (size = 21) => {
   let id = ''
   let bytes = self.crypto.getRandomValues(new Uint8Array(size))
-  i = size || 21
+  i = size
 
   // Compact alternative for `for (var i = 0; i < size; i++)`
   while (i--) {
