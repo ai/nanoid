@@ -3,17 +3,6 @@
 // is low and there are lots of duplicates - just what compressors
 // like GZIP and Brotli likes the best.
 
-/**
- * URL safe symbols.
- *
- * @name url
- * @type {string}
- *
- * @example
- * const url = require('nanoid/url')
- * generate(url, 10) //=> "Uakgb_J5m9"
- */
-
 // This alphabet uses a-z A-Z 0-9 _- symbols.
 // Symbols are generated for smaller size.
 // -_zyxwvutsrqponmlkjihgfedcba9876543210ZYXWVUTSRQPONMLKJIHGFEDCBA

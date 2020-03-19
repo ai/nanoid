@@ -1,25 +1,6 @@
 let random = require('./random')
 let url = require('../url')
 
-/**
- * Generate secure URL-friendly unique ID. Non-blocking version.
- *
- * By default, ID will have 21 symbols to have a collision probability similar
- * to UUID v4.
- *
- * @param {number} [size=21] The number of symbols in ID.
- *
- * @return {Promise} Promise with random string.
- *
- * @example
- * const nanoidAsync = require('nanoid/async')
- * nanoidAsync.then(id => {
- *   model.id = id
- * })
- *
- * @name async
- * @function
- */
 module.exports = (size = 21) => random(size).then(bytes => {
   let id = ''
   // Compact alternative for `for (var i = 0; i < size; i++)`

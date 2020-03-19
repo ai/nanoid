@@ -1,32 +1,4 @@
-/**
- * Secure random string generator with custom alphabet.
- *
- * Alphabet must contain 256 symbols or less. Otherwise, the generator
- * will not be secure.
- *
- * @param {generator} random The random bytes generator.
- * @param {string} alphabet Symbols to be used in new random string.
- * @param {size} size The number of symbols in new random string.
- *
- * @return {string} Random string.
- *
- * @example
- * const format = require('nanoid/format')
- *
- * function random (size) {
- *   const result = []
- *   for (let i = 0; i < size; i++) {
- *     result.push(randomByte())
- *   }
- *   return result
- * }
- *
- * format(random, "abcdef", 5) //=> "fbaef"
- *
- * @name format
- * @function
- */
-module.exports = (random, alphabet, size) => {
+module.exports = (random, alphabet, size = 21) => {
   // We can’t use bytes bigger than the alphabet. To make bytes values closer
   // to the alphabet, we apply bitmask on them. We look for the closest
   // `2 ** x - 1` number, which will be bigger than alphabet size. If we have
@@ -59,9 +31,3 @@ module.exports = (random, alphabet, size) => {
     }
   }
 }
-
-/**
- * @callback generator
- * @param {number} bytes The number of bytes to generate.
- * @return {number[]} Random bytes.
- */

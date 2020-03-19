@@ -1,34 +1,4 @@
-/**
- * Secure random string generator with custom alphabet.
- *
- * Alphabet must contain 256 symbols or less. Otherwise, the generator
- * will not be secure.
- *
- * @param {asyncGenerator} random The random bytes generator.
- * @param {string} alphabet Symbols to be used in new random string.
- * @param {size} size The number of symbols in new random string.
- *
- * @return {Promise} Promise with random string.
- *
- * @example
- * const formatAsync = require('nanoid/async/format')
- *
- * function random (size) {
- *   const result = []
- *   for (let i = 0; i < size; i++) {
- *     result.push(randomByte())
- *   }
- *   return Promise.resolve(result)
- * }
- *
- * formatAsync(random, "abcdef", 5).then(id => {
- *   model.id = id //=> "fbaef"
- * })
- *
- * @name formatAsync
- * @function
- */
-module.exports = (random, alphabet, size) => {
+module.exports = (random, alphabet, size = 21) => {
   // We can’t use bytes bigger than the alphabet. To make bytes values closer
   // to the alphabet, we apply bitmask on them. We look for the closest
   // `2 ** x - 1` number, which will be bigger than alphabet size. If we have
