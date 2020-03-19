@@ -10,11 +10,11 @@ global.self = {
 }
 
 let nanoid = require('../index.browser')
-let format = require('../format.browser')
-let random = require('../random.browser')
+let format = require('../format/index.browser')
+let random = require('../random/index.browser')
 let async = require('../async/index.browser')
-let asyncFormat = require('../async/format.browser')
-let asyncRandom = require('../async/random.browser')
+let asyncFormat = require('../async/format/index.browser')
+let asyncRandom = require('../async/random/index.browser')
 let url = require('../url')
 
 function times (size, callback) {

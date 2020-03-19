@@ -1,5 +1,5 @@
-let random = require('./random')
-let format = require('./format')
+let random = require('../random')
+let format = require('../format')
 
 /**
  * Low-level function to change alphabet and ID size.
@@ -10,15 +10,13 @@ let format = require('./format')
  * @param {string} alphabet Symbols to be used in ID.
  * @param {number} size The number of symbols in ID.
  *
- * @return {Promise} Promise with random string.
+ * @return {string} Unique ID.
  *
  * @example
- * const generateAsync = require('nanoid/async/generate')
- * generateAsync('0123456789абвгдеё', 5).then(id => {
- *   model.id = id //=> "8ё56а"
- * })
+ * const generate = require('nanoid/generate')
+ * model.id = generate('0123456789абвгдеё', 5) //=> "8ё56а"
  *
- * @name generateAsync
+ * @name generate
  * @function
  */
 module.exports = format.bind(null, random)

@@ -20,14 +20,14 @@
   "repository": "ai/nanoid",
   "browser": {
     "./index.js": "./index.browser.js",
-    "./format.js": "./format.browser.js",
-    "./random.js": "./random.browser.js",
+    "./format/index.js": "./format/index.browser.js",
+    "./random/index.js": "./random/index.browser.js",
     "./async/index.js": "./async/index.browser.js",
-    "./async/format.js": "./async/format.browser.js",
-    "./async/random.js": "./async/random.browser.js"
+    "./async/format/index.js": "./async/format/index.browser.js",
+    "./async/random/index.js": "./async/random/index.browser.js"
   },
   "react-native": {
-    "./async/random.js": "./async/random.rn.js"
+    "./async/random/index.js": "./async/random/index.rn.js"
   },
   "sideEffects": false,
   "devDependencies": {
@@ -66,15 +66,14 @@
   },
   "size-limit": [
     {
-      "path": "index.js",
       "limit": "115 B"
     },
     {
-      "path": "generate.js",
+      "path": "generate/index.js",
       "limit": "157 B"
     },
     {
-      "path": "url.js",
+      "path": "url/index.js",
       "limit": "50 B"
     },
     {
@@ -82,7 +81,7 @@
       "limit": "90 B"
     },
     {
-      "path": "non-secure/generate.js",
+      "path": "non-secure/generate/index.js",
       "limit": "47 B"
     },
     {
@@ -90,7 +89,7 @@
       "limit": "125 B"
     },
     {
-      "path": "async/generate.js",
+      "path": "async/generate/index.js",
       "limit": "177 B"
     }
   ],
