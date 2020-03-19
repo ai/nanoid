@@ -10,3 +10,4 @@ coverage/
 
 img/
 .cache
+**/types.ts

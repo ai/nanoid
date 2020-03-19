@@ -18,5 +18,5 @@
  */
 export default function generate (
   alphabet: string,
-  size: number
+  size?: number
 ): Promise<string>

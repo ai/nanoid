@@ -14,4 +14,4 @@
  * @param size The number of symbols in ID. Default is 21.
  * @return Promise with random string.
  */
-export default function nanoid (size: number): Promise<string>
+export default function nanoid (size?: number): Promise<string>

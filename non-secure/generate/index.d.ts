@@ -11,4 +11,4 @@
  * model.id = generate('0123456789абвгдеё', 5) //=> "8ё56а"
  * ```
  */
-export default function generate (alphabet: string, size: number): string
+export default function generate (alphabet: string, size?: number): string

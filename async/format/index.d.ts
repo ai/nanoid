@@ -29,5 +29,5 @@
 export default function format (
   random: (bytes: number) => Promise<Uint8Array>,
   alphabet: string,
-  size: number
+  size?: number
 ): string
