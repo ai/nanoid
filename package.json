@@ -9,9 +9,8 @@
     "url"
   ],
   "scripts": {
-    "api": "documentation build *.js {async,non-secure}/*.js -f md -o api.md",
-    "spell": "yarn api && yaspeller-ci *.md",
-    "clean": "rimraf api.md coverage/",
+    "spell": "yaspeller-ci *.md",
+    "clean": "rimraf coverage/",
     "test": "jest-ci --coverage && eslint-ci . && size-limit && yarn spell",
     "start": "parcel serve test/demo/index.html -d test/demo/build --open",
     "watch": "size-limit --watch"
@@ -32,25 +31,24 @@
   },
   "sideEffects": false,
   "devDependencies": {
-    "@logux/eslint-config": "^36.0.0",
-    "@logux/sharec-config": "^0.5.7",
+    "@logux/eslint-config": "^36.1.1",
+    "@logux/sharec-config": "^0.6.2",
     "@size-limit/preset-small-lib": "^4.4.0",
     "benchmark": "^2.1.4",
     "chalk": "^3.0.0",
-    "clean-publish": "^1.1.5",
-    "documentation": "^12.1.4",
+    "clean-publish": "^1.1.6",
     "eslint": "^6.8.0",
     "eslint-ci": "^1.0.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-es5": "^1.5.0",
     "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-jest": "^23.8.0",
+    "eslint-plugin-jest": "^23.8.2",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-prefer-let": "^1.0.1",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-unicorn": "^16.1.1",
+    "eslint-plugin-unicorn": "^17.2.0",
     "husky": "^4.2.3",
     "jest": "^25.1.0",
     "jest-ci": "^0.1.1",
@@ -62,14 +60,14 @@
     "shortid": "^2.2.15",
     "size-limit": "^4.4.0",
     "uid-safe": "^2.1.5",
-    "uuid": "^7.0.1",
-    "webpack": "^4.41.6",
+    "uuid": "^7.0.2",
+    "webpack": "^4.42.0",
     "yaspeller-ci": "^1.0.2"
   },
   "size-limit": [
     {
       "path": "index.js",
-      "limit": "118 B"
+      "limit": "115 B"
     },
     {
       "path": "generate.js",
@@ -141,35 +139,29 @@
     ],
     "dictionary": [
       "Async",
-      "asyncGenerator",
       "CLI",
       "Clojure",
       "ClojureScript",
       "Crypto",
       "cryptographically",
-      "formatAsync",
-      "generateAsync",
-      "gzip",
       "gzipped",
       "Haskell",
       "js",
+      "JS",
       "JSDoc",
       "nanoid",
       "Nim",
-      "nonSecure",
       "npm",
       "UUID",
       "v4",
       "Versioning",
-      "JS",
       "PouchDB",
       "CouchDB",
-      "async",
       "Tidelift"
     ]
   },
   "sharec": {
     "config": "@logux/sharec-config",
-    "version": "0.5.7"
+    "version": "0.6.2"
   }
 }

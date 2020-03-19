@@ -2,7 +2,6 @@ node_modules/
 yarn-error.log
 
 coverage/
-api.md
 
 test/demo/build
 .cache
