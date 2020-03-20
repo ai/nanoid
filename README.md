@@ -5,7 +5,7 @@
 
 A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 
-* **Small.** 115 bytes (minified and gzipped). No dependencies.
+* **Small.** 110 bytes (minified and gzipped). No dependencies.
   [Size Limit] controls the size.
 * **Safe.** It uses cryptographically strong random APIs.
   Can be used in clusters.
@@ -14,15 +14,14 @@ A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
   So ID size was reduced from 36 to 21 symbols.
 
 ```js
-const nanoid = require('nanoid')
+import { nanoid } from 'nanoid'
 model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
-Supports [all browsers], Node.js and React Native.
+Supports modern browsers, IE with Babel, Node.js and React Native.
 
 Try to make us smaller in [online tool].
 
-[all browsers]: http://caniuse.com/#feat=getrandomvalues
 [online tool]:  https://gitpod.io/#https://github.com/ai/nanoid/
 [Size Limit]:   https://github.com/ai/size-limit
 
@@ -65,8 +64,8 @@ There are three main differences between Nano ID and UUID v4:
 
 1. Nano ID uses a bigger alphabet, so a similar number of random bits
    are packed in just 21 symbols instead of 36.
-2. Nano ID code is 4 times less than `uuid/v4` package:
-   115 bytes instead of 435.
+2. Nano ID code is 3 times less than `uuid/v4` package:
+   110 bytes instead of 345.
 3. Because of memory allocation tricks, Nano ID is 16% faster than UUID.
 
 
@@ -139,7 +138,7 @@ The main module uses URL-friendly symbols (`A-Za-z0-9_-`) and returns an ID
 with 21 characters (to have a collision probability similar to UUID v4).
 
 ```js
-const nanoid = require('nanoid')
+import { nanoid } from 'nanoid'
 model.id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
@@ -194,10 +193,13 @@ React Native doesn’t have built-in random generator.
 
 ```js
 import 'react-native-get-random-values'
-import nanoid from 'nanoid'
+import { nanoid } from 'nanoid'
 ```
 
+For `nanoid/async` you need to install [`expo-random`].
+
 [`react-native-get-random-values`]: https://github.com/LinusU/react-native-get-random-values
+[`expo-random`]:                    https://www.npmjs.com/package/expo-random
 
 
 ### PouchDB and CouchDB
@@ -240,7 +242,7 @@ you can use non‑secure ID generator. Note, that they have bigger collisio
 probability.
 
 ```js
-const nanoid = require('nanoid/non-secure')
+import { nanoid } from 'nanoid/non-secure'
 nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
@@ -281,7 +283,7 @@ If we will use asynchronous API for random generator,
 another code could be executed during the entropy collection.
 
 ```js
-const nanoid = require('nanoid/async')
+import { nanoid } from 'nanoid/async'
 
 async function createUser () {
   user.id = await nanoid()
@@ -299,8 +301,8 @@ and low collision probability. If you don’t need it, you can use
 very fast non-secure generator.
 
 ```js
-const nonSecure = require('nanoid/non-secure')
-const id = nonSecure() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
+import { nanoid } from 'nanoid/non-secure'
+const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
 Note that it is predictable and have bigger collision probability.
@@ -308,12 +310,13 @@ Note that it is predictable and have bigger collision probability.
 
 ### Custom Alphabet or Length
 
-If you want to change the ID's alphabet or length
-you can use the low-level `generate` module.
+`nanoid2` allows you to change ID’s alphabet. It has `2` in the name,
+because it accepts 2 arguments (alphabet and optional size) in contrast
+to `nanoid`, which accepts only 1 argument (optional size).
 
 ```js
-const generate = require('nanoid/generate')
-model.id = generate('1234567890abcdef', 10) //=> "4f90d13a42"
+import { nanoid2 } from 'nanoid'
+model.id = nanoid2('1234567890abcdef', 10) //=> "4f90d13a42"
 ```
 
 Check the safety of your custom alphabet and ID length
@@ -326,15 +329,14 @@ Otherwise, the generator will not be secure.
 Asynchronous and non-secure API is also available:
 
 ```js
-const generate = require('nanoid/async/generate')
+import { nanoid2 } from 'nanoid/async'
 async function createUser () {
-  user.id = await generate('1234567890abcdef', 10)
+  user.id = await nanoid2('1234567890abcdef', 10)
 }
 ```
 
 ```js
-const generate = require('nanoid/non-secure/generate')
-
+import { nanoid2 } from 'nanoid/non-secure'
 user.id = generate('1234567890abcdef', 10)
 ```
 
@@ -344,11 +346,14 @@ user.id = generate('1234567890abcdef', 10)
 
 ### Custom Random Bytes Generator
 
-You can replace the default safe random generator using the `format` module.
+You can replace the default safe random generator using the `nanoid3` module.
 For instance, to use a seed-based generator.
 
+This function has `3` in the name, because it accepts 3 arguments
+(generator, alphabet and size).
+
 ```js
-const format = require('nanoid/format')
+import { nanoid3 } from 'nanoid`
 
 function random (size) {
   const result = []
@@ -358,31 +363,18 @@ function random (size) {
   return result
 }
 
-format(random, 'abcdef', 10) //=> "fbaefaadeb"
+nanoid3(random, 'abcdef', 10) //=> "fbaefaadeb"
 ```
 
 `random` callback must accept the array size and return an array
 with random numbers.
 
-If you want to use the same URL-friendly symbols with `format`,
-you can get the default alphabet from the `url` file.
+If you want to use the same URL-friendly symbols with `nanoid3`,
+you can get the default alphabet from the `urlAlphabet`.
 
 ```js
-const url = require('nanoid/url')
-format(random, url, 10) //=> "93ce_Ltuub"
+const { nanoid3, urlAlphabet } = require('nanoid')
+nanoid3(random, urlAlphabet, 10) //=> "93ce_Ltuub"
 ```
 
-Asynchronous API is also available:
-
-```js
-const format = require('nanoid/async/format')
-const url = require('nanoid/url')
-
-function random (size) {
-  return new Promise(…)
-}
-
-async function createUser () {
-  user.id = await format(random, url, 10)
-}
-```
+Asynchronous and non-secure APIs are not available for `nanoid3`.

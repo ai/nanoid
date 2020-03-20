@@ -1058,6 +1058,13 @@
   dependencies:
     type-detect "4.0.8"
 
+"@size-limit/dual-publish@^4.4.0":
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/@size-limit/dual-publish/-/dual-publish-4.4.0.tgz#b57baa3388537b0a6aa268cbbf2b06579d07174f"
+  integrity sha512-9eyjalC37V48pGgVBwDLd+jknJomgLqHWRpF4LyKShHHR+FjkMSMTRGRHQtoXieftML5Dta/n8h4KS7yjFhzzw==
+  dependencies:
+    rimraf "^3.0.2"
+
 "@size-limit/file@4.4.0":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@size-limit/file/-/file-4.4.0.tgz#add2c76cdb817b193c621b471570482bcae5a2a2"
@@ -3067,6 +3074,17 @@ dotenv@^5.0.0:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-5.0.1.tgz#a5317459bd3d79ab88cff6e44057a6a3fbb1fcef"
   integrity sha512-4As8uPrjfwb7VXC+WnLCbXK7y+Ueb2B3zgNCePYfhxS1PYeaO1YTeplffTEcbfLhvFNGLAz90VvJs9yomG7bow==
 
+dual-publish@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/dual-publish/-/dual-publish-0.6.1.tgz#98cef3212f1fd50053d90dc1e2a4b3afc3990588"
+  integrity sha512-JKyTy2LidGiT6AAySxIsVkZxCODxSC25S21O9Aj3KimLyBBVhci9yizGXU+fU1ypuRWo5aAkwoM3564dvv4B6g==
+  dependencies:
+    chalk "^3.0.0"
+    clean-publish "^1.1.6"
+    globby "^11.0.0"
+    line-column "^1.0.2"
+    rimraf "^3.0.2"
+
 duplexer2@~0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/duplexer2/-/duplexer2-0.1.4.tgz#8b12dab878c0d69e3e7891051662a32fc6bddcc1"
@@ -3977,9 +3995,9 @@ fs.realpath@^1.0.0:
   integrity sha1-FQStJSMVjKpA20onh8sBQRmU6k8=
 
 fsevents@^1.2.7:
-  version "1.2.11"
-  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-1.2.11.tgz#67bf57f4758f02ede88fb2a1712fef4d15358be3"
-  integrity sha512-+ux3lx6peh0BpvY0JebGyZoiR4D+oYzdPZMKJwkZ+sFkNJzpL7tXc/wehS49gUAxg3tmMHPHZkA8JU2rhhgDHw==
+  version "1.2.12"
+  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-1.2.12.tgz#db7e0d8ec3b0b45724fd4d83d43554a8f1f0de5c"
+  integrity sha512-Ggd/Ktt7E7I8pxZRbGIs7vwqAPscSESMrCSkx2FtWeqmheJgCo2R74fTsZFCifr0VTPwqRpPv17+6b8Zp7th0Q==
   dependencies:
     bindings "^1.5.0"
     nan "^2.12.1"
@@ -6888,9 +6906,9 @@ postcss-modules-scope@1.1.0:
     postcss "^6.0.1"
 
 postcss-modules-scope@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/postcss-modules-scope/-/postcss-modules-scope-2.1.1.tgz#33d4fc946602eb5e9355c4165d68a10727689dba"
-  integrity sha512-OXRUPecnHCg8b9xWvldG/jUpRIGPNRka0r4D4j0ESUU2/5IOnpsjfPPmDprM3Ih8CgZ8FXjWqaniK5v4rWt3oQ==
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/postcss-modules-scope/-/postcss-modules-scope-2.2.0.tgz#385cae013cc7743f5a7d7602d1073a89eaae62ee"
+  integrity sha512-YyEgsTMRpNd+HmyC7H/mh3y+MeFWevy7V1evVhJWewmMbjDHIbZbOXICC2y+m1xI1UVfIT1HMW/O04Hxyu9oXQ==
   dependencies:
     postcss "^7.0.6"
     postcss-selector-parser "^6.0.0"
@@ -7326,9 +7344,9 @@ raw-body@2.4.0:
     unpipe "1.0.0"
 
 react-is@^16.12.0:
-  version "16.13.0"
-  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.0.tgz#0f37c3613c34fe6b37cd7f763a0d6293ab15c527"
-  integrity sha512-GFMtL0vHkiBv9HluwNZTggSn/sCyEt9n02aM0dSAjGGyqyNlAyftYm4phPxdvCigG15JreC5biwxCgTAJZ7yAA==
+  version "16.13.1"
+  resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
+  integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
 read-pkg-up@^2.0.0:
   version "2.0.0"

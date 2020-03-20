@@ -1,12 +1,10 @@
-let shortid = require('shortid')
-let uuid4 = require('uuid/v4')
-let rndm = require('rndm')
-let uid = require('uid-safe')
+import shortid from 'shortid'
+import { v4 as uuid4 } from 'uuid'
+import rndm from 'rndm'
+import uid from 'uid-safe'
 
-let nonSecure = require('../../non-secure')
-let generate = require('../../generate')
-let random = require('../../random')
-let nanoid = require('../../')
+import { nanoid, nanoid2, random } from '../../'
+import { nanoid as nonSecure } from '../../non-secure'
 
 const COUNT = 50 * 1000
 const ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
@@ -72,7 +70,7 @@ let tasks = [
     return result
   }),
   () => printDistr('nanoid', () => nanoid()),
-  () => printDistr('nanoid/generate', () => generate(ALPHABET, LENGTH)),
+  () => printDistr('nanoid2', () => nanoid2(ALPHABET, LENGTH)),
   () => printDistr('uid.sync', () => uid.sync(21)),
   () => printDistr('uuid/v4', () => uuid4()),
   () => printDistr('shortid', () => shortid()),

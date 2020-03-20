@@ -1,12 +1,5 @@
-let random
-try {
-  random = require('expo-random')
-} catch (e) {
-  throw new Error(
-    'React-Native does not have a built-in secure random generator. ' +
-    'Install `expo-random` locally or ' +
-    'if you don’t need unpredictable IDs, you can use `nanoid/non-secure`.'
-  )
-}
+let expoRandom = require('expo-random')
 
-module.exports = bytes => random.getRandomBytesAsync(bytes)
+let random = bytes => expoRandom.getRandomBytesAsync(bytes)
+
+module.exports = { random }

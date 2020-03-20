@@ -1,7 +1,7 @@
 {
   "name": "nanoid",
   "version": "2.1.11",
-  "description": "A tiny (115 bytes), secure URL-friendly unique string ID generator",
+  "description": "A tiny (110 bytes), secure URL-friendly unique string ID generator",
   "keywords": [
     "uuid",
     "random",
@@ -22,7 +22,6 @@
     "./index.js": "./index.browser.js",
     "./format/index.js": "./format/index.browser.js",
     "./random/index.js": "./random/index.browser.js",
-    "./async/index.js": "./async/index.browser.js",
     "./async/format/index.js": "./async/format/index.browser.js",
     "./async/random/index.js": "./async/random/index.browser.js"
   },
@@ -33,11 +32,12 @@
   "devDependencies": {
     "@logux/eslint-config": "^36.1.1",
     "@logux/sharec-config": "^0.6.2",
+    "@size-limit/dual-publish": "^4.4.0",
     "@size-limit/preset-small-lib": "^4.4.0",
     "benchmark": "^2.1.4",
     "chalk": "^3.0.0",
     "check-dts": "^0.1.4",
-    "clean-publish": "^1.1.6",
+    "dual-publish": "^0.6.1",
     "eslint": "^6.8.0",
     "eslint-ci": "^1.0.0",
     "eslint-config-standard": "^14.1.0",
@@ -67,31 +67,43 @@
   },
   "size-limit": [
     {
-      "limit": "115 B"
+      "name": "nanoid",
+      "import": "{ nanoid }",
+      "limit": "110 B"
     },
     {
-      "path": "generate/index.js",
-      "limit": "157 B"
+      "name": "nanoid2",
+      "import": "{ nanoid2 }",
+      "limit": "144 B"
     },
     {
-      "path": "url/index.js",
-      "limit": "50 B"
+      "name": "urlAlphabet",
+      "import": "{ urlAlphabet }",
+      "limit": "59 B"
     },
     {
+      "name": "non-secure nanoid",
+      "import": "{ nanoid }",
       "path": "non-secure/index.js",
-      "limit": "90 B"
+      "limit": "85 B"
     },
     {
-      "path": "non-secure/generate/index.js",
-      "limit": "47 B"
+      "name": "non-secure nanoid2",
+      "import": "{ nanoid2 }",
+      "path": "non-secure/index.js",
+      "limit": "44 B"
     },
     {
+      "name": "async nanoid",
+      "import": "{ nanoid }",
       "path": "async/index.js",
-      "limit": "125 B"
+      "limit": "120 B"
     },
     {
-      "path": "async/generate/index.js",
-      "limit": "177 B"
+      "name": "async nanoid2",
+      "import": "{ nanoid2 }",
+      "path": "async/index.js",
+      "limit": "130 B"
     }
   ],
   "eslintConfig": {

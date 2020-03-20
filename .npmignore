@@ -10,4 +10,4 @@ coverage/
 
 img/
 .cache
-**/types.ts
+**/*.test.js
