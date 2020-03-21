@@ -35,3 +35,17 @@ export function nanoid (size?: number): Promise<string>
  * ```
  */
 export function nanoid2 (alphabet: string, size?: number): Promise<string>
+
+/**
+ * Return array with random bytes from hardware random generator.
+ *
+ * ```js
+ * random(5).then(bytes => {
+ *   bytes //=> [10, 67, 212, 67, 89]
+ * })
+ * ```
+ *
+ * @param bytes The size of array.
+ * @returns Promise with random bytes.
+ */
+export function random (bytes: number): Promise<Uint8Array>

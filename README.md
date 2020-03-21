@@ -196,10 +196,7 @@ import 'react-native-get-random-values'
 import { nanoid } from 'nanoid'
 ```
 
-For `nanoid/async` you need to install [`expo-random`].
-
 [`react-native-get-random-values`]: https://github.com/LinusU/react-native-get-random-values
-[`expo-random`]:                    https://www.npmjs.com/package/expo-random
 
 
 ### PouchDB and CouchDB
