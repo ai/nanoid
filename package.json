@@ -20,10 +20,7 @@
   "repository": "ai/nanoid",
   "browser": {
     "./index.js": "./index.browser.js",
-    "./format/index.js": "./format/index.browser.js",
-    "./random/index.js": "./random/index.browser.js",
-    "./async/format/index.js": "./async/format/index.browser.js",
-    "./async/random/index.js": "./async/random/index.browser.js"
+    "./async/index.js": "./async/index.browser.js"
   },
   "sideEffects": false,
   "devDependencies": {
