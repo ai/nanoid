@@ -6,8 +6,8 @@ yarn.lock
 test/
 coverage/
 .travis.yml
-.gitpod.yml
 
 img/
 .cache
+.gitpod.yml
 **/*.test.js

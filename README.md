@@ -42,6 +42,7 @@ Try to make us smaller in [online tool].
   * [React Native](#react-native)
   * [PouchDB and CouchDB](#pouchdb-and-couchdb)
   * [Mongoose](#mongoose)
+  * [ES Modules](#es-modules)
   * [Web Workers](#web-workers)
   * [Other Programming Languages](#other-programming-languages)
 * [API](#api)
@@ -224,6 +225,22 @@ const mySchema = new Schema({
     default: () => nanoid()
   }
 })
+```
+
+### ES Modules
+
+Nano ID provides ES modules out of the box. You do not need to do anything
+to use Nano ID as ES module in Webpack, Parcel, or Node.js.
+
+```js
+import { nanoid } from 'nanoid'
+```
+
+For quick hacks you can load Nano ID from CDN. We have special minified
+`nanoid.js` module. Do not use it in production because of low performance.
+
+```js
+import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 ```
 
 
