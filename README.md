@@ -351,7 +351,7 @@ async function createUser () {
 
 ```js
 import { nanoid2 } from 'nanoid/non-secure'
-user.id = generate('1234567890abcdef', 10)
+user.id = nanoid2('1234567890abcdef', 10)
 ```
 
 [ID collision probability]: https://alex7kom.github.io/nano-nanoid-cc/
