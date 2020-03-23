@@ -330,7 +330,7 @@ to `nanoid`, which accepts only 1 argument (optional size).
 
 ```js
 import { nanoid2 } from 'nanoid'
-model.id = nanoid2('1234567890abcdef', 10) //=> "4f90d13a42"
+model.id = nanoid2(10, '1234567890abcdef') //=> "4f90d13a42"
 ```
 
 Check the safety of your custom alphabet and ID length
@@ -345,13 +345,13 @@ Asynchronous and non-secure API is also available:
 ```js
 import { nanoid2 } from 'nanoid/async'
 async function createUser () {
-  user.id = await nanoid2('1234567890abcdef', 10)
+  user.id = await nanoid2(10, '1234567890abcdef')
 }
 ```
 
 ```js
 import { nanoid2 } from 'nanoid/non-secure'
-user.id = nanoid2('1234567890abcdef', 10)
+user.id = nanoid2(10, '1234567890abcdef')
 ```
 
 [ID collision probability]: https://alex7kom.github.io/nano-nanoid-cc/
@@ -377,7 +377,7 @@ function random (size) {
   return result
 }
 
-nanoid3(random, 'abcdef', 10) //=> "fbaefaadeb"
+nanoid3(10, 'abcdef', random) //=> "fbaefaadeb"
 ```
 
 `random` callback must accept the array size and return an array
@@ -388,7 +388,7 @@ you can get the default alphabet from the `urlAlphabet`.
 
 ```js
 const { nanoid3, urlAlphabet } = require('nanoid')
-nanoid3(random, urlAlphabet, 10) //=> "93ce_Ltuub"
+nanoid3(10, urlAlphabet, random) //=> "93ce_Ltuub"
 ```
 
 Asynchronous and non-secure APIs are not available for `nanoid3`.

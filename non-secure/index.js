@@ -1,4 +1,4 @@
-let nanoid2 = (alphabet, size = 21) => {
+let nanoid2 = (size, alphabet) => {
   let id = ''
   // Complete alternative for `for (var i = 0; i < size; i++)`
   while (size--) {

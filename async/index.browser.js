@@ -1,4 +1,4 @@
-let nanoid2 = (alphabet, size = 21) => {
+let nanoid2 = (size, alphabet) => {
   // We can’t use bytes bigger than the alphabet. To make bytes values closer
   // to the alphabet, we apply bitmask on them. We look for the closest
   // `2 ** x - 1` number, which will be bigger than alphabet size. If we have

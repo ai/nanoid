@@ -74,11 +74,7 @@ for (let type of ['node', 'browser']) {
 
     describe('nanoid2', () => {
       it('has options', () => {
-        expect(nanoid2('a', 5)).toEqual('aaaaa')
-      })
-
-      it('accepts string', () => {
-        expect(nanoid2('a', '5')).toEqual('aaaaa')
+        expect(nanoid2(5, 'a')).toEqual('aaaaa')
       })
 
       it('has flat distribution', () => {
@@ -88,7 +84,7 @@ for (let type of ['node', 'browser']) {
 
         let chars = { }
         for (let i = 0; i < COUNT; i++) {
-          let id = nanoid2(ALPHABET, LENGTH)
+          let id = nanoid2(LENGTH, ALPHABET)
           for (let char of id) {
             if (!chars[char]) chars[char] = 0
             chars[char] += 1
@@ -118,13 +114,13 @@ for (let type of ['node', 'browser']) {
           }
           return bytes
         }
-        expect(nanoid3(customRandom, 'abcde', 4)).toEqual('adca')
-        expect(nanoid3(customRandom, 'abcde', 18)).toEqual('cbadcbadcbadcbadcc')
+        expect(nanoid3(4, 'abcde', customRandom)).toEqual('adca')
+        expect(nanoid3(18, 'abcde', customRandom)).toEqual('cbadcbadcbadcbadcc')
       })
 
       it('respects size', () => {
-        expect(nanoid3(random, 'abcde', 4)).toHaveLength(4)
-        expect(nanoid3(random, 'abcde', 20)).toHaveLength(20)
+        expect(nanoid3(4, 'abcde', random)).toHaveLength(4)
+        expect(nanoid3(20, 'abcde', random)).toHaveLength(20)
       })
     })
 

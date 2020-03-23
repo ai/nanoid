@@ -58,11 +58,7 @@ describe('nanoid', () => {
 
 describe('nanoid2', () => {
   it('has options', () => {
-    expect(nanoid2('a', 5)).toEqual('aaaaa')
-  })
-
-  it('accepts string', () => {
-    expect(nanoid2('a', '5')).toEqual('aaaaa')
+    expect(nanoid2(5, 'a')).toEqual('aaaaa')
   })
 
   it('has flat distribution', () => {
@@ -72,7 +68,7 @@ describe('nanoid2', () => {
 
     let chars = { }
     for (let i = 0; i < COUNT; i++) {
-      let id = nanoid2(ALPHABET, LENGTH)
+      let id = nanoid2(LENGTH, ALPHABET)
       for (let char of id) {
         if (!chars[char]) chars[char] = 0
         chars[char] += 1

@@ -25,7 +25,7 @@ suite
     nanoid()
   })
   .add('nanoid2', () => {
-    nanoid2('1234567890abcdef-', 10)
+    nanoid2(10, '1234567890abcdef-')
   })
   .add('uid.sync', () => {
     uid.sync(14)
@@ -50,7 +50,7 @@ suite
   .add('async nanoid2', {
     defer: true,
     fn (defer) {
-      asyncNanoid2('1234567890abcdef-', 10).then(() => {
+      asyncNanoid2(10, '1234567890abcdef-').then(() => {
         defer.resolve()
       })
     }

@@ -108,12 +108,7 @@ for (let type of ['node', 'browser']) {
 
     describe('nanoid2', () => {
       it('has options', async () => {
-        let id = await nanoid2('a', 5)
-        expect(id).toEqual('aaaaa')
-      })
-
-      it('accepts string', async () => {
-        let id = await nanoid2('a', '5')
+        let id = await nanoid2(5, 'a')
         expect(id).toEqual('aaaaa')
       })
 
@@ -124,7 +119,7 @@ for (let type of ['node', 'browser']) {
 
         let chars = { }
         await Promise.all(times(100, async () => {
-          let id = await nanoid2(ALPHABET, LENGTH)
+          let id = await nanoid2(LENGTH, ALPHABET)
           expect(id).toHaveLength(LENGTH)
           for (let char of id) {
             if (!chars[char]) chars[char] = 0

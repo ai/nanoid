@@ -17,7 +17,7 @@ let random = bytes => {
   return crypto.randomFillSync(buffer)
 }
 
-let nanoid3 = (getRandom, alphabet, size = 21) => {
+let nanoid3 = (size, alphabet, getRandom) => {
   // We can’t use bytes bigger than the alphabet. To make bytes values closer
   // to the alphabet, we apply bitmask on them. We look for the closest
   // `2 ** x - 1` number, which will be bigger than alphabet size. If we have
@@ -51,7 +51,7 @@ let nanoid3 = (getRandom, alphabet, size = 21) => {
   }
 }
 
-let nanoid2 = nanoid3.bind(null, random)
+let nanoid2 = (size, alphabet) => nanoid3(size, alphabet, random)
 
 let nanoid = (size = 21) => {
   let bytes = random(size)

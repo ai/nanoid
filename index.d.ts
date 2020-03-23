@@ -26,10 +26,10 @@ export function nanoid (size?: number): string
  *
  * ```js
  * const { nanoid2 } = require('nanoid')
- * model.id = nanoid2('0123456789абвгдеё', 5) //=> "8ё56а"
+ * model.id = nanoid2(5, '0123456789абвгдеё') //=> "8ё56а"
  * ```
  */
-export function nanoid2 (alphabet: string, size?: number): string
+export function nanoid2 (size: number, alphabet: string): string
 
 /**
  * Generate unique ID with custom random generator and alphabet.
@@ -40,26 +40,24 @@ export function nanoid2 (alphabet: string, size?: number): string
  * ```js
  * import { nanoid3 } from 'nanoid/format'
  *
- * function random (size) {
- *   const result = []
+ * nanoid3(5, "abcdef", size => {
+ *   const random = []
  *   for (let i = 0; i < size; i++) {
- *     result.push(randomByte())
+ *     random.push(randomByte())
  *   }
- *   return result
- * }
- *
- * nanoid3(random, "abcdef", 5) //=> "fbaef"
+ *   return random
+ * }) //=> "fbaef"
  * ```
  *
- * @param random The random bytes generator.
- * @param alphabet Symbols to be used in new random string.
  * @param size The number of symbols in new random string.
+ * @param alphabet Symbols to be used in new random string.
+ * @param random The random bytes generator.
  * @returns Random string.
  */
 export function nanoid3 (
-  random: (bytes: number) => Uint8Array,
+  size: number,
   alphabet: string,
-  size?: number
+  random: (bytes: number) => Uint8Array,
 ): string
 
 /**
@@ -67,7 +65,7 @@ export function nanoid3 (
  *
  * ```js
  * import { urlAlphabet } from 'nanoid'
- * generate(url, 10) //=> "Uakgb_J5m9"
+ * generate(10, url) //=> "Uakgb_J5m9"
  * ```
  */
 export const urlAlphabet: string
@@ -77,7 +75,7 @@ export const urlAlphabet: string
  *
  * ```js
  * import { nanoid3, random } from 'nanoid'
- * nanoid3(random, "abcdef", 5) //=> "fbaef"
+ * nanoid3(5, "abcdef", random) //=> "fbaef"
  * ```
  *
  * @param bytes The size of array.
