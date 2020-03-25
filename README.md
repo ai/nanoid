@@ -365,7 +365,7 @@ user.id = nanoid()
 safe random generator. For instance, to use a seed-based generator.
 
 ```js
-import { customRandom } from 'nanoid`
+import { customRandom } from 'nanoid'
 
 function random (size) {
   const result = []
