@@ -22,7 +22,6 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 > which is simply impossible not to respect”
 
 Supports modern browsers, IE with Babel, Node.js and React Native.
-
 Try to make us smaller in [online tool].
 
 [online tool]:  https://gitpod.io/#https://github.com/ai/nanoid/
