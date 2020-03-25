@@ -23,8 +23,8 @@ export function nanoid (size?: number): Promise<string>
  * Alphabet must contain 256 symbols or less. Otherwise, the generator
  * will not be secure.
  *
- * @param size The number of symbols in ID.
  * @param alphabet Symbols to be used in ID.
+ * @param size The number of symbols in ID.
  * @return Promise with random string.
  *
  * ```js

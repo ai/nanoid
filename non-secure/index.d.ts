@@ -16,8 +16,8 @@ export function nanoid (size?: number): string
  * Generate unique ID with custom alphabet. This method use non-secure
  * predictable random generator with bigger collision probability.
  *
- * @param size The number of symbols in ID.
  * @param alphabet Symbols to be used in ID.
+ * @param size The number of symbols in ID.
  * @returns Random string.
  *
  * ```js

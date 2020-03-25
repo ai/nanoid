@@ -41,7 +41,7 @@ export function customAlphabet (alphabet: string, size: number): () => string
  * ```js
  * import { customRandom } from 'nanoid/format'
  *
- * const nanoid = customRandom("abcdef", 5, size => {
+ * const nanoid = customRandom('abcdef', 5, size => {
  *   const random = []
  *   for (let i = 0; i < size; i++) {
  *     random.push(randomByte())
