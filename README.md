@@ -5,9 +5,6 @@
 
 A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 
-> “An amazing level of senseless perfectionism,
-> which is simply impossible not to respect”
-
 * **Small.** 110 bytes (minified and gzipped). No dependencies.
   [Size Limit] controls the size.
 * **Safe.** It uses cryptographically strong random APIs.
@@ -20,6 +17,9 @@ A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 import { nanoid } from 'nanoid'
 model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
+
+> “An amazing level of senseless perfectionism,
+> which is simply impossible not to respect”
 
 Supports modern browsers, IE with Babel, Node.js and React Native.
 
