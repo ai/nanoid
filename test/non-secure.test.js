@@ -1,4 +1,4 @@
-let { nanoid, nanoid2 } = require('../non-secure')
+let { nanoid, customAlphabet } = require('../non-secure')
 
 let { urlAlphabet } = require('..')
 
@@ -56,19 +56,21 @@ describe('nanoid', () => {
   })
 })
 
-describe('nanoid2', () => {
+describe('customAlphabet', () => {
   it('has options', () => {
-    expect(nanoid2(5, 'a')).toEqual('aaaaa')
+    let nanoidA = customAlphabet('a', 5)
+    expect(nanoidA()).toEqual('aaaaa')
   })
 
   it('has flat distribution', () => {
     let COUNT = 100 * 1000
     let LENGTH = 5
     let ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
+    let nanoid2 = customAlphabet(ALPHABET, LENGTH)
 
     let chars = { }
     for (let i = 0; i < COUNT; i++) {
-      let id = nanoid2(LENGTH, ALPHABET)
+      let id = nanoid2()
       for (let char of id) {
         if (!chars[char]) chars[char] = 0
         chars[char] += 1

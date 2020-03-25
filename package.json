@@ -67,8 +67,8 @@
       "limit": "110 B"
     },
     {
-      "name": "nanoid2",
-      "import": "{ nanoid2 }",
+      "name": "customAlphabet",
+      "import": "{ customAlphabet }",
       "limit": "144 B"
     },
     {
@@ -80,13 +80,13 @@
       "name": "non-secure nanoid",
       "import": "{ nanoid }",
       "path": "non-secure/index.js",
-      "limit": "85 B"
+      "limit": "103 B"
     },
     {
-      "name": "non-secure nanoid2",
-      "import": "{ nanoid2 }",
+      "name": "non-secure customAlphabet",
+      "import": "{ customAlphabet }",
       "path": "non-secure/index.js",
-      "limit": "44 B"
+      "limit": "45 B"
     },
     {
       "name": "async nanoid",
@@ -95,10 +95,10 @@
       "limit": "120 B"
     },
     {
-      "name": "async nanoid2",
-      "import": "{ nanoid2 }",
+      "name": "async customAlphabet",
+      "import": "{ customAlphabet }",
       "path": "async/index.js",
-      "limit": "130 B"
+      "limit": "132 B"
     }
   ],
   "eslintConfig": {

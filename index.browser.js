@@ -51,7 +51,7 @@ let urlAlphabet =
 
 let random = bytes => self.crypto.getRandomValues(new Uint8Array(bytes))
 
-let nanoid3 = (size, alphabet, getRandom) => {
+let customRandom = (alphabet, size, getRandom) => {
   // We can’t use bytes bigger than the alphabet. To make bytes values closer
   // to the alphabet, we apply bitmask on them. We look for the closest
   // `2 ** x - 1` number, which will be bigger than alphabet size. If we have
@@ -62,9 +62,9 @@ let nanoid3 = (size, alphabet, getRandom) => {
   // which is bigger than the alphabet). As a result, we will need more bytes,
   // than ID size, because we will refuse bytes bigger than the alphabet.
 
-  // Every hardware random generator call is costly,
-  // because we need to wait for entropy collection. This is why often it will
-  // be faster to ask for few extra bytes in advance, to avoid additional calls.
+  // Every hardware random generator call is costly, because we need to wait
+  // for entropy collection. This is why often it will be faster to ask for
+  // few extra bytes in advance, to avoid additional calls.
 
   // Here we calculate how many random bytes should we call in advance.
   // It depends on ID length, mask / alphabet size and magic number 1.6
@@ -73,23 +73,25 @@ let nanoid3 = (size, alphabet, getRandom) => {
   // -~f => Math.ceil(f) if n is float number
   // -~i => i + 1 if n is integer number
   let step = -~(1.6 * mask * size / alphabet.length)
-  let id = ''
 
-  while (true) {
-    let bytes = getRandom(step)
-    // Compact alternative for `for (var j = 0; j < step; j++)`
-    let j = step
-    while (j--) {
-      // If random byte is bigger than alphabet even after bitmask,
-      // we refuse it by `|| ''`.
-      id += alphabet[bytes[j] & mask] || ''
-      // More compact than `id.length + 1 === size`
-      if (id.length === +size) return id
+  return () => {
+    let id = ''
+    while (true) {
+      let bytes = getRandom(step)
+      // Compact alternative for `for (var j = 0; j < step; j++)`
+      let j = step
+      while (j--) {
+        // If random byte is bigger than alphabet even after bitmask,
+        // we refuse it by `|| ''`.
+        id += alphabet[bytes[j] & mask] || ''
+        // More compact than `id.length + 1 === size`
+        if (id.length === +size) return id
+      }
     }
   }
 }
 
-let nanoid2 = (size, alphabet) => nanoid3(size, alphabet, random)
+let customAlphabet = (alphabet, size) => customRandom(alphabet, size, random)
 
 let nanoid = (size = 21) => {
   let id = ''
@@ -118,4 +120,4 @@ let nanoid = (size = 21) => {
   return id
 }
 
-module.exports = { nanoid, nanoid2, nanoid3, urlAlphabet, random }
+module.exports = { nanoid, customAlphabet, customRandom, urlAlphabet, random }

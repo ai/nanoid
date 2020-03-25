@@ -16,7 +16,7 @@ let random = bytes => new Promise((resolve, reject) => {
   })
 })
 
-let nanoid2 = (size, alphabet) => {
+let customAlphabet = (alphabet, size) => {
   // We can’t use bytes bigger than the alphabet. To make bytes values closer
   // to the alphabet, we apply bitmask on them. We look for the closest
   // `2 ** x - 1` number, which will be bigger than alphabet size. If we have
@@ -26,9 +26,9 @@ let nanoid2 = (size, alphabet) => {
   // which is bigger than the alphabet). As a result, we will need more bytes,
   // than ID size, because we will refuse bytes bigger than the alphabet.
 
-  // Every hardware random generator call is costly,
-  // because we need to wait for entropy collection. This is why often it will
-  // be faster to ask for few extra bytes in advance, to avoid additional calls.
+  // Every hardware random generator call is costly, because we need to wait
+  // for entropy collection. This is why often it will be faster to ask for
+  // few extra bytes in advance, to avoid additional calls.
 
   // Here we calculate how many random bytes should we call in advance.
   // It depends on ID length, mask / alphabet size and magic number 1.6
@@ -48,7 +48,7 @@ let nanoid2 = (size, alphabet) => {
     return tick(id)
   })
 
-  return tick('')
+  return () => tick('')
 }
 
 let nanoid = (size = 21) => random(size).then(bytes => {
@@ -64,4 +64,4 @@ let nanoid = (size = 21) => random(size).then(bytes => {
   return id
 })
 
-module.exports = { nanoid, nanoid2 }
+module.exports = { nanoid, customAlphabet }

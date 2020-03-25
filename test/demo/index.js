@@ -3,12 +3,14 @@ import { v4 as uuid4 } from 'uuid'
 import rndm from 'rndm'
 import uid from 'uid-safe'
 
-import { nanoid, nanoid2, random } from '../../'
+import { nanoid, customAlphabet, random } from '../../'
 import { nanoid as nonSecure } from '../../non-secure'
 
 const COUNT = 50 * 1000
 const ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
 const LENGTH = ALPHABET.length
+
+let nanoid2 = customAlphabet(ALPHABET, LENGTH)
 
 function print (number) {
   return String(Math.floor(number * 100))
@@ -70,7 +72,7 @@ let tasks = [
     return result
   }),
   () => printDistr('nanoid', () => nanoid()),
-  () => printDistr('nanoid2', () => nanoid2(ALPHABET, LENGTH)),
+  () => printDistr('nanoid2', () => nanoid2()),
   () => printDistr('uid.sync', () => uid.sync(21)),
   () => printDistr('uuid/v4', () => uuid4()),
   () => printDistr('shortid', () => shortid()),

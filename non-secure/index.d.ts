@@ -21,8 +21,9 @@ export function nanoid (size?: number): string
  * @returns Random string.
  *
  * ```js
- * const { nanoid2 } = require('nanoid/non-secure')
- * model.id = generate(5, '0123456789абвгдеё') //=> "8ё56а"
+ * import { customAlphabet } from 'nanoid/non-secure'
+ * const nanoid = customAlphabet('0123456789абвгдеё', 5)
+ * model.id = //=> "8ё56а"
  * ```
  */
-export function nanoid2 (size: number, alphabet: string): string
+export function customAlphabet (alphabet: string, size: number): () => string

@@ -324,13 +324,12 @@ Note that it is predictable and have bigger collision probability.
 
 ### Custom Alphabet or Length
 
-`nanoid2` allows you to change ID’s alphabet. It has `2` in the name,
-because it accepts 2 arguments (alphabet and optional size) in contrast
-to `nanoid`, which accepts only 1 argument (optional size).
+`customAlphabet` allows you to create `nanoid` with own alphabet and ID length.
 
 ```js
-import { nanoid2 } from 'nanoid'
-model.id = nanoid2(10, '1234567890abcdef') //=> "4f90d13a42"
+import { customAlphabet } from 'nanoid'
+const nanoid = customAlphabet('1234567890abcdef', 10)
+model.id = nanoid() //=> "4f90d13a42"
 ```
 
 Check the safety of your custom alphabet and ID length
@@ -343,15 +342,17 @@ Otherwise, the generator will not be secure.
 Asynchronous and non-secure API is also available:
 
 ```js
-import { nanoid2 } from 'nanoid/async'
+import { customAlphabet } from 'nanoid/async'
+const nanoid = customAlphabet('1234567890abcdef', 10)
 async function createUser () {
-  user.id = await nanoid2(10, '1234567890abcdef')
+  user.id = await nanoid()
 }
 ```
 
 ```js
-import { nanoid2 } from 'nanoid/non-secure'
-user.id = nanoid2(10, '1234567890abcdef')
+import { customAlphabet } from 'nanoid/non-secure'
+const nanoid = customAlphabet('1234567890abcdef', 10)
+user.id = nanoid()
 ```
 
 [ID collision probability]: https://alex7kom.github.io/nano-nanoid-cc/
@@ -360,14 +361,11 @@ user.id = nanoid2(10, '1234567890abcdef')
 
 ### Custom Random Bytes Generator
 
-You can replace the default safe random generator using the `nanoid3` module.
-For instance, to use a seed-based generator.
-
-This function has `3` in the name, because it accepts 3 arguments
-(generator, alphabet and size).
+`customRandom` allows you to create `nanoid` and replace the default
+safe random generator. For instance, to use a seed-based generator.
 
 ```js
-import { nanoid3 } from 'nanoid`
+import { customRandom } from 'nanoid`
 
 function random (size) {
   const result = []
@@ -377,7 +375,8 @@ function random (size) {
   return result
 }
 
-nanoid3(10, 'abcdef', random) //=> "fbaefaadeb"
+const nanoid = customRandom('abcdef', 10, random)
+nanoid() //=> "fbaefaadeb"
 ```
 
 `random` callback must accept the array size and return an array
@@ -387,8 +386,8 @@ If you want to use the same URL-friendly symbols with `nanoid3`,
 you can get the default alphabet from the `urlAlphabet`.
 
 ```js
-const { nanoid3, urlAlphabet } = require('nanoid')
-nanoid3(10, urlAlphabet, random) //=> "93ce_Ltuub"
+const { customRandom, urlAlphabet } = require('nanoid')
+const nanoid = customRandom(urlAlphabet, 10, random)
 ```
 
-Asynchronous and non-secure APIs are not available for `nanoid3`.
+Asynchronous and non-secure APIs are not available for `customRandom`.

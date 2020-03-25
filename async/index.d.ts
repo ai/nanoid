@@ -28,18 +28,22 @@ export function nanoid (size?: number): Promise<string>
  * @return Promise with random string.
  *
  * ```js
- * const { nanoid2 } = require('nanoid/async')
- * generate(5, '0123456789абвгдеё').then(id => {
+ * import { customAlphabet } from 'nanoid/async'
+ * const nanoid = customAlphabet('0123456789абвгдеё', 5)
+ * nanoid().then(id => {
  *   model.id = id //=> "8ё56а"
  * })
  * ```
  */
-export function nanoid2 (size: number, alphabet: string): Promise<string>
+export function customAlphabet (
+  alphabet: string, size: number
+): () => Promise<string>
 
 /**
  * Return array with random bytes from hardware random generator.
  *
  * ```js
+ * import { random } from 'nanoid/async'
  * random(5).then(bytes => {
  *   bytes //=> [10, 67, 212, 67, 89]
  * })

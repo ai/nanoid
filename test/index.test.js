@@ -14,7 +14,7 @@ let node = require('../index.js')
 
 for (let type of ['node', 'browser']) {
   describe(`${ type }`, () => {
-    let { nanoid, nanoid2, nanoid3, random, urlAlphabet } =
+    let { nanoid, customAlphabet, customRandom, random, urlAlphabet } =
       type === 'node' ? node : browser
 
     describe('nanoid', () => {
@@ -72,19 +72,21 @@ for (let type of ['node', 'browser']) {
       })
     })
 
-    describe('nanoid2', () => {
+    describe('customAlphabet', () => {
       it('has options', () => {
-        expect(nanoid2(5, 'a')).toEqual('aaaaa')
+        let nanoidA = customAlphabet('a', 5)
+        expect(nanoidA()).toEqual('aaaaa')
       })
 
       it('has flat distribution', () => {
         let COUNT = 100 * 1000
         let LENGTH = 5
         let ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
+        let nanoid2 = customAlphabet(ALPHABET, LENGTH)
 
         let chars = { }
         for (let i = 0; i < COUNT; i++) {
-          let id = nanoid2(LENGTH, ALPHABET)
+          let id = nanoid2()
           for (let char of id) {
             if (!chars[char]) chars[char] = 0
             chars[char] += 1
@@ -104,23 +106,20 @@ for (let type of ['node', 'browser']) {
       })
     })
 
-    describe('nanoid3', () => {
+    describe('customRandom', () => {
       it('supports generator', () => {
         let sequence = [2, 255, 3, 7, 7, 7, 7, 7, 0, 1]
-        function customRandom (size) {
+        function fakeRandom (size) {
           let bytes = []
           for (let i = 0; i < size; i += sequence.length) {
             bytes = bytes.concat(sequence.slice(0, size - i))
           }
           return bytes
         }
-        expect(nanoid3(4, 'abcde', customRandom)).toEqual('adca')
-        expect(nanoid3(18, 'abcde', customRandom)).toEqual('cbadcbadcbadcbadcc')
-      })
-
-      it('respects size', () => {
-        expect(nanoid3(4, 'abcde', random)).toHaveLength(4)
-        expect(nanoid3(20, 'abcde', random)).toHaveLength(20)
+        let nanoid4 = customRandom('abcde', 4, fakeRandom)
+        let nanoid18 = customRandom('abcde', 18, fakeRandom)
+        expect(nanoid4()).toEqual('adca')
+        expect(nanoid18()).toEqual('cbadcbadcbadcbadcc')
       })
     })
 

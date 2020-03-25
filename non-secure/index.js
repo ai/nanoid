@@ -1,32 +1,27 @@
-let nanoid2 = (size, alphabet) => {
-  let id = ''
-  // Complete alternative for `for (var i = 0; i < size; i++)`
-  while (size--) {
-    // `| 0` is compact and faster alternative for `Math.floor()`
-    id += alphabet[Math.random() * alphabet.length | 0]
+let { urlAlphabet } = require('..')
+
+let customAlphabet = (alphabet, size) => {
+  return () => {
+    let id = ''
+    // Complete alternative for `for (var i = 0; i < size; i++)`
+    let i = size
+    while (i--) {
+      // `| 0` is compact and faster alternative for `Math.floor()`
+      id += alphabet[Math.random() * alphabet.length | 0]
+    }
+    return id
   }
-  return id
 }
 
 let nanoid = (size = 21) => {
   let id = ''
-  // Compact alternative for `for (var i = 0; i < size; i++)`
-  while (size--) {
+  // Complete alternative for `for (var i = 0; i < size; i++)`
+  let i = size
+  while (i--) {
     // `| 0` is compact and faster alternative for `Math.floor()`
-    let byte = Math.random() * 64 | 0
-    if (byte < 36) {
-      // 0-9a-z
-      id += byte.toString(36)
-    } else if (byte < 62) {
-      // A-Z
-      id += (byte - 26).toString(36).toUpperCase()
-    } else if (byte < 63) {
-      id += '_'
-    } else {
-      id += '-'
-    }
+    id += urlAlphabet[Math.random() * 64 | 0]
   }
   return id
 }
 
-module.exports = { nanoid, nanoid2 }
+module.exports = { nanoid, customAlphabet }

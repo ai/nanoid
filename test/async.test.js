@@ -26,7 +26,7 @@ function times (size, callback) {
 
 for (let type of ['node', 'browser']) {
   describe(`${ type }`, () => {
-    let { nanoid, nanoid2 } = type === 'node' ? node : browser
+    let { nanoid, customAlphabet } = type === 'node' ? node : browser
 
     describe('nanoid', () => {
       function mock (callback) {
@@ -106,9 +106,10 @@ for (let type of ['node', 'browser']) {
       }
     })
 
-    describe('nanoid2', () => {
+    describe('customAlphabet', () => {
       it('has options', async () => {
-        let id = await nanoid2(5, 'a')
+        let nanoidA = customAlphabet('a', 5)
+        let id = await nanoidA()
         expect(id).toEqual('aaaaa')
       })
 
@@ -116,10 +117,11 @@ for (let type of ['node', 'browser']) {
         let COUNT = 100 * 1000
         let LENGTH = 5
         let ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
+        let nanoid2 = customAlphabet(ALPHABET, LENGTH)
 
         let chars = { }
         await Promise.all(times(100, async () => {
-          let id = await nanoid2(LENGTH, ALPHABET)
+          let id = await nanoid2()
           expect(id).toHaveLength(LENGTH)
           for (let char of id) {
             if (!chars[char]) chars[char] = 0

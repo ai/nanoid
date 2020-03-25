@@ -22,14 +22,15 @@ export function nanoid (size?: number): string
  *
  * @param alphabet Symbols to be used in ID.
  * @param size The number of symbols in ID. Defauls is 21.
- * @returns Random string.
+ * @returns Random string generator
  *
  * ```js
- * const { nanoid2 } = require('nanoid')
- * model.id = nanoid2(5, '0123456789абвгдеё') //=> "8ё56а"
+ * const { customAlphabet } = require('nanoid')
+ * const nanoid = customAlphabet('0123456789абвгдеё', 5)
+ * nanoid() //=> "8ё56а"
  * ```
  */
-export function nanoid2 (size: number, alphabet: string): string
+export function customAlphabet (alphabet: string, size: number): () => string
 
 /**
  * Generate unique ID with custom random generator and alphabet.
@@ -38,34 +39,37 @@ export function nanoid2 (size: number, alphabet: string): string
  * will not be secure.
  *
  * ```js
- * import { nanoid3 } from 'nanoid/format'
+ * import { customRandom } from 'nanoid/format'
  *
- * nanoid3(5, "abcdef", size => {
+ * const nanoid = customRandom("abcdef", 5, size => {
  *   const random = []
  *   for (let i = 0; i < size; i++) {
  *     random.push(randomByte())
  *   }
  *   return random
- * }) //=> "fbaef"
+ * })
+ *
+ * nanoid() //=> "fbaef"
  * ```
  *
- * @param size The number of symbols in new random string.
  * @param alphabet Symbols to be used in new random string.
+ * @param size The number of symbols in new random string.
  * @param random The random bytes generator.
- * @returns Random string.
+ * @returns Random string generator
  */
-export function nanoid3 (
-  size: number,
+export function customRandom (
   alphabet: string,
+  size: number,
   random: (bytes: number) => Uint8Array,
-): string
+): () => string
 
 /**
  * URL safe symbols.
  *
  * ```js
  * import { urlAlphabet } from 'nanoid'
- * generate(10, url) //=> "Uakgb_J5m9"
+ * const nanoid = customRandom(urlAlphabet, 10)
+ * nanoid() //=> "Uakgb_J5m9"
  * ```
  */
 export const urlAlphabet: string
@@ -74,8 +78,8 @@ export const urlAlphabet: string
  * Return array with random bytes from hardware random generator.
  *
  * ```js
- * import { nanoid3, random } from 'nanoid'
- * nanoid3(5, "abcdef", random) //=> "fbaef"
+ * import { customRandom, random } from 'nanoid'
+ * const nanoid = customRandom("abcdef", 5, random)
  * ```
  *
  * @param bytes The size of array.
