@@ -19,7 +19,7 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
 > “An amazing level of senseless perfectionism,
-> which is simply impossible not to respect”
+> which is simply impossible not to respect.”
 
 Supports modern browsers, IE with Babel, Node.js and React Native.
 Try to make us smaller in [online tool].
