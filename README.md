@@ -229,6 +229,7 @@ const mySchema = new Schema({
 })
 ```
 
+
 ### ES Modules
 
 Nano ID provides ES modules out of the box. You do not need to do anything
