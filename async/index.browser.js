@@ -25,7 +25,7 @@ let customAlphabet = (alphabet, size) => {
   return () => {
     let id = ''
     while (true) {
-      let bytes = self.crypto.getRandomValues(new Uint8Array(step))
+      let bytes = crypto.getRandomValues(new Uint8Array(step))
       // A compact alternative for `for (var i = 0; i < step; i++)`.
       let i = step
       while (i--) {
@@ -40,7 +40,7 @@ let customAlphabet = (alphabet, size) => {
 
 let nanoid = (size = 21) => {
   let id = ''
-  let bytes = self.crypto.getRandomValues(new Uint8Array(size))
+  let bytes = crypto.getRandomValues(new Uint8Array(size))
 
   // A compact alternative for `for (var i = 0; i < step; i++)`.
   while (size--) {

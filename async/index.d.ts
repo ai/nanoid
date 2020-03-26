@@ -1,8 +1,8 @@
 /**
- * Generate secure URL-friendly unique ID. Non-blocking version.
+ * Generate secure URL-friendly unique ID. The non-blocking version.
  *
- * By default, ID will have 21 symbols to have a collision probability similar
- * to UUID v4.
+ * By default, the ID will have 21 symbols to have a collision probability
+ * similar to UUID v4.
  *
  * ```js
  * import { nanoid } from 'nanoid/async'
@@ -11,21 +11,21 @@
  * })
  * ```
  *
- * @param size The number of symbols in ID. Default is 21.
- * @return Promise with random string.
+ * @param size Size of the ID. The default size is 21.
+ * @returns A promise with a random string.
  */
 export function nanoid (size?: number): Promise<string>
 
 /**
- * Low-level function
- * Generate secure unique ID with custom alphabet. Non-blocking version.
+ * A low-level function.
+ * Generate secure unique ID with custom alphabet. The non-blocking version.
  *
  * Alphabet must contain 256 symbols or less. Otherwise, the generator
  * will not be secure.
  *
- * @param alphabet Symbols to be used in ID.
- * @param size The number of symbols in ID.
- * @return Promise with random string.
+ * @param alphabet Alphabet used to generate the ID.
+ * @param size Size of the ID.
+ * @returns A promise with a random string.
  *
  * ```js
  * import { customAlphabet } from 'nanoid/async'
@@ -40,7 +40,7 @@ export function customAlphabet (
 ): () => Promise<string>
 
 /**
- * Return array with random bytes from hardware random generator.
+ * Generate an array of random bytes collected from hardware noise.
  *
  * ```js
  * import { random } from 'nanoid/async'
@@ -49,7 +49,7 @@ export function customAlphabet (
  * })
  * ```
  *
- * @param bytes The size of array.
- * @returns Promise with random bytes.
+ * @param bytes Size of the array.
+ * @returns A promise with a random bytes array.
  */
 export function random (bytes: number): Promise<Uint8Array>

@@ -1,13 +1,11 @@
 let crypto = require('crypto')
 
-global.self = {
-  crypto: {
-    getRandomValues (array) {
-      for (let i = 0; i < array.length; i++) {
-        array[i] = Math.floor(Math.random() * 256)
-      }
-      return array
+global.crypto = {
+  getRandomValues (array) {
+    for (let i = 0; i < array.length; i++) {
+      array[i] = Math.floor(Math.random() * 256)
     }
+    return array
   }
 }
 
