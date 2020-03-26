@@ -378,8 +378,9 @@ user.id = nanoid()
 ### Custom Random Bytes Generator
 
 `customRandom` allows you to create a `nanoid` and replace alphabet
-and the default random bytes generator. In this example,
-a seed-based generator is used.
+and the default random bytes generator.
+
+In this example, a seed-based generator is used:
 
 ```js
 import { customRandom } from 'nanoid'
@@ -395,7 +396,7 @@ nanoid() //=> "fbaefaadeb"
 `random` callback must accept the array size and return an array
 with random numbers.
 
-If you want to use the same URL-friendly symbols with `nanoid3`,
+If you want to use the same URL-friendly symbols with `customRandom`,
 you can get the default alphabet using the `urlAlphabet`.
 
 ```js
