@@ -1,16 +1,16 @@
 /**
  * Generate secure URL-friendly unique ID.
  *
- * By default, ID will have 21 symbols to have a collision probability similar
- * to UUID v4.
+ * By default, the ID will have 21 symbols to have a collision probability
+ * similar to UUID v4.
  *
  * ```js
  * import { nanoid } from 'nanoid'
  * model.id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqL"
  * ```
  *
- * @param size The number of symbols in ID. Default is 21.
- * @returns Random string.
+ * @param size Size of the ID. The default size is 21.
+ * @returns A random string.
  */
 export function nanoid (size?: number): string
 
@@ -20,9 +20,9 @@ export function nanoid (size?: number): string
  * Alphabet must contain 256 symbols or less. Otherwise, the generator
  * will not be secure.
  *
- * @param alphabet Symbols to be used in ID.
- * @param size The number of symbols in ID. Defauls is 21.
- * @returns Random string generator
+ * @param alphabet Symbols used to generate the ID.
+ * @param size Size of the ID. The default size is 21.
+ * @returns A random string generator.
  *
  * ```js
  * const { customAlphabet } = require('nanoid')
@@ -52,10 +52,10 @@ export function customAlphabet (alphabet: string, size: number): () => string
  * nanoid() //=> "fbaef"
  * ```
  *
- * @param alphabet Symbols to be used in new random string.
- * @param size The number of symbols in new random string.
- * @param random The random bytes generator.
- * @returns Random string generator
+ * @param alphabet Alphabet used to generate a random string.
+ * @param size Size of the random string.
+ * @param random A random bytes generator.
+ * @returns A random string generator.
  */
 export function customRandom (
   alphabet: string,
@@ -75,14 +75,14 @@ export function customRandom (
 export const urlAlphabet: string
 
 /**
- * Return array with random bytes from hardware random generator.
+ * Generate an array of random bytes collected from hardware noise.
  *
  * ```js
  * import { customRandom, random } from 'nanoid'
  * const nanoid = customRandom("abcdef", 5, random)
  * ```
  *
- * @param bytes The size of array.
- * @returns Arrays with random bytes.
+ * @param bytes Size of the array.
+ * @returns An array of random bytes.
  */
 export function random (bytes: number): Uint8Array
