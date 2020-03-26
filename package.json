@@ -1,7 +1,7 @@
 {
   "name": "nanoid",
   "version": "2.1.11",
-  "description": "A tiny (110 bytes), secure URL-friendly unique string ID generator",
+  "description": "A tiny (108 bytes), secure URL-friendly unique string ID generator",
   "keywords": [
     "uuid",
     "random",
@@ -64,12 +64,12 @@
     {
       "name": "nanoid",
       "import": "{ nanoid }",
-      "limit": "110 B"
+      "limit": "108 B"
     },
     {
       "name": "customAlphabet",
       "import": "{ customAlphabet }",
-      "limit": "144 B"
+      "limit": "142 B"
     },
     {
       "name": "urlAlphabet",
@@ -92,13 +92,13 @@
       "name": "async nanoid",
       "import": "{ nanoid }",
       "path": "async/index.js",
-      "limit": "120 B"
+      "limit": "118 B"
     },
     {
       "name": "async customAlphabet",
       "import": "{ customAlphabet }",
       "path": "async/index.js",
-      "limit": "132 B"
+      "limit": "127 B"
     }
   ],
   "eslintConfig": {

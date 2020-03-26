@@ -49,7 +49,7 @@ let urlAlphabet =
 //   urlAlphabet += i.toString(36).toUpperCase()
 // }
 
-let random = bytes => self.crypto.getRandomValues(new Uint8Array(bytes))
+let random = bytes => crypto.getRandomValues(new Uint8Array(bytes))
 
 let customRandom = (alphabet, size, getRandom) => {
   // We can’t use bytes bigger than the alphabet. To make bytes values closer
@@ -95,7 +95,7 @@ let customAlphabet = (alphabet, size) => customRandom(alphabet, size, random)
 
 let nanoid = (size = 21) => {
   let id = ''
-  let bytes = self.crypto.getRandomValues(new Uint8Array(size))
+  let bytes = crypto.getRandomValues(new Uint8Array(size))
 
   // Compact alternative for `for (var i = 0; i < size; i++)`
   while (size--) {
