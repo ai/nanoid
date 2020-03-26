@@ -79,7 +79,7 @@ for (let type of ['node', 'browser']) {
 
       it('has flat distribution', () => {
         let COUNT = 100 * 1000
-        let LENGTH = 5
+        let LENGTH = 30
         let ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
         let nanoid2 = customAlphabet(ALPHABET, LENGTH)
 
