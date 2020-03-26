@@ -131,7 +131,7 @@ Test configuration: Dell XPS 2-in-a 7390, Fedora 32, Node.js 13.11.
 
 * **Vulnerabilities:** to report a security vulnerability, please use
   the [Tidelift security contact](https://tidelift.com/security).
-  Tidelift will coordinate the fix and disclosure.
+  Tidelift will coordinate the fix and disclosure.
 
 [Secure random values (in Node.js)]: https://gist.github.com/joepie91/7105003c3b26e65efcea63f3db82dfba
 [better algorithm]:                  https://github.com/ai/nanoid/blob/master/format.js
@@ -185,8 +185,8 @@ const Element = () => {
 }
 ```
 
-If you want to use Nano ID in the `key` prop, you must set some string prefix.
-Note: it is invalid for the HTML ID to start with a number.
+If you want to use Nano ID in the `key` prop, you must set some string prefix
+(it is invalid for the HTML ID to start with a number).
 
 ```jsx
 <input id={'id' + this.id} type="text"/>
@@ -239,7 +239,7 @@ const mySchema = new Schema({
 ### ES Modules
 
 Nano ID provides ES modules out of the box. You do not need to do anything
-to use Nano ID as ES module in Webpack, Parcel, or Node.js.
+to use Nano ID as ESM in webpack, Parcel, or Node.js.
 
 ```js
 import { nanoid } from 'nanoid'
@@ -306,7 +306,7 @@ Also, [CLI tool] is available to generate IDs from a command line.
 
 To generate hardware random bytes, CPU collects electromagnetic noise.
 In the synchronous API during the noise collection,
-the CPU does not do anything useful.
+the CPU does not do anything useful.
 
 Using the asynchronous API of Nano ID, another code can run during
 the entropy collection.
@@ -350,7 +350,7 @@ model.id = nanoid() //=> "4f90d13a42"
 ```
 
 Check the safety of your custom alphabet and ID size in our
-[ID collision probability] calculator. For more alphabets, check out the options
+[ID collision probability] calculator. For more alphabets, check out the options
 in [`nanoid-dictionary`].
 
 Alphabet must contain 256 symbols or less.
@@ -379,7 +379,7 @@ user.id = nanoid()
 ### Custom Random Bytes Generator
 
 `customRandom` allows you to create a `nanoid` and replace the default random
-bytes generator. In this example, a seed-based generator is used.
+bytes generator. In this example, a seed-based generator is used.
 
 ```js
 import { customRandom } from 'nanoid'
