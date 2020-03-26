@@ -22,10 +22,10 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 > which is simply impossible not to respect.”
 
 Supports modern browsers, IE with Babel, Node.js and React Native.
-Try to make us smaller in [online tool].
+Try to make us smaller in the [online tool].
 
-[online tool]:  https://gitpod.io/#https://github.com/ai/nanoid/
-[Size Limit]:   https://github.com/ai/size-limit
+[online tool]: https://gitpod.io/#https://github.com/ai/nanoid/
+[Size Limit]:  https://github.com/ai/size-limit
 
 <a href="https://evilmartians.com/?utm_source=nanoid">
   <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg"
@@ -132,7 +132,7 @@ Test configuration: Dell XPS 2-in-a 7390, Fedora 32, Node.js 13.11.
   Tidelift will coordinate the fix and disclosure.
 
 [Secure random values (in Node.js)]: https://gist.github.com/joepie91/7105003c3b26e65efcea63f3db82dfba
-[better algorithm]: https://github.com/ai/nanoid/blob/master/format.js
+[better algorithm]:                  https://github.com/ai/nanoid/blob/master/format.js
 
 
 ## Usage
