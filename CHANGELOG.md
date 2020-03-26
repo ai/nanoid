@@ -2,7 +2,7 @@
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 3.0
-Migration guide: <https://github.com/ai/nanoid/releases/tag/3.0.0>
+**Migration guide:** <https://github.com/ai/nanoid/releases/tag/3.0.0>
 * Move to ES2016 syntax. You need to use Babel for IE 11.
 * Move to named exports `import { nanoid } from 'nanoid'`.
 * Move `import url from 'nanoid/url'` to `import { urlAlphabet } from 'nanoid'`.
