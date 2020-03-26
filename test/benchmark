@@ -4,6 +4,7 @@ let { v4: uuid4 } = require('uuid')
 let benchmark = require('benchmark')
 let shortid = require('shortid')
 let chalk = require('chalk')
+let cuid = require('cuid')
 let rndm = require('rndm')
 let srs = require('secure-random-string')
 let uid = require('uid-safe')
@@ -38,6 +39,9 @@ suite
   })
   .add('secure-random-string', () => {
     srs()
+  })
+  .add('cuid', () => {
+    shortid()
   })
   .add('shortid', () => {
     shortid()

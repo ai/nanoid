@@ -84,6 +84,7 @@ uid.sync                    375,816 ops/sec
 uuid v4                     396,756 ops/sec
 secure-random-string        366,434 ops/sec
 shortid                      59,343 ops/sec
+cuid                         55,025 ops/sec
 
 Async:
 async nanoid                101,966 ops/sec
