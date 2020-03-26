@@ -20,7 +20,7 @@ export function nanoid (size?: number): string
  * Alphabet must contain 256 symbols or less. Otherwise, the generator
  * will not be secure.
  *
- * @param alphabet Symbols used to generate the ID.
+ * @param alphabet Alphabet used to generate the ID.
  * @param size Size of the ID. The default size is 21.
  * @returns A random string generator.
  *
