@@ -1,24 +1,25 @@
 /**
- * Generate URL-friendly unique ID. This method use non-secure predictable
- * random generator with bigger collision probability.
+ * Generate URL-friendly unique ID. This method uses the non-secure
+ * predictable random generator with bigger collision probability.
  *
  * ```js
  * import { nanoid } from 'nanoid/non-secure'
  * model.id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqL"
  * ```
  *
- * @param size The number of symbols in ID. Default is 21.
- * @returns Random string.
+ * @param size Size of the ID. The default size is 21.
+ * @returns A random string.
  */
 export function nanoid (size?: number): string
 
 /**
- * Generate unique ID with custom alphabet. This method use non-secure
- * predictable random generator with bigger collision probability.
+ * Generate URL-friendly unique ID based on the custom alphabet.
+ * This method uses the non-secure predictable random generator
+ * with bigger collision probability.
  *
- * @param alphabet Symbols to be used in ID.
- * @param size The number of symbols in ID.
- * @returns Random string.
+ * @param alphabet Alphabet used to generate the ID.
+ * @param size Size of the ID.
+ * @returns A random string.
  *
  * ```js
  * import { customAlphabet } from 'nanoid/non-secure'
