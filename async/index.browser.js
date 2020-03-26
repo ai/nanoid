@@ -1,13 +1,13 @@
 let customAlphabet = (alphabet, size) => {
   // First, a bitmask is necessary to generate the ID. The bitmask makes bytes
   // values closer to the alphabet size. The bitmask calculates the closest
-  // `2^31 - 1` number, which exceeds the alphabet size. For example, the
-  // bitmask for the alphabet size 30 is 31 (00011111).
+  // `2^31 - 1` number, which exceeds the alphabet size.
+  // For example, the bitmask for the alphabet size 30 is 31 (00011111).
   // `Math.clz32` is not used, because it is not available in browsers.
   let mask = (2 << Math.log(alphabet.length - 1) / Math.LN2) - 1
   // Though, the bitmask solution is not perfect since the bytes exceeding
-  // the alphabet size are refused. Therefore, to reliably generate the ID, the
-  // random bytes redundancy has to be satisfied.
+  // the alphabet size are refused. Therefore, to reliably generate the ID,
+  // the random bytes redundancy has to be satisfied.
 
   // Note: every hardware random generator call is performance expensive,
   // because the system call for entropy collection takes a lot of time.

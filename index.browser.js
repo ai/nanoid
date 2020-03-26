@@ -32,35 +32,18 @@ if (process.env.NODE_ENV !== 'production') {
 let urlAlphabet =
   'ModuleSymbhasOwnPr-0123456789ABCDEFGHNRVfgctiUvz_KqYTJkLxpZXIjQW'
 
-// // This alphabet uses `A-Za-z0-9_-` symbols.
-// // Symbols are generated for smaller size.
-// // -_zyxwvutsrqponmlkjihgfedcba9876543210ZYXWVUTSRQPONMLKJIHGFEDCBA
-// let urlAlphabet = '-_'
-// // Loop from 36 to 0 (from z to a and 9 to 0 in Base36).
-// let i = 36
-// while (i--) {
-//   // 36 is radix. Number.prototype.toString(36) returns number
-//   // in Base36 representation. Base36 is like hex, but it uses 0–9 and a-z.
-//   urlAlphabet += i.toString(36)
-// }
-// // Loop from 36 to 10 (from Z to A in Base36).
-// i = 36
-// while (i-- - 10) {
-//   urlAlphabet += i.toString(36).toUpperCase()
-// }
-
 let random = bytes => crypto.getRandomValues(new Uint8Array(bytes))
 
 let customRandom = (alphabet, size, getRandom) => {
   // First, a bitmask is necessary to generate the ID. The bitmask makes bytes
   // values closer to the alphabet size. The bitmask calculates the closest
-  // `2^31 - 1` number, which exceeds the alphabet size. For example, the
-  // bitmask for the alphabet size 30 is 31 (00011111).
+  // `2^31 - 1` number, which exceeds the alphabet size.
+  // For example, the bitmask for the alphabet size 30 is 31 (00011111).
   // `Math.clz32` is not used, because it is not available in browsers.
   let mask = (2 << Math.log(alphabet.length - 1) / Math.LN2) - 1
   // Though, the bitmask solution is not perfect since the bytes exceeding
-  // the alphabet size are refused. Therefore, to reliably generate the ID, the
-  // random bytes redundancy has to be satisfied.
+  // the alphabet size are refused. Therefore, to reliably generate the ID,
+  // the random bytes redundancy has to be satisfied.
 
   // Note: every hardware random generator call is performance expensive,
   // because the system call for entropy collection takes a lot of time.
@@ -116,7 +99,6 @@ let nanoid = (size = 21) => {
     } else {
       id += '-'
     }
-    // id += urlAlphabet[bytes[i] & 63]
   }
   return id
 }

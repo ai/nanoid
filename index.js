@@ -10,8 +10,8 @@ let random = bytes => {
   let buffer = buffers[bytes]
   if (!buffer) {
     // `Buffer.allocUnsafe()` is faster because it doesn’t flush the memory.
-    // Memory flushing is unnecessary since the buffer allocation itself resets the
-    // memory with the new bytes.
+    // Memory flushing is unnecessary since the buffer allocation itself resets
+    // the memory with the new bytes.
     buffer = Buffer.allocUnsafe(bytes)
     if (bytes <= 255) buffers[bytes] = buffer
   }
@@ -21,12 +21,12 @@ let random = bytes => {
 let customRandom = (alphabet, size, getRandom) => {
   // First, a bitmask is necessary to generate the ID. The bitmask makes bytes
   // values closer to the alphabet size. The bitmask calculates the closest
-  // `2^31 - 1` number, which exceeds the alphabet size. For example, the
-  // bitmask for the alphabet size 30 is 31 (00011111).
+  // `2^31 - 1` number, which exceeds the alphabet size.
+  // For example, the bitmask for the alphabet size 30 is 31 (00011111).
   let mask = (2 << 31 - Math.clz32((alphabet.length - 1) | 1)) - 1
   // Though, the bitmask solution is not perfect since the bytes exceeding
-  // the alphabet size are refused. Therefore, to reliably generate the ID, the
-  // random bytes redundancy has to be satisfied.
+  // the alphabet size are refused. Therefore, to reliably generate the ID,
+  // the random bytes redundancy has to be satisfied.
 
   // Note: every hardware random generator call is performance expensive,
   // because the system call for entropy collection takes a lot of time.

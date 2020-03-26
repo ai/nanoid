@@ -5,9 +5,9 @@ let { urlAlphabet } = require('..')
 // `crypto.randomFill()` is a little faster than `crypto.randomBytes()`,
 // because it is possible to use in combination with `Buffer.allocUnsafe()`.
 let random = bytes => new Promise((resolve, reject) => {
-    // `Buffer.allocUnsafe()` is faster because it doesn’t flush the memory.
-    // Memory flushing is unnecessary since the buffer allocation itself resets
-    // the memory with the new bytes.
+  // `Buffer.allocUnsafe()` is faster because it doesn’t flush the memory.
+  // Memory flushing is unnecessary since the buffer allocation itself resets
+  // the memory with the new bytes.
   crypto.randomFill(Buffer.allocUnsafe(bytes), (err, buf) => {
     if (err) {
       reject(err)
@@ -20,12 +20,12 @@ let random = bytes => new Promise((resolve, reject) => {
 let customAlphabet = (alphabet, size) => {
   // First, a bitmask is necessary to generate the ID. The bitmask makes bytes
   // values closer to the alphabet size. The bitmask calculates the closest
-  // `2^31 - 1` number, which exceeds the alphabet size. For example, the
-  // bitmask for the alphabet size 30 is 31 (00011111).
+  // `2^31 - 1` number, which exceeds the alphabet size.
+  // For example, the bitmask for the alphabet size 30 is 31 (00011111).
   let mask = (2 << 31 - Math.clz32((alphabet.length - 1) | 1)) - 1
   // Though, the bitmask solution is not perfect since the bytes exceeding
-  // the alphabet size are refused. Therefore, to reliably generate the ID, the
-  // random bytes redundancy has to be satisfied.
+  // the alphabet size are refused. Therefore, to reliably generate the ID,
+  // the random bytes redundancy has to be satisfied.
 
   // Note: every hardware random generator call is performance expensive,
   // because the system call for entropy collection takes a lot of time.
