@@ -2,7 +2,7 @@
 // according to `browser` config in `package.json`.
 
 if (process.env.NODE_ENV !== 'production') {
-  // All bundlers will remove this block in production bundle
+  // All bundlers will remove this block in the production bundle.
   if (
     typeof navigator !== 'undefined' &&
     navigator.product === 'ReactNative' &&
@@ -11,7 +11,7 @@ if (process.env.NODE_ENV !== 'production') {
     throw new Error(
       'React Native does not have a built-in secure random generator. ' +
       'If you don’t need unpredictable IDs, you can use `nanoid/non-secure`. ' +
-      'For secure IDs import `react-native-get-random-values` before Nano ID.'
+      'For secure IDs, import `react-native-get-random-values` before Nano ID.'
     )
   }
   if (typeof self !== 'undefined' && self.msCrypto && !self.crypto) {
@@ -27,12 +27,12 @@ if (process.env.NODE_ENV !== 'production') {
   }
 }
 
-// This alphabet uses a-z A-Z 0-9 _- symbols. Symbols order was changed
-// for better gzip compression. We use genetic algorithm to find the best order.
+// This alphabet uses `A-Za-z0-9_-` symbols. The genetic algorithm helped
+// optimize the gzip compression for this alphabet.
 let urlAlphabet =
   'ModuleSymbhasOwnPr-0123456789ABCDEFGHNRVfgctiUvz_KqYTJkLxpZXIjQW'
 
-// // This alphabet uses a-z A-Z 0-9 _- symbols.
+// // This alphabet uses `A-Za-z0-9_-` symbols.
 // // Symbols are generated for smaller size.
 // // -_zyxwvutsrqponmlkjihgfedcba9876543210ZYXWVUTSRQPONMLKJIHGFEDCBA
 // let urlAlphabet = '-_'
@@ -52,39 +52,39 @@ let urlAlphabet =
 let random = bytes => self.crypto.getRandomValues(new Uint8Array(bytes))
 
 let customRandom = (alphabet, size, getRandom) => {
-  // We can’t use bytes bigger than the alphabet. To make bytes values closer
-  // to the alphabet, we apply bitmask on them. We look for the closest
-  // `2 ** x - 1` number, which will be bigger than alphabet size. If we have
-  // 30 symbols in the alphabet, we will take 31 (00011111).
-  // We do not use faster Math.clz32, because it is not available in browsers.
+  // First, a bitmask is necessary to generate the ID. The bitmask makes bytes
+  // values closer to the alphabet size. The bitmask calculates the closest
+  // `2^31 - 1` number, which exceeds the alphabet size. For example, the
+  // bitmask for the alphabet size 30 is 31 (00011111).
+  // `Math.clz32` is not used, because it is not available in browsers.
   let mask = (2 << Math.log(alphabet.length - 1) / Math.LN2) - 1
-  // Bitmask is not a perfect solution (in our example it will pass 31 bytes,
-  // which is bigger than the alphabet). As a result, we will need more bytes,
-  // than ID size, because we will refuse bytes bigger than the alphabet.
+  // Though, the bitmask solution is not perfect since the bytes exceeding
+  // the alphabet size are refused. Therefore, to reliably generate the ID, the
+  // random bytes redundancy has to be satisfied.
 
-  // Every hardware random generator call is costly, because we need to wait
-  // for entropy collection. This is why often it will be faster to ask for
-  // few extra bytes in advance, to avoid additional calls.
+  // Note: every hardware random generator call is performance expensive,
+  // because the system call for entropy collection takes a lot of time.
+  // So, to avoid additional system calls, extra bytes are requested in advance.
 
-  // Here we calculate how many random bytes should we call in advance.
-  // It depends on ID length, mask / alphabet size and magic number 1.6
-  // (which was selected according benchmarks).
+  // Next, a step determines how many random bytes to generate.
+  // The number of random bytes gets decided upon the ID size, mask,
+  // alphabet size, and magic number 1.6 (using 1.6 peaks at performance
+  // according to benchmarks).
 
-  // -~f => Math.ceil(f) if n is float number
-  // -~i => i + 1 if n is integer number
+  // `-~f => Math.ceil(f)` if f is a float
+  // `-~i => i + 1` if i is an integer
   let step = -~(1.6 * mask * size / alphabet.length)
 
   return () => {
     let id = ''
     while (true) {
       let bytes = getRandom(step)
-      // Compact alternative for `for (var j = 0; j < step; j++)`
+      // A compact alternative for `for (var i = 0; i < step; i++)`.
       let j = step
       while (j--) {
-        // If random byte is bigger than alphabet even after bitmask,
-        // we refuse it by `|| ''`.
+        // Adding `|| ''` refuses a random byte that exceeds the alphabet size.
         id += alphabet[bytes[j] & mask] || ''
-        // More compact than `id.length + 1 === size`
+        // `id.length + 1 === size` is a more compact option.
         if (id.length === +size) return id
       }
     }
@@ -97,18 +97,19 @@ let nanoid = (size = 21) => {
   let id = ''
   let bytes = self.crypto.getRandomValues(new Uint8Array(size))
 
-  // Compact alternative for `for (var i = 0; i < size; i++)`
+  // A compact alternative for `for (var i = 0; i < step; i++)`.
   while (size--) {
-    // We can’t use bytes bigger than the alphabet. 63 is 00111111 bitmask.
-    // This mask reduces random byte 0-255 to 0-63 values.
-    // There is no need in `|| ''` and `* 1.6` hacks in here,
-    // because bitmask trim bytes exact to alphabet size.
+    // It is incorrect to use bytes exceeding the alphabet size.
+    // The following mask reduces the random byte in the 0-255 value
+    // range to the 0-63 value range. Therefore, adding hacks, such
+    // as empty string fallback or magic numbers, is unneccessary because
+    // the bitmask trims bytes down to the alphabet size.
     let byte = bytes[size] & 63
     if (byte < 36) {
-      // 0-9a-z
+      // `0-9a-z`
       id += byte.toString(36)
     } else if (byte < 62) {
-      // A-Z
+      // `A-Z`
       id += (byte - 26).toString(36).toUpperCase()
     } else if (byte < 63) {
       id += '_'
