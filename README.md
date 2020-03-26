@@ -15,6 +15,8 @@ A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 * **Fast.** It is 16% faster than UUID.
 * **Compact.** It uses a larger alphabet than UUID (`A-Za-z0-9_-`).
   So ID size was reduced from 36 to 21 symbols.
+* **Portable.** Nano ID was ported
+  to [14 programming languages](#other-programming-languages).
 
 ```js
 import { nanoid } from 'nanoid'
@@ -249,7 +251,7 @@ For quick hacks, you can load Nano ID from CDN. Special minified
 `nanoid.js` module is available on jsDelivr.
 
 Though, it is not recommended to be used in production
-because of the lower performance.
+because of the lower loading performance.
 
 ```js
 import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
