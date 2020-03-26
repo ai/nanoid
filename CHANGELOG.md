@@ -1,6 +1,22 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.0
+Migration guide: <https://github.com/ai/nanoid/releases/tag/3.0.0>
+* Move to ES2016 syntax. You need to use Babel for IE 11.
+* Move to named exports `import { nanoid } from 'nanoid'`.
+* Move `import url from 'nanoid/url'` to `import { urlAlphabet } from 'nanoid'`.
+* Replace `format()` to `customRandom()`.
+* Replace `generate()` to `customAlphabet()`.
+* Remove `async/format`.
+* Remove React Native support for `nanoid/async`.
+* Add `nanoid.js` to use directly in browser from CDN.
+* Add TypeScript type definitions.
+* Add ES modules support for bundlers, Node.js, and React Native.
+* Fix React Native support.
+* Reduce size.
+* Improve docs (by Dair Aidarkhanov).
+
 ## 2.1.11
 * Reduce size (by Anton Evzhakov).
 
