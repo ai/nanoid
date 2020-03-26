@@ -4,13 +4,14 @@ let urlAlphabet =
   '_-0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 // We reuse buffers with the same size to avoid memory fragmentations
-// for better performance
+// for better performance.
 let buffers = { }
 let random = bytes => {
   let buffer = buffers[bytes]
   if (!buffer) {
-    // `Buffer.allocUnsafe()` faster because it doesn’t clean memory.
-    // We do not need it, since we will fill memory with new bytes anyway.
+    // `Buffer.allocUnsafe()` is faster because it doesn’t flush the memory.
+    // Memory flushing is unnecessary since the buffer allocation itself resets the
+    // memory with the new bytes.
     buffer = Buffer.allocUnsafe(bytes)
     if (bytes <= 255) buffers[bytes] = buffer
   }
@@ -18,35 +19,35 @@ let random = bytes => {
 }
 
 let customRandom = (alphabet, size, getRandom) => {
-  // We can’t use bytes bigger than the alphabet. To make bytes values closer
-  // to the alphabet, we apply bitmask on them. We look for the closest
-  // `2 ** x - 1` number, which will be bigger than alphabet size. If we have
-  // 30 symbols in the alphabet, we will take 31 (00011111).
+  // First, a bitmask is necessary to generate the ID. The bitmask makes bytes
+  // values closer to the alphabet size. The bitmask calculates the closest
+  // `2^31 - 1` number, which exceeds the alphabet size. For example, the
+  // bitmask for the alphabet size 30 is 31 (00011111).
   let mask = (2 << 31 - Math.clz32((alphabet.length - 1) | 1)) - 1
-  // Bitmask is not a perfect solution (in our example it will pass 31 bytes,
-  // which is bigger than the alphabet). As a result, we will need more bytes,
-  // than ID size, because we will refuse bytes bigger than the alphabet.
+  // Though, the bitmask solution is not perfect since the bytes exceeding
+  // the alphabet size are refused. Therefore, to reliably generate the ID, the
+  // random bytes redundancy has to be satisfied.
 
-  // Every hardware random generator call is costly, because we need to wait
-  // for entropy collection. This is why often it will be faster to ask for
-  // few extra bytes in advance, to avoid additional calls.
+  // Note: every hardware random generator call is performance expensive,
+  // because the system call for entropy collection takes a lot of time.
+  // So, to avoid additional system calls, extra bytes are requested in advance.
 
-  // Here we calculate how many random bytes should we call in advance.
-  // It depends on ID length, mask / alphabet size and magic number 1.6
-  // (which was selected according benchmarks).
+  // Next, a step determines how many random bytes to generate.
+  // The number of random bytes gets decided upon the ID size, mask,
+  // alphabet size, and magic number 1.6 (using 1.6 peaks at performance
+  // according to benchmarks).
   let step = Math.ceil(1.6 * mask * size / alphabet.length)
 
   return () => {
     let id = ''
     while (true) {
       let bytes = getRandom(step)
-      // Compact alternative for `for (var i = 0; i < step; i++)`
+      // A compact alternative for `for (var i = 0; i < step; i++)`.
       let i = step
       while (i--) {
-        // If random byte is bigger than alphabet even after bitmask,
-        // we refuse it by `|| ''`.
+        // Adding `|| ''` refuses a random byte that exceeds the alphabet size.
         id += alphabet[bytes[i] & mask] || ''
-        // More compact than `id.length + 1 === size`
+        // `id.length + 1 === size` is a more compact option.
         if (id.length === +size) return id
       }
     }
@@ -58,12 +59,13 @@ let customAlphabet = (alphabet, size) => customRandom(alphabet, size, random)
 let nanoid = (size = 21) => {
   let bytes = random(size)
   let id = ''
-  // Compact alternative for `for (var i = 0; i < size; i++)`
+  // A compact alternative for `for (var i = 0; i < step; i++)`.
   while (size--) {
-    // We can’t use bytes bigger than the alphabet. 63 is 00111111 bitmask.
-    // This mask reduces random byte 0-255 to 0-63 values.
-    // There is no need in `|| ''` and `* 1.6` hacks in here,
-    // because bitmask trim bytes exact to alphabet size.
+    // It is incorrect to use bytes exceeding the alphabet size.
+    // The following mask reduces the random byte in the 0-255 value
+    // range to the 0-63 value range. Therefore, adding hacks, such
+    // as empty string fallback or magic numbers, is unneccessary because
+    // the bitmask trims bytes down to the alphabet size.
     id += urlAlphabet[bytes[size] & 63]
   }
   return id
