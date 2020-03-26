@@ -238,8 +238,8 @@ const mySchema = new Schema({
 
 ### ES Modules
 
-Nano ID provides ES modules out of the box. You do not need to do anything
-to use Nano ID as ESM in webpack, Parcel, or Node.js.
+Nano ID provides ES modules. You do not need to do anything to use Nano ID
+as ESM in webpack, Parcel, or Node.js.
 
 ```js
 import { nanoid } from 'nanoid'
@@ -260,18 +260,17 @@ import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 
 Web Workers do not have access to a secure random generator.
 
-Security is important in IDs, when IDs should be unpredictable. For instance,
-in "access by URL" link generation.
-
+Security is important in IDs, when IDs should be unpredictable.
+For instance, in "access by URL" link generation.
 If you do not need unpredictable IDs, but you need to use Web Workers,
 you can use the non‑secure ID generator.
-
-Note: non-secure IDs are more prone to collision attacks.
 
 ```js
 import { nanoid } from 'nanoid/non-secure'
 nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
+
+Note: non-secure IDs are more prone to collision attacks.
 
 
 ### Other Programming Languages
@@ -378,21 +377,18 @@ user.id = nanoid()
 
 ### Custom Random Bytes Generator
 
-`customRandom` allows you to create a `nanoid` and replace the default random
-bytes generator. In this example, a seed-based generator is used.
+`customRandom` allows you to create a `nanoid` and replace alphabet
+and the default random bytes generator. In this example,
+a seed-based generator is used.
 
 ```js
 import { customRandom } from 'nanoid'
 
-function random (size) {
-  const result = []
-  for (let i = 0; i < size; i++) {
-    result.push(randomByte())
-  }
-  return result
-}
+const rng = seedrandom(seed)
+const nanoid = customRandom('abcdef', 10, size => {
+  return (new Uint8Array(size)).map(() => 256 * rng())
+})
 
-const nanoid = customRandom('abcdef', 10, random)
 nanoid() //=> "fbaefaadeb"
 ```
 
