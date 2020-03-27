@@ -56,7 +56,7 @@ for (let type of ['node', 'browser']) {
       })
 
       it('has no collisions', async () => {
-        let ids = await Promise.all(times(100 * 1000, () => nanoid()))
+        let ids = await Promise.all(times(50 * 1000, () => nanoid()))
         ids.reduce((used, id) => {
           expect(used[id]).toBeUndefined()
           used[id] = true
@@ -112,8 +112,8 @@ for (let type of ['node', 'browser']) {
       })
 
       it('has flat distribution', async () => {
-        let COUNT = 50 * 1000
-        let LENGTH = 30
+        let COUNT = 100 * 1000
+        let LENGTH = 10
         let ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
         let nanoid2 = customAlphabet(ALPHABET, LENGTH)
 

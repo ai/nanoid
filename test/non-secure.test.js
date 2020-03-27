@@ -31,7 +31,7 @@ describe('nanoid', () => {
   })
 
   it('has flat distribution', () => {
-    let COUNT = 50 * 1000
+    let COUNT = 100 * 1000
     let LENGTH = nanoid().length
 
     let chars = { }

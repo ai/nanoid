@@ -38,7 +38,7 @@ for (let type of ['node', 'browser']) {
 
       it('has no collisions', () => {
         let used = { }
-        for (let i = 0; i < 100 * 1000; i++) {
+        for (let i = 0; i < 50 * 1000; i++) {
           let id = nanoid()
           expect(used[id]).toBeUndefined()
           used[id] = true
