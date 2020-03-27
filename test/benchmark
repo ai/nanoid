@@ -41,7 +41,7 @@ suite
     srs()
   })
   .add('cuid', () => {
-    shortid()
+    cuid()
   })
   .add('shortid', () => {
     shortid()
