@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.0.1
+* Fix React Native warning on `non-secure` import (by Jia Huang).
+
 ## 3.0
 **Migration guide:** <https://github.com/ai/nanoid/releases/tag/3.0.0>
 * Move to ES2016 syntax. You need to use Babel for IE 11.
