@@ -242,7 +242,7 @@ const mySchema = new Schema({
 ### ES Modules
 
 Nano ID provides ES modules. You do not need to do anything to use Nano ID
-as ESM in Webpack, Parcel, or Node.js.
+as ESM in webpack, Rollup, Parcel, or Node.js.
 
 ```js
 import { nanoid } from 'nanoid'
