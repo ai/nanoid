@@ -184,7 +184,7 @@ This is the good example (`id` will be generated only once):
 ```jsx
 const Element = () => {
   const [id] = React.useState(nanoid)
-  return <Item key={id}>
+  return <Item key={id} />
 }
 ```
 
@@ -242,7 +242,7 @@ const mySchema = new Schema({
 ### ES Modules
 
 Nano ID provides ES modules. You do not need to do anything to use Nano ID
-as ESM in webpack, Parcel, or Node.js.
+as ESM in Webpack, Parcel, or Node.js.
 
 ```js
 import { nanoid } from 'nanoid'
@@ -307,8 +307,8 @@ Also, [CLI tool] is available to generate IDs from a command line.
 ### Async
 
 To generate hardware random bytes, CPU collects electromagnetic noise.
-In the synchronous API during the noise collection,
-the CPU does not do anything useful.
+In the synchronous API during the noise collection, the CPU is busy and
+cannot do anything useful in parallel.
 
 Using the asynchronous API of Nano ID, another code can run during
 the entropy collection.
@@ -330,7 +330,7 @@ with either security or asynchronous behavior.
 
 By default, Nano ID uses hardware random bytes generation for security
 and low collision probability. If you are not so concerned with security
-and more with performance, you can use the faster non-secure generator.
+and more concerned with performance, you can use the faster non-secure generator.
 
 ```js
 import { nanoid } from 'nanoid/non-secure'
