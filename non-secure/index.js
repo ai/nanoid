@@ -1,4 +1,5 @@
-let { urlAlphabet } = require('..')
+let urlAlphabet =
+  '_-0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 let customAlphabet = (alphabet, size) => {
   return () => {
