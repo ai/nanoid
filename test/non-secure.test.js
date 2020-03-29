@@ -1,5 +1,4 @@
 let { nanoid, customAlphabet } = require('../non-secure')
-
 let { urlAlphabet } = require('..')
 
 describe('nanoid', () => {

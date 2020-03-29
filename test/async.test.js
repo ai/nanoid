@@ -9,10 +9,9 @@ global.crypto = {
   }
 }
 
+let { urlAlphabet } = require('..')
 let browser = require('../async/index.browser.js')
 let node = require('../async/index.js')
-
-let { urlAlphabet } = require('..')
 
 function times (size, callback) {
   let array = []
