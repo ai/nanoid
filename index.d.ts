@@ -21,7 +21,7 @@ export function nanoid (size?: number): string
  * will not be secure.
  *
  * @param alphabet Alphabet used to generate the ID.
- * @param size Size of the ID. The default size is 21.
+ * @param size Size of the ID.
  * @returns A random string generator.
  *
  * ```js
