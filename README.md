@@ -10,9 +10,9 @@ A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 
 * **Small.** 108 bytes (minified and gzipped). No dependencies.
   [Size Limit] controls the size.
+* **Fast.** It is 40% faster than UUID.
 * **Safe.** It uses cryptographically strong random APIs.
   Can be used in clusters.
-* **Fast.** It is 16% faster than UUID.
 * **Compact.** It uses a larger alphabet than UUID (`A-Za-z0-9_-`).
   So ID size was reduced from 36 to 21 symbols.
 * **Portable.** Nano ID was ported
