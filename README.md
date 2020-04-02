@@ -43,6 +43,7 @@ Try to make us smaller in the [online tool].
 * [Usage](#usage)
   * [JS](#js)
   * [React](#react)
+  * [Create React App](#create-react-app)
   * [React Native](#react-native)
   * [PouchDB and CouchDB](#pouchdb-and-couchdb)
   * [Mongoose](#mongoose)
@@ -194,6 +195,23 @@ If you want to use Nano ID in the `key` prop, you must set some string prefix
 ```jsx
 <input id={'id' + this.id} type="text"/>
 ```
+
+
+### Create React App
+
+Create React App has [a problem](https://github.com/ai/nanoid/issues/205)
+with ES modules packages.
+
+```
+TypeError: (0 , _nanoid.nanoid) is not a function
+```
+
+If you have an error above, here is temporary fix:
+
+1. Use Nano ID 2 instead of 3: `npm i nanoid@^2.0.0`.
+2. Vote for
+   [pull request](https://github.com/facebook/create-react-app/pull/8768),
+   that fix dual packages support.
 
 
 ### React Native
