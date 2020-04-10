@@ -49,6 +49,7 @@ Try to make us smaller in the [online tool].
   * [Mongoose](#mongoose)
   * [ES Modules](#es-modules)
   * [Web Workers](#web-workers)
+  * [CLI](#cli)
   * [Other Programming Languages](#other-programming-languages)
 * [API](#api)
   * [Async](#async)
@@ -106,12 +107,10 @@ Test configuration: Dell XPS 2-in-a 7390, Fedora 32, Node.js 13.11.
 * [ID size calculator] shows collision probability when adjusting
   the ID alphabet or size.
 * [`nanoid-dictionary`] with popular alphabets to use with `customAlphabet`.
-* [`nanoid-cli`] to generate IDs from CLI.
 * [`nanoid-good`] to be sure that your ID doesn't contain any obscene words.
 
 [`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
 [ID size calculator]:  https://zelark.github.io/nano-id-cc/
-[`nanoid-cli`]:        https://github.com/twhitbeck/nanoid-cli
 [`nanoid-good`]:       https://github.com/y-gagar1n/nanoid-good
 
 
@@ -119,7 +118,6 @@ Test configuration: Dell XPS 2-in-a 7390, Fedora 32, Node.js 13.11.
 
 *See a good article about random generators theory:
 [Secure random values (in Node.js)]*
-
 
 * **Unpredictability.** Instead of using the unsafe `Math.random()`, Nano ID
   uses the `crypto` module in Node.js and the Web Crypto API in browsers.
@@ -294,6 +292,22 @@ nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 Note: non-secure IDs are more prone to collision attacks.
 
 
+### CLI
+
+You can get unique ID in terminal by calling `npx nanoid`. You need only
+Node.js in the system. You do not need Nano ID to be installed anywhere.
+
+```sh
+$ npx nanoid
+npx: installed 1 in 0.63s
+LZfXLFzPPR4NNrgjlWDxn
+```
+
+If you want to change alphabet or ID size, you should use [`nanoid-cli`].
+
+[`nanoid-cli`]: https://github.com/twhitbeck/nanoid-cli
+
+
 ### Other Programming Languages
 
 Nano ID was ported to many languages. You can use these ports to have
@@ -315,9 +329,9 @@ the same ID generator on the client and server side.
 * [Rust](https://github.com/nikolay-govorov/nanoid)
 * [Swift](https://github.com/antiflasher/NanoID)
 
-Also, [CLI tool] is available to generate IDs from a command line.
+Also, [CLI] is available to generate IDs from a command line.
 
-[CLI tool]: https://github.com/twhitbeck/nanoid-cli
+[CLI]: #cli
 
 
 ## API
