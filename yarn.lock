@@ -3208,10 +3208,10 @@ dotenv@^5.0.0:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-5.0.1.tgz#a5317459bd3d79ab88cff6e44057a6a3fbb1fcef"
   integrity sha512-4As8uPrjfwb7VXC+WnLCbXK7y+Ueb2B3zgNCePYfhxS1PYeaO1YTeplffTEcbfLhvFNGLAz90VvJs9yomG7bow==
 
-dual-publish@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/dual-publish/-/dual-publish-0.9.0.tgz#af76c610ad226451b776a87cbe58603443adff90"
-  integrity sha512-R0WZZbcnq2CCi8nX95z1lFhM/tIxFej4r1oWem98vI9gkLsLe2FuPC1ScI/Ct1pyDgYqCOWXe57i4Prjhrzi7Q==
+dual-publish@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/dual-publish/-/dual-publish-0.10.0.tgz#a62a3aba1c926488563d64832194a2ee6dcf868a"
+  integrity sha512-v0OopZmskI+hiocyLhuxlvO0zvetsElH71oSFHZCHgtr1FiobzRtFwSjw9+vinnNvsnvvSXke0TZ5MWDWrNMHA==
   dependencies:
     chalk "^4.0.0"
     clean-publish "^1.1.7"
@@ -6208,9 +6208,9 @@ nanoid@^2.1.0:
   integrity sha512-s/snB+WGm6uwi0WjsZdaVcuf3KJXlfGl2LcxgwkEwJF0D/BWzVWAZW/XY4bFaiR7s0Jk3FPvlnepg1H1b1UwlA==
 
 nanoid@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.0.2.tgz#37e91e6f5277ce22335be473e2a5db1bd96dd026"
-  integrity sha512-WOjyy/xu3199NlQiQWlx7VbspSFlGtOxa1bRX9ebmXOnp1fje4bJfjPs1wLQ8jZbJUfD+yceJmw879ZSaVJkdQ==
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.0.tgz#4b818e31ff206b43d2edb712bccd3dfe48ac29cf"
+  integrity sha512-efPYPGl9T/jOLv92u9SKvjFHSeYSy+8HyxC2cPNEcjDeZV88WnaczMJtz56ozbgfSon8OjiQLGnjze6bb2VQsA==
 
 nanomatch@^1.2.9:
   version "1.2.13"

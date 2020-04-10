@@ -33,7 +33,7 @@
     "chalk": "^4.0.0",
     "check-dts": "^0.3.0",
     "cuid": "^2.1.8",
-    "dual-publish": "^0.9.0",
+    "dual-publish": "^0.10.0",
     "eslint": "^6.8.0",
     "eslint-ci": "^1.0.0",
     "eslint-config-standard": "^14.1.1",
