@@ -22,6 +22,7 @@
     "./index.js": "./index.browser.js",
     "./async/index.js": "./async/index.browser.js"
   },
+  "bin": "./bin/index.js",
   "sideEffects": false,
   "devDependencies": {
     "@logux/eslint-config": "^36.1.2",
