@@ -18,6 +18,7 @@
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
   "repository": "ai/nanoid",
+  "main": "./index.js",
   "browser": {
     "./index.js": "./index.browser.js",
     "./async/index.js": "./async/index.browser.js"
