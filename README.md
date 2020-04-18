@@ -107,7 +107,7 @@ Test configuration: Dell XPS 2-in-a 7390, Fedora 32, Node.js 13.11.
 * [ID size calculator] shows collision probability when adjusting
   the ID alphabet or size.
 * [`nanoid-dictionary`] with popular alphabets to use with `customAlphabet`.
-* [`nanoid-good`] to be sure that your ID doesn't contain any obscene words.
+* [`nanoid-good`] to be sure that your ID doesn’t contain any obscene words.
 
 [`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
 [ID size calculator]:  https://zelark.github.io/nano-id-cc/
