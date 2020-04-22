@@ -179,7 +179,8 @@
       "ES2016",
       "github",
       "ai",
-      "Rollup"
+      "Rollup",
+      "transpile"
     ]
   },
   "sharec": {

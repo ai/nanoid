@@ -23,10 +23,11 @@ import { nanoid } from 'nanoid'
 model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
-Supports modern browsers, IE with Babel, Node.js and React Native.
+Supports modern browsers, IE [with Babel], Node.js and React Native.
 Try to make us smaller in the [online tool].
 
 [online tool]: https://gitpod.io/#https://github.com/ai/nanoid/
+[with Babel]:  https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/
 [Size Limit]:  https://github.com/ai/size-limit
 
 <a href="https://evilmartians.com/?utm_source=nanoid">
@@ -42,6 +43,7 @@ Try to make us smaller in the [online tool].
 * [Security](#security)
 * [Usage](#usage)
   * [JS](#js)
+  * [IE](#ie)
   * [React](#react)
   * [Create React App](#create-react-app)
   * [React Native](#react-native)
@@ -167,6 +169,20 @@ or a [random generator](#custom-random-bytes-generator).
 [ID collision probability]: https://zelark.github.io/nano-id-cc/
 
 
+### IE
+
+If you support IE, you need to [transpile `node_modules`] by Babel
+and add `crypto` alias:
+
+```js
+window.crypto = window.msCrypto
+
+import { nanoid } from 'nanoid'
+```
+
+[transpile `node_modules`]: https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/
+
+
 ### React
 
 **Do not** call `nanoid` in the `key` prop. In React, `key` should be consistent
@@ -279,7 +295,7 @@ import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 
 Web Workers do not have access to a secure random generator.
 
-Security is important in IDs, when IDs should be unpredictable.
+Security is important in IDs when IDs should be unpredictable.
 For instance, in "access by URL" link generation.
 If you do not need unpredictable IDs, but you need to use Web Workers,
 you can use the non‑secure ID generator.
