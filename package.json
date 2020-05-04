@@ -15,6 +15,9 @@
     "start": "parcel serve test/demo/index.html -d test/demo/build --open",
     "watch": "size-limit --watch"
   },
+  "engines": {
+    "node": "^10 || ^12 || >=13.7"
+  },
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
   "repository": "ai/nanoid",
@@ -186,8 +189,5 @@
   "sharec": {
     "config": "@logux/sharec-config",
     "version": "0.6.2"
-  },
-  "engines": {
-    "node": "^10 || ^12 || >=13.7"
   }
 }
