@@ -28,8 +28,8 @@
   "bin": "./bin/nanoid.cjs",
   "sideEffects": false,
   "devDependencies": {
-    "@logux/eslint-config": "^36.1.2",
-    "@logux/sharec-config": "^0.6.2",
+    "@logux/eslint-config": "^36.1.3",
+    "@logux/sharec-config": "^0.6.4",
     "@size-limit/dual-publish": "^4.4.5",
     "@size-limit/preset-small-lib": "^4.4.5",
     "benchmark": "^2.1.4",
@@ -42,26 +42,26 @@
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-es5": "^1.5.0",
     "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-jest": "^23.8.2",
+    "eslint-plugin-jest": "^23.9.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prefer-let": "^1.0.1",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-standard": "^4.0.1",
-    "eslint-plugin-unicorn": "^18.0.1",
+    "eslint-plugin-unicorn": "^19.0.1",
     "husky": "^4.2.5",
-    "jest": "^25.4.0",
+    "jest": "^25.5.4",
     "jest-ci": "^0.1.1",
-    "lint-staged": "^10.1.7",
+    "lint-staged": "^10.2.2",
     "parcel-bundler": "^1.12.4",
     "rimraf": "^3.0.2",
     "rndm": "^1.2.0",
     "secure-random-string": "^1.1.3",
     "shortid": "^2.2.15",
     "size-limit": "^4.4.5",
-    "terser": "^4.6.11",
+    "terser": "^4.6.13",
     "uid-safe": "^2.1.5",
-    "uuid": "^7.0.3",
+    "uuid": "^8.0.0",
     "webpack": "^4.43.0",
     "yaspeller-ci": "^1.0.2"
   },
@@ -188,6 +188,6 @@
   },
   "sharec": {
     "config": "@logux/sharec-config",
-    "version": "0.6.2"
+    "version": "0.6.4"
   }
 }
