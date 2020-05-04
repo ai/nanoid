@@ -186,5 +186,8 @@
   "sharec": {
     "config": "@logux/sharec-config",
     "version": "0.6.2"
+  },
+  "engines": {
+    "node": "^10 || ^12 || >=13.7"
   }
 }
