@@ -175,7 +175,9 @@ If you support IE, you need to [transpile `node_modules`] by Babel
 and add `crypto` alias:
 
 ```js
-window.crypto = window.msCrypto
+if (!window.crypto) {
+  window.crypto = window.msCrypto
+}
 
 import { nanoid } from 'nanoid'
 ```

@@ -16,7 +16,8 @@ if (process.env.NODE_ENV !== 'production') {
   }
   if (typeof self !== 'undefined' && self.msCrypto && !self.crypto) {
     throw new Error(
-      'Add window.crypto = window.msCrypto before Nano ID to fix IE 11 support'
+      'Add `if (!window.crypto) window.crypto = window.msCrypto` ' +
+      'before Nano ID to fix IE 11 support'
     )
   }
   if (typeof self === 'undefined' || !self.crypto) {
