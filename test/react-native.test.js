@@ -1,7 +1,6 @@
 global.navigator = {
   product: 'ReactNative'
 }
-global.self = { }
 
 it('tells to use non-secure generator on old browsers', () => {
   expect(() => {

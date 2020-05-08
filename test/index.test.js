@@ -6,7 +6,6 @@ global.crypto = {
     return array
   }
 }
-global.self = { crypto: global.crypto }
 
 let browser = require('../index.browser.js')
 let node = require('../index.js')

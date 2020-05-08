@@ -9,7 +9,6 @@ global.crypto = {
     return array
   }
 }
-global.self = { crypto: global.crypto }
 
 let { nanoid } = require('../index.browser')
 
