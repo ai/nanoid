@@ -205,7 +205,7 @@ const Element = () => {
 }
 ```
 
-If you want to use Nano ID in the `key` prop, you must set some string prefix
+If you want to use Nano ID in the `id` prop, you must set some string prefix
 (it is invalid for the HTML ID to start with a number).
 
 ```jsx
