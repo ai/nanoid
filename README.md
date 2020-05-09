@@ -49,6 +49,7 @@ Try to make us smaller in the [online tool].
   * [React Native](#react-native)
   * [PouchDB and CouchDB](#pouchdb-and-couchdb)
   * [Mongoose](#mongoose)
+  * [Typegoose](#typegoose)
   * [ES Modules](#es-modules)
   * [Web Workers](#web-workers)
   * [CLI](#cli)
@@ -270,6 +271,17 @@ const mySchema = new Schema({
     default: () => nanoid()
   }
 })
+```
+
+
+### Typegose
+
+Change the [`_id` type](https://typegoose.github.io/typegoose/guides/advanced/changeIDType/):
+```js
+class myClass {
+  @prop({ default: nanoid })
+  _id: string;
+}
 ```
 
 
