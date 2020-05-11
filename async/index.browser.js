@@ -4,7 +4,7 @@ let customAlphabet = (alphabet, size) => {
   // `2^31 - 1` number, which exceeds the alphabet size.
   // For example, the bitmask for the alphabet size 30 is 31 (00011111).
   // `Math.clz32` is not used, because it is not available in browsers.
-  let mask = (2 << Math.log(alphabet.length - 1) / Math.LN2) - 1
+  let mask = (2 << (Math.log(alphabet.length - 1) / Math.LN2)) - 1
   // Though, the bitmask solution is not perfect since the bytes exceeding
   // the alphabet size are refused. Therefore, to reliably generate the ID,
   // the random bytes redundancy has to be satisfied.
@@ -20,7 +20,7 @@ let customAlphabet = (alphabet, size) => {
 
   // `-~f => Math.ceil(f)` if f is a float
   // `-~i => i + 1` if i is an integer
-  let step = -~(1.6 * mask * size / alphabet.length)
+  let step = -~((1.6 * mask * size) / alphabet.length)
 
   return () => {
     let id = ''

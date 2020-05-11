@@ -1,4 +1,4 @@
-global.msCrypto = { }
+global.msCrypto = {}
 
 it('shows error in IE', () => {
   expect(() => {

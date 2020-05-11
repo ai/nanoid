@@ -11,7 +11,7 @@ let browser = require('../index.browser.js')
 let node = require('../index.js')
 
 for (let type of ['node', 'browser']) {
-  describe(`${ type }`, () => {
+  describe(`${type}`, () => {
     let { nanoid, customAlphabet, customRandom, random, urlAlphabet } =
       type === 'node' ? node : browser
 
@@ -36,7 +36,7 @@ for (let type of ['node', 'browser']) {
       })
 
       it('has no collisions', () => {
-        let used = { }
+        let used = {}
         for (let i = 0; i < 50 * 1000; i++) {
           let id = nanoid()
           expect(used[id]).toBeUndefined()
@@ -48,7 +48,7 @@ for (let type of ['node', 'browser']) {
         let COUNT = 100 * 1000
         let LENGTH = nanoid().length
 
-        let chars = { }
+        let chars = {}
         for (let i = 0; i < COUNT; i++) {
           let id = nanoid()
           for (let char of id) {
@@ -82,7 +82,7 @@ for (let type of ['node', 'browser']) {
         let ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
         let nanoid2 = customAlphabet(ALPHABET, LENGTH)
 
-        let chars = { }
+        let chars = {}
         for (let i = 0; i < COUNT; i++) {
           let id = nanoid2()
           for (let char of id) {
@@ -139,7 +139,7 @@ for (let type of ['node', 'browser']) {
       })
 
       it('generates random buffers', () => {
-        let numbers = { }
+        let numbers = {}
         let bytes = random(10000)
         expect(bytes).toHaveLength(10000)
         for (let byte of bytes) {

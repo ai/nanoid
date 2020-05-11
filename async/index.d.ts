@@ -36,7 +36,8 @@ export function nanoid (size?: number): Promise<string>
  * ```
  */
 export function customAlphabet (
-  alphabet: string, size: number
+  alphabet: string,
+  size: number
 ): () => Promise<string>
 
 /**

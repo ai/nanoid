@@ -5,7 +5,7 @@ let urlAlphabet =
 
 // We reuse buffers with the same size to avoid memory fragmentations
 // for better performance.
-let buffers = { }
+let buffers = {}
 let random = bytes => {
   let buffer = buffers[bytes]
   if (!buffer) {
@@ -23,7 +23,7 @@ let customRandom = (alphabet, size, getRandom) => {
   // values closer to the alphabet size. The bitmask calculates the closest
   // `2^31 - 1` number, which exceeds the alphabet size.
   // For example, the bitmask for the alphabet size 30 is 31 (00011111).
-  let mask = (2 << 31 - Math.clz32((alphabet.length - 1) | 1)) - 1
+  let mask = (2 << (31 - Math.clz32((alphabet.length - 1) | 1))) - 1
   // Though, the bitmask solution is not perfect since the bytes exceeding
   // the alphabet size are refused. Therefore, to reliably generate the ID,
   // the random bytes redundancy has to be satisfied.
@@ -36,7 +36,7 @@ let customRandom = (alphabet, size, getRandom) => {
   // The number of random bytes gets decided upon the ID size, mask,
   // alphabet size, and magic number 1.6 (using 1.6 peaks at performance
   // according to benchmarks).
-  let step = Math.ceil(1.6 * mask * size / alphabet.length)
+  let step = Math.ceil((1.6 * mask * size) / alphabet.length)
 
   return () => {
     let id = ''

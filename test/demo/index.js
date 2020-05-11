@@ -29,20 +29,20 @@ function printDistr (title, fn) {
   for (let l of keys.sort()) {
     let distribution = data.chars[l] / average
     dots += `<div class="dot" style="
-      background: hsl(${ 200 * distribution }, 100%, 50%);
-      width: ${ 100 / length }%;
-    ">${ l }</div>`
+      background: hsl(${200 * distribution}, 100%, 50%);
+      width: ${100 / length}%;
+    ">${l}</div>`
   }
 
   document.body.innerHTML += `<section>
-    <span>${ print(COUNT * 1000 / data.time) } ops/sec</span>
-    <h2>${ data.title }</h2>
-    ${ dots }
+    <span>${print((COUNT * 1000) / data.time)} ops/sec</span>
+    <h2>${data.title}</h2>
+    ${dots}
   </section>`
 }
 
 function calcDistr (title, fn) {
-  let chars = { }
+  let chars = {}
 
   let ids = []
   let j
@@ -64,13 +64,14 @@ function calcDistr (title, fn) {
 }
 
 let tasks = [
-  () => printDistr('ideal', () => {
-    let result = []
-    for (let j = 0; j < LENGTH; j++) {
-      result.push(ALPHABET[j])
-    }
-    return result
-  }),
+  () =>
+    printDistr('ideal', () => {
+      let result = []
+      for (let j = 0; j < LENGTH; j++) {
+        result.push(ALPHABET[j])
+      }
+      return result
+    }),
   () => printDistr('nanoid', () => nanoid()),
   () => printDistr('nanoid2', () => nanoid2()),
   () => printDistr('uid.sync', () => uid.sync(21)),
@@ -78,9 +79,10 @@ let tasks = [
   () => printDistr('shortid', () => shortid()),
   () => printDistr('rndm', () => rndm()),
   () => printDistr('nanoid/non-secure', () => nonSecure()),
-  () => printDistr('random % alphabet', () => {
-    return [...random(LENGTH)].map(i => ALPHABET[i % ALPHABET.length])
-  })
+  () =>
+    printDistr('random % alphabet', () => {
+      return [...random(LENGTH)].map(i => ALPHABET[i % ALPHABET.length])
+    })
 ]
 
 function run () {
@@ -92,8 +94,8 @@ function run () {
 
 let html = ''
 for (let i = 0; i < 10; i++) {
-  html += `<div>${ nanoid() }</div>`
+  html += `<div>${nanoid()}</div>`
 }
-document.body.innerHTML = `<main>${ html }</main>`
+document.body.innerHTML = `<main>${html}</main>`
 
 run()

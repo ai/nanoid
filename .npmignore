@@ -1,13 +1,10 @@
-node_modules/
 yarn-error.log
 yarn.lock
 
-.editorconfig
 test/
+tsconfig.json
 coverage/
-.travis.yml
 
 img/
 .cache
 .gitpod.yml
-**/*.test.js

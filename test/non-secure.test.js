@@ -21,7 +21,7 @@ describe('nanoid', () => {
   })
 
   it('has no collisions', () => {
-    let used = { }
+    let used = {}
     for (let i = 0; i < 100 * 1000; i++) {
       let id = nanoid()
       expect(used[id]).toBeUndefined()
@@ -33,7 +33,7 @@ describe('nanoid', () => {
     let COUNT = 100 * 1000
     let LENGTH = nanoid().length
 
-    let chars = { }
+    let chars = {}
     for (let i = 0; i < COUNT; i++) {
       let id = nanoid()
       for (let char of id) {
@@ -67,7 +67,7 @@ describe('customAlphabet', () => {
     let ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
     let nanoid2 = customAlphabet(ALPHABET, LENGTH)
 
-    let chars = { }
+    let chars = {}
     for (let i = 0; i < COUNT; i++) {
       let id = nanoid2()
       for (let char of id) {

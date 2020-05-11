@@ -60,7 +60,7 @@ export function customAlphabet (alphabet: string, size: number): () => string
 export function customRandom (
   alphabet: string,
   size: number,
-  random: (bytes: number) => Uint8Array,
+  random: (bytes: number) => Uint8Array
 ): () => string
 
 /**

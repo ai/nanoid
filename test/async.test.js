@@ -22,7 +22,7 @@ function times (size, callback) {
 }
 
 for (let type of ['node', 'browser']) {
-  describe(`${ type }`, () => {
+  describe(`${type}`, () => {
     let { nanoid, customAlphabet } = type === 'node' ? node : browser
 
     describe('nanoid', () => {
@@ -39,14 +39,16 @@ for (let type of ['node', 'browser']) {
       }
 
       it('generates URL-friendly IDs', async () => {
-        await Promise.all(times(100, async () => {
-          let id = await nanoid()
-          expect(id).toHaveLength(21)
-          expect(typeof id).toEqual('string')
-          for (let char of id) {
-            expect(urlAlphabet).toContain(char)
-          }
-        }))
+        await Promise.all(
+          times(100, async () => {
+            let id = await nanoid()
+            expect(id).toHaveLength(21)
+            expect(typeof id).toEqual('string')
+            for (let char of id) {
+              expect(urlAlphabet).toContain(char)
+            }
+          })
+        )
       })
 
       it('changes ID length', async () => {
@@ -67,14 +69,16 @@ for (let type of ['node', 'browser']) {
         let COUNT = 100 * 1000
         let LENGTH = (await nanoid()).length
 
-        let chars = { }
-        await Promise.all(times(COUNT, async () => {
-          let id = await nanoid()
-          for (let char of id) {
-            if (!chars[char]) chars[char] = 0
-            chars[char] += 1
-          }
-        }))
+        let chars = {}
+        await Promise.all(
+          times(COUNT, async () => {
+            let id = await nanoid()
+            for (let char of id) {
+              if (!chars[char]) chars[char] = 0
+              chars[char] += 1
+            }
+          })
+        )
         expect(Object.keys(chars)).toHaveLength(urlAlphabet.length)
         let max = 0
         let min = Number.MAX_SAFE_INTEGER
@@ -116,15 +120,17 @@ for (let type of ['node', 'browser']) {
         let ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
         let nanoid2 = customAlphabet(ALPHABET, LENGTH)
 
-        let chars = { }
-        await Promise.all(times(100, async () => {
-          let id = await nanoid2()
-          expect(id).toHaveLength(LENGTH)
-          for (let char of id) {
-            if (!chars[char]) chars[char] = 0
-            chars[char] += 1
-          }
-        }))
+        let chars = {}
+        await Promise.all(
+          times(100, async () => {
+            let id = await nanoid2()
+            expect(id).toHaveLength(LENGTH)
+            for (let char of id) {
+              if (!chars[char]) chars[char] = 0
+              chars[char] += 1
+            }
+          })
+        )
         expect(Object.keys(chars)).toHaveLength(ALPHABET.length)
         let max = 0
         let min = Number.MAX_SAFE_INTEGER

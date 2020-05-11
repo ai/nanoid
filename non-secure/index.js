@@ -10,7 +10,7 @@ let customAlphabet = (alphabet, size) => {
     let i = size
     while (i--) {
       // `| 0` is more compact and faster than `Math.floor()`.
-      id += alphabet[Math.random() * alphabet.length | 0]
+      id += alphabet[(Math.random() * alphabet.length) | 0]
     }
     return id
   }
@@ -22,7 +22,7 @@ let nanoid = (size = 21) => {
   let i = size
   while (i--) {
     // `| 0` is more compact and faster than `Math.floor()`.
-    id += urlAlphabet[Math.random() * 64 | 0]
+    id += urlAlphabet[(Math.random() * 64) | 0]
   }
   return id
 }
