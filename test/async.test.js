@@ -23,7 +23,7 @@ function times (size, callback) {
 
 for (let type of ['node', 'browser']) {
   describe(`${type}`, () => {
-    let { nanoid, customAlphabet } = type === 'node' ? node : browser
+    let { nanoid, customAlphabet, random } = type === 'node' ? node : browser
 
     describe('nanoid', () => {
       function mock (callback) {
@@ -105,6 +105,25 @@ for (let type of ['node', 'browser']) {
           expect(catched).toBe(error)
         })
       }
+    })
+
+    describe('random', () => {
+      it('generates small random buffers', async () => {
+        expect(await random(10)).toHaveLength(10)
+      })
+
+      it('generates random buffers', async () => {
+        let numbers = {}
+        let bytes = await random(10000)
+        expect(bytes).toHaveLength(10000)
+        for (let byte of bytes) {
+          if (!numbers[byte]) numbers[byte] = 0
+          numbers[byte] += 1
+          expect(typeof byte).toEqual('number')
+          expect(byte).toBeLessThanOrEqual(255)
+          expect(byte).toBeGreaterThanOrEqual(0)
+        }
+      })
     })
 
     describe('customAlphabet', () => {

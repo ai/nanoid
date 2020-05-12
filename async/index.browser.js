@@ -1,3 +1,5 @@
+let { random } = require('./random')
+
 let customAlphabet = (alphabet, size) => {
   // First, a bitmask is necessary to generate the ID. The bitmask makes bytes
   // values closer to the alphabet size. The bitmask calculates the closest
@@ -65,4 +67,4 @@ let nanoid = (size = 21) => {
   return Promise.resolve(id)
 }
 
-module.exports = { nanoid, customAlphabet }
+module.exports = { nanoid, customAlphabet, random }

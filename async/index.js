@@ -1,22 +1,5 @@
-let crypto = require('crypto')
-
 let { urlAlphabet } = require('..')
-
-// `crypto.randomFill()` is a little faster than `crypto.randomBytes()`,
-// because it is possible to use in combination with `Buffer.allocUnsafe()`.
-let random = bytes =>
-  new Promise((resolve, reject) => {
-    // `Buffer.allocUnsafe()` is faster because it doesn’t flush the memory.
-    // Memory flushing is unnecessary since the buffer allocation itself resets
-    // the memory with the new bytes.
-    crypto.randomFill(Buffer.allocUnsafe(bytes), (err, buf) => {
-      if (err) {
-        reject(err)
-      } else {
-        resolve(buf)
-      }
-    })
-  })
+let { random } = require('./random')
 
 let customAlphabet = (alphabet, size) => {
   // First, a bitmask is necessary to generate the ID. The bitmask makes bytes
@@ -69,4 +52,4 @@ let nanoid = (size = 21) =>
     return id
   })
 
-module.exports = { nanoid, customAlphabet }
+module.exports = { nanoid, customAlphabet, random }
