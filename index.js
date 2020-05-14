@@ -54,7 +54,7 @@ let customRandom = (alphabet, size, getRandom) => {
   }
 }
 
-let customAlphabet = (alphabet, size) => customRandom(alphabet, size, random)
+let customAlphabet = (alphabet, size = 21) => customRandom(alphabet, size, random)
 
 let nanoid = (size = 21) => {
   let bytes = random(size)
