@@ -191,7 +191,8 @@
       "github",
       "ai",
       "Rollup",
-      "transpile"
+      "transpile",
+      "workaround"
     ]
   },
   "sharec": {

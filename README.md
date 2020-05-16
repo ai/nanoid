@@ -24,7 +24,6 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
 Supports modern browsers, IE [with Babel], Node.js and React Native.
-Try to make us smaller in the [online tool].
 
 [online tool]: https://gitpod.io/#https://github.com/ai/nanoid/
 [with Babel]:  https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/
@@ -47,6 +46,7 @@ Try to make us smaller in the [online tool].
   * [React](#react)
   * [Create React App](#create-react-app)
   * [React Native](#react-native)
+  * [Expo](#expo)
   * [PouchDB and CouchDB](#pouchdb-and-couchdb)
   * [Mongoose](#mongoose)
   * [ES Modules](#es-modules)
@@ -242,7 +242,27 @@ import 'react-native-get-random-values'
 import { nanoid } from 'nanoid'
 ```
 
+For Expo framework see the next section.
+
 [`react-native-get-random-values`]: https://github.com/LinusU/react-native-get-random-values
+
+
+### Expo
+
+If you use Expo in React Native, you need a different workaround.
+
+1. Install [`expo-random`](https://www.npmjs.com/package/expo-random).
+2. Use `nanoid/async` instead of `nanoid`.
+
+```js
+import { nanoid } from 'nanoid/async'
+
+async function createUser () {
+  user.id = await nanoid()
+}
+```
+
+[`expo-random`]: https://www.npmjs.com/package/expo-random
 
 
 ### PouchDB and CouchDB
