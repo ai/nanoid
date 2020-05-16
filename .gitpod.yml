@@ -1,6 +1,0 @@
-tasks:
-  - init: gp open index.browser.js
-  - init: yarn install
-    command: yarn run watch
-ports:
-  - port: 1234
