@@ -1,6 +1,8 @@
 // This file replaces `index.js` in bundlers like webpack or Rollup,
 // according to `browser` config in `package.json`.
 
+let { urlAlphabet } = require('./url-alphabet')
+
 if (process.env.NODE_ENV !== 'production') {
   // All bundlers will remove this block in the production bundle.
   if (
@@ -27,11 +29,6 @@ if (process.env.NODE_ENV !== 'production') {
     )
   }
 }
-
-// This alphabet uses `A-Za-z0-9_-` symbols. The genetic algorithm helped
-// optimize the gzip compression for this alphabet.
-let urlAlphabet =
-  'ModuleSymbhasOwnPr-0123456789ABCDEFGHNRVfgctiUvz_KqYTJkLxpZXIjQW'
 
 let random = bytes => crypto.getRandomValues(new Uint8Array(bytes))
 

@@ -1,7 +1,6 @@
 let crypto = require('crypto')
 
-let urlAlphabet =
-  '_-0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+let { urlAlphabet } = require('./url-alphabet')
 
 // We reuse buffers with the same size to avoid memory fragmentations
 // for better performance.

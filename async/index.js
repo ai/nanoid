@@ -1,4 +1,4 @@
-let { urlAlphabet } = require('..')
+let { urlAlphabet } = require('../url-alphabet')
 let { random } = require('./random')
 
 let customAlphabet = (alphabet, size) => {
