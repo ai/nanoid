@@ -1,13 +1,15 @@
-let random = bytes =>
-  Promise.resolve(crypto.getRandomValues(new Uint8Array(bytes)))
+let { getRandomBytesAsync } = require('expo-random')
+
+let { urlAlphabet } = require('../url-alphabet')
+
+let random = getRandomBytesAsync
 
 let customAlphabet = (alphabet, size) => {
   // First, a bitmask is necessary to generate the ID. The bitmask makes bytes
   // values closer to the alphabet size. The bitmask calculates the closest
   // `2^31 - 1` number, which exceeds the alphabet size.
   // For example, the bitmask for the alphabet size 30 is 31 (00011111).
-  // `Math.clz32` is not used, because it is not available in browsers.
-  let mask = (2 << (Math.log(alphabet.length - 1) / Math.LN2)) - 1
+  let mask = (2 << (31 - Math.clz32((alphabet.length - 1) | 1))) - 1
   // Though, the bitmask solution is not perfect since the bytes exceeding
   // the alphabet size are refused. Therefore, to reliably generate the ID,
   // the random bytes redundancy has to be satisfied.
@@ -20,15 +22,10 @@ let customAlphabet = (alphabet, size) => {
   // The number of random bytes gets decided upon the ID size, mask,
   // alphabet size, and magic number 1.6 (using 1.6 peaks at performance
   // according to benchmarks).
+  let step = Math.ceil((1.6 * mask * size) / alphabet.length)
 
-  // `-~f => Math.ceil(f)` if f is a float
-  // `-~i => i + 1` if i is an integer
-  let step = -~((1.6 * mask * size) / alphabet.length)
-
-  return () => {
-    let id = ''
-    while (true) {
-      let bytes = crypto.getRandomValues(new Uint8Array(step))
+  let tick = id =>
+    random(step).then(bytes => {
       // A compact alternative for `for (var i = 0; i < step; i++)`.
       let i = step
       while (i--) {
@@ -37,35 +34,25 @@ let customAlphabet = (alphabet, size) => {
         // `id.length + 1 === size` is a more compact option.
         if (id.length === +size) return id
       }
-    }
-  }
+      return tick(id)
+    })
+
+  return () => tick('')
 }
 
-let nanoid = (size = 21) => {
-  let id = ''
-  let bytes = crypto.getRandomValues(new Uint8Array(size))
-
-  // A compact alternative for `for (var i = 0; i < step; i++)`.
-  while (size--) {
-    // It is incorrect to use bytes exceeding the alphabet size.
-    // The following mask reduces the random byte in the 0-255 value
-    // range to the 0-63 value range. Therefore, adding hacks, such
-    // as empty string fallback or magic numbers, is unneccessary because
-    // the bitmask trims bytes down to the alphabet size.
-    let byte = bytes[size] & 63
-    if (byte < 36) {
-      // `0-9a-z`
-      id += byte.toString(36)
-    } else if (byte < 62) {
-      // `A-Z`
-      id += (byte - 26).toString(36).toUpperCase()
-    } else if (byte < 63) {
-      id += '_'
-    } else {
-      id += '-'
+let nanoid = (size = 21) =>
+  random(size).then(bytes => {
+    let id = ''
+    // A compact alternative for `for (var i = 0; i < step; i++)`.
+    while (size--) {
+      // It is incorrect to use bytes exceeding the alphabet size.
+      // The following mask reduces the random byte in the 0-255 value
+      // range to the 0-63 value range. Therefore, adding hacks, such
+      // as empty string fallback or magic numbers, is unneccessary because
+      // the bitmask trims bytes down to the alphabet size.
+      id += urlAlphabet[bytes[size] & 63]
     }
-  }
-  return Promise.resolve(id)
-}
+    return id
+  })
 
 module.exports = { nanoid, customAlphabet, random }

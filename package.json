@@ -26,8 +26,7 @@
     "./async/index.js": "./async/index.browser.js"
   },
   "react-native": {
-    "./async/random/index.js": "./async/random/index.native.js",
-    "./async/index.js": "./async/index.js"
+    "./async/index.js": "./async/index.native.js"
   },
   "bin": "./bin/nanoid.cjs",
   "sideEffects": false,
