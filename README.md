@@ -60,7 +60,7 @@ Supports modern browsers, IE [with Babel], Node.js and React Native.
   * [Custom Random Bytes Generator](#custom-random-bytes-generator)
 
 
-## Comparison with UUID
+## Comparison with UUID[⬆](#table-of-contents)<!-- Link generated with jump2header -->
 
 Nano ID is quite comparable to UUID v4 (random-based).
 It has a similar number of random bits in the ID
@@ -78,7 +78,7 @@ There are three main differences between Nano ID and UUID v4:
 3. Because of memory allocation tricks, Nano ID is 16% faster than UUID.
 
 
-## Benchmark
+## Benchmark[⬆](#table-of-contents)<!-- Link generated with jump2header -->
 
 ```rust
 $ ./test/benchmark
@@ -104,7 +104,7 @@ rndm                      2,437,262 ops/sec
 Test configuration: Dell XPS 2-in-a 7390, Fedora 32, Node.js 13.11.
 
 
-## Tools
+## Tools[⬆](#table-of-contents)<!-- Link generated with jump2header -->
 
 * [ID size calculator] shows collision probability when adjusting
   the ID alphabet or size.
@@ -116,7 +116,7 @@ Test configuration: Dell XPS 2-in-a 7390, Fedora 32, Node.js 13.11.
 [`nanoid-good`]:       https://github.com/y-gagar1n/nanoid-good
 
 
-## Security
+## Security[⬆](#table-of-contents)<!-- Link generated with jump2header -->
 
 *See a good article about random generators theory:
 [Secure random values (in Node.js)]*
@@ -141,9 +141,9 @@ Test configuration: Dell XPS 2-in-a 7390, Fedora 32, Node.js 13.11.
 [better algorithm]:                  https://github.com/ai/nanoid/blob/master/format.js
 
 
-## Usage
+## Usage[⬆](#table-of-contents)<!-- Link generated with jump2header -->
 
-### JS
+### JS[⬆](#table-of-contents)<!-- Link generated with jump2header -->
 
 The main module uses URL-friendly symbols (`A-Za-z0-9_-`) and returns an ID
 with 21 characters (to have a collision probability similar to UUID v4).
@@ -169,7 +169,7 @@ or a [random generator](#custom-random-bytes-generator).
 [ID collision probability]: https://zelark.github.io/nano-id-cc/
 
 
-### IE
+### IE[⬆](#table-of-contents)<!-- Link generated with jump2header -->
 
 If you support IE, you need to [transpile `node_modules`] by Babel
 and add `crypto` alias:
@@ -185,7 +185,7 @@ import { nanoid } from 'nanoid'
 [transpile `node_modules`]: https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/
 
 
-### React
+### React[⬆](#table-of-contents)<!-- Link generated with jump2header -->
 
 **Do not** call `nanoid` in the `key` prop. In React, `key` should be consistent
 among renders.
@@ -213,7 +213,7 @@ If you want to use Nano ID in the `id` prop, you must set some string prefix
 ```
 
 
-### Create React App
+### Create React App[⬆](#table-of-contents)<!-- Link generated with jump2header -->
 
 Create React App has [a problem](https://github.com/ai/nanoid/issues/205)
 with ES modules packages.
@@ -230,7 +230,7 @@ If you have an error above, here is temporary fix:
    that fix dual packages support.
 
 
-### React Native
+### React Native[⬆](#table-of-contents)<!-- Link generated with jump2header -->
 
 React Native does not have built-in random generator.
 
@@ -247,7 +247,7 @@ For Expo framework see the next section.
 [`react-native-get-random-values`]: https://github.com/LinusU/react-native-get-random-values
 
 
-### Expo
+### Expo[⬆](#table-of-contents)<!-- Link generated with jump2header -->
 
 If you use Expo in React Native, you need a different workaround.
 
@@ -265,7 +265,7 @@ async function createUser () {
 [`expo-random`]: https://www.npmjs.com/package/expo-random
 
 
-### PouchDB and CouchDB
+### PouchDB and CouchDB[⬆](#table-of-contents)<!-- Link generated with jump2header -->
 
 In PouchDB and CouchDB, IDs can’t start with an underscore `_`.
 A prefix is required to prevent this issue, as Nano ID might use a `_`
@@ -281,7 +281,7 @@ db.put({
 ```
 
 
-### Mongoose
+### Mongoose[⬆](#table-of-contents)<!-- Link generated with jump2header -->
 
 ```js
 const mySchema = new Schema({
@@ -293,7 +293,7 @@ const mySchema = new Schema({
 ```
 
 
-### ES Modules
+### ES Modules[⬆](#table-of-contents)<!-- Link generated with jump2header -->
 
 Nano ID provides ES modules. You do not need to do anything to use Nano ID
 as ESM in webpack, Rollup, Parcel, or Node.js.
@@ -313,7 +313,7 @@ import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 ```
 
 
-### Web Workers
+### Web Workers[⬆](#table-of-contents)<!-- Link generated with jump2header -->
 
 Web Workers do not have access to a secure random generator.
 
@@ -330,7 +330,7 @@ nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 Note: non-secure IDs are more prone to collision attacks.
 
 
-### CLI
+### CLI[⬆](#table-of-contents)<!-- Link generated with jump2header -->
 
 You can get unique ID in terminal by calling `npx nanoid`. You need only
 Node.js in the system. You do not need Nano ID to be installed anywhere.
@@ -346,7 +346,7 @@ If you want to change alphabet or ID size, you should use [`nanoid-cli`].
 [`nanoid-cli`]: https://github.com/twhitbeck/nanoid-cli
 
 
-### Other Programming Languages
+### Other Programming Languages[⬆](#table-of-contents)<!-- Link generated with jump2header -->
 
 Nano ID was ported to many languages. You can use these ports to have
 the same ID generator on the client and server side.
@@ -372,9 +372,9 @@ Also, [CLI] is available to generate IDs from a command line.
 [CLI]: #cli
 
 
-## API
+## API[⬆](#table-of-contents)<!-- Link generated with jump2header -->
 
-### Async
+### Async[⬆](#table-of-contents)<!-- Link generated with jump2header -->
 
 To generate hardware random bytes, CPU collects electromagnetic noise.
 In the synchronous API during the noise collection, the CPU is busy and
@@ -396,7 +396,7 @@ if you the asynchronous API. So, currently, in the browser, you are limited
 with either security or asynchronous behavior.
 
 
-### Non-Secure
+### Non-Secure[⬆](#table-of-contents)<!-- Link generated with jump2header -->
 
 By default, Nano ID uses hardware random bytes generation for security
 and low collision probability. If you are not so concerned with security
@@ -410,7 +410,7 @@ const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 Note: your IDs will be more predictable and prone to collision attacks.
 
 
-### Custom Alphabet or Size
+### Custom Alphabet or Size[⬆](#table-of-contents)<!-- Link generated with jump2header -->
 
 `customAlphabet` allows you to create `nanoid` with your own alphabet
 and ID size.
@@ -448,7 +448,7 @@ user.id = nanoid()
 [`nanoid-dictionary`]:      https://github.com/CyberAP/nanoid-dictionary
 
 
-### Custom Random Bytes Generator
+### Custom Random Bytes Generator[⬆](#table-of-contents)<!-- Link generated with jump2header -->
 
 `customRandom` allows you to create a `nanoid` and replace alphabet
 and the default random bytes generator.
