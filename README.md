@@ -253,9 +253,10 @@ If you use Expo in React Native, you need a different workaround.
 
 1. Install [`expo-random`](https://www.npmjs.com/package/expo-random).
 2. Use `nanoid/async` instead of `nanoid`.
+3. Import `index.native.js` file directly.
 
 ```js
-import { nanoid } from 'nanoid/async'
+import { nanoid } from 'nanoid/async/index.native.js'
 
 async function createUser () {
   user.id = await nanoid()
