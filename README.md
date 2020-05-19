@@ -367,6 +367,7 @@ the same ID generator on the client and server side.
 * [Ruby](https://github.com/radeno/nanoid.rb)
 * [Rust](https://github.com/nikolay-govorov/nanoid)
 * [Swift](https://github.com/antiflasher/NanoID)
+* [Deno](https://github.com/ianfabs/nanoid)
 
 Also, [CLI] is available to generate IDs from a command line.
 
