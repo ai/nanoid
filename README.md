@@ -356,6 +356,7 @@ the same ID generator on the client and server side.
 * [Clojure and ClojureScript](https://github.com/zelark/nano-id)
 * [Crystal](https://github.com/mamantoha/nanoid.cr)
 * [Dart](https://github.com/pd4d10/nanoid-dart)
+* [Deno](https://github.com/ianfabs/nanoid)
 * [Go](https://github.com/matoous/go-nanoid)
 * [Elixir](https://github.com/railsmechanic/nanoid)
 * [Haskell](https://github.com/4e6/nanoid-hs)
@@ -367,7 +368,6 @@ the same ID generator on the client and server side.
 * [Ruby](https://github.com/radeno/nanoid.rb)
 * [Rust](https://github.com/nikolay-govorov/nanoid)
 * [Swift](https://github.com/antiflasher/NanoID)
-* [Deno](https://github.com/ianfabs/nanoid)
 
 Also, [CLI] is available to generate IDs from a command line.
 

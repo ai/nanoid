@@ -191,7 +191,8 @@
       "ai",
       "Rollup",
       "transpile",
-      "workaround"
+      "workaround",
+      "Deno"
     ]
   },
   "sharec": {
