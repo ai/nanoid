@@ -256,7 +256,7 @@ If you use Expo in React Native, you need a different workaround.
 3. Import `index.native.js` file directly.
 
 ```js
-import { nanoid } from 'nanoid/async/index.native.js'
+import { nanoid } from 'nanoid/async/index.native'
 
 async function createUser () {
   user.id = await nanoid()
