@@ -32,17 +32,17 @@
   "sideEffects": false,
   "devDependencies": {
     "@logux/eslint-config": "^39.0.3",
-    "@logux/sharec-config": "^0.7.2",
+    "@logux/sharec-config": "^0.7.3",
     "@size-limit/dual-publish": "^4.5.0",
     "@size-limit/preset-small-lib": "^4.5.0",
-    "@typescript-eslint/eslint-plugin": "^2.34.0",
-    "@typescript-eslint/parser": "^2.34.0",
+    "@typescript-eslint/eslint-plugin": "^3.0.0",
+    "@typescript-eslint/parser": "^3.0.0",
     "benchmark": "^2.1.4",
     "chalk": "^4.0.0",
     "check-dts": "^0.3.0",
     "cuid": "^2.1.8",
     "dual-publish": "^0.10.2",
-    "eslint": "^7.0.0",
+    "eslint": "^7.1.0",
     "eslint-ci": "^1.0.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-es5": "^1.5.0",
@@ -58,7 +58,7 @@
     "husky": "^4.2.5",
     "jest": "^26.0.1",
     "jest-ci": "^0.1.1",
-    "lint-staged": "^10.2.4",
+    "lint-staged": "^10.2.6",
     "parcel-bundler": "^1.12.4",
     "rimraf": "^3.0.2",
     "rndm": "^1.2.0",
@@ -66,9 +66,9 @@
     "shortid": "^2.2.15",
     "size-limit": "^4.5.0",
     "terser": "^4.7.0",
-    "typescript": "^3.9.2",
+    "typescript": "^3.9.3",
     "uid-safe": "^2.1.5",
-    "uuid": "^8.0.0",
+    "uuid": "^8.1.0",
     "webpack": "^4.43.0",
     "yaspeller-ci": "^1.0.2"
   },
@@ -197,6 +197,6 @@
   },
   "sharec": {
     "config": "@logux/sharec-config",
-    "version": "0.7.2"
+    "version": "0.7.3"
   }
 }
