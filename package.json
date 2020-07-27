@@ -110,7 +110,7 @@
       "name": "async customAlphabet",
       "import": "{ customAlphabet }",
       "path": "async/index.js",
-      "limit": "127 B"
+      "limit": "138 B"
     }
   ],
   "eslintConfig": {
