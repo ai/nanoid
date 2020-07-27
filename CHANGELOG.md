@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.1.11
+* Fixed asynchronous `customAlphabet` in browser (by @LoneRifle).
+
 ## 3.1.10
 * Fix ES modules support.
 
