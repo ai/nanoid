@@ -20,8 +20,8 @@ if (process.env.NODE_ENV !== 'production') {
   }
   if (typeof msCrypto !== 'undefined' && typeof crypto === 'undefined') {
     throw new Error(
-      'Add `if (!window.crypto) window.crypto = window.msCrypto` ' +
-        'before Nano ID to fix IE 11 support'
+      'Import file with `if (!window.crypto) window.crypto = window.msCrypto`' +
+        ' before importing Nano ID to fix IE 11 support'
     )
   }
   if (typeof crypto === 'undefined') {

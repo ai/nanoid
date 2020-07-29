@@ -175,10 +175,14 @@ If you support IE, you need to [transpile `node_modules`] by Babel
 and add `crypto` alias:
 
 ```js
+// polyfills.js
 if (!window.crypto) {
   window.crypto = window.msCrypto
 }
+```
 
+```js
+import './polyfills.js'
 import { nanoid } from 'nanoid'
 ```
 
