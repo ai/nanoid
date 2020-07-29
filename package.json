@@ -47,7 +47,7 @@
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-es5": "^1.5.0",
     "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jest": "^23.18.2",
+    "eslint-plugin-jest": "^23.19.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prefer-let": "^1.0.2",
     "eslint-plugin-prettierx": "^0.12.1",
@@ -68,7 +68,7 @@
     "terser": "^4.8.0",
     "typescript": "^3.9.7",
     "uid-safe": "^2.1.5",
-    "uuid": "^8.2.0",
+    "uuid": "^8.3.0",
     "webpack": "^4.44.0",
     "yaspeller-ci": "^1.0.2"
   },
