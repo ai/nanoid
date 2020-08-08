@@ -400,7 +400,7 @@ async function createUser () {
 ```
 
 Unfortunately, you will lose Web Crypto API advantages in a browser
-if you the asynchronous API. So, currently, in the browser, you are limited
+if you use the asynchronous API. So, currently, in the browser, you are limited
 with either security or asynchronous behavior.
 
 
