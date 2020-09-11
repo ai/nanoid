@@ -455,6 +455,7 @@ user.id = nanoid()
 [ID collision probability]: https://alex7kom.github.io/nano-nanoid-cc/
 [`nanoid-dictionary`]:      https://github.com/CyberAP/nanoid-dictionary
 
+One use case for a custom alphabet could for example be, when you send nanoids to human users. Then you might want to not use characters that can easily mixed: 'i', 'l', '1', 'O' and '0'.
 
 ### Custom Random Bytes Generator
 
