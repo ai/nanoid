@@ -46,6 +46,7 @@ Supports modern browsers, IE [with Babel], Node.js and React Native.
   * [React](#react)
   * [Create React App](#create-react-app)
   * [React Native](#react-native)
+  * [Rollup](#rollup)
   * [Expo](#expo)
   * [PouchDB and CouchDB](#pouchdb-and-couchdb)
   * [Mongoose](#mongoose)
@@ -247,6 +248,22 @@ import { nanoid } from 'nanoid'
 For Expo framework see the next section.
 
 [`react-native-get-random-values`]: https://github.com/LinusU/react-native-get-random-values
+
+
+### Rollup
+
+For Rollup you will need [`@rollup/plugin-replace`] to replace
+`process.env.NODE_ENV`:
+
+```js
+  plugins: [
+    replace({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE)
+    })
+  ]
+```
+
+[`@rollup/plugin-replace`]: https://github.com/rollup/plugins/tree/master/packages/replace
 
 
 ### Expo
