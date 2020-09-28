@@ -226,12 +226,10 @@ with ES modules packages.
 TypeError: (0 , _nanoid.nanoid) is not a function
 ```
 
-If you have an error above, here is temporary fix:
+[Pull request](https://github.com/facebook/create-react-app/pull/8768) was sent,
+but it was still not released.
 
-1. Use Nano ID 2 instead of 3: `npm i nanoid@^2.0.0`.
-2. Vote for
-   [pull request](https://github.com/facebook/create-react-app/pull/8768),
-   that fix dual packages support.
+Use Nano ID 2 `npm i nanoid@^2.0.0` until Create React App 4.0 release.
 
 
 ### React Native
