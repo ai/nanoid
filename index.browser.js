@@ -3,7 +3,7 @@
 
 let { urlAlphabet } = require('./url-alphabet')
 
-if (globalThis.process && process.env.NODE_ENV !== 'production') {
+if ('process' in globalThis && process.env.NODE_ENV !== 'production') {
   // All bundlers will remove this block in the production bundle.
   if (
     typeof navigator !== 'undefined' &&
