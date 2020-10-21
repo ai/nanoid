@@ -6,4 +6,4 @@ tsconfig.json
 coverage/
 img/
 
-.cache
+.parcel-cache
