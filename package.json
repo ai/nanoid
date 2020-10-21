@@ -16,7 +16,7 @@
     "watch": "size-limit --watch"
   },
   "engines": {
-    "node": "^10 || ^12 || >=13.7"
+    "node": "^10 || ^12 || ^13.7 || ^14 || >=15.0.1"
   },
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
