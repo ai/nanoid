@@ -4,4 +4,4 @@ yarn-error.log
 coverage/
 
 test/demo/build
-.cache
+.parcel-cache

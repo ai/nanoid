@@ -4,7 +4,6 @@ yarn.lock
 test/
 tsconfig.json
 coverage/
-
 img/
+
 .cache
-.gitpod.yml
