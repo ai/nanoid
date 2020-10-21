@@ -11,7 +11,7 @@ let readFile = promisify(fs.readFile)
 async function build () {
   let js = await readFile(join(__dirname, '..', 'index.browser.js'))
   let func = 'export ' + js.toString().match(/(let nanoid [\W\w]*)\s*module/)[1]
-  let { code } = minify(func)
+  let { code } = await minify(func)
   await writeFile(join(__dirname, '..', 'nanoid.js'), code)
 }
 
