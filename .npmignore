@@ -4,6 +4,6 @@ yarn.lock
 test/
 tsconfig.json
 coverage/
-img/
 
+img/
 .parcel-cache
