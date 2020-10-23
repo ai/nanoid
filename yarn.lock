@@ -1223,10 +1223,10 @@
   dependencies:
     globals "^13.2.0"
 
-"@logux/sharec-config@^0.7.8":
-  version "0.7.8"
-  resolved "https://registry.yarnpkg.com/@logux/sharec-config/-/sharec-config-0.7.8.tgz#e0cffb001ced25b93b4aeb26b6a79bc949e75be7"
-  integrity sha512-eWHr5bafRBueJlXd2kunThQgcQvAfg7z9/zcT4DEEULu1G9b05VcfV6RVR7LvPE9B+75qFzmfjuQvEDmt7w+VQ==
+"@logux/sharec-config@^0.7.9":
+  version "0.7.9"
+  resolved "https://registry.yarnpkg.com/@logux/sharec-config/-/sharec-config-0.7.9.tgz#a7c4fb42d8318b13c061a743fbb369a31338fea8"
+  integrity sha512-JSHPhal4RkfS/Q/l/BBl1dl4wSDDvBMhqBSDpRMw+QgDfEQXcjqxRZEMZOaiXf0TM4HWNN+12iDViy30CwFJpw==
   dependencies:
     sharec "^2.5.1"
 
@@ -7514,9 +7514,9 @@ nanoid@^2.1.0:
   integrity sha512-s/snB+WGm6uwi0WjsZdaVcuf3KJXlfGl2LcxgwkEwJF0D/BWzVWAZW/XY4bFaiR7s0Jk3FPvlnepg1H1b1UwlA==
 
 nanoid@^3.1.10, nanoid@^3.1.12:
-  version "3.1.13"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.13.tgz#7f4f0729ab8a824291deb72b0d10cf357bc7563c"
-  integrity sha512-oYL7jWZUdScASxYOrcwE8EvISFGzO3/1g+t56vCyR0s2nrpmBcOc7hTAFJaVf6HMyEPJrnNelnjRnMN6KZnCPA==
+  version "3.1.14"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.14.tgz#ede9ee0b70e3f757f31ba3e60e8534fb3be8d4df"
+  integrity sha512-eW4inyfnbKQ6tGwd52HXuMyjexTQ6UClX3tJidRa1HCgWTyWC+Zv6JM+r7csBnPObSLUBPptAhfyxEKMT8N2+Q==
 
 nanomatch@^1.2.13, nanomatch@^1.2.9:
   version "1.2.13"

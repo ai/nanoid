@@ -30,10 +30,10 @@
   },
   "bin": "./bin/nanoid.cjs",
   "sideEffects": false,
-  "types": "index.d.ts",
+  "types": "./index.d.ts",
   "devDependencies": {
     "@logux/eslint-config": "^41.0.2",
-    "@logux/sharec-config": "^0.7.8",
+    "@logux/sharec-config": "^0.7.9",
     "@size-limit/dual-publish": "^4.6.2",
     "@size-limit/preset-small-lib": "^4.6.2",
     "@typescript-eslint/eslint-plugin": "^4.5.0",
@@ -132,7 +132,8 @@
   },
   "eslintIgnore": [
     "test/demo/build",
-    "nanoid.js"
+    "nanoid.js",
+    "**/errors.ts"
   ],
   "lint-staged": {
     "index.browser.js": "test/update-prebuild.js",
@@ -198,6 +199,6 @@
   },
   "sharec": {
     "config": "@logux/sharec-config",
-    "version": "0.7.8"
+    "version": "0.7.9"
   }
 }
