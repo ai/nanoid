@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.1.15
+* Fixed `package.types` path.
+
 ## 3.1.14
 * Added `package.types`.
 
