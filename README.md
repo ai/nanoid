@@ -151,7 +151,7 @@ with 21 characters (to have a collision probability similar to UUID v4).
 
 ```js
 import { nanoid } from 'nanoid'
-model.id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
+model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
 If you want to reduce the ID size (and increase collisions probability),
