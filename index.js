@@ -2,19 +2,33 @@ let crypto = require('crypto')
 
 let { urlAlphabet } = require('./url-alphabet')
 
-// We reuse buffers with the same size to avoid memory fragmentations
-// for better performance.
-let buffers = {}
+// It is best to make fewer, larger requests to the crypto module to
+// avoid system call overhead. So, random numbers are generated in a
+// pool. The pool is a Buffer that is larger than the initial random
+// request size by this multiplier. The pool is enlarged if subsequent
+// requests exceed the maximum buffer size.
+const POOL_SIZE_MULTIPLIER = 32
+
+// The pool is stored in this variable and initialized in the first
+// request.
+let pool
+
+// The current byte offset in the pool is at this position.
+let poolOffset = 0
+
 let random = bytes => {
-  let buffer = buffers[bytes]
-  if (!buffer) {
-    // `Buffer.allocUnsafe()` is faster because it doesn’t flush the memory.
-    // Memory flushing is unnecessary since the buffer allocation itself resets
-    // the memory with the new bytes.
-    buffer = Buffer.allocUnsafe(bytes)
-    if (bytes <= 255) buffers[bytes] = buffer
+  if (!pool || pool.length < bytes) {
+    pool = Buffer.allocUnsafe(bytes * POOL_SIZE_MULTIPLIER)
+    pool = crypto.randomFillSync(pool)
+    poolOffset = 0
+  } else if (poolOffset + bytes > pool.length) {
+    pool = crypto.randomFillSync(pool)
+    poolOffset = 0
   }
-  return crypto.randomFillSync(buffer)
+
+  let res = pool.subarray(poolOffset, poolOffset + bytes)
+  poolOffset += bytes
+  return res
 }
 
 let customRandom = (alphabet, size, getRandom) => {
