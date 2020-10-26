@@ -86,7 +86,7 @@ $ ./test/benchmark
 nanoid                      655,798 ops/sec
 customAlphabet              635,421 ops/sec
 uid.sync                    375,816 ops/sec
-uuid v4                     396,756 ops/sec
+uuid v4                   1,458,587 ops/sec
 secure-random-string        366,434 ops/sec
 cuid                        183,998 ops/sec
 shortid                      59,343 ops/sec
