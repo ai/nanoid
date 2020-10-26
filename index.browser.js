@@ -32,7 +32,30 @@ if (process.env.NODE_ENV !== 'production') {
   }
 }
 
-let random = bytes => crypto.getRandomValues(new Uint8Array(bytes))
+// It is best to make fewer, larger requests to the crypto module to
+// avoid system call overhead. So, random numbers are generated in a
+// pool. The pool is a Buffer that is larger than the initial random
+// request size by this multiplier. The pool is enlarged if subsequent
+// requests exceed the maximum buffer size.
+const POOL_SIZE_MULTIPLIER = 32
+let pool, poolOffset
+
+console.log('hello')
+
+let random = bytes => {
+  if (!pool || pool.length < bytes) {
+    pool = new Uint8Array(bytes * POOL_SIZE_MULTIPLIER)
+    crypto.getRandomValues(pool)
+    poolOffset = 0
+  } else if (poolOffset + bytes > pool.length) {
+    crypto.getRandomValues(pool)
+    poolOffset = 0
+  }
+
+  let res = pool.subarray(poolOffset, poolOffset + bytes)
+  poolOffset += bytes
+  return res
+}
 
 let customRandom = (alphabet, size, getRandom) => {
   // First, a bitmask is necessary to generate the ID. The bitmask makes bytes
@@ -78,7 +101,7 @@ let customAlphabet = (alphabet, size) => customRandom(alphabet, size, random)
 
 let nanoid = (size = 21) => {
   let id = ''
-  let bytes = crypto.getRandomValues(new Uint8Array(size))
+  let bytes = random(size)
 
   // A compact alternative for `for (var i = 0; i < step; i++)`.
   while (size--) {
