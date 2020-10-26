@@ -40,8 +40,6 @@ if (process.env.NODE_ENV !== 'production') {
 const POOL_SIZE_MULTIPLIER = 32
 let pool, poolOffset
 
-console.log('hello')
-
 let random = bytes => {
   if (!pool || pool.length < bytes) {
     pool = new Uint8Array(bytes * POOL_SIZE_MULTIPLIER)
