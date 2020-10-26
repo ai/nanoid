@@ -76,12 +76,12 @@
     {
       "name": "nanoid",
       "import": "{ nanoid }",
-      "limit": "108 B"
+      "limit": "192 B"
     },
     {
       "name": "customAlphabet",
       "import": "{ customAlphabet }",
-      "limit": "142 B"
+      "limit": "192 B"
     },
     {
       "name": "urlAlphabet",
