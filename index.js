@@ -8,21 +8,15 @@ let { urlAlphabet } = require('./url-alphabet')
 // request size by this multiplier. The pool is enlarged if subsequent
 // requests exceed the maximum buffer size.
 const POOL_SIZE_MULTIPLIER = 32
-
-// The pool is stored in this variable and initialized in the first
-// request.
-let pool
-
-// The current byte offset in the pool is at this position.
-let poolOffset = 0
+let pool, poolOffset
 
 let random = bytes => {
   if (!pool || pool.length < bytes) {
     pool = Buffer.allocUnsafe(bytes * POOL_SIZE_MULTIPLIER)
-    pool = crypto.randomFillSync(pool)
+    crypto.randomFillSync(pool)
     poolOffset = 0
   } else if (poolOffset + bytes > pool.length) {
-    pool = crypto.randomFillSync(pool)
+    crypto.randomFillSync(pool)
     poolOffset = 0
   }
 
