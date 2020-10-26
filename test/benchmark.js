@@ -92,6 +92,6 @@ suite
     } else if (event.target.name === 'non-secure nanoid') {
       name = '\nNon-secure:\n' + name
     }
-    process.stdout.write(`${ name }${ bold(hz) } ops/sec\n`)
+    process.stdout.write(`${name}${bold(hz)} ops/sec\n`)
   })
   .run()
