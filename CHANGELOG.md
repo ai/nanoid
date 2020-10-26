@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.1.16
+* Speed up Nano ID 4 times (by Peter Boyer).
+
 ## 3.1.15
 * Fixed `package.types` path.
 
