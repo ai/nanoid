@@ -31,7 +31,7 @@
   "types": "./index.d.ts",
   "devDependencies": {
     "@logux/eslint-config": "^42.2.0",
-    "@logux/sharec-config": "^0.8.2",
+    "@logux/sharec-config": "^0.8.3",
     "@size-limit/dual-publish": "^4.7.0",
     "@size-limit/preset-small-lib": "^4.7.0",
     "@typescript-eslint/eslint-plugin": "^4.6.1",
@@ -41,7 +41,7 @@
     "colorette": "^1.2.1",
     "cuid": "^2.1.8",
     "dual-publish": "^0.11.0",
-    "eslint": "^7.12.1",
+    "eslint": "^7.13.0",
     "eslint-config-standard": "^16.0.1",
     "eslint-plugin-es5": "^1.5.0",
     "eslint-plugin-import": "^2.22.1",
@@ -194,6 +194,6 @@
   },
   "sharec": {
     "config": "@logux/sharec-config",
-    "version": "0.8.2"
+    "version": "0.8.3"
   }
 }

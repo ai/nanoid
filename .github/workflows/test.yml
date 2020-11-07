@@ -12,11 +12,11 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v2
       - name: Install Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2-beta
         with:
           node-version: 15
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        uses: bahmutov/npm-install@v1
       - name: Run tests
         run: yarn test
   short:
@@ -31,10 +31,10 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v2
       - name: Install Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2-beta
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        uses: bahmutov/npm-install@v1
       - name: Run unit tests
         run: npx jest
