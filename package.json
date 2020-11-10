@@ -30,14 +30,14 @@
   "sideEffects": false,
   "types": "./index.d.ts",
   "devDependencies": {
-    "@logux/eslint-config": "^42.2.0",
-    "@logux/sharec-config": "^0.8.3",
+    "@logux/eslint-config": "^42.2.1",
+    "@logux/sharec-config": "^0.8.4",
     "@size-limit/dual-publish": "^4.7.0",
     "@size-limit/preset-small-lib": "^4.7.0",
-    "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
     "benchmark": "^2.1.4",
-    "check-dts": "^0.3.3",
+    "check-dts": "^0.4.0",
     "colorette": "^1.2.1",
     "cuid": "^2.1.8",
     "dual-publish": "^0.11.0",
@@ -51,7 +51,6 @@
     "eslint-plugin-prettierx": "^0.14.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-standard": "^4.0.2",
     "eslint-plugin-unicorn": "^23.0.0",
     "husky": "^4.3.0",
     "jest": "^26.6.3",
@@ -194,6 +193,6 @@
   },
   "sharec": {
     "config": "@logux/sharec-config",
-    "version": "0.8.3"
+    "version": "0.8.4"
   }
 }
