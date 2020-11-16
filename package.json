@@ -30,7 +30,7 @@
   "sideEffects": false,
   "types": "./index.d.ts",
   "devDependencies": {
-    "@logux/eslint-config": "^42.2.1",
+    "@logux/eslint-config": "^42.2.2",
     "@logux/sharec-config": "^0.8.4",
     "@size-limit/dual-publish": "^4.7.0",
     "@size-limit/preset-small-lib": "^4.7.0",
@@ -45,7 +45,7 @@
     "eslint-config-standard": "^16.0.1",
     "eslint-plugin-es5": "^1.5.0",
     "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-jest": "^24.1.0",
+    "eslint-plugin-jest": "^24.1.3",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prefer-let": "^1.1.0",
     "eslint-plugin-prettierx": "^0.14.0",
