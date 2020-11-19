@@ -4312,10 +4312,10 @@ dotenv@^7.0.0:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-7.0.0.tgz#a2be3cd52736673206e8a85fb5210eea29628e7c"
   integrity sha512-M3NhsLbV1i6HuGzBUH8vXrtxOk+tWmzWKDMbAVSUp3Zsjm7ywFeuwrUXhmhQyRK1q5B5GGy7hcXPbj3bnfZg2g==
 
-dual-publish@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/dual-publish/-/dual-publish-1.0.0.tgz#f6582b723c98741e27efc9c70e76cd086016c66c"
-  integrity sha512-sLkdEZcr2WvfUqToTk6P2eus7vA+vHC/wSs+Wmcs7QU0+FibtFVJ5U8QzkLeqCPxlobn6uMom2kApGs6mji2sw==
+dual-publish@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/dual-publish/-/dual-publish-1.0.1.tgz#023deeafbffd715cf696b6b1735302666589383d"
+  integrity sha512-B80SAwnebEZ8FG438PSbW7kUenoXeQYySlrBfNiAHGusHY9NN/WODXJKfvy2cOhcCtBaOlZzOs+9URDqUSek6g==
   dependencies:
     clean-publish "^1.1.8"
     colorette "^1.2.1"
