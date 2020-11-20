@@ -40,7 +40,7 @@
     "check-dts": "^0.4.0",
     "colorette": "^1.2.1",
     "cuid": "^2.1.8",
-    "dual-publish": "^1.0.1",
+    "dual-publish": "^1.0.2",
     "eslint": "^7.13.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-es5": "^1.5.0",
@@ -61,7 +61,7 @@
     "shortid": "^2.2.16",
     "size-limit": "^4.8.0",
     "terser": "^5.5.0",
-    "typescript": "^4.0.5",
+    "typescript": "^4.1.2",
     "uid-safe": "^2.1.5",
     "uuid": "^8.3.1",
     "yaspeller": "^7.0.0"
