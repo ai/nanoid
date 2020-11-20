@@ -31,11 +31,11 @@ suite
   .add('customAlphabet', () => {
     nanoid2()
   })
-  .add('uid.sync', () => {
-    uid.sync(14)
-  })
   .add('uuid v4', () => {
     uuid4()
+  })
+  .add('uid.sync', () => {
+    uid.sync(14)
   })
   .add('secure-random-string', () => {
     srs()
