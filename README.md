@@ -85,8 +85,8 @@ There are three main differences between Nano ID and UUID v4:
 $ node ./test/benchmark.js
 nanoid                    2,280,683 ops/sec
 customAlphabet            1,851,117 ops/sec
-uid.sync                    313,306 ops/sec
 uuid v4                   1,348,425 ops/sec
+uid.sync                    313,306 ops/sec
 secure-random-string        294,161 ops/sec
 cuid                        158,988 ops/sec
 shortid                      37,222 ops/sec
