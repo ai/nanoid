@@ -68,12 +68,6 @@
   },
   "size-limit": [
     {
-      "name": "uuid",
-      "path": "./uuid/",
-      "import": "{ v4 }",
-      "limit": "108 B"
-    },
-    {
       "name": "nanoid",
       "import": "{ nanoid }",
       "limit": "108 B"
