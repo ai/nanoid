@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.1.17
+* Fix `esbuild` support.
+
 ## 3.1.16
 * Speeded up Nano ID 4 times (by Peter Boyer).
 
