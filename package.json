@@ -9,9 +9,8 @@
     "url"
   ],
   "scripts": {
-    "test": "jest --coverage && eslint . && check-dts && size-limit --highlight-less && yaspeller *.md",
-    "start": "parcel test/demo/index.html --dist-dir test/demo/build --open",
-    "watch": "size-limit --watch"
+    "test": "jest --coverage && eslint . && check-dts && size-limit && yaspeller *.md",
+    "start": "parcel test/demo/index.html --dist-dir test/demo/build --open"
   },
   "engines": {
     "node": "^10 || ^12 || ^13.7 || ^14 || >=15.0.1"
@@ -31,17 +30,17 @@
   "types": "./index.d.ts",
   "devDependencies": {
     "@logux/eslint-config": "^42.2.2",
-    "@logux/sharec-config": "^0.8.4",
-    "@size-limit/dual-publish": "^4.8.0",
-    "@size-limit/preset-small-lib": "^4.8.0",
+    "@logux/sharec-config": "^0.8.5",
+    "@size-limit/dual-publish": "^4.9.0",
+    "@size-limit/preset-small-lib": "^4.9.0",
     "@typescript-eslint/eslint-plugin": "^4.8.1",
     "@typescript-eslint/parser": "^4.8.1",
     "benchmark": "^2.1.4",
-    "check-dts": "^0.4.0",
+    "check-dts": "^0.4.1",
     "colorette": "^1.2.1",
     "cuid": "^2.1.8",
     "dual-publish": "^1.0.3",
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-es5": "^1.5.0",
     "eslint-plugin-import": "^2.22.1",
@@ -59,7 +58,7 @@
     "rndm": "^1.2.0",
     "secure-random-string": "^1.1.3",
     "shortid": "^2.2.16",
-    "size-limit": "^4.8.0",
+    "size-limit": "^4.9.0",
     "terser": "^5.5.0",
     "typescript": "^4.1.2",
     "uid-safe": "^2.1.5",
@@ -193,6 +192,6 @@
   },
   "sharec": {
     "config": "@logux/sharec-config",
-    "version": "0.8.4"
+    "version": "0.8.5"
   }
 }
