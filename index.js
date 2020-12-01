@@ -54,7 +54,6 @@ let customRandom = (alphabet, size, getRandom) => {
       while (i--) {
         // Adding `|| ''` refuses a random byte that exceeds the alphabet size.
         id += alphabet[bytes[i] & mask] || ''
-        // Return if id length equals size.
         if (id.length === size) return id
       }
     }
