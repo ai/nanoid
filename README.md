@@ -235,7 +235,8 @@ Use Nano ID 2 `npm i nanoid@^2.0.0` until Create React App 4.0 release.
 
 ### React Native
 
-React Native does not have built-in random generator.
+React Native does not have built-in random generator. The following polyfill works for plain React
+Native and Expo starting with v39.
 
 1. Check [`react-native-get-random-values`] docs and install it.
 2. Import it before Nano ID.
@@ -268,7 +269,7 @@ For Rollup you will need [`@rollup/plugin-replace`] to replace
 
 ### Expo
 
-If you use Expo in React Native, you need a different workaround.
+If you use Expo prior to v39 in React Native, you need a different workaround.
 
 1. Install [`expo-random`](https://www.npmjs.com/package/expo-random).
 2. Use `nanoid/async` instead of `nanoid`.

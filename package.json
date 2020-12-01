@@ -187,7 +187,9 @@
       "Rollup",
       "transpile",
       "workaround",
-      "Deno"
+      "Deno",
+      "polyfill",
+      "v39"
     ]
   },
   "sharec": {
