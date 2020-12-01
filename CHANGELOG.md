@@ -1,8 +1,11 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.1.20
+* Fix ES modules support.
+
 ## 3.1.19
-* Reduce `customAlphabet` size (by Enrico Scherlies).
+* Reduced `customAlphabet` size (by Enrico Scherlies).
 
 ## 3.1.18
 * Fixed `package.exports`.
