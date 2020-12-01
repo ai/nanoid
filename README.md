@@ -47,7 +47,6 @@ Supports modern browsers, IE [with Babel], Node.js and React Native.
   * [Create React App](#create-react-app)
   * [React Native](#react-native)
   * [Rollup](#rollup)
-  * [Expo](#expo)
   * [PouchDB and CouchDB](#pouchdb-and-couchdb)
   * [Mongoose](#mongoose)
   * [ES Modules](#es-modules)
@@ -235,8 +234,8 @@ Use Nano ID 2 `npm i nanoid@^2.0.0` until Create React App 4.0 release.
 
 ### React Native
 
-React Native does not have built-in random generator. The following polyfill works for plain React
-Native and Expo starting with v39.
+React Native does not have built-in random generator. The following polyfill
+works for plain React Native and Expo starting with `39.x`.
 
 1. Check [`react-native-get-random-values`] docs and install it.
 2. Import it before Nano ID.
@@ -265,25 +264,6 @@ For Rollup you will need [`@rollup/plugin-replace`] to replace
 ```
 
 [`@rollup/plugin-replace`]: https://github.com/rollup/plugins/tree/master/packages/replace
-
-
-### Expo
-
-If you use Expo prior to v39 in React Native, you need a different workaround.
-
-1. Install [`expo-random`](https://www.npmjs.com/package/expo-random).
-2. Use `nanoid/async` instead of `nanoid`.
-3. Import `index.native.js` file directly.
-
-```js
-import { nanoid } from 'nanoid/async/index.native'
-
-async function createUser () {
-  user.id = await nanoid()
-}
-```
-
-[`expo-random`]: https://www.npmjs.com/package/expo-random
 
 
 ### PouchDB and CouchDB

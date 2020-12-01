@@ -74,7 +74,7 @@
     {
       "name": "customAlphabet",
       "import": "{ customAlphabet }",
-      "limit": "142 B"
+      "limit": "141 B"
     },
     {
       "name": "urlAlphabet",
@@ -188,8 +188,7 @@
       "transpile",
       "workaround",
       "Deno",
-      "polyfill",
-      "v39"
+      "polyfill"
     ]
   },
   "sharec": {

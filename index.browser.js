@@ -14,8 +14,7 @@ if (process.env.NODE_ENV !== 'production') {
       'React Native does not have a built-in secure random generator. ' +
         'If you don’t need unpredictable IDs use `nanoid/non-secure`. ' +
         'For secure IDs, import `react-native-get-random-values` ' +
-        'before Nano ID. If you use Expo v38 or below, install `expo-random` ' +
-        'and use `nanoid/async`.'
+        'before Nano ID.'
     )
   }
   if (typeof msCrypto !== 'undefined' && typeof crypto === 'undefined') {
