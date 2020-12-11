@@ -68,7 +68,7 @@ export function customRandom (
  *
  * ```js
  * import { urlAlphabet } from 'nanoid'
- * const nanoid = customRandom(urlAlphabet, 10)
+ * const nanoid = customAlphabet(urlAlphabet, 10)
  * nanoid() //=> "Uakgb_J5m9"
  * ```
  */
