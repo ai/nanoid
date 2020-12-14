@@ -200,15 +200,6 @@ This is the bad example:
 <Item key={nanoid()} /> /* DON’T DO IT */
 ```
 
-This is the good example (`id` will be generated only once):
-
-```jsx
-const Element = () => {
-  const [id] = React.useState(nanoid)
-  return <Item key={id} />
-}
-```
-
 If you want to use Nano ID in the `id` prop, you must set some string prefix
 (it is invalid for the HTML ID to start with a number).
 
