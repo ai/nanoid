@@ -206,21 +206,25 @@ function Todos({todos}) {
   )
 }
 ```
+
 You should rather try to reach for stable id inside your list item
+
 ```jsx
 const todoItems = todos.map((todo) =>
   <li key={todo.id}>
     {todo.text}
   </li>
-);
+)
 ```
-In case you don't have stable ids you'd rather use index as key instead of nanoid();
+
+In case you don’t have stable ids you'd rather use index as `key` instead of `nanoid()`:
+
 ```jsx
-const todoItems = todos.map((todo, index) =>
-  <li key={index}> /* Still not recommended but prefered over nanoid(). Only do this if items have no stable IDs */
-    {todo.text}
+const todoItems = todos.map((text, index) =>
+  <li key={index}> /* Still not recommended but preferred over nanoid(). Only do this if items have no stable IDs */
+    {text}
   </li>
-);
+)
 ```
 
 If you want to use Nano ID in the `id` prop, you must set some string prefix
