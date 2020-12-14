@@ -191,7 +191,8 @@ import { nanoid } from 'nanoid'
 
 ### React
 
-There's currently no correct way to use nanoid for React `key` prop since it should be consistent among renders
+There’s currently no correct way to use nanoid for React `key` prop
+since it should be consistent among renders.
 
 ```jsx
 function Todos({todos}) {
@@ -207,7 +208,7 @@ function Todos({todos}) {
 }
 ```
 
-You should rather try to reach for stable id inside your list item
+You should rather try to reach for stable id inside your list item.
 
 ```jsx
 const todoItems = todos.map((todo) =>
@@ -217,7 +218,8 @@ const todoItems = todos.map((todo) =>
 )
 ```
 
-In case you don’t have stable ids you'd rather use index as `key` instead of `nanoid()`:
+In case you don’t have stable ids you'd rather use index as `key`
+instead of `nanoid()`:
 
 ```jsx
 const todoItems = todos.map((text, index) =>
