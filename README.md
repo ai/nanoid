@@ -191,13 +191,36 @@ import { nanoid } from 'nanoid'
 
 ### React
 
-**Do not** call `nanoid` in the `key` prop. In React, `key` should be consistent
-among renders.
-
-This is the bad example:
+There's currently no correct way to use nanoid for key prop since `key` should be consistent among renders
 
 ```jsx
-<Item key={nanoid()} /> /* DON’T DO IT */
+function Todos({todos}) {
+  return (
+    <ul>
+      {todos.map(todo => (
+        <li key={nanoid()}> /* DON’T DO IT */
+          {todo.text}
+        </li>
+      ))}
+    </ul>
+  )
+}
+```
+You should rather try to reach for stable id inside your list item
+```jsx
+const todoItems = todos.map((todo) =>
+  <li key={todo.id}>
+    {todo.text}
+  </li>
+);
+```
+In case you don't have stable ids you'd rather use index as key instead of nanoid();
+```jsx
+const todoItems = todos.map((todo, index) =>
+  <li key={index}> /* Still not recommended but prefered over nanoid(). Only do this if items have no stable IDs */
+    {todo.text}
+  </li>
+);
 ```
 
 If you want to use Nano ID in the `id` prop, you must set some string prefix
