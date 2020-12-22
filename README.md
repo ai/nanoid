@@ -110,6 +110,7 @@ Test configuration: Dell XPS 2-in-1 7390, Fedora 32, Node.js 15.1.
   the ID alphabet or size.
 * [`nanoid-dictionary`] with popular alphabets to use with `customAlphabet`.
 * [`nanoid-good`] to be sure that your ID doesn’t contain any obscene words.
+* [Nano ID Generator] easily generates a large number of Nano ID using presets
 
 [`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
 [ID size calculator]:  https://zelark.github.io/nano-id-cc/
