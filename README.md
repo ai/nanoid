@@ -384,6 +384,7 @@ the same ID generator on the client and server side.
 * [Janet](https://sr.ht/~statianzo/janet-nanoid/)
 * [Java](https://github.com/aventrix/jnanoid)
 * [Nim](https://github.com/icyphox/nanoid.nim)
+* [Perl](https://github.com/tkzwtks/Nanoid-perl)
 * [PHP](https://github.com/hidehalo/nanoid-php)
 * [Python](https://github.com/puyuan/py-nanoid)
   with [dictionaries](https://pypi.org/project/nanoid-dictionary)
