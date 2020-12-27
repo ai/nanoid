@@ -223,7 +223,8 @@ instead of `nanoid()`:
 
 ```jsx
 const todoItems = todos.map((text, index) =>
-  <li key={index}> /* Still not recommended but preferred over nanoid(). Only do this if items have no stable IDs */
+  <li key={index}> /* Still not recommended but preferred over nanoid().
+                      Only do this if items have no stable IDs. */
     {text}
   </li>
 )
