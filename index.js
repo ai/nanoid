@@ -49,7 +49,7 @@ let customRandom = (alphabet, size, getRandom) => {
     let id = ''
     while (true) {
       let bytes = getRandom(step)
-      // A compact alternative for `for (var i = 0; i < step; i++)`.
+      // A compact alternative for `for (let i = 0; i < step; i++)`.
       let i = step
       while (i--) {
         // Adding `|| ''` refuses a random byte that exceeds the alphabet size.
@@ -65,7 +65,7 @@ let customAlphabet = (alphabet, size) => customRandom(alphabet, size, random)
 let nanoid = (size = 21) => {
   let bytes = random(size)
   let id = ''
-  // A compact alternative for `for (var i = 0; i < step; i++)`.
+  // A compact alternative for `for (let i = 0; i < size; i++)`.
   while (size--) {
     // It is incorrect to use bytes exceeding the alphabet size.
     // The following mask reduces the random byte in the 0-255 value
