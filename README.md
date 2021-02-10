@@ -273,17 +273,22 @@ For Expo framework see the next section.
 
 ### Rollup
 
-For Rollup you will need [`@rollup/plugin-replace`] to replace
+For Rollup you will need [`@rollup/plugin-node-resolve`] to bundle browser version
+of this library and [`@rollup/plugin-replace`] to replace
 `process.env.NODE_ENV`:
 
 ```js
   plugins: [
+    nodeResolve({
+      browser: true
+    }),
     replace({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE)
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
   ]
 ```
 
+[`@rollup/plugin-node-resolve`]: https://github.com/rollup/plugins/tree/master/packages/node-resolve
 [`@rollup/plugin-replace`]: https://github.com/rollup/plugins/tree/master/packages/replace
 
 
