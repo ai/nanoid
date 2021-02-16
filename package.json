@@ -29,6 +29,7 @@
   "sideEffects": false,
   "types": "./index.d.ts",
   "devDependencies": {
+    "@babel/core": "^7.12.16",
     "@logux/eslint-config": "^44.1.2",
     "@logux/sharec-config": "^0.8.5",
     "@size-limit/dual-publish": "^4.9.2",
