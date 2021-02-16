@@ -36,6 +36,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install dependencies
-        run: yarn install --ignore-engines
+      - uses: bahmutov/npm-install@v1
+        with:
+          install-command: yarn install --ignore-engines
       - name: Run unit tests
         run: npx jest
