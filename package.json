@@ -185,7 +185,8 @@
       "transpile",
       "workaround",
       "Deno",
-      "polyfill"
+      "polyfill",
+      "CommonJS"
     ]
   },
   "sharec": {
