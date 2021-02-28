@@ -148,8 +148,14 @@ Test configuration: Dell XPS 2-in-1 7390, Fedora 32, Node.js 15.1.
 The main module uses URL-friendly symbols (`A-Za-z0-9_-`) and returns an ID
 with 21 characters (to have a collision probability similar to UUID v4).
 
+#### Modules
 ```js
 import { nanoid } from 'nanoid'
+model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
+```
+#### Node
+```js
+const { nanoid } = require('nanoid');
 model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
