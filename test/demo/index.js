@@ -12,13 +12,13 @@ const LENGTH = ALPHABET.length
 
 let nanoid2 = customAlphabet(ALPHABET, LENGTH)
 
-function print (number) {
+function print(number) {
   return String(Math.floor(number * 100))
     .replace(/\d{6}$/, ',$&')
     .replace(/\d{3}$/, ',$&')
 }
 
-function printDistr (title, fn) {
+function printDistr(title, fn) {
   let data = calcDistr(title, fn)
   let keys = Object.keys(data.chars)
   let length = keys.length
@@ -41,7 +41,7 @@ function printDistr (title, fn) {
   </section>`
 }
 
-function calcDistr (title, fn) {
+function calcDistr(title, fn) {
   let chars = {}
 
   let ids = []
@@ -85,7 +85,7 @@ let tasks = [
     })
 ]
 
-function run () {
+function run() {
   if (tasks.length === 0) return
   let task = tasks.shift()
   task()

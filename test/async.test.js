@@ -1,7 +1,7 @@
 let crypto = require('crypto')
 
 global.crypto = {
-  getRandomValues (array) {
+  getRandomValues(array) {
     for (let i = 0; i < array.length; i++) {
       array[i] = Math.floor(Math.random() * 256)
     }
@@ -13,7 +13,7 @@ let { urlAlphabet } = require('..')
 let browser = require('../async/index.browser.js')
 let node = require('../async/index.js')
 
-function times (size, callback) {
+function times(size, callback) {
   let array = []
   for (let i = 0; i < size; i++) {
     array.push(1)
@@ -26,7 +26,7 @@ for (let type of ['node', 'browser']) {
     let { nanoid, customAlphabet, random } = type === 'node' ? node : browser
 
     describe('nanoid', () => {
-      function mock (callback) {
+      function mock(callback) {
         crypto.randomFill = callback
         jest.resetModules()
         nanoid = require('../async').nanoid

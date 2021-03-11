@@ -18,7 +18,7 @@ let suite = new benchmark.Suite()
 let nanoid2 = customAlphabet('1234567890abcdef-', 10)
 let asyncNanoid2 = aCustomAlphabet('1234567890abcdef-', 10)
 
-function formatNumber (number) {
+function formatNumber(number) {
   return String(number)
     .replace(/\d{3}$/, ',$&')
     .replace(/^(\d)(\d{3})/, '$1,$2')
@@ -48,7 +48,7 @@ suite
   })
   .add('async nanoid', {
     defer: true,
-    fn (defer) {
+    fn(defer) {
       aNanoid().then(() => {
         defer.resolve()
       })
@@ -56,7 +56,7 @@ suite
   })
   .add('async customAlphabet', {
     defer: true,
-    fn (defer) {
+    fn(defer) {
       asyncNanoid2().then(() => {
         defer.resolve()
       })
@@ -64,7 +64,7 @@ suite
   })
   .add('async secure-random-string', {
     defer: true,
-    fn (defer) {
+    fn(defer) {
       srs(() => {
         defer.resolve()
       })
@@ -72,7 +72,7 @@ suite
   })
   .add('uid', {
     defer: true,
-    fn (defer) {
+    fn(defer) {
       uid(14).then(() => {
         defer.resolve()
       })

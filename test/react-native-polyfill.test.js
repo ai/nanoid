@@ -2,7 +2,7 @@ global.navigator = {
   product: 'ReactNative'
 }
 global.crypto = {
-  getRandomValues (array) {
+  getRandomValues(array) {
     for (let i = 0; i < array.length; i++) {
       array[i] = Math.floor(Math.random() * 256)
     }

@@ -1,5 +1,5 @@
 global.crypto = {
-  getRandomValues (array) {
+  getRandomValues(array) {
     for (let i = 0; i < array.length; i++) {
       array[i] = Math.floor(Math.random() * 256)
     }
@@ -107,7 +107,7 @@ for (let type of ['node', 'browser']) {
     describe('customRandom', () => {
       it('supports generator', () => {
         let sequence = [2, 255, 3, 7, 7, 7, 7, 7, 0, 1]
-        function fakeRandom (size) {
+        function fakeRandom(size) {
           let bytes = []
           for (let i = 0; i < size; i += sequence.length) {
             bytes = bytes.concat(sequence.slice(0, size - i))
