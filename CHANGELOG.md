@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.1.22
+* Added `default` and `browser.default` to `package.exports`.
+
 ## 3.1.21
 * Reduced npm package size.
 
