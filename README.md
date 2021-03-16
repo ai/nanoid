@@ -246,6 +246,8 @@ If you want to use Nano ID in the `id` prop, you must set some string prefix
 
 ### Create React App
 
+*Instructions for Create React App < v4.0.0. For current versions, this is already [fixed](https://github.com/facebook/create-react-app/pull/8768).*
+
 Create React App has [a problem](https://github.com/ai/nanoid/issues/205)
 with ES modules packages.
 
@@ -253,10 +255,7 @@ with ES modules packages.
 TypeError: (0 , _nanoid.nanoid) is not a function
 ```
 
-[Pull request](https://github.com/facebook/create-react-app/pull/8768) was sent,
-but it was still not released.
-
-Use Nano ID 2 `npm i nanoid@^2.0.0` until Create React App 4.0 release.
+Use Nano ID 2 `npm i nanoid@^2.0.0` if you're using a version below Create React App 4.0.0.
 
 
 ### React Native
