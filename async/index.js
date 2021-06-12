@@ -38,19 +38,19 @@ let customAlphabet = (alphabet, size) => {
   // according to benchmarks).
   let step = Math.ceil((1.6 * mask * size) / alphabet.length)
 
-  let tick = id =>
-    random(step).then(bytes => {
-      // A compact alternative for `for (var i = 0; i < step; i++)`.
+  return async () => {
+    let id = ''
+    while (true) {
+      let bytes = await random(step)
+      // A compact alternative for `for (let i = 0; i < step; i++)`.
       let i = step
       while (i--) {
         // Adding `|| ''` refuses a random byte that exceeds the alphabet size.
         id += alphabet[bytes[i] & mask] || ''
         if (id.length === size) return id
       }
-      return tick(id)
-    })
-
-  return () => tick('')
+    }
+  }
 }
 
 let nanoid = (size = 21) =>
