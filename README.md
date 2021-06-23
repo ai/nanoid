@@ -156,7 +156,7 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 In Node.js you can use CommonJS import:
 
 ```js
-const { nanoid } = require('nanoid')
+const nanoid = require('nanoid')
 ```
 
 If you want to reduce the ID size (and increase collisions probability),
