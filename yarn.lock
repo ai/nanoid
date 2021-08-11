@@ -2447,7 +2447,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-clean-publish@^2.1.0:
+clean-publish@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/clean-publish/-/clean-publish-2.2.0.tgz#3d249934128757e457dc060511a056d32487f38d"
   integrity sha512-U+/Y5YXbxnqWlh8y/toKSEGbMvIvsgfkfJ7yK0v0uQ1mz07lNNSxceY7XaFweEw8LFQo8Al3H7SuQHXbf5Xw8g==
@@ -3172,13 +3172,13 @@ dotenv@^7.0.0:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-7.0.0.tgz#a2be3cd52736673206e8a85fb5210eea29628e7c"
   integrity sha512-M3NhsLbV1i6HuGzBUH8vXrtxOk+tWmzWKDMbAVSUp3Zsjm7ywFeuwrUXhmhQyRK1q5B5GGy7hcXPbj3bnfZg2g==
 
-dual-publish@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/dual-publish/-/dual-publish-1.0.5.tgz#9dbd92568439e74f692f11e75bcb472f7b5b26ab"
-  integrity sha512-vW4JbW0wRonA8cjpyNQHgW7jUt3HIZutG2q5ToT72g2QsvWlTFW+S6FnhfPNvFek1TcnBOOacB1OOIeF9Nd2Og==
+dual-publish@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/dual-publish/-/dual-publish-1.0.6.tgz#6ef2d6428c0184d9b451b32cddd772db5373637d"
+  integrity sha512-RYFSqabRX8JnSiuksThn2qba/Gdx4EdET3m1RPY/4g2sv8YHT6Un1LwqH8/RIkPW5hojOcExoehVFuffQHKWBw==
   dependencies:
-    clean-publish "^2.1.0"
-    colorette "^1.2.2"
+    clean-publish "^2.2.0"
+    colorette "^1.3.0"
     globby "^11.0.2"
     line-column "^1.0.2"
     rimraf "^3.0.2"

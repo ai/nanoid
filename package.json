@@ -50,7 +50,7 @@
     "check-dts": "^0.5.5",
     "colorette": "^1.3.0",
     "cuid": "^2.1.8",
-    "dual-publish": "^1.0.5",
+    "dual-publish": "^1.0.6",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.24.0",
