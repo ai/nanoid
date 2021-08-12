@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.1.25
+* Fixed `browserify` support.
+
 ## 3.1.24
 * Fixed `browserify` support (by Artur Paikin).
 
