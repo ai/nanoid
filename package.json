@@ -9,7 +9,7 @@
     "url"
   ],
   "scripts": {
-    "test": "jest --coverage && eslint . && check-dts && size-limit && yaspeller *.md",
+    "test": "jest --coverage && eslint . && check-dts && size-limit && yaspeller README.md CHANGELOG.md",
     "start": "parcel test/demo/index.html --dist-dir test/demo/build --open"
   },
   "engines": {
