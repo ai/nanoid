@@ -120,7 +120,7 @@ rndm                      2,447,086 ops/sec
 ## 安全性
 
 *请看一篇关于随机生成器理论的好文章:
-[]*安全的随机值 (在 Node.js 中)
+[安全的随机值 (在 Node.js 中)]*
 
 * **不可预测性.** 不使用不安全的 `Math.random()`, Nano ID
   使用 Node.js 的 `crypto` 模块和浏览器的 Web Crypto API。
@@ -274,7 +274,7 @@ import { nanoid } from 'nanoid'
 ### Rollup
 
 对于 Rollup 来说，你需要[`@rollup/plugin-node-resolve`]来绑定浏览器版本。
-除了这个库，还需要[@rollup/plugin-replace`]来替换 `process.env.NODE_ENV`。
+除了这个库，还需要[`@rollup/plugin-replace`] 来替换 `process.env.NODE_ENV`。
 
 ```js
   plugins: [
