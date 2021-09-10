@@ -3,14 +3,14 @@
 <img src="https://ai.github.io/nanoid/logo.svg" align="right"
      alt="Nano ID logo by Anton Lovchikov" width="180" height="94">
 
-English | [简体中文](./README.zh-CN.md)
+[English](./README.md) | 简体中文
 
-A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
+一个小巧、安全、URL友好、唯一的 JavaScript 字符串ID生成器。
 
 > “An amazing level of senseless perfectionism,
 > which is simply impossible not to respect.”
 
-* **Small.** 108 bytes (minified and gzipped). No dependencies.
+* **小巧.** 108 bytes (已压缩和 gzipped). 没有依赖.
   [Size Limit] controls the size.
 * **Fast.** It is 60% faster than UUID.
 * **Safe.** It uses cryptographically strong random APIs.
@@ -25,11 +25,11 @@ import { nanoid } from 'nanoid'
 model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
-Supports modern browsers, IE [with Babel], Node.js and React Native.
+支持现代浏览器、IE[使用Babel]、Node.js 和 React Native.
 
-[online tool]: https://gitpod.io/#https://github.com/ai/nanoid/
-[with Babel]:  https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/
-[Size Limit]:  https://github.com/ai/size-limit
+[在线工具]: https://gitpod.io/#https://github.com/ai/nanoid/
+[使用 Babel]:  https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/
+[大小限制]:  https://github.com/ai/size-limit
 
 <a href="https://evilmartians.com/?utm_source=nanoid">
   <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg"
