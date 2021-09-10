@@ -9,7 +9,7 @@
     "url"
   ],
   "scripts": {
-    "test": "jest --coverage && eslint . && check-dts && size-limit && yaspeller README.md CHANGELOG.md",
+    "test": "jest --coverage && eslint . && check-dts && size-limit && yaspeller *.md",
     "start": "parcel test/demo/index.html --dist-dir test/demo/build --open"
   },
   "engines": {
@@ -172,6 +172,9 @@
   "yaspeller": {
     "lang": "en",
     "ignoreCapitalization": true,
+    "excludeFiles": [
+      "README.zh-CN.md"
+    ],
     "ignoreText": [
       " \\(by [^)]+\\)."
     ],
