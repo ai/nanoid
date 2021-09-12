@@ -31,7 +31,7 @@
   "types": "./index.d.ts",
   "devDependencies": {
     "@babel/core": "^7.15.5",
-    "@logux/eslint-config": "^45.4.7",
+    "@logux/eslint-config": "^45.4.8",
     "@logux/sharec-config": "^0.11.0",
     "@parcel/optimizer-cssnano": "^2.0.0-rc.0",
     "@parcel/optimizer-htmlnano": "^2.0.0-rc.0",
@@ -58,7 +58,7 @@
     "eslint-plugin-prefer-let": "^1.1.0",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-unicorn": "^35.0.0",
+    "eslint-plugin-unicorn": "^36.0.0",
     "jest": "^27.1.1",
     "lint-staged": "^11.1.2",
     "parcel": "^2.0.0-rc.0",
@@ -70,7 +70,7 @@
     "simple-git-hooks": "^2.6.1",
     "size-limit": "^5.0.3",
     "terser": "^5.7.2",
-    "typescript": "^4.4.2",
+    "typescript": "^4.4.3",
     "uid-safe": "^2.1.5",
     "uuid": "^8.3.2",
     "yaspeller": "^7.0.0"
