@@ -17,7 +17,7 @@
   可在集群中使用。
 * **紧凑.** 它使用比 UUID（`A-Za-z0-9_-`）更大的字母表。
   因此，ID 大小从36个符号减少到21个符号。
-* **易用.** Nano ID 已被移植到[14种编程语言](#other-programming-languages)。
+* **易用.** Nano ID 已被移植到[19种编程语言](#other-programming-languages)。
 
 ```js
 import { nanoid } from 'nanoid'
@@ -37,11 +37,11 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 
 ## 目录
 
-* [与 UUID 的比较](#comparison-with-uuid)
-* [基准值](#benchmark)
-* [工具](#tools)
-* [安全性](#security)
-* [用法](#usage)
+* [与 UUID 的比较](#与-uuid-的比较)
+* [基准值](#基准值)
+* [工具](#工具)
+* [安全性](#安全性)
+* [用法](#用法)
   * [JS](#js)
   * [IE](#ie)
   * [React](#react)
@@ -56,9 +56,9 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
   * [其他编程语言](#other-programming-languages)
 * [API](#api)
   * [Async](#async)
-  * [Non-Secure](#non-secure)
-  * [customAlphabet or Size](#custom-alphabet-or-size)
-  * [Custom Random Bytes Generator](#custom-random-bytes-generator)
+  * [不安全](#不安全)
+  * [自定義字母或大小](#自定義字母或大小)
+  * [自定义随机字节生成器](#自定义随机字节生成器)
 
 
 ## 与 UUID 的比较
@@ -437,7 +437,7 @@ const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 注意：您的ID将更可预测，更容易遇到冲突。
 
 
-### Custom Alphabet or Size
+### 自定義字母或大小
 
 `customAlphabet` 允许您使用自己的字母表创建 `nanoid`
 和 ID size。
