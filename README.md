@@ -3,7 +3,7 @@
 <img src="https://ai.github.io/nanoid/logo.svg" align="right"
      alt="Nano ID logo by Anton Lovchikov" width="180" height="94">
 
-**English** | [简体中文](./README.zh-CN.md)
+**English** | [Русский](./README.ru.md) | [简体中文](./README.zh-CN.md)
 
 A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 
@@ -13,12 +13,11 @@ A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 * **Small.** 108 bytes (minified and gzipped). No dependencies.
   [Size Limit] controls the size.
 * **Fast.** It is 60% faster than UUID.
-* **Safe.** It uses cryptographically strong random APIs.
-  Can be used in clusters.
+* **Safe.** It uses hardware random generator. Can be used in clusters.
 * **Compact.** It uses a larger alphabet than UUID (`A-Za-z0-9_-`).
   So ID size was reduced from 36 to 21 symbols.
 * **Portable.** Nano ID was ported
-  to [14 programming languages](#other-programming-languages).
+  to [19 programming languages](#other-programming-languages).
 
 ```js
 import { nanoid } from 'nanoid'
@@ -46,7 +45,6 @@ Supports modern browsers, IE [with Babel], Node.js and React Native.
   * [JS](#js)
   * [IE](#ie)
   * [React](#react)
-  * [Create React App](#create-react-app)
   * [React Native](#react-native)
   * [Rollup](#rollup)
   * [PouchDB and CouchDB](#pouchdb-and-couchdb)
@@ -103,18 +101,19 @@ non-secure nanoid         2,641,654 ops/sec
 rndm                      2,447,086 ops/sec
 ```
 
-Test configuration: Dell XPS 2-in-1 7390, Fedora 32, Node.js 15.1.
+Test configuration: ThinkPad X1 Carbon Gen 9, Fedora 34, Node.js 16.9.
 
 
 ## Tools
 
 * [ID size calculator] shows collision probability when adjusting
   the ID alphabet or size.
-* [`nanoid-dictionary`] with popular alphabets to use with `customAlphabet`.
+* [`nanoid-dictionary`] with popular alphabets to use with [`customAlphabet`].
 * [`nanoid-good`] to be sure that your ID doesn’t contain any obscene words.
 
 [`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
 [ID size calculator]:  https://zelark.github.io/nano-id-cc/
+[`customAlphabet`]:    #custom-alphabet-or-size
 [`nanoid-good`]:       https://github.com/y-gagar1n/nanoid-good
 
 
@@ -135,19 +134,22 @@ Test configuration: Dell XPS 2-in-1 7390, Fedora 32, Node.js 15.1.
   <img src="img/distribution.png" alt="Nano ID uniformity"
      width="340" height="135">
 
+* **Well-documented:** all Nano ID hacks are documented. See comments
+  in [the source].
 * **Vulnerabilities:** to report a security vulnerability, please use
   the [Tidelift security contact](https://tidelift.com/security).
   Tidelift will coordinate the fix and disclosure.
 
 [Secure random values (in Node.js)]: https://gist.github.com/joepie91/7105003c3b26e65efcea63f3db82dfba
 [better algorithm]:                  https://github.com/ai/nanoid/blob/main/index.js
+[the source]:                        https://github.com/ai/nanoid/blob/main/index.js
 
 
 ## Usage
 
 ### JS
 
-The main module uses URL-friendly symbols (`A-Za-z0-9_-`) and returns an ID
+The main function uses URL-friendly symbols (`A-Za-z0-9_-`) and returns an ID
 with 21 characters (to have a collision probability similar to UUID v4).
 
 ```js
@@ -199,7 +201,7 @@ import { nanoid } from 'nanoid'
 
 ### React
 
-There’s currently no correct way to use nanoid for React `key` prop
+There’s no correct way to use Nano ID for React `key` prop
 since it should be consistent among renders.
 
 ```jsx
@@ -216,7 +218,7 @@ function Todos({todos}) {
 }
 ```
 
-You should rather try to reach for stable id inside your list item.
+You should rather try to reach for stable ID inside your list item.
 
 ```jsx
 const todoItems = todos.map((todo) =>
@@ -246,19 +248,6 @@ If you want to use Nano ID in the `id` prop, you must set some string prefix
 ```
 
 
-### Create React App
-
-Create React App < 4.0.0 had
-[a problem](https://github.com/ai/nanoid/issues/205) with ES modules packages.
-
-```
-TypeError: (0 , _nanoid.nanoid) is not a function
-```
-
-Use Nano ID 2 `npm i nanoid@^2.0.0` if you're using a version below
-CRA 4.0.
-
-
 ### React Native
 
 React Native does not have built-in random generator. The following polyfill
@@ -271,8 +260,6 @@ works for plain React Native and Expo starting with `39.x`.
 import 'react-native-get-random-values'
 import { nanoid } from 'nanoid'
 ```
-
-For Expo framework see the next section.
 
 [`react-native-get-random-values`]: https://github.com/LinusU/react-native-get-random-values
 
@@ -405,7 +392,7 @@ the same ID generator on the client and server side.
 * [Swift](https://github.com/antiflasher/NanoID)
 * [V](https://github.com/invipal/nanoid)
 
-Also, [CLI] is available to generate IDs from a command line.
+For other environments, [CLI] is available to generate IDs from a command line.
 
 [CLI]: #cli
 
@@ -444,8 +431,6 @@ and more concerned with performance, you can use the faster non-secure generator
 import { nanoid } from 'nanoid/non-secure'
 const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
-
-Note: your IDs will be more predictable and prone to collision attacks.
 
 
 ### Custom Alphabet or Size

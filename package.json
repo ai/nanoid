@@ -170,7 +170,6 @@
     }
   },
   "yaspeller": {
-    "lang": "en",
     "ignoreCapitalization": true,
     "excludeFiles": [
       "README.zh-CN.md"
@@ -214,7 +213,18 @@
       "workaround",
       "Deno",
       "polyfill",
-      "CommonJS"
+      "CommonJS",
+      "X1",
+      "JSX",
+      "gzip",
+      "минификации",
+      "вендорный",
+      "рендере",
+      "полифил",
+      "прототипирования",
+      "минифицированный",
+      "воркер",
+      "воркере"
     ]
   },
   "sharec": {

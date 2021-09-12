@@ -3,7 +3,7 @@
 <img src="https://ai.github.io/nanoid/logo.svg" align="right"
      alt="Nano ID logo by Anton Lovchikov" width="180" height="94">
 
-[English](./README.md) | **简体中文**
+[English](./README.md) | [Русский](./README.ru.md) | **简体中文**
 
 一个小巧、安全、URL友好、唯一的 JavaScript 字符串ID生成器。
 
@@ -17,7 +17,7 @@
   可在集群中使用。
 * **紧凑.** 它使用比 UUID（`A-Za-z0-9_-`）更大的字母表。
   因此，ID 大小从36个符号减少到21个符号。
-* **易用.** Nano ID 已被移植到[19种编程语言](#other-programming-languages)。
+* **易用.** Nano ID 已被移植到[19种编程语言](#其他编程语言)。
 
 ```js
 import { nanoid } from 'nanoid'
@@ -45,7 +45,6 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
   * [JS](#js)
   * [IE](#ie)
   * [React](#react)
-  * [Create React App](#create-react-app)
   * [React Native](#react-native)
   * [Rollup](#rollup)
   * [PouchDB and CouchDB](#pouchdb-and-couchdb)
@@ -102,7 +101,7 @@ non-secure nanoid         2,641,654 ops/sec
 rndm                      2,447,086 ops/sec
 ```
 
-测试配置: Dell XPS 2-in-1 7390, Fedora 32, Node.js 15.1.
+测试配置: ThinkPad X1 Carbon Gen 9, Fedora 34, Node.js 16.9.
 
 
 ## 工具
@@ -241,18 +240,6 @@ const todoItems = todos.map((text, index) =>
 ```
 
 
-### Create React App
-
-Create React App 的版本 < 4.0.0 有
-[一个问题](https://github.com/ai/nanoid/issues/205) 使用ES模块包.
-
-```
-TypeError: (0 , _nanoid.nanoid) is not a function
-```
-
-如果您使用版本小于 CRA 4.0，请使用 Nano ID 2 `npm i nanoid@^2.0.0`。
-
-
 ### React Native
 
 React Native 没有内置的随机生成器。下面的 polyfill
@@ -265,8 +252,6 @@ React Native 没有内置的随机生成器。下面的 polyfill
 import 'react-native-get-random-values'
 import { nanoid } from 'nanoid'
 ```
-
-对于 Expo framework 见下一章节.
 
 [`react-native-get-random-values`]: https://github.com/LinusU/react-native-get-random-values
 
@@ -350,8 +335,6 @@ Web Workers 无法访问安全的随机生成器.
 import { nanoid } from 'nanoid/non-secure'
 nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
-
-注意：非安全的ID更容易遇到冲突
 
 
 ### CLI
