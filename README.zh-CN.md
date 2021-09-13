@@ -112,7 +112,7 @@ rndm                      2,447,086 ops/sec
 * [`nanoid-good`] 以确保你的ID不包含任何淫秽词汇。
 
 [`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
-[ID size calculator]:  https://zelark.github.io/nano-id-cc/
+[ID size 计算器]:  https://zelark.github.io/nano-id-cc/
 [`nanoid-good`]:       https://github.com/y-gagar1n/nanoid-good
 
 
@@ -126,7 +126,7 @@ rndm                      2,447,086 ops/sec
   这些模块使用不可预测的硬件随机生成器。
 * **统一性.** `随机 % 字母表` 是编写ID生成器时常犯的一个错误。
   符号的分布是不均匀的; 有些符号出现的几率会比其他符号低。因此, 它将减少刷新时的尝试次数。
-  Nano ID 使用了一种[更好的算法]，并进行了一致性测试。
+  Nano ID 使用了一种 [更好的算法]，并进行了一致性测试。
 
   <img src="img/distribution.png" alt="Nano ID uniformity"
      width="340" height="135">
@@ -166,8 +166,8 @@ nanoid(10) //=> "IRFa-VaY2b"
 
 不要忘记在我们的 [ID 冲突概率] 计算器中检查你的 ID size 的安全性
 
-你也可以使用一个[自定义字母](#custom-alphabet-or-size)。
-或一个[随机发生器](#custom-random-bytes-generator)。
+你也可以使用一个 [自定义字母](#custom-alphabet-or-size)。
+或一个 [随机发生器](#custom-random-bytes-generator)。
 
 [ID collision probability]: https://zelark.github.io/nano-id-cc/
 
