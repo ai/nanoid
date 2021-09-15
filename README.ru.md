@@ -11,14 +11,14 @@ ID можно применять в URL.
 > «Поразительный уровень бессмысленного перфекционизма,
 > который просто невозможно не уважать»
 
-* **Лёгкий.** 108 байт (после минификации и gzip). Без зависимостей.
+- **Лёгкий.** 108 байт (после минификации и gzip). Без зависимостей.
   [Size Limit] следит за размером.
-* **Быстрый.** На 60 % быстрее UUID.
-* **Безопасный.** Использует аппаратный генератор случайных чисел.
+- **Быстрый.** На 60 % быстрее UUID.
+- **Безопасный.** Использует аппаратный генератор случайных чисел.
   Можно использовать в кластерах машин.
-* **Короткие ID.** Используется больший алфавит, чем у UUID (`A-Za-z0-9_-`).
+- **Короткие ID.** Используется больший алфавит, чем у UUID (`A-Za-z0-9_-`).
   Поэтому длина ID уменьшена с 36 до 21 символа.
-* **Работает везде.** Nano ID уже портировали
+- **Работает везде.** Nano ID уже портировали
   на [19 языков программирования](#другие-языки-программирования).
 
 ```js
@@ -29,44 +29,47 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 Поддерживает современные браузеры, IE ([с Babel]), Node.js и React Native.
 
 [online tool]: https://gitpod.io/#https://github.com/ai/nanoid/
-[с Babel]:  https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/
-[Size Limit]:  https://github.com/ai/size-limit
+[с babel]: https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/
+[size limit]: https://github.com/ai/size-limit
 
 <a href="https://evilmartians.com/?utm_source=nanoid">
   <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg"
-       alt="Пр поддержке Злых марсиан" width="236" height="54">
+       alt="При поддержке Злых марсиан" width="236" height="54">
 </a>
+
 
 ## Оглавление
 
-* [Сравнение с UUID](#сравнение-с-uuid)
-* [Сравнение производительности](#сравнение-производительности)
-* [Инструменты](#инструменты)
-* [Безопасность](#безопасность)
-* [Руководство](#руководство)
-  * [JS](#js)
-  * [IE](#ie)
-  * [React](#react)
-  * [React Native](#react-native)
-  * [Rollup](#rollup)
-  * [PouchDB и CouchDB](#pouchdb-и-couchdb)
-  * [Mongoose](#mongoose)
-  * [ES-модули](#es-модули)
-  * [Веб-воркеры](#веб-воркеры)
-  * [Терминал](#терминал)
-  * [Другие языки программирования](#другие-языки-программирования)
-* [API](#api)
-  * [Асинхронный](#асинхронный)
-  * [Небезопасный](#небезопасный)
-  * [Смена алфавита или длины](#смена-алфавита-или-длины)
-  * [Смена генератора случайных чисел](#смена-генератора-случайных-чисел)
+- [Сравнение с UUID](#сравнение-с-uuid)
+- [Сравнение производительности](#сравнение-производительности)
+- [Подключение](#подключение)
+- [API](#api)
+  - [Блокирующий](#блокирующий)
+  - [Асинхронный](#асинхронный)
+  - [Небезопасный](#небезопасный)
+  - [Смена алфавита или длины](#смена-алфавита-или-длины)
+  - [Смена генератора случайных чисел](#смена-генератора-случайных-чисел)
+- [Инструменты](#инструменты)
+- [Безопасность](#безопасность)
+- [Руководство](#руководство)
+  - [IE](#ie)
+  - [React](#react)
+  - [HTML ID](#html-id)
+  - [React Native](#react-native)
+  - [Rollup](#rollup)
+  - [PouchDB и CouchDB](#pouchdb-и-couchdb)
+  - [Mongoose](#mongoose)
+  - [Веб-воркеры](#веб-воркеры)
+  - [Терминал](#терминал)
+  - [Другие языки программирования](#другие-языки-программирования)
 
 
 ## Сравнение с UUID
 
 Nano ID похож на UUID v4 (случайный).
 У них сравнимое число битов случайности в ID (126 у Nano ID против 122 у UUID),
-поэтому они обладают похожей вероятностью возникновения коллизий (повторной генерации ранее выданных ID):
+поэтому они обладают похожей вероятностью возникновения коллизий
+(повторной генерации ранее выданных ID):
 
 > Чтобы вероятность повтора приблизилась к 1 на миллиард,
 > нужно сгенерировать 103 триллиона ID.
@@ -74,7 +77,8 @@ Nano ID похож на UUID v4 (случайный).
 Но между ними есть 3 важных отличия:
 
 1. Nano ID использует более широкий алфавит, и сравнимое количество
-   битов случайности будут упакованы в строку в 21 символа, против 36 у UUID.
+   битов случайности будут упакованы в более короткую строку
+   (21 символ, против 36 у UUID).
 2. Код Nano ID **в 4.5 раз меньше**, чем у `uuid/v4` — 108 байт против 483.
 3. Благодаря оптимизациям с выделением памяти, Nano ID **на 60% быстрее** UUID.
 
@@ -105,68 +109,57 @@ rndm                      2,447,086 ops/sec
 Среда сравнения: ThinkPad X1 Carbon Gen 9, Fedora 34, Node.js 16.9.
 
 
-## Инструменты
+## Подключение
 
-* [Калькулятор длины ID] поможет подобрать оптимальную длину ID,
-  в зависимости от частоты выдачи ID и нужной надёжности системы.
-* [`nanoid-dictionary`] с популярными алфавитами для [`customAlphabet`].
-* [`nanoid-good`] гарантирует, что в случайном ID не будет матерных слов.
+```
+npm install --save nanoid
+```
 
-[Калькулятор длины ID]: https://zelark.github.io/nano-id-cc/
-[`nanoid-dictionary`]:  https://github.com/CyberAP/nanoid-dictionary
-[`customAlphabet`]:     #смена-алфавита-или-длины
-[`nanoid-good`]:        https://github.com/y-gagar1n/nanoid-good
+Для быстрого прототипирования вы можете подключить Nano ID с CDN без установки.
+Не используйте этот способ на реальном сайте, так как он сильно бьёт
+по скорости загрузки сайта.
 
+```js
+import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
+```
 
-## Безопасность
+Nano ID поддерживает ES-модули. Вам не надо ничего делать, чтобы ES-импорты
+работали в webpack, Rollup, Parcel, или Node.js.
 
-*См. также хорошую статью о теориях генераторов случайных чисел:
-[Secure random values (in Node.js)]*
+```js
+import { nanoid } from 'nanoid'
+```
 
-* **Непредсказуемость.** Вместо предсказуемого `Math.random()`, Nano ID
-  использует модуль `crypto` в Node.js и Web Crypto API в браузере.
-  Эти модули дают доступ к аппаратному генератору случайных чисел.
-* **Равномерность.** Например, существует популярная ошибка `random % alphabet`,
-  которую часто допускают при разработке генератора ID.
-  Распределение вероятности для каждого символа может не быть одинаковым.
-  Из-за неравномерности использования пространства алфавита, на перебор ID
-  потребуется меньше времени, чем ожидается. Nano ID использует
-  [более совершенный алгоритм], а равномерность распределения символов покрыта тестами.
+Для Node.js также поддерживается CommonJS-импорт:
 
-  <img src="img/distribution.png" alt="Распределение Nano ID"
-     width="340" height="135">
-
-* **Документация:** все хитрости Nano ID хорошо документированы — смотрите
-  комментарии [в исходниках].
-* **Уязвимости:** если вы нашли уязвимость в Nano ID, свяжитесь с
-  [командой безопасности Tidelift](https://tidelift.com/security).
-  Они проконтролируют исправление и проинформируют пользователей.
-
-[Secure random values (in Node.js)]: https://gist.github.com/joepie91/7105003c3b26e65efcea63f3db82dfba
-[более совершенный алгоритм]:        https://github.com/ai/nanoid/blob/main/index.js
-[в исходниках]:                      https://github.com/ai/nanoid/blob/main/index.js
+```js
+const { nanoid } = require('nanoid')
+```
 
 
-## Руководство
+## API
 
-### JS
+Nano ID разделён на три модуля:
+стандартный (блокирующий), асинхронный и небезопасный.
 
-Основная функция использует символы, безопасные для URL (`A-Za-z0-9_-`).
-Она возвращает ID длиной 21 символ (чтобы вероятность коллизий была соизмеримой с UUID v4).
+По умолчанию используются символы, безопасные для URL (`A-Za-z0-9_-`).
+Длина ID по умолчанию — 21 символ
+(чтобы вероятность коллизий была соизмеримой с UUID v4).
+
+
+### Блокирующий
+
+Безопасный и простой в использовании способ использования Nano ID.
+
+Из-за особенностей работы генератора случайных чисел при использовании этого
+способа ЦПУ может иногда простаивать без работы.
 
 ```js
 import { nanoid } from 'nanoid'
 model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
-Для Node.js поддерживается CommonJS-импорт:
-
-```js
-const { nanoid } = require('nanoid')
-```
-
-Если вы хотите уменьшить длину ID (но повысить вероятность повторной выдачи ID),
-передайте длину ID, как аргумент функции.
+Функция также принимает необязательный аргумент, задающий длину ID:
 
 ```js
 nanoid(10) //=> "IRFa-VaY2b"
@@ -175,9 +168,167 @@ nanoid(10) //=> "IRFa-VaY2b"
 При изменении размера, всегда проверяйте риски
 в нашем [калькуляторе коллизий](https://zelark.github.io/nano-id-cc/).
 
-Вы также можете [сменить алфавит ID](#смена-алфавита-или-длины) или
-[генератор случайных чисел](#смена-генератора-случайных-чисел).
 
+### Асинхронный
+
+Для аппаратной генерации случайных чисел процессор накапливает
+электромагнитные шумы. Обычно они накоплены заранее, и получение
+случайных чисел происходит быстро. Но могут быть ситуации, когда
+системе требуется время на накопление энтропии.
+
+При использовании синхронного API процесс заблокируется
+во время накопления энтропии. Например, веб-сервер не сможет
+обрабатывать запрос следующего посетителя, пока не сгенерирует
+ID для предыдущего.
+
+Но если использовать асинхронный API у Nano ID, то процесс будет работать
+более эффективно: во время накопления шума сможет выполняться другая задача.
+
+```js
+import { nanoid } from 'nanoid/async'
+
+async function createUser() {
+  user.id = await nanoid()
+}
+```
+
+Про ожидание накопления энтропии можно почитать в описании метода
+`crypto.randomBytes` в [документации Node.js].
+
+К сожалению, эта оптимизация имеет смысл только для Node.js. Web Crypto API
+в браузерах не имеет асинхронной версии.
+
+[документации node.js]: https://nodejs.org/api/crypto.html#crypto_crypto_randombytes_size_callback
+
+
+### Небезопасный
+
+По умолчанию, Nano ID использует аппаратный генератор случайных чисел для
+получения непредсказуемых ID и минимизации риска возникновения коллизий
+(повторной генерации ранее выданных ID).
+Но если вам не требуется устойчивость к подбору ID,
+то вы можете ускорить генерацию ID, перейдя на небезопасный генератор.
+
+```js
+import { nanoid } from 'nanoid/non-secure'
+const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
+```
+
+Но учтите, что предсказуемость ID может быть использована для атаки на систему.
+
+
+### Смена алфавита или длины
+
+Функция `customAlphabet` позволяет создать свою функцию `nanoid`
+с нужным вам алфавитом и длиной ID.
+
+```js
+import { customAlphabet } from 'nanoid'
+const nanoid = customAlphabet('1234567890abcdef', 10)
+user.id = nanoid() //=> "4f90d13a42"
+```
+
+```js
+import { customAlphabet } from 'nanoid/async'
+const nanoid = customAlphabet('1234567890abcdef', 10)
+async function createUser() {
+  user.id = await nanoid()
+}
+```
+
+```js
+import { customAlphabet } from 'nanoid/non-secure'
+const nanoid = customAlphabet('1234567890abcdef', 10)
+user.id = nanoid()
+```
+
+Не забудьте проверить риски коллизии вашего алфавита и длины
+[на нашем калькуляторе]. [`nanoid-dictionary`] содержит много популярных
+примеров альтернативных алфавитов.
+
+Алфавит должен содержать ≤256 символов. Иначе мы не сможем гарантировать
+непредсказуемость ID.
+
+[на нашем калькуляторе]: https://alex7kom.github.io/nano-nanoid-cc/
+[`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
+
+
+### Смена генератора случайных чисел
+
+Функция `customRandom` позволяет создать свою функцию `nanoid` со своими
+генераторами случайных чисел, алфавитом и длинной ID.
+
+Например, можно использовать генератор c seed для повторяемости тестов.
+
+```js
+import { customRandom } from 'nanoid'
+
+const rng = seedrandom(seed)
+const nanoid = customRandom('abcdef', 10, size => {
+  return new Uint8Array(size).map(() => 256 * rng())
+})
+
+nanoid() //=> "fbaefaadeb"
+```
+
+Функция в третьем аргументе `customRandom` должна принимать длину массива
+и возвращать нужный массив со случайными числами
+
+Если вы хотите заменить только генератор случайных чисел, но оставить
+URL-совместимый алфавит, то стандартный алфавит доступен
+в экспорте `urlAlphabet`.
+
+```js
+const { customRandom, urlAlphabet } = require('nanoid')
+const nanoid = customRandom(urlAlphabet, 10, random)
+```
+
+У асинхронной и небезопасной версий нет `customRandom`.
+
+
+## Инструменты
+
+- [Калькулятор длины ID] поможет подобрать оптимальную длину ID,
+  в зависимости от частоты выдачи ID и нужной надёжности системы.
+- [`nanoid-dictionary`] с популярными алфавитами для [`customAlphabet`].
+- [`nanoid-good`] гарантирует, что в случайном ID не будет матерных слов.
+
+[калькулятор длины id]: https://zelark.github.io/nano-id-cc/
+[`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
+[`customalphabet`]: #смена-алфавита-или-длины
+[`nanoid-good`]: https://github.com/y-gagar1n/nanoid-good
+
+## Безопасность
+
+_См. также хорошую статью о теориях генераторов случайных чисел:
+[Secure random values (in Node.js)]_
+
+- **Непредсказуемость.** Вместо предсказуемого `Math.random()`, Nano ID
+  использует модуль `crypto` в Node.js и Web Crypto API в браузере.
+  Эти модули дают доступ к аппаратному генератору случайных чисел.
+- **Равномерность.** Например, существует популярная ошибка `random % alphabet`,
+  которую часто допускают при разработке генератора ID.
+  Распределение вероятности для каждого символа может не быть одинаковым.
+  Из-за неравномерности использования пространства алфавита, на перебор ID
+  потребуется меньше времени, чем ожидается.
+  Nano ID использует [более совершенный алгоритм],
+  а равномерность распределения символов покрыта тестами.
+
+  <img src="img/distribution.png" alt="Распределение Nano ID"
+     width="340" height="135">
+
+- **Документация:** все хитрости Nano ID хорошо документированы — смотрите
+  комментарии [в исходниках].
+- **Уязвимости:** если вы нашли уязвимость в Nano ID, свяжитесь с
+  [командой безопасности Tidelift](https://tidelift.com/security).
+  Они проконтролируют исправление и проинформируют пользователей.
+
+[secure random values (in node.js)]: https://gist.github.com/joepie91/7105003c3b26e65efcea63f3db82dfba
+[более совершенный алгоритм]: https://github.com/ai/nanoid/blob/main/index.js
+[в исходниках]: https://github.com/ai/nanoid/blob/main/index.js
+
+
+## Руководство
 
 ### IE
 
@@ -205,7 +356,7 @@ import { nanoid } from 'nanoid'
 `key` будет разный, что плохо скажется на производительности.
 
 ```jsx
-function Todos({todos}) {
+function Todos({ todos }) {
   return (
     <ul>
       {todos.map(todo => (
@@ -218,33 +369,18 @@ function Todos({todos}) {
 }
 ```
 
-Попробуйте найти стабильный ID в данных вашего списка.
+Подробнее об использовании свойства `key` читайте в
+[официальной документации React](https://ru.reactjs.org/docs/lists-and-keys.html#keys).
 
-```jsx
-const todoItems = todos.map((todo) =>
-  <li key={todo.id}>
-    {todo.text}
-  </li>
-)
-```
 
-Если ничего стабильного в списке нет, используйте хотя бы индекс массива.
+### HTML ID
 
-```jsx
-const todoItems = todos.map((text, index) =>
-  <li key={index}> /* Не самый лучший способ. Но лучше nanoid().
-                      Используйте только если в списке нет стабильных ID. */
-    {text}
-  </li>
-)
-```
-
-Если вы используете Nano ID для HTML-свойства `id`, то нужно в начало написать
+Если вы используете Nano ID для HTML-свойства `id`, то нужно в начало добавить
 какую-то строку — HTML ID не может начинаться с цифры, но Nano ID иногда может
 сгенерировать такие ID.
 
 ```jsx
-<input id={'id' + this.id} type="text"/>
+<input id={'id' + this.id} type="text" />
 ```
 
 
@@ -270,14 +406,14 @@ import { nanoid } from 'nanoid'
 и [`@rollup/plugin-replace`].
 
 ```js
-  plugins: [
-    nodeResolve({
-      browser: true
-    }),
-    replace({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    })
-  ]
+plugins: [
+  nodeResolve({
+    browser: true
+  }),
+  replace({
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+  })
+]
 ```
 
 [`@rollup/plugin-node-resolve`]: https://github.com/rollup/plugins/tree/master/packages/node-resolve
@@ -308,26 +444,6 @@ const mySchema = new Schema({
     default: () => nanoid()
   }
 })
-```
-
-
-### ES-модули
-
-Nano ID сразу идёт с ES-модулями. Вам не надо ничего делать, чтобы ES-импорты
-работали в webpack, Rollup, Parcel, или Node.js.
-
-```js
-import { nanoid } from 'nanoid'
-```
-
-Для быстрого прототипирования вы можете подключить Nano ID с CDN. Специальный
-минифицированный файл `nanoid.js` есть на jsDelivr.
-
-Но не используйте этот способ на реальном сайте, так как он сильно бьёт
-по скорости загрузки сайта.
-
-```js
-import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 ```
 
 
@@ -369,137 +485,27 @@ LZfXLFzPPR4NNrgjlWDxn
 Nano ID был портирован на множество языков. Это полезно, чтобы сервер и клиент
 генерировали ID по одной схеме.
 
-* [C#](https://github.com/codeyu/nanoid-net)
-* [C++](https://github.com/mcmikecreations/nanoid_cpp)
-* [Clojure и ClojureScript](https://github.com/zelark/nano-id)
-* [Crystal](https://github.com/mamantoha/nanoid.cr)
-* [Dart и Flutter](https://github.com/pd4d10/nanoid-dart)
-* [Deno](https://github.com/ianfabs/nanoid)
-* [Go](https://github.com/matoous/go-nanoid)
-* [Elixir](https://github.com/railsmechanic/nanoid)
-* [Haskell](https://github.com/4e6/nanoid-hs)
-* [Janet](https://sr.ht/~statianzo/janet-nanoid/)
-* [Java](https://github.com/aventrix/jnanoid)
-* [Nim](https://github.com/icyphox/nanoid.nim)
-* [Perl](https://github.com/tkzwtks/Nanoid-perl)
-* [PHP](https://github.com/hidehalo/nanoid-php)
-* [Python](https://github.com/puyuan/py-nanoid)
+- [C#](https://github.com/codeyu/nanoid-net)
+- [C++](https://github.com/mcmikecreations/nanoid_cpp)
+- [Clojure и ClojureScript](https://github.com/zelark/nano-id)
+- [Crystal](https://github.com/mamantoha/nanoid.cr)
+- [Dart и Flutter](https://github.com/pd4d10/nanoid-dart)
+- [Deno](https://github.com/ianfabs/nanoid)
+- [Go](https://github.com/matoous/go-nanoid)
+- [Elixir](https://github.com/railsmechanic/nanoid)
+- [Haskell](https://github.com/4e6/nanoid-hs)
+- [Janet](https://sr.ht/~statianzo/janet-nanoid/)
+- [Java](https://github.com/aventrix/jnanoid)
+- [Nim](https://github.com/icyphox/nanoid.nim)
+- [Perl](https://github.com/tkzwtks/Nanoid-perl)
+- [PHP](https://github.com/hidehalo/nanoid-php)
+- [Python](https://github.com/puyuan/py-nanoid)
   со [словарями](https://pypi.org/project/nanoid-dictionary)
-* [Ruby](https://github.com/radeno/nanoid.rb)
-* [Rust](https://github.com/nikolay-govorov/nanoid)
-* [Swift](https://github.com/antiflasher/NanoID)
-* [V](https://github.com/invipal/nanoid)
+- [Ruby](https://github.com/radeno/nanoid.rb)
+- [Rust](https://github.com/nikolay-govorov/nanoid)
+- [Swift](https://github.com/antiflasher/NanoID)
+- [V](https://github.com/invipal/nanoid)
 
 Для остальных сред можно использовать Nano ID [для терминала].
 
 [для терминала]: #терминал
-
-
-## API
-
-### Асинхронный
-
-Для аппаратной генерации случайных чисел процессор накапливает
-электромагнитные шумы. При синхронном API процессор будет простаивать
-во время этого накопления.
-
-Но если использовать асинхронный API у Nano ID, то процессор будет
-использоваться более эффективно — во время накопления шума сможет выполняться другая задача.
-
-```js
-import { nanoid } from 'nanoid/async'
-
-async function createUser () {
-  user.id = await nanoid()
-}
-```
-
-К сожалению, эта оптимизация имеет смысл только для Node.js. Web Crypto API
-в браузерах не имеет асинхронной версии.
-
-
-### Небезопасный
-
-По умолчанию, Nano ID использует аппаратный генератор случайных чисел для
-непредсказуемости ID и минимизации рисков случайного повтора ID. Но если вам
-не нужна непредсказуемость, то вы можете сильно ускорить генерацию ID,
-перейдя на небезопасный генератор.
-
-```js
-import { nanoid } from 'nanoid/non-secure'
-const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
-```
-
-Но учтите, что предсказуемость ID может быть использована атакующим,
-чтобы сломать систему.
-
-
-### Смена алфавита или длины
-
-Функция `customAlphabet` позволяет создать свою функцию `nanoid`
-с нужным вам алфавитом и длиной ID.
-
-```js
-import { customAlphabet } from 'nanoid'
-const nanoid = customAlphabet('1234567890abcdef', 10)
-model.id = nanoid() //=> "4f90d13a42"
-```
-
-Не забудьте проверить риски коллизии вашего алфавита и длины
-[на нашем калькуляторе]. [`nanoid-dictionary`] содержит много популярных
-примеров альтернативных алфавитов.
-
-Алфавит должен содержать ≤256 символов. Иначе мы не сможем гарантировать
-непредсказуемость ID.
-
-Так же можно заменить алфавит у небезопасной и асинхронной версий.
-
-```js
-import { customAlphabet } from 'nanoid/async'
-const nanoid = customAlphabet('1234567890abcdef', 10)
-async function createUser () {
-  user.id = await nanoid()
-}
-```
-
-```js
-import { customAlphabet } from 'nanoid/non-secure'
-const nanoid = customAlphabet('1234567890abcdef', 10)
-user.id = nanoid()
-```
-
-[на нашем калькуляторе]: https://alex7kom.github.io/nano-nanoid-cc/
-[`nanoid-dictionary`]:    https://github.com/CyberAP/nanoid-dictionary
-
-
-### Смена генератора случайных чисел
-
-Функция `customRandom` позволяет создать свою функцию `nanoid` со своими
-генераторами случайных чисел, алфавитом и длинной ID.
-
-Например, можно использовать генератор c seed для повторяемости тестов.
-
-```js
-import { customRandom } from 'nanoid'
-
-const rng = seedrandom(seed)
-const nanoid = customRandom('abcdef', 10, size => {
-  return (new Uint8Array(size)).map(() => 256 * rng())
-})
-
-nanoid() //=> "fbaefaadeb"
-```
-
-Функция в третьем аргументе `customRandom` должна принимать длину массива
-и возвращать нужный массив со случайными числами
-
-Если вы хотите заменить только генератор случайных чисел, но оставить
-URL-совместимый алфавит, то стандартный алфавит доступен
-в экспорте `urlAlphabet`.
-
-```js
-const { customRandom, urlAlphabet } = require('nanoid')
-const nanoid = customRandom(urlAlphabet, 10, random)
-```
-
-У асинхронной и небезопасной версий нет `customRandom`.
