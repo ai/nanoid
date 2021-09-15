@@ -109,14 +109,8 @@ rndm                      2,447,086 ops/sec
 
 ## Подключение
 
-npm:
 ```
 npm install --save nanoid
-```
-
-yarn:
-```
-yarn add nanoid
 ```
 
 Для быстрого прототипирования вы можете подключить Nano ID с CDN без установки.
