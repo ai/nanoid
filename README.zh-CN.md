@@ -13,18 +13,18 @@
 * **小巧.** 108 bytes (已压缩和 gzipped)。 没有依赖。
   [Size Limit] 控制大小。
 * **快速.** 它比 UUID 快 60%。
-* **安全.** 它使用加密的强随机 API。
-  可在集群中使用。
+* **安全.** 它使用加密的强随机 API。可在集群中使用。
 * **紧凑.** 它使用比 UUID（`A-Za-z0-9_-`）更大的字母表。
   因此，ID 大小从36个符号减少到21个符号。
-* **易用.** Nano ID 已被移植到[19种编程语言](#其他编程语言)。
+* **易用.** Nano ID 已被移植到
+  [19种编程语言](#其他编程语言)。
 
 ```js
 import { nanoid } from 'nanoid'
 model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
-支持现代浏览器、IE[使用 Babel]、Node.js 和 React Native。
+支持现代浏览器、IE [使用 Babel]、Node.js 和 React Native。
 
 [在线工具]: https://gitpod.io/#https://github.com/ai/nanoid/
 [使用 Babel]:  https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/
@@ -39,25 +39,25 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 
 * [与 UUID 的比较](#与-uuid-的比较)
 * [基准值](#基准值)
-* [工具](#工具)
 * [安全性](#安全性)
+* [API](#api)
+  * [阻塞](#阻塞)
+  * [异步](#异步)
+  * [不安全](#不安全)
+  * [自定义字母或大小](#自定义字母或大小)
+  * [自定义随机字节生成器](#自定义随机字节生成器)
 * [用法](#用法)
-  * [JS](#js)
   * [IE](#ie)
   * [React](#react)
+  * [HTML ID](#html-id)
   * [React Native](#react-native)
   * [Rollup](#rollup)
   * [PouchDB and CouchDB](#pouchdb-and-couchdb)
   * [Mongoose](#mongoose)
-  * [ES Modules](#es-modules)
   * [Web Workers](#web-workers)
   * [CLI](#cli)
   * [其他编程语言](#other-programming-languages)
-* [API](#api)
-  * [Async](#async)
-  * [不安全](#不安全)
-  * [自定义字母或大小](#自定义字母或大小)
-  * [自定义随机字节生成器](#自定义随机字节生成器)
+* [工具](#工具)
 
 
 ## 与 UUID 的比较
@@ -104,18 +104,6 @@ rndm                      2,447,086 ops/sec
 测试配置: ThinkPad X1 Carbon Gen 9, Fedora 34, Node.js 16.9.
 
 
-## 工具
-
-* [ID size 计算器] 显示调整时的冲突概率
-  ID的字母或size。
-* [`nanoid-dictionary`] 与常用的字母一起使用 "自定义字母"。
-* [`nanoid-good`] 以确保你的ID不包含任何淫秽词汇。
-
-[`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
-[ID size 计算器]:  https://zelark.github.io/nano-id-cc/
-[`nanoid-good`]:       https://github.com/y-gagar1n/nanoid-good
-
-
 ## 安全性
 
 *请看一篇关于随机生成器理论的好文章:
@@ -131,45 +119,186 @@ rndm                      2,447,086 ops/sec
   <img src="img/distribution.png" alt="Nano ID uniformity"
      width="340" height="135">
 
+* **有据可查:** 所有的 Nano ID 的行为都有记录。
+  见 [源代码] 中的注释。
 * **漏洞:** 报告安全漏洞，请使用
   [安全联系人 Tidelift](https://tidelift.com/security).
-  Tidelift将协调修复和披露。
+  Tidelift 将协调修复和披露。
 
 [安全的随机值 (在 Node.js 中)]: https://gist.github.com/joepie91/7105003c3b26e65efcea63f3db82dfba
 [更好的算法]:                  https://github.com/ai/nanoid/blob/main/index.js
+[源代码]:                     https://github.com/ai/nanoid/blob/main/index.js
 
 
-## 用法
+## 安装
 
-### JS
+```bash
+npm install --save nanoid
+```
 
-主模块使用 URL 友好的符号（`A-Za-z0-9\-`）并返回一个具有21个字符的 ID
-（具有类似于 UUID v4的冲突概率）。
+对于快速的骇客用法，你可以从 CDN 加载 Nano ID。但是，它不建议
+在生产中使用，因为它的加载性能较低。
+
+```js
+import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
+```
+
+Nano ID提供ES模块。在 webpack、Rollup、Parcel 或 Node.js 中
+你不需要做任何事情来使用 Nano ID
+
+```js
+import { nanoid } from 'nanoid'
+```
+
+在 Node.js 中，你可以使用 CommonJS 导入:
+
+```js
+const { nanoid } = require('nanoid')
+```
+
+
+## API
+
+Nano ID 有3个 API：正常(阻塞)，异步，和不安全。
+
+默认情况下，Nano ID 使用 URL 友好的符号（`A-Za-z0-9_-`）并返回一个
+有21个字符（类似UUID v4的冲突概率）的ID。
+
+
+### 阻塞
+
+使用 Nano ID 最安全、最简单的方法
+
+在极少数情况下，噪声收集时可能会阻止CPU执行其他工作
+用于硬件随机发生器。
 
 ```js
 import { nanoid } from 'nanoid'
 model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
-在 node.js 中你可以使用 CommonJS 导入:
-
-```js
-const { nanoid } = require('nanoid')
-```
-
-如果要减小 ID 的 size（但是会增加冲突概率），
-可以将 size 作为参数传递。
+如果你想要减小ID size（但是会增加冲突概率），
+可以将 size 作为参数传递
 
 ```js
 nanoid(10) //=> "IRFa-VaY2b"
 ```
 
-不要忘记在我们的 [ID 冲突概率] 计算器中检查你的 ID size 的安全性
+别忘了检查你的ID size 的安全性
+在我们的 [ID 冲突概率] 计算器.
 
-你也可以使用一个 [自定义字母](#custom-alphabet-or-size)。
-或一个 [随机发生器](#custom-random-bytes-generator)。
+您也可以使用 [自定义字母表](#自定义字母或大小)
+或者是 [自定义生成器](#自定义随机字节生成器).
 
-[ID collision probability]: https://zelark.github.io/nano-id-cc/
+[ID 冲突概率]: https://alex7kom.github.io/nano-nanoid-cc/
+
+
+### 异步
+
+为了生成硬件随机字节，CPU收集电磁噪声。
+在大多数情况下，熵已经被收集。
+
+在噪声收集期间的同步API中，CPU忙且
+无法执行任何有用的操作（例如，处理另一个HTTP请求）。
+
+使用Nano ID的异步API，可以在熵收集期间
+运行另一个代码。
+
+```js
+import { nanoid } from 'nanoid/async'
+
+async function createUser () {
+  user.id = await nanoid()
+}
+```
+
+阅读更多有关熵收集的信息 [`crypto.randomBytes`] 文档.
+
+不幸的是，您将在浏览器中失去 Web Crypto API 的优势
+如果您使用异步 API。那么，目前在浏览器中，
+您将受到安全性或异步行为的限制。
+
+[`crypto.randomBytes`]: https://nodejs.org/api/crypto.html#crypto_crypto_randombytes_size_callback
+
+### 不安全
+
+默认情况下，Nano ID 使用硬件随机字节生成器来实现安全性
+冲突概率低。如果你不那么关心安全
+更关心性能的话，您可以使用更快的非安全生成器.
+
+```js
+import { nanoid } from 'nanoid/non-secure'
+const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
+```
+
+
+### 自定义字母或大小
+
+`customAlphabet` 允许您使用自己的字母表创建 `nanoid`
+和 ID size。
+
+```js
+import { customAlphabet } from 'nanoid'
+const nanoid = customAlphabet('1234567890abcdef', 10)
+model.id = nanoid() //=> "4f90d13a42"
+```
+
+在我们的中 [ID 冲突概率] 计算器检查您的自定义字母表和 ID size 的安全性。
+有关更多字母表, 请在 [`nanoid-dictionary`] 查看选项.
+
+字母表必须包含256个或更少的符号。
+否则，无法保证内部生成器算法的安全性。
+
+还提供了可定制的异步和非安全API:
+
+```js
+import { customAlphabet } from 'nanoid/async'
+const nanoid = customAlphabet('1234567890abcdef', 10)
+async function createUser () {
+  user.id = await nanoid()
+}
+```
+
+```js
+import { customAlphabet } from 'nanoid/non-secure'
+const nanoid = customAlphabet('1234567890abcdef', 10)
+user.id = nanoid()
+```
+
+[`nanoid-dictionary`]:      https://github.com/CyberAP/nanoid-dictionary
+
+
+### 自定义随机字节生成器
+
+`customRandom` 允许您创建一个 `nanoid` 并替换字母表
+和默认的随机字节生成器。
+
+在此示例中，使用基于种子的生成器:
+
+```js
+import { customRandom } from 'nanoid'
+
+const rng = seedrandom(seed)
+const nanoid = customRandom('abcdef', 10, size => {
+  return (new Uint8Array(size)).map(() => 256 * rng())
+})
+
+nanoid() //=> "fbaefaadeb"
+```
+
+`random` 回调必须接受数组大小并返回随机数的数组。
+
+如果要使用与 `customRandom` 相同的URL友好符号,
+您可以使用 `urlAlphabet` 获取默认字母表。
+
+```js
+const { customRandom, urlAlphabet } = require('nanoid')
+const nanoid = customRandom(urlAlphabet, 10, random)
+```
+
+异步和非安全 API 不适用于 `customRandom`。
+
+## 用法
 
 
 ### IE
@@ -232,8 +361,11 @@ const todoItems = todos.map((text, index) =>
 )
 ```
 
-如果要在 `ID` 属性中使用 Nano ID，必须设置一些字符串前缀
-（HTML ID以数字开头是无效的）。
+
+### HTML ID
+
+如果你想使用 Nano ID 作为 `id` 属性，你必须设置一些字符串前缀
+(HTML ID 以数字开头是无效的)
 
 ```jsx
 <input id={'id' + this.id} type="text"/>
@@ -304,24 +436,6 @@ const mySchema = new Schema({
 ```
 
 
-### ES Modules
-
-Nano ID提供ES模块。在 webpack、Rollup、Parcel 或 Node.js 中你不需要做任何事情来使用 Nano ID
-
-```js
-import { nanoid } from 'nanoid'
-```
-
-对于快速的骇客用法，你可以从 CDN 加载 Nano ID。特殊的小型化
-`nanoid.js` 模块可以在 jsDelivr 上找到.
-
-不过, 不建议在生产中使用它，因为它的加载性能较低.
-
-```js
-import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
-```
-
-
 ### Web Workers
 
 Web Workers 无法访问安全的随机生成器.
@@ -383,106 +497,14 @@ Nano ID 已被移植到许多语言。 你可以使用下面这些移植，获�
 [CLI]: #cli
 
 
-## API
+## 工具
 
-### Async
+* [ID size 计算器] 显示调整时的冲突概率
+  ID的字母或size。
+* [`nanoid-dictionary`] 与常用的字母一起使用 [`自定义字母`]。
+* [`nanoid-good`] 以确保你的ID不包含任何淫秽词汇。
 
-为了生成硬件随机字节，CPU 收集电磁噪声。
-在噪声收集期间的同步 API 中，CPU 忙且不能做任何有用的并行工作。
-不能做任何有用的并行工作。
-
-使用 Nano ID 的异步 API，可以在运行过程中运行另一个代码熵集合
-
-
-```js
-import { nanoid } from 'nanoid/async'
-
-async function createUser () {
-  user.id = await nanoid()
-}
-```
-
-不幸的是，您将在浏览器中失去 Web Crypto API 的优势
-如果您使用异步 API。那么，目前在浏览器中，您将受到安全性或异步行为的限制。
-
-
-### 不安全
-
-默认情况下，Nano ID 使用硬件随机字节生成器来实现安全性
-冲突概率低。如果你不那么关心安全
-更关心性能的话，您可以使用更快的非安全生成器.
-
-```js
-import { nanoid } from 'nanoid/non-secure'
-const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
-```
-
-注意：您的 ID 将更可预测，更容易遇到冲突。
-
-
-### 自定义字母或大小
-
-`customAlphabet` 允许您使用自己的字母表创建 `nanoid`
-和 ID size。
-
-```js
-import { customAlphabet } from 'nanoid'
-const nanoid = customAlphabet('1234567890abcdef', 10)
-model.id = nanoid() //=> "4f90d13a42"
-```
-
-在我们的中 [ID 冲突概率] 计算器检查您的自定义字母表和 ID size 的安全性。
-有关更多字母表, 请在 [`nanoid-dictionary`] 查看选项.
-
-字母表必须包含256个或更少的符号。
-否则，无法保证内部生成器算法的安全性。
-
-还提供了可定制的异步和非安全API:
-
-```js
-import { customAlphabet } from 'nanoid/async'
-const nanoid = customAlphabet('1234567890abcdef', 10)
-async function createUser () {
-  user.id = await nanoid()
-}
-```
-
-```js
-import { customAlphabet } from 'nanoid/non-secure'
-const nanoid = customAlphabet('1234567890abcdef', 10)
-user.id = nanoid()
-```
-
-[ID 冲突概率]: https://alex7kom.github.io/nano-nanoid-cc/
-[`nanoid-dictionary`]:      https://github.com/CyberAP/nanoid-dictionary
-
-
-### 自定义随机字节生成器
-
-`customRandom` 允许您创建一个 `nanoid` 并替换字母表
-和默认的随机字节生成器。
-
-在此示例中，使用基于种子的生成器:
-
-```js
-import { customRandom } from 'nanoid'
-
-const rng = seedrandom(seed)
-const nanoid = customRandom('abcdef', 10, size => {
-  return (new Uint8Array(size)).map(() => 256 * rng())
-})
-
-nanoid() //=> "fbaefaadeb"
-```
-
-`random` 回调必须接受数组大小并返回随机数的数组。
-
-如果要使用与 `customRandom` 相同的URL友好符号,
-您可以使用 `urlAlphabet` 获取默认字母表。
-
-```js
-const { customRandom, urlAlphabet } = require('nanoid')
-const nanoid = customRandom(urlAlphabet, 10, random)
-```
-
-异步和非安全 API 不适用于 `customRandom`。
+[`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
+[ID size 计算器]:  https://zelark.github.io/nano-id-cc/
+[`自定义字母`]:    #自定义字母或大小
+[`nanoid-good`]:       https://github.com/y-gagar1n/nanoid-good
