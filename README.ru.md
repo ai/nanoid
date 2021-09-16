@@ -316,19 +316,6 @@ const nanoid = customRandom(urlAlphabet, 10, random)
 У асинхронной и небезопасной версий нет `customRandom`.
 
 
-## Инструменты
-
-- [Калькулятор длины ID] поможет подобрать оптимальную длину ID,
-  в зависимости от частоты выдачи ID и нужной надёжности системы.
-- [`nanoid-dictionary`] с популярными алфавитами для [`customAlphabet`].
-- [`nanoid-good`] гарантирует, что в случайном ID не будет матерных слов.
-
-[калькулятор длины id]: https://zelark.github.io/nano-id-cc/
-[`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
-[`customalphabet`]: #смена-алфавита-или-длины
-[`nanoid-good`]: https://github.com/y-gagar1n/nanoid-good
-
-
 ## Руководство
 
 ### IE
@@ -510,3 +497,16 @@ Nano ID был портирован на множество языков. Это
 Для остальных сред можно использовать Nano ID [для терминала].
 
 [для терминала]: #терминал
+
+
+## Инструменты
+
+- [Калькулятор длины ID] поможет подобрать оптимальную длину ID,
+  в зависимости от частоты выдачи ID и нужной надёжности системы.
+- [`nanoid-dictionary`] с популярными алфавитами для [`customAlphabet`].
+- [`nanoid-good`] гарантирует, что в случайном ID не будет матерных слов.
+
+[калькулятор длины id]: https://zelark.github.io/nano-id-cc/
+[`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
+[`customalphabet`]: #смена-алфавита-или-длины
+[`nanoid-good`]: https://github.com/y-gagar1n/nanoid-good
