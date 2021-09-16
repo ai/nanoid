@@ -195,12 +195,14 @@ nanoid(10) //=> "IRFa-VaY2b"
 
 ### 异步
 
-为了生成硬件随机字节，CPU 收集电磁噪声。
-在噪声收集期间的同步 API 中，CPU 忙且不能做任何有用的并行工作。
-不能做任何有用的并行工作。
+为了生成硬件随机字节，CPU收集电磁噪声。
+在大多数情况下，熵已经被收集。
 
-使用 Nano ID 的异步 API，可以在运行过程中运行另一个代码熵集合
+在噪声收集期间的同步API中，CPU忙且
+无法执行任何有用的操作（例如，处理另一个HTTP请求）。
 
+使用Nano ID的异步API，可以在熵收集期间
+运行另一个代码。
 
 ```js
 import { nanoid } from 'nanoid/async'
@@ -210,9 +212,13 @@ async function createUser () {
 }
 ```
 
-不幸的是，您将在浏览器中失去 Web Crypto API 的优势
-如果您使用异步 API。那么，目前在浏览器中，您将受到安全性或异步行为的限制。
+阅读更多有关熵收集的信息 [`crypto.randomBytes`] 文档.
 
+不幸的是，您将在浏览器中失去 Web Crypto API 的优势
+如果您使用异步 API。那么，目前在浏览器中，
+您将受到安全性或异步行为的限制。
+
+[`crypto.randomBytes`]: https://nodejs.org/api/crypto.html#crypto_crypto_randombytes_size_callback
 
 ### 不安全
 
@@ -224,8 +230,6 @@ async function createUser () {
 import { nanoid } from 'nanoid/non-secure'
 const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
-
-注意：您的 ID 将更可预测，更容易遇到冲突。
 
 
 ### 自定义字母或大小
@@ -357,8 +361,11 @@ const todoItems = todos.map((text, index) =>
 )
 ```
 
-如果要在 `ID` 属性中使用 Nano ID，必须设置一些字符串前缀
-（HTML ID以数字开头是无效的）。
+
+### HTML ID
+
+如果你想使用 Nano ID 作为 `id` 属性，你必须设置一些字符串前缀
+(HTML ID 以数字开头是无效的)
 
 ```jsx
 <input id={'id' + this.id} type="text"/>
@@ -379,16 +386,6 @@ import { nanoid } from 'nanoid'
 ```
 
 [`react-native-get-random-values`]: https://github.com/LinusU/react-native-get-random-values
-
-
-### HTML ID
-
-如果你想使用 Nano ID 作为 `id` 属性，你必须设置一些字符串前缀
-(HTML ID 以数字开头是无效的)
-
-```jsx
-<input id={'id' + this.id} type="text"/>
-```
 
 
 ### Rollup
