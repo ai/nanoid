@@ -162,7 +162,7 @@ const { nanoid } = require('nanoid')
 Nano ID 有3个 API：正常(阻塞)，异步，和不安全。
 
 默认情况下，Nano ID 使用 URL 友好的符号（`A-Za-z0-9_-`）并返回一个
-有21个字符（类似UUID v4的碰撞概率）的ID。
+有21个字符（类似UUID v4的冲突概率）的ID。
 
 
 ### 阻塞
