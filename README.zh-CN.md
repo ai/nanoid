@@ -172,6 +172,26 @@ Nano ID 有3个 API：正常(阻塞)，异步，和不安全。
 在极少数情况下，噪声收集时可能会阻止CPU执行其他工作
 用于硬件随机发生器。
 
+```js
+import { nanoid } from 'nanoid'
+model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
+```
+
+如果你想要减小ID size（但是会增加冲突概率），
+可以将 size 作为参数传递
+
+```js
+nanoid(10) //=> "IRFa-VaY2b"
+```
+
+别忘了检查你的ID size 的安全性
+在我们的 [ID 冲突概率] 计算器.
+
+您也可以使用 [自定义字母表](#自定义字母或大小)
+或者是 [自定义生成器](#自定义随机字节生成器).
+
+[ID 冲突概率]: https://alex7kom.github.io/nano-nanoid-cc/
+
 
 ### 异步
 
@@ -241,7 +261,6 @@ const nanoid = customAlphabet('1234567890abcdef', 10)
 user.id = nanoid()
 ```
 
-[ID 冲突概率]: https://alex7kom.github.io/nano-nanoid-cc/
 [`nanoid-dictionary`]:      https://github.com/CyberAP/nanoid-dictionary
 
 
