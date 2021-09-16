@@ -13,18 +13,18 @@
 * **小巧.** 108 bytes (已压缩和 gzipped)。 没有依赖。
   [Size Limit] 控制大小。
 * **快速.** 它比 UUID 快 60%。
-* **安全.** 它使用加密的强随机 API。
-  可在集群中使用。
+* **安全.** 它使用加密的强随机 API。可在集群中使用。
 * **紧凑.** 它使用比 UUID（`A-Za-z0-9_-`）更大的字母表。
   因此，ID 大小从36个符号减少到21个符号。
-* **易用.** Nano ID 已被移植到[19种编程语言](#其他编程语言)。
+* **易用.** Nano ID 已被移植到
+  [19种编程语言](#其他编程语言)。
 
 ```js
 import { nanoid } from 'nanoid'
 model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
-支持现代浏览器、IE[使用 Babel]、Node.js 和 React Native。
+支持现代浏览器、IE [使用 Babel]、Node.js 和 React Native。
 
 [在线工具]: https://gitpod.io/#https://github.com/ai/nanoid/
 [使用 Babel]:  https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/
@@ -39,25 +39,25 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 
 * [与 UUID 的比较](#与-uuid-的比较)
 * [基准值](#基准值)
-* [工具](#工具)
 * [安全性](#安全性)
+* [API](#api)
+  * [阻塞](#阻塞)
+  * [异步](#异步)
+  * [不安全](#不安全)
+  * [自定义字母或大小](#自定义字母或大小)
+  * [自定义随机字节生成器](#自定义随机字节生成器)
 * [用法](#用法)
-  * [JS](#js)
   * [IE](#ie)
   * [React](#react)
+  * [HTML ID](#html-id)
   * [React Native](#react-native)
   * [Rollup](#rollup)
   * [PouchDB and CouchDB](#pouchdb-and-couchdb)
   * [Mongoose](#mongoose)
-  * [ES Modules](#es-modules)
   * [Web Workers](#web-workers)
   * [CLI](#cli)
   * [其他编程语言](#other-programming-languages)
-* [API](#api)
-  * [Async](#async)
-  * [不安全](#不安全)
-  * [自定义字母或大小](#自定义字母或大小)
-  * [自定义随机字节生成器](#自定义随机字节生成器)
+* [工具](#工具)
 
 
 ## 与 UUID 的比较
@@ -104,18 +104,6 @@ rndm                      2,447,086 ops/sec
 测试配置: ThinkPad X1 Carbon Gen 9, Fedora 34, Node.js 16.9.
 
 
-## 工具
-
-* [ID size 计算器] 显示调整时的冲突概率
-  ID的字母或size。
-* [`nanoid-dictionary`] 与常用的字母一起使用 "自定义字母"。
-* [`nanoid-good`] 以确保你的ID不包含任何淫秽词汇。
-
-[`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
-[ID size 计算器]:  https://zelark.github.io/nano-id-cc/
-[`nanoid-good`]:       https://github.com/y-gagar1n/nanoid-good
-
-
 ## 安全性
 
 *请看一篇关于随机生成器理论的好文章:
@@ -131,261 +119,61 @@ rndm                      2,447,086 ops/sec
   <img src="img/distribution.png" alt="Nano ID uniformity"
      width="340" height="135">
 
+* **有据可查:** 所有的 Nano ID 的行为都有记录。
+  见 [源代码] 中的注释。
 * **漏洞:** 报告安全漏洞，请使用
   [安全联系人 Tidelift](https://tidelift.com/security).
-  Tidelift将协调修复和披露。
+  Tidelift 将协调修复和披露。
 
 [安全的随机值 (在 Node.js 中)]: https://gist.github.com/joepie91/7105003c3b26e65efcea63f3db82dfba
 [更好的算法]:                  https://github.com/ai/nanoid/blob/main/index.js
+[源代码]:                     https://github.com/ai/nanoid/blob/main/index.js
 
 
-## 用法
+## 安装
 
-### JS
-
-主模块使用 URL 友好的符号（`A-Za-z0-9\-`）并返回一个具有21个字符的 ID
-（具有类似于 UUID v4的冲突概率）。
-
-```js
-import { nanoid } from 'nanoid'
-model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
+```bash
+npm install --save nanoid
 ```
 
-在 node.js 中你可以使用 CommonJS 导入:
-
-```js
-const { nanoid } = require('nanoid')
-```
-
-如果要减小 ID 的 size（但是会增加冲突概率），
-可以将 size 作为参数传递。
-
-```js
-nanoid(10) //=> "IRFa-VaY2b"
-```
-
-不要忘记在我们的 [ID 冲突概率] 计算器中检查你的 ID size 的安全性
-
-你也可以使用一个 [自定义字母](#custom-alphabet-or-size)。
-或一个 [随机发生器](#custom-random-bytes-generator)。
-
-[ID collision probability]: https://zelark.github.io/nano-id-cc/
-
-
-### IE
-
-如果你需要支持 IE, 则需要使用 Babel [转换 `node_modules`]
-并添加 `crypto` 别名:
-
-```js
-// polyfills.js
-if (!window.crypto) {
-  window.crypto = window.msCrypto
-}
-```
-
-```js
-import './polyfills.js'
-import { nanoid } from 'nanoid'
-```
-
-[转换 `node_modules`]: https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/
-
-
-### React
-
-目前还没有将 nanoid 用于 React `key` prop 的正确方法
-因为它在不同的渲染中应该是一致的。
-
-```jsx
-function Todos({todos}) {
-  return (
-    <ul>
-      {todos.map(todo => (
-        <li key={nanoid()}> /* 不要这样做 */
-          {todo.text}
-        </li>
-      ))}
-    </ul>
-  )
-}
-```
-
-您应该尝试在列表项中找到稳定的 id。
-
-```jsx
-const todoItems = todos.map((todo) =>
-  <li key={todo.id}>
-    {todo.text}
-  </li>
-)
-```
-
-如果您没有稳定的 ID，您最好使用索引作为 `键` 而不是 `nanoid()`：
-
-```jsx
-const todoItems = todos.map((text, index) =>
-  <li key={index}> /* 仍然不推荐，但优于 nanoid()。
-                      仅当项目没有稳定ID时才执行此操作。 */
-    {text}
-  </li>
-)
-```
-
-如果要在 `ID` 属性中使用 Nano ID，必须设置一些字符串前缀
-（HTML ID以数字开头是无效的）。
-
-```jsx
-<input id={'id' + this.id} type="text"/>
-```
-
-
-### React Native
-
-React Native 没有内置的随机生成器。下面的 polyfill
-适用于普通 React Native 和从 `39.x` 开始的 Expo。
-
-1. 检查 [`react-native-get-random-values`] 文档并安装它。
-2. 在 Nano ID 之前导入它。
-
-```js
-import 'react-native-get-random-values'
-import { nanoid } from 'nanoid'
-```
-
-[`react-native-get-random-values`]: https://github.com/LinusU/react-native-get-random-values
-
-
-### Rollup
-
-对于 Rollup 来说，你需要 [`@rollup/plugin-node-resolve`] 来绑定浏览器版本。
-除了这个库，还需要 [`@rollup/plugin-replace`] 来替换 `process.env.NODE_ENV`。
-
-```js
-  plugins: [
-    nodeResolve({
-      browser: true
-    }),
-    replace({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    })
-  ]
-```
-
-[`@rollup/plugin-node-resolve`]: https://github.com/rollup/plugins/tree/master/packages/node-resolve
-[`@rollup/plugin-replace`]: https://github.com/rollup/plugins/tree/master/packages/replace
-
-
-### PouchDB and CouchDB
-
-在 PouchDB 和 CouchDB 中，ID 不能以下划线 `_` 开头。
-需要一个前缀来防止这个问题，因为 Nano ID 可能在默认情况下使用 `_` 作为 ID 的开头。
-在默认情况下，在 ID 的开头使用 `_`。
-
-用下面的选项覆盖默认的 ID。
-
-```js
-db.put({
-  _id: 'id' + nanoid(),
-  …
-})
-```
-
-
-### Mongoose
-
-```js
-const mySchema = new Schema({
-  _id: {
-    type: String,
-    default: () => nanoid()
-  }
-})
-```
-
-
-### ES Modules
-
-Nano ID提供ES模块。在 webpack、Rollup、Parcel 或 Node.js 中你不需要做任何事情来使用 Nano ID
-
-```js
-import { nanoid } from 'nanoid'
-```
-
-对于快速的骇客用法，你可以从 CDN 加载 Nano ID。特殊的小型化
-`nanoid.js` 模块可以在 jsDelivr 上找到.
-
-不过, 不建议在生产中使用它，因为它的加载性能较低.
+对于快速的骇客用法，你可以从 CDN 加载 Nano ID。但是，它不建议
+在生产中使用，因为它的加载性能较低。
 
 ```js
 import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 ```
 
-
-### Web Workers
-
-Web Workers 无法访问安全的随机生成器.
-
-当ID应该是不可预测的时候，安全性对ID很重要。
-例如，在 "按 URL 访问"的链接生成中。
-如果你不需要不可预测的 ID，但你需要使用 Web Workers。
-你可以使用非安全的 ID 生成器。
+Nano ID提供ES模块。在 webpack、Rollup、Parcel 或 Node.js 中
+你不需要做任何事情来使用 Nano ID
 
 ```js
-import { nanoid } from 'nanoid/non-secure'
-nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
+import { nanoid } from 'nanoid'
 ```
 
+在 Node.js 中，你可以使用 CommonJS 导入:
 
-### CLI
-
-你可以通过调用 `npx nanoid` 在终端获得唯一的 ID。你只需要
-在系统中安装了 Node.js。你不需要把 Nano ID 安装在任何地方。
-
-```sh
-$ npx nanoid
-npx: installed 1 in 0.63s
-LZfXLFzPPR4NNrgjlWDxn
+```js
+const { nanoid } = require('nanoid')
 ```
-
-如果你想改变字母或 ID size，你应该使用 [`nanoid-cli`]。
-
-[`nanoid-cli`]: https://github.com/twhitbeck/nanoid-cli
-
-
-### 其他编程语言
-
-Nano ID 已被移植到许多语言。 你可以使用下面这些移植，获取在客户端和服务器端相同的ID生成器。
-
-* [C#](https://github.com/codeyu/nanoid-net)
-* [C++](https://github.com/mcmikecreations/nanoid_cpp)
-* [Clojure and ClojureScript](https://github.com/zelark/nano-id)
-* [Crystal](https://github.com/mamantoha/nanoid.cr)
-* [Dart & Flutter](https://github.com/pd4d10/nanoid-dart)
-* [Deno](https://github.com/ianfabs/nanoid)
-* [Go](https://github.com/matoous/go-nanoid)
-* [Elixir](https://github.com/railsmechanic/nanoid)
-* [Haskell](https://github.com/4e6/nanoid-hs)
-* [Janet](https://sr.ht/~statianzo/janet-nanoid/)
-* [Java](https://github.com/aventrix/jnanoid)
-* [Nim](https://github.com/icyphox/nanoid.nim)
-* [Perl](https://github.com/tkzwtks/Nanoid-perl)
-* [PHP](https://github.com/hidehalo/nanoid-php)
-* [Python](https://github.com/puyuan/py-nanoid)
-  with [dictionaries](https://pypi.org/project/nanoid-dictionary)
-* [Ruby](https://github.com/radeno/nanoid.rb)
-* [Rust](https://github.com/nikolay-govorov/nanoid)
-* [Swift](https://github.com/antiflasher/NanoID)
-* [V](https://github.com/invipal/nanoid)
-
-此外，[CLI] 还可用于从命令行生成 ID。
-
-[CLI]: #cli
 
 
 ## API
 
-### Async
+Nano ID 有3个 API：正常(阻塞)，异步，和不安全。
+
+默认情况下，Nano ID 使用 URL 友好的符号（`A-Za-z0-9_-`）并返回一个
+有21个字符（类似UUID v4的碰撞概率）的ID。
+
+
+### 阻塞
+
+使用 Nano ID 最安全、最简单的方法
+
+在极少数情况下，噪声收集时可能会阻止CPU执行其他工作
+用于硬件随机发生器。
+
+
+### 异步
 
 为了生成硬件随机字节，CPU 收集电磁噪声。
 在噪声收集期间的同步 API 中，CPU 忙且不能做任何有用的并行工作。
@@ -486,3 +274,221 @@ const nanoid = customRandom(urlAlphabet, 10, random)
 ```
 
 异步和非安全 API 不适用于 `customRandom`。
+
+## 用法
+
+
+### IE
+
+如果你需要支持 IE, 则需要使用 Babel [转换 `node_modules`]
+并添加 `crypto` 别名:
+
+```js
+// polyfills.js
+if (!window.crypto) {
+  window.crypto = window.msCrypto
+}
+```
+
+```js
+import './polyfills.js'
+import { nanoid } from 'nanoid'
+```
+
+[转换 `node_modules`]: https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/
+
+
+### React
+
+目前还没有将 nanoid 用于 React `key` prop 的正确方法
+因为它在不同的渲染中应该是一致的。
+
+```jsx
+function Todos({todos}) {
+  return (
+    <ul>
+      {todos.map(todo => (
+        <li key={nanoid()}> /* 不要这样做 */
+          {todo.text}
+        </li>
+      ))}
+    </ul>
+  )
+}
+```
+
+您应该尝试在列表项中找到稳定的 id。
+
+```jsx
+const todoItems = todos.map((todo) =>
+  <li key={todo.id}>
+    {todo.text}
+  </li>
+)
+```
+
+如果您没有稳定的 ID，您最好使用索引作为 `键` 而不是 `nanoid()`：
+
+```jsx
+const todoItems = todos.map((text, index) =>
+  <li key={index}> /* 仍然不推荐，但优于 nanoid()。
+                      仅当项目没有稳定ID时才执行此操作。 */
+    {text}
+  </li>
+)
+```
+
+如果要在 `ID` 属性中使用 Nano ID，必须设置一些字符串前缀
+（HTML ID以数字开头是无效的）。
+
+```jsx
+<input id={'id' + this.id} type="text"/>
+```
+
+
+### React Native
+
+React Native 没有内置的随机生成器。下面的 polyfill
+适用于普通 React Native 和从 `39.x` 开始的 Expo。
+
+1. 检查 [`react-native-get-random-values`] 文档并安装它。
+2. 在 Nano ID 之前导入它。
+
+```js
+import 'react-native-get-random-values'
+import { nanoid } from 'nanoid'
+```
+
+[`react-native-get-random-values`]: https://github.com/LinusU/react-native-get-random-values
+
+
+### HTML ID
+
+如果你想使用 Nano ID 作为 `id` 属性，你必须设置一些字符串前缀
+(HTML ID 以数字开头是无效的)
+
+```jsx
+<input id={'id' + this.id} type="text"/>
+```
+
+
+### Rollup
+
+对于 Rollup 来说，你需要 [`@rollup/plugin-node-resolve`] 来绑定浏览器版本。
+除了这个库，还需要 [`@rollup/plugin-replace`] 来替换 `process.env.NODE_ENV`。
+
+```js
+  plugins: [
+    nodeResolve({
+      browser: true
+    }),
+    replace({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    })
+  ]
+```
+
+[`@rollup/plugin-node-resolve`]: https://github.com/rollup/plugins/tree/master/packages/node-resolve
+[`@rollup/plugin-replace`]: https://github.com/rollup/plugins/tree/master/packages/replace
+
+
+### PouchDB and CouchDB
+
+在 PouchDB 和 CouchDB 中，ID 不能以下划线 `_` 开头。
+需要一个前缀来防止这个问题，因为 Nano ID 可能在默认情况下使用 `_` 作为 ID 的开头。
+在默认情况下，在 ID 的开头使用 `_`。
+
+用下面的选项覆盖默认的 ID。
+
+```js
+db.put({
+  _id: 'id' + nanoid(),
+  …
+})
+```
+
+
+### Mongoose
+
+```js
+const mySchema = new Schema({
+  _id: {
+    type: String,
+    default: () => nanoid()
+  }
+})
+```
+
+
+### Web Workers
+
+Web Workers 无法访问安全的随机生成器.
+
+当ID应该是不可预测的时候，安全性对ID很重要。
+例如，在 "按 URL 访问"的链接生成中。
+如果你不需要不可预测的 ID，但你需要使用 Web Workers。
+你可以使用非安全的 ID 生成器。
+
+```js
+import { nanoid } from 'nanoid/non-secure'
+nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
+```
+
+
+### CLI
+
+你可以通过调用 `npx nanoid` 在终端获得唯一的 ID。你只需要
+在系统中安装了 Node.js。你不需要把 Nano ID 安装在任何地方。
+
+```sh
+$ npx nanoid
+npx: installed 1 in 0.63s
+LZfXLFzPPR4NNrgjlWDxn
+```
+
+如果你想改变字母或 ID size，你应该使用 [`nanoid-cli`]。
+
+[`nanoid-cli`]: https://github.com/twhitbeck/nanoid-cli
+
+
+### 其他编程语言
+
+Nano ID 已被移植到许多语言。 你可以使用下面这些移植，获取在客户端和服务器端相同的ID生成器。
+
+* [C#](https://github.com/codeyu/nanoid-net)
+* [C++](https://github.com/mcmikecreations/nanoid_cpp)
+* [Clojure and ClojureScript](https://github.com/zelark/nano-id)
+* [Crystal](https://github.com/mamantoha/nanoid.cr)
+* [Dart & Flutter](https://github.com/pd4d10/nanoid-dart)
+* [Deno](https://github.com/ianfabs/nanoid)
+* [Go](https://github.com/matoous/go-nanoid)
+* [Elixir](https://github.com/railsmechanic/nanoid)
+* [Haskell](https://github.com/4e6/nanoid-hs)
+* [Janet](https://sr.ht/~statianzo/janet-nanoid/)
+* [Java](https://github.com/aventrix/jnanoid)
+* [Nim](https://github.com/icyphox/nanoid.nim)
+* [Perl](https://github.com/tkzwtks/Nanoid-perl)
+* [PHP](https://github.com/hidehalo/nanoid-php)
+* [Python](https://github.com/puyuan/py-nanoid)
+  with [dictionaries](https://pypi.org/project/nanoid-dictionary)
+* [Ruby](https://github.com/radeno/nanoid.rb)
+* [Rust](https://github.com/nikolay-govorov/nanoid)
+* [Swift](https://github.com/antiflasher/NanoID)
+* [V](https://github.com/invipal/nanoid)
+
+此外，[CLI] 还可用于从命令行生成 ID。
+
+[CLI]: #cli
+
+
+## 工具
+
+* [ID size 计算器] 显示调整时的冲突概率
+  ID的字母或size。
+* [`nanoid-dictionary`] 与常用的字母一起使用 [`自定义字母`]。
+* [`nanoid-good`] 以确保你的ID不包含任何淫秽词汇。
+
+[`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
+[ID size 计算器]:  https://zelark.github.io/nano-id-cc/
+[`自定义字母`]:    #自定义字母或大小
+[`nanoid-good`]:       https://github.com/y-gagar1n/nanoid-good
