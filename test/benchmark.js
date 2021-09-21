@@ -2,7 +2,7 @@
 
 let { v4: uuid4 } = require('uuid')
 let benchmark = require('benchmark')
-let { bold } = require('colorette')
+let { bold } = require('nanocolors')
 let shortid = require('shortid')
 let cuid = require('cuid')
 let rndm = require('rndm')

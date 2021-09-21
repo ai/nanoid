@@ -47,7 +47,6 @@
     "@typescript-eslint/parser": "^4.31.1",
     "benchmark": "^2.1.4",
     "check-dts": "^0.5.5",
-    "colorette": "^1.4.0",
     "cuid": "^2.1.8",
     "dual-publish": "^1.0.8",
     "eslint": "^7.32.0",
@@ -230,5 +229,8 @@
   "sharec": {
     "config": "@logux/sharec-config",
     "version": "0.11.0"
+  },
+  "dependencies": {
+    "nanocolors": "^0.1.0"
   }
 }
