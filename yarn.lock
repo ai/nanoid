@@ -3174,10 +3174,10 @@ dotenv@^7.0.0:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-7.0.0.tgz#a2be3cd52736673206e8a85fb5210eea29628e7c"
   integrity sha512-M3NhsLbV1i6HuGzBUH8vXrtxOk+tWmzWKDMbAVSUp3Zsjm7ywFeuwrUXhmhQyRK1q5B5GGy7hcXPbj3bnfZg2g==
 
-dual-publish@^1.0.10:
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/dual-publish/-/dual-publish-1.0.10.tgz#428fe1584194c493288abd4951d90739ceb72471"
-  integrity sha512-5DgM3axGkCptJWKiFF44NNQ81zwDygxDhUamkJLg2fKP8nE9wZaoFtZ/2AuCczTxKFHIc5dQehl9ji3Zm8PjRw==
+dual-publish@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/dual-publish/-/dual-publish-2.0.0.tgz#aa37337bb86230a2286a490d94717ae67105586d"
+  integrity sha512-x21I3ew6bxImLzRVdgowZzlSlTpUES4tkRRhpElOqXmAEgXsFbiP4KCFQ5S46XtwfEozADd4vzEINRrRV+BMTA==
   dependencies:
     clean-publish "^3.0.1"
     globby "^11.0.2"
