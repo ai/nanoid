@@ -12,7 +12,7 @@ A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 
 * **Small.** 108 bytes (minified and gzipped). No dependencies.
   [Size Limit] controls the size.
-* **Fast.** It is 60% faster than UUID.
+* **Fast.** It is 2 times faster than UUID.
 * **Safe.** It uses hardware random generator. Can be used in clusters.
 * **Short IDs.** It uses a larger alphabet than UUID (`A-Za-z0-9_-`).
   So ID size was reduced from 36 to 21 symbols.
@@ -75,20 +75,20 @@ There are three main differences between Nano ID and UUID v4:
    are packed in just 21 symbols instead of 36.
 2. Nano ID code is **4.5 times less** than `uuid/v4` package:
    108 bytes instead of 483.
-3. Because of memory allocation tricks, Nano ID is **60%** faster than UUID.
+3. Because of memory allocation tricks, Nano ID is **2 times** faster than UUID.
 
 
 ## Benchmark
 
 ```rust
 $ node ./test/benchmark.js
-nanoid                    2,280,683 ops/sec
-customAlphabet            1,851,117 ops/sec
-uuid v4                   1,348,425 ops/sec
-uid.sync                    313,306 ops/sec
-secure-random-string        294,161 ops/sec
-cuid                        158,988 ops/sec
-shortid                      37,222 ops/sec
+nanoid                    4,975,393 ops/sec
+customAlphabet            2,717,877 ops/sec
+uuid v4                   1,778,339 ops/sec
+uid.sync                    391,311 ops/sec
+secure-random-string        372,537 ops/sec
+cuid                        201,645 ops/sec
+shortid                      50,462 ops/sec
 
 Async:
 async nanoid                 95,500 ops/sec
@@ -101,7 +101,7 @@ non-secure nanoid         2,641,654 ops/sec
 rndm                      2,447,086 ops/sec
 ```
 
-Test configuration: ThinkPad X1 Carbon Gen 9, Fedora 34, Node.js 16.9.
+Test configuration: ThinkPad X1 Carbon Gen 9, Fedora 34, Node.js 16.8.
 
 
 ## Security

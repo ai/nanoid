@@ -13,7 +13,7 @@ ID можно применять в URL.
 
 - **Лёгкий.** 108 байт (после минификации и gzip). Без зависимостей.
   [Size Limit] следит за размером.
-- **Быстрый.** На 60 % быстрее UUID.
+- **Быстрый.** В 2 раза быстрее UUID.
 - **Безопасный.** Использует аппаратный генератор случайных чисел.
   Можно использовать в кластерах машин.
 - **Короткие ID.** Используется больший алфавит, чем у UUID (`A-Za-z0-9_-`).
@@ -80,20 +80,21 @@ Nano ID похож на UUID v4 (случайный).
    битов случайности будут упакованы в более короткую строку
    (21 символ, против 36 у UUID).
 2. Код Nano ID **в 4.5 раз меньше**, чем у `uuid/v4` — 108 байт против 483.
-3. Благодаря оптимизациям с выделением памяти, Nano ID **на 60% быстрее** UUID.
+3. Благодаря оптимизациям с выделением памяти,
+   Nano ID **в 2 раза быстрее** UUID.
 
 
 ## Сравнение производительности
 
 ```rust
 $ node ./test/benchmark.js
-nanoid                    2,280,683 ops/sec
-customAlphabet            1,851,117 ops/sec
-uuid v4                   1,348,425 ops/sec
-uid.sync                    313,306 ops/sec
-secure-random-string        294,161 ops/sec
-cuid                        158,988 ops/sec
-shortid                      37,222 ops/sec
+nanoid                    4,975,393 ops/sec
+customAlphabet            2,717,877 ops/sec
+uuid v4                   1,778,339 ops/sec
+uid.sync                    391,311 ops/sec
+secure-random-string        372,537 ops/sec
+cuid                        201,645 ops/sec
+shortid                      50,462 ops/sec
 
 Async:
 async nanoid                 95,500 ops/sec
@@ -106,7 +107,7 @@ non-secure nanoid         2,641,654 ops/sec
 rndm                      2,447,086 ops/sec
 ```
 
-Среда сравнения: ThinkPad X1 Carbon Gen 9, Fedora 34, Node.js 16.9.
+Среда сравнения: ThinkPad X1 Carbon Gen 9, Fedora 34, Node.js 16.8.
 
 
 ## Безопасность
