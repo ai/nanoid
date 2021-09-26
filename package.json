@@ -48,7 +48,7 @@
     "benchmark": "^2.1.4",
     "check-dts": "^0.5.6",
     "cuid": "^2.1.8",
-    "dual-publish": "^1.0.9",
+    "dual-publish": "^1.0.10",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.24.2",
@@ -167,6 +167,9 @@
         "statements": 100
       }
     }
+  },
+  "clean-publish": {
+    "cleanDocs": true
   },
   "yaspeller": {
     "ignoreCapitalization": true,
