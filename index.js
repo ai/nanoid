@@ -11,11 +11,11 @@ const POOL_SIZE_MULTIPLIER = 32
 let pool, poolOffset
 
 let random = bytes => {
-  _fillPool(bytes)
+  fillPool(bytes)
   return pool.subarray(poolOffset - bytes, poolOffset)
 }
 
-let _fillPool = bytes => {
+let fillPool = bytes => {
   if (!pool || pool.length < bytes) {
     pool = Buffer.allocUnsafe(bytes * POOL_SIZE_MULTIPLIER)
     crypto.randomFillSync(pool)
@@ -65,7 +65,7 @@ let customRandom = (alphabet, size, getRandom) => {
 let customAlphabet = (alphabet, size) => customRandom(alphabet, size, random)
 
 let nanoid = (size = 21) => {
-  _fillPool(size)
+  fillPool(size)
   let id = ''
   for (let i = poolOffset - size; i < poolOffset; i++) {
     // It is incorrect to use bytes exceeding the alphabet size.
