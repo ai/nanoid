@@ -83,6 +83,7 @@ There are three main differences between Nano ID and UUID v4:
 ```rust
 $ node ./test/benchmark.js
 nanoid                    4,975,393 ops/sec
+*crypto.randomUUID()      ? ops/sec
 customAlphabet            2,717,877 ops/sec
 uuid v4                   1,778,339 ops/sec
 uid.sync                    391,311 ops/sec
@@ -100,6 +101,7 @@ Non-secure:
 non-secure nanoid         2,641,654 ops/sec
 rndm                      2,447,086 ops/sec
 ```
+`*` Added in `Node 15.6.0`, backported to `14.17.0`, [partial browser support](https://caniuse.com/mdn-api_crypto_randomuuid).
 
 Test configuration: ThinkPad X1 Carbon Gen 9, Fedora 34, Node.js 16.8.
 

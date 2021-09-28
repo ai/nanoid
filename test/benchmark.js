@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+let crypto = require('crypto')
 let { v4: uuid4 } = require('uuid')
 let benchmark = require('benchmark')
 let { bold } = require('nanocolors')
@@ -27,6 +28,9 @@ function formatNumber(number) {
 suite
   .add('nanoid', () => {
     nanoid()
+  })
+  .add('crypto.randomUUID()', () => {
+    crypto.randomUUID()
   })
   .add('customAlphabet', () => {
     nanoid2()
