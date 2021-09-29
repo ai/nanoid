@@ -91,7 +91,7 @@ $ node ./test/benchmark.js
 nanoid                    4,975,393 ops/sec
 customAlphabet            2,717,877 ops/sec
 uuid v4                   1,778,339 ops/sec
-crypto.randomUUID()         ???,??? ops/sec
+crypto.randomUUID()         598,226 ops/sec
 uid.sync                    391,311 ops/sec
 secure-random-string        372,537 ops/sec
 cuid                        201,645 ops/sec
