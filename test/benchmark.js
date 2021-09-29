@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+let crypto = require('crypto')
 let { v4: uuid4 } = require('uuid')
 let benchmark = require('benchmark')
 let { bold } = require('nanocolors')
@@ -33,6 +34,9 @@ suite
   })
   .add('uuid v4', () => {
     uuid4()
+  })
+  .add('crypto.randomUUID()', () => {
+    crypto.randomUUID({ disableEntropyCache: true })
   })
   .add('uid.sync', () => {
     uid.sync(14)
