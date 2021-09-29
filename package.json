@@ -182,7 +182,6 @@
     ],
     "dictionary": [
       "Async",
-      "backported",
       "CLI",
       "Clojure",
       "ClojureScript",
@@ -221,7 +220,6 @@
       "X1",
       "JSX",
       "gzip",
-      "бэкпортом",
       "минификации",
       "вендорный",
       "рендере",

@@ -89,9 +89,9 @@ Nano ID похож на UUID v4 (случайный).
 ```rust
 $ node ./test/benchmark.js
 nanoid                    4,975,393 ops/sec
-*crypto.randomUUID()      ? ops/sec
 customAlphabet            2,717,877 ops/sec
 uuid v4                   1,778,339 ops/sec
+crypto.randomUUID()         ???,??? ops/sec
 uid.sync                    391,311 ops/sec
 secure-random-string        372,537 ops/sec
 cuid                        201,645 ops/sec
@@ -107,7 +107,6 @@ Non-secure:
 non-secure nanoid         2,641,654 ops/sec
 rndm                      2,447,086 ops/sec
 ```
-`*` Добавлено в `Node 15.6.0`, с бэкпортом в `14.17.0`, [частичная поддержка в браузерах](https://caniuse.com/mdn-api_crypto_randomuuid).
 
 Среда сравнения: ThinkPad X1 Carbon Gen 9, Fedora 34, Node.js 16.8.
 

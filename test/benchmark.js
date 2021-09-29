@@ -29,14 +29,14 @@ suite
   .add('nanoid', () => {
     nanoid()
   })
-  .add('crypto.randomUUID()', () => {
-    crypto.randomUUID()
-  })
   .add('customAlphabet', () => {
     nanoid2()
   })
   .add('uuid v4', () => {
     uuid4()
+  })
+  .add('crypto.randomUUID()', () => {
+    crypto.randomUUID({ disableEntropyCache: true })
   })
   .add('uid.sync', () => {
     uid.sync(14)
