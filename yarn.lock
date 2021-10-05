@@ -1322,9 +1322,9 @@
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
 "@types/node@*":
-  version "16.10.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.10.2.tgz#5764ca9aa94470adb4e1185fe2e9f19458992b2e"
-  integrity sha512-zCclL4/rx+W5SQTzFs9wyvvyCwoK9QtBpratqz2IYJ3O8Umrn0m3nsTv0wQBk9sRGpvUe9CwPDrQFB10f1FIjQ==
+  version "16.10.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.10.3.tgz#7a8f2838603ea314d1d22bb3171d899e15c57bd5"
+  integrity sha512-ho3Ruq+fFnBrZhUYI46n/bV2GjwzSkwuT4dTf0GkuNFmnb8nq4ny2z9JEVemFi6bdEJanHLlYfy9c6FN9B9McQ==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.1"
@@ -2453,11 +2453,12 @@ class-utils@^0.3.5:
     static-extend "^0.1.1"
 
 clean-publish@^3.0.1:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/clean-publish/-/clean-publish-3.0.3.tgz#d7181d9fd109765226d4174706947759b215f4c7"
-  integrity sha512-Ly9CrWC4yDgNQF1qaLVVUNLN/VGM2GqJC3itbamP14Ioj4+G3jwFfL2xu6pF2GNvdXEzZZxzUkCV48rbMrUfJA==
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/clean-publish/-/clean-publish-3.1.0.tgz#9eab4eb0f582b5d2a9d247e3eb923fe6479755e7"
+  integrity sha512-xSFrk73vEzPNifexwJX/4pgRkm2Vi1Fz/5a8CBrBpHvc6JKr6KrK9GlZ6sv4SVOgqSZRW902j/CT13Q5iXjsTA==
   dependencies:
     cross-spawn "^7.0.3"
+    fast-glob "^3.2.7"
     fs-extra "^10.0.0"
     lilconfig "^2.0.3"
 
@@ -3798,7 +3799,7 @@ fast-glob@3.1.1:
     merge2 "^1.3.0"
     micromatch "^4.0.2"
 
-fast-glob@^3.1.1:
+fast-glob@^3.1.1, fast-glob@^3.2.7:
   version "3.2.7"
   resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-3.2.7.tgz#fd6cb7a2d7e9aa7a7846111e85a196d6b2f766a1"
   integrity sha512-rYGMRwip6lUMvYD3BTScMwT1HtAs2d71SMv66Vrxs0IekGZEjhM0pcMfjQPnknBt2zeCwQMEupiN02ZP4DiT1Q==
