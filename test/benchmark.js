@@ -3,12 +3,12 @@
 let { v4: uuid4 } = require('uuid')
 let benchmark = require('benchmark')
 let shortid = require('shortid')
+let uidSafe = require('uid-safe')
 let crypto = require('crypto')
 let pico = require('picocolors')
 let cuid = require('cuid')
 let rndm = require('rndm')
 let srs = require('secure-random-string')
-let uid = require('uid-safe')
 
 let { nanoid: aNanoid, customAlphabet: aCustomAlphabet } = require('../async')
 let { nanoid, customAlphabet } = require('../')
@@ -38,8 +38,8 @@ suite
   .add('crypto.randomUUID', () => {
     crypto.randomUUID({ disableEntropyCache: true })
   })
-  .add('uid.sync', () => {
-    uid.sync(14)
+  .add('uid-safe.sync', () => {
+    uidSafe.sync(14)
   })
   .add('secure-random-string', () => {
     srs()
@@ -74,10 +74,10 @@ suite
       })
     }
   })
-  .add('uid', {
+  .add('uid-safe', {
     defer: true,
     fn(defer) {
-      uid(14).then(() => {
+      uidSafe(14).then(() => {
         defer.resolve()
       })
     }

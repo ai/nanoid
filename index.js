@@ -7,7 +7,7 @@ let { urlAlphabet } = require('./url-alphabet')
 // pool. The pool is a Buffer that is larger than the initial random
 // request size by this multiplier. The pool is enlarged if subsequent
 // requests exceed the maximum buffer size.
-const POOL_SIZE_MULTIPLIER = 32
+const POOL_SIZE_MULTIPLIER = 128
 let pool, poolOffset
 
 let fillPool = bytes => {
