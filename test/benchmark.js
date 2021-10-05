@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 let { uid: uidSecure } = require('uid/secure')
+let { v4: lukeed4 } = require('@lukeed/uuid')
 let { v4: uuid4 } = require('uuid')
 let benchmark = require('benchmark')
 let shortid = require('shortid')
@@ -32,7 +33,10 @@ suite
     crypto.randomUUID()
   })
   .add('uid/secure', () => {
-    uidSecure(21)
+    uidSecure(32)
+  })
+  .add('@lukeed/uuid', () => {
+    lukeed4()
   })
   .add('nanoid', () => {
     nanoid()
@@ -88,7 +92,7 @@ suite
     }
   })
   .add('uid', () => {
-    uid(21)
+    uid(32)
   })
   .add('nanoid/non-secure', () => {
     nonSecure()

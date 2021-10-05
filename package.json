@@ -33,6 +33,7 @@
     "@babel/core": "^7.15.5",
     "@logux/eslint-config": "^45.4.8",
     "@logux/sharec-config": "^0.12.2",
+    "@lukeed/uuid": "^2.0.0",
     "@parcel/optimizer-cssnano": "^2.0.0-rc.0",
     "@parcel/optimizer-htmlnano": "^2.0.0-rc.0",
     "@parcel/packager-css": "^2.0.0-rc.0",

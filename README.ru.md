@@ -89,7 +89,8 @@ Nano ID похож на UUID v4 (случайный).
 ```rust
 $ node ./test/benchmark.js
 crypto.randomUUID         28,387,114 ops/sec
-uid/secure                11,994,801 ops/sec
+uid/secure                 8,633,795 ops/sec
+@lukeed/uuid               6,888,704 ops/sec
 nanoid                     6,166,399 ops/sec
 customAlphabet             3,290,342 ops/sec
 uuid v4                    1,662,373 ops/sec
