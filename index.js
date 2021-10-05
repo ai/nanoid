@@ -10,11 +10,6 @@ let { urlAlphabet } = require('./url-alphabet')
 const POOL_SIZE_MULTIPLIER = 32
 let pool, poolOffset
 
-let random = bytes => {
-  fillPool(bytes)
-  return pool.subarray(poolOffset - bytes, poolOffset)
-}
-
 let fillPool = bytes => {
   if (!pool || pool.length < bytes) {
     pool = Buffer.allocUnsafe(bytes * POOL_SIZE_MULTIPLIER)
@@ -25,6 +20,11 @@ let fillPool = bytes => {
     poolOffset = 0
   }
   poolOffset += bytes
+}
+
+let random = bytes => {
+  fillPool(bytes)
+  return pool.subarray(poolOffset - bytes, poolOffset)
 }
 
 let customRandom = (alphabet, size, getRandom) => {
@@ -67,6 +67,7 @@ let customAlphabet = (alphabet, size) => customRandom(alphabet, size, random)
 let nanoid = (size = 21) => {
   fillPool(size)
   let id = ''
+  // We are reading directly from the random pool to avoid creating new array
   for (let i = poolOffset - size; i < poolOffset; i++) {
     // It is incorrect to use bytes exceeding the alphabet size.
     // The following mask reduces the random byte in the 0-255 value
