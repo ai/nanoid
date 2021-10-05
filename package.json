@@ -71,6 +71,7 @@
     "size-limit": "^5.0.5",
     "terser": "^5.9.0",
     "typescript": "^4.4.3",
+    "uid": "^2.0.0",
     "uid-safe": "^2.1.5",
     "uuid": "^8.3.2",
     "yaspeller": "^7.0.0"

@@ -565,6 +565,11 @@
   dependencies:
     sharec "^2.10.3"
 
+"@lukeed/csprng@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@lukeed/csprng/-/csprng-1.0.0.tgz#733a122382749d27e2e46ec38f8c71c9d53a9636"
+  integrity sha512-ruuGHsnabmObBdeMg3vKdGRmh06Oog3eFpf/Tk6X0kDSJDpJTDCj2dqdp1+0VjzIUgHlFF9GBm7uFqfYhhdX9g==
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -8750,6 +8755,13 @@ uid-safe@^2.1.5:
   integrity sha512-KPHm4VL5dDXKz01UuEd88Df+KzynaohSL9fBh096KWAxSKZQDI2uBrVqtvRM4rwrIrRRKsdLNML/lnaaVSRioA==
   dependencies:
     random-bytes "~1.0.0"
+
+uid@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/uid/-/uid-2.0.0.tgz#1773bec106e96955f1658f20272e2ccea414e8bc"
+  integrity sha512-hFw+zKBA1szYdbZWj6FjTxZzJnKNf+wTDcsxlJaXS64MCy9LQEmJUVieGYHCKek/WRyFIcs0cEXtGIQmfvHe2A==
+  dependencies:
+    "@lukeed/csprng" "^1.0.0"
 
 unbox-primitive@^1.0.1:
   version "1.0.1"

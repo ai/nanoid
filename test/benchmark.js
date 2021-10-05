@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 
+let { uid: uidSecure } = require('uid/secure')
 let { v4: uuid4 } = require('uuid')
 let benchmark = require('benchmark')
 let shortid = require('shortid')
 let uidSafe = require('uid-safe')
+let { uid } = require('uid')
 let crypto = require('crypto')
 let pico = require('picocolors')
 let cuid = require('cuid')
@@ -22,10 +24,16 @@ let asyncNanoid2 = aCustomAlphabet('1234567890abcdef-', 10)
 function formatNumber(number) {
   return String(number)
     .replace(/\d{3}$/, ',$&')
-    .replace(/^(\d)(\d{3})/, '$1,$2')
+    .replace(/^(\d|\d\d)(\d{3},)/, '$1,$2')
 }
 
 suite
+  .add('crypto.randomUUID', () => {
+    crypto.randomUUID()
+  })
+  .add('uid/secure', () => {
+    uidSecure(21)
+  })
   .add('nanoid', () => {
     nanoid()
   })
@@ -35,14 +43,11 @@ suite
   .add('uuid v4', () => {
     uuid4()
   })
-  .add('crypto.randomUUID', () => {
-    crypto.randomUUID({ disableEntropyCache: true })
+  .add('secure-random-string', () => {
+    srs()
   })
   .add('uid-safe.sync', () => {
     uidSafe.sync(14)
-  })
-  .add('secure-random-string', () => {
-    srs()
   })
   .add('cuid', () => {
     cuid()
@@ -50,7 +55,7 @@ suite
   .add('shortid', () => {
     shortid()
   })
-  .add('async nanoid', {
+  .add('nanoid/async', {
     defer: true,
     fn(defer) {
       aNanoid().then(() => {
@@ -82,7 +87,10 @@ suite
       })
     }
   })
-  .add('non-secure nanoid', () => {
+  .add('uid', () => {
+    uid(21)
+  })
+  .add('nanoid/non-secure', () => {
     nonSecure()
   })
   .add('rndm', () => {
@@ -90,12 +98,12 @@ suite
   })
   .on('cycle', event => {
     let name = event.target.name.padEnd('async secure-random-string'.length)
-    let hz = formatNumber(event.target.hz.toFixed(0)).padStart(9)
-    if (event.target.name === 'async nanoid') {
+    let hz = formatNumber(event.target.hz.toFixed(0)).padStart(10)
+    if (event.target.name === 'nanoid/async') {
       name = '\nAsync:\n' + name
-    } else if (event.target.name === 'non-secure nanoid') {
+    } else if (event.target.name === 'uid') {
       name = '\nNon-secure:\n' + name
     }
-    process.stdout.write(`${name}${pico.bold(hz)} ops/sec\n`)
+    process.stdout.write(`${name}${pico.bold(hz)}${pico.dim(' ops/sec')}\n`)
   })
   .run()
