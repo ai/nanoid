@@ -3,8 +3,8 @@
 let crypto = require('crypto')
 let { v4: uuid4 } = require('uuid')
 let benchmark = require('benchmark')
-let { bold } = require('nanocolors')
 let shortid = require('shortid')
+let pico = require('picocolors')
 let cuid = require('cuid')
 let rndm = require('rndm')
 let srs = require('secure-random-string')
@@ -96,6 +96,6 @@ suite
     } else if (event.target.name === 'non-secure nanoid') {
       name = '\nNon-secure:\n' + name
     }
-    process.stdout.write(`${name}${bold(hz)} ops/sec\n`)
+    process.stdout.write(`${name}${pico.bold(hz)} ops/sec\n`)
   })
   .run()
