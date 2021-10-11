@@ -1,6 +1,6 @@
-// This alphabet uses `A-Za-z0-9_-` symbols. The genetic algorithm helped
-// optimize the gzip compression for this alphabet.
+// This alphabet uses `A-Za-z0-9_-` symbols.
+// The order of characters is optimized for better gzip compression
 let urlAlphabet =
-  'ModuleSymbhasOwnPr-0123456789ABCDEFGHNRVfgctiUvz_KqYTJkLxpZXIjQW'
+  'use-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abdfghjklmnopqvwxyzrict'
 
 module.exports = { urlAlphabet }
