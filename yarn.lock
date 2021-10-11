@@ -1202,30 +1202,30 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@size-limit/dual-publish@^6.0.1":
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/@size-limit/dual-publish/-/dual-publish-6.0.1.tgz#4a30066ff432d7e5577a6ee5be6ddcf5485fac3d"
-  integrity sha512-z+PlNeHOzfQjBqYgttb5OhDRnrO6zS8onEavorwdVZ8bZxfna+kxhFWdd/gNBzdpRofL0/HNJcNK1kbFmm3rOg==
+"@size-limit/dual-publish@^6.0.2":
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/@size-limit/dual-publish/-/dual-publish-6.0.2.tgz#3bd0fd745c63ec6f658b2fa6975a450c8b90389e"
+  integrity sha512-eg1yiCYh8xQKeqYXhZ0HISx1VjxoL+LJCu1ZkrM/KjQB5EsrvVl1t8iVLjtF1trE7j3FSkloPBtzNYMrqmruQw==
 
-"@size-limit/file@6.0.1":
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/@size-limit/file/-/file-6.0.1.tgz#6e333950c20e404c720a07cfacc4431b6ce01f4d"
-  integrity sha512-NurTGHCE2LByAZh1Rlqzjr9M1+0Hj49kpN1bNqDtH2RoTOHe02GUQbZadZcNmXEcMwoZr3/dxCaxb6txbiA9eA==
+"@size-limit/file@6.0.2":
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/@size-limit/file/-/file-6.0.2.tgz#7a7e4555a732ccd4db84d12a0f04dacf6564bd67"
+  integrity sha512-LXK2oP5PHI7wJjswnTTPyXKXxAr/E7FVcx2p8I/ObZyO6qdJgr8ctI/cRIFptv4N3RTJOSCd6XqX1U5SpAesZw==
   dependencies:
     semver "7.3.5"
 
-"@size-limit/preset-small-lib@^6.0.1":
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/@size-limit/preset-small-lib/-/preset-small-lib-6.0.1.tgz#262f74668e8febaea4a121e391276ec5888c32b0"
-  integrity sha512-xopnY/JBBklZ/RVHH/z/w+/xgCo48pBo7SV2QbkJ0mT76cf+mS4puGttvB3gxu2nASoD98W0nBXVVhXlZ7Ndxg==
+"@size-limit/preset-small-lib@^6.0.2":
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/@size-limit/preset-small-lib/-/preset-small-lib-6.0.2.tgz#b8ec5dd227f736766b3fe0aa27b5e2e7e157cd74"
+  integrity sha512-a8N94NPd+6aaYac/tTcff2w7toPYKlJsgGnv6ftM2RdV9R/fL9KHHoI+LykyRIb1XH15H6TPgfJlzbrgUCwWvw==
   dependencies:
-    "@size-limit/file" "6.0.1"
-    "@size-limit/webpack" "6.0.1"
+    "@size-limit/file" "6.0.2"
+    "@size-limit/webpack" "6.0.2"
 
-"@size-limit/webpack@6.0.1":
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/@size-limit/webpack/-/webpack-6.0.1.tgz#4444955a4f34d6b53bfd54ba074b1e2684166563"
-  integrity sha512-fQFTb3bkldQllDdV9jQAXUgrVvrlrZXm0BzR024amUqStPflKLri2jL4Q2/H263DEvDOOmSbdNca6HT7x30qzg==
+"@size-limit/webpack@6.0.2":
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/@size-limit/webpack/-/webpack-6.0.2.tgz#af7b14be6dbb166932c42776fcba6618a96d6aa7"
+  integrity sha512-+cKuFBkNLsPq8e0AgMy+mLvpdbuSuDLZyvJgvL+EgE7N+wbiw+Bn/uCuBGlJTPsp3j21R0A3prva6/0WxFMVnA==
   dependencies:
     "@statoscope/webpack-plugin" "^5.13.0"
     css-loader "^6.4.0"
