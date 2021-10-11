@@ -91,13 +91,13 @@
     {
       "name": "urlAlphabet",
       "import": "{ urlAlphabet }",
-      "limit": "66 B"
+      "limit": "61 B"
     },
     {
       "name": "non-secure nanoid",
       "import": "{ nanoid }",
       "path": "non-secure/index.js",
-      "limit": "124 B"
+      "limit": "118 B"
     },
     {
       "name": "non-secure customAlphabet",
