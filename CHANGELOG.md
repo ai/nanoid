@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.1.30
+* Reduced size for project with `brotli` compression (by Anton Khlynovskiy).
+
 ## 3.1.29
 * Reduced npm package size.
 
