@@ -133,14 +133,14 @@
       "name": "urlAlphabet (brotli)",
       "brotli": true,
       "import": "{ urlAlphabet }",
-      "limit": "50 B"
+      "limit": "31 B"
     },
     {
       "name": "non-secure nanoid (brotli)",
       "brotli": true,
       "import": "{ nanoid }",
       "path": "non-secure/index.js",
-      "limit": "89 B"
+      "limit": "72 B"
     },
     {
       "name": "non-secure customAlphabet (brotli)",
