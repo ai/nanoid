@@ -58,7 +58,7 @@ describe('nanoid', () => {
 describe('customAlphabet', () => {
   it('has options', () => {
     let nanoidA = customAlphabet('a', 5)
-    expect(nanoidA()).toEqual('aaaaa')
+    expect(nanoidA()).toBe('aaaaa')
   })
 
   it('has flat distribution', () => {

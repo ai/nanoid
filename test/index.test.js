@@ -20,7 +20,7 @@ for (let type of ['node', 'browser']) {
         for (let i = 0; i < 100; i++) {
           let id = nanoid()
           expect(id).toHaveLength(21)
-          expect(typeof id).toEqual('string')
+          expect(typeof id).toBe('string')
           for (let char of id) {
             expect(urlAlphabet).toContain(char)
           }
@@ -73,7 +73,7 @@ for (let type of ['node', 'browser']) {
     describe('customAlphabet', () => {
       it('has options', () => {
         let nanoidA = customAlphabet('a', 5)
-        expect(nanoidA()).toEqual('aaaaa')
+        expect(nanoidA()).toBe('aaaaa')
       })
 
       it('has flat distribution', () => {
@@ -116,14 +116,14 @@ for (let type of ['node', 'browser']) {
         }
         let nanoid4 = customRandom('abcde', 4, fakeRandom)
         let nanoid18 = customRandom('abcde', 18, fakeRandom)
-        expect(nanoid4()).toEqual('adca')
-        expect(nanoid18()).toEqual('cbadcbadcbadcbadcc')
+        expect(nanoid4()).toBe('adca')
+        expect(nanoid18()).toBe('cbadcbadcbadcbadcc')
       })
     })
 
     describe('urlAlphabet', () => {
       it('is string', () => {
-        expect(typeof urlAlphabet).toEqual('string')
+        expect(typeof urlAlphabet).toBe('string')
       })
 
       it('has no duplicates', () => {
@@ -145,7 +145,7 @@ for (let type of ['node', 'browser']) {
         for (let byte of bytes) {
           if (!numbers[byte]) numbers[byte] = 0
           numbers[byte] += 1
-          expect(typeof byte).toEqual('number')
+          expect(typeof byte).toBe('number')
           expect(byte).toBeLessThanOrEqual(255)
           expect(byte).toBeGreaterThanOrEqual(0)
         }

@@ -44,7 +44,7 @@ for (let type of ['node', 'browser']) {
           times(100, async () => {
             let id = await nanoid()
             expect(id).toHaveLength(21)
-            expect(typeof id).toEqual('string')
+            expect(typeof id).toBe('string')
             for (let char of id) {
               expect(urlAlphabet).toContain(char)
             }
@@ -120,7 +120,7 @@ for (let type of ['node', 'browser']) {
         for (let byte of bytes) {
           if (!numbers[byte]) numbers[byte] = 0
           numbers[byte] += 1
-          expect(typeof byte).toEqual('number')
+          expect(typeof byte).toBe('number')
           expect(byte).toBeLessThanOrEqual(255)
           expect(byte).toBeGreaterThanOrEqual(0)
         }
@@ -138,7 +138,7 @@ for (let type of ['node', 'browser']) {
       it('has options', async () => {
         let nanoidA = customAlphabet('a', 5)
         let id = await nanoidA()
-        expect(id).toEqual('aaaaa')
+        expect(id).toBe('aaaaa')
       })
 
       it('has flat distribution', async () => {
@@ -180,7 +180,7 @@ for (let type of ['node', 'browser']) {
           let id = await nanoidA()
 
           expect(randomFillMock).toHaveBeenCalledTimes(2)
-          expect(id).toEqual('aaaaa')
+          expect(id).toBe('aaaaa')
         })
       }
     })

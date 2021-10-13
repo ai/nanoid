@@ -13,5 +13,5 @@ global.crypto = {
 let { nanoid } = require('../index.browser')
 
 it('works with polyfill', () => {
-  expect(typeof nanoid()).toEqual('string')
+  expect(typeof nanoid()).toBe('string')
 })
