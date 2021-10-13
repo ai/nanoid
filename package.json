@@ -116,6 +116,52 @@
       "import": "{ customAlphabet }",
       "path": "async/index.js",
       "limit": "163 B"
+    },
+    {
+      "name": "nanoid (brotli)",
+      "brotli": true,
+      "import": "{ nanoid }",
+      "limit": "104 B"
+    },
+    {
+      "name": "customAlphabet (brotli)",
+      "brotli": true,
+      "import": "{ customAlphabet }",
+      "limit": "143 B"
+    },
+    {
+      "name": "urlAlphabet (brotli)",
+      "brotli": true,
+      "import": "{ urlAlphabet }",
+      "limit": "31 B"
+    },
+    {
+      "name": "non-secure nanoid (brotli)",
+      "brotli": true,
+      "import": "{ nanoid }",
+      "path": "non-secure/index.js",
+      "limit": "72 B"
+    },
+    {
+      "name": "non-secure customAlphabet (brotli)",
+      "brotli": true,
+      "import": "{ customAlphabet }",
+      "path": "non-secure/index.js",
+      "limit": "32 B"
+    },
+    {
+      "name": "async nanoid (brotli)",
+      "brotli": true,
+      "import": "{ nanoid }",
+      "path": "async/index.js",
+      "limit": "111 B"
+    },
+    {
+      "name": "async customAlphabet (brotli)",
+      "brotli": true,
+      "import": "{ customAlphabet }",
+      "path": "async/index.js",
+      "limit": "130 B"
     }
   ],
   "eslintConfig": {
