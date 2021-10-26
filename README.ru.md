@@ -481,6 +481,7 @@ Nano ID был портирован на множество языков. Это
 - [C#](https://github.com/codeyu/nanoid-net)
 - [C++](https://github.com/mcmikecreations/nanoid_cpp)
 - [Clojure и ClojureScript](https://github.com/zelark/nano-id)
+- [ColdFusion/CFML](https://github.com/JamoCA/cfml-nanoid)
 - [Crystal](https://github.com/mamantoha/nanoid.cr)
 - [Dart и Flutter](https://github.com/pd4d10/nanoid-dart)
 - [Deno](https://github.com/ianfabs/nanoid)
