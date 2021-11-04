@@ -373,16 +373,6 @@ const todoItems = todos.map((text, index) =>
 ```
 
 
-### HTML ID
-
-If you want to use Nano ID in the `id` prop, you must set some string prefix
-(it is invalid for the HTML ID to start with a number).
-
-```jsx
-<input id={'id' + this.id} type="text"/>
-```
-
-
 ### React Native
 
 React Native does not have built-in random generator. The following polyfill
