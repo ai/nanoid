@@ -498,6 +498,7 @@ Nano ID был портирован на множество языков. Это
 - [Ruby](https://github.com/radeno/nanoid.rb)
 - [Rust](https://github.com/nikolay-govorov/nanoid)
 - [Swift](https://github.com/antiflasher/NanoID)
+* [Unison](https://share.unison-lang.org/latest/namespaces/hojberg/nanoid)
 - [V](https://github.com/invipal/nanoid)
 
 Для остальных сред можно использовать Nano ID [для терминала].
