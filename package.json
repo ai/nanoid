@@ -9,7 +9,7 @@
     "url"
   ],
   "scripts": {
-    "test": "jest --coverage && eslint . && check-dts && size-limit && yaspeller *.md",
+    "test": "jest --coverage && eslint . && check-dts && size-limit",
     "start": "parcel test/demo/index.html --dist-dir test/demo/build --open"
   },
   "engines": {
@@ -30,52 +30,45 @@
   "sideEffects": false,
   "types": "./index.d.ts",
   "devDependencies": {
-    "@babel/core": "^7.15.8",
-    "@logux/eslint-config": "^46.0.0",
-    "@logux/sharec-config": "^0.12.2",
+    "@babel/core": "^7.16.0",
+    "@logux/eslint-config": "^46.1.0",
     "@lukeed/uuid": "^2.0.0",
-    "@parcel/optimizer-cssnano": "^2.0.0-rc.0",
-    "@parcel/optimizer-htmlnano": "^2.0.0-rc.0",
-    "@parcel/packager-css": "^2.0.0-rc.0",
-    "@parcel/packager-html": "^2.0.0-rc.0",
-    "@parcel/transformer-css": "^2.0.0-rc.0",
-    "@parcel/transformer-html": "^2.0.0-rc.0",
-    "@parcel/transformer-postcss": "^2.0.0-rc.0",
-    "@parcel/transformer-posthtml": "^2.0.0-rc.0",
-    "@size-limit/dual-publish": "^6.0.3",
-    "@size-limit/preset-small-lib": "^6.0.3",
-    "@typescript-eslint/eslint-plugin": "^5.2.0",
-    "@typescript-eslint/parser": "^5.2.0",
+    "@parcel/optimizer-cssnano": "^2.0.1",
+    "@parcel/optimizer-htmlnano": "^2.0.1",
+    "@parcel/packager-css": "^2.0.1",
+    "@parcel/packager-html": "^2.0.1",
+    "@parcel/transformer-css": "^2.0.1",
+    "@parcel/transformer-html": "^2.0.1",
+    "@parcel/transformer-postcss": "^2.0.1",
+    "@parcel/transformer-posthtml": "^2.0.1",
+    "@size-limit/dual-publish": "^7.0.3",
+    "@size-limit/file": "^7.0.3",
+    "@size-limit/webpack": "^7.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
     "benchmark": "^2.1.4",
-    "check-dts": "^0.6.2",
+    "check-dts": "^0.6.4",
     "cuid": "^2.1.8",
     "dual-publish": "^2.0.2",
-    "eslint": "^8.1.0",
+    "eslint": "^8.3.0",
     "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-jest": "^25.2.2",
+    "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prefer-let": "^1.1.0",
+    "eslint-plugin-prefer-let": "^3.0.1",
     "eslint-plugin-promise": "^5.1.1",
-    "eslint-plugin-security": "^1.4.0",
-    "eslint-plugin-unicorn": "^37.0.1",
     "jest": "^27.3.1",
-    "lint-staged": "^11.2.5",
-    "parcel": "^2.0.0-rc.0",
+    "parcel": "^2.0.1",
     "picocolors": "^1.0.0",
-    "postcss": "^8.3.11",
-    "prettier": "^2.4.1",
+    "postcss": "^8.4.4",
     "rndm": "^1.2.0",
     "secure-random-string": "^1.1.3",
     "shortid": "^2.2.16",
-    "simple-git-hooks": "^2.6.1",
-    "size-limit": "^6.0.3",
-    "terser": "^5.9.0",
-    "typescript": "^4.4.4",
+    "size-limit": "^7.0.3",
+    "terser": "^5.10.0",
+    "typescript": "^4.5.2",
     "uid": "^2.0.0",
     "uid-safe": "^2.1.5",
-    "uuid": "^8.3.2",
-    "yaspeller": "^7.2.1"
+    "uuid": "^8.3.2"
   },
   "size-limit": [
     {
@@ -152,6 +145,16 @@
           "node/no-missing-require": "off",
           "global-require": "off"
         }
+      },
+      {
+        "files": "*.test.*",
+        "globals": {
+          "afterEach": "readonly",
+          "describe": "readonly",
+          "expect": "readonly",
+          "jest": "readonly",
+          "it": "readonly"
+        }
       }
     ]
   },
@@ -160,21 +163,6 @@
     "nanoid.js",
     "**/errors.ts"
   ],
-  "lint-staged": {
-    "index.browser.js": "test/update-prebuild.js",
-    "*.md": "yaspeller",
-    "*.js": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "*.ts": [
-      "prettier --write",
-      "eslint --fix"
-    ]
-  },
-  "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
-  },
   "prettier": {
     "arrowParens": "avoid",
     "jsxSingleQuote": false,
@@ -194,68 +182,5 @@
   "clean-publish": {
     "cleanDocs": true,
     "cleanComments": true
-  },
-  "yaspeller": {
-    "ignoreCapitalization": true,
-    "excludeFiles": [
-      "README.zh-CN.md"
-    ],
-    "ignoreText": [
-      " \\(by [^)]+\\)."
-    ],
-    "dictionary": [
-      "Async",
-      "CLI",
-      "Clojure",
-      "ClojureScript",
-      "Crypto",
-      "cryptographically",
-      "gzipped",
-      "Haskell",
-      "js",
-      "JS",
-      "JSDoc",
-      "nanoid",
-      "Nim",
-      "npm",
-      "UUID",
-      "v4",
-      "Versioning",
-      "PouchDB",
-      "CouchDB",
-      "Tidelift",
-      "as ESM in",
-      "ES",
-      "webpack",
-      "CDN",
-      "XPS",
-      "jsDelivr",
-      "bundlers",
-      "ES2016",
-      "github",
-      "ai",
-      "Rollup",
-      "transpile",
-      "workaround",
-      "Deno",
-      "polyfill",
-      "CommonJS",
-      "X1",
-      "JSX",
-      "gzip",
-      "минификации",
-      "вендорный",
-      "рендере",
-      "полифил",
-      "прототипирования",
-      "минифицированный",
-      "воркере",
-      "воркеры",
-      "CFML"
-    ]
-  },
-  "sharec": {
-    "config": "@logux/sharec-config",
-    "version": "0.12.2"
   }
 }
