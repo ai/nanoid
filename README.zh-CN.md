@@ -49,7 +49,6 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 * [用法](#用法)
   * [IE](#ie)
   * [React](#react)
-  * [HTML ID](#html-id)
   * [React Native](#react-native)
   * [Rollup](#rollup)
   * [PouchDB and CouchDB](#pouchdb-and-couchdb)
@@ -363,17 +362,6 @@ const todoItems = todos.map((text, index) =>
   </li>
 )
 ```
-
-
-### HTML ID
-
-如果你想使用 Nano ID 作为 `id` 属性，你必须设置一些字符串前缀
-(HTML ID 以数字开头是无效的)
-
-```jsx
-<input id={'id' + this.id} type="text"/>
-```
-
 
 ### React Native
 

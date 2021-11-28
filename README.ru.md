@@ -53,7 +53,6 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 - [Руководство](#руководство)
   - [IE](#ie)
   - [React](#react)
-  - [HTML ID](#html-id)
   - [React Native](#react-native)
   - [Rollup](#rollup)
   - [PouchDB и CouchDB](#pouchdb-и-couchdb)
@@ -364,18 +363,6 @@ function Todos({ todos }) {
 
 Подробнее об использовании свойства `key` читайте в
 [официальной документации React](https://ru.reactjs.org/docs/lists-and-keys.html#keys).
-
-
-### HTML ID
-
-Если вы используете Nano ID для HTML-свойства `id`, то нужно в начало добавить
-какую-то строку — HTML ID не может начинаться с цифры, но Nano ID иногда может
-сгенерировать такие ID.
-
-```jsx
-<input id={'id' + this.id} type="text" />
-```
-
 
 ### React Native
 
