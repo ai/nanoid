@@ -49,7 +49,6 @@ Supports modern browsers, IE [with Babel], Node.js and React Native.
 * [Usage](#usage)
   * [IE](#ie)
   * [React](#react)
-  * [HTML ID](#html-id)
   * [React Native](#react-native)
   * [Rollup](#rollup)
   * [PouchDB and CouchDB](#pouchdb-and-couchdb)
