@@ -229,8 +229,8 @@ with either security or asynchronous behavior.
 ### Non-Secure
 
 By default, Nano ID uses hardware random bytes generation for security
-and low collision probability. If you are not so concerned with security
-and more concerned with performance, you can use the faster non-secure generator.
+and low collision probability. If you are not so concerned with security,
+you can use the faster non-secure generator.
 
 ```js
 import { nanoid } from 'nanoid/non-secure'
