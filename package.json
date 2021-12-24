@@ -33,6 +33,7 @@
     "@babel/core": "^7.16.5",
     "@logux/eslint-config": "^46.1.1",
     "@lukeed/uuid": "^2.0.0",
+    "@parcel/core": "^2.0.1",
     "@parcel/optimizer-cssnano": "^2.0.1",
     "@parcel/optimizer-htmlnano": "^2.0.1",
     "@parcel/packager-css": "^2.0.1",

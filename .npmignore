@@ -1,5 +1,4 @@
-yarn-error.log
-yarn.lock
+pnpm-lock.yaml
 
 test/
 tsconfig.json
