@@ -221,7 +221,9 @@ Read more about entropy collection in [`crypto.randomBytes`] docs.
 
 Unfortunately, you will lose Web Crypto API advantages in a browser
 if you use the asynchronous API. So, currently, in the browser, you are limited
-with either security or asynchronous behavior.
+with either security (using `nanoid`), asynchronous behavior (using `nanoid/async`), or
+non-secure behavior (using `nanoid/non-secure`) that will be explained in the next part
+of the documentation.
 
 [`crypto.randomBytes`]: https://nodejs.org/api/crypto.html#crypto_crypto_randombytes_size_callback
 
