@@ -1,5 +1,3 @@
-pnpm-lock.yaml
-
 test/
 tsconfig.json
 coverage/
