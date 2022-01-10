@@ -1,10 +1,11 @@
 import { v4 as uuid4 } from 'uuid'
 import shortid from 'shortid'
-import rndm from 'rndm'
-import uid from 'uid-safe'
 
-import { nanoid, customAlphabet, random } from '../../'
-import { nanoid as nonSecure } from '../../non-secure'
+import nanoidExport from '../../index.browser.js'
+import nonSecureExport from '../../non-secure/index.js'
+
+let { nanoid, customAlphabet, random } = nanoidExport
+let nonSecure = nonSecureExport.nanoid
 
 const COUNT = 50 * 1000
 const ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
@@ -74,10 +75,8 @@ let tasks = [
     }),
   () => printDistr('nanoid', () => nanoid()),
   () => printDistr('nanoid2', () => nanoid2()),
-  () => printDistr('uid.sync', () => uid.sync(21)),
   () => printDistr('uuid/v4', () => uuid4()),
   () => printDistr('shortid', () => shortid()),
-  () => printDistr('rndm', () => rndm()),
   () => printDistr('nanoid/non-secure', () => nonSecure()),
   () =>
     printDistr('random % alphabet', () => {

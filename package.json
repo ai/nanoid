@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "test": "jest --coverage && eslint . && check-dts && size-limit",
-    "start": "parcel test/demo/index.html --dist-dir test/demo/build --open"
+    "start": "vite test/demo/ --open"
   },
   "engines": {
     "node": "^10 || ^12 || ^13.7 || ^14 || >=15.0.1"
@@ -33,15 +33,7 @@
     "@babel/core": "^7.16.7",
     "@logux/eslint-config": "^46.1.1",
     "@lukeed/uuid": "^2.0.0",
-    "@parcel/core": "^2.1.1",
-    "@parcel/optimizer-cssnano": "^2.1.1",
-    "@parcel/optimizer-htmlnano": "^2.1.1",
-    "@parcel/packager-css": "^2.1.1",
-    "@parcel/packager-html": "^2.1.1",
-    "@parcel/transformer-css": "^2.1.1",
-    "@parcel/transformer-html": "^2.1.1",
-    "@parcel/transformer-postcss": "^2.1.1",
-    "@parcel/transformer-posthtml": "^2.1.1",
+    "@originjs/vite-plugin-commonjs": "^1.0.2",
     "@size-limit/dual-publish": "^7.0.5",
     "@size-limit/file": "^7.0.5",
     "@size-limit/webpack": "^7.0.5",
@@ -58,7 +50,6 @@
     "eslint-plugin-prefer-let": "^3.0.1",
     "eslint-plugin-promise": "^6.0.0",
     "jest": "^27.4.7",
-    "parcel": "^2.1.1",
     "picocolors": "^1.0.0",
     "postcss": "^8.4.5",
     "rndm": "^1.2.0",
@@ -69,7 +60,8 @@
     "typescript": "^4.5.4",
     "uid": "^2.0.0",
     "uid-safe": "^2.1.5",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "vite": "^2.7.10"
   },
   "size-limit": [
     {
