@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.1.31
+* Fixed collision vulnerability on object in `size` (by Artyom Arutyunyan).
+
 ## 3.1.30
 * Reduced size for project with `brotli` compression (by Anton Khlynovskiy).
 
