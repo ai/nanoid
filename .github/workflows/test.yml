@@ -48,7 +48,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
       - name: Run unit tests
-        run: ./node_modules/.bin/jest
+        run: pnpm test:short
         env:
           FORCE_COLOR: 2
   old:
@@ -70,7 +70,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
       - name: Run unit tests
-        run: ./node_modules/.bin/jest
+        run: pnpm test:short
         env:
           FORCE_COLOR: 2
   benchmark:

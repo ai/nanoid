@@ -1,0 +1,10 @@
+{
+  "reporter": [
+    "clover",
+    "text",
+    "json",
+    "lcov",
+    "lcovonly"
+  ],
+  "statements": "100"
+}

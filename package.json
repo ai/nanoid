@@ -9,7 +9,8 @@
     "url"
   ],
   "scripts": {
-    "test": "jest --coverage && eslint . && check-dts && size-limit",
+    "test:short": "c8 --check-coverage uvu . .test.js$",
+    "test": "pnpm test:short && eslint . && check-dts && size-limit",
     "start": "vite test/demo/ --open"
   },
   "engines": {
@@ -40,6 +41,7 @@
     "@typescript-eslint/eslint-plugin": "^5.9.1",
     "@typescript-eslint/parser": "^5.9.1",
     "benchmark": "^2.1.4",
+    "c8": "^7.11.0",
     "check-dts": "^0.6.6",
     "cuid": "^2.1.8",
     "dual-publish": "^2.0.2",
@@ -49,7 +51,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prefer-let": "^3.0.1",
     "eslint-plugin-promise": "^6.0.0",
-    "jest": "^27.4.7",
+    "nanospy": "^0.4.0",
     "picocolors": "^1.0.0",
     "postcss": "^8.4.5",
     "rndm": "^1.2.0",
@@ -61,6 +63,7 @@
     "uid": "^2.0.0",
     "uid-safe": "^2.1.5",
     "uuid": "^8.3.2",
+    "uvu": "^0.5.3",
     "vite": "^2.7.10"
   },
   "size-limit": [
@@ -138,16 +141,6 @@
           "node/no-missing-require": "off",
           "global-require": "off"
         }
-      },
-      {
-        "files": "*.test.*",
-        "globals": {
-          "afterEach": "readonly",
-          "describe": "readonly",
-          "expect": "readonly",
-          "jest": "readonly",
-          "it": "readonly"
-        }
       }
     ]
   },
@@ -163,14 +156,6 @@
     "semi": false,
     "singleQuote": true,
     "trailingComma": "none"
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "coverageThreshold": {
-      "global": {
-        "statements": 100
-      }
-    }
   },
   "clean-publish": {
     "cleanDocs": true,
