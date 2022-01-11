@@ -95,13 +95,13 @@
       "name": "async nanoid",
       "import": "{ nanoid }",
       "path": "async/index.js",
-      "limit": "144 B"
+      "limit": "136 B"
     },
     {
       "name": "async customAlphabet",
       "import": "{ customAlphabet }",
       "path": "async/index.js",
-      "limit": "163 B"
+      "limit": "153 B"
     },
     {
       "name": "Brotli all",
@@ -121,7 +121,7 @@
       "brotli": true,
       "import": "{ nanoid, customAlphabet }",
       "path": "async/index.js",
-      "limit": "228 B"
+      "limit": "227 B"
     }
   ],
   "eslintConfig": {

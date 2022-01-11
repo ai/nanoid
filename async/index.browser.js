@@ -1,5 +1,4 @@
-let random = bytes =>
-  Promise.resolve(crypto.getRandomValues(new Uint8Array(bytes)))
+let random = async bytes => crypto.getRandomValues(new Uint8Array(bytes))
 
 let customAlphabet = (alphabet, size) => {
   // First, a bitmask is necessary to generate the ID. The bitmask makes bytes
@@ -25,7 +24,7 @@ let customAlphabet = (alphabet, size) => {
   // `-~i => i + 1` if i is an integer
   let step = -~((1.6 * mask * size) / alphabet.length)
 
-  return () => {
+  return async () => {
     let id = ''
     while (true) {
       let bytes = crypto.getRandomValues(new Uint8Array(step))
@@ -34,13 +33,13 @@ let customAlphabet = (alphabet, size) => {
       while (i--) {
         // Adding `|| ''` refuses a random byte that exceeds the alphabet size.
         id += alphabet[bytes[i] & mask] || ''
-        if (id.length === size) return Promise.resolve(id)
+        if (id.length === size) return id
       }
     }
   }
 }
 
-let nanoid = (size = 21) => {
+let nanoid = async (size = 21) => {
   let id = ''
   let bytes = crypto.getRandomValues(new Uint8Array(size))
 
@@ -64,7 +63,7 @@ let nanoid = (size = 21) => {
       id += '-'
     }
   }
-  return Promise.resolve(id)
+  return id
 }
 
 module.exports = { nanoid, customAlphabet, random }
