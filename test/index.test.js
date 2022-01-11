@@ -151,5 +151,41 @@ for (let type of ['node', 'browser']) {
         }
       })
     })
+
+    if (type === 'node') {
+      describe('proxy number', () => {
+        it('prevent collision', () => {
+          let makeProxyNumberToReproducePreviousID = () => {
+            let step = 0
+            return {
+              valueOf() {
+                // "if (!pool || pool.length < bytes) {"
+                if (step === 0) {
+                  step++
+                  return 0
+                }
+                // "} else if (poolOffset + bytes > pool.length) {"
+                if (step === 1) {
+                  step++
+                  return -Infinity
+                }
+                // "poolOffset += bytes"
+                if (step === 2) {
+                  step++
+                  return 0
+                }
+
+                return 21
+              }
+            }
+          }
+
+          let ID1 = nanoid()
+          let ID2 = nanoid(makeProxyNumberToReproducePreviousID())
+
+          expect(ID1).not.toBe(ID2)
+        })
+      })
+    }
   })
 }
