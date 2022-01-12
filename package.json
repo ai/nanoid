@@ -160,5 +160,15 @@
   "clean-publish": {
     "cleanDocs": true,
     "cleanComments": true
+  },
+  "c8": {
+    "reporter": [
+      "clover",
+      "text",
+      "json",
+      "lcov",
+      "lcovonly"
+    ],
+    "statements": "100"
   }
 }
