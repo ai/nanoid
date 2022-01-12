@@ -1,7 +1,11 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## 3.1.31
+## 3.1.32
+* Reduced `async` exports size (by Artyom Arutyunyan).
+* Moved from Jest to uvu (by Vitaly Baev).
+
+* ## 3.1.31
 * Fixed collision vulnerability on object in `size` (by Artyom Arutyunyan).
 
 ## 3.1.30
