@@ -2,6 +2,7 @@
 
 let { uid: uidSecure } = require('uid/secure')
 let { v4: lukeed4 } = require('@lukeed/uuid')
+let { v4: napiv4 } = require('@napi-rs/uuid')
 let { v4: uuid4 } = require('uuid')
 let benchmark = require('benchmark')
 let shortid = require('shortid')
@@ -31,6 +32,9 @@ function formatNumber(number) {
 suite
   .add('crypto.randomUUID', () => {
     crypto.randomUUID()
+  })
+  .add('@napi-rs/uuid', () => {
+    napiv4()
   })
   .add('uid/secure', () => {
     uidSecure(32)

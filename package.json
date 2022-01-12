@@ -34,6 +34,7 @@
     "@babel/core": "^7.16.7",
     "@logux/eslint-config": "^46.1.1",
     "@lukeed/uuid": "^2.0.0",
+    "@napi-rs/uuid": "^0.2.0",
     "@originjs/vite-plugin-commonjs": "^1.0.2",
     "@size-limit/dual-publish": "^7.0.5",
     "@size-limit/file": "^7.0.5",
