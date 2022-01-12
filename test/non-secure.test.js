@@ -1,5 +1,5 @@
 let { test } = require('uvu')
-let assert = require('uvu/assert')
+let { is, match, ok } = require('uvu/assert')
 
 let { nanoid, customAlphabet } = require('../non-secure')
 let { urlAlphabet } = require('..')
@@ -7,26 +7,26 @@ let { urlAlphabet } = require('..')
 test('nanoid / generates URL-friendly IDs', () => {
   for (let i = 0; i < 10; i++) {
     let id = nanoid()
-    assert.is(id.length, 21)
+    is(id.length, 21)
     for (let char of id) {
-      assert.match(urlAlphabet, new RegExp(char, "g"))
+      match(urlAlphabet, new RegExp(char, "g"))
     }
   }
 })
 
 test('nanoid / changes ID length', () => {
-  assert.is(nanoid(10).length, 10)
+  is(nanoid(10).length, 10)
 })
 
 test('nanoid / accepts string', () => {
-  assert.is(nanoid('10').length, 10)
+  is(nanoid('10').length, 10)
 })
 
 test('nanoid / has no collisions', () => {
   let used = {}
   for (let i = 0; i < 100 * 1000; i++) {
     let id = nanoid()
-    assert.is(used[id], undefined)
+    is(used[id], undefined)
     used[id] = true
   }
 })
@@ -44,7 +44,7 @@ test('nanoid / has flat distribution', () => {
     }
   }
 
-  assert.is(Object.keys(chars).length, urlAlphabet.length)
+  is(Object.keys(chars).length, urlAlphabet.length)
 
   let max = 0
   let min = Number.MAX_SAFE_INTEGER
@@ -53,12 +53,12 @@ test('nanoid / has flat distribution', () => {
     if (distribution > max) max = distribution
     if (distribution < min) min = distribution
   }
-  assert.ok(max - min <= 0.05)
+  ok(max - min <= 0.05)
 })
 
 test('customAlphabet / has options', () => {
   let nanoidA = customAlphabet('a', 5)
-  assert.is(nanoidA(), 'aaaaa')
+  is(nanoidA(), 'aaaaa')
 })
 
 test('customAlphabet / has flat distribution', () => {
@@ -76,7 +76,7 @@ test('customAlphabet / has flat distribution', () => {
     }
   }
 
-  assert.is(Object.keys(chars).length, ALPHABET.length)
+  is(Object.keys(chars).length, ALPHABET.length)
 
   let max = 0
   let min = Number.MAX_SAFE_INTEGER
@@ -85,7 +85,7 @@ test('customAlphabet / has flat distribution', () => {
     if (distribution > max) max = distribution
     if (distribution < min) min = distribution
   }
-  assert.ok(max - min <= 0.05)
+  ok(max - min <= 0.05)
 })
 
 test.run()

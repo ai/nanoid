@@ -9,8 +9,8 @@
     "url"
   ],
   "scripts": {
-    "test:short": "c8 --check-coverage uvu . .test.js$",
-    "test": "pnpm test:short && eslint . && check-dts && size-limit",
+    "unit": "uvu . .test.js$",
+    "test": "c8 pnpm unit && eslint . && check-dts && size-limit",
     "start": "vite test/demo/ --open"
   },
   "engines": {
@@ -162,13 +162,10 @@
     "cleanComments": true
   },
   "c8": {
-    "reporter": [
-      "clover",
-      "text",
-      "json",
-      "lcov",
-      "lcovonly"
+    "exclude": [
+      "**/*.test.*"
     ],
-    "statements": "100"
+    "lines": 100,
+    "check-coverage": true
   }
 }

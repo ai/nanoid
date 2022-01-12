@@ -1,6 +1,6 @@
 let { suite } = require('uvu')
 let { spy } = require('nanospy')
-let assert = require('uvu/assert')
+let { is, match, ok } = require('uvu/assert')
 let crypto = require('crypto')
 
 global.crypto = {
@@ -46,10 +46,10 @@ for (let type of ['node', 'browser']) {
     await Promise.all(
       times(100, async () => {
         let id = await nanoid()
-        assert.is(id.length, 21)
-        assert.is(typeof id, 'string')
+        is(id.length, 21)
+        is(typeof id, 'string')
         for (let char of id) {
-          assert.match(urlAlphabet, new RegExp(char, "g"))
+          match(urlAlphabet, new RegExp(char, "g"))
         }
       })
     )
@@ -57,13 +57,13 @@ for (let type of ['node', 'browser']) {
 
   nanoidSuite('changes ID length', async () => {
     let id = await nanoid(10)
-    assert.is(id.length, 10)
+    is(id.length, 10)
   })
 
   nanoidSuite('has no collisions', async () => {
     let ids = await Promise.all(times(50 * 1000, () => nanoid()))
     ids.reduce((used, id) => {
-      assert.is(used[id], undefined)
+      is(used[id], undefined)
       used[id] = true
       return used
     }, [])
@@ -83,7 +83,7 @@ for (let type of ['node', 'browser']) {
         }
       })
     )
-    assert.is(Object.keys(chars).length, urlAlphabet.length)
+    is(Object.keys(chars).length, urlAlphabet.length)
     let max = 0
     let min = Number.MAX_SAFE_INTEGER
     for (let k in chars) {
@@ -91,7 +91,7 @@ for (let type of ['node', 'browser']) {
       if (distribution > max) max = distribution
       if (distribution < min) min = distribution
     }
-    assert.ok(max - min <= 0.05)
+    ok(max - min <= 0.05)
   })
 
   if (type === 'node') {
@@ -106,7 +106,7 @@ for (let type of ['node', 'browser']) {
       } catch (e) {
         catched = e
       }
-      assert.is(catched, error)
+      is(catched, error)
     })
   }
 
@@ -115,19 +115,19 @@ for (let type of ['node', 'browser']) {
   let randomSuite = suite(`${type} / random`)
 
   randomSuite('generates small random buffers', async () => {
-    assert.is((await random(10)).length, 10)
+    is((await random(10)).length, 10)
   })
 
   randomSuite('generates random buffers', async () => {
     let numbers = {}
     let bytes = await random(10000)
-    assert.is(bytes.length, 10000)
+    is(bytes.length, 10000)
     for (let byte of bytes) {
       if (!numbers[byte]) numbers[byte] = 0
       numbers[byte] += 1
-      assert.is(typeof byte, 'number')
-      assert.ok(byte <= 255)
-      assert.ok(byte >= 0)
+      is(typeof byte, 'number')
+      ok(byte <= 255)
+      ok(byte >= 0)
     }
   })
 
@@ -145,7 +145,7 @@ for (let type of ['node', 'browser']) {
   customAlphabetSuite('has options', async () => {
     let nanoidA = customAlphabet('a', 5)
     let id = await nanoidA()
-    assert.is(id, 'aaaaa')
+    is(id, 'aaaaa')
   })
 
   customAlphabetSuite('has flat distribution', async () => {
@@ -158,14 +158,14 @@ for (let type of ['node', 'browser']) {
     await Promise.all(
       times(100, async () => {
         let id = await nanoid2()
-        assert.is(id.length, LENGTH)
+        is(id.length, LENGTH)
         for (let char of id) {
           if (!chars[char]) chars[char] = 0
           chars[char] += 1
         }
       })
     )
-    assert.is(Object.keys(chars).length, ALPHABET.length)
+    is(Object.keys(chars).length, ALPHABET.length)
     let max = 0
     let min = Number.MAX_SAFE_INTEGER
     for (let k in chars) {
@@ -173,7 +173,7 @@ for (let type of ['node', 'browser']) {
       if (distribution > max) max = distribution
       if (distribution < min) min = distribution
     }
-    assert.ok(max - min <= 0.05)
+    ok(max - min <= 0.05)
   })
 
   if (type === 'node') {
@@ -186,8 +186,8 @@ for (let type of ['node', 'browser']) {
       let nanoidA = customAlphabet('a', 5)
       let id = await nanoidA()
 
-      assert.is(randomFillMock.callCount, 2)
-      assert.is(id, 'aaaaa')
+      is(randomFillMock.callCount, 2)
+      is(id, 'aaaaa')
     })
   }
 

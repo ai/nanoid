@@ -1,5 +1,5 @@
 let { test } = require('uvu')
-let assert = require('uvu/assert')
+let { is, ok, equal, match } = require('uvu/assert')
 
 let browser = require('../index.browser.js')
 let node = require('../index.js')
@@ -26,27 +26,27 @@ for (let type of ['node', 'browser']) {
   test(`${type} / nanoid / generates URL-friendly IDs`, () => {
     for (let i = 0; i < 100; i++) {
       let id = nanoid()
-      assert.is(id.length, 21)
-      assert.is(typeof id, 'string')
+      is(id.length, 21)
+      is(typeof id, 'string')
       for (let char of id) {
-        assert.match(urlAlphabet, new RegExp(char, "g"))
+        match(urlAlphabet, new RegExp(char, "g"))
       }
     }
   })
 
   test(`${type} / nanoid / changes ID length`, () => {
-    assert.is(nanoid(10).length, 10)
+    is(nanoid(10).length, 10)
   })
 
   test(`${type} / nanoid / accepts string`, () => {
-    assert.is(nanoid('10').length, 10)
+    is(nanoid('10').length, 10)
   })
 
   test(`${type} / nanoid / has no collisions`, () => {
     let used = {}
     for (let i = 0; i < 50 * 1000; i++) {
       let id = nanoid()
-      assert.is(used[id], undefined)
+      is(used[id], undefined)
       used[id] = true
     }
   })
@@ -64,7 +64,7 @@ for (let type of ['node', 'browser']) {
       }
     }
 
-    assert.is(Object.keys(chars).length, urlAlphabet.length)
+    is(Object.keys(chars).length, urlAlphabet.length)
 
     let max = 0
     let min = Number.MAX_SAFE_INTEGER
@@ -73,12 +73,12 @@ for (let type of ['node', 'browser']) {
       if (distribution > max) max = distribution
       if (distribution < min) min = distribution
     }
-    assert.ok(max - min <= 0.05)
+    ok(max - min <= 0.05)
   })
 
   test(`${type} / customAlphabet / has options`, () => {
     let nanoidA = customAlphabet('a', 5)
-    assert.is(nanoidA(), 'aaaaa')
+    is(nanoidA(), 'aaaaa')
   })
 
   test(`${type} / customAlphabet / has flat distribution`, () => {
@@ -96,7 +96,7 @@ for (let type of ['node', 'browser']) {
       }
     }
 
-    assert.is(Object.keys(chars).length, ALPHABET.length)
+    is(Object.keys(chars).length, ALPHABET.length)
 
     let max = 0
     let min = Number.MAX_SAFE_INTEGER
@@ -105,7 +105,7 @@ for (let type of ['node', 'browser']) {
       if (distribution > max) max = distribution
       if (distribution < min) min = distribution
     }
-    assert.ok(max - min <= 0.05)
+    ok(max - min <= 0.05)
   })
 
   test(`${type} / customRandom / supports generator`, () => {
@@ -119,36 +119,36 @@ for (let type of ['node', 'browser']) {
     }
     let nanoid4 = customRandom('abcde', 4, fakeRandom)
     let nanoid18 = customRandom('abcde', 18, fakeRandom)
-    assert.is(nanoid4(), 'adca')
-    assert.is(nanoid18(), 'cbadcbadcbadcbadcc')
+    is(nanoid4(), 'adca')
+    is(nanoid18(), 'cbadcbadcbadcbadcc')
   })
 
   test(`${type} / urlAlphabet / is string`, () => {
-    assert.is(typeof urlAlphabet, 'string')
+    is(typeof urlAlphabet, 'string')
   })
 
   test(`${type} / urlAlphabet / has no duplicates`, () => {
     for (let i = 0; i < urlAlphabet.length; i++) {
-      assert.equal(urlAlphabet.lastIndexOf(urlAlphabet[i]), i)
+      equal(urlAlphabet.lastIndexOf(urlAlphabet[i]), i)
     }
   })
 
   test(`${type} / random / generates small random buffers`, () => {
     for (let i = 0; i < urlAlphabet.length; i++) {
-      assert.is(random(10).length, 10)
+      is(random(10).length, 10)
     }
   })
 
   test(`${type} / random / generates random buffers`, () => {
     let numbers = {}
     let bytes = random(10000)
-    assert.is(bytes.length, 10000)
+    is(bytes.length, 10000)
     for (let byte of bytes) {
       if (!numbers[byte]) numbers[byte] = 0
       numbers[byte] += 1
-      assert.is(typeof byte, 'number')
-      assert.ok(byte <= 255)
-      assert.ok(byte >= 0)
+      is(typeof byte, 'number')
+      ok(byte <= 255)
+      ok(byte >= 0)
     }
   })
 
@@ -182,7 +182,7 @@ for (let type of ['node', 'browser']) {
       let ID1 = nanoid()
       let ID2 = nanoid(makeProxyNumberToReproducePreviousID())
 
-      assert.is.not(ID1, ID2)
+      is.not(ID1, ID2)
     })
   }
 }

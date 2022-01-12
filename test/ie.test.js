@@ -1,5 +1,5 @@
 let { test } = require('uvu')
-let assert = require('uvu/assert')
+let { throws } = require('uvu/assert')
 
 test.before(() => {
   global.msCrypto = {}
@@ -11,7 +11,7 @@ test.after(() => {
 })
 
 test('shows error in IE', () => {
-  assert.throws(() => {
+  throws(() => {
     // Since uvu runs all tests within same context, ensure to clear require cache
     delete require.cache[require.resolve('../index.browser')]
     require('../index.browser')

@@ -1,5 +1,5 @@
 let { test } = require('uvu')
-let assert = require('uvu/assert')
+let { throws } = require('uvu/assert')
 
 test.before(() => {
   global.navigator = {
@@ -12,7 +12,7 @@ test.after(() => {
 })
 
 test('tells to use non-secure generator on old browsers', () => {
-  assert.throws(() => {
+  throws(() => {
     // Since uvu runs all tests within same context, ensure to clear require cache
     delete require.cache[require.resolve('../index.browser')]
     require('../index.browser')
