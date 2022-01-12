@@ -69,27 +69,28 @@ Ada tiga buah perbedaan antara Nano ID dan UUID v4:
 
 ```rust
 $ node ./test/benchmark.js
-crypto.randomUUID         28,387,114 ops/sec
-uid/secure                 8,633,795 ops/sec
-@lukeed/uuid               6,888,704 ops/sec
-nanoid                     6,166,399 ops/sec
-customAlphabet             3,290,342 ops/sec
-uuid v4                    1,662,373 ops/sec
-secure-random-string         415,340 ops/sec
-uid-safe.sync                400,875 ops/sec
-cuid                         212,669 ops/sec
-shortid                       53,453 ops/sec
+crypto.randomUUID         25,603,857 ops/sec
+@napi-rs/uuid              9,973,819 ops/sec
+uid/secure                 8,234,798 ops/sec
+@lukeed/uuid               7,464,706 ops/sec
+nanoid                     5,616,592 ops/sec
+customAlphabet             3,115,207 ops/sec
+uuid v4                    1,535,753 ops/sec
+secure-random-string         388,226 ops/sec
+uid-safe.sync                363,489 ops/sec
+cuid                         187,343 ops/sec
+shortid                       45,758 ops/sec
 
 Async:
-nanoid/async                 102,823 ops/sec
-async customAlphabet         101,574 ops/sec
-async secure-random-string    96,540 ops/sec
-uid-safe                      93,395 ops/sec
+nanoid/async                  96,094 ops/sec
+async customAlphabet          97,184 ops/sec
+async secure-random-string    92,794 ops/sec
+uid-safe                      90,684 ops/sec
 
 Non-secure:
-uid                       70,055,975 ops/sec
-nanoid/non-secure          2,985,368 ops/sec
-rndm                       2,800,961 ops/sec
+uid                       67,376,692 ops/sec
+nanoid/non-secure          2,849,639 ops/sec
+rndm                       2,674,806 ops/sec
 ```
 
 Konfigurasi pengujian: ThinkPad X1 Carbon Gen 9, Fedora 34, Node.js 16.10.
