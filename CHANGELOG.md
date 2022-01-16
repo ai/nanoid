@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.2
+* Added `--size` and `--alphabet` arguments to binary (by Vitaly Baev).
+
 ## 3.1.32
 * Reduced `async` exports size (by Artyom Arutyunyan).
 * Moved from Jest to uvu (by Vitaly Baev).
