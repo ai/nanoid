@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 let { nanoid, customAlphabet } = require('..')
-let { parseArgs } = require('./parseArgs')
+let { parseArgs } = require('./utils')
 
 let parsedArgs = parseArgs(process.argv)
 
@@ -26,7 +26,7 @@ if (parsedArgs.help) {
 }
 
 let alphabet = parsedArgs.alphabet || parsedArgs.a
-let size = parsedArgs.size || parsedArgs.s ? Number(parsedArgs.size ?? parsedArgs.s) : undefined
+let size = parsedArgs.size || parsedArgs.s ? Number(parsedArgs.size || parsedArgs.s) : undefined
 
 if (typeof size !== 'undefined' && (Number.isNaN(size) || size <= 0)) {
   process.stderr.write('Size must be positive integer\n')
