@@ -456,10 +456,19 @@ npx: installed 1 in 0.63s
 LZfXLFzPPR4NNrgjlWDxn
 ```
 
-Для смены алфавита или длины ID есть отдельный проект [`nanoid-cli`].
+Длину генерируемых ID можно передать в аргументе `--size` (или `-s`):
 
-[`nanoid-cli`]: https://github.com/twhitbeck/nanoid-cli
+```sh
+$ npx nanoid --size 10
+L3til0JS4z
+```
 
+Изменить алфавит можно при помощи аргумента `--alphabet` (ли `-a`) (обратите внимание, что в этом случае `--size` обязателен):
+
+```sh
+$ npx nanoid --alphabet abc --size 15
+bccbcabaabaccab
+```
 
 ### Другие языки программирования
 

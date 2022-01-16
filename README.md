@@ -468,10 +468,19 @@ npx: installed 1 in 0.63s
 LZfXLFzPPR4NNrgjlWDxn
 ```
 
-If you want to change alphabet or ID size, you should use [`nanoid-cli`].
+Size of generated ID can be specified with `--size` (or `-s`) option:
 
-[`nanoid-cli`]: https://github.com/twhitbeck/nanoid-cli
+```sh
+$ npx nanoid --size 10
+L3til0JS4z
+```
 
+Custom alphabet can be specified with `--alphabet` (or `-a`) option (note that in this case `--size` is required):
+
+```sh
+$ npx nanoid --alphabet abc --size 15
+bccbcabaabaccab
+```
 
 ### Other Programming Languages
 
