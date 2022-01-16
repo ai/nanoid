@@ -47,7 +47,7 @@
     "check-dts": "^0.6.6",
     "cuid": "^2.1.8",
     "dual-publish": "^2.0.2",
-    "eslint": "^8.6.0",
+    "eslint": "^8.7.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
