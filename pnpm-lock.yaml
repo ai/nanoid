@@ -518,7 +518,7 @@ packages:
       size-limit: 7.0.5
     dependencies:
       escape-string-regexp: 4.0.0
-      nanoid: 3.1.32
+      nanoid: 3.2.0
       size-limit: 7.0.5
       webpack: 5.66.0
     transitivePeerDependencies:
@@ -2115,8 +2115,8 @@ packages:
     resolution: {integrity: sha512-s/snB+WGm6uwi0WjsZdaVcuf3KJXlfGl2LcxgwkEwJF0D/BWzVWAZW/XY4bFaiR7s0Jk3FPvlnepg1H1b1UwlA==}
     dev: true
 
-  /nanoid/3.1.32:
-    resolution: {integrity: sha512-F8mf7R3iT9bvThBoW4tGXhXFHCctyCiUUPrWF8WaTqa3h96d9QybkSeba43XVOOE3oiLfkVDe4bT8MeGmkrTxw==}
+  /nanoid/3.2.0:
+    resolution: {integrity: sha512-fmsZYa9lpn69Ad5eDn7FMcnnSR+8R34W9qJEijxYhTbfOWzr22n1QxCMzXLK+ODyW2973V3Fux959iQoUxzUIA==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
     dev: true
@@ -2281,7 +2281,7 @@ packages:
     resolution: {integrity: sha512-jBDboWM8qpaqwkMwItqTQTiFikhs/67OYVvblFFTM7MrZjt6yMKd6r2kgXizEbTTljacm4NldIlZnhbjr84QYg==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
-      nanoid: 3.1.32
+      nanoid: 3.2.0
       picocolors: 1.0.0
       source-map-js: 1.0.1
     dev: true
