@@ -475,7 +475,8 @@ $ npx nanoid --size 10
 L3til0JS4z
 ```
 
-Custom alphabet can be specified with `--alphabet` (or `-a`) option (note that in this case `--size` is required):
+Custom alphabet can be specified with `--alphabet` (or `-a`) option
+(note that in this case `--size` is required):
 
 ```sh
 $ npx nanoid --alphabet abc --size 15

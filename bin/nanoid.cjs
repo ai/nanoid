@@ -1,46 +1,58 @@
 #!/usr/bin/env node
 
 let { nanoid, customAlphabet } = require('..')
-let { parseArgs } = require('./utils')
 
-let parsedArgs = parseArgs(process.argv)
+function print(msg) {
+  process.stdout.write(msg + '\n')
+}
 
-if (parsedArgs.help) {
-  process.stdout.write(`
-	Usage
-	  $ nanoid [options]
+function error(msg) {
+  process.stderr.write(msg + '\n')
+  process.exit(1)
+}
 
-	Options
-	  -s, --size       Generated ID size
-	  -a, --alphabet   Alphabet to use
-	  -h, --help       Show this help
+if (process.argv.includes('--help') || process.argv.includes('-h')) {
+  print(`
+  Usage
+    $ nanoid [options]
 
-	Examples
-	  $ nano --s=15
-	  S9sBF77U6sDB8Yg
+  Options
+    -s, --size       Generated ID size
+    -a, --alphabet   Alphabet to use
+    -h, --help       Show this help
 
-	  $ nano --size=10 --alphabet=abc
-	  bcabababca
-`)
+  Examples
+    $ nano --s 15
+    S9sBF77U6sDB8Yg
+
+    $ nano --size 10 --alphabet abc
+    bcabababca`)
   process.exit()
 }
 
-let alphabet = parsedArgs.alphabet || parsedArgs.a
-let size = parsedArgs.size || parsedArgs.s ? Number(parsedArgs.size || parsedArgs.s) : undefined
-
-if (typeof size !== 'undefined' && (Number.isNaN(size) || size <= 0)) {
-  process.stderr.write('Size must be positive integer\n')
-  process.exit(1)
+let alphabet, size
+for (let i = 2; i < process.argv.length; i++) {
+  let arg = process.argv[i]
+  if (arg === '--size' || arg === '-s') {
+    size = Number(process.argv[i + 1])
+    i += 1
+    if (Number.isNaN(size) || size <= 0) {
+      error('Size must be positive integer')
+    }
+  } else if (arg === '--alphabet' || arg === '-a') {
+    alphabet = process.argv[i + 1]
+    i += 1
+  } else {
+    error('Unknown argument ' + arg)
+  }
 }
 
 if (alphabet) {
   if (typeof size === 'undefined') {
-    process.stderr.write('You must also specify size option, when using custom alphabet\n')
-    process.exit(1)
+    error('You must also specify size option, when using custom alphabet')
   }
-  process.stdout.write(customAlphabet(alphabet, size)())
+  let customNanoid = customAlphabet(alphabet, size)
+  print(customNanoid())
 } else {
-  process.stdout.write(nanoid(size))
+  print(nanoid(size))
 }
-
-process.stdout.write('\n')
