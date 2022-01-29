@@ -91,4 +91,98 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
       - name: Run benchmark
+        run: ./test/benchmark.jsname: Test
+on:
+  push:
+  pull_request:
+jobs:
+  full:
+    name: Node.js 17 Full
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 17
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Run tests
+        run: pnpm test
+        env:
+          FORCE_COLOR: 2
+  short:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version:
+          - 16
+          - 14
+          - 12
+    name: Node.js ${{ matrix.node-version }} Quick
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+      - name: Install Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Run unit tests
+        run: pnpm unit
+        env:
+          FORCE_COLOR: 2
+  old:
+    runs-on: ubuntu-latest
+    name: Node.js 10 Quick
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      - name: Install pnpm
+        uses: pnpm/action-setup@v1
+        with:
+          version: 3
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+      - name: Install Node.js 10
+        uses: actions/setup-node@v2
+        with:
+          node-version: 10
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Run unit tests
+        run: pnpm unit
+        env:
+          FORCE_COLOR: 2
+  benchmark:
+    name: Benchmark
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile --ignore-scripts
+      - name: Run benchmark
         run: ./test/benchmark.js
+https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
