@@ -310,6 +310,10 @@ const nanoid = customRandom(urlAlphabet, 10, random)
 
 Asynchronous and non-secure APIs are not available for `customRandom`.
 
+Note, that between Nano ID versions we may change random generator
+call sequence. If you are using seed-based generators, we do not guarantee
+the same result.
+
 
 ## Usage
 
