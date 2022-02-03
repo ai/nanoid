@@ -91,4 +91,4 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
       - name: Run benchmark
-        run: ./test/benchmark.js
+        run: node ./test/benchmark.js
