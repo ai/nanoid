@@ -32,7 +32,7 @@
   "sideEffects": false,
   "types": "./index.d.ts",
   "devDependencies": {
-    "@babel/core": "^7.17.0",
+    "@babel/core": "^7.17.2",
     "@logux/eslint-config": "^46.1.1",
     "@lukeed/uuid": "^2.0.0",
     "@napi-rs/uuid": "^0.2.0",
@@ -40,7 +40,7 @@
     "@size-limit/dual-publish": "^7.0.8",
     "@size-limit/file": "^7.0.8",
     "@size-limit/webpack": "^7.0.8",
-    "@types/node": "^17.0.14",
+    "@types/node": "^17.0.16",
     "benchmark": "^2.1.4",
     "c8": "^7.11.0",
     "cuid": "^2.1.8",
@@ -51,7 +51,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prefer-let": "^3.0.1",
     "eslint-plugin-promise": "^6.0.0",
-    "nanospy": "^0.4.0",
+    "nanospy": "^0.5.0",
     "picocolors": "^1.0.0",
     "postcss": "^8.4.6",
     "rndm": "^1.2.0",
@@ -63,7 +63,7 @@
     "uid-safe": "^2.1.5",
     "uuid": "^8.3.2",
     "uvu": "^0.5.3",
-    "vite": "^2.7.13"
+    "vite": "^2.8.0"
   },
   "size-limit": [
     {
