@@ -472,7 +472,7 @@ Nano ID 已被移植到许多语言。 你可以使用下面这些移植，获�
 * [Deno](https://github.com/ianfabs/nanoid)
 * [Go](https://github.com/matoous/go-nanoid)
 * [Elixir](https://github.com/railsmechanic/nanoid)
-* [Haskell](https://github.com/4e6/nanoid-hs)
+* [Haskell](https://github.com/MichelBoucey/NanoID)
 * [Janet](https://sr.ht/~statianzo/janet-nanoid/)
 * [Java](https://github.com/aventrix/jnanoid)
 * [Nim](https://github.com/icyphox/nanoid.nim)

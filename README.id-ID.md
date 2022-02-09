@@ -388,7 +388,7 @@ Nano ID telah bermigrasi ke berbagai macam bahasa. Seluruh versi dapat digunakan
 - [Deno](https://github.com/ianfabs/nanoid)
 - [Go](https://github.com/matoous/go-nanoid)
 - [Elixir](https://github.com/railsmechanic/nanoid)
-- [Haskell](https://github.com/4e6/nanoid-hs)
+- [Haskell](https://github.com/MichelBoucey/NanoID)
 - [Janet](https://sr.ht/~statianzo/janet-nanoid/)
 - [Java](https://github.com/aventrix/jnanoid)
 - [Nim](https://github.com/icyphox/nanoid.nim)
