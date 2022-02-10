@@ -48,9 +48,6 @@ for (let i = 2; i < process.argv.length; i++) {
 }
 
 if (alphabet) {
-  if (typeof size === 'undefined') {
-    error('You must also specify size option, when using custom alphabet')
-  }
   let customNanoid = customAlphabet(alphabet, size)
   print(customNanoid())
 } else {

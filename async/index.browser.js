@@ -1,6 +1,6 @@
 let random = async bytes => crypto.getRandomValues(new Uint8Array(bytes))
 
-let customAlphabet = (alphabet, size) => {
+let customAlphabet = (alphabet, defaultSize = 21) => {
   // First, a bitmask is necessary to generate the ID. The bitmask makes bytes
   // values closer to the alphabet size. The bitmask calculates the closest
   // `2^31 - 1` number, which exceeds the alphabet size.
@@ -24,7 +24,7 @@ let customAlphabet = (alphabet, size) => {
   // `-~i => i + 1` if i is an integer
   let step = -~((1.6 * mask * size) / alphabet.length)
 
-  return async () => {
+  return async (size = defaultSize) => {
     let id = ''
     while (true) {
       let bytes = crypto.getRandomValues(new Uint8Array(step))
