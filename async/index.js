@@ -18,7 +18,7 @@ let random = bytes =>
     })
   })
 
-let customAlphabet = (alphabet, size) => {
+let customAlphabet = (alphabet, defaultSize = 21) => {
   // First, a bitmask is necessary to generate the ID. The bitmask makes bytes
   // values closer to the alphabet size. The bitmask calculates the closest
   // `2^31 - 1` number, which exceeds the alphabet size.
@@ -36,9 +36,9 @@ let customAlphabet = (alphabet, size) => {
   // The number of random bytes gets decided upon the ID size, mask,
   // alphabet size, and magic number 1.6 (using 1.6 peaks at performance
   // according to benchmarks).
-  let step = Math.ceil((1.6 * mask * size) / alphabet.length)
+  let step = Math.ceil((1.6 * mask * defaultSize) / alphabet.length)
 
-  let tick = id =>
+  let tick = (id, size = defaultSize) =>
     random(step).then(bytes => {
       // A compact alternative for `for (var i = 0; i < step; i++)`.
       let i = step
@@ -47,10 +47,10 @@ let customAlphabet = (alphabet, size) => {
         id += alphabet[bytes[i] & mask] || ''
         if (id.length === size) return id
       }
-      return tick(id)
+      return tick(id, size)
     })
 
-  return () => tick('')
+  return size => tick('', size)
 }
 
 let nanoid = (size = 21) =>

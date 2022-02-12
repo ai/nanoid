@@ -21,7 +21,7 @@ export function nanoid(size?: number): string
  * will not be secure.
  *
  * @param alphabet Alphabet used to generate the ID.
- * @param size Size of the ID.
+ * @param defaultSize Size of the ID. The default size is 21.
  * @returns A random string generator.
  *
  * ```js
@@ -30,7 +30,10 @@ export function nanoid(size?: number): string
  * nanoid() //=> "8ё56а"
  * ```
  */
-export function customAlphabet(alphabet: string, size: number): () => string
+export function customAlphabet(
+  alphabet: string,
+  defaultSize?: number
+): (size?: number) => string
 
 /**
  * Generate unique ID with custom random generator and alphabet.

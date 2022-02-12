@@ -176,6 +176,12 @@ for (let type of ['node', 'browser']) {
     ok(max - min <= 0.05)
   })
 
+  customAlphabetSuite('changes size', async () => {
+    let nanoidA = customAlphabet('a')
+    let id = await nanoidA(10)
+    is(id, 'aaaaaaaaaa')
+  })
+
   if (type === 'node') {
     customAlphabetSuite('should call random two times', async () => {
       let randomFillMock = spy((buffer, callback) =>

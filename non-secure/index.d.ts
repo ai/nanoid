@@ -19,7 +19,7 @@ export function nanoid(size?: number): string
  *
  * @param alphabet Alphabet used to generate the ID.
  * @param defaultSize Size of the ID. The default size is 21.
- * @returns A function that returns a random string.
+ * @returns A random string generator.
  *
  * ```js
  * import { customAlphabet } from 'nanoid/non-secure'

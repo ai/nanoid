@@ -22,7 +22,7 @@ let customAlphabet = (alphabet, defaultSize = 21) => {
 
   // `-~f => Math.ceil(f)` if f is a float
   // `-~i => i + 1` if i is an integer
-  let step = -~((1.6 * mask * size) / alphabet.length)
+  let step = -~((1.6 * mask * defaultSize) / alphabet.length)
 
   return async (size = defaultSize) => {
     let id = ''

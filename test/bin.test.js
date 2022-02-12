@@ -44,14 +44,6 @@ test('shows an error if size is not a number', async () => {
   }
 })
 
-test('shows an error on no size with custom alphabet', async () => {
-  try {
-    await exec('node ' + BIN + ' --alphabet abc')
-  } catch (e) {
-    match(e, /You must also specify size option, when using custom alphabet/)
-  }
-})
-
 test('requires error if size is a negative number', async () => {
   try {
     await exec('node ' + BIN + ' --size "-1"')
