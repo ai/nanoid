@@ -4,7 +4,6 @@ specifiers:
   '@babel/core': ^7.17.2
   '@logux/eslint-config': ^46.1.1
   '@lukeed/uuid': ^2.0.0
-  '@napi-rs/uuid': ^0.2.0
   '@originjs/vite-plugin-commonjs': ^1.0.2
   '@size-limit/dual-publish': ^7.0.8
   '@size-limit/file': ^7.0.8
@@ -38,7 +37,6 @@ devDependencies:
   '@babel/core': 7.17.2
   '@logux/eslint-config': 46.1.1_cd7f45d1cba51a736d2df3e99513a1a4
   '@lukeed/uuid': 2.0.0
-  '@napi-rs/uuid': 0.2.0
   '@originjs/vite-plugin-commonjs': 1.0.2
   '@size-limit/dual-publish': 7.0.8_24c433b8572c6d8a3a69f812fcb06aa8
   '@size-limit/file': 7.0.8_size-limit@7.0.8
@@ -358,132 +356,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       '@lukeed/csprng': 1.0.1
-    dev: true
-
-  /@napi-rs/uuid-android-arm-eabi/0.2.0:
-    resolution: {integrity: sha512-oXrdam4nPEAIbVarDgCjCgUcfS/zO1yPBJkrQmbww5VtWi4z5qpfXJIDkS9oKWHE0gnjNXsG4wDokdl7BpcrUA==}
-    engines: {node: '>= 10'}
-    cpu: [arm]
-    os: [android]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@napi-rs/uuid-android-arm64/0.2.0:
-    resolution: {integrity: sha512-UppZr5o/ZyNAhj5koB60UqGPKkvt/J6tzULhdXHzXl02+BC3WACu63vNBhxMYIaq6ptKzy98yXEUk+txaZkdIg==}
-    engines: {node: '>= 10'}
-    cpu: [arm64]
-    os: [android]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@napi-rs/uuid-darwin-arm64/0.2.0:
-    resolution: {integrity: sha512-Zzflpi2y8ngiNplORAhRYt/aQeGBTa+n3AGz4NbkKsQH6+gB15/yaeJne1Q34yRmpveOyFffYjgdEvFiu7Kz4w==}
-    engines: {node: '>= 10'}
-    cpu: [arm64]
-    os: [darwin]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@napi-rs/uuid-darwin-x64/0.2.0:
-    resolution: {integrity: sha512-S1JZZXL4bxN/CocZIxnHTYCgzxJK+ySFzWCqFLov7z1vAIFVwhP19otgkDIdoEEHGq5e9f09isLbynGZXx+EMw==}
-    engines: {node: '>= 10'}
-    cpu: [x64]
-    os: [darwin]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@napi-rs/uuid-freebsd-x64/0.2.0:
-    resolution: {integrity: sha512-ovshM+VJ+XXEcmEu0UeLhKFLVL8+vzDyUKgMBJI+nj2ptDycypqsKsRKVfgL5QViKrU36h19wMxc2bu3R2tb0w==}
-    engines: {node: '>= 10'}
-    cpu: [x64]
-    os: [freebsd]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@napi-rs/uuid-linux-arm-gnueabihf/0.2.0:
-    resolution: {integrity: sha512-tuHEN7UWAxJ0aVihbdb3GjehFebx4V/EHLJ8o+laXKZzGLd9RiajG4mkjkZwVEimvIBXpXsvuEWFqtnqzoKvnA==}
-    engines: {node: '>= 10'}
-    cpu: [arm]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@napi-rs/uuid-linux-arm64-gnu/0.2.0:
-    resolution: {integrity: sha512-ko1hT+OVBUnem49YoiyFoXQ6e6zmXPUscSMkg5IBDA70NzbDL11pGrVSGuIzz7Zzt4z+3bE0CI2EaRIZ92NW9g==}
-    engines: {node: '>= 10'}
-    cpu: [arm64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@napi-rs/uuid-linux-arm64-musl/0.2.0:
-    resolution: {integrity: sha512-r9KIhJz+hzcPulcdRCnioouZMdRPRnLy0dbfkYiw0mOkt9kfbVXpRzbt7xz8B/Zf/d5LEWZsIFJHbiKxuIfPSA==}
-    engines: {node: '>= 10'}
-    cpu: [arm64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@napi-rs/uuid-linux-x64-gnu/0.2.0:
-    resolution: {integrity: sha512-iX+WBrBv5sjO690/zjuWvf7tt9/Jge+Qkrogh/es5u8+EMXSGTl9gW7PajL8pnNzDcdkVNgr41VrqmVGWzLFVw==}
-    engines: {node: '>= 10'}
-    cpu: [x64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@napi-rs/uuid-linux-x64-musl/0.2.0:
-    resolution: {integrity: sha512-ekDiT4iKKR8Vzop7JXxLpmRp4fHmGZYiOImN69DX+5nJUewwwLbIR7784qNBRUHJi7tzIhAM+5TfO3rmGTkmgw==}
-    engines: {node: '>= 10'}
-    cpu: [x64]
-    os: [linux]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@napi-rs/uuid-win32-arm64-msvc/0.2.0:
-    resolution: {integrity: sha512-zgq38ZQazk8bijAosK3SgJcUxpp3u8UOkNbUswsXPjurb3tLcM9HP5e79ujaHsUogFdN87l7fh/kXzHNEvwEsA==}
-    engines: {node: '>= 10'}
-    cpu: [arm64]
-    os: [win32]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@napi-rs/uuid-win32-x64-msvc/0.2.0:
-    resolution: {integrity: sha512-SJ79IKI6BpmRxixUHGhCjOZ8TwXv3pfJJ8WxQvbcU8HMrfv+lW4X8/iq3eZ8tCu6Pb6KxPh92B4FQ3XJnHL+GA==}
-    engines: {node: '>= 10'}
-    cpu: [x64]
-    os: [win32]
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@napi-rs/uuid/0.2.0:
-    resolution: {integrity: sha512-iwoDZeVB1W1dOkWvTTMIrDejySBF9hPgDUG/bJbKmLKruSCVjbJPFcDJtiRX6OD1qy7ObxtUrn8ofwcnRC/hJg==}
-    engines: {node: '>= 10'}
-    optionalDependencies:
-      '@napi-rs/uuid-android-arm-eabi': 0.2.0
-      '@napi-rs/uuid-android-arm64': 0.2.0
-      '@napi-rs/uuid-darwin-arm64': 0.2.0
-      '@napi-rs/uuid-darwin-x64': 0.2.0
-      '@napi-rs/uuid-freebsd-x64': 0.2.0
-      '@napi-rs/uuid-linux-arm-gnueabihf': 0.2.0
-      '@napi-rs/uuid-linux-arm64-gnu': 0.2.0
-      '@napi-rs/uuid-linux-arm64-musl': 0.2.0
-      '@napi-rs/uuid-linux-x64-gnu': 0.2.0
-      '@napi-rs/uuid-linux-x64-musl': 0.2.0
-      '@napi-rs/uuid-win32-arm64-msvc': 0.2.0
-      '@napi-rs/uuid-win32-x64-msvc': 0.2.0
     dev: true
 
   /@nodelib/fs.scandir/2.1.5:

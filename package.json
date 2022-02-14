@@ -12,8 +12,7 @@
     "clean": "rm -R coverage",
     "unit": "uvu . .test.js$",
     "test": "c8 pnpm unit && eslint . && pnpm clean && size-limit",
-    "start": "vite test/demo/ --open",
-    "benchmark": "node ./test/benchmark.js"
+    "start": "vite test/demo/ --open"
   },
   "engines": {
     "node": "^10 || ^12 || ^13.7 || ^14 || >=15.0.1"
@@ -36,7 +35,6 @@
     "@babel/core": "^7.17.2",
     "@logux/eslint-config": "^46.1.1",
     "@lukeed/uuid": "^2.0.0",
-    "@napi-rs/uuid": "^0.2.0",
     "@originjs/vite-plugin-commonjs": "^1.0.2",
     "@size-limit/dual-publish": "^7.0.8",
     "@size-limit/file": "^7.0.8",
