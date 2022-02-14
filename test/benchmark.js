@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 let { uid: uidSecure } = require('uid/secure')
 let { v4: lukeed4 } = require('@lukeed/uuid')
 let { v4: napiv4 } = require('@napi-rs/uuid')

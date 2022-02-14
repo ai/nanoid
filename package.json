@@ -12,7 +12,8 @@
     "clean": "rm -R coverage",
     "unit": "uvu . .test.js$",
     "test": "c8 pnpm unit && eslint . && pnpm clean && size-limit",
-    "start": "vite test/demo/ --open"
+    "start": "vite test/demo/ --open",
+    "benchmark": "node ./test/benchmark.js"
   },
   "engines": {
     "node": "^10 || ^12 || ^13.7 || ^14 || >=15.0.1"
