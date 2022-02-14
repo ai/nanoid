@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.3
+* Added `size` argument to function from `customAlphabet` (by Stefan Sundin).
+
 ## 3.2
 * Added `--size` and `--alphabet` arguments to binary (by Vitaly Baev).
 
