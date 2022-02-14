@@ -259,6 +259,15 @@ in [`nanoid-dictionary`].
 Alphabet must contain 256 symbols or less.
 Otherwise, the security of the internal generator algorithm is not guaranteed.
 
+In addition to setting a default size, you can change the ID size when calling
+the function:
+
+```js
+import { customAlphabet } from 'nanoid'
+const nanoid = customAlphabet('1234567890abcdef', 10)
+model.id = nanoid(5) //=> "f01a2"
+```
+
 Customizable asynchronous and non-secure APIs are also available:
 
 ```js

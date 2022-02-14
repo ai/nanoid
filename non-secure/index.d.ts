@@ -13,13 +13,13 @@
 export function nanoid(size?: number): string
 
 /**
- * Generate URL-friendly unique ID based on the custom alphabet.
+ * Generate a unique ID based on a custom alphabet.
  * This method uses the non-secure predictable random generator
  * with bigger collision probability.
  *
  * @param alphabet Alphabet used to generate the ID.
- * @param size Size of the ID.
- * @returns A random string.
+ * @param defaultSize Size of the ID. The default size is 21.
+ * @returns A random string generator.
  *
  * ```js
  * import { customAlphabet } from 'nanoid/non-secure'
@@ -27,4 +27,7 @@ export function nanoid(size?: number): string
  * model.id = //=> "8ё56а"
  * ```
  */
-export function customAlphabet(alphabet: string, size: number): () => string
+export function customAlphabet(
+  alphabet: string,
+  defaultSize?: number
+): (size?: number) => string

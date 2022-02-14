@@ -28,7 +28,7 @@ let random = bytes => {
   return pool.subarray(poolOffset - bytes, poolOffset)
 }
 
-let customRandom = (alphabet, size, getRandom) => {
+let customRandom = (alphabet, defaultSize, getRandom) => {
   // First, a bitmask is necessary to generate the ID. The bitmask makes bytes
   // values closer to the alphabet size. The bitmask calculates the closest
   // `2^31 - 1` number, which exceeds the alphabet size.
@@ -46,9 +46,9 @@ let customRandom = (alphabet, size, getRandom) => {
   // The number of random bytes gets decided upon the ID size, mask,
   // alphabet size, and magic number 1.6 (using 1.6 peaks at performance
   // according to benchmarks).
-  let step = Math.ceil((1.6 * mask * size) / alphabet.length)
+  let step = Math.ceil((1.6 * mask * defaultSize) / alphabet.length)
 
-  return () => {
+  return (size = defaultSize) => {
     let id = ''
     while (true) {
       let bytes = getRandom(step)
@@ -63,7 +63,8 @@ let customRandom = (alphabet, size, getRandom) => {
   }
 }
 
-let customAlphabet = (alphabet, size) => customRandom(alphabet, size, random)
+let customAlphabet = (alphabet, size = 21) =>
+  customRandom(alphabet, size, random)
 
 let nanoid = (size = 21) => {
   // `-=` convert `size` to number to prevent `valueOf` abusing

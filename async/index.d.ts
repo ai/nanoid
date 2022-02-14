@@ -24,8 +24,8 @@ export function nanoid(size?: number): Promise<string>
  * will not be secure.
  *
  * @param alphabet Alphabet used to generate the ID.
- * @param size Size of the ID.
- * @returns A promise with a random string.
+ * @param defaultSize Size of the ID. The default size is 21.
+ * @returns A function that returns a promise with a random string.
  *
  * ```js
  * import { customAlphabet } from 'nanoid/async'
@@ -37,8 +37,8 @@ export function nanoid(size?: number): Promise<string>
  */
 export function customAlphabet(
   alphabet: string,
-  size: number
-): () => Promise<string>
+  defaultSize?: number
+): (size?: number) => Promise<string>
 
 /**
  * Generate an array of random bytes collected from hardware noise.

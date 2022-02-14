@@ -108,6 +108,11 @@ for (let type of ['node', 'browser']) {
     ok(max - min <= 0.05)
   })
 
+  test(`${type} / customAlphabet / changes size`, () => {
+    let nanoidA = customAlphabet('a')
+    is(nanoidA(10), 'aaaaaaaaaa')
+  })
+
   test(`${type} / customRandom / supports generator`, () => {
     let sequence = [2, 255, 3, 7, 7, 7, 7, 7, 0, 1]
     function fakeRandom(size) {
