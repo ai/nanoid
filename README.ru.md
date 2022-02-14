@@ -284,6 +284,15 @@ user.id = nanoid()
 Алфавит должен содержать ≤256 символов. Иначе мы не сможем гарантировать
 непредсказуемость ID.
 
+Длину ID можно менять не только в `customAlphabet()`, но и при вызове
+генератора, который она вернёт:
+
+```js
+import { customAlphabet } from 'nanoid'
+const nanoid = customAlphabet('1234567890abcdef', 10)
+model.id = nanoid(5) //=> "f01a2"
+```
+
 [на нашем калькуляторе]: https://alex7kom.github.io/nano-nanoid-cc/
 [`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
 

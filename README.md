@@ -252,6 +252,20 @@ const nanoid = customAlphabet('1234567890abcdef', 10)
 model.id = nanoid() //=> "4f90d13a42"
 ```
 
+```js
+import { customAlphabet } from 'nanoid/async'
+const nanoid = customAlphabet('1234567890abcdef', 10)
+async function createUser () {
+  user.id = await nanoid()
+}
+```
+
+```js
+import { customAlphabet } from 'nanoid/non-secure'
+const nanoid = customAlphabet('1234567890abcdef', 10)
+user.id = nanoid()
+```
+
 Check the safety of your custom alphabet and ID size in our
 [ID collision probability] calculator. For more alphabets, check out the options
 in [`nanoid-dictionary`].
@@ -266,22 +280,6 @@ the function:
 import { customAlphabet } from 'nanoid'
 const nanoid = customAlphabet('1234567890abcdef', 10)
 model.id = nanoid(5) //=> "f01a2"
-```
-
-Customizable asynchronous and non-secure APIs are also available:
-
-```js
-import { customAlphabet } from 'nanoid/async'
-const nanoid = customAlphabet('1234567890abcdef', 10)
-async function createUser () {
-  user.id = await nanoid()
-}
-```
-
-```js
-import { customAlphabet } from 'nanoid/non-secure'
-const nanoid = customAlphabet('1234567890abcdef', 10)
-user.id = nanoid()
 ```
 
 [ID collision probability]: https://alex7kom.github.io/nano-nanoid-cc/
