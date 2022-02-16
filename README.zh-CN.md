@@ -383,21 +383,16 @@ import { nanoid } from 'nanoid'
 ### Rollup
 
 对于 Rollup 来说，你需要 [`@rollup/plugin-node-resolve`] 来绑定浏览器版本。
-除了这个库，还需要 [`@rollup/plugin-replace`] 来替换 `process.env.NODE_ENV`。
 
 ```js
   plugins: [
     nodeResolve({
       browser: true
-    }),
-    replace({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
   ]
 ```
 
 [`@rollup/plugin-node-resolve`]: https://github.com/rollup/plugins/tree/master/packages/node-resolve
-[`@rollup/plugin-replace`]: https://github.com/rollup/plugins/tree/master/packages/replace
 
 
 ### PouchDB and CouchDB

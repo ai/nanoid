@@ -313,15 +313,12 @@ import { nanoid } from 'nanoid'
 
 ### Rollup
 
-Untuk Rollup, dibutuhkan [`@rollup/plugin-node-resolve`](https://github.com/rollup/plugins/tree/master/packages/node-resolve) untuk versi browser dan [`@rollup/plugin-replace`](https://github.com/rollup/plugins/tree/master/packages/replace) untuk menggantikan `process.env.NODE_ENV`.
+Untuk Rollup, dibutuhkan [`@rollup/plugin-node-resolve`](https://github.com/rollup/plugins/tree/master/packages/node-resolve) untuk versi browser.
 
 ```js
 plugins: [
   nodeResolve({
     browser: true
-  }),
-  replace({
-    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
   })
 ]
 ```

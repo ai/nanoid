@@ -392,22 +392,17 @@ import { nanoid } from 'nanoid'
 
 ### Rollup
 
-Для Rollup понадобятся плагины [`@rollup/plugin-node-resolve`]
-и [`@rollup/plugin-replace`].
+Для Rollup понадобятся плагины [`@rollup/plugin-node-resolve`].
 
 ```js
 plugins: [
   nodeResolve({
     browser: true
-  }),
-  replace({
-    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
   })
 ]
 ```
 
 [`@rollup/plugin-node-resolve`]: https://github.com/rollup/plugins/tree/master/packages/node-resolve
-[`@rollup/plugin-replace`]: https://github.com/rollup/plugins/tree/master/packages/replace
 
 
 ### PouchDB и CouchDB

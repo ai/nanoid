@@ -405,22 +405,17 @@ import { nanoid } from 'nanoid'
 ### Rollup
 
 For Rollup you will need [`@rollup/plugin-node-resolve`] to bundle browser version
-of this library and [`@rollup/plugin-replace`] to replace
-`process.env.NODE_ENV`:
+of this library.:
 
 ```js
   plugins: [
     nodeResolve({
       browser: true
-    }),
-    replace({
-      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
   ]
 ```
 
 [`@rollup/plugin-node-resolve`]: https://github.com/rollup/plugins/tree/master/packages/node-resolve
-[`@rollup/plugin-replace`]: https://github.com/rollup/plugins/tree/master/packages/replace
 
 
 ### PouchDB and CouchDB
