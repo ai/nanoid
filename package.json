@@ -32,10 +32,10 @@
   "sideEffects": false,
   "types": "./index.d.ts",
   "devDependencies": {
-    "@babel/core": "^7.17.2",
+    "@babel/core": "^7.17.4",
     "@logux/eslint-config": "^46.1.1",
     "@lukeed/uuid": "^2.0.0",
-    "@originjs/vite-plugin-commonjs": "^1.0.2",
+    "@originjs/vite-plugin-commonjs": "^1.0.3",
     "@size-limit/dual-publish": "^7.0.8",
     "@size-limit/file": "^7.0.8",
     "@size-limit/webpack": "^7.0.8",
@@ -62,7 +62,7 @@
     "uid-safe": "^2.1.5",
     "uuid": "^8.3.2",
     "uvu": "^0.5.3",
-    "vite": "^2.8.2"
+    "vite": "^2.8.3"
   },
   "size-limit": [
     {
