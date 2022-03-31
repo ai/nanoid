@@ -497,6 +497,7 @@ Nano ID был портирован на множество языков. Это
 - [PHP](https://github.com/hidehalo/nanoid-php)
 - [Python](https://github.com/puyuan/py-nanoid)
   со [словарями](https://pypi.org/project/nanoid-dictionary)
+- [R](https://github.com/hrbrmstr/nanoid) (со словарями)
 - [Ruby](https://github.com/radeno/nanoid.rb)
 - [Rust](https://github.com/nikolay-govorov/nanoid)
 - [Swift](https://github.com/antiflasher/NanoID)
