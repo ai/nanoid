@@ -1,7 +1,7 @@
 {
   "name": "nanoid",
   "version": "3.3.2",
-  "description": "A tiny (130 bytes), secure URL-friendly unique string ID generator",
+  "description": "A tiny (116 bytes), secure URL-friendly unique string ID generator",
   "keywords": [
     "uuid",
     "random",
@@ -68,7 +68,7 @@
     {
       "name": "nanoid",
       "import": "{ nanoid }",
-      "limit": "130 B"
+      "limit": "116 B"
     },
     {
       "name": "customAlphabet",
@@ -108,7 +108,7 @@
       "name": "Brotli all",
       "brotli": true,
       "import": "{ nanoid, customAlphabet, urlAlphabet }",
-      "limit": "271 B"
+      "limit": "260 B"
     },
     {
       "name": "Brotli non-secure",
