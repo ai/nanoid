@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.3.3
+* Reduced size (by Anton Khlynovskiy).
+
 ## 3.3.2
 * Fixed `enhanced-resolve` support.
 
