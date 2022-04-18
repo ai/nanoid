@@ -61,10 +61,10 @@ let nanoid = (size = 21) =>
     } else if (byte < 62) {
       // `A-Z`
       id += (byte - 26).toString(36).toUpperCase()
-    } else if (byte < 63) {
-      id += '_'
-    } else {
+    } else if (byte > 62) {
       id += '-'
+    } else {
+      id += '_'
     }
     return id
   }, '')

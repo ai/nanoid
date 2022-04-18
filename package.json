@@ -108,7 +108,7 @@
       "name": "Brotli all",
       "brotli": true,
       "import": "{ nanoid, customAlphabet, urlAlphabet }",
-      "limit": "264 B"
+      "limit": "260 B"
     },
     {
       "name": "Brotli non-secure",
