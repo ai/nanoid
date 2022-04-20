@@ -503,6 +503,7 @@ Nano ID был портирован на множество языков. Это
 - [Swift](https://github.com/antiflasher/NanoID)
 * [Unison](https://share.unison-lang.org/latest/namespaces/hojberg/nanoid)
 - [V](https://github.com/invipal/nanoid)
+- [Zig](https://github.com/SasLuca/zig-nanoid)
 
 Для остальных сред можно использовать Nano ID [для терминала].
 
