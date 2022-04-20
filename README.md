@@ -518,6 +518,7 @@ the same ID generator on the client and server side.
 * [Swift](https://github.com/antiflasher/NanoID)
 * [Unison](https://share.unison-lang.org/latest/namespaces/hojberg/nanoid)
 * [V](https://github.com/invipal/nanoid)
+* [Zig](https://github.com/SasLuca/zig-nanoid)
 
 For other environments, [CLI] is available to generate IDs from a command line.
 
