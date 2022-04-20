@@ -481,6 +481,7 @@ Nano ID 已被移植到许多语言。 你可以使用下面这些移植，获�
 * [Swift](https://github.com/antiflasher/NanoID)
 * [Unison](https://share.unison-lang.org/latest/namespaces/hojberg/nanoid)
 * [V](https://github.com/invipal/nanoid)
+* [Zig](https://github.com/SasLuca/zig-nanoid)
 
 此外，[CLI] 还可用于从命令行生成 ID。
 
