@@ -475,6 +475,7 @@ Nano ID 已被移植到许多语言。 你可以使用下面这些移植，获�
 * [PHP](https://github.com/hidehalo/nanoid-php)
 * [Python](https://github.com/puyuan/py-nanoid)
   with [dictionaries](https://pypi.org/project/nanoid-dictionary)
+* [Postgres Extension](https://github.com/spa5k/uids-postgres)
 * [R](https://github.com/hrbrmstr/nanoid) (with dictionaries)
 * [Ruby](https://github.com/radeno/nanoid.rb)
 * [Rust](https://github.com/nikolay-govorov/nanoid)
@@ -482,7 +483,6 @@ Nano ID 已被移植到许多语言。 你可以使用下面这些移植，获�
 * [Unison](https://share.unison-lang.org/latest/namespaces/hojberg/nanoid)
 * [V](https://github.com/invipal/nanoid)
 * [Zig](https://github.com/SasLuca/zig-nanoid)
-* [Postgres Extension](https://github.com/spa5k/uids-postgres)
 
 此外，[CLI] 还可用于从命令行生成 ID。
 
