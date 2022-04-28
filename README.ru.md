@@ -501,11 +501,10 @@ Nano ID был портирован на множество языков. Это
 - [Ruby](https://github.com/radeno/nanoid.rb)
 - [Rust](https://github.com/nikolay-govorov/nanoid)
 - [Swift](https://github.com/antiflasher/NanoID)
-* [Unison](https://share.unison-lang.org/latest/namespaces/hojberg/nanoid)
+- [Unison](https://share.unison-lang.org/latest/namespaces/hojberg/nanoid)
 - [V](https://github.com/invipal/nanoid)
 - [Zig](https://github.com/SasLuca/zig-nanoid)
-* [Postgres Extension](https://github.com/spa5k/uids-postgres)
-
+- [Postgres Extension](https://github.com/spa5k/uids-postgres)
 
 Для остальных сред можно использовать Nano ID [для терминала].
 
