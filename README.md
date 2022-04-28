@@ -519,6 +519,7 @@ the same ID generator on the client and server side.
 * [Unison](https://share.unison-lang.org/latest/namespaces/hojberg/nanoid)
 * [V](https://github.com/invipal/nanoid)
 * [Zig](https://github.com/SasLuca/zig-nanoid)
+* [Postgres Extension](https://github.com/spa5k/uids-postgres)
 
 For other environments, [CLI] is available to generate IDs from a command line.
 
