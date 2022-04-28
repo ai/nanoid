@@ -393,6 +393,7 @@ Nano ID telah bermigrasi ke berbagai macam bahasa. Seluruh versi dapat digunakan
 - [Perl](https://github.com/tkzwtks/Nanoid-perl)
 - [PHP](https://github.com/hidehalo/nanoid-php)
 - [Python](https://github.com/puyuan/py-nanoid) with [dictionaries](https://pypi.org/project/nanoid-dictionary)
+- [Postgres Extension](https://github.com/spa5k/uids-postgres)
 - [R](https://github.com/hrbrmstr/nanoid) (with dictionaries)
 - [Ruby](https://github.com/radeno/nanoid.rb)
 - [Rust](https://github.com/nikolay-govorov/nanoid)
@@ -400,7 +401,6 @@ Nano ID telah bermigrasi ke berbagai macam bahasa. Seluruh versi dapat digunakan
 - [Unison](https://share.unison-lang.org/latest/namespaces/hojberg/nanoid)
 - [V](https://github.com/invipal/nanoid)
 - [Zig](https://github.com/SasLuca/zig-nanoid)
-- [Postgres Extension](https://github.com/spa5k/uids-postgres)
 
 Untuk environment lainnya, [CLI](#cli) tersedia untuk melakukan generasi ID dari command line / Terminal.
 
