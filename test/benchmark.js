@@ -2,6 +2,7 @@
 
 let { uid: uidSecure } = require('uid/secure')
 let { v4: lukeed4 } = require('@lukeed/uuid')
+let { v4: napiV4 } = require('@napi-rs/uuid')
 let { v4: uuid4 } = require('uuid')
 let benchmark = require('benchmark')
 let shortid = require('shortid')
@@ -34,6 +35,9 @@ suite
   })
   .add('uid/secure', () => {
     uidSecure(32)
+  })
+  .add('@napi-rs/uuid', () => {
+    napiV4()
   })
   .add('@lukeed/uuid', () => {
     lukeed4()
