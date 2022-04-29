@@ -33,11 +33,11 @@ suite
   .add('crypto.randomUUID', () => {
     crypto.randomUUID()
   })
-  .add('uid/secure', () => {
-    uidSecure(32)
-  })
   .add('@napi-rs/uuid', () => {
     napiV4()
+  })
+  .add('uid/secure', () => {
+    uidSecure(32)
   })
   .add('@lukeed/uuid', () => {
     lukeed4()
