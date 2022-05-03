@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.3.4
+* Fixed `--help` in CLI (by @Lete114).
+
 ## 3.3.3
 * Reduced size (by Anton Khlynovskiy).
 
