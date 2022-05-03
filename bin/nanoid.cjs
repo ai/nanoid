@@ -22,10 +22,10 @@ if (process.argv.includes('--help') || process.argv.includes('-h')) {
     -h, --help       Show this help
 
   Examples
-    $ nano --s 15
+    $ nanoid --s 15
     S9sBF77U6sDB8Yg
 
-    $ nano --size 10 --alphabet abc
+    $ nanoid --size 10 --alphabet abc
     bcabababca`)
   process.exit()
 }
