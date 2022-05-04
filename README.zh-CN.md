@@ -311,8 +311,21 @@ const nanoid = customRandom(urlAlphabet, 10, random)
 
 ```js
 // polyfills.js
-if (!window.crypto) {
+if (!window.crypto && window.msCrypto) {
   window.crypto = window.msCrypto
+
+  const getRandomValuesDef = window.crypto.getRandomValues
+
+  window.crypto.getRandomValues = function (array) {
+    const values = getRandomValuesDef.call(window.crypto, array)
+    const result = []
+
+    for (let i = 0; i < array.length; i++) {
+      result[i] = values[i];
+    }
+
+    return result
+  };
 }
 ```
 
