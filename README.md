@@ -327,12 +327,27 @@ the same result.
 ### IE
 
 If you support IE, you need to [transpile `node_modules`] by Babel
-and add `crypto` alias:
+and add `crypto` alias. Moreover, `UInt8Array` in IE actually
+is not an array and to cope with it, you have to convert it to an array
+manually:
 
 ```js
 // polyfills.js
-if (!window.crypto) {
+if (!window.crypto && window.msCrypto) {
   window.crypto = window.msCrypto
+
+  const getRandomValuesDef = window.crypto.getRandomValues
+
+  window.crypto.getRandomValues = function (array) {
+    const values = getRandomValuesDef.call(window.crypto, array)
+    const result = []
+
+    for (let i = 0; i < array.length; i++) {
+      result[i] = values[i];
+    }
+
+    return result
+  };
 }
 ```
 

@@ -335,12 +335,27 @@ const nanoid = customRandom(urlAlphabet, 10, random)
 ### IE
 
 Если вам нужна поддержка IE, потребуется включить [компиляцию `node_modules`]
-с помощью Babel и вручную убрать вендорный префикс у `crypto`.
+с помощью Babel и вручную убрать вендорный префикс у `crypto`. Кроме того,
+из-за того, что `UInt8Array` в IE является массивом, необходимо преобразовать
+метод `getRandomValues`, чтобы он возвращал массив:
 
 ```js
 // polyfills.js
-if (!window.crypto) {
+if (!window.crypto && window.msCrypto) {
   window.crypto = window.msCrypto
+
+  const getRandomValuesDef = window.crypto.getRandomValues
+
+  window.crypto.getRandomValues = function (array) {
+    const values = getRandomValuesDef.call(window.crypto, array)
+    const result = []
+
+    for (let i = 0; i < array.length; i++) {
+      result[i] = values[i];
+    }
+
+    return result
+  };
 }
 ```
 
