@@ -1,11 +1,11 @@
 // This file replaces `index.js` in bundlers like webpack or Rollup,
 // according to `browser` config in `package.json`.
 
-let { urlAlphabet } = require('./url-alphabet')
+export { urlAlphabet } from './url-alphabet/index.js'
 
-let random = bytes => crypto.getRandomValues(new Uint8Array(bytes))
+export let random = bytes => crypto.getRandomValues(new Uint8Array(bytes))
 
-let customRandom = (alphabet, defaultSize, getRandom) => {
+export let customRandom = (alphabet, defaultSize, getRandom) => {
   // First, a bitmask is necessary to generate the ID. The bitmask makes bytes
   // values closer to the alphabet size. The bitmask calculates the closest
   // `2^31 - 1` number, which exceeds the alphabet size.
@@ -44,10 +44,10 @@ let customRandom = (alphabet, defaultSize, getRandom) => {
   }
 }
 
-let customAlphabet = (alphabet, size = 21) =>
+export let customAlphabet = (alphabet, size = 21) =>
   customRandom(alphabet, size, random)
 
-let nanoid = (size = 21) =>
+export let nanoid = (size = 21) =>
   crypto.getRandomValues(new Uint8Array(size)).reduce((id, byte) => {
     // It is incorrect to use bytes exceeding the alphabet size.
     // The following mask reduces the random byte in the 0-255 value
@@ -69,4 +69,3 @@ let nanoid = (size = 21) =>
     return id
   }, '')
 
-module.exports = { nanoid, customAlphabet, customRandom, urlAlphabet, random }

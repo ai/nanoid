@@ -14,12 +14,25 @@
     "test": "c8 pnpm unit && eslint . && pnpm clean && size-limit",
     "start": "vite test/demo/ --open"
   },
+  "type": "module",
   "engines": {
     "node": "^14 || ^16 || >=18"
   },
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
   "repository": "ai/nanoid",
+  "exports": {
+    ".": {
+      "browser": "./index.browser.js",
+      "default": "./index.js"
+    },
+    "./async": {
+      "browser": "./async/index.browser.js",
+      "default": "./async/index.js"
+    },
+    "./non-secure": "./non-secure/index.js",
+    "./package.json": "./package.json"
+  },
   "browser": {
     "./index.js": "./index.browser.js",
     "./async/index.js": "./async/index.browser.js",
@@ -28,7 +41,7 @@
   "react-native": {
     "./async/index.js": "./async/index.native.js"
   },
-  "bin": "./bin/nanoid.cjs",
+  "bin": "./bin/nanoid.js",
   "sideEffects": false,
   "types": "./index.d.ts",
   "devDependencies": {
@@ -37,21 +50,19 @@
     "@lukeed/uuid": "^2.0.0",
     "@napi-rs/uuid": "^0.2.1",
     "@originjs/vite-plugin-commonjs": "^1.0.3",
-    "@size-limit/dual-publish": "^7.0.8",
     "@size-limit/file": "^7.0.8",
     "@size-limit/webpack": "^7.0.8",
     "@types/node": "^17.0.40",
     "benchmark": "^2.1.4",
     "c8": "^7.11.3",
+    "clean-publish": "^4.0.0",
     "cuid": "^2.1.8",
-    "dual-publish": "^3.0.1",
     "eslint": "^8.17.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.2.1",
     "eslint-plugin-prefer-let": "^3.0.1",
     "eslint-plugin-promise": "^6.0.0",
-    "nanospy": "^0.5.0",
     "picocolors": "^1.0.0",
     "postcss": "^8.4.14",
     "rndm": "^1.2.0",

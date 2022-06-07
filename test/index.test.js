@@ -1,8 +1,8 @@
-let { test } = require('uvu')
-let { is, ok, equal, match } = require('uvu/assert')
+import { is, ok, equal, match } from 'uvu/assert'
+import { test } from 'uvu'
 
-let browser = require('../index.browser.js')
-let node = require('../index.js')
+import * as browser from '../index.browser.js'
+import * as node from '../index.js'
 
 test.before(() => {
   global.crypto = {
@@ -29,7 +29,7 @@ for (let type of ['node', 'browser']) {
       is(id.length, 21)
       is(typeof id, 'string')
       for (let char of id) {
-        match(urlAlphabet, new RegExp(char, "g"))
+        match(urlAlphabet, new RegExp(char, 'g'))
       }
     }
   })

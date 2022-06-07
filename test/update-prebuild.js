@@ -1,18 +1,17 @@
 #!/usr/bin/env node
 
-let { promisify } = require('util')
-let { minify } = require('terser')
-let { join } = require('path')
-let fs = require('fs')
+import { readFile, writeFile } from 'fs/promises'
+import { fileURLToPath } from 'url'
+import { minify } from 'terser'
+import { join } from 'path'
 
-let writeFile = promisify(fs.writeFile)
-let readFile = promisify(fs.readFile)
+const ROOT = join(fileURLToPath(import.meta.url), '..', '..')
 
 async function build() {
-  let js = await readFile(join(__dirname, '..', 'index.browser.js'))
-  let func = 'export ' + js.toString().match(/(let nanoid [\W\w]*)\s*module/)[1]
+  let js = await readFile(join(ROOT, 'index.browser.js'))
+  let func = js.toString().match(/(export let nanoid [\W\w]*$)/)[1]
   let { code } = await minify(func)
-  await writeFile(join(__dirname, '..', 'nanoid.js'), code)
+  await writeFile(join(ROOT, 'nanoid.js'), code)
 }
 
 build().catch(e => {

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-let { nanoid, customAlphabet } = require('..')
+import { nanoid, customAlphabet } from '../index.js'
 
 function print(msg) {
   process.stdout.write(msg + '\n')

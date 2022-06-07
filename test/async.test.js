@@ -1,7 +1,9 @@
-let { suite } = require('uvu')
-let { spy } = require('nanospy')
-let { is, match, ok } = require('uvu/assert')
-let crypto = require('crypto')
+import { is, match, ok } from 'uvu/assert'
+import { test } from 'uvu'
+
+import { urlAlphabet } from '../index.js'
+import * as browser from '../async/index.browser.js'
+import * as node from '../async/index.js'
 
 global.crypto = {
   getRandomValues(array) {
@@ -11,10 +13,6 @@ global.crypto = {
     return array
   }
 }
-
-let { urlAlphabet } = require('..')
-let browser = require('../async/index.browser.js')
-let node = require('../async/index.js')
 
 function times(size, callback) {
   let array = []
@@ -27,40 +25,25 @@ function times(size, callback) {
 for (let type of ['node', 'browser']) {
   let { nanoid, customAlphabet, random } = type === 'node' ? node : browser
 
-  function mock(callback) {
-    crypto.randomFill = callback
-    delete require.cache[require.resolve('../async')]
-    nanoid = require('../async').nanoid
-  }
-
-  let nanoidSuite = suite(`${type} / nanoid`)
-
-  if (type === 'node') {
-    let originFill = crypto.randomFill
-    nanoidSuite.after.each(() => {
-      mock(originFill)
-    })
-  }
-
-  nanoidSuite('generates URL-friendly IDs', async () => {
+  test(`${type} / nanoid / generates URL-friendly IDs`, async () => {
     await Promise.all(
       times(100, async () => {
         let id = await nanoid()
         is(id.length, 21)
         is(typeof id, 'string')
         for (let char of id) {
-          match(urlAlphabet, new RegExp(char, "g"))
+          match(urlAlphabet, new RegExp(char, 'g'))
         }
       })
     )
   })
 
-  nanoidSuite('changes ID length', async () => {
+  test(`${type} / nanoid / changes ID length`, async () => {
     let id = await nanoid(10)
     is(id.length, 10)
   })
 
-  nanoidSuite('has no collisions', async () => {
+  test(`${type} / nanoid / has no collisions`, async () => {
     let ids = await Promise.all(times(50 * 1000, () => nanoid()))
     ids.reduce((used, id) => {
       is(used[id], undefined)
@@ -69,7 +52,7 @@ for (let type of ['node', 'browser']) {
     }, [])
   })
 
-  nanoidSuite('has flat distribution', async () => {
+  test(`${type} / nanoid / has flat distribution`, async () => {
     let COUNT = 100 * 1000
     let LENGTH = (await nanoid()).length
 
@@ -94,31 +77,11 @@ for (let type of ['node', 'browser']) {
     ok(max - min <= 0.05)
   })
 
-  if (type === 'node') {
-    nanoidSuite('rejects Promise on error', async () => {
-      let error = new Error('test')
-      mock((buffer, callback) => {
-        callback(error)
-      })
-      let catched
-      try {
-        await nanoid()
-      } catch (e) {
-        catched = e
-      }
-      is(catched, error)
-    })
-  }
-
-  nanoidSuite.run()
-
-  let randomSuite = suite(`${type} / random`)
-
-  randomSuite('generates small random buffers', async () => {
+  test(`${type} / random / generates small random buffers`, async () => {
     is((await random(10)).length, 10)
   })
 
-  randomSuite('generates random buffers', async () => {
+  test(`${type} / random / generates random buffers`, async () => {
     let numbers = {}
     let bytes = await random(10000)
     is(bytes.length, 10000)
@@ -131,24 +94,13 @@ for (let type of ['node', 'browser']) {
     }
   })
 
-  randomSuite.run()
-
-  let customAlphabetSuite = suite(`${type} / customAlphabet`)
-
-  if (type === 'node') {
-    let originFill = crypto.randomFill
-    customAlphabetSuite.after.each(() => {
-      mock(originFill)
-    })
-  }
-
-  customAlphabetSuite('has options', async () => {
+  test(`${type} / customAlphabet / has options`, async () => {
     let nanoidA = customAlphabet('a', 5)
     let id = await nanoidA()
     is(id, 'aaaaa')
   })
 
-  customAlphabetSuite('has flat distribution', async () => {
+  test(`${type} / customAlphabet / has flat distribution`, async () => {
     let COUNT = 50 * 1000
     let LENGTH = 30
     let ALPHABET = 'abcdefghijklmnopqrstuvwxy'
@@ -176,26 +128,11 @@ for (let type of ['node', 'browser']) {
     ok(max - min <= 0.05)
   })
 
-  customAlphabetSuite('changes size', async () => {
+  test(`${type} / customAlphabet / changes size`, async () => {
     let nanoidA = customAlphabet('a')
     let id = await nanoidA(10)
     is(id, 'aaaaaaaaaa')
   })
-
-  if (type === 'node') {
-    customAlphabetSuite('should call random two times', async () => {
-      let randomFillMock = spy((buffer, callback) =>
-        callback(null, [220, 215, 129, 35, 242, 202, 137, 180])
-      )
-      mock(randomFillMock)
-
-      let nanoidA = customAlphabet('a', 5)
-      let id = await nanoidA()
-
-      is(randomFillMock.callCount, 2)
-      is(id, 'aaaaa')
-    })
-  }
-
-  customAlphabetSuite.run()
 }
+
+test.run()

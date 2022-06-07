@@ -7,7 +7,7 @@
 let urlAlphabet =
   'useandom-26T198340PX75pxJACKVERYMINDBUSHWOLF_GQZbfghjklqvwyzrict'
 
-let customAlphabet = (alphabet, defaultSize = 21) => {
+export let customAlphabet = (alphabet, defaultSize = 21) => {
   return (size = defaultSize) => {
     let id = ''
     // A compact alternative for `for (var i = 0; i < step; i++)`.
@@ -20,7 +20,7 @@ let customAlphabet = (alphabet, defaultSize = 21) => {
   }
 }
 
-let nanoid = (size = 21) => {
+export let nanoid = (size = 21) => {
   let id = ''
   // A compact alternative for `for (var i = 0; i < step; i++)`.
   let i = size
@@ -30,5 +30,3 @@ let nanoid = (size = 21) => {
   }
   return id
 }
-
-module.exports = { nanoid, customAlphabet }

@@ -1,8 +1,8 @@
 import { v4 as uuid4 } from 'uuid'
 import shortid from 'shortid'
 
-import nanoidExport from '../../index.browser.js'
-import nonSecureExport from '../../non-secure/index.js'
+import * as nanoidExport from '../../index.browser.js'
+import * as nonSecureExport from '../../non-secure/index.js'
 
 let { nanoid, customAlphabet, random } = nanoidExport
 let nonSecure = nonSecureExport.nanoid

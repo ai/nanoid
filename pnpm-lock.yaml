@@ -6,21 +6,19 @@ specifiers:
   '@lukeed/uuid': ^2.0.0
   '@napi-rs/uuid': ^0.2.1
   '@originjs/vite-plugin-commonjs': ^1.0.3
-  '@size-limit/dual-publish': ^7.0.8
   '@size-limit/file': ^7.0.8
   '@size-limit/webpack': ^7.0.8
   '@types/node': ^17.0.40
   benchmark: ^2.1.4
   c8: ^7.11.3
+  clean-publish: ^4.0.0
   cuid: ^2.1.8
-  dual-publish: ^3.0.1
   eslint: ^8.17.0
   eslint-config-standard: ^17.0.0
   eslint-plugin-import: ^2.26.0
   eslint-plugin-n: ^15.2.1
   eslint-plugin-prefer-let: ^3.0.1
   eslint-plugin-promise: ^6.0.0
-  nanospy: ^0.5.0
   picocolors: ^1.0.0
   postcss: ^8.4.14
   rndm: ^1.2.0
@@ -40,21 +38,19 @@ devDependencies:
   '@lukeed/uuid': 2.0.0
   '@napi-rs/uuid': 0.2.1
   '@originjs/vite-plugin-commonjs': 1.0.3
-  '@size-limit/dual-publish': 7.0.8_wqfv2ceb3uqygah5qee4bz7v2e
   '@size-limit/file': 7.0.8_size-limit@7.0.8
   '@size-limit/webpack': 7.0.8_size-limit@7.0.8
   '@types/node': 17.0.40
   benchmark: 2.1.4
   c8: 7.11.3
+  clean-publish: 4.0.0
   cuid: 2.1.8
-  dual-publish: 3.0.1
   eslint: 8.17.0
   eslint-config-standard: 17.0.0_k2gkawvnhbuxb7ddaipaawnv5q
   eslint-plugin-import: 2.26.0_eslint@8.17.0
   eslint-plugin-n: 15.2.1_eslint@8.17.0
   eslint-plugin-prefer-let: 3.0.1
   eslint-plugin-promise: 6.0.0_eslint@8.17.0
-  nanospy: 0.5.0
   picocolors: 1.0.0
   postcss: 8.4.14
   rndm: 1.2.0
@@ -533,17 +529,6 @@ packages:
     resolution: {integrity: sha512-KuEXeGPptM2lyxdIEJ4R11+5ztipHoE7hy8ClZt3PYaOVQ/pyngd2alaSrPnwyFeOW1UagRBaQ752aA1dTMdOQ==}
     dependencies:
       esbuild: 0.14.42
-    dev: true
-
-  /@size-limit/dual-publish/7.0.8_wqfv2ceb3uqygah5qee4bz7v2e:
-    resolution: {integrity: sha512-TiupMMHp4Lm7TwATJ4k5tErQ38qdX2+7F4yo1FqpHEYaYKo2qj1FtNi1Smn066faIUNJ6iVDZ2V9hM64eTsLig==}
-    engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
-    peerDependencies:
-      dual-publish: '> 0.6.0'
-      size-limit: 7.0.8
-    dependencies:
-      dual-publish: 3.0.1
-      size-limit: 7.0.8
     dev: true
 
   /@size-limit/file/7.0.8_size-limit@7.0.8:
@@ -1091,17 +1076,6 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       esutils: 2.0.3
-    dev: true
-
-  /dual-publish/3.0.1:
-    resolution: {integrity: sha512-nVBrd2y9/jlyeG6OD2U/F1BrFFCL5zkBPDBHsTbWTRYqfartbEOR8pQImEFh44PRQfX4PtOrOM5Uatv7f6i1Tg==}
-    engines: {node: '>=16.0.0'}
-    hasBin: true
-    dependencies:
-      clean-publish: 4.0.0
-      fast-glob: 3.2.11
-      line-column: 1.0.2
-      picocolors: 1.0.0
     dev: true
 
   /electron-to-chromium/1.4.147:
@@ -2031,19 +2005,8 @@ packages:
       call-bind: 1.0.2
     dev: true
 
-  /isarray/1.0.0:
-    resolution: {integrity: sha512-VLghIWNM6ELQzo7zwmcg0NmTVyWKYjvIeM83yjp0wRDTmUnrM678fQbcKBo6n2CJEF0szoG//ytg+TKla89ALQ==}
-    dev: true
-
   /isexe/2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
-    dev: true
-
-  /isobject/2.1.0:
-    resolution: {integrity: sha512-+OUdGJlgjOBZDfxnDjYYG6zp487z0JGNQq3cYQYg5f5hKR+syHMsaztzGeml/4kGG55CSpKSpWTY+jYGgsHLgA==}
-    engines: {node: '>=0.10.0'}
-    dependencies:
-      isarray: 1.0.0
     dev: true
 
   /istanbul-lib-coverage/3.2.0:
@@ -2135,13 +2098,6 @@ packages:
   /lilconfig/2.0.5:
     resolution: {integrity: sha512-xaYmXZtTHPAw5m+xLN8ab9C+3a8YmV3asNSPOATITbtwrfbwaLJj8h66H1WMIpALCkqsIzK3h7oQ+PdX+LQ9Eg==}
     engines: {node: '>=10'}
-    dev: true
-
-  /line-column/1.0.2:
-    resolution: {integrity: sha512-Ktrjk5noGYlHsVnYWh62FLVs4hTb8A3e+vucNZMgPeAOITdshMSgv4cCZQeRDjm7+goqmo6+liZwTXo+U3sVww==}
-    dependencies:
-      isarray: 1.0.0
-      isobject: 2.1.0
     dev: true
 
   /loader-runner/4.3.0:
@@ -2262,11 +2218,6 @@ packages:
     resolution: {integrity: sha512-yFvNYMig4AthKYfHFl1sLj7B2nkHL4lzdig4osvl9/LdGbXwrdFRoqBS98gsEsOakr0yH+r5NZ/1Y9gdVB8trA==}
     dependencies:
       picocolors: 1.0.0
-    dev: true
-
-  /nanospy/0.5.0:
-    resolution: {integrity: sha512-QxH93ntkjRiSP+gJrBLcgOO3neU6pGhUKjPAJ7rAFag/+tJ+/0lw6dXic+iXUQ/3Cxk4Dp/FwLnf57xnQsjecQ==}
-    engines: {node: ^8.0.0 || ^10.0.0 || ^12.0.0 || ^14.0.0 || >=16.0.0}
     dev: true
 
   /natural-compare/1.4.0:

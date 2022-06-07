@@ -1,12 +1,13 @@
-let { is, match } = require('uvu/assert')
-let { promisify } = require('util')
-let { test } = require('uvu')
-let { join } = require('path')
-let child = require('child_process')
+import { fileURLToPath } from 'url'
+import { is, match } from 'uvu/assert'
+import { promisify } from 'util'
+import { test } from 'uvu'
+import { join } from 'path'
+import child from 'child_process'
 
 let exec = promisify(child.exec)
 
-const BIN = join(__dirname, '..', 'bin', 'nanoid.cjs')
+const BIN = join(fileURLToPath(import.meta.url), '..', '..', 'bin', 'nanoid.js')
 
 test('prints unique ID', async () => {
   let { stdout, stderr } = await exec('node ' + BIN)

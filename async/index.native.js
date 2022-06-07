@@ -1,10 +1,10 @@
-let { getRandomBytesAsync } = require('expo-random')
+import { getRandomBytesAsync } from 'expo-random'
 
-let { urlAlphabet } = require('../url-alphabet')
+import { urlAlphabet } from '../url-alphabet/index.js'
 
-let random = getRandomBytesAsync
+export let random = getRandomBytesAsync
 
-let customAlphabet = (alphabet, defaultSize = 21) => {
+export let customAlphabet = (alphabet, defaultSize = 21) => {
   // First, a bitmask is necessary to generate the ID. The bitmask makes bytes
   // values closer to the alphabet size. The bitmask calculates the closest
   // `2^31 - 1` number, which exceeds the alphabet size.
@@ -39,7 +39,7 @@ let customAlphabet = (alphabet, defaultSize = 21) => {
   return size => tick('', size)
 }
 
-let nanoid = (size = 21) =>
+export let nanoid = (size = 21) =>
   random(size).then(bytes => {
     let id = ''
     // A compact alternative for `for (var i = 0; i < step; i++)`.
@@ -53,5 +53,3 @@ let nanoid = (size = 21) =>
     }
     return id
   })
-
-module.exports = { nanoid, customAlphabet, random }

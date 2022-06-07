@@ -1,5 +1,7 @@
-let { test } = require('uvu')
-let { is } = require('uvu/assert')
+import { test } from 'uvu'
+import { is } from 'uvu/assert'
+
+import { nanoid } from '../index.browser.js'
 
 test.before(() => {
   global.navigator = {
@@ -22,8 +24,6 @@ test.after(() => {
 })
 
 test('works with polyfill', () => {
-  let { nanoid } = require('../index.browser')
-
   is(typeof nanoid(), 'string')
 })
 

@@ -1,6 +1,6 @@
-let random = async bytes => crypto.getRandomValues(new Uint8Array(bytes))
+export let random = async bytes => crypto.getRandomValues(new Uint8Array(bytes))
 
-let customAlphabet = (alphabet, defaultSize = 21) => {
+export let customAlphabet = (alphabet, defaultSize = 21) => {
   // First, a bitmask is necessary to generate the ID. The bitmask makes bytes
   // values closer to the alphabet size. The bitmask calculates the closest
   // `2^31 - 1` number, which exceeds the alphabet size.
@@ -39,7 +39,7 @@ let customAlphabet = (alphabet, defaultSize = 21) => {
   }
 }
 
-let nanoid = async (size = 21) => {
+export let nanoid = async (size = 21) => {
   let id = ''
   let bytes = crypto.getRandomValues(new Uint8Array(size))
 
@@ -65,5 +65,3 @@ let nanoid = async (size = 21) => {
   }
   return id
 }
-
-module.exports = { nanoid, customAlphabet, random }

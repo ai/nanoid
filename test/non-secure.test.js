@@ -1,15 +1,15 @@
-let { test } = require('uvu')
-let { is, match, ok } = require('uvu/assert')
+import { is, match, ok } from 'uvu/assert'
+import { test } from 'uvu'
 
-let { nanoid, customAlphabet } = require('../non-secure')
-let { urlAlphabet } = require('..')
+import { nanoid, customAlphabet } from '../non-secure/index.js'
+import { urlAlphabet } from '../index.js'
 
 test('nanoid / generates URL-friendly IDs', () => {
   for (let i = 0; i < 10; i++) {
     let id = nanoid()
     is(id.length, 21)
     for (let char of id) {
-      match(urlAlphabet, new RegExp(char, "g"))
+      match(urlAlphabet, new RegExp(char, 'g'))
     }
   }
 })
