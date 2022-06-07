@@ -47,12 +47,9 @@ Supports modern browsers, IE [with Babel], Node.js and React Native.
   * [Custom Alphabet or Size](#custom-alphabet-or-size)
   * [Custom Random Bytes Generator](#custom-random-bytes-generator)
 * [Usage](#usage)
-  * [IE](#ie)
   * [React](#react)
   * [React Native](#react-native)
-  * [Rollup](#rollup)
   * [PouchDB and CouchDB](#pouchdb-and-couchdb)
-  * [Mongoose](#mongoose)
   * [Web Workers](#web-workers)
   * [CLI](#cli)
   * [Other Programming Languages](#other-programming-languages)
@@ -154,12 +151,6 @@ as ESM in webpack, Rollup, Parcel, or Node.js.
 
 ```js
 import { nanoid } from 'nanoid'
-```
-
-In Node.js you can use CommonJS import:
-
-```js
-const { nanoid } = require('nanoid')
 ```
 
 
@@ -324,41 +315,6 @@ the same result.
 
 ## Usage
 
-### IE
-
-If you support IE, you need to [transpile `node_modules`] by Babel
-and add `crypto` alias. Moreover, `UInt8Array` in IE actually
-is not an array and to cope with it, you have to convert it to an array
-manually:
-
-```js
-// polyfills.js
-if (!window.crypto && window.msCrypto) {
-  window.crypto = window.msCrypto
-
-  const getRandomValuesDef = window.crypto.getRandomValues
-
-  window.crypto.getRandomValues = function (array) {
-    const values = getRandomValuesDef.call(window.crypto, array)
-    const result = []
-
-    for (let i = 0; i < array.length; i++) {
-      result[i] = values[i];
-    }
-
-    return result
-  };
-}
-```
-
-```js
-import './polyfills.js'
-import { nanoid } from 'nanoid'
-```
-
-[transpile `node_modules`]: https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/
-
-
 ### React
 
 There’s no correct way to use Nano ID for React `key` prop
@@ -417,22 +373,6 @@ import { nanoid } from 'nanoid'
 [`react-native-get-random-values`]: https://github.com/LinusU/react-native-get-random-values
 
 
-### Rollup
-
-For Rollup you will need [`@rollup/plugin-node-resolve`] to bundle browser version
-of this library.:
-
-```js
-  plugins: [
-    nodeResolve({
-      browser: true
-    })
-  ]
-```
-
-[`@rollup/plugin-node-resolve`]: https://github.com/rollup/plugins/tree/master/packages/node-resolve
-
-
 ### PouchDB and CouchDB
 
 In PouchDB and CouchDB, IDs can’t start with an underscore `_`.
@@ -445,18 +385,6 @@ Override the default ID with the following option:
 db.put({
   _id: 'id' + nanoid(),
   …
-})
-```
-
-
-### Mongoose
-
-```js
-const mySchema = new Schema({
-  _id: {
-    type: String,
-    default: () => nanoid()
-  }
 })
 ```
 

@@ -51,12 +51,9 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
   - [Смена алфавита или длины](#смена-алфавита-или-длины)
   - [Смена генератора случайных чисел](#смена-генератора-случайных-чисел)
 - [Руководство](#руководство)
-  - [IE](#ie)
   - [React](#react)
   - [React Native](#react-native)
-  - [Rollup](#rollup)
   - [PouchDB и CouchDB](#pouchdb-и-couchdb)
-  - [Mongoose](#mongoose)
   - [Веб-воркеры](#веб-воркеры)
   - [Терминал](#терминал)
   - [Другие языки программирования](#другие-языки-программирования)
@@ -163,12 +160,6 @@ Nano ID поддерживает ES-модули. Вам не надо ниче�
 
 ```js
 import { nanoid } from 'nanoid'
-```
-
-Для Node.js также поддерживается CommonJS-импорт:
-
-```js
-const { nanoid } = require('nanoid')
 ```
 
 
@@ -332,41 +323,6 @@ const nanoid = customRandom(urlAlphabet, 10, random)
 
 ## Руководство
 
-### IE
-
-Если вам нужна поддержка IE, потребуется включить [компиляцию `node_modules`]
-с помощью Babel и вручную убрать вендорный префикс у `crypto`. Кроме того,
-из-за того, что `UInt8Array` в IE является массивом, необходимо преобразовать
-метод `getRandomValues`, чтобы он возвращал массив:
-
-```js
-// polyfills.js
-if (!window.crypto && window.msCrypto) {
-  window.crypto = window.msCrypto
-
-  const getRandomValuesDef = window.crypto.getRandomValues
-
-  window.crypto.getRandomValues = function (array) {
-    const values = getRandomValuesDef.call(window.crypto, array)
-    const result = []
-
-    for (let i = 0; i < array.length; i++) {
-      result[i] = values[i];
-    }
-
-    return result
-  };
-}
-```
-
-```js
-import './polyfills.js'
-import { nanoid } from 'nanoid'
-```
-
-[компиляцию `node_modules`]: https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/
-
-
 ### React
 
 Не используйте Nano ID для генерации свойства `key` в JSX. При каждом рендере
@@ -389,6 +345,7 @@ function Todos({ todos }) {
 Подробнее об использовании свойства `key` читайте в
 [официальной документации React](https://ru.reactjs.org/docs/lists-and-keys.html#keys).
 
+
 ### React Native
 
 React Native не имеет встроенного аппаратного генератора случайных чисел.
@@ -405,21 +362,6 @@ import { nanoid } from 'nanoid'
 [`react-native-get-random-values`]: https://github.com/LinusU/react-native-get-random-values
 
 
-### Rollup
-
-Для Rollup понадобятся плагины [`@rollup/plugin-node-resolve`].
-
-```js
-plugins: [
-  nodeResolve({
-    browser: true
-  })
-]
-```
-
-[`@rollup/plugin-node-resolve`]: https://github.com/rollup/plugins/tree/master/packages/node-resolve
-
-
 ### PouchDB и CouchDB
 
 В PouchDB и CouchDB, ID не могут начинаться с `_`. Добавьте к ID префикс,
@@ -431,18 +373,6 @@ plugins: [
 db.put({
   _id: 'id' + nanoid(),
   …
-})
-```
-
-
-### Mongoose
-
-```js
-const mySchema = new Schema({
-  _id: {
-    type: String,
-    default: () => nanoid()
-  }
 })
 ```
 

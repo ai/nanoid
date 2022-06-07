@@ -29,6 +29,7 @@ Mendukung penjelajah (browser) modern, IE [dengan Babel](https://developer.epage
        alt="Disponsori oleh Evil Martians" width="236" height="54">
 </a>
 
+
 ## Table of Contents
 
 - [Perbandingan dengan UUID](#perbandingan-dengan-uuid)
@@ -42,16 +43,14 @@ Mendukung penjelajah (browser) modern, IE [dengan Babel](https://developer.epage
   - [Alfabet dan Ukuran (Custom)](#alfabet-dan-ukuran-penyesuaian)
   - [Generasi Random Bytes (Custom)](#generasi-random-bytes-custom)
 - [Penggunaan](#penggunaan)
-  - [IE](#ie)
   - [React](#react)
   - [React Native](#react-native)
-  - [Rollup](#rollup)
   - [PouchDB dan CouchDB](#pouchdb-dan-couchdb)
-  - [Mongoose](#mongoose)
   - [Web Workers](#web-workers)
   - [CLI](#cli)
   - [Bahasa Pemrograman Lainnya](#bahasa-pemrograman-lainnya)
 - [Alat](#alat)
+
 
 ## Perbandingan dengan UUID
 
@@ -64,6 +63,7 @@ Ada tiga buah perbedaan antara Nano ID dan UUID v4:
 1. Nano ID menggunakan alfabet yang lebih lebar, karenanya jumlah bita acak dapat 'dikemas' dalam 21 simbol, bukan 36 simbol.
 2. Kode sumber Nano ID **empat kali lebih kecil** ketimbang `uuid/v4`: 130 bytes dibanding 483 bytes.
 3. Karena menggunakan trik alokasi memori, Nano ID **dua kali lebih cepat** ketimbang UUID.
+
 
 ## Benchmark
 
@@ -95,6 +95,7 @@ rndm                       2,674,806 ops/sec
 
 Konfigurasi pengujian: ThinkPad X1 Carbon Gen 9, Fedora 34, Node.js 16.10.
 
+
 ## Keamanan
 
 _Lihat artikel yang informatif tentang teori angka acak: [Nilai acak yang aman dalam Node.js (English)](https://gist.github.com/joepie91/7105003c3b26e65efcea63f3db82dfba)_.
@@ -109,6 +110,7 @@ _Lihat artikel yang informatif tentang teori angka acak: [Nilai acak yang aman d
 - **Terdokumentasi secara baik.** Seluruh algoritma Nano ID sudah terdokumentasi. Lihat komentar di [kode sumber](https://github.com/ai/nanoid/blob/main/index.js).
 
 - **Kerentanan.** Untuk melaporkan sebuah _security vulnerability_ atau kerentanan, mohon menggunakan [Tidelift Security Contact](https://tidelift.com/security). Tidelift akan mengkoordinasikan pembetulan dan penyingkapan dari kerentanan tersebut.
+
 
 ## Instalasi
 
@@ -128,17 +130,13 @@ Nano ID tersedia dalam bentuk ES modules. Tidak perlu melakukan konfigurasi apap
 import { nanoid } from 'nanoid'
 ```
 
-Dalam Node.js, dapat digunakan gaya _import_ ala CommonJS:
-
-```js
-const { nanoid } = require('nanoid')
-```
 
 ## API
 
 Nano ID memiliki tiga buah API: normal (_blocking_), asinkronus (_asynchronous_), dan _non-secure_.
 
 Bawaannya, Nano ID menggunakan simbol yang _URL-friendly_ (`A-Za-z0-9_-`) dan mengembalikan ID dengan 21 karakter (untuk memiliki probabilitas collision / tabrakan yang mirip dengan UUID v4).
+
 
 ### Blocking
 
@@ -161,6 +159,7 @@ Jangan lupa memeriksa tingkat keamanan dari ukuran ID dalam situs [ID collision 
 
 Dapat digunakan pula [custom alphabet](#custom-alphabet-or-size) atau [random generator](#custom-random-bytes-generator) yang lain.
 
+
 ### Async
 
 Untuk menghasilkan bytes yang acak dan aman secara kriptografis, CPU mengumpulkan noise elektromagnetik. Umumnya, entropi sudah dikumpulkan terlebih dahulu.
@@ -181,6 +180,7 @@ Referensi lebih lanjut tentang entropi dapat dilihat pada dokumentasi fungsi [`c
 
 Sayangnya, keuntungan Web Crypto API akan hilang di browser apabila menggunakan API asinkronus ini. Untuk sekarang, browser dibatasi hanya menggunakan API sinkronus (untuk keamanan) atau API asinkronus (lebih cepat, tetapi karena keuntungan Web Crypto hilang, keamanannya sedikit lebih rendah ketimbang penggunaan API sinkronus).
 
+
 ### Non-Secure
 
 Konfigurasi bawaan Nano ID menggunakan random bytes generator yang berasal dari perangkat keras untuk keamanan dan probabilitas collision yang rendah. Apabila tidak terlalu memikirkan soal keamanan, dapat pula menggunakan non-secure generator yang lebih cepat.
@@ -189,6 +189,7 @@ Konfigurasi bawaan Nano ID menggunakan random bytes generator yang berasal dari 
 import { nanoid } from 'nanoid/non-secure'
 const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
+
 
 ### Alfabet dan Ukuran (Custom)
 
@@ -220,6 +221,7 @@ const nanoid = customAlphabet('1234567890abcdef', 10)
 user.id = nanoid()
 ```
 
+
 ### Generasi Random Bytes (Custom)
 
 `customRandom` digunakan untuk membuat Nano ID yang mengganti alfabet dan algoritma _random bytes generator_ yang telah diimplementasikan pada versi bawaan (dalam artian menggunakan algoritma sendiri untuk mendapatkan random bytes).
@@ -248,23 +250,8 @@ const nanoid = customRandom(urlAlphabet, 10, random)
 
 API asinkronus dan non-secure tidak tersedia untuk fungsi `customRandom`.
 
+
 ## Penggunaan
-
-### IE
-
-Apabila mengimplementasikan di Internet Explorer, dibutuhkan untuk melakukan [transpile pada `node_modules`](https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/) dengan Babel dan menambahkan alias untuk `crypto` seperti berikut:
-
-```js
-// polyfills.js
-if (!window.crypto) {
-  window.crypto = window.msCrypto
-}
-```
-
-```js
-import './polyfills.js'
-import { nanoid } from 'nanoid'
-```
 
 ### React
 
@@ -311,18 +298,6 @@ import 'react-native-get-random-values'
 import { nanoid } from 'nanoid'
 ```
 
-### Rollup
-
-Untuk Rollup, dibutuhkan [`@rollup/plugin-node-resolve`](https://github.com/rollup/plugins/tree/master/packages/node-resolve) untuk versi browser.
-
-```js
-plugins: [
-  nodeResolve({
-    browser: true
-  })
-]
-```
-
 ### PouchDB dan CouchDB
 
 Dalam PouchDB dan CouchDB, ID tidak bisa dimulai dengan underscore `_`. Sebuah _prefix_ dibutuhkan untuk mencegah hal ini terjadi, karena Nano ID mungkin menggunakan `_` sebagai karakter pertama dari ID yang dihasilkan.
@@ -336,16 +311,6 @@ db.put({
 })
 ```
 
-### Mongoose
-
-```js
-const mySchema = new Schema({
-  _id: {
-    type: String,
-    default: () => nanoid()
-  }
-})
-```
 
 ### Web Workers
 
@@ -360,6 +325,7 @@ nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 
 Perhatian: ID yang dihasilkan dari non-secure dapat lebih mudah tabrakan / memiliki probabilitas collision yang lebih besar.
 
+
 ### CLI
 
 Nano ID dapat didapatkan dengan cara menggunakan `npx nanoid` pada Terminal. Hanya diperlukan Node.js untuk ini, dan tidak perlu mengunduh dan menginstall Nano ID dalam sistem.
@@ -371,6 +337,7 @@ LZfXLFzPPR4NNrgjlWDxn
 ```
 
 Bila ingin mengganti alfabet atau ukuran ID, dapat menggunakan [`nanoid-cli`](https://github.com/twhitbeck/nanoid-cli).
+
 
 ### Bahasa Pemrograman Lainnya
 
@@ -403,6 +370,7 @@ Nano ID telah bermigrasi ke berbagai macam bahasa. Seluruh versi dapat digunakan
 - [Zig](https://github.com/SasLuca/zig-nanoid)
 
 Untuk environment lainnya, [CLI](#cli) tersedia untuk melakukan generasi ID dari command line / Terminal.
+
 
 ## Alat
 

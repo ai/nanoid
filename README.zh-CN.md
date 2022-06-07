@@ -47,12 +47,9 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
   * [自定义字母或大小](#自定义字母或大小)
   * [自定义随机字节生成器](#自定义随机字节生成器)
 * [用法](#用法)
-  * [IE](#ie)
   * [React](#react)
   * [React Native](#react-native)
-  * [Rollup](#rollup)
   * [PouchDB and CouchDB](#pouchdb-and-couchdb)
-  * [Mongoose](#mongoose)
   * [Web Workers](#web-workers)
   * [CLI](#cli)
   * [其他编程语言](#other-programming-languages)
@@ -151,12 +148,6 @@ Nano ID提供ES模块。在 webpack、Rollup、Parcel 或 Node.js 中
 
 ```js
 import { nanoid } from 'nanoid'
-```
-
-在 Node.js 中，你可以使用 CommonJS 导入:
-
-```js
-const { nanoid } = require('nanoid')
 ```
 
 
@@ -303,40 +294,6 @@ const nanoid = customRandom(urlAlphabet, 10, random)
 
 ## 用法
 
-
-### IE
-
-如果你需要支持 IE, 则需要使用 Babel [转换 `node_modules`]
-并添加 `crypto` 别名:
-
-```js
-// polyfills.js
-if (!window.crypto && window.msCrypto) {
-  window.crypto = window.msCrypto
-
-  const getRandomValuesDef = window.crypto.getRandomValues
-
-  window.crypto.getRandomValues = function (array) {
-    const values = getRandomValuesDef.call(window.crypto, array)
-    const result = []
-
-    for (let i = 0; i < array.length; i++) {
-      result[i] = values[i];
-    }
-
-    return result
-  };
-}
-```
-
-```js
-import './polyfills.js'
-import { nanoid } from 'nanoid'
-```
-
-[转换 `node_modules`]: https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/
-
-
 ### React
 
 目前还没有将 nanoid 用于 React `key` prop 的正确方法
@@ -377,6 +334,7 @@ const todoItems = todos.map((text, index) =>
 )
 ```
 
+
 ### React Native
 
 React Native 没有内置的随机生成器。下面的 polyfill
@@ -393,21 +351,6 @@ import { nanoid } from 'nanoid'
 [`react-native-get-random-values`]: https://github.com/LinusU/react-native-get-random-values
 
 
-### Rollup
-
-对于 Rollup 来说，你需要 [`@rollup/plugin-node-resolve`] 来绑定浏览器版本。
-
-```js
-  plugins: [
-    nodeResolve({
-      browser: true
-    })
-  ]
-```
-
-[`@rollup/plugin-node-resolve`]: https://github.com/rollup/plugins/tree/master/packages/node-resolve
-
-
 ### PouchDB and CouchDB
 
 在 PouchDB 和 CouchDB 中，ID 不能以下划线 `_` 开头。
@@ -420,18 +363,6 @@ import { nanoid } from 'nanoid'
 db.put({
   _id: 'id' + nanoid(),
   …
-})
-```
-
-
-### Mongoose
-
-```js
-const mySchema = new Schema({
-  _id: {
-    type: String,
-    default: () => nanoid()
-  }
 })
 ```
 
