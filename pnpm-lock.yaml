@@ -11,7 +11,7 @@ specifiers:
   '@types/node': ^17.0.40
   benchmark: ^2.1.4
   c8: ^7.11.3
-  clean-publish: ^4.0.0
+  clean-publish: ^4.0.1
   cuid: ^2.1.8
   eslint: ^8.17.0
   eslint-config-standard: ^17.0.0
@@ -43,7 +43,7 @@ devDependencies:
   '@types/node': 17.0.40
   benchmark: 2.1.4
   c8: 7.11.3
-  clean-publish: 4.0.0
+  clean-publish: 4.0.1
   cuid: 2.1.8
   eslint: 8.17.0
   eslint-config-standard: 17.0.0_k2gkawvnhbuxb7ddaipaawnv5q
@@ -935,8 +935,9 @@ packages:
     resolution: {integrity: sha512-CLOGsVDrVamzv8sXJGaILUVI6dsuAkouJP/n6t+OxLPeeA4DDby7zn9SB6EUpa1H7oIKoE+rMmkW80zYsFfUjA==}
     dev: true
 
-  /clean-publish/4.0.0:
-    resolution: {integrity: sha512-PcOxJSnPgncx/ANmgPw8hj9DDtdLHTxIc6Vh/yXCX7IA9w1oUSx2POL0Vno/7omhyrKxMKTpnRh2wlzwH5zaCw==}
+  /clean-publish/4.0.1:
+    resolution: {integrity: sha512-6v0bh5kQD5FDlxBgXDVNNc6KmAB7iIP/GHD91q9xsGVZT5XB9Y8TNqB7dL5u9PTZlBeLpBw+A1AseRlEEJLSWA==}
+    engines: {node: '>= 16.0.0'}
     hasBin: true
     dependencies:
       cross-spawn: 7.0.3
@@ -2421,7 +2422,7 @@ packages:
     dev: true
 
   /require-directory/2.1.1:
-    resolution: {integrity: sha1-jGStX9MNqxyXbiNE/+f3kqam30I=}
+    resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
     engines: {node: '>=0.10.0'}
     dev: true
 

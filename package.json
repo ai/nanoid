@@ -55,7 +55,7 @@
     "@types/node": "^17.0.40",
     "benchmark": "^2.1.4",
     "c8": "^7.11.3",
-    "clean-publish": "^4.0.0",
+    "clean-publish": "^4.0.1",
     "cuid": "^2.1.8",
     "eslint": "^8.17.0",
     "eslint-config-standard": "^17.0.0",
