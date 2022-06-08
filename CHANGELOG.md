@@ -1,6 +1,12 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 4.0
+* Removed CommonJS support. Nano ID 4 will work only with ESM applications.
+  We will support 3.x branch with CommonJS for users who can’t migrate to ESM.
+* Removed Node.js 10 and Node.js 12 support.
+* Reduced npm package size.
+
 ## 3.3.4
 * Fixed `--help` in CLI (by @Lete114).
 
