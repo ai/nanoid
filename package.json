@@ -52,7 +52,7 @@
     "@originjs/vite-plugin-commonjs": "^1.0.3",
     "@size-limit/file": "^7.0.8",
     "@size-limit/webpack": "^7.0.8",
-    "@types/node": "^17.0.40",
+    "@types/node": "^17.0.41",
     "benchmark": "^2.1.4",
     "c8": "^7.11.3",
     "clean-publish": "^4.0.1",
