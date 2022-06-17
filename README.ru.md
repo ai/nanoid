@@ -55,6 +55,7 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
   - [React Native](#react-native)
   - [PouchDB и CouchDB](#pouchdb-и-couchdb)
   - [Веб-воркеры](#веб-воркеры)
+  - [Jest](#jest)
   - [Терминал](#терминал)
   - [Другие языки программирования](#другие-языки-программирования)
 - [Инструменты](#инструменты)
@@ -390,6 +391,22 @@ db.put({
 ```js
 import { nanoid } from 'nanoid/non-secure'
 nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
+```
+
+
+### Jest
+
+Фреймворк тестов Jest со средой `jest-environment-jsdom` будет использовать
+браузерную версию Nano ID. Ва понадобится полифил для Web Crypto API.
+
+```js
+import { randomFillSync } from 'crypto'
+
+window.crypto = {
+  getRandomValues(buffer) {
+    return randomFillSync(buffer)
+  }
+}
 ```
 
 

@@ -51,6 +51,7 @@ Supports modern browsers, IE [with Babel], Node.js and React Native.
   * [React Native](#react-native)
   * [PouchDB and CouchDB](#pouchdb-and-couchdb)
   * [Web Workers](#web-workers)
+  * [Jest](#jest)
   * [CLI](#cli)
   * [Other Programming Languages](#other-programming-languages)
 * [Tools](#tools)
@@ -404,6 +405,22 @@ nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
 Note: non-secure IDs are more prone to collision attacks.
+
+
+### Jest
+
+Jest test runner with `jest-environment-jsdom` will use browser’s version
+of Nano ID. You will need polyfill for Web Crypto API.
+
+```js
+import { randomFillSync } from 'crypto'
+
+window.crypto = {
+  getRandomValues(buffer) {
+    return randomFillSync(buffer)
+  }
+}
+```
 
 
 ### CLI
