@@ -409,7 +409,7 @@ Nano ID 已被移植到许多语言。 你可以使用下面这些移植，获�
 * [Crystal](https://github.com/mamantoha/nanoid.cr)
 * [Dart & Flutter](https://github.com/pd4d10/nanoid-dart)
 * [Deno](https://github.com/ianfabs/nanoid)
-* [Go](https://github.com/matoous/go-nanoid)
+* [Go](https://github.com/jaevor/go-nanoid)
 * [Elixir](https://github.com/railsmechanic/nanoid)
 * [Haskell](https://github.com/MichelBoucey/NanoID)
 * [Janet](https://sr.ht/~statianzo/janet-nanoid/)
