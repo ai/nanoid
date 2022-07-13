@@ -420,6 +420,7 @@ Nano ID 已被移植到许多语言。 你可以使用下面这些移植，获�
 * [Python](https://github.com/puyuan/py-nanoid)
   with [dictionaries](https://pypi.org/project/nanoid-dictionary)
 * [Postgres Extension](https://github.com/spa5k/uids-postgres)
+* [Postgres Native Function](https://github.com/viascom/nanoid-postgres)
 * [R](https://github.com/hrbrmstr/nanoid) (with dictionaries)
 * [Ruby](https://github.com/radeno/nanoid.rb)
 * [Rust](https://github.com/nikolay-govorov/nanoid)

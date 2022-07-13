@@ -460,6 +460,7 @@ Nano ID был портирован на множество языков. Это
 - [Python](https://github.com/puyuan/py-nanoid)
   со [словарями](https://pypi.org/project/nanoid-dictionary)
 - [Postgres Extension](https://github.com/spa5k/uids-postgres)
+- [Postgres Native Function](https://github.com/viascom/nanoid-postgres)
 - [R](https://github.com/hrbrmstr/nanoid) (со словарями)
 - [Ruby](https://github.com/radeno/nanoid.rb)
 - [Rust](https://github.com/nikolay-govorov/nanoid)
