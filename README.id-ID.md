@@ -361,6 +361,7 @@ Nano ID telah bermigrasi ke berbagai macam bahasa. Seluruh versi dapat digunakan
 - [PHP](https://github.com/hidehalo/nanoid-php)
 - [Python](https://github.com/puyuan/py-nanoid) with [dictionaries](https://pypi.org/project/nanoid-dictionary)
 - [Postgres Extension](https://github.com/spa5k/uids-postgres)
+- [Postgres Native Function](https://github.com/viascom/nanoid-postgres)
 - [R](https://github.com/hrbrmstr/nanoid) (with dictionaries)
 - [Ruby](https://github.com/radeno/nanoid.rb)
 - [Rust](https://github.com/nikolay-govorov/nanoid)
