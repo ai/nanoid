@@ -357,6 +357,8 @@ const todoItems = todos.map((text, index) =>
 )
 ```
 
+In case you just need random IDs to link elements like labels and input fields together, [useId](https://reactjs.org/docs/hooks-reference.html#useid) is recommended. That hook was added in React 18.
+
 
 ### React Native
 
