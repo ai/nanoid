@@ -343,8 +343,10 @@ function Todos({ todos }) {
 }
 ```
 
-Подробнее об использовании свойства `key` читайте в
-[официальной документации React](https://ru.reactjs.org/docs/lists-and-keys.html#keys).
+Для связи `<input>` и `<label>` лучше использовать [`useId`],
+который был добавлен в React 18.
+
+[`useId`]: https://reactjs.org/docs/hooks-reference.html#useid
 
 
 ### React Native
