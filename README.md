@@ -235,7 +235,7 @@ const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 
 ### Custom Alphabet or Size
 
-`customAlphabet` allows you to create `nanoid` with your own alphabet
+`customAlphabet` returns a function that allows you to create `nanoid` with your own alphabet
 and ID size.
 
 ```js
