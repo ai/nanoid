@@ -17,7 +17,7 @@ A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 * **Short IDs.** It uses a larger alphabet than UUID (`A-Za-z0-9_-`).
   So ID size was reduced from 36 to 21 symbols.
 * **Portable.** Nano ID was ported
-  to [20 programming languages](#other-programming-languages).
+  to [20 programming languages](./README.md#other-programming-languages).
 
 ```js
 import { nanoid } from 'nanoid'
