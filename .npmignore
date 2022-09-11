@@ -3,3 +3,5 @@ tsconfig.json
 coverage/
 
 img/
+
+*.lock
