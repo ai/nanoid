@@ -136,7 +136,7 @@ rndm                       2,674,806 ops/sec
 npm install --save nanoid
 ```
 
-对于快速的骇客用法，你可以从 CDN 加载 Nano ID。但是，它不建议
+想要快速上手尝试，你可以从 CDN 加载 Nano ID。但是，它不建议
 在生产中使用，因为它的加载性能较低。
 
 ```js
