@@ -36,6 +36,9 @@ suite
   .add('crypto.randomUUID', () => {
     crypto.randomUUID()
   })
+  .add('uuid v4', () => {
+    uuid4()
+  })
   .add('@napi-rs/uuid', () => {
     napiV4()
   })
@@ -50,9 +53,6 @@ suite
   })
   .add('customAlphabet', () => {
     nanoid2()
-  })
-  .add('uuid v4', () => {
-    uuid4()
   })
   .add('secure-random-string', () => {
     srs()
