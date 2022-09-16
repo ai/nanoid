@@ -12,7 +12,6 @@ A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 
 * **Small.** 130 bytes (minified and gzipped). No dependencies.
   [Size Limit] controls the size.
-* **Fast.** It is 2 times faster than UUID.
 * **Safe.** It uses hardware random generator. Can be used in clusters.
 * **Short IDs.** It uses a larger alphabet than UUID (`A-Za-z0-9_-`).
   So ID size was reduced from 36 to 21 symbols.
@@ -70,9 +69,8 @@ There are three main differences between Nano ID and UUID v4:
 
 1. Nano ID uses a bigger alphabet, so a similar number of random bits
    are packed in just 21 symbols instead of 36.
-2. Nano ID code is **4 times less** than `uuid/v4` package:
-   130 bytes instead of 483.
-3. Because of memory allocation tricks, Nano ID is **2 times** faster than UUID.
+2. Nano ID code is **4 times smaller** than `uuid/v4` package:
+   130 bytes instead of 423.
 
 
 ## Benchmark

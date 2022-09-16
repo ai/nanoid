@@ -12,7 +12,6 @@
 
 * **小巧.** 130 bytes (已压缩和 gzipped)。 没有依赖。
   [Size Limit] 控制大小。
-* **快速.** 它比 UUID 快 60%。
 * **安全.** 它使用加密的强随机 API。可在集群中使用。
 * **紧凑.** 它使用比 UUID（`A-Za-z0-9_-`）更大的字母表。
   因此，ID 大小从36个符号减少到21个符号。
@@ -69,7 +68,7 @@ Nano ID 和 UUID v4之间有三个主要区别:
 
 1. Nano ID 使用更大的字母表，所以类似数量的随机位
    被包装在21个符号中，而不是36个。
-2. Nano ID 代码比 `uuid/v4` 包少 **4倍**: 130字节而不是483字节.
+2. Nano ID 代码比 `uuid/v4` 包少 **4倍**: 130字节而不是423字节.
 3. 由于内存分配的技巧，Nano ID 比 UUID 快 **60%**。
 
 
@@ -101,7 +100,7 @@ nanoid/non-secure          2,744,615 ops/sec
 rndm                       2,718,063 ops/sec
 ```
 
-测试配置: ThinkPad X1 Carbon Gen 9, Fedora 34, Node.js 16.10.
+测试配置: ThinkPad X1 Carbon Gen 9, Fedora 36, Node.js 18.9.
 
 
 ## 安全性
