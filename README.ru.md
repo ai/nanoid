@@ -398,7 +398,7 @@ nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ### Jest
 
 Фреймворк тестов Jest со средой `jest-environment-jsdom` будет использовать
-браузерную версию Nano ID. Ва понадобится полифил для Web Crypto API.
+браузерную версию Nano ID. Вам понадобится полифил для Web Crypto API.
 
 ```js
 import { randomFillSync } from 'crypto'
