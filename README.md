@@ -203,7 +203,7 @@ the entropy collection.
 ```js
 import { nanoid } from 'nanoid/async'
 
-async function createUser () {
+async function createUser() {
   user.id = await nanoid()
 }
 ```
@@ -245,7 +245,7 @@ model.id = nanoid() //=> "4f90d13a42"
 ```js
 import { customAlphabet } from 'nanoid/async'
 const nanoid = customAlphabet('1234567890abcdef', 10)
-async function createUser () {
+async function createUser() {
   user.id = await nanoid()
 }
 ```
