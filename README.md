@@ -468,6 +468,7 @@ the same ID generator on the client and server side.
 * [Go](https://github.com/jaevor/go-nanoid)
 * [Elixir](https://github.com/railsmechanic/nanoid)
 * [Haskell](https://github.com/MichelBoucey/NanoID)
+* [Haxe](https://github.com/flashultra/uuid)
 * [Janet](https://sr.ht/~statianzo/janet-nanoid/)
 * [Java](https://github.com/aventrix/jnanoid)
 * [Nim](https://github.com/icyphox/nanoid.nim)
