@@ -9,6 +9,7 @@ test.before(() => {
   }
 
   Object.defineProperty(global, 'crypto', {
+    configurable: true,
     value: {
       getRandomValues(array) {
         for (let i = 0; i < array.length; i++) {
@@ -22,6 +23,7 @@ test.before(() => {
 
 test.after(() => {
   delete global.navigator
+  delete global.crypto
 })
 
 test('works with polyfill', () => {
