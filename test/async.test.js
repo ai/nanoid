@@ -5,15 +5,21 @@ import { urlAlphabet } from '../index.js'
 import * as browser from '../async/index.browser.js'
 import * as node from '../async/index.js'
 
-Object.defineProperty(global, 'crypto', {
-  value: {
-    getRandomValues(array) {
-      for (let i = 0; i < array.length; i++) {
-        array[i] = Math.floor(Math.random() * 256)
+test.before(() => {
+  Object.defineProperty(global, 'crypto', {
+    value: {
+      getRandomValues(array) {
+        for (let i = 0; i < array.length; i++) {
+          array[i] = Math.floor(Math.random() * 256)
+        }
+        return array
       }
-      return array
     }
-  }
+  })
+})
+
+test.after(() => {
+  Object.defineProperty(global, 'crypto', { value: undefined })
 })
 
 function times(size, callback) {

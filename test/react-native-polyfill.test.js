@@ -23,7 +23,7 @@ test.before(() => {
 
 test.after(() => {
   delete global.navigator
-  delete global.crypto
+  Object.defineProperty(global, 'crypto', { value: undefined })
 })
 
 test('works with polyfill', () => {

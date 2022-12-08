@@ -6,7 +6,6 @@ import * as node from '../index.js'
 
 test.before(() => {
   Object.defineProperty(global, 'crypto', {
-    configurable: true,
     value: {
       getRandomValues(array) {
         for (let i = 0; i < array.length; i++) {
@@ -19,7 +18,7 @@ test.before(() => {
 })
 
 test.after(() => {
-  delete global.crypto
+  Object.defineProperty(global, 'crypto', { value: undefined })
 })
 
 for (let type of ['node', 'browser']) {
