@@ -5,14 +5,16 @@ import * as browser from '../index.browser.js'
 import * as node from '../index.js'
 
 test.before(() => {
-  global.crypto = {
-    getRandomValues(array) {
-      for (let i = 0; i < array.length; i++) {
-        array[i] = Math.floor(Math.random() * 256)
+  Object.defineProperty(global, 'crypto', {
+    value: {
+      getRandomValues(array) {
+        for (let i = 0; i < array.length; i++) {
+          array[i] = Math.floor(Math.random() * 256)
+        }
+        return array
       }
-      return array
     }
-  }
+  })
 })
 
 test.after(() => {
