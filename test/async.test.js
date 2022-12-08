@@ -7,6 +7,7 @@ import * as node from '../async/index.js'
 
 test.before(() => {
   Object.defineProperty(global, 'crypto', {
+    configurable: true,
     value: {
       getRandomValues(array) {
         for (let i = 0; i < array.length; i++) {
