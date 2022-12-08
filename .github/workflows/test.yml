@@ -4,10 +4,8 @@ on:
     branches:
       - main
   pull_request:
-
 permissions:
-  contents: read #  to fetch code (actions/checkout)
-
+  contents: read
 jobs:
   full:
     name: Node.js Latest Full
