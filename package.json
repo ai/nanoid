@@ -35,8 +35,7 @@
   },
   "browser": {
     "./index.js": "./index.browser.js",
-    "./async/index.js": "./async/index.browser.js",
-    "./async/index.cjs": "./async/index.browser.cjs"
+    "./async/index.js": "./async/index.browser.js"
   },
   "react-native": {
     "./async/index.js": "./async/index.native.js"
