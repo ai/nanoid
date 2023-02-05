@@ -93,7 +93,6 @@ nanoid                     5,652,148 ops/sec
 customAlphabet             3,565,656 ops/sec
 secure-random-string         394,201 ops/sec
 uid-safe.sync                393,176 ops/sec
-cuid                         208,131 ops/sec
 shortid                       49,916 ops/sec
 
 Async:

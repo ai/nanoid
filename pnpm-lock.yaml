@@ -12,7 +12,6 @@ specifiers:
   benchmark: ^2.1.4
   c8: ^7.12.0
   clean-publish: ^4.1.1
-  cuid: ^2.1.8
   eslint: ^8.33.0
   eslint-config-standard: ^17.0.0
   eslint-plugin-import: ^2.27.5
@@ -44,7 +43,6 @@ devDependencies:
   benchmark: 2.1.4
   c8: 7.12.0
   clean-publish: 4.1.1
-  cuid: 2.1.8
   eslint: 8.33.0
   eslint-config-standard: 17.0.0_xh3wrndcszbt2l7hdksdjqnjcq
   eslint-plugin-import: 2.27.5_eslint@8.33.0
@@ -1232,11 +1230,6 @@ packages:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
-    dev: true
-
-  /cuid/2.1.8:
-    resolution: {integrity: sha512-xiEMER6E7TlTPnDxrM4eRiC6TRgjNX9xzEZ5U/Se2YJKr7Mq4pJn/2XEHjl3STcSh96GmkHPcBXLES8M29wyyg==}
-    deprecated: Cuid and other k-sortable and non-cryptographic ids (Ulid, ObjectId, KSUID, all UUIDs) are all insecure. Use @paralleldrive/cuid2 instead.
     dev: true
 
   /debug/3.2.7:

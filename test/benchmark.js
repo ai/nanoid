@@ -10,7 +10,6 @@ import uidSafe from 'uid-safe'
 import { uid } from 'uid'
 import crypto from 'crypto'
 import pico from 'picocolors'
-import cuid from 'cuid'
 import rndm from 'rndm'
 import srs from 'secure-random-string'
 
@@ -59,9 +58,6 @@ suite
   })
   .add('uid-safe.sync', () => {
     uidSafe.sync(14)
-  })
-  .add('cuid', () => {
-    cuid()
   })
   .add('shortid', () => {
     shortid()
