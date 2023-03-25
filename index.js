@@ -12,7 +12,7 @@ export { urlAlphabet }
 const POOL_SIZE_MULTIPLIER = 128
 let pool, poolOffset
 
-let fillPool = bytes => {
+function fillPool(bytes) {
   if (!pool || pool.length < bytes) {
     pool = Buffer.allocUnsafe(bytes * POOL_SIZE_MULTIPLIER)
     randomFillSync(pool)
@@ -24,13 +24,13 @@ let fillPool = bytes => {
   poolOffset += bytes
 }
 
-export let random = bytes => {
+export function random(bytes) {
   // `-=` convert `bytes` to number to prevent `valueOf` abusing
   fillPool((bytes -= 0))
   return pool.subarray(poolOffset - bytes, poolOffset)
 }
 
-export let customRandom = (alphabet, defaultSize, getRandom) => {
+export function customRandom(alphabet, defaultSize, getRandom) {
   // First, a bitmask is necessary to generate the ID. The bitmask makes bytes
   // values closer to the alphabet size. The bitmask calculates the closest
   // `2^31 - 1` number, which exceeds the alphabet size.
@@ -65,10 +65,11 @@ export let customRandom = (alphabet, defaultSize, getRandom) => {
   }
 }
 
-export let customAlphabet = (alphabet, size = 21) =>
-  customRandom(alphabet, size, random)
+export function customAlphabet(alphabet, size = 21) {
+  return customRandom(alphabet, size, random)
+}
 
-export let nanoid = (size = 21) => {
+export function nanoid(size = 21) {
   // `-=` convert `size` to number to prevent `valueOf` abusing
   fillPool((size -= 0))
   let id = ''

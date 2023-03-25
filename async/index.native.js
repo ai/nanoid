@@ -4,7 +4,7 @@ import { urlAlphabet } from '../url-alphabet/index.js'
 
 export let random = getRandomBytesAsync
 
-export let customAlphabet = (alphabet, defaultSize = 21) => {
+export function customAlphabet(alphabet, defaultSize = 21) {
   // First, a bitmask is necessary to generate the ID. The bitmask makes bytes
   // values closer to the alphabet size. The bitmask calculates the closest
   // `2^31 - 1` number, which exceeds the alphabet size.
@@ -24,32 +24,32 @@ export let customAlphabet = (alphabet, defaultSize = 21) => {
   // according to benchmarks).
   let step = Math.ceil((1.6 * mask * defaultSize) / alphabet.length)
 
-  let tick = (id, size = defaultSize) =>
-    random(step).then(bytes => {
-      // A compact alternative for `for (var i = 0; i < step; i++)`.
-      let i = step
-      while (i--) {
-        // Adding `|| ''` refuses a random byte that exceeds the alphabet size.
-        id += alphabet[bytes[i] & mask] || ''
-        if (id.length === size) return id
-      }
-      return tick(id, size)
-    })
+  async function tick(id, size = defaultSize) {
+    let bytes = await random(step)
+    // A compact alternative for `for (var i = 0; i < step; i++)`.
+    let i = step
+    while (i--) {
+      // Adding `|| ''` refuses a random byte that exceeds the alphabet size.
+      id += alphabet[bytes[i] & mask] || ''
+      if (id.length === size) return id
+    }
+    return tick(id, size)
+  }
 
   return size => tick('', size)
 }
 
-export let nanoid = (size = 21) =>
-  random(size).then(bytes => {
-    let id = ''
-    // A compact alternative for `for (var i = 0; i < step; i++)`.
-    while (size--) {
-      // It is incorrect to use bytes exceeding the alphabet size.
-      // The following mask reduces the random byte in the 0-255 value
-      // range to the 0-63 value range. Therefore, adding hacks, such
-      // as empty string fallback or magic numbers, is unneccessary because
-      // the bitmask trims bytes down to the alphabet size.
-      id += urlAlphabet[bytes[size] & 63]
-    }
-    return id
-  })
+export async function nanoid(size = 21) {
+  let bytes = await random(size)
+  let id = ''
+  // A compact alternative for `for (var i = 0; i < step; i++)`.
+  while (size--) {
+    // It is incorrect to use bytes exceeding the alphabet size.
+    // The following mask reduces the random byte in the 0-255 value
+    // range to the 0-63 value range. Therefore, adding hacks, such
+    // as empty string fallback or magic numbers, is unneccessary because
+    // the bitmask trims bytes down to the alphabet size.
+    id += urlAlphabet[bytes[size] & 63]
+  }
+  return id
+}
