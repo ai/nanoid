@@ -19,7 +19,7 @@
   },
   "type": "module",
   "engines": {
-    "node": "^14 || ^16 || >=18"
+    "node": "^16 || ^18 || >=20"
   },
   "funding": [
     {
