@@ -50,18 +50,18 @@
   "sideEffects": false,
   "types": "./index.d.ts",
   "devDependencies": {
-    "@babel/core": "^7.21.0",
-    "@logux/eslint-config": "^48.0.0",
+    "@babel/core": "^7.21.3",
+    "@logux/eslint-config": "^49.0.0",
     "@lukeed/uuid": "^2.0.0",
     "@napi-rs/uuid": "^0.2.2",
     "@originjs/vite-plugin-commonjs": "^1.0.3",
     "@size-limit/file": "^8.2.4",
     "@size-limit/webpack": "^8.2.4",
-    "@types/node": "^18.14.0",
+    "@types/node": "^18.15.10",
     "benchmark": "^2.1.4",
     "c8": "^7.13.0",
     "clean-publish": "^4.1.1",
-    "eslint": "^8.34.0",
+    "eslint": "^8.36.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^15.6.1",
@@ -73,12 +73,12 @@
     "secure-random-string": "^1.1.3",
     "shortid": "^2.2.16",
     "size-limit": "^8.2.4",
-    "terser": "^5.16.4",
+    "terser": "^5.16.8",
     "uid": "^2.0.1",
     "uid-safe": "^2.1.5",
     "uuid": "^9.0.0",
     "uvu": "^0.5.6",
-    "vite": "^4.1.3"
+    "vite": "^4.2.1"
   },
   "size-limit": [
     {
