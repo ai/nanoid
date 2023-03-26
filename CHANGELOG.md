@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.3.6
+* Fixed package.
+
 ## 3.3.5
 * Backport funding information.
 
