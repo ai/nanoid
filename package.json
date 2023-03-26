@@ -18,6 +18,12 @@
   "engines": {
     "node": "^14 || ^16 || >=18"
   },
+  "funding": [
+    {
+      "type": "github",
+      "url": "https://github.com/sponsors/ai"
+    }
+  ],
   "author": "Andrey Sitnik <andrey@sitnik.ru>",
   "license": "MIT",
   "repository": "ai/nanoid",
