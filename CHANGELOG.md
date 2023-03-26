@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 4.0.2
+* Added [link](https://github.com/sponsors/ai) to Github Sponsors.
+
 ## 4.0.1
 * Reduced npm package size (by @HiChen404).
 
