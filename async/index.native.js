@@ -1,8 +1,8 @@
-import * as Crypto from 'expo-crypto'
+import { getRandomBytesAsync } from 'expo-crypto'
 
 import { urlAlphabet } from '../url-alphabet/index.js'
 
-export let random = Crypto.getRandomBytesAsync
+export let random = getRandomBytesAsync
 
 export let customAlphabet = (alphabet, defaultSize = 21) => {
   // First, a bitmask is necessary to generate the ID. The bitmask makes bytes
