@@ -1,4 +1,4 @@
-import { getRandomBytesAsync } from 'expo-random'
+import { getRandomBytesAsync } from 'expo-crypto'
 
 import { urlAlphabet } from '../url-alphabet/index.js'
 
