@@ -46,9 +46,6 @@
     "./index.js": "./index.browser.js",
     "./async/index.js": "./async/index.browser.js"
   },
-  "react-native": {
-    "./async/index.js": "./async/index.native.js"
-  },
   "bin": "./bin/nanoid.js",
   "sideEffects": false,
   "types": "./index.d.ts",
@@ -150,16 +147,7 @@
       "consistent-return": "off",
       "func-style": "off",
       "yoda": "off"
-    },
-    "overrides": [
-      {
-        "files": "*.native.js",
-        "rules": {
-          "n/no-missing-require": "off",
-          "global-require": "off"
-        }
-      }
-    ]
+    }
   },
   "eslintIgnore": [
     "test/demo/build",
