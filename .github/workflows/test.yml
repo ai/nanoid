@@ -16,7 +16,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: latest
+          version: 7
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
@@ -41,7 +41,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: latest
+          version: 7
       - name: Install Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -60,7 +60,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: latest
+          version: 7
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
