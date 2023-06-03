@@ -159,13 +159,6 @@ npm install --save nanoid@3
 import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 ```
 
-Nano ID поддерживает ES-модули. Вам не надо ничего делать, чтобы ES-импорты
-работали в webpack, Rollup, Parcel, или Node.js.
-
-```js
-import { nanoid } from 'nanoid'
-```
-
 
 ## API
 

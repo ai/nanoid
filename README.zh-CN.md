@@ -147,13 +147,6 @@ npm install --save nanoid@3
 import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 ```
 
-Nano ID提供ES模块。在 webpack、Rollup、Parcel 或 Node.js 中
-你不需要做任何事情来使用 Nano ID
-
-```js
-import { nanoid } from 'nanoid'
-```
-
 
 ## API
 

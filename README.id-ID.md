@@ -128,12 +128,6 @@ Apabila ingin 'coba-coba' terlebih dahulu, dapat digunakan Nano ID melalui CDN. 
 import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 ```
 
-Nano ID tersedia dalam bentuk ES modules. Tidak perlu melakukan konfigurasi apapun apabila menggunakan Nano ID dalam bentuk ESM di webpack, Rollup, Parcel, atau Node.js.
-
-```js
-import { nanoid } from 'nanoid'
-```
-
 
 ## API
 

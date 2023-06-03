@@ -151,13 +151,6 @@ to be used in production because of the lower loading performance.
 import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 ```
 
-Nano ID provides ES modules. You do not need to do anything to use Nano ID
-as ESM in webpack, Rollup, Parcel, or Node.js.
-
-```js
-import { nanoid } from 'nanoid'
-```
-
 
 ## API
 
