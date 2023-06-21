@@ -39,6 +39,7 @@ Supports modern browsers, IE [with Babel], Node.js and React Native.
 * [Comparison with UUID](#comparison-with-uuid)
 * [Benchmark](#benchmark)
 * [Security](#security)
+* [Install](#install)
 * [API](#api)
   * [Blocking](#blocking)
   * [Async](#async)
