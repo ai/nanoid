@@ -7,23 +7,19 @@
 
 一个小巧、安全、URL友好、唯一的 JavaScript 字符串ID生成器。
 
-> “一个惊人的无意义的完美主义水平,
-> 这简直让人无法不敬佩。”
+> “一个惊人的无意义的完美主义水平，这简直让人无法不敬佩。”
 
-* **小巧.** 130 bytes (已压缩和 gzipped)。 没有依赖。
-  [Size Limit] 控制大小。
-* **安全.** 它使用加密的强随机 API。可在集群中使用。
-* **紧凑.** 它使用比 UUID（`A-Za-z0-9_-`）更大的字母表。
-  因此，ID 大小从36个符号减少到21个符号。
-* **易用.** Nano ID 已被移植到
-  [20种编程语言](#其他编程语言)。
+* **小巧.** 130字节 (经过压缩和gzip处理)。没有依赖。[Size Limit] 控制大小。
+* **安全.** 它使用硬件随机生成器。可在集群中使用。
+* **紧凑.** 它使用比 UUID（`A-Za-z0-9_-`）更大的字母表。因此，ID 大小从36个符号减少到21个符号。
+* **可移植.** Nano ID 已被移植到 [20种编程语言](#其他编程语言)。
 
 ```js
 import { nanoid } from 'nanoid'
 model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
-支持现代浏览器、IE [使用 Babel]、Node.js 和 React Native。
+支持现代浏览器、IE [需使用 Babel]、Node.js 和 React Native。
 
 [在线工具]: https://gitpod.io/#https://github.com/ai/nanoid/
 [使用 Babel]:  https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/
@@ -51,6 +47,7 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
   * [React Native](#react-native)
   * [PouchDB and CouchDB](#pouchdb-and-couchdb)
   * [Web Workers](#web-workers)
+  * [Jest](#jest)
   * [CLI](#cli)
   * [其他编程语言](#other-programming-languages)
 * [工具](#工具)
@@ -58,9 +55,9 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 
 ## 与 UUID 的比较
 
-Nano ID 与 UUID v4 (基于随机) 相当。
+Nano ID 与 UUID v4 (基于随机数) 相当。
 它们在 ID 中有相似数量的随机位
-(Nano ID 为126，UUID 为122),因此它们的冲突概率相似：:
+(Nano ID 为126，UUID 为122),因此它们的碰撞概率相似：:
 
 > 要想有十亿分之一的重复机会,
 > 必须产生103万亿个版本4的ID.
@@ -110,8 +107,8 @@ rndm                       2,718,063 ops/sec
 * **不可预测性.** 不使用不安全的 `Math.random()`, Nano ID
   使用 Node.js 的 `crypto` 模块和浏览器的 Web Crypto API。
   这些模块使用不可预测的硬件随机生成器。
-* **统一性.** `随机 % 字母表` 是编写ID生成器时常犯的一个错误。
-  符号的分布是不均匀的; 有些符号出现的几率会比其他符号低。因此, 它将减少刷新时的尝试次数。
+* **统一性.** `random % alphabet` 是编写ID生成器时常犯的一个错误。
+  这样做会导致分布不均匀; 一些符号出现的机会较其他符号低。因此，在暴力破解时，尝试的次数会减少。
   Nano ID 使用了一种 [更好的算法]，并进行了一致性测试。
 
   <img src="img/distribution.png" alt="Nano ID uniformity"
@@ -134,7 +131,7 @@ rndm                       2,718,063 ops/sec
 npm install --save nanoid
 ```
 
-Nano ID 4 仅适用于 Node.js 的 ESM 项目、测试或脚本。
+Nano ID 4 仅适用于 ESM 项目、测试或 Node.js 脚本。
 对于 CommonJS，您需要 Nano ID 3.x（我们仍然支持它）：
 
 ```bash
@@ -154,44 +151,41 @@ import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 Nano ID 有3个 API：正常(阻塞)，异步，和不安全。
 
 默认情况下，Nano ID 使用 URL 友好的符号（`A-Za-z0-9_-`）并返回一个
-有21个字符（类似UUID v4的冲突概率）的ID。
+有21个字符（类似 UUID v4 的碰撞概率）的 ID。
 
 
 ### 阻塞
 
 使用 Nano ID 最安全、最简单的方法
 
-在极少数情况下，噪声收集时可能会阻止CPU执行其他工作
-用于硬件随机发生器。
+在极少数情况下，当收集硬件随机生成器的噪声时，可能会阻塞CPU，导致无法进行其他工作。
 
 ```js
 import { nanoid } from 'nanoid'
 model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
-如果你想要减小ID size（但是会增加冲突概率），
-可以将 size 作为参数传递
+如果你想要减小 ID 大小（但是会增加碰撞概率），
+可以将大小作为参数传递
 
 ```js
 nanoid(10) //=> "IRFa-VaY2b"
 ```
 
-别忘了检查你的ID size 的安全性
-在我们的 [ID 冲突概率] 计算器.
+别忘了在我们的 [ID 碰撞概率] 计算器中检查你的 ID 大小的安全性。
 
 您也可以使用 [自定义字母表](#自定义字母或大小)
 或者是 [自定义生成器](#自定义随机字节生成器).
 
-[ID 冲突概率]: https://alex7kom.github.io/nano-nanoid-cc/
+[ID 碰撞概率]: https://alex7kom.github.io/nano-nanoid-cc/
 
 
 ### 异步
 
-为了生成硬件随机字节，CPU收集电磁噪声。
+为了生成硬件随机字节，CPU 会收集电磁噪声。
 在大多数情况下，熵已经被收集。
 
-在噪声收集期间的同步API中，CPU忙且
-无法执行任何有用的操作（例如，处理另一个HTTP请求）。
+在同步API的噪声收集期间，CPU将忙于工作，无法执行其他有用的任务（例如，处理另一个HTTP请求）。
 
 使用Nano ID的异步API，可以在熵收集期间
 运行另一个代码。
@@ -204,7 +198,7 @@ async function createUser() {
 }
 ```
 
-阅读更多有关熵收集的信息 [`crypto.randomBytes`] 文档.
+请阅读 [`crypto.randomBytes`] 文档了解更多关于熵收集的信息。
 
 不幸的是，您将在浏览器中失去 Web Crypto API 的优势
 如果您使用异步 API。那么，目前在浏览器中，
@@ -212,11 +206,10 @@ async function createUser() {
 
 [`crypto.randomBytes`]: https://nodejs.org/api/crypto.html#crypto_crypto_randombytes_size_callback
 
+
 ### 不安全
 
-默认情况下，Nano ID 使用硬件随机字节生成器来实现安全性
-冲突概率低。如果你不那么关心安全
-更关心性能的话，您可以使用更快的非安全生成器.
+默认情况下，Nano ID 使用硬件随机字节生成以提供安全性和较低的碰撞概率。如果您对安全性不太担心，您可以在没有硬件随机生成器的环境中使用它
 
 ```js
 import { nanoid } from 'nanoid/non-secure'
@@ -226,22 +219,13 @@ const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 
 ### 自定义字母或大小
 
-`customAlphabet` 允许您使用自己的字母表创建 `nanoid`
-和 ID size。
+`customAlphabet` 返回一个函数，允许您使用自定义字母表和ID大小创建 `nanoid`。
 
 ```js
 import { customAlphabet } from 'nanoid'
 const nanoid = customAlphabet('1234567890abcdef', 10)
 model.id = nanoid() //=> "4f90d13a42"
 ```
-
-在我们的中 [ID 冲突概率] 计算器检查您的自定义字母表和 ID size 的安全性。
-有关更多字母表, 请在 [`nanoid-dictionary`] 查看选项.
-
-字母表必须包含256个或更少的符号。
-否则，无法保证内部生成器算法的安全性。
-
-还提供了可定制的异步和非安全API:
 
 ```js
 import { customAlphabet } from 'nanoid/async'
@@ -257,6 +241,21 @@ const nanoid = customAlphabet('1234567890abcdef', 10)
 user.id = nanoid()
 ```
 
+在我们的 [ID 碰撞概率] 计算器中检查您的自定义字母表和 ID 大小的安全性。
+查看 [`nanoid-dictionary`] 中的选项以获取更多字母表。
+
+字母表必须包含256个或更少的符号。
+否则，无法保证内部生成器算法的安全性。
+
+除了设置默认大小外，您还可以在调用函数时更改ID大小：
+
+```js
+import { customAlphabet } from 'nanoid'
+const nanoid = customAlphabet('1234567890abcdef', 10)
+model.id = nanoid(5) //=> "f01a2"
+```
+
+[ID collision probability]: https://alex7kom.github.io/nano-nanoid-cc/
 [`nanoid-dictionary`]:      https://github.com/CyberAP/nanoid-dictionary
 
 
@@ -288,7 +287,10 @@ const { customRandom, urlAlphabet } = require('nanoid')
 const nanoid = customRandom(urlAlphabet, 10, random)
 ```
 
-异步和非安全 API 不适用于 `customRandom`。
+异步和非安全的API在 `customRandom` 中不可用。
+
+请注意，在Nano ID的不同版本之间，我们可能会更改随机生成器的调用顺序。如果您正在使用基于种子的生成器，我们不能保证相同的结果。
+
 
 ## 用法
 
@@ -332,11 +334,14 @@ const todoItems = todos.map((text, index) =>
 )
 ```
 
+如果您只需要随机 ID 来将元素（如标签和输入字段）链接在一起，建议使用 [`useId`]。该钩子在 React 18 中添加。
+
+[`useId`]: https://reactjs.org/docs/hooks-reference.html#useid
+
 
 ### React Native
 
-React Native 没有内置的随机生成器。下面的 polyfill
-适用于普通 React Native 和从 `39.x` 开始的 Expo。
+React Native 没有内置的随机生成器。以下polyfill适用于纯 React Native 和 Expo，从39.x版本开始生效。
 
 1. 检查 [`react-native-get-random-values`] 文档并安装它。
 2. 在 Nano ID 之前导入它。
@@ -379,6 +384,23 @@ import { nanoid } from 'nanoid/non-secure'
 nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
+注意：非安全的ID更容易受到碰撞攻击。
+
+
+### Jest
+
+使用 `jest-environment-jsdom` 的 Jest 测试运行器将使用浏览器版本的 Nano ID。您将需要 Web Crypto API 的polyfill。
+
+```js
+import { randomFillSync } from 'crypto'
+
+window.crypto = {
+  getRandomValues(buffer) {
+    return randomFillSync(buffer)
+  }
+}
+```
+
 
 ### CLI
 
@@ -391,9 +413,19 @@ npx: installed 1 in 0.63s
 LZfXLFzPPR4NNrgjlWDxn
 ```
 
-如果你想改变字母或 ID size，你应该使用 [`nanoid-cli`]。
+生成的ID的大小可以使用 `--size`（或 `-s` ）选项指定：
 
-[`nanoid-cli`]: https://github.com/twhitbeck/nanoid-cli
+```sh
+$ npx nanoid --size 10
+L3til0JS4z
+```
+
+可以使用 `--alphabet`（或 `-a` ）选项指定自定义字母表（请注意，这种情况下需要 `--size` 选项）。
+
+```sh
+$ npx nanoid --alphabet abc --size 15
+bccbcabaabaccab
+```
 
 
 ### 其他编程语言
@@ -435,8 +467,8 @@ Nano ID 已被移植到许多语言。 你可以使用下面这些移植，获�
 
 ## 工具
 
-* [ID size 计算器] 显示调整时的冲突概率
-  ID的字母或size。
+* [ID size 计算器] 显示调整时的碰撞概率
+  ID的字母或大小。
 * [`nanoid-dictionary`] 与常用的字母一起使用 [`自定义字母`]。
 * [`nanoid-good`] 以确保你的ID不包含任何淫秽词汇。
 
