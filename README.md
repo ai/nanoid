@@ -16,7 +16,7 @@ A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 * **Short IDs.** It uses a larger alphabet than UUID (`A-Za-z0-9_-`).
   So ID size was reduced from 36 to 21 symbols.
 * **Portable.** Nano ID was ported
-  to [20 programming languages](./README.md#other-programming-languages).
+  to over [20 programming languages](./README.md#other-programming-languages).
 
 ```js
 import { nanoid } from 'nanoid'
@@ -465,12 +465,13 @@ the same ID generator on the client and server side.
 * [Crystal](https://github.com/mamantoha/nanoid.cr)
 * [Dart & Flutter](https://github.com/pd4d10/nanoid-dart)
 * [Deno](https://github.com/ianfabs/nanoid)
-* [Go](https://github.com/matoous/go-nanoid)
 * [Elixir](https://github.com/railsmechanic/nanoid)
+* [Go](https://github.com/matoous/go-nanoid)
 * [Haskell](https://github.com/MichelBoucey/NanoID)
 * [Haxe](https://github.com/flashultra/uuid)
 * [Janet](https://sr.ht/~statianzo/janet-nanoid/)
 * [Java](https://github.com/aventrix/jnanoid)
+* [MySQL/MariaDB](https://github.com/viascom/nanoid-mysql-mariadb)
 * [Nim](https://github.com/icyphox/nanoid.nim)
 * [OCaml](https://github.com/routineco/ocaml-nanoid)
 * [Perl](https://github.com/tkzwtks/Nanoid-perl)
