@@ -387,21 +387,6 @@ nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 注意：非安全的ID更容易受到碰撞攻击。
 
 
-### Jest
-
-使用 `jest-environment-jsdom` 的 Jest 测试运行器将使用浏览器版本的 Nano ID。您将需要 Web Crypto API 的polyfill。
-
-```js
-import { randomFillSync } from 'crypto'
-
-window.crypto = {
-  getRandomValues(buffer) {
-    return randomFillSync(buffer)
-  }
-}
-```
-
-
 ### CLI
 
 你可以通过调用 `npx nanoid` 在终端获得唯一的 ID。你只需要

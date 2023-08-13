@@ -409,22 +409,6 @@ nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 Note: non-secure IDs are more prone to collision attacks.
 
 
-### Jest
-
-Jest test runner with `jest-environment-jsdom` will use browser’s version
-of Nano ID. You will need polyfill for Web Crypto API.
-
-```js
-import { randomFillSync } from 'crypto'
-
-window.crypto = {
-  getRandomValues(buffer) {
-    return randomFillSync(buffer)
-  }
-}
-```
-
-
 ### CLI
 
 You can get unique ID in terminal by calling `npx nanoid`. You need only

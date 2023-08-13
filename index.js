@@ -1,5 +1,3 @@
-import { randomFillSync } from 'crypto'
-
 import { urlAlphabet } from './url-alphabet/index.js'
 
 export { urlAlphabet }
@@ -15,10 +13,10 @@ let pool, poolOffset
 function fillPool(bytes) {
   if (!pool || pool.length < bytes) {
     pool = Buffer.allocUnsafe(bytes * POOL_SIZE_MULTIPLIER)
-    randomFillSync(pool)
+    crypto.getRandomValues(pool)
     poolOffset = 0
   } else if (poolOffset + bytes > pool.length) {
-    randomFillSync(pool)
+    crypto.getRandomValues(pool)
     poolOffset = 0
   }
   poolOffset += bytes

@@ -392,22 +392,6 @@ nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
 
-### Jest
-
-Фреймворк тестов Jest со средой `jest-environment-jsdom` будет использовать
-браузерную версию Nano ID. Вам понадобится полифил для Web Crypto API.
-
-```js
-import { randomFillSync } from 'crypto'
-
-window.crypto = {
-  getRandomValues(buffer) {
-    return randomFillSync(buffer)
-  }
-}
-```
-
-
 ### Терминал
 
 Можно сгенерировать уникальный ID прямо из терминала, вызвав `npx nanoid`.
