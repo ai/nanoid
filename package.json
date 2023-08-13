@@ -10,9 +10,12 @@
   ],
   "scripts": {
     "clean": "rm -R coverage",
+    "start": "vite test/demo/ --open",
     "unit": "uvu . .test.js$",
-    "test": "c8 pnpm unit && eslint . && pnpm clean && size-limit",
-    "start": "vite test/demo/ --open"
+    "test:coverage": "c8 pnpm unit",
+    "test:lint": "eslint .",
+    "test:size": "pnpm clean && size-limit",
+    "test": "pnpm run /^test:/"
   },
   "type": "module",
   "engines": {
