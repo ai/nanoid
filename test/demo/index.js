@@ -1,10 +1,10 @@
-import { v4 as uuid4 } from 'uuid'
 import shortid from 'shortid'
+import { v4 as uuid4 } from 'uuid'
 
 import * as nanoidExport from '../../index.browser.js'
 import * as nonSecureExport from '../../non-secure/index.js'
 
-let { nanoid, customAlphabet, random } = nanoidExport
+let { customAlphabet, nanoid, random } = nanoidExport
 let nonSecure = nonSecureExport.nanoid
 
 const COUNT = 50 * 1000
@@ -61,7 +61,7 @@ function calcDistr(title, fn) {
     }
   }
 
-  return { title, chars, time: end - start }
+  return { chars, time: end - start, title }
 }
 
 let tasks = [

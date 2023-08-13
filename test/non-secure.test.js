@@ -1,8 +1,8 @@
-import { is, match, ok } from 'uvu/assert'
 import { test } from 'uvu'
+import { is, match, ok } from 'uvu/assert'
 
-import { nanoid, customAlphabet } from '../non-secure/index.js'
 import { urlAlphabet } from '../index.js'
+import { customAlphabet, nanoid } from '../non-secure/index.js'
 
 test('nanoid / generates URL-friendly IDs', () => {
   for (let i = 0; i < 10; i++) {

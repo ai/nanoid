@@ -1,9 +1,9 @@
-import { is, match, ok } from 'uvu/assert'
 import { test } from 'uvu'
+import { is, match, ok } from 'uvu/assert'
 
-import { urlAlphabet } from '../index.js'
 import * as browser from '../async/index.browser.js'
 import * as node from '../async/index.js'
+import { urlAlphabet } from '../index.js'
 
 test.before(() => {
   Object.defineProperty(global, 'crypto', {
@@ -32,7 +32,7 @@ function times(size, callback) {
 }
 
 for (let type of ['node', 'browser']) {
-  let { nanoid, customAlphabet, random } = type === 'node' ? node : browser
+  let { customAlphabet, nanoid, random } = type === 'node' ? node : browser
 
   test(`${type} / nanoid / generates URL-friendly IDs`, async () => {
     await Promise.all(

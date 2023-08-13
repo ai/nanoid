@@ -1,5 +1,5 @@
-import { is, ok, equal, match } from 'uvu/assert'
 import { test } from 'uvu'
+import { equal, is, match, ok } from 'uvu/assert'
 
 import * as browser from '../index.browser.js'
 import * as node from '../index.js'
@@ -23,7 +23,7 @@ test.after(() => {
 })
 
 for (let type of ['node', 'browser']) {
-  let { nanoid, customAlphabet, customRandom, random, urlAlphabet } =
+  let { customAlphabet, customRandom, nanoid, random, urlAlphabet } =
     type === 'node' ? node : browser
 
   test(`${type} / nanoid / generates URL-friendly IDs`, () => {

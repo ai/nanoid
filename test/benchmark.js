@@ -1,23 +1,23 @@
 #!/usr/bin/env node
 
-import { uid as uidSecure } from 'uid/secure'
 import { v4 as lukeed4 } from '@lukeed/uuid'
 import { v4 as napiV4 } from '@napi-rs/uuid'
-import { v4 as uuid4 } from 'uuid'
 import benchmark from 'benchmark'
-import shortid from 'shortid'
-import uidSafe from 'uid-safe'
-import { uid } from 'uid'
 import crypto from 'crypto'
 import pico from 'picocolors'
 import rndm from 'rndm'
 import srs from 'secure-random-string'
+import shortid from 'shortid'
+import { uid } from 'uid'
+import uidSafe from 'uid-safe'
+import { uid as uidSecure } from 'uid/secure'
+import { v4 as uuid4 } from 'uuid'
 
 import {
   customAlphabet as aCustomAlphabet,
   nanoid as aNanoid
 } from '../async/index.js'
-import { nanoid, customAlphabet } from '../index.js'
+import { customAlphabet, nanoid } from '../index.js'
 import { nanoid as nonSecure } from '../non-secure/index.js'
 
 let suite = new benchmark.Suite()
