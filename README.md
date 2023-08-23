@@ -210,11 +210,9 @@ async function createUser() {
 
 Read more about entropy collection in [`crypto.randomBytes`] docs.
 
-Unfortunately, you will lose Web Crypto API advantages in a browser
-if you use the asynchronous API. So, currently, in the browser, you are limited
-with either security (`nanoid`), asynchronous behavior (`nanoid/async`),
-or non-secure behavior (`nanoid/non-secure`) that will be explained
-in the next part of the documentation.
+Unfortunately, you will lose performance advantages in a browser
+if you use the asynchronous API, because Web Crypto API supports only
+synchronous mode.
 
 [`crypto.randomBytes`]: https://nodejs.org/api/crypto.html#crypto_crypto_randombytes_size_callback
 
