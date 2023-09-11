@@ -37,7 +37,6 @@ Mendukung penjelajah (browser) modern, IE [dengan Babel](https://developer.epage
 - [Instalasi](#instalasi)
 - [API](#api)
   - [Blocking](#blocking)
-  - [Async](#async)
   - [Non-Secure](#non-secure)
   - [Alfabet dan Ukuran (Custom)](#alfabet-dan-ukuran-penyesuaian)
   - [Generasi Random Bytes (Custom)](#generasi-random-bytes-custom)
@@ -77,12 +76,6 @@ customAlphabet             3,565,656 ops/sec
 secure-random-string         394,201 ops/sec
 uid-safe.sync                393,176 ops/sec
 shortid                       49,916 ops/sec
-
-Async:
-nanoid/async                 135,260 ops/sec
-async customAlphabet         136,059 ops/sec
-async secure-random-string   135,213 ops/sec
-uid-safe                     119,587 ops/sec
 
 Non-secure:
 uid                       58,860,241 ops/sec
@@ -131,7 +124,7 @@ import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 
 ## API
 
-Nano ID memiliki tiga buah API: normal (_blocking_), asinkronus (_asynchronous_), dan _non-secure_.
+Nano ID memiliki dua API: normal dan _non-secure_.
 
 Bawaannya, Nano ID menggunakan simbol yang _URL-friendly_ (`A-Za-z0-9_-`) dan mengembalikan ID dengan 21 karakter (untuk memiliki probabilitas collision / tabrakan yang mirip dengan UUID v4).
 
@@ -158,27 +151,6 @@ Jangan lupa memeriksa tingkat keamanan dari ukuran ID dalam situs [ID collision 
 Dapat digunakan pula [custom alphabet](#custom-alphabet-or-size) atau [random generator](#custom-random-bytes-generator) yang lain.
 
 
-### Async
-
-Untuk menghasilkan bytes yang acak dan aman secara kriptografis, CPU mengumpulkan noise elektromagnetik. Umumnya, entropi sudah dikumpulkan terlebih dahulu.
-
-Dalam API sinkronus, pada saat CPU mengumpulkan noise elektromagnetik, CPU berada dalam situasi 'busy' dan tidak dapat melakukan proses yang lain (contohnya yakni memorses permintaan HTTP).
-
-Ketika menggunakan API asinkronus dari Nano ID, proses lain dapat berjalan ketika CPU sedang mengumpulkan noise elektromagnetik.
-
-```js
-import { nanoid } from 'nanoid/async'
-
-async function createUser() {
-  user.id = await nanoid()
-}
-```
-
-Referensi lebih lanjut tentang entropi dapat dilihat pada dokumentasi fungsi [`crypto.randomBytes`](https://nodejs.org/api/crypto.html#crypto_crypto_randombytes_size_callback) milik Node.js.
-
-Sayangnya, keuntungan Web Crypto API akan hilang di browser apabila menggunakan API asinkronus ini. Untuk sekarang, browser dibatasi hanya menggunakan API sinkronus (untuk keamanan) atau API asinkronus (lebih cepat, tetapi karena keuntungan Web Crypto hilang, keamanannya sedikit lebih rendah ketimbang penggunaan API sinkronus).
-
-
 ### Non-Secure
 
 Konfigurasi bawaan Nano ID menggunakan random bytes generator yang berasal dari perangkat keras untuk keamanan dan probabilitas collision yang rendah. Apabila tidak terlalu memikirkan soal keamanan, dapat pula menggunakan non-secure generator yang lebih cepat.
@@ -203,15 +175,7 @@ Ketika menggunakan fungsi ini, jangan lupa untuk memeriksa keamanan alfabet dan 
 
 Alfabet harus terbentuk dari 256 simbol atau lebih kecil. Selain itu, keamanan algoritma generasi yang berada di dalam library ini tidak dijamin aman.
 
-API asinkronus dan non-secure yang dapat dikustomisasi dengan `customAlphabet` pun tersedia disini:
-
-```js
-import { customAlphabet } from 'nanoid/async'
-const nanoid = customAlphabet('1234567890abcdef', 10)
-async function createUser() {
-  user.id = await nanoid()
-}
-```
+API non-secure yang dapat dikustomisasi dengan `customAlphabet` pun tersedia disini:
 
 ```js
 import { customAlphabet } from 'nanoid/non-secure'

@@ -42,7 +42,6 @@ Supports modern browsers, IE [with Babel], Node.js and React Native.
 * [Install](#install)
 * [API](#api)
   * [Blocking](#blocking)
-  * [Async](#async)
   * [Non-Secure](#non-secure)
   * [Custom Alphabet or Size](#custom-alphabet-or-size)
   * [Custom Random Bytes Generator](#custom-random-bytes-generator)
@@ -88,12 +87,6 @@ customAlphabet             3,565,656 ops/sec
 secure-random-string         394,201 ops/sec
 uid-safe.sync                393,176 ops/sec
 shortid                       49,916 ops/sec
-
-Async:
-nanoid/async                 135,260 ops/sec
-async customAlphabet         136,059 ops/sec
-async secure-random-string   135,213 ops/sec
-uid-safe                     119,587 ops/sec
 
 Non-secure:
 uid                       58,860,241 ops/sec
@@ -155,7 +148,7 @@ import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 
 ## API
 
-Nano ID has 3 APIs: normal (blocking), asynchronous, and non-secure.
+Nano ID has 2 APIs: normal and non-secure.
 
 By default, Nano ID uses URL-friendly symbols (`A-Za-z0-9_-`) and returns an ID
 with 21 characters (to have a collision probability similar to UUID v4).
@@ -189,34 +182,6 @@ or a [random generator](#custom-random-bytes-generator).
 [ID collision probability]: https://zelark.github.io/nano-id-cc/
 
 
-### Async
-
-To generate hardware random bytes, CPU collects electromagnetic noise.
-For most cases, entropy will be already collected.
-
-In the synchronous API during the noise collection, the CPU is busy and
-cannot do anything useful (for instance, process another HTTP request).
-
-Using the asynchronous API of Nano ID, another code can run during
-the entropy collection.
-
-```js
-import { nanoid } from 'nanoid/async'
-
-async function createUser() {
-  user.id = await nanoid()
-}
-```
-
-Read more about entropy collection in [`crypto.randomBytes`] docs.
-
-Unfortunately, you will lose performance advantages in a browser
-if you use the asynchronous API, because Web Crypto API supports only
-synchronous mode.
-
-[`crypto.randomBytes`]: https://nodejs.org/api/crypto.html#crypto_crypto_randombytes_size_callback
-
-
 ### Non-Secure
 
 By default, Nano ID uses hardware random bytes generation for security
@@ -238,14 +203,6 @@ with your own alphabet and ID size.
 import { customAlphabet } from 'nanoid'
 const nanoid = customAlphabet('1234567890abcdef', 10)
 model.id = nanoid() //=> "4f90d13a42"
-```
-
-```js
-import { customAlphabet } from 'nanoid/async'
-const nanoid = customAlphabet('1234567890abcdef', 10)
-async function createUser() {
-  user.id = await nanoid()
-}
 ```
 
 ```js
@@ -302,8 +259,6 @@ you can get the default alphabet using the `urlAlphabet`.
 const { customRandom, urlAlphabet } = require('nanoid')
 const nanoid = customRandom(urlAlphabet, 10, random)
 ```
-
-Asynchronous and non-secure APIs are not available for `customRandom`.
 
 Note, that between Nano ID versions we may change random generator
 call sequence. If you are using seed-based generators, we do not guarantee

@@ -38,7 +38,6 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 * [安装](#安装)
 * [API](#api)
   * [阻塞](#阻塞)
-  * [异步](#异步)
   * [不安全](#不安全)
   * [自定义字母或大小](#自定义字母或大小)
   * [自定义随机字节生成器](#自定义随机字节生成器)
@@ -83,12 +82,6 @@ customAlphabet             3,565,656 ops/sec
 secure-random-string         394,201 ops/sec
 uid-safe.sync                393,176 ops/sec
 shortid                       49,916 ops/sec
-
-Async:
-nanoid/async                 135,260 ops/sec
-async customAlphabet         136,059 ops/sec
-async secure-random-string   135,213 ops/sec
-uid-safe                     119,587 ops/sec
 
 Non-secure:
 uid                       58,860,241 ops/sec
@@ -148,7 +141,7 @@ import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 
 ## API
 
-Nano ID 有3个 API：正常(阻塞)，异步，和不安全。
+Nano ID 有2个 API：正常(阻塞)，和不安全。
 
 默认情况下，Nano ID 使用 URL 友好的符号（`A-Za-z0-9_-`）并返回一个
 有21个字符（类似 UUID v4 的碰撞概率）的 ID。
@@ -180,33 +173,6 @@ nanoid(10) //=> "IRFa-VaY2b"
 [ID 碰撞概率]: https://alex7kom.github.io/nano-nanoid-cc/
 
 
-### 异步
-
-为了生成硬件随机字节，CPU 会收集电磁噪声。
-在大多数情况下，熵已经被收集。
-
-在同步API的噪声收集期间，CPU将忙于工作，无法执行其他有用的任务（例如，处理另一个HTTP请求）。
-
-使用Nano ID的异步API，可以在熵收集期间
-运行另一个代码。
-
-```js
-import { nanoid } from 'nanoid/async'
-
-async function createUser() {
-  user.id = await nanoid()
-}
-```
-
-请阅读 [`crypto.randomBytes`] 文档了解更多关于熵收集的信息。
-
-不幸的是，您将在浏览器中失去 Web Crypto API 的优势
-如果您使用异步 API。那么，目前在浏览器中，
-您将受到安全性或异步行为的限制。
-
-[`crypto.randomBytes`]: https://nodejs.org/api/crypto.html#crypto_crypto_randombytes_size_callback
-
-
 ### 不安全
 
 默认情况下，Nano ID 使用硬件随机字节生成以提供安全性和较低的碰撞概率。如果您对安全性不太担心，您可以在没有硬件随机生成器的环境中使用它
@@ -225,14 +191,6 @@ const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 import { customAlphabet } from 'nanoid'
 const nanoid = customAlphabet('1234567890abcdef', 10)
 model.id = nanoid() //=> "4f90d13a42"
-```
-
-```js
-import { customAlphabet } from 'nanoid/async'
-const nanoid = customAlphabet('1234567890abcdef', 10)
-async function createUser() {
-  user.id = await nanoid()
-}
 ```
 
 ```js
@@ -286,8 +244,6 @@ nanoid() //=> "fbaefaadeb"
 const { customRandom, urlAlphabet } = require('nanoid')
 const nanoid = customRandom(urlAlphabet, 10, random)
 ```
-
-异步和非安全的API在 `customRandom` 中不可用。
 
 请注意，在Nano ID的不同版本之间，我们可能会更改随机生成器的调用顺序。如果您正在使用基于种子的生成器，我们不能保证相同的结果。
 
