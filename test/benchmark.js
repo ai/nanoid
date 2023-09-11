@@ -3,7 +3,7 @@
 import { v4 as lukeed4 } from '@lukeed/uuid'
 import { v4 as napiV4 } from '@napi-rs/uuid'
 import benchmark from 'benchmark'
-import crypto from 'crypto'
+import crypto from 'node:crypto'
 import pico from 'picocolors'
 import rndm from 'rndm'
 import srs from 'secure-random-string'

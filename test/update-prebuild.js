@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import { readFile, writeFile } from 'fs/promises'
-import { join } from 'path'
+import { readFile, writeFile } from 'node:fs/promises'
+import { join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { minify } from 'terser'
-import { fileURLToPath } from 'url'
 
 const ROOT = join(fileURLToPath(import.meta.url), '..', '..')
 

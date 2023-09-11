@@ -1,4 +1,4 @@
-import { randomFill } from 'crypto'
+import { randomFill } from 'node:crypto'
 
 import { urlAlphabet } from '../url-alphabet/index.js'
 

@@ -1,7 +1,7 @@
-import child from 'child_process'
-import { join } from 'path'
-import { fileURLToPath } from 'url'
-import { promisify } from 'util'
+import child from 'node:child_process'
+import { join } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { promisify } from 'node:util'
 import { test } from 'uvu'
 import { is, match } from 'uvu/assert'
 
