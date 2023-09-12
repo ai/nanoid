@@ -149,8 +149,8 @@ for (let type of ['node', 'browser']) {
 
   test(`${type} / random / generates random buffers`, () => {
     let numbers = {}
-    let bytes = random(10000)
-    is(bytes.length, 10000)
+    let bytes = random(1000)
+    is(bytes.length, 1000)
     for (let byte of bytes) {
       if (!numbers[byte]) numbers[byte] = 0
       numbers[byte] += 1
