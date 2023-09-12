@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.0.1
+* Fixed Node.js 18 support.
+
 ## 5.0
 * Moved Node.js version to Web Crypto API.
 * Removed async API since Web Crypto API has only sync version.
