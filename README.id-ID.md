@@ -108,7 +108,7 @@ _Lihat artikel yang informatif tentang teori angka acak: [Nilai acak yang aman d
 npm install --save nanoid
 ```
 
-Nano ID 4 hanya tersedia untuk proyek, pengujian, atau skrip ESM Node.js.
+Nano ID 5 hanya tersedia untuk proyek, pengujian, atau skrip ESM Node.js.
 Untuk CommonJS Anda memerlukan Nano ID 3.x (kami masih mendukungnya):
 
 ```bash

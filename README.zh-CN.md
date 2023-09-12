@@ -124,7 +124,7 @@ rndm                       2,718,063 ops/sec
 npm install --save nanoid
 ```
 
-Nano ID 4 仅适用于 ESM 项目、测试或 Node.js 脚本。
+Nano ID 5 仅适用于 ESM 项目、测试或 Node.js 脚本。
 对于 CommonJS，您需要 Nano ID 3.x（我们仍然支持它）：
 
 ```bash
