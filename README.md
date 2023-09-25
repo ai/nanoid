@@ -50,7 +50,6 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
   * [React Native](#react-native)
   * [PouchDB and CouchDB](#pouchdb-and-couchdb)
   * [Web Workers](#web-workers)
-  * [Jest](#jest)
   * [CLI](#cli)
   * [Other Programming Languages](#other-programming-languages)
 * [Tools](#tools)
