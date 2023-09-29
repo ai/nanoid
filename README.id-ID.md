@@ -22,11 +22,11 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 
 Mendukung penjelajah (browser) modern, IE [dengan Babel](https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/), Node.js, dan React Native.
 
-<a href="https://evilmartians.com/?utm_source=nanoid"
-  alt="Tautan untuk menuju situs milik sponsor">
-<img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg"
-       alt="Disponsori oleh Evil Martians" width="236" height="54">
-</a>
+---
+
+<img src="https://cdn.evilmartians.com/badges/logo-no-label.svg" alt="" width="22" height="16" />  Made in <b><a href="https://evilmartians.com/devtools?utm_source=nanoid&utm_campaign=devtools-button&utm_medium=github">Evil Martians</a></b>, product consulting for <b>developer tools</b>.
+
+---
 
 
 ## Table of Contents
