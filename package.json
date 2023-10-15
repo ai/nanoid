@@ -11,8 +11,7 @@
   "scripts": {
     "clean": "rm -rf coverage",
     "start": "vite test/demo/ --open",
-    "unit": "uvu . .test.js$",
-    "test:coverage": "c8 pnpm unit",
+    "test:coverage": "c8 pnpm bnt",
     "test:lint": "eslint .",
     "test:size": "pnpm clean && size-limit",
     "test": "pnpm run /^test:/"
@@ -54,6 +53,7 @@
     "@size-limit/webpack": "^9.0.0",
     "@types/node": "^20.8.6",
     "benchmark": "^2.1.4",
+    "better-node-test": "^0.2.0",
     "c8": "^8.0.1",
     "clean-publish": "^4.2.0",
     "eslint": "^8.51.0",
@@ -73,7 +73,6 @@
     "uid": "^2.0.2",
     "uid-safe": "^2.1.5",
     "uuid": "^9.0.1",
-    "uvu": "^0.5.6",
     "vite": "^4.4.11"
   },
   "size-limit": [
