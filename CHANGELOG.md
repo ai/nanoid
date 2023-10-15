@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.0.2
+* Fixed `webcrypto` import (by Divyansh Singh).
+
 ## 5.0.1
 * Fixed Node.js 18 support.
 
