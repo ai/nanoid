@@ -1,4 +1,4 @@
-import crypto from 'node:crypto'
+import { webcrypto as crypto } from 'node:crypto'
 
 import { urlAlphabet } from './url-alphabet/index.js'
 
