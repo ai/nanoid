@@ -9,7 +9,7 @@
     "url"
   ],
   "scripts": {
-    "clean": "rm -R coverage",
+    "clean": "rm -rf coverage",
     "start": "vite test/demo/ --open",
     "unit": "uvu . .test.js$",
     "test:coverage": "c8 pnpm unit",
