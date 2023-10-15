@@ -105,14 +105,14 @@ _Lihat artikel yang informatif tentang teori angka acak: [Nilai acak yang aman d
 ## Instalasi
 
 ```bash
-npm install --save nanoid
+npm install nanoid
 ```
 
 Nano ID 5 hanya tersedia untuk proyek, pengujian, atau skrip ESM Node.js.
 Untuk CommonJS Anda memerlukan Nano ID 3.x (kami masih mendukungnya):
 
 ```bash
-npm install --save nanoid@3
+npm install nanoid@3
 ```
 
 Apabila ingin 'coba-coba' terlebih dahulu, dapat digunakan Nano ID melalui CDN. Hal ini tidak direkomendasikan untuk digunakan pada lingkungan produksi karena performa pemuatan (_loading_) yang berkurang.

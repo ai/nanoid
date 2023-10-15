@@ -127,14 +127,14 @@ Test configuration: ThinkPad X1 Carbon Gen 9, Fedora 36, Node.js 18.9.
 ## Install
 
 ```bash
-npm install --save nanoid
+npm install nanoid
 ```
 
 Nano ID 5 works only with ESM projects, in tests or Node.js scripts.
 For CommonJS you need Nano ID 3.x (we still support it):
 
 ```bash
-npm install --save nanoid@3
+npm install nanoid@3
 ```
 
 For quick hacks, you can load Nano ID from CDN. Though, it is not recommended

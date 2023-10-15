@@ -134,14 +134,14 @@ _См. также хорошую статью о теориях генерато
 ## Подключение
 
 ```bash
-npm install --save nanoid
+npm install nanoid
 ```
 
 Nano ID 5 работает только с ESM-проектами, в тестах или скриптах для Node.js.
 Для CommonJS вам нужен Nano ID 3.x (мы ещё всё ещё поддерживаем):
 
 ```bash
-npm install --save nanoid@3
+npm install nanoid@3
 ```
 
 Для быстрого прототипирования вы можете подключить Nano ID с CDN без установки.
