@@ -1,32 +1,34 @@
 import { equal, match, notEqual, ok } from 'node:assert'
-import { describe, test } from 'node:test'
+import { after, before, describe, test } from 'node:test'
 
 import * as browser from '../index.browser.js'
 import * as node from '../index.js'
-
-test.before(() => {
-  Object.defineProperty(global, 'crypto', {
-    configurable: true,
-    value: {
-      getRandomValues(array) {
-        for (let i = 0; i < array.length; i++) {
-          array[i] = Math.floor(Math.random() * 256)
-        }
-        return array
-      }
-    }
-  })
-})
-
-test.after(() => {
-  Object.defineProperty(global, 'crypto', { value: undefined })
-})
 
 for (let type of ['node', 'browser']) {
   let { customAlphabet, customRandom, nanoid, random, urlAlphabet } =
     type === 'node' ? node : browser
 
   describe(type, () => {
+    if (type === 'browser') {
+      before(() => {
+        Object.defineProperty(global, 'crypto', {
+          configurable: true,
+          value: {
+            getRandomValues(array) {
+              for (let i = 0; i < array.length; i++) {
+                array[i] = Math.floor(Math.random() * 256)
+              }
+              return array
+            }
+          }
+        })
+      })
+
+      after(() => {
+        Object.defineProperty(global, 'crypto', { value: undefined })
+      })
+    }
+
     test(`generates URL-friendly IDs`, () => {
       for (let i = 0; i < 100; i++) {
         let id = nanoid()
