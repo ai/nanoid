@@ -407,6 +407,7 @@ the same ID generator on the client and server side.
 * [Haxe](https://github.com/flashultra/uuid)
 * [Janet](https://sr.ht/~statianzo/janet-nanoid/)
 * [Java](https://github.com/aventrix/jnanoid)
+* [Kotlin](https://github.com/viascom/nanoid-kotlin)
 * [MySQL/MariaDB](https://github.com/viascom/nanoid-mysql-mariadb)
 * [Nim](https://github.com/icyphox/nanoid.nim)
 * [OCaml](https://github.com/routineco/ocaml-nanoid)
