@@ -22,7 +22,7 @@ if (process.argv.includes('--help') || process.argv.includes('-h')) {
     -h, --help       Show this help
 
   Examples
-    $ nanoid --s 15
+    $ nanoid -s 15
     S9sBF77U6sDB8Yg
 
     $ nanoid --size 10 --alphabet abc
