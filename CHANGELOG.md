@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.3.7
+* Fixed `node16` TypeScript support (by Saadi Myftija).
+
 ## 3.3.6
 * Fixed package.
 
