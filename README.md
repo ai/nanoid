@@ -389,6 +389,7 @@ $ npx nanoid --alphabet abc --size 15
 bccbcabaabaccab
 ```
 
+
 ### Other Programming Languages
 
 Nano ID was ported to many languages. You can use these ports to have
