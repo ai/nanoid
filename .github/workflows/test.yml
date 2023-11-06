@@ -4,6 +4,8 @@ on:
     branches:
       - main
   pull_request:
+permissions:
+  contents: read
 jobs:
   full:
     name: Node.js Latest Full
@@ -14,25 +16,24 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: latest
+          version: 8
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 21
           cache: pnpm
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
       - name: Run tests
         run: pnpm test
-        env:
-          FORCE_COLOR: 2
   short:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version:
+          - 20
+          - 18
           - 16
-          - 14
     name: Node.js ${{ matrix.node-version }} Quick
     steps:
       - name: Checkout the repository
@@ -40,7 +41,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: latest
+          version: 8
       - name: Install Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -50,13 +51,12 @@ jobs:
         run: pnpm install --frozen-lockfile --ignore-scripts
       - name: Run unit tests
         run: pnpm unit
-        env:
-          FORCE_COLOR: 2
   old:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version:
+          - 14
           - 12
           - 10
     name: Node.js ${{ matrix.node-version }} Quick
@@ -74,11 +74,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile --ignore-scripts
+        run: pnpm install --no-frozen-lockfile --ignore-scripts
       - name: Run unit tests
         run: pnpm unit
-        env:
-          FORCE_COLOR: 2
   benchmark:
     name: Benchmark
     runs-on: ubuntu-latest
@@ -88,7 +86,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: latest
+          version: 8
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
