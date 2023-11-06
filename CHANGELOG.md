@@ -24,6 +24,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * Removed Node.js 10 and Node.js 12 support.
 * Reduced npm package size.
 
+## 3.3.7
+* Fixed `node16` TypeScript support (by Saadi Myftija).
+
 ## 3.3.6
 * Fixed package.
 
