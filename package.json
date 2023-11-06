@@ -50,7 +50,7 @@
     "benchmark": "^2.1.4",
     "c8": "^7.11.3",
     "cuid": "^2.1.8",
-    "dual-publish": "^3.0.1",
+    "dual-publish": "^4.0.0",
     "eslint": "^8.17.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
