@@ -12,21 +12,20 @@ function error(msg) {
 }
 
 if (process.argv.includes('--help') || process.argv.includes('-h')) {
-  print(`
-  Usage
-    $ nanoid [options]
+  print(`Usage
+  $ nanoid [options]
 
-  Options
-    -s, --size       Generated ID size
-    -a, --alphabet   Alphabet to use
-    -h, --help       Show this help
+Options
+  -s, --size       Generated ID size
+  -a, --alphabet   Alphabet to use
+  -h, --help       Show this help
 
-  Examples
-    $ nanoid -s 15
-    S9sBF77U6sDB8Yg
+Examples
+  $ nanoid -s 15
+  S9sBF77U6sDB8Yg
 
-    $ nanoid --size 10 --alphabet abc
-    bcabababca`)
+  $ nanoid --size 10 --alphabet abc
+  bcabababca`)
   process.exit()
 }
 
