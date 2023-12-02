@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.0.4
+* Fixed CLI docs (by @ilyaboka).
+
 ## 5.0.3
 * Fixed CLI docs (by Chris Schmich).
 
