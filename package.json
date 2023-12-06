@@ -51,7 +51,7 @@
     "@originjs/vite-plugin-commonjs": "^1.0.3",
     "@size-limit/file": "^11.0.0",
     "@size-limit/webpack": "^11.0.0",
-    "@types/node": "^20.10.2",
+    "@types/node": "^20.10.3",
     "benchmark": "^2.1.4",
     "better-node-test": "^0.4.1",
     "c8": "^8.0.1",
@@ -69,11 +69,11 @@
     "secure-random-string": "^1.1.3",
     "shortid": "^2.2.16",
     "size-limit": "^11.0.0",
-    "terser": "^5.24.0",
+    "terser": "^5.25.0",
     "uid": "^2.0.2",
     "uid-safe": "^2.1.5",
     "uuid": "^9.0.1",
-    "vite": "^5.0.4"
+    "vite": "^5.0.5"
   },
   "size-limit": [
     {
