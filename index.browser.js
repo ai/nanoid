@@ -48,14 +48,12 @@ export let customAlphabet = (alphabet, size = 21) =>
   customRandom(alphabet, size, random)
 
 export let nanoid = (len = 21) => {
-	let id = "";
-  // This will be hoisted by the JIT engine.
-  // I keep it here to make the code compact and easy to copy.
-	const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
-	const rand = crypto.getRandomValues(new Uint8Array(len));
+  let id = "";
+  let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
+  let rand = crypto.getRandomValues(new Uint8Array(len));
   // Using the bitwise AND operator to "cap" the value of
   // the random byte from 255 to 63, in that way we can make sure
   // that the value will be a valid index for the "chars" string.
-	for (let i = 0; i < len; i++) id += chars[rand[i] & 63];
-	return id;
+  for (let i = 0; i < len; i++) id += chars[rand[i] & 63];
+  return id;
 }

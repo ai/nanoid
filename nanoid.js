@@ -1,1 +1,1 @@
-export function nanoid(len = 21){let id = "";const rand = crypto.getRandomValues(new Uint8Array(len));for (let i = 0; i < len; i++) id += "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_"[rand[i] & 63];return id;}
+export let nanoid=(t=21)=>crypto.getRandomValues(new Uint8Array(t)).reduce(((t,e)=>t+=(e&=63)<36?e.toString(36):e<62?(e-26).toString(36).toUpperCase():e>62?"-":"_"),"");
