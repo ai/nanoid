@@ -13,6 +13,7 @@ import uidSafe from 'uid-safe'
 import { uid as uidSecure } from 'uid/secure'
 import { v4 as uuid4 } from 'uuid'
 
+import { nanoid as browser } from '../index.browser.js'
 import { customAlphabet, nanoid } from '../index.js'
 import { nanoid as nonSecure } from '../non-secure/index.js'
 
@@ -47,6 +48,9 @@ suite
   })
   .add('customAlphabet', () => {
     nanoid2()
+  })
+  .add('nanoid for browser', () => {
+    browser()
   })
   .add('secure-random-string', () => {
     srs()
