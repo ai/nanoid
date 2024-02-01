@@ -1,6 +1,8 @@
 // This file replaces `index.js` in bundlers like webpack or Rollup,
 // according to `browser` config in `package.json`.
-import { urlAlphabet } from './url-alphabet/index.js';
+
+import { urlAlphabet } from './url-alphabet/index.js'
+
 export { urlAlphabet } from './url-alphabet/index.js'
 
 export let random = bytes => crypto.getRandomValues(new Uint8Array(bytes))
@@ -47,12 +49,14 @@ export let customRandom = (alphabet, defaultSize, getRandom) => {
 export let customAlphabet = (alphabet, size = 21) =>
   customRandom(alphabet, size, random)
 
-export let nanoid = (len = 21) => {
-  let id = "";
-  let rand = crypto.getRandomValues(new Uint8Array(len));
-  // Using the bitwise AND operator to "cap" the value of
-  // the random byte from 255 to 63, in that way we can make sure
-  // that the value will be a valid index for the "chars" string.
-  for (let i = 0; i < len; i++) id += urlAlphabet[rand[i] & 63];
-  return id;
+export let nanoid = (size = 21) => {
+  let id = ''
+  let rand = crypto.getRandomValues(new Uint8Array(size))
+  for (let i = 0; i < size; i++) {
+    // Using the bitwise AND operator to "cap" the value of
+    // the random byte from 255 to 63, in that way we can make sure
+    // that the value will be a valid index for the "chars" string.
+    id += urlAlphabet[rand[i] & 63]
+  }
+  return id
 }
