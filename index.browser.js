@@ -51,12 +51,12 @@ export let customAlphabet = (alphabet, size = 21) =>
 
 export let nanoid = (size = 21) => {
   let id = ''
-  let rand = crypto.getRandomValues(new Uint8Array(size))
-  for (let i = 0; i < size; i++) {
+  let bytes = crypto.getRandomValues(new Uint8Array(size))
+  while (size--) {
     // Using the bitwise AND operator to "cap" the value of
     // the random byte from 255 to 63, in that way we can make sure
     // that the value will be a valid index for the "chars" string.
-    id += urlAlphabet[rand[i] & 63]
+    id += urlAlphabet[bytes[size] & 63]
   }
   return id
 }
