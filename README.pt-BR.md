@@ -41,7 +41,7 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 * [instalação](#instalação)
 * [API](#api)
   * [Bloqueio](#bloqueio)
-  * [Não Seguro](#não-seguro)
+  * [Inseguro](#inseguro)
   * [Alfabeto ou Tamanho Personalizado](#alfabeto-ou-tamanho-personalizado)
   * [Gerador de Bytes Aleatórios Personalizado](#gerador-de-bytes-aleatórios-personalizado)
 * [Usabilidade](#usabilidade)
@@ -152,7 +152,7 @@ import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 
 ## API
 
-Nano ID tem 2 APIs: normal e não segura.
+Nano ID tem 2 APIs: normal e insegura.
 
 Por padrão, o Nano ID usa símbolos amigáveis a URL (`A-Za-z0-9_-`) e retorna um ID
 com 21 caracteres (para ter uma probabilidade de colisão similar ao UUID v4).
@@ -186,7 +186,7 @@ ou um [gerador aleatório](#gerador-de-bytes-aleatórios-personalizado).
 [probabilidade de colisão de ID]: https://zelark.github.io/nano-id-cc/
 
 
-### Não-Seguro
+### Inseguro
 
 Por padrão, o Nano ID usa geração de bytes aleatórios de hardware para segurança
 e baixa probabilidade de colisão. Se você não está tão preocupado com a segurança,
@@ -363,14 +363,14 @@ Web Workers não têm acesso a um gerador aleatório seguro.
 Segurança é importante em IDs quando os IDs devem ser imprevisíveis.
 Por exemplo, na geração de links "acessar por URL".
 Se você não precisa de IDs imprevisíveis, mas precisa usar Web Workers,
-você pode usar o gerador de ID não seguro.
+você pode usar o gerador de ID inseguro.
 
 ```js
 import { nanoid } from 'nanoid/non-secure'
 nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
-Nota: IDs não-seguros são mais propensos a ataques de colisão.
+Nota: IDs inseguros são mais propensos a ataques de colisão.
 
 
 ### CLI
