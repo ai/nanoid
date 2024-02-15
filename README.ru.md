@@ -3,7 +3,7 @@
 <img src="https://ai.github.io/nanoid/logo.svg" align="right"
      alt="Логотип Nano ID от Антона Ловчикова" width="180" height="94">
 
-[English](./README.md) | **Русский** | [简体中文](./README.zh-CN.md) | [Bahasa Indonesia](./README.id-ID.md)
+[English](./README.md) | **Русский** | [简体中文](./README.zh-CN.md) | [Bahasa Indonesia](./README.id-ID.md) | [Portuguese](./README.pt-BR.md)
 
 Генератор уникальных ID для JavaScript — лёгкий, безопасный,
 ID можно применять в URL.

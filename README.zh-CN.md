@@ -3,7 +3,7 @@
 <img src="https://ai.github.io/nanoid/logo.svg" align="right"
      alt="Nano ID logo by Anton Lovchikov" width="180" height="94">
 
-[English](./README.md) | [Русский](./README.ru.md) | **简体中文** | [Bahasa Indonesia](./README.id-ID.md)
+[English](./README.md) | [Русский](./README.ru.md) | **简体中文** | [Bahasa Indonesia](./README.id-ID.md) | [Portuguese](./README.pt-BR.md)
 
 一个小巧、安全、URL友好、唯一的 JavaScript 字符串ID生成器。
 
