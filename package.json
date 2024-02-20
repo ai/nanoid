@@ -40,6 +40,9 @@
   "browser": {
     "./index.js": "./index.browser.js"
   },
+  "react-native": {
+    "./index.js": "./index.browser.js"
+  },
   "bin": "./bin/nanoid.js",
   "sideEffects": false,
   "types": "./index.d.ts",
