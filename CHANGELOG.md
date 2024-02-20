@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.0.6
+* Fixed React Native support.
+
 ## 5.0.5
 * Make browser’s version faster by increasing size a little (by Samuel Elgozi).
 
