@@ -1,8 +1,8 @@
 import { webcrypto as crypto } from 'node:crypto'
 
-import { urlAlphabet } from './url-alphabet/index.js'
+import { urlAlphabet as scopedUrlAlphabet } from './url-alphabet/index.js'
 
-export { urlAlphabet }
+export { urlAlphabet } from './url-alphabet/index.js'
 
 // It is best to make fewer, larger requests to the crypto module to
 // avoid system call overhead. So, random numbers are generated in a
@@ -80,7 +80,7 @@ export function nanoid(size = 21) {
     // range to the 0-63 value range. Therefore, adding hacks, such
     // as empty string fallback or magic numbers, is unnecessary because
     // the bitmask trims bytes down to the alphabet size.
-    id += urlAlphabet[pool[i] & 63]
+    id += scopedUrlAlphabet[pool[i] & 63]
   }
   return id
 }

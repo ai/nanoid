@@ -1,7 +1,7 @@
 // This file replaces `index.js` in bundlers like webpack or Rollup,
 // according to `browser` config in `package.json`.
 
-import { urlAlphabet } from './url-alphabet/index.js'
+import { urlAlphabet as scopedUrlAlphabet } from './url-alphabet/index.js'
 
 export { urlAlphabet } from './url-alphabet/index.js'
 
@@ -56,7 +56,7 @@ export let nanoid = (size = 21) => {
     // Using the bitwise AND operator to "cap" the value of
     // the random byte from 255 to 63, in that way we can make sure
     // that the value will be a valid index for the "chars" string.
-    id += urlAlphabet[bytes[size] & 63]
+    id += scopedUrlAlphabet[bytes[size] & 63]
   }
   return id
 }
