@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.0.7
+* Fixed Parcel support (by @WilhelmYakunin).
+
 ## 5.0.6
 * Fixed React Native support.
 
