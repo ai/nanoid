@@ -60,7 +60,6 @@
     "c8": "^9.1.0",
     "clean-publish": "^4.4.0",
     "eslint": "^8.57.0",
-    "picocolors": "^1.0.0",
     "rndm": "^1.2.0",
     "secure-random-string": "^1.1.3",
     "shortid": "^2.2.16",

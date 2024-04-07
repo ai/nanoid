@@ -4,7 +4,6 @@ import { v4 as lukeed4 } from '@lukeed/uuid'
 import { v4 as napiV4 } from '@napi-rs/uuid'
 import benchmark from 'benchmark'
 import crypto from 'node:crypto'
-import pico from 'picocolors'
 import rndm from 'rndm'
 import srs from 'secure-random-string'
 import shortid from 'shortid'
@@ -12,6 +11,7 @@ import { uid } from 'uid'
 import uidSafe from 'uid-safe'
 import { uid as uidSecure } from 'uid/secure'
 import { v4 as uuid4 } from 'uuid'
+import { styleText } from 'node:util'
 
 import { nanoid as browser } from '../index.browser.js'
 import { customAlphabet, nanoid } from '../index.js'
@@ -76,6 +76,8 @@ suite
     if (event.target.name === 'uid') {
       name = '\nNon-secure:\n' + name
     }
-    process.stdout.write(`${name}${pico.bold(hz)}${pico.dim(' ops/sec')}\n`)
+    process.stdout.write(
+      `${name}${styleText('bold', hz)}${styleText('dim', ' ops/sec')}\n`
+    )
   })
   .run()

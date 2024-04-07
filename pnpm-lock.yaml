@@ -44,9 +44,6 @@ devDependencies:
   eslint:
     specifier: ^8.57.0
     version: 8.57.0
-  picocolors:
-    specifier: ^1.0.0
-    version: 1.0.0
   rndm:
     specifier: ^1.2.0
     version: 1.2.0
