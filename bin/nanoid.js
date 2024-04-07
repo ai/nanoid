@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { nanoid, customAlphabet } from '../index.js'
+import { customAlphabet, nanoid } from '../index.js'
 
 function print(msg) {
   process.stdout.write(msg + '\n')
