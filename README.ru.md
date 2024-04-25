@@ -40,6 +40,7 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 
 ## Оглавление
 
+- [Оглавление](#оглавление)
 - [Сравнение с UUID](#сравнение-с-uuid)
 - [Сравнение производительности](#сравнение-производительности)
 - [Безопасность](#безопасность)
@@ -139,7 +140,13 @@ npm install nanoid
 ```
 
 Nano ID 5 работает только с ESM-проектами, в тестах или скриптах для Node.js.
-Для CommonJS вам нужен Nano ID 3.x (мы ещё всё ещё поддерживаем):
+Для CommonJS вам нужна Node.js 22 с флагом `--experimental-require-module`:
+
+```bash
+node --experimental-require-module app.js
+```
+
+Или возьмите Nano ID 3.x (мы ещё всё ещё поддерживаем):
 
 ```bash
 npm install nanoid@3
