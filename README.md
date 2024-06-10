@@ -422,8 +422,9 @@ the same ID generator on the client and server side.
 * [OCaml](https://github.com/routineco/ocaml-nanoid)
 * [Perl](https://github.com/tkzwtks/Nanoid-perl)
 * [PHP](https://github.com/hidehalo/nanoid-php)
-* [Python](https://github.com/puyuan/py-nanoid)
+* Python [native](https://github.com/puyuan/py-nanoid) implementation
   with [dictionaries](https://pypi.org/project/nanoid-dictionary)
+  and [fast](https://github.com/oliverlambson/fastnanoid) implementation (written in Rust)
 * Postgres [Extension](https://github.com/spa5k/uids-postgres)
   and [Native Function](https://github.com/viascom/nanoid-postgres)
 * [R](https://github.com/hrbrmstr/nanoid) (with dictionaries)
