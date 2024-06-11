@@ -1,71 +1,48 @@
 name: Test
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
+
 on:
   push:
     branches:
       - main
   pull_request:
-permissions:
-  contents: read
+
 jobs:
-  full:
-    name: Node.js Latest Full
+  fmt:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v4
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
+      - uses: actions/checkout@v4
+
+      - uses: denoland/setup-deno@main
         with:
-          version: 9
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: pnpm
-      - name: Install dependencies
-        run: pnpm install --ignore-scripts
-      - name: Run tests
-        run: pnpm test
-  short:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version:
-          - 20
-          - 18
-    name: Node.js ${{ matrix.node-version }} Quick
-    steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v4
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
-      - name: Install Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: pnpm
-      - name: Install dependencies
-        run: pnpm install --ignore-scripts
-      - name: Run unit tests
-        run: pnpm bnt
-  benchmark:
-    name: Benchmark
+          deno-version: "1.44.1"
+
+      - name: Check Formatting
+        run: deno fmt --check
+
+  lint:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v4
-      - name: Install pnpm
-        uses: pnpm/action-setup@v3
+      - uses: actions/checkout@v4
+
+      - uses: denoland/setup-deno@main
         with:
-          version: 9
-      - name: Install Node.js
-        uses: actions/setup-node@v4
+          deno-version: "1.44.1"
+
+      - name: Check Linting
+        run: deno lint
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: denoland/setup-deno@main
         with:
-          node-version: 22
-          cache: pnpm
-      - name: Install dependencies
-        run: pnpm install --ignore-scripts
-      - name: Run benchmark
-        run: node ./test/benchmark.js
+          deno-version: "1.44.1"
+
+      - name: Do Testing
+        run: deno test

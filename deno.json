@@ -1,0 +1,24 @@
+{
+  "name": "@qz/nanoid-deno",
+  "version": "1.0.0",
+  "exports": {
+    ".": "./mod.ts",
+    "./non_secure": "./non_secure.ts"
+  },
+  "tasks": {
+    "check": "deno fmt --check && deno lint && deno test && deno publish --dry-run --allow-dirty"
+  },
+  "exclude": [
+    "docs/"
+  ],
+  "publish": {
+    "exclude": [
+      "test",
+      ".vscode",
+      ".github",
+      "img",
+      ".gitignore",
+      "docs"
+    ]
+  }
+}

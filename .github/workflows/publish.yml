@@ -1,0 +1,23 @@
+name: Publish
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: denoland/setup-deno@main
+        with:
+          deno-version: "1.44.1"
+
+      - name: Publish package
+        run: deno publish
