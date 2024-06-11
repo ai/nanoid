@@ -11,7 +11,7 @@
   "scripts": {
     "clean": "rm -rf coverage",
     "start": "vite test/demo/ --open",
-    "test:coverage": "c8 pnpm bnt",
+    "test:coverage": "c8 bnt",
     "test:lint": "eslint .",
     "test:size": "pnpm clean && size-limit",
     "test": "pnpm run /^test:/"
