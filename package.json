@@ -113,6 +113,7 @@
   },
   "c8": {
     "exclude": [
+      "bin/nanoid.js",
       "**/*.test.*",
       "test/*"
     ],
