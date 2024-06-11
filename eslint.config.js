@@ -7,6 +7,7 @@ export default [
   {
     rules: {
       'func-style': 'off',
+      'n/no-unsupported-features/node-builtins': 'off',
       'yoda': 'off'
     }
   }
