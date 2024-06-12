@@ -46,3 +46,15 @@ jobs:
 
       - name: Do Testing
         run: deno test
+
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: denoland/setup-deno@main
+        with:
+          deno-version: "1.44.1"
+
+      - name: Publish Test
+        run: deno publish --dry-run
