@@ -93,6 +93,12 @@ function customRandom(
   defaultSize: number,
   getRandom: (bytes: number) => Uint8Array,
 ): (size?: number) => string {
+  if (isNaN(defaultSize)) {
+    throw new Deno.errors.InvalidData(
+      "Invalid default size: 'NaN'. Please provide a valid number for the default size.",
+    );
+  }
+
   // First, a bitmask is necessary to generate the ID. The bitmask makes bytes
   // values closer to the alphabet size. The bitmask calculates the closest
   // `2^31 - 1` number, which exceeds the alphabet size.

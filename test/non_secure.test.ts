@@ -1,6 +1,7 @@
 // Copyright 2024 Quadratz <quadratz@proton.me>. All rights reserved. MIT license.
 
 import {
+  assertIsError,
   assertMatch,
   assertNotEquals,
   assertStrictEquals,
@@ -21,11 +22,11 @@ Deno.test("nanoid", async (t) => {
     }
   });
 
-  await t.step(`changes ID length`, () => {
+  await t.step("changes ID length", () => {
     assertStrictEquals(nanoid(10).length, 10);
   });
 
-  await t.step(`has no collisions`, () => {
+  await t.step("has no collisions", () => {
     const used: Record<string, boolean> = {};
     for (let i = 0; i < 50_000; i++) {
       const id = nanoid();
@@ -34,7 +35,7 @@ Deno.test("nanoid", async (t) => {
     }
   });
 
-  await t.step(`has flat distribution`, () => {
+  await t.step("has flat distribution", () => {
     const COUNT = 100_000;
     const LENGTH = nanoid().length;
 
@@ -60,12 +61,12 @@ Deno.test("nanoid", async (t) => {
 });
 
 Deno.test("customAlphabet", async (t) => {
-  await t.step(`has options`, () => {
+  await t.step("has options", () => {
     const nanoid = customAlphabet("a", 5);
     assertStrictEquals(nanoid(), "aaaaa");
   });
 
-  await t.step(`has flat distribution`, () => {
+  await t.step("has flat distribution", () => {
     const COUNT = 50_000;
     const LENGTH = 30;
     const ALPHABET = "abcdefghijklmnopqrstuvwxyz";
@@ -92,9 +93,20 @@ Deno.test("customAlphabet", async (t) => {
     assertStrictEquals(max - min <= 0.05, true);
   });
 
-  await t.step(`changes size`, () => {
+  await t.step("changes size", () => {
     const nanoid = customAlphabet("a");
     assertStrictEquals(nanoid(10), "aaaaaaaaaa");
+  });
+
+  await t.step("throw an error for 'NaN' size", () => {
+    let err: Error | undefined;
+    try {
+      customAlphabet("a", NaN);
+    } catch (error) {
+      err = error;
+    } finally {
+      assertIsError(err, Deno.errors.InvalidData, "NaN");
+    }
   });
 });
 
@@ -103,7 +115,7 @@ Deno.test("urlAlphabet", async (t) => {
     assertStrictEquals(typeof urlAlphabet, "string");
   });
 
-  await t.step(`has no duplicates`, () => {
+  await t.step("has no duplicates", () => {
     for (let i = 0; i < urlAlphabet.length; i++) {
       assertStrictEquals(urlAlphabet.lastIndexOf(urlAlphabet[i]), i);
     }
@@ -111,7 +123,7 @@ Deno.test("urlAlphabet", async (t) => {
 });
 
 Deno.test("proxy number", async (t) => {
-  await t.step(`prevent collision`, () => {
+  await t.step("prevent collision", () => {
     const makeProxyNumberToReproducePreviousID = () => {
       let step = 0;
       return {

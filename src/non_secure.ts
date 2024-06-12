@@ -52,6 +52,12 @@ function customAlphabet(
   alphabet: string,
   defaultSize: number = 21,
 ): (size?: number) => string {
+  if (isNaN(defaultSize)) {
+    throw new Deno.errors.InvalidData(
+      "Invalid default size: 'NaN'. Please provide a valid number for the default size.",
+    );
+  }
+
   return (size = defaultSize) => {
     let id = "";
     // A compact alternative for `for (var i = 0; i < step; i++)`.
