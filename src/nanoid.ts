@@ -18,6 +18,11 @@ import { urlAlphabet } from "./url_alphabet.ts";
  * @returns {string} A random string.
  */
 function nanoid(size: number = 21): string {
+  if (isNaN(size)) {
+    throw new Deno.errors.InvalidData(
+      "Invalid default size: 'NaN'. Please provide a valid number for the default size.",
+    );
+  }
   // `-=` convert `size` to number to prevent `valueOf` abusing
   fillPool(size -= 0);
   let id: string = "";
@@ -149,6 +154,12 @@ function customRandom(
  * @returns {Uint8Array} An array of random bytes.
  */
 function random(bytes: number): Uint8Array {
+  if (isNaN(bytes)) {
+    throw new Deno.errors.InvalidData(
+      "Invalid bytes size: 'NaN'. Please provide a valid number for the bytes size.",
+    );
+  }
+
   // `-=` convert `bytes` to number to prevent `valueOf` abusing
   fillPool(bytes -= 0);
   return pool.subarray(poolOffset - bytes, poolOffset);

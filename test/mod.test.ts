@@ -63,6 +63,17 @@ Deno.test("nanoid", async (t) => {
     }
     assertStrictEquals(max - min <= 0.05, true);
   });
+
+  await t.step("throw an error for 'NaN' size", () => {
+    let err: Error | undefined;
+    try {
+      nanoid(NaN);
+    } catch (error) {
+      err = error;
+    } finally {
+      assertIsError(err, Deno.errors.InvalidData, "NaN");
+    }
+  });
 });
 
 Deno.test("customAlphabet", async (t) => {
@@ -170,6 +181,17 @@ Deno.test("random", async (t) => {
       assertStrictEquals(typeof byte, "number");
       assertStrictEquals(byte <= 255, true);
       assertStrictEquals(byte >= 0, true);
+    }
+  });
+
+  await t.step("throw an error for 'NaN' size", () => {
+    let err: Error | undefined;
+    try {
+      random(NaN);
+    } catch (error) {
+      err = error;
+    } finally {
+      assertIsError(err, Deno.errors.InvalidData, "NaN");
     }
   });
 });

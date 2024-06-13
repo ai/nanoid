@@ -19,6 +19,12 @@ import { urlAlphabet } from "./url_alphabet.ts";
  * @returns {string} A random string.
  */
 function nanoid(size: number = 21): string {
+  if (isNaN(size)) {
+    throw new Deno.errors.InvalidData(
+      "Invalid default size: 'NaN'. Please provide a valid number for the default size.",
+    );
+  }
+
   let id = "";
   // A compact alternative for `for (var i = 0; i < step; i++)`.
   let i = size;
