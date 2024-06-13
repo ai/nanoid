@@ -13,7 +13,6 @@ A tiny, secure, URL-friendly, unique string ID generator for Deno.
 > “An amazing level of senseless perfectionism, which is simply impossible not
 > to respect.”
 
-- **Small.** Zero dependencies.
 - **Safe.** It uses hardware random generator. Can be used in clusters.
 - **Short IDs.** It uses a larger alphabet than UUID (`A-Za-z0-9_-`). So ID size
   was reduced from 36 to 21 symbols.
@@ -50,6 +49,7 @@ noise for the hardware random generator.
   - [Non-Secure](#non-secure)
   - [Custom Alphabet or Size](#custom-alphabet-or-size)
   - [Custom Random Bytes Generator](#custom-random-bytes-generator)
+- [Usage]()
 - [Tools](#tools)
 
 ## Comparison with UUID
@@ -181,6 +181,57 @@ const nanoid = customRandom(urlAlphabet, 10, myRandomGenerator);
 Note, that between Nano ID versions we may change random generator call
 sequence. If you are using seed-based generators, we do not guarantee the same
 result.
+
+## Usage
+
+### CLI
+
+To generate a unique ID in the terminal, you can simply run this command:
+
+```ansi
+$ deno run @qz/nanoid-deno/cli
+LZfXLFzPPR4NNrgjlWDxn
+```
+
+For easier access, you can install nanoid-deno globally on your machine with
+this command:
+
+```ansi
+$ deno install --global -n nanoid jsr@qz/nanoid-deno/cli
+✅ Successfully installed nanoid
+/home/qz/.deno/bin/nanoid
+```
+
+Once installed, you can generate IDs by just typing `nanoid`:
+
+```ansi
+$ nanoid
+LZfXLFzPPR4NNrgjlWDxn
+```
+
+If you ever need to remove the package, you can do so with this command:
+
+```ansi
+$ deno uninstall --global nanoid
+deleted /home/qz/.deno/bin/nanoid
+✅ Successfully uninstalled nanoid
+```
+
+You can also customize the the length of the generated ID using the `--size` (or
+`-s`) option:
+
+```ansi
+$ nanoid --size 10
+L3til0JS4z
+```
+
+To create IDs with a specific set of characters, use the `--alphabet` (or `-a`)
+option along with `--size`:
+
+```ansi
+$ nanoid --alphabet abc --size 15
+bccbcabaabaccab
+```
 
 ### Other Programming Languages
 

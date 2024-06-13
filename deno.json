@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "exports": {
     ".": "./mod.ts",
-    "./non_secure": "./non_secure.ts"
+    "./non_secure": "./non_secure.ts",
+    "./cli": "./cli.ts"
   },
   "tasks": {
-    "check": "deno fmt --check && deno lint && deno test --allow-read && deno publish --dry-run --allow-dirty"
+    "check": "deno fmt --check && deno lint && deno test --allow-read --allow-run && deno publish --dry-run --allow-dirty && echo '\nTests all green! Ready when you are, Capt!'"
+  },
+  "lint": {
+    "exclude": ["playground"]
   },
   "exclude": [
     "docs/"
