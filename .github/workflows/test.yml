@@ -45,7 +45,7 @@ jobs:
           deno-version: "1.44.1"
 
       - name: Do Testing
-        run: deno test --allow-read
+        run: deno test --allow-read --allow-run
 
   publish:
     runs-on: ubuntu-latest

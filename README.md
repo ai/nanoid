@@ -188,7 +188,7 @@ result.
 
 To generate a unique ID in the terminal, you can simply run this command:
 
-```ansi
+```sh-session
 $ deno run @qz/nanoid-deno/cli
 LZfXLFzPPR4NNrgjlWDxn
 ```
@@ -196,7 +196,7 @@ LZfXLFzPPR4NNrgjlWDxn
 For easier access, you can install nanoid-deno globally on your machine with
 this command:
 
-```ansi
+```sh-session
 $ deno install --global -n nanoid jsr@qz/nanoid-deno/cli
 ✅ Successfully installed nanoid
 /home/qz/.deno/bin/nanoid
@@ -204,14 +204,14 @@ $ deno install --global -n nanoid jsr@qz/nanoid-deno/cli
 
 Once installed, you can generate IDs by just typing `nanoid`:
 
-```ansi
+```sh-session
 $ nanoid
 LZfXLFzPPR4NNrgjlWDxn
 ```
 
 If you ever need to remove the package, you can do so with this command:
 
-```ansi
+```sh-session
 $ deno uninstall --global nanoid
 deleted /home/qz/.deno/bin/nanoid
 ✅ Successfully uninstalled nanoid
@@ -220,7 +220,7 @@ deleted /home/qz/.deno/bin/nanoid
 You can also customize the the length of the generated ID using the `--size` (or
 `-s`) option:
 
-```ansi
+```sh-session
 $ nanoid --size 10
 L3til0JS4z
 ```
@@ -228,7 +228,7 @@ L3til0JS4z
 To create IDs with a specific set of characters, use the `--alphabet` (or `-a`)
 option along with `--size`:
 
-```ansi
+```sh-session
 $ nanoid --alphabet abc --size 15
 bccbcabaabaccab
 ```
