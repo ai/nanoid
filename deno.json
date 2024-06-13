@@ -6,7 +6,7 @@
     "./non_secure": "./non_secure.ts"
   },
   "tasks": {
-    "check": "deno fmt --check && deno lint && deno test && deno publish --dry-run --allow-dirty"
+    "check": "deno fmt --check && deno lint && deno test --allow-read && deno publish --dry-run --allow-dirty"
   },
   "exclude": [
     "docs/"
