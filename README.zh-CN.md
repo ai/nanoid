@@ -27,29 +27,30 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 
 ---
 
-<img src="https://cdn.evilmartians.com/badges/logo-no-label.svg" alt="" width="22" height="16" />  Made in <b><a href="https://evilmartians.com/devtools?utm_source=nanoid&utm_campaign=devtools-button&utm_medium=github">Evil Martians</a></b>, product consulting for <b>developer tools</b>.
+<img src="https://cdn.evilmartians.com/badges/logo-no-label.svg" alt="" width="22" height="16" />  Made at <b><a href="https://evilmartians.com/devtools?utm_source=nanoid&utm_campaign=devtools-button&utm_medium=github">Evil Martians</a></b>, product consulting for <b>developer tools</b>.
 
 ---
 
 ## 目录
 
-* [与 UUID 的比较](#与-uuid-的比较)
-* [基准值](#基准值)
-* [安全性](#安全性)
-* [安装](#安装)
-* [API](#api)
-  * [阻塞](#阻塞)
-  * [不安全](#不安全)
-  * [自定义字母或大小](#自定义字母或大小)
-  * [自定义随机字节生成器](#自定义随机字节生成器)
-* [用法](#用法)
-  * [React](#react)
-  * [React Native](#react-native)
-  * [PouchDB and CouchDB](#pouchdb-and-couchdb)
-  * [Web Workers](#web-workers)
-  * [CLI](#cli)
-  * [其他编程语言](#other-programming-languages)
-* [工具](#工具)
+- [目录](#目录)
+- [与 UUID 的比较](#与-uuid-的比较)
+- [基准值](#基准值)
+- [安全性](#安全性)
+- [安装](#安装)
+- [API](#api)
+  - [阻塞](#阻塞)
+  - [不安全](#不安全)
+  - [自定义字母或大小](#自定义字母或大小)
+  - [自定义随机字节生成器](#自定义随机字节生成器)
+- [用法](#用法)
+  - [React](#react)
+  - [React Native](#react-native)
+  - [PouchDB and CouchDB](#pouchdb-and-couchdb)
+  - [Web Workers](#web-workers)
+  - [CLI](#cli)
+  - [其他编程语言](#其他编程语言)
+- [工具](#工具)
 
 
 ## 与 UUID 的比较

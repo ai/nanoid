@@ -24,13 +24,14 @@ Mendukung penjelajah (browser) modern, IE [dengan Babel](https://developer.epage
 
 ---
 
-<img src="https://cdn.evilmartians.com/badges/logo-no-label.svg" alt="" width="22" height="16" />  Made in <b><a href="https://evilmartians.com/devtools?utm_source=nanoid&utm_campaign=devtools-button&utm_medium=github">Evil Martians</a></b>, product consulting for <b>developer tools</b>.
+<img src="https://cdn.evilmartians.com/badges/logo-no-label.svg" alt="" width="22" height="16" />  Made at <b><a href="https://evilmartians.com/devtools?utm_source=nanoid&utm_campaign=devtools-button&utm_medium=github">Evil Martians</a></b>, product consulting for <b>developer tools</b>.
 
 ---
 
 
 ## Table of Contents
 
+- [Table of Contents](#table-of-contents)
 - [Perbandingan dengan UUID](#perbandingan-dengan-uuid)
 - [Benchmark](#benchmark)
 - [Keamanan](#keamanan)
@@ -38,7 +39,7 @@ Mendukung penjelajah (browser) modern, IE [dengan Babel](https://developer.epage
 - [API](#api)
   - [Blocking](#blocking)
   - [Non-Secure](#non-secure)
-  - [Alfabet dan Ukuran (Custom)](#alfabet-dan-ukuran-penyesuaian)
+  - [Alfabet dan Ukuran (Custom)](#alfabet-dan-ukuran-custom)
   - [Generasi Random Bytes (Custom)](#generasi-random-bytes-custom)
 - [Penggunaan](#penggunaan)
   - [React](#react)
