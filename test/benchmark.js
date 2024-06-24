@@ -2,12 +2,12 @@
 
 import { v4 as lukeed4 } from '@lukeed/uuid'
 import { v4 as napiV4 } from '@napi-rs/uuid'
-import benchmark from 'benchmark'
 import crypto from 'node:crypto'
 import { styleText } from 'node:util'
 import rndm from 'rndm'
 import srs from 'secure-random-string'
 import shortid from 'shortid'
+import { Bench } from 'tinybench'
 import { uid } from 'uid'
 import uidSafe from 'uid-safe'
 import { uid as uidSecure } from 'uid/secure'
@@ -17,7 +17,7 @@ import { nanoid as browser } from '../index.browser.js'
 import { customAlphabet, nanoid } from '../index.js'
 import { nanoid as nonSecure } from '../non-secure/index.js'
 
-let suite = new benchmark.Suite()
+let bench = new Bench()
 
 let nanoid2 = customAlphabet('1234567890abcdef-', 10)
 
@@ -27,7 +27,7 @@ function formatNumber(number) {
     .replace(/^(\d|\d\d)(\d{3},)/, '$1,$2')
 }
 
-suite
+bench
   .add('crypto.randomUUID', () => {
     crypto.randomUUID()
   })
@@ -70,14 +70,19 @@ suite
   .add('rndm', () => {
     rndm(21)
   })
-  .on('cycle', event => {
-    let name = event.target.name.padEnd('async secure-random-string'.length)
-    let hz = formatNumber(event.target.hz.toFixed(0)).padStart(10)
-    if (event.target.name === 'uid') {
-      name = '\nNon-secure:\n' + name
-    }
-    process.stdout.write(
-      `${name}${styleText('bold', hz)}${styleText('dim', ' ops/sec')}\n`
-    )
-  })
-  .run()
+
+bench.addEventListener('cycle', event => {
+  let name = event.task.name.padEnd('async secure-random-string'.length)
+  let hz = formatNumber(event.task.result.hz.toFixed(0)).padStart(10)
+  if (event.task.name === 'uid') {
+    name = '\nNon-secure:\n' + name
+  }
+  process.stdout.write(
+    `${name}${styleText('bold', hz)}${styleText('dim', ' ops/sec')}\n`
+  )
+})
+
+bench.threshold = 10
+bench.concurrency = "task"
+await bench.warmupConcurrently()
+await bench.runConcurrently()
