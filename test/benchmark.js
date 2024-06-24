@@ -72,7 +72,6 @@ bench
   })
 
   bench.addEventListener('cycle', event => {
-    event
     let name = event.task.name.padEnd('async secure-random-string'.length)
     let hz = formatNumber(event.task.result.hz.toFixed(0)).padStart(10)
     if (event.task.name === 'uid') {
