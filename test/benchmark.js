@@ -2,12 +2,12 @@
 
 import { v4 as lukeed4 } from '@lukeed/uuid'
 import { v4 as napiV4 } from '@napi-rs/uuid'
-import { Bench } from 'tinybench'
 import crypto from 'node:crypto'
 import { styleText } from 'node:util'
 import rndm from 'rndm'
 import srs from 'secure-random-string'
 import shortid from 'shortid'
+import { Bench } from 'tinybench'
 import { uid } from 'uid'
 import uidSafe from 'uid-safe'
 import { uid as uidSecure } from 'uid/secure'
@@ -71,16 +71,16 @@ bench
     rndm(21)
   })
 
-  bench.addEventListener('cycle', event => {
-    let name = event.task.name.padEnd('async secure-random-string'.length)
-    let hz = formatNumber(event.task.result.hz.toFixed(0)).padStart(10)
-    if (event.task.name === 'uid') {
-      name = '\nNon-secure:\n' + name
-    }
-    process.stdout.write(
-      `${name}${styleText('bold', hz)}${styleText('dim', ' ops/sec')}\n`
-    )
-  })
+bench.addEventListener('cycle', event => {
+  let name = event.task.name.padEnd('async secure-random-string'.length)
+  let hz = formatNumber(event.task.result.hz.toFixed(0)).padStart(10)
+  if (event.task.name === 'uid') {
+    name = '\nNon-secure:\n' + name
+  }
+  process.stdout.write(
+    `${name}${styleText('bold', hz)}${styleText('dim', ' ops/sec')}\n`
+  )
+})
 
-  await bench.warmup()
-  await bench.run()
+await bench.warmup()
+await bench.run()
