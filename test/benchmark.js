@@ -2,12 +2,12 @@
 
 import { v4 as lukeed4 } from '@lukeed/uuid'
 import { v4 as napiV4 } from '@napi-rs/uuid'
-import benchmark from 'benchmark'
 import crypto from 'node:crypto'
 import { styleText } from 'node:util'
 import rndm from 'rndm'
 import srs from 'secure-random-string'
 import shortid from 'shortid'
+import { Bench } from 'tinybench'
 import { uid } from 'uid'
 import uidSafe from 'uid-safe'
 import { uid as uidSecure } from 'uid/secure'
@@ -17,17 +17,10 @@ import { nanoid as browser } from '../index.browser.js'
 import { customAlphabet, nanoid } from '../index.js'
 import { nanoid as nonSecure } from '../non-secure/index.js'
 
-let suite = new benchmark.Suite()
+const bench = new Bench()
+const nanoid2 = customAlphabet('1234567890abcdef-', 10)
 
-let nanoid2 = customAlphabet('1234567890abcdef-', 10)
-
-function formatNumber(number) {
-  return String(number)
-    .replace(/\d{3}$/, ',$&')
-    .replace(/^(\d|\d\d)(\d{3},)/, '$1,$2')
-}
-
-suite
+bench
   .add('crypto.randomUUID', () => {
     crypto.randomUUID()
   })
@@ -70,14 +63,26 @@ suite
   .add('rndm', () => {
     rndm(21)
   })
-  .on('cycle', event => {
-    let name = event.target.name.padEnd('async secure-random-string'.length)
-    let hz = formatNumber(event.target.hz.toFixed(0)).padStart(10)
-    if (event.target.name === 'uid') {
-      name = '\nNon-secure:\n' + name
+
+const longestNameLength = bench.tasks.reduce((maxTaskNameLength, task) => {
+  task.addEventListener('cycle', () => {
+    let hz = (+task.result.hz.toFixed(0))
+      .toLocaleString('en-US')
+      .padStart(14)
+
+    let name = task.name.padEnd(longestNameLength)
+    let value = styleText('bold', hz)
+    let units = styleText('dim', 'ops/sec')
+
+    if (task.name === 'uid') {
+      process.stdout.write('\nNon-secure:\n')
     }
-    process.stdout.write(
-      `${name}${styleText('bold', hz)}${styleText('dim', ' ops/sec')}\n`
-    )
+
+    process.stdout.write(`${name}${value} ${units}\n`)
   })
-  .run()
+
+  return Math.max(maxTaskNameLength, task.name.length)
+}, 0)
+
+await bench.warmup()
+await bench.run()
