@@ -33,7 +33,7 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 
 ---
 
-<img src="https://cdn.evilmartians.com/badges/logo-no-label.svg" alt="" width="22" height="16" />  Сделано в <b><a href="https://evilmartians.com/devtools?utm_source=nanoid&utm_campaign=devtools-button&utm_medium=github">Злых марсианах</a></b>, продуктовом консалитнге для <b>инструментов разработки</b>.
+<img src="https://cdn.evilmartians.com/badges/logo-no-label.svg" alt="" width="22" height="16" />  Сделано в <b><a href="https://evilmartians.com/devtools?utm_source=nanoid&utm_campaign=devtools-button&utm_medium=github">Злых марсианах</a></b>, продуктовом консалтинге для <b>инструментов разработки</b>.
 
 ---
 
@@ -82,22 +82,22 @@ Nano ID похож на UUID v4 (случайный).
 
 ```rust
 $ node ./test/benchmark.js
-crypto.randomUUID         28,398,328 ops/sec
-uuid v4                   10,254,199 ops/sec
-@napi-rs/uuid             15,110,625 ops/sec
-uid/secure                10,388,842 ops/sec
-@lukeed/uuid               8,914,507 ops/sec
-nanoid                     7,484,029 ops/sec
-customAlphabet             4,867,017 ops/sec
-nanoid for browser           609,426 ops/sec
-secure-random-string         539,080 ops/sec
-uid-safe.sync                533,944 ops/sec
-shortid                       59,609 ops/sec
+crypto.randomUUID          7,619,041 ops/sec
+uuid v4                    7,436,626 ops/sec
+@napi-rs/uuid              4,730,614 ops/sec
+uid/secure                 4,729,185 ops/sec
+@lukeed/uuid               4,015,673 ops/sec
+nanoid                     3,693,964 ops/sec
+customAlphabet             2,799,255 ops/sec
+nanoid for browser           380,915 ops/sec
+secure-random-string         362,316 ops/sec
+uid-safe.sync                354,234 ops/sec
+shortid                       38,808 ops/sec
 
 Non-secure:
-uid                       95,579,977 ops/sec
-nanoid/non-secure          3,999,766 ops/sec
-rndm                       3,981,914 ops/sec
+uid                       11,872,105 ops/sec
+nanoid/non-secure          2,226,483 ops/sec
+rndm                       2,308,044 ops/sec
 ```
 
 Среда сравнения: Framework 13 7840U, Fedora 39, Node.js 21.6.
@@ -146,7 +146,7 @@ Nano ID 5 работает только с ESM-проектами, в теста
 node --experimental-require-module app.js
 ```
 
-Или возьмите Nano ID 3.x (мы ещё всё ещё поддерживаем):
+Или возьмите Nano ID 3.x (мы его всё ещё поддерживаем):
 
 ```bash
 npm install nanoid@3
