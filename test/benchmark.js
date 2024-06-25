@@ -17,7 +17,7 @@ import { nanoid as browser } from '../index.browser.js'
 import { customAlphabet, nanoid } from '../index.js'
 import { nanoid as nonSecure } from '../non-secure/index.js'
 
-let suite = new Bench()
+let bench = new Bench()
 
 let nanoid2 = customAlphabet('1234567890abcdef-', 10)
 
@@ -27,7 +27,7 @@ function formatNumber(number) {
     .replace(/^(\d|\d\d)(\d{3},)/, '$1,$2')
 }
 
-suite
+bench
   .add('crypto.randomUUID', () => {
     crypto.randomUUID()
   })
@@ -81,5 +81,5 @@ suite
     )
   })
 
-await suite.warmup();
-await suite.run();
+await bench.warmup()
+await bench.run()
