@@ -70,17 +70,16 @@ bench
   .add('rndm', () => {
     rndm(21)
   })
-
-bench.addEventListener('cycle', event => {
-  let name = event.task.name.padEnd('async secure-random-string'.length)
-  let hz = formatNumber(event.task.result.hz.toFixed(0)).padStart(10)
-  if (event.task.name === 'uid') {
-    name = '\nNon-secure:\n' + name
-  }
-  process.stdout.write(
-    `${name}${styleText('bold', hz)}${styleText('dim', ' ops/sec')}\n`
-  )
-})
+  .addEventListener('cycle', event => {
+    let name = event.task.name.padEnd('async secure-random-string'.length)
+    let hz = formatNumber(event.task.result.hz.toFixed(0)).padStart(10)
+    if (event.task.name === 'uid') {
+      name = '\nNon-secure:\n' + name
+    }
+    process.stdout.write(
+      `${name}${styleText('bold', hz)}${styleText('dim', ' ops/sec')}\n`
+    )
+  })
 
 await bench.warmup()
 await bench.run()
