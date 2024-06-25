@@ -21,12 +21,6 @@ let bench = new Bench()
 
 let nanoid2 = customAlphabet('1234567890abcdef-', 10)
 
-function formatNumber(number) {
-  return String(number)
-    .replace(/\d{3}$/, ',$&')
-    .replace(/^(\d|\d\d)(\d{3},)/, '$1,$2')
-}
-
 bench
   .add('crypto.randomUUID', () => {
     crypto.randomUUID()
@@ -70,16 +64,24 @@ bench
   .add('rndm', () => {
     rndm(21)
   })
-  .addEventListener('cycle', event => {
-    let name = event.task.name.padEnd('async secure-random-string'.length)
-    let hz = formatNumber(event.task.result.hz.toFixed(0)).padStart(10)
-    if (event.task.name === 'uid') {
-      name = '\nNon-secure:\n' + name
-    }
-    process.stdout.write(
-      `${name}${styleText('bold', hz)}${styleText('dim', ' ops/sec')}\n`
-    )
-  })
+
+const longestNameLength = bench.tasks.reduce((maxLength, task) => Math.max(maxLength, task.name.length), 0)
+
+bench.addEventListener('cycle', ({ task }) => {
+  let hz = (+task.result.hz.toFixed(0))
+    .toLocaleString('en-US')
+    .padStart(14)
+
+  let name = task.name.padEnd(longestNameLength)
+  let value = styleText('bold', hz)
+  let units = styleText('dim', 'ops/sec')
+
+  if (task.name === 'uid') {
+    process.stdout.write('\nNon-secure:\n')
+  }
+
+  process.stdout.write(`${name}${value} ${units}\n`)
+})
 
 await bench.warmup()
 await bench.run()
