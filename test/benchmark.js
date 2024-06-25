@@ -65,14 +65,12 @@ bench
     rndm(21)
   })
 
-let longestTask = bench.tasks.reduce(
-  (maxLength, task) => Math.max(maxLength, task.name.length), 0
-)
+let longestTask = bench.tasks.reduce((maxLength, task) => {
+  return Math.max(maxLength, task.name.length)
+}, 0)
 
 bench.addEventListener('cycle', ({ task }) => {
-  let hz = (+task.result.hz.toFixed(0))
-    .toLocaleString('en-US')
-    .padStart(14)
+  let hz = (+task.result.hz.toFixed(0)).toLocaleString('en-US').padStart(14)
 
   let name = task.name.padEnd(longestTask)
   let value = styleText('bold', hz)
