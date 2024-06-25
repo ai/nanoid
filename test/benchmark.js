@@ -17,8 +17,15 @@ import { nanoid as browser } from '../index.browser.js'
 import { customAlphabet, nanoid } from '../index.js'
 import { nanoid as nonSecure } from '../non-secure/index.js'
 
-const bench = new Bench()
-const nanoid2 = customAlphabet('1234567890abcdef-', 10)
+let bench = new Bench()
+
+let nanoid2 = customAlphabet('1234567890abcdef-', 10)
+
+function formatNumber(number) {
+  return String(number)
+    .replace(/\d{3}$/, ',$&')
+    .replace(/^(\d|\d\d)(\d{3},)/, '$1,$2')
+}
 
 bench
   .add('crypto.randomUUID', () => {
@@ -64,25 +71,16 @@ bench
     rndm(21)
   })
 
-const longestNameLength = bench.tasks.reduce((maxTaskNameLength, task) => {
-  task.addEventListener('cycle', () => {
-    let hz = (+task.result.hz.toFixed(0))
-      .toLocaleString('en-US')
-      .padStart(14)
-
-    let name = task.name.padEnd(longestNameLength)
-    let value = styleText('bold', hz)
-    let units = styleText('dim', 'ops/sec')
-
-    if (task.name === 'uid') {
-      process.stdout.write('\nNon-secure:\n')
-    }
-
-    process.stdout.write(`${name}${value} ${units}\n`)
-  })
-
-  return Math.max(maxTaskNameLength, task.name.length)
-}, 0)
+bench.addEventListener('cycle', event => {
+  let name = event.task.name.padEnd('async secure-random-string'.length)
+  let hz = formatNumber(event.task.result.hz.toFixed(0)).padStart(10)
+  if (event.task.name === 'uid') {
+    name = '\nNon-secure:\n' + name
+  }
+  process.stdout.write(
+    `${name}${styleText('bold', hz)}${styleText('dim', ' ops/sec')}\n`
+  )
+})
 
 await bench.warmup()
 await bench.run()
