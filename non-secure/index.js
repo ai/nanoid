@@ -30,3 +30,5 @@ export let nanoid = (size = 21) => {
   }
   return id
 }
+
+export default { customAlphabet, nanoid }
