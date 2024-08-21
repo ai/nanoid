@@ -133,7 +133,8 @@ npm install nanoid
 ```
 
 Nano ID 5 works only with ESM projects, in tests or Node.js scripts.
-For CommonJS you need to use Node.js 22 with `--experimental-require-module`:
+For CommonJS you need to use latest Node.js 20 or 22
+with `--experimental-require-module`:
 
 ```bash
 node --experimental-require-module app.js
