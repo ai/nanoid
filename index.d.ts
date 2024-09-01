@@ -89,3 +89,5 @@ export const urlAlphabet: string
  * @returns An array of random bytes.
  */
 export function random(bytes: number): Uint8Array
+
+export default { customAlphabet, customRandom, nanoid, random }

@@ -31,3 +31,5 @@ export function customAlphabet(
   alphabet: string,
   defaultSize?: number
 ): (size?: number) => string
+
+export default { customAlphabet, nanoid }
