@@ -85,4 +85,4 @@ export function nanoid(size = 21) {
   return id
 }
 
-export default { random, customRandom, customAlphabet, nanoid }
+export default { customAlphabet, customRandom, nanoid, random }
