@@ -79,7 +79,7 @@
     {
       "name": "customAlphabet",
       "import": "{ customAlphabet }",
-      "limit": "165 B"
+      "limit": "161 B"
     },
     {
       "name": "urlAlphabet",
