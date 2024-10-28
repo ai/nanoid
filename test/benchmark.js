@@ -83,5 +83,4 @@ bench.addEventListener('cycle', ({ task }) => {
   process.stdout.write(`${name}${value} ${units}\n`)
 })
 
-await bench.warmup()
-await bench.run()
+await bench.run({ warmup: true })
