@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.0.8
+* Reduced `customAlphabet` size (by @kirillgroshkov).
+
 ## 5.0.7
 * Fixed Parcel support (by @WilhelmYakunin).
 
