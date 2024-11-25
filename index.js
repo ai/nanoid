@@ -25,8 +25,8 @@ function fillPool(bytes) {
 }
 
 export function random(bytes) {
-  // `-=` convert `bytes` to number to prevent `valueOf` abusing
-  fillPool((bytes -= 0))
+  // `|=` convert `bytes` to number to prevent `valueOf` abusing and pool pollution
+  fillPool((bytes |= 0))
   return pool.subarray(poolOffset - bytes, poolOffset)
 }
 
@@ -70,8 +70,8 @@ export function customAlphabet(alphabet, size = 21) {
 }
 
 export function nanoid(size = 21) {
-  // `-=` convert `size` to number to prevent `valueOf` abusing
-  fillPool((size -= 0))
+  // `|=` convert `size` to number to prevent `valueOf` abusing and pool pollution
+  fillPool((size |= 0))
   let id = ''
   // We are reading directly from the random pool to avoid creating new array
   for (let i = poolOffset - size; i < poolOffset; i++) {
