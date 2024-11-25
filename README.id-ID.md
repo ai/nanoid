@@ -10,7 +10,7 @@ Sebuah generator ID yang unik dalam bentuk string yang ringan, aman, serta _URL-
 > "Sebuah tingkat kesempurnaan yang luar biasa,
 > yang mana tidak mungkin untuk tidak dihormati."
 
-- **Ringan.** Hanya 116 bytes (diperkecil dan brotlied). Tidak ada ketergantungan (dependencies) apapun. [Size Limit](https://github.com/ai/size-limit) mengatur ukuran dari generator ini.
+- **Ringan.** Hanya 118 bytes (diperkecil dan brotlied). Tidak ada ketergantungan (dependencies) apapun. [Size Limit](https://github.com/ai/size-limit) mengatur ukuran dari generator ini.
 - **Aman.** Nano ID menggunakan RNG yang terdapat pada perangkat keras. Dapat digunakan dalam lingkungan seperti klaster.
 - **ID yang pendek.** Nano ID menggunakan alfabet yang lebih banyak ketimbang UUID (`A-Za-z0-9_-`), karenanya ukuran ID menjadi berkurang dari 36 menjadi 21 simbol.
 - **Portabel.** Nano ID telah dimigrasi untuk [20 bahasa pemrograman lainnya](#bahasa-pemrograman-lainnya).
