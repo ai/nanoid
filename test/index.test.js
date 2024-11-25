@@ -57,6 +57,13 @@ for (let type of ['node', 'browser']) {
       }
     })
 
+    test(`avoids pool pollution, infinite loop`, () => {
+      nanoid(2.1)
+      const second = nanoid()
+      const third = nanoid()
+      notEqual(second, third)
+    })
+
     test(`has flat distribution`, () => {
       let COUNT = 100 * 1000
       let LENGTH = nanoid().length

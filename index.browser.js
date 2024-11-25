@@ -47,11 +47,11 @@ export let customRandom = (alphabet, defaultSize, getRandom) => {
 }
 
 export let customAlphabet = (alphabet, size = 21) =>
-  customRandom(alphabet, size, random)
+  customRandom(alphabet, size | 0, random)
 
 export let nanoid = (size = 21) => {
   let id = ''
-  let bytes = crypto.getRandomValues(new Uint8Array(size))
+  let bytes = crypto.getRandomValues(new Uint8Array((size |= 0)))
   while (size--) {
     // Using the bitwise AND operator to "cap" the value of
     // the random byte from 255 to 63, in that way we can make sure
