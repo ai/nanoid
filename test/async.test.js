@@ -1,6 +1,6 @@
 let { suite } = require('uvu')
 let { spy } = require('nanospy')
-let { is, match, ok } = require('uvu/assert')
+let { is, match, ok, not } = require('uvu/assert')
 let crypto = require('crypto')
 
 global.crypto = {
@@ -53,6 +53,13 @@ for (let type of ['node', 'browser']) {
         }
       })
     )
+  })
+
+  nanoidSuite('avoids pool pollution, infinite loop', async () => {
+    await nanoid(2.1)
+    const second = await nanoid()
+    const third = await nanoid()
+    not.equal(second, third)
   })
 
   nanoidSuite('changes ID length', async () => {

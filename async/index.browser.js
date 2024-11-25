@@ -29,7 +29,7 @@ let customAlphabet = (alphabet, defaultSize = 21) => {
     while (true) {
       let bytes = crypto.getRandomValues(new Uint8Array(step))
       // A compact alternative for `for (var i = 0; i < step; i++)`.
-      let i = step
+      let i = step | 0
       while (i--) {
         // Adding `|| ''` refuses a random byte that exceeds the alphabet size.
         id += alphabet[bytes[i] & mask] || ''
@@ -41,7 +41,7 @@ let customAlphabet = (alphabet, defaultSize = 21) => {
 
 let nanoid = async (size = 21) => {
   let id = ''
-  let bytes = crypto.getRandomValues(new Uint8Array(size))
+  let bytes = crypto.getRandomValues(new Uint8Array((size |= 0)))
 
   // A compact alternative for `for (var i = 0; i < step; i++)`.
   while (size--) {

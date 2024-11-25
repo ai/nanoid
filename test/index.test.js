@@ -1,5 +1,5 @@
 let { test } = require('uvu')
-let { is, ok, equal, match } = require('uvu/assert')
+let { is, ok, equal, match, not } = require('uvu/assert')
 
 let browser = require('../index.browser.js')
 let node = require('../index.js')
@@ -32,6 +32,13 @@ for (let type of ['node', 'browser']) {
         match(urlAlphabet, new RegExp(char, "g"))
       }
     }
+  })
+
+  test(`${type} / nanoid / avoids pool pollution, infinite loop`, () => {
+    nanoid(2.1)
+    const second = nanoid()
+    const third = nanoid()
+    not.equal(second, third)
   })
 
   test(`${type} / nanoid / changes ID length`, () => {

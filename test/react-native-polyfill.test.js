@@ -1,5 +1,5 @@
 let { test } = require('uvu')
-let { is } = require('uvu/assert')
+let { is, not } = require('uvu/assert')
 
 test.before(() => {
   global.navigator = {
@@ -25,6 +25,14 @@ test('works with polyfill', () => {
   let { nanoid } = require('../index.browser')
 
   is(typeof nanoid(), 'string')
+})
+
+test('nanoid / avoids pool pollution, infinite loop', () => {
+  let { nanoid } = require('../index.browser')
+  nanoid(2.1)
+  const second = nanoid()
+  const third = nanoid()
+  not.equal(second, third)
 })
 
 test.run()
