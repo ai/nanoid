@@ -48,27 +48,27 @@
   "types": "./index.d.ts",
   "devDependencies": {
     "@babel/core": "^7.26.0",
-    "@logux/eslint-config": "^53.4.2",
+    "@logux/eslint-config": "^53.5.1",
     "@lukeed/uuid": "^2.0.1",
     "@napi-rs/uuid": "^0.2.2",
     "@originjs/vite-plugin-commonjs": "^1.0.3",
     "@size-limit/file": "^11.1.6",
     "@size-limit/webpack": "^11.1.6",
-    "@types/node": "^22.8.1",
+    "@types/node": "^22.9.3",
     "better-node-test": "^0.7.1",
     "c8": "^10.1.2",
     "clean-publish": "^5.1.0",
-    "eslint": "^9.13.0",
+    "eslint": "^9.15.0",
     "rndm": "^1.2.0",
     "secure-random-string": "^1.1.4",
     "shortid": "^2.2.16",
     "size-limit": "^11.1.6",
     "terser": "^5.36.0",
-    "tinybench": "^3.0.0",
+    "tinybench": "^3.0.6",
     "uid": "^2.0.2",
     "uid-safe": "^2.1.5",
-    "uuid": "^11.0.1",
-    "vite": "^5.4.10"
+    "uuid": "^11.0.3",
+    "vite": "^5.4.11"
   },
   "size-limit": [
     {
