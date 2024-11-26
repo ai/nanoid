@@ -1,4 +1,4 @@
-import { equal, match, ok } from 'node:assert'
+import { equal, match, ok, notEqual } from 'node:assert'
 import { describe, test } from 'node:test'
 
 import { urlAlphabet } from '../index.js'
@@ -57,6 +57,13 @@ describe('non secure', () => {
     ok(max - min <= 0.05)
   })
 
+  test('nanoid / avoids pool pollution, infinite loop', () => {
+    nanoid(2.1)
+    const second = nanoid()
+    const third = nanoid()
+    notEqual(second, third)
+  })
+
   test('customAlphabet / has options', () => {
     let nanoidA = customAlphabet('a', 5)
     equal(nanoidA(), 'aaaaa')
@@ -87,5 +94,14 @@ describe('non secure', () => {
       if (distribution < min) min = distribution
     }
     ok(max - min <= 0.05)
+  })
+
+  test('customAlphabet / avoids pool pollution, infinite loop', () => {
+    let ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
+    let nanoid2 = customAlphabet(ALPHABET)
+    nanoid2(2.1)
+    const second = nanoid2()
+    const third = nanoid2()
+    notEqual(second, third)
   })
 })

@@ -126,6 +126,15 @@ for (let type of ['node', 'browser']) {
       equal(nanoidA(10), 'aaaaaaaaaa')
     })
 
+    test(`${type} / customAlphabet / avoids pool pollution, infinite loop`, () => {
+      let ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
+      const nanoid2 = customAlphabet(ALPHABET)
+      nanoid2(2.1)
+      const second = nanoid2()
+      const third = nanoid2()
+      notEqual(second, third)
+    })
+
     test(`${type} / customRandom / supports generator`, () => {
       let sequence = [2, 255, 3, 7, 7, 7, 7, 7, 0, 1]
       function fakeRandom(size) {
