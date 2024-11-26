@@ -31,7 +31,7 @@ let customAlphabet = (alphabet, defaultSize = 21) => {
       while (i--) {
         // Adding `|| ''` refuses a random byte that exceeds the alphabet size.
         id += alphabet[bytes[i] & mask] || ''
-        if (id.length === size) return id
+        if (id.length >= size) return id
       }
       return tick(id, size)
     })
@@ -40,7 +40,7 @@ let customAlphabet = (alphabet, defaultSize = 21) => {
 }
 
 let nanoid = (size = 21) =>
-  random(size).then(bytes => {
+  random((size |= 0)).then(bytes => {
     let id = ''
     // A compact alternative for `for (var i = 0; i < step; i++)`.
     while (size--) {
