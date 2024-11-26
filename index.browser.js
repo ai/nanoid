@@ -40,7 +40,7 @@ export let customRandom = (alphabet, defaultSize, getRandom) => {
       while (j--) {
         // Adding `|| ''` refuses a random byte that exceeds the alphabet size.
         id += alphabet[bytes[j] & mask] || ''
-        if (id.length === size) return id
+        if (id.length >= size) return id
       }
     }
   }
