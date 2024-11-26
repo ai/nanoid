@@ -59,8 +59,8 @@ describe('non secure', () => {
 
   test('nanoid / avoids pool pollution, infinite loop', () => {
     nanoid(2.1)
-    const second = nanoid()
-    const third = nanoid()
+    let second = nanoid()
+    let third = nanoid()
     notEqual(second, third)
   })
 
@@ -100,8 +100,8 @@ describe('non secure', () => {
     let ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
     let nanoid2 = customAlphabet(ALPHABET)
     nanoid2(2.1)
-    const second = nanoid2()
-    const third = nanoid2()
+    let second = nanoid2()
+    let third = nanoid2()
     notEqual(second, third)
   })
 })

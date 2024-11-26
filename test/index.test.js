@@ -128,10 +128,10 @@ for (let type of ['node', 'browser']) {
 
     test(`${type} / customAlphabet / avoids pool pollution, infinite loop`, () => {
       let ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
-      const nanoid2 = customAlphabet(ALPHABET)
+      let nanoid2 = customAlphabet(ALPHABET)
       nanoid2(2.1)
-      const second = nanoid2()
-      const third = nanoid2()
+      let second = nanoid2()
+      let third = nanoid2()
       notEqual(second, third)
     })
 
