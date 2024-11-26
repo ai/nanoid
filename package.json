@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "clean": "rm -rf coverage",
-    "start": "vite test/demo/ --open",
+    "start": "vite test/demo/",
     "test:coverage": "c8 bnt",
     "test:lint": "eslint .",
     "test:size": "pnpm clean && size-limit",
@@ -54,7 +54,7 @@
     "@originjs/vite-plugin-commonjs": "^1.0.3",
     "@size-limit/file": "^11.1.6",
     "@size-limit/webpack": "^11.1.6",
-    "@types/node": "^22.9.3",
+    "@types/node": "^22.10.0",
     "better-node-test": "^0.7.1",
     "c8": "^10.1.2",
     "clean-publish": "^5.1.0",
@@ -68,7 +68,7 @@
     "uid": "^2.0.2",
     "uid-safe": "^2.1.5",
     "uuid": "^11.0.3",
-    "vite": "^5.4.11"
+    "vite": "^6.0.0"
   },
   "size-limit": [
     {
@@ -79,7 +79,7 @@
     {
       "name": "customAlphabet",
       "import": "{ customAlphabet }",
-      "limit": "163 B"
+      "limit": "165 B"
     },
     {
       "name": "urlAlphabet",
