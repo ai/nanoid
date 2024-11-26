@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.0.9
+* Fixed a way to brake Nano ID by passing non-integer size (by @myndzi).
+
 ## 5.0.8
 * Reduced `customAlphabet` size (by @kirillgroshkov).
 
