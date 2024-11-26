@@ -30,8 +30,8 @@ test('works with polyfill', () => {
 test('nanoid / avoids pool pollution, infinite loop', () => {
   let { nanoid } = require('../index.browser')
   nanoid(2.1)
-  const second = nanoid()
-  const third = nanoid()
+  let second = nanoid()
+  let third = nanoid()
   not.equal(second, third)
 })
 

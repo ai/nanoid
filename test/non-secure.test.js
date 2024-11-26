@@ -58,8 +58,8 @@ test('nanoid / has flat distribution', () => {
 
 test('nanoid / avoids pool pollution, infinite loop', () => {
   nanoid(2.1)
-  const second = nanoid()
-  const third = nanoid()
+  let second = nanoid()
+  let third = nanoid()
   not.equal(second, third)
 })
 
@@ -99,8 +99,8 @@ test('customAlphabet / avoids pool pollution, infinite loop', () => {
   let ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
   let nanoid2 = customAlphabet(ALPHABET)
   nanoid2(2.1)
-  const second = nanoid2()
-  const third = nanoid2()
+  let second = nanoid2()
+  let third = nanoid2()
   not.equal(second, third)
 })
 

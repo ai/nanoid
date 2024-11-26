@@ -36,8 +36,8 @@ for (let type of ['node', 'browser']) {
 
   test(`${type} / nanoid / avoids pool pollution, infinite loop`, () => {
     nanoid(2.1)
-    const second = nanoid()
-    const third = nanoid()
+    let second = nanoid()
+    let third = nanoid()
     not.equal(second, third)
   })
 

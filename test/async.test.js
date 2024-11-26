@@ -57,8 +57,8 @@ for (let type of ['node', 'browser']) {
 
   nanoidSuite('avoids pool pollution, infinite loop', async () => {
     await nanoid(2.1)
-    const second = await nanoid()
-    const third = await nanoid()
+    let second = await nanoid()
+    let third = await nanoid()
     not.equal(second, third)
   })
 
