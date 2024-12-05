@@ -54,21 +54,21 @@
     "@originjs/vite-plugin-commonjs": "^1.0.3",
     "@size-limit/file": "^11.1.6",
     "@size-limit/webpack": "^11.1.6",
-    "@types/node": "^22.10.0",
+    "@types/node": "^22.10.1",
     "better-node-test": "^0.7.1",
     "c8": "^10.1.2",
     "clean-publish": "^5.1.0",
-    "eslint": "^9.15.0",
+    "eslint": "^9.16.0",
     "rndm": "^1.2.0",
     "secure-random-string": "^1.1.4",
     "shortid": "^2.2.16",
     "size-limit": "^11.1.6",
     "terser": "^5.36.0",
-    "tinybench": "^3.0.6",
+    "tinybench": "^3.0.7",
     "uid": "^2.0.2",
     "uid-safe": "^2.1.5",
     "uuid": "^11.0.3",
-    "vite": "^6.0.0"
+    "vite": "^6.0.2"
   },
   "size-limit": [
     {
