@@ -139,15 +139,11 @@ _См. также хорошую статью о теориях генерато
 npm install nanoid
 ```
 
-Nano ID 5 работает только с ESM-проектами, в тестах или скриптах для Node.js.
-Для CommonJS вам нужна последняя версия Node.js 20 или 22
-с флагом `--experimental-require-module`:
+Nano ID 5 работает с ESM-проектами (`import`) в тестах или скриптах для Node.js.
+Для CommonJS `require()` вам нужна последняя версия Node.js 22.12
+(работает из коробки) или Node.js 20 (с флагом `--experimental-require-module`):
 
-```bash
-node --experimental-require-module app.js
-```
-
-Или возьмите Nano ID 3.x (мы его всё ещё поддерживаем):
+Для Node.js 18 возьмите Nano ID 3.x (мы его всё ещё поддерживаем):
 
 ```bash
 npm install nanoid@3
