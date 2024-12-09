@@ -400,6 +400,7 @@ bccbcabaabaccab
 Nano ID was ported to many languages. You can use these ports to have
 the same ID generator on the client and server side.
 
+* [C](https://github.com/lukateras/nanoid.h)
 * [C#](https://github.com/codeyu/nanoid-net)
 * [C++](https://github.com/mcmikecreations/nanoid_cpp)
 * [Clojure and ClojureScript](https://github.com/zelark/nano-id)
