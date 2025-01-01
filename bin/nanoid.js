@@ -19,17 +19,20 @@ Options
   -s, --size       Generated ID size
   -a, --alphabet   Alphabet to use
   -h, --help       Show this help
+  -u, --url-safe   Generate url-safe string
 
 Examples
   $ nanoid -s 15
   S9sBF77U6sDB8Yg
 
   $ nanoid --size 10 --alphabet abc
+  bcabababca)
+  $ nanoid --size 5 -u 1
   bcabababca`)
   process.exit()
 }
 
-let alphabet, size
+let alphabet, size, url_safe
 for (let i = 2; i < process.argv.length; i++) {
   let arg = process.argv[i]
   if (arg === '--size' || arg === '-s') {
@@ -41,13 +44,16 @@ for (let i = 2; i < process.argv.length; i++) {
   } else if (arg === '--alphabet' || arg === '-a') {
     alphabet = process.argv[i + 1]
     i += 1
+  } else if (arg === '--url-safe' || arg === '-u') {
+    url_safe = process.argv[i + 1]
+    i += 1
   } else {
     error('Unknown argument ' + arg)
   }
 }
 
 if (alphabet) {
-  let customNanoid = customAlphabet(alphabet, size)
+  let customNanoid = customAlphabet(alphabet, size, url_safe)
   print(customNanoid())
 } else {
   print(nanoid(size))
