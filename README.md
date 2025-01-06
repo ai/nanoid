@@ -136,7 +136,7 @@ Nano ID 5 works with ESM projects (with `import`) in tests or Node.js scripts.
 For CommonJS `require()` you need to use latest Node.js 22.12
 (works out-of-the-box) or Node.js 20 (with `--experimental-require-module`):
 
-For Node.js 18 you can use Nano ID 3.x (we still support it):
+For Node.js 18 you can either import the package dynamically or you can use Nano ID 3.x (we still support it):
 
 ```bash
 npm install nanoid@3
