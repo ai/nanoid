@@ -132,15 +132,8 @@ Test configuration: Framework 13 7840U, Fedora 39, Node.js 21.6.
 npm install nanoid
 ```
 
+### ESM
 Nano ID 5 works with ESM projects (with `import`) in tests or Node.js scripts.
-For CommonJS `require()` you need to use latest Node.js 22.12
-(works out-of-the-box) or Node.js 20 (with `--experimental-require-module`):
-
-For Node.js 18 you can either import the package dynamically or you can use Nano ID 3.x (we still support it):
-
-```bash
-npm install nanoid@3
-```
 
 For quick hacks, you can load Nano ID from CDN. Though, it is not recommended
 to be used in production because of the lower loading performance.
@@ -149,6 +142,22 @@ to be used in production because of the lower loading performance.
 import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 ```
 
+### CommonJS
+Nano ID 5 can be used with CommonJS in one of the following ways:
+
+- You can use `require()` to import Nano ID. You need to use latest Node.js 22.12 (works out-of-the-box) or Node.js 20 (with `--experimental-require-module`)
+
+- For Node.js 16 or newer you can dynamically import Nano ID as follows:
+  ```js
+  const { nanoid } = await import('nanoid');
+  const id = nanoid() // => "V1StGXR8_Z5jdHi6B-myT"
+  ```
+  _Note: In CommonJS, `await` cannot be used at the top level. If you need to handle a promise at the top level, use `.then()` instead._
+
+- You can use Nano ID 3.x (we still support it):
+  ```bash
+  npm install nanoid@3
+  ```
 
 ## API
 
