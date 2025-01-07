@@ -149,8 +149,10 @@ Nano ID 5 can be used with CommonJS in one of the following ways:
 
 - For Node.js 16 or newer you can dynamically import Nano ID as follows:
   ```js
-  const { nanoid } = await import('nanoid');
-  const id = nanoid() // => "V1StGXR8_Z5jdHi6B-myT"
+  module.exports.createID = async () => {
+    const { nanoid } = await import('nanoid');
+    const id = nanoid() // => "V1StGXR8_Z5jdHi6B-myT"
+  }
   ```
   _Note: In CommonJS, `await` cannot be used at the top level. If you need to handle a promise at the top level, use `.then()` instead._
 
