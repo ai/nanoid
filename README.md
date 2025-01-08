@@ -41,6 +41,9 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 - [Benchmark](#benchmark)
 - [Security](#security)
 - [Install](#install)
+  - [ESM](#esm)
+  - [CommonJS](#commonjs)
+  - [CDN](#cdn)
 - [API](#api)
   - [Blocking](#blocking)
   - [Non-Secure](#non-secure)
@@ -128,12 +131,39 @@ Test configuration: Framework 13 7840U, Fedora 39, Node.js 21.6.
 
 ## Install
 
+### ESM
+
+Nano ID 5 works with ESM projects (with `import`) in tests or Node.js scripts.
+
 ```bash
 npm install nanoid
 ```
 
-### ESM
-Nano ID 5 works with ESM projects (with `import`) in tests or Node.js scripts.
+### CommonJS
+
+Nano ID can be used with CommonJS in one of the following ways:
+
+- You can use `require()` to import Nano ID. You need to use latest Node.js
+  22.12 (works out-of-the-box) or Node.js 20
+  (with `--experimental-require-module`).
+
+- For Node.js 18 you can dynamically import Nano ID as follows:
+
+  ```js
+  let nanoid
+  module.exports.createID = async () => {
+    if (!nanoid) ({ nanoid } = await import('nanoid'))
+    return nanoid() // => "V1StGXR8_Z5jdHi6B-myT"
+  }
+  ```
+
+- You can use Nano ID 3.x (we still support it):
+
+  ```bash
+  npm install nanoid@3
+  ```
+
+### CDN
 
 For quick hacks, you can load Nano ID from CDN. Though, it is not recommended
 to be used in production because of the lower loading performance.
@@ -141,26 +171,6 @@ to be used in production because of the lower loading performance.
 ```js
 import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 ```
-
-### CommonJS
-Nano ID 5 can be used with CommonJS in one of the following ways:
-
-- You can use `require()` to import Nano ID. You need to use latest Node.js 22.12 (works out-of-the-box) or Node.js 20 (with `--experimental-require-module`)
-
-- For Node.js 16 or newer you can dynamically import Nano ID as follows:
-  ```js
-  let nanoid;
-  
-  module.exports.createID = async () => {
-    if (!nanoid) ({ nanoid } = await import('nanoid'));
-    const id = nanoid() // => "V1StGXR8_Z5jdHi6B-myT"
-  }
-  ```
-
-- You can use Nano ID 3.x (we still support it):
-  ```bash
-  npm install nanoid@3
-  ```
 
 ## API
 

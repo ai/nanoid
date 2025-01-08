@@ -45,6 +45,9 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 - [Сравнение производительности](#сравнение-производительности)
 - [Безопасность](#безопасность)
 - [Подключение](#подключение)
+  - [ESM](#esm)
+  - [CommonJS](#commonjs)
+  - [CDN](#cdn)
 - [API](#api)
   - [Блокирующий](#блокирующий)
   - [Небезопасный](#небезопасный)
@@ -135,19 +138,38 @@ _См. также хорошую статью о теориях генерато
 
 ## Подключение
 
+### ESM
+
+Nano ID 5 работает с ESM-проектами (`import`) в тестах или скриптах для Node.js.
+
 ```bash
 npm install nanoid
 ```
 
-Nano ID 5 работает с ESM-проектами (`import`) в тестах или скриптах для Node.js.
-Для CommonJS `require()` вам нужна последняя версия Node.js 22.12
-(работает из коробки) или Node.js 20 (с флагом `--experimental-require-module`):
+### CommonJS
 
-Для Node.js 18 возьмите Nano ID 3.x (мы его всё ещё поддерживаем):
+На проектах с CommonJS вы можете использовать:
 
-```bash
-npm install nanoid@3
-```
+- `require()` будет работать в последней версия Node.js 22.12 (из коробки)
+  или Node.js 20 (с флагом `--experimental-require-module`).
+
+- В более старых версиях Node.js можно использовать динамический импорт:
+
+  ```js
+  let nanoid
+  module.exports.createID = async () => {
+    if (!nanoid) ({ nanoid } = await import('nanoid'))
+    return nanoid() // => "V1StGXR8_Z5jdHi6B-myT"
+  }
+  ```
+
+- Или можно просто взять Nano ID 3.x (мы его всё ещё поддерживаем):
+
+  ```bash
+  npm install nanoid@3
+  ```
+
+### CDN
 
 Для быстрого прототипирования вы можете подключить Nano ID с CDN без установки.
 Не используйте этот способ на реальном сайте, так как он сильно бьёт
