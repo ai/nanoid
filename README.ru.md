@@ -414,7 +414,7 @@ Nano ID был портирован на множество языков. Это
 - [Haskell](https://github.com/MichelBoucey/NanoID)
 - [Haxe](https://github.com/flashultra/uuid)
 - [Janet](https://sr.ht/~statianzo/janet-nanoid/)
-- [Java](https://github.com/Soundicly/jnanoid-enhanced)
+- [Java](https://github.com/wosherco/jnanoid-enhanced)
 - [Kotlin](https://github.com/viascom/nanoid-kotlin)
 - [MySQL/MariaDB](https://github.com/viascom/nanoid-mysql-mariadb)
 - [Nim](https://github.com/icyphox/nanoid.nim)
