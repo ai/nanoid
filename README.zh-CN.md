@@ -49,6 +49,7 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
   - [PouchDB and CouchDB](#pouchdb-and-couchdb)
   - [Web Workers](#web-workers)
   - [CLI](#cli)
+  - [TypeScript](#typescript)
   - [其他编程语言](#其他编程语言)
 - [工具](#工具)
 
@@ -375,8 +376,11 @@ bccbcabaabaccab
 Nano ID 允许将生成的字符串转换为 TypeScript 中的不透明字符串。 例如：
 
 ```ts
-type UserId = string & { [userIdBrand]: true }
 declare const userIdBrand: unique symbol
+type UserId = string & { [userIdBrand]: true }
+
+// 使用显式类型参数:
+mockUser(nanoid<UserId>())
 
 interface User {
   id: UserId
@@ -388,9 +392,6 @@ const user: User = {
   id: nanoid(),
   name: 'Alice'
 }
-
-// 使用显式类型参数:
-mockUser(nanoid<UserId>())
 ```
 
 ### 其他编程语言

@@ -47,6 +47,7 @@ Mendukung penjelajah (browser) modern, IE [dengan Babel](https://developer.epage
   - [PouchDB dan CouchDB](#pouchdb-dan-couchdb)
   - [Web Workers](#web-workers)
   - [CLI](#cli)
+  - [TypeScript](#typescript)
   - [Bahasa Pemrograman Lainnya](#bahasa-pemrograman-lainnya)
 - [Alat](#alat)
 
@@ -308,8 +309,11 @@ Nano ID memungkinkan untuk mengubah string yang dihasilkan menjadi string opak
 dalam TypeScript. Sebagai contoh:
 
 ```ts
-type UserId = string & { [userIdBrand]: true }
 declare const userIdBrand: unique symbol
+type UserId = string & { [userIdBrand]: true }
+
+// Gunakan parameter tipe secara eksplisit:
+mockUser(nanoid<UserId>())
 
 interface User {
   id: UserId
@@ -321,9 +325,6 @@ const user: User = {
   id: nanoid(),
   name: 'Alice'
 }
-
-// Gunakan parameter tipe secara eksplisit:
-mockUser(nanoid<UserId>())
 ```
 
 ### Bahasa Pemrograman Lainnya

@@ -59,6 +59,7 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
   - [PouchDB и CouchDB](#pouchdb-и-couchdb)
   - [Веб-воркеры](#веб-воркеры)
   - [Терминал](#терминал)
+  - [TypeScript](#typescript)
   - [Другие языки программирования](#другие-языки-программирования)
 - [Инструменты](#инструменты)
 
@@ -402,8 +403,11 @@ Nano ID позволяет приводить сгенерированные с�
 TypeScript. Например:
 
 ```ts
-type UserId = string & { [userIdBrand]: true }
 declare const userIdBrand: unique symbol
+type UserId = string & { [userIdBrand]: true }
+
+// Используйте явный параметр типа:
+mockUser(nanoid<UserId>())
 
 interface User {
   id: UserId
@@ -415,9 +419,6 @@ const user: User = {
   id: nanoid(),
   name: 'Alice'
 }
-
-// Используйте явный параметр типа:
-mockUser(nanoid<UserId>())
 ```
 
 ### Другие языки программирования
