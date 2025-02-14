@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.1.0
+* Added opaque types support (by @kossnocorp).
+
 ## 5.0.9
 * Fixed a way to break Nano ID by passing non-integer size (by @myndzi).
 
