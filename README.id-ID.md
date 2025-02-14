@@ -302,6 +302,29 @@ LZfXLFzPPR4NNrgjlWDxn
 
 Bila ingin mengganti alfabet atau ukuran ID, dapat menggunakan [`nanoid-cli`](https://github.com/twhitbeck/nanoid-cli).
 
+### TypeScript
+
+Nano ID memungkinkan untuk mengubah string yang dihasilkan menjadi string opak
+dalam TypeScript. Sebagai contoh:
+
+```ts
+type UserId = string & { [userIdBrand]: true }
+declare const userIdBrand: unique symbol
+
+interface User {
+  id: UserId
+  name: string
+}
+
+const user: User = {
+  // Secara otomatis diubah menjadi UserId:
+  id: nanoid(),
+  name: 'Alice'
+}
+
+// Gunakan parameter tipe secara eksplisit:
+mockUser(nanoid<UserId>())
+```
 
 ### Bahasa Pemrograman Lainnya
 

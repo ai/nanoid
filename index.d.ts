@@ -10,9 +10,10 @@
  * ```
  *
  * @param size Size of the ID. The default size is 21.
+ * @typeparam Type The type of the generated ID.
  * @returns A random string.
  */
-export function nanoid(size?: number): string
+export function nanoid<Type extends string>(size?: number): Type
 
 /**
  * Generate secure unique ID with custom alphabet.
@@ -22,6 +23,7 @@ export function nanoid(size?: number): string
  *
  * @param alphabet Alphabet used to generate the ID.
  * @param defaultSize Size of the ID. The default size is 21.
+ * @typeparam Type The type of the generated ID.
  * @returns A random string generator.
  *
  * ```js
@@ -30,10 +32,10 @@ export function nanoid(size?: number): string
  * nanoid() //=> "8ё56а"
  * ```
  */
-export function customAlphabet(
+export function customAlphabet<Type extends string>(
   alphabet: string,
   defaultSize?: number
-): (size?: number) => string
+): (size?: number) => Type
 
 /**
  * Generate unique ID with custom random generator and alphabet.
@@ -58,13 +60,14 @@ export function customAlphabet(
  * @param alphabet Alphabet used to generate a random string.
  * @param size Size of the random string.
  * @param random A random bytes generator.
+ * @typeparam Type The type of the generated ID.
  * @returns A random string generator.
  */
-export function customRandom(
+export function customRandom<Type extends string>(
   alphabet: string,
   size: number,
   random: (bytes: number) => Uint8Array
-): () => string
+): () => Type
 
 /**
  * URL safe symbols.

@@ -416,6 +416,29 @@ $ npx nanoid --alphabet abc --size 15
 bccbcabaabaccab
 ```
 
+### TypeScript
+
+Nano ID allows casting generated strings into opaque strings in TypeScript.
+For example:
+
+```ts
+type UserId = string & { [userIdBrand]: true }
+declare const userIdBrand: unique symbol
+
+interface User {
+  id: UserId
+  name: string
+}
+
+const user: User = {
+  // Automatically casts to UserId:
+  id: nanoid(),
+  name: 'Alice'
+}
+
+// Use explicit type parameter:
+mockUser(nanoid<UserId>())
+```
 
 ### Other Programming Languages
 

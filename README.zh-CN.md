@@ -370,6 +370,28 @@ $ npx nanoid --alphabet abc --size 15
 bccbcabaabaccab
 ```
 
+### TypeScript
+
+Nano ID 允许将生成的字符串转换为 TypeScript 中的不透明字符串。 例如：
+
+```ts
+type UserId = string & { [userIdBrand]: true }
+declare const userIdBrand: unique symbol
+
+interface User {
+  id: UserId
+  name: string
+}
+
+const user: User = {
+  // 自动转换为 UserId:
+  id: nanoid(),
+  name: 'Alice'
+}
+
+// 使用显式类型参数:
+mockUser(nanoid<UserId>())
+```
 
 ### 其他编程语言
 
