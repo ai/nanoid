@@ -53,7 +53,6 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
   - [React](#react)
   - [React Native](#react-native)
   - [PouchDB and CouchDB](#pouchdb-and-couchdb)
-  - [Web Workers](#web-workers)
   - [CLI](#cli)
   - [TypeScript](#typescript)
   - [Other Programming Languages](#other-programming-languages)
@@ -372,23 +371,6 @@ db.put({
   …
 })
 ```
-
-
-### Web Workers
-
-Web Workers do not have access to a secure random generator.
-
-Security is important in IDs when IDs should be unpredictable.
-For instance, in "access by URL" link generation.
-If you do not need unpredictable IDs, but you need to use Web Workers,
-you can use the non‑secure ID generator.
-
-```js
-import { nanoid } from 'nanoid/non-secure'
-nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
-```
-
-Note: non-secure IDs are more prone to collision attacks.
 
 
 ### CLI

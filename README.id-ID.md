@@ -45,7 +45,6 @@ Mendukung penjelajah (browser) modern, IE [dengan Babel](https://developer.epage
   - [React](#react)
   - [React Native](#react-native)
   - [PouchDB dan CouchDB](#pouchdb-dan-couchdb)
-  - [Web Workers](#web-workers)
   - [CLI](#cli)
   - [TypeScript](#typescript)
   - [Bahasa Pemrograman Lainnya](#bahasa-pemrograman-lainnya)
@@ -275,20 +274,6 @@ db.put({
   …
 })
 ```
-
-
-### Web Workers
-
-Web Workers tidak memiliki akses untuk secure random generator.
-
-Keamanan sangat penting pada ID yang mana setiap ID harus memiliki sifat tidak bisa diprediksi, seperti pada contoh use-case generasi link pada "access by URL". Apabila tidak memerlukan ID yang tidak bisa diprediksi, tetapi ingin/harus menggunakan Web Workers, dapat digunakan NanoID dengan API non-secure.
-
-```js
-import { nanoid } from 'nanoid/non-secure'
-nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
-```
-
-Perhatian: ID yang dihasilkan dari non-secure dapat lebih mudah tabrakan / memiliki probabilitas collision yang lebih besar.
 
 
 ### CLI

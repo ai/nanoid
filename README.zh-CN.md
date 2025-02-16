@@ -47,7 +47,6 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
   - [React](#react)
   - [React Native](#react-native)
   - [PouchDB and CouchDB](#pouchdb-and-couchdb)
-  - [Web Workers](#web-workers)
   - [CLI](#cli)
   - [TypeScript](#typescript)
   - [其他编程语言](#其他编程语言)
@@ -327,23 +326,6 @@ db.put({
   …
 })
 ```
-
-
-### Web Workers
-
-Web Workers 无法访问安全的随机生成器.
-
-当ID应该是不可预测的时候，安全性对ID很重要。
-例如，在 "按 URL 访问"的链接生成中。
-如果你不需要不可预测的 ID，但你需要使用 Web Workers。
-你可以使用非安全的 ID 生成器。
-
-```js
-import { nanoid } from 'nanoid/non-secure'
-nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
-```
-
-注意：非安全的ID更容易受到碰撞攻击。
 
 
 ### CLI
