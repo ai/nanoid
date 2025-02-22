@@ -8,9 +8,10 @@
  * ```
  *
  * @param size Size of the ID. The default size is 21.
+ * @typeparam Type The ID type to replace `string` with some opaque type.
  * @returns A random string.
  */
-export function nanoid(size?: number): string
+export function nanoid<Type extends string>(size?: number): Type
 
 /**
  * Generate a unique ID based on a custom alphabet.
@@ -19,15 +20,16 @@ export function nanoid(size?: number): string
  *
  * @param alphabet Alphabet used to generate the ID.
  * @param defaultSize Size of the ID. The default size is 21.
+ * @typeparam Type The ID type to replace `string` with some opaque type.
  * @returns A random string generator.
  *
  * ```js
  * import { customAlphabet } from 'nanoid/non-secure'
  * const nanoid = customAlphabet('0123456789абвгдеё', 5)
- * model.id = //=> "8ё56а"
+ * model.id = nanoid() //=> "8ё56а"
  * ```
  */
-export function customAlphabet(
+export function customAlphabet<Type extends string>(
   alphabet: string,
   defaultSize?: number
-): (size?: number) => string
+): (size?: number) => Type
