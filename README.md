@@ -171,7 +171,6 @@ and active development (in contrast to npm).
 
 ```bash
 npx jsr add @sitnik/nanoid
-# For Deno: deno add jsr:@sitnik/nanoid
 ```
 
 You can use it in Node.js, Deno, Bun, etc.
@@ -457,7 +456,6 @@ the same ID generator on the client and server side.
 * [ColdFusion/CFML](https://github.com/JamoCA/cfml-nanoid)
 * [Crystal](https://github.com/mamantoha/nanoid.cr)
 * [Dart & Flutter](https://github.com/pd4d10/nanoid-dart)
-* [Deno](https://github.com/ianfabs/nanoid)
 * [Elixir](https://github.com/railsmechanic/nanoid)
 * [Gleam](https://github.com/0xca551e/glanoid)
 * [Go](https://github.com/matoous/go-nanoid)

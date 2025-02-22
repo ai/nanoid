@@ -177,7 +177,6 @@ npm install nanoid
 
 ```bash
 npx jsr add @sitnik/nanoid
-# For Deno: deno add jsr:@sitnik/nanoid
 ```
 
 Вы можете использовать пакет с JSR в Node.js, Deno, Bun.
@@ -437,7 +436,6 @@ Nano ID был портирован на множество языков. Это
 - [ColdFusion/CFML](https://github.com/JamoCA/cfml-nanoid)
 - [Crystal](https://github.com/mamantoha/nanoid.cr)
 - [Dart и Flutter](https://github.com/pd4d10/nanoid-dart)
-- [Deno](https://github.com/ianfabs/nanoid)
 - [Elixir](https://github.com/railsmechanic/nanoid)
 - [Gleam](https://github.com/0xca551e/glanoid)
 - [Go](https://github.com/jaevor/go-nanoid)
