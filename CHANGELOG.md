@@ -1,6 +1,10 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.1.1
+* Fixed opaque types support for non-secure generator.
+* Added JSR support.
+
 ## 5.1.0
 * Added opaque types support (by @kossnocorp).
 
