@@ -1,4 +1,16 @@
 /**
+ * A tiny, secure, URL-friendly, unique string ID generator for JavaScript
+ * with hardware random generator.
+ *
+ * ```js
+ * import { nanoid } from 'nanoid'
+ * model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
+ * ```
+ *
+ * @module
+ */
+
+/**
  * Generate secure URL-friendly unique ID.
  *
  * By default, the ID will have 21 symbols to have a collision probability

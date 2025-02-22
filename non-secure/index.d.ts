@@ -1,4 +1,17 @@
 /**
+ * By default, Nano ID uses hardware random bytes generation for security
+ * and low collision probability. If you are not so concerned with security,
+ * you can use it for environments without hardware random generators.
+ *
+ * ```js
+ * import { nanoid } from 'nanoid/non-secure'
+ * const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
+ * ```
+ *
+ * @module
+ */
+
+/**
  * Generate URL-friendly unique ID. This method uses the non-secure
  * predictable random generator with bigger collision probability.
  *
