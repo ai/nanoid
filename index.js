@@ -1,3 +1,15 @@
+/**
+ * A tiny, secure, URL-friendly, unique string ID generator for JavaScript
+ * with hardware random generator.
+ *
+ * ```js
+ * import { nanoid } from 'nanoid'
+ * model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
+ * ```
+ *
+ * @module
+ */
+
 import { webcrypto as crypto } from 'node:crypto'
 
 import { urlAlphabet as scopedUrlAlphabet } from './url-alphabet/index.js'
