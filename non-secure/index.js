@@ -1,5 +1,18 @@
 /* @ts-self-types="./index.d.ts" */
 
+/**
+ * By default, Nano ID uses hardware random bytes generation for security
+ * and low collision probability. If you are not so concerned with security,
+ * you can use it for environments without hardware random generators.
+ *
+ * ```js
+ * import { nanoid } from 'nanoid/non-secure'
+ * const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
+ * ```
+ *
+ * @module
+ */
+
 // This alphabet uses `A-Za-z0-9_-` symbols.
 // The order of characters is optimized for better gzip and brotli compression.
 // References to the same file (works both for gzip and brotli):
