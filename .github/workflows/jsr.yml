@@ -1,0 +1,16 @@
+name: Publish to JSR
+on:
+  push:
+    tags:
+      - '*'
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+      - name: Publish to JSR
+        run: npx jsr publish
