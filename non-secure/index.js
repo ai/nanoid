@@ -1,3 +1,5 @@
+/* @ts-self-types="./index.d.ts" */
+
 // This alphabet uses `A-Za-z0-9_-` symbols.
 // The order of characters is optimized for better gzip and brotli compression.
 // References to the same file (works both for gzip and brotli):

@@ -1,3 +1,5 @@
+/* @ts-self-types="./index.d.ts" */
+
 // This file replaces `index.js` in bundlers like webpack or Rollup,
 // according to `browser` config in `package.json`.
 
