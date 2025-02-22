@@ -43,6 +43,7 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 - [Install](#install)
   - [ESM](#esm)
   - [CommonJS](#commonjs)
+  - [JSR](#jsr)
   - [CDN](#cdn)
 - [API](#api)
   - [Blocking](#blocking)
@@ -162,6 +163,27 @@ Nano ID can be used with CommonJS in one of the following ways:
   ```bash
   npm install nanoid@3
   ```
+
+### JSR
+
+[JSR](https://jsr.io) is a replacement for npm with open governance
+and active development (in contrast to npm).
+
+```bash
+npx jsr add @sitnik/nanoid
+# For Deno: deno add jsr:@sitnik/nanoid
+```
+
+You can use it in Node.js, Deno, Bun, etc.
+
+```js
+// Replace `nanoid` to `@sitnik/nanoid` in all imports
+import { nanoid } from '@sitnik/nanoid'
+```
+
+For Deno install it by `deno add jsr:@sitnik/nanoid` or import
+from `jsr:@sitnik/nanoid`.
+
 
 ### CDN
 
