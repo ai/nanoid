@@ -12,5 +12,15 @@ jobs:
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v4
+      - name: Check tag version
+        id: check
+        run: |
+          TAG=${GITHUB_REF#refs/tags/}
+          MAJOR=$(echo $TAG | cut -d. -f1)
+          if [[ "$MAJOR" =~ ^[0-9]+$ && "$MAJOR" -gt 3 ]]; then
+            echo "version_ok=true" >> $GITHUB_OUTPUT
+          fi
+        shell: bash
       - name: Publish to JSR
+        if: steps.check.outputs.version_ok == 'true'
         run: npx jsr publish
