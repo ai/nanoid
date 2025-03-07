@@ -55,6 +55,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * Removed Node.js 10 and Node.js 12 support.
 * Reduced npm package size.
 
+## 3.3.9
+* Reduced npm package size.
+
 ## 3.3.8
 * Fixed a way to break Nano ID by passing non-integer size (by @myndzi).
 
