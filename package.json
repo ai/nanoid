@@ -31,6 +31,7 @@
   "repository": "ai/nanoid",
   "exports": {
     ".": {
+      "react-native": "./index.browser.js",
       "browser": "./index.browser.js",
       "react-native": "./index.browser.js",
       "default": "./index.js"
