@@ -2,7 +2,7 @@
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 5.1.3
-* Fixed React Native support.
+* Fixed React Native support (by @steida).
 
 ## 5.1.2
 * Fixed module docs.
