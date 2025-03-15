@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.3.10
+* Fixed React Native support (by @steida).
+
 ## 3.3.9
 * Reduced npm package size.
 
