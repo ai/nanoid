@@ -1,6 +1,6 @@
 {
   "name": "@sitnik/nanoid",
-  "version": "5.1.3",
+  "version": "5.1.4",
   "license": "MIT",
   "exports": {
     ".": "./index.browser.js",

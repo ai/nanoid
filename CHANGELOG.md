@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.1.4
+* Fixed latest version on npm after 3.x release.
+
 ## 5.1.3
 * Fixed React Native support (by @steida).
 
