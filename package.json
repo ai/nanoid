@@ -32,6 +32,7 @@
     "./async/index.cjs": "./async/index.browser.cjs"
   },
   "react-native": {
+    "./index.js": "./index.browser.js",
     "./async/index.js": "./async/index.native.js"
   },
   "bin": "./bin/nanoid.cjs",
