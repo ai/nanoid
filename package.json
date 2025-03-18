@@ -38,6 +38,7 @@
   "module": "index.js",
   "exports": {
     ".": {
+      "react-native": "./index.browser.js",
       "browser": "./index.browser.js",
       "require": {
         "types": "./index.d.cts",
