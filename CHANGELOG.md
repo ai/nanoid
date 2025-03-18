@@ -61,6 +61,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 * Removed Node.js 10 and Node.js 12 support.
 * Reduced npm package size.
 
+## 3.3.11
+* Fixed React Native support.
+
 ## 3.3.10
 * Fixed React Native support (by @steida).
 
