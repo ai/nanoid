@@ -1,6 +1,6 @@
-import crypto from 'crypto'
+let crypto = require('crypto')
 
-import { urlAlphabet } from '../url-alphabet/index.js'
+let { urlAlphabet } = require('../url-alphabet/index.cjs')
 
 // `crypto.randomFill()` is a little faster than `crypto.randomBytes()`,
 // because it is possible to use in combination with `Buffer.allocUnsafe()`.
@@ -68,4 +68,4 @@ let nanoid = (size = 21) =>
     return id
   })
 
-export { nanoid, customAlphabet, random }
+module.exports = { nanoid, customAlphabet, random }

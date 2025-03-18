@@ -66,4 +66,4 @@ let nanoid = async (size = 21) => {
   return id
 }
 
-module.exports = { nanoid, customAlphabet, random }
+export { nanoid, customAlphabet, random }

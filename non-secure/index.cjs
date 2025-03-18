@@ -31,4 +31,4 @@ let nanoid = (size = 21) => {
   return id
 }
 
-export { nanoid, customAlphabet }
+module.exports = { nanoid, customAlphabet }

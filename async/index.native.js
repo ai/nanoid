@@ -1,6 +1,6 @@
-let { getRandomBytesAsync } = require('expo-random')
+import { getRandomBytesAsync } from 'expo-random'
 
-let { urlAlphabet } = require('../url-alphabet')
+import { urlAlphabet } from '../url-alphabet/index.js'
 
 let random = getRandomBytesAsync
 
@@ -54,4 +54,4 @@ let nanoid = (size = 21) =>
     return id
   })
 
-module.exports = { nanoid, customAlphabet, random }
+export { nanoid, customAlphabet, random }

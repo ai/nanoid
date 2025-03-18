@@ -1,6 +1,6 @@
-import crypto from 'crypto'
+let crypto = require('crypto')
 
-import { urlAlphabet } from './url-alphabet/index.js'
+let { urlAlphabet } = require('./url-alphabet/index.cjs')
 
 // It is best to make fewer, larger requests to the crypto module to
 // avoid system call overhead. So, random numbers are generated in a
@@ -82,4 +82,4 @@ let nanoid = (size = 21) => {
   return id
 }
 
-export { nanoid, customAlphabet, customRandom, urlAlphabet, random }
+module.exports = { nanoid, customAlphabet, customRandom, urlAlphabet, random }

@@ -1,11 +1,6 @@
-// This file replaces `index.js` in bundlers like webpack or Rollup,
-// according to `browser` config in `package.json`.
+let random = async bytes => crypto.getRandomValues(new Uint8Array(bytes))
 
-import { urlAlphabet } from './url-alphabet/index.js'
-
-let random = bytes => crypto.getRandomValues(new Uint8Array(bytes))
-
-let customRandom = (alphabet, defaultSize, getRandom) => {
+let customAlphabet = (alphabet, defaultSize = 21) => {
   // First, a bitmask is necessary to generate the ID. The bitmask makes bytes
   // values closer to the alphabet size. The bitmask calculates the closest
   // `2^31 - 1` number, which exceeds the alphabet size.
@@ -29,44 +24,46 @@ let customRandom = (alphabet, defaultSize, getRandom) => {
   // `-~i => i + 1` if i is an integer
   let step = -~((1.6 * mask * defaultSize) / alphabet.length)
 
-  return (size = defaultSize) => {
+  return async (size = defaultSize) => {
     let id = ''
     while (true) {
-      let bytes = getRandom(step)
+      let bytes = crypto.getRandomValues(new Uint8Array(step))
       // A compact alternative for `for (var i = 0; i < step; i++)`.
-      let j = step | 0
-      while (j--) {
+      let i = step | 0
+      while (i--) {
         // Adding `|| ''` refuses a random byte that exceeds the alphabet size.
-        id += alphabet[bytes[j] & mask] || ''
+        id += alphabet[bytes[i] & mask] || ''
         if (id.length === size) return id
       }
     }
   }
 }
 
-let customAlphabet = (alphabet, size = 21) =>
-  customRandom(alphabet, size, random)
+let nanoid = async (size = 21) => {
+  let id = ''
+  let bytes = crypto.getRandomValues(new Uint8Array((size |= 0)))
 
-let nanoid = (size = 21) =>
-  crypto.getRandomValues(new Uint8Array(size)).reduce((id, byte) => {
+  // A compact alternative for `for (var i = 0; i < step; i++)`.
+  while (size--) {
     // It is incorrect to use bytes exceeding the alphabet size.
     // The following mask reduces the random byte in the 0-255 value
     // range to the 0-63 value range. Therefore, adding hacks, such
     // as empty string fallback or magic numbers, is unneccessary because
     // the bitmask trims bytes down to the alphabet size.
-    byte &= 63
+    let byte = bytes[size] & 63
     if (byte < 36) {
       // `0-9a-z`
       id += byte.toString(36)
     } else if (byte < 62) {
       // `A-Z`
       id += (byte - 26).toString(36).toUpperCase()
-    } else if (byte > 62) {
-      id += '-'
-    } else {
+    } else if (byte < 63) {
       id += '_'
+    } else {
+      id += '-'
     }
-    return id
-  }, '')
+  }
+  return id
+}
 
-export { nanoid, customAlphabet, customRandom, urlAlphabet, random }
+module.exports = { nanoid, customAlphabet, random }

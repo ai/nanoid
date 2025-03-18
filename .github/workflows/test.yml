@@ -51,7 +51,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --ignore-scripts
       - name: Run unit tests
-        run: pnpm unit
+        run: pnpm test
   old:
     runs-on: ubuntu-latest
     strategy:
@@ -77,4 +77,4 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile --ignore-scripts
       - name: Run unit tests
-        run: pnpm unit
+        run: pnpm test
