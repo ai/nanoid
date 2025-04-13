@@ -3,7 +3,7 @@
 <img src="https://ai.github.io/nanoid/logo.svg" align="right"
      alt="Logo Nano ID oleh Anton Lovchikov" width="180" height="94">
 
-[English](./README.md) | [Русский](./README.ru.md) | [简体中文](./README.zh-CN.md) | **Bahasa Indonesia**
+[English](./README.md) | [日本語](./README.ja.md) | [Русский](./README.ru.md) | [简体中文](./README.zh-CN.md) | **Bahasa Indonesia**
 
 Sebuah generator ID yang unik dalam bentuk string yang ringan, aman, serta _URL-friendly_ untuk JavaScript.
 
