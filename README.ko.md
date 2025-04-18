@@ -117,9 +117,9 @@ rndm                       2,308,044 ops/sec
      width="340" height="135">
 
 * **문서화:** Nano ID의 모든것이 코드에 문서화되어있습니다. [소스 코드]에서 코멘트를 확인하세요.
-* **Vulnerabilities:** to report a security vulnerability, please use
-  the [Tidelift security contact](https://tidelift.com/security).
-  Tidelift will coordinate the fix and disclosure.
+* **취약점:** 보안 취약점에 대한 리포트는 아래 링크를 사용해주세요.
+  [Tidelift security contact](https://tidelift.com/security).
+  Tidelift에서 취약점에 대한 수정 및 알림등을 도와줄 수 있습니다.
 
 [Secure random values (in Node.js)]: https://gist.github.com/joepie91/7105003c3b26e65efcea63f3db82dfba
 [이보다 더 좋은 알고리즘]:                  https://github.com/ai/nanoid/blob/main/index.js
