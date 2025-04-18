@@ -3,7 +3,7 @@
 <img src="https://ai.github.io/nanoid/logo.svg" align="right"
      alt="Nano ID logo by Anton Lovchikov" width="180" height="94">
 
-**English** | [日本語](./README.ja.md) | [Русский](./README.ru.md) | [简体中文](./README.zh-CN.md) | [Bahasa Indonesia](./README.id-ID.md)
+**English** | [日本語](./README.ja.md) | [Русский](./README.ru.md) | [简体中文](./README.zh-CN.md) | [Bahasa Indonesia](./README.id-ID.md) | [한국어](./README.ko.md)
 
 A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 
