@@ -35,11 +35,16 @@
       "react-native": "./index.browser.js",
       "default": "./index.js"
     },
+    "./ulid": {
+      "browser": "./ulid/index.browser.js",
+      "default": "./ulid/index.js"
+    },
     "./non-secure": "./non-secure/index.js",
     "./package.json": "./package.json"
   },
   "browser": {
-    "./index.js": "./index.browser.js"
+    "./index.js": "./index.browser.js",
+    "./ulid/index.js": "./ulid/index.browser.js"
   },
   "react-native": {
     "./index.js": "./index.browser.js"
@@ -86,6 +91,12 @@
       "name": "urlAlphabet",
       "import": "{ urlAlphabet }",
       "limit": "47 B"
+    },
+    {
+      "name": "ulid",
+      "import": "{ ulid }",
+      "path": "ulid/index.js",
+      "limit": "400 B"
     },
     {
       "name": "non-secure nanoid",

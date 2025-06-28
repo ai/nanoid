@@ -1,6 +1,14 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.2.0
+* Added ULID support via `nanoid/ulid` export.
+* Added `ulid(len?)` function for generating ULIDs with optional custom length.
+* Added `ulidFactory()` for monotonic ULID generation.
+* Added `decodeTime()` utility to extract timestamps from ULIDs.
+* Added CLI support for ULID generation with `--ulid` flag.
+* **Security Note**: ULIDs expose creation timestamps and have less entropy (80 bits) than regular nanoid (126 bits). Do not use for security tokens.
+
 ## 5.1.5
 * Fixed latest version on npm after 3.x release.
 

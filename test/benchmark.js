@@ -11,11 +11,13 @@ import { Bench } from 'tinybench'
 import { uid } from 'uid'
 import uidSafe from 'uid-safe'
 import { uid as uidSecure } from 'uid/secure'
+// import { ulid } from 'ulid'
 import { v4 as uuid4 } from 'uuid'
 
 import { nanoid as browser } from '../index.browser.js'
 import { customAlphabet, nanoid } from '../index.js'
 import { nanoid as nonSecure } from '../non-secure/index.js'
+import { ulid as nanoidUlid } from '../ulid/index.js'
 
 let bench = new Bench()
 
@@ -51,6 +53,12 @@ bench
   })
   .add('uid-safe.sync', () => {
     uidSafe.sync(14)
+  })
+  // .add('ulid', () => {
+  //   ulid()
+  // })
+  .add('nanoid/ulid', () => {
+    nanoidUlid()
   })
   .add('shortid', () => {
     shortid()

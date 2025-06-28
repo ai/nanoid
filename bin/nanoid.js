@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { customAlphabet, nanoid } from '../index.js'
+import { ulid } from '../ulid/index.js'
 
 function print(msg) {
   process.stdout.write(msg + '\n')
@@ -18,6 +19,7 @@ if (process.argv.includes('--help') || process.argv.includes('-h')) {
 Options
   -s, --size       Generated ID size
   -a, --alphabet   Alphabet to use
+  -u, --ulid       Generate ULID instead of nanoid
   -h, --help       Show this help
 
 Examples
@@ -25,11 +27,15 @@ Examples
   S9sBF77U6sDB8Yg
 
   $ nanoid --size 10 --alphabet abc
-  bcabababca`)
+  bcabababca
+
+  $ nanoid --ulid
+  01J74S5MXVS2P1Q0K5JYPRQ1XV`)
   process.exit()
 }
 
 let alphabet, size
+let useUlid = false
 for (let i = 2; i < process.argv.length; i++) {
   let arg = process.argv[i]
   if (arg === '--size' || arg === '-s') {
@@ -41,12 +47,18 @@ for (let i = 2; i < process.argv.length; i++) {
   } else if (arg === '--alphabet' || arg === '-a') {
     alphabet = process.argv[i + 1]
     i += 1
+  } else if (arg === '--ulid' || arg === '-u') {
+    useUlid = true
   } else {
     error('Unknown argument ' + arg)
   }
 }
 
-if (alphabet) {
+if (useUlid && alphabet) {
+  error('ULID does not support custom alphabets')
+} else if (useUlid) {
+  print(ulid(size))
+} else if (alphabet) {
   let customNanoid = customAlphabet(alphabet, size)
   print(customNanoid())
 } else {

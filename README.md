@@ -50,6 +50,7 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
   - [Non-Secure](#non-secure)
   - [Custom Alphabet or Size](#custom-alphabet-or-size)
   - [Custom Random Bytes Generator](#custom-random-bytes-generator)
+  - [ULID Support](#ulid-support)
 - [Usage](#usage)
   - [React](#react)
   - [React Native](#react-native)
@@ -310,6 +311,32 @@ const nanoid = customRandom(urlAlphabet, 10, random)
 Note, that between Nano ID versions we may change random generator
 call sequence. If you are using seed-based generators, we do not guarantee
 the same result.
+
+
+### ULID Support
+
+Nano ID includes optional ULID support for time-sortable identifiers:
+
+```js
+import { ulid } from 'nanoid/ulid'
+
+ulid() //=> "01ARZ3NDEKTSV4RRFFQ69G5FAV"
+ulid(16) //=> "01ARZ3ND12345678" (custom length)
+```
+
+Use ULID when you need:
+- Time-sortable identifiers
+- Database-friendly sequential inserts  
+- Event ordering without separate timestamps
+
+Use regular nanoid when you need:
+- Smallest library size (ULID adds ~400B)
+- Maximum randomness
+- No timestamp exposure
+
+**Security Note:** ULIDs expose creation timestamps and have less entropy (80 bits) than regular nanoid (126 bits). Do not use for security tokens.
+
+See the [ULID specification](https://github.com/ulid/spec) for more details.
 
 
 ## Usage

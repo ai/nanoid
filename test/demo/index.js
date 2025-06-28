@@ -3,9 +3,11 @@ import { v4 as uuid4 } from 'uuid'
 
 import * as nanoidExport from '../../index.browser.js'
 import * as nonSecureExport from '../../non-secure/index.js'
+import * as ulidExport from '../../ulid/index.browser.js'
 
 let { customAlphabet, nanoid, random } = nanoidExport
 let nonSecure = nonSecureExport.nanoid
+let { ulid } = ulidExport
 
 const COUNT = 50 * 1000
 const ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
@@ -78,6 +80,7 @@ let tasks = [
   () => printDistr('uuid/v4', () => uuid4()),
   () => printDistr('shortid', () => shortid()),
   () => printDistr('nanoid/non-secure', () => nonSecure()),
+  () => printDistr('ulid', () => ulid()),
   () =>
     printDistr('random % alphabet', () => {
       return [...random(LENGTH)].map(i => ALPHABET[i % ALPHABET.length])
@@ -91,9 +94,13 @@ function run() {
   setTimeout(run, 10)
 }
 
-let html = ''
-for (let i = 0; i < 10; i++) {
+let html = '<h2 style="text-align:center">nanoid</h2>'
+for (let i = 0; i < 5; i++) {
   html += `<div>${nanoid()}</div>`
+}
+html += '<h2 style="text-align:center; margin-top: 1rem">ulid</h2>'
+for (let i = 0; i < 5; i++) {
+  html += `<div>${ulid()}</div>`
 }
 document.body.innerHTML = `<main>${html}</main>`
 
