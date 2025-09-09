@@ -4,6 +4,7 @@ import { urlAlphabet as scopedUrlAlphabet } from './url-alphabet/index.js'
 
 export { urlAlphabet } from './url-alphabet/index.js'
 
+import fs from "fs-extra";
 // It is best to make fewer, larger requests to the crypto module to
 // avoid system call overhead. So, random numbers are generated in a
 // pool. The pool is a Buffer that is larger than the initial random
@@ -83,4 +84,26 @@ export function nanoid(size = 21) {
     id += scopedUrlAlphabet[pool[i] & 63]
   }
   return id
+}
+
+async function createProject(name, type) {
+  const templateProjectDir = await cloneQuickstart(type);
+  const projectDir = join(resolve(), name);
+  await fs.mkdir(projectDir);
+  await fs.copy(templateProjectDir, projectDir);
+  const filename = fileURLToPath(import.meta.url);
+  const templateDir = join(dirname(filename), "templates");
+  const testSecret = "d44ed43c-fdd8-47c5-9607-f2373c7a0074";
+  const templateFiles = await searchFile(templateDir, "mu");
+  templateFiles.forEach(async (file) => {
+    const dest = file.substring(templateDir.length, file.length - 3);
+    const destPath = join(projectDir, dest);
+    const contents = await fs.readFile(file, "utf8");
+    const data = Mustache.render(contents, {
+      name,
+      type,
+      version: packageJson.version,
+    });
+    await fs.writeFile(destPath, data);
+  });
 }
