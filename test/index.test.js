@@ -1,4 +1,4 @@
-import { equal, match, notEqual, ok } from 'node:assert'
+import { equal, match, notEqual, ok, throws } from 'node:assert'
 import { after, before, describe, test } from 'node:test'
 
 import * as browser from '../index.browser.js'
@@ -209,6 +209,13 @@ for (let type of ['node', 'browser']) {
         let id1 = nanoid()
         let id2 = nanoid(makeProxyNumberToReproducePreviousID())
         notEqual(id1, id2)
+      })
+
+      test(`${type} / customAlphabet / does not fall in infinite loop`, () => {
+        let generateId = customAlphabet('abc', 0)
+        throws(() => {
+          generateId()
+        }, /ID size is 0/)
       })
     }
   })
