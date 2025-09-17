@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "clean": "rm -rf coverage",
-    "start": "vite test/demo/",
+    "start": "vite --host 0.0.0.0 test/demo/",
     "test:coverage": "c8 bnt",
     "test:lint": "eslint .",
     "test:size": "pnpm clean && size-limit",
