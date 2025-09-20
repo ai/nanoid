@@ -22,48 +22,48 @@ let bench = new Bench()
 let nanoid2 = customAlphabet('1234567890abcdef-', 10)
 
 bench
-  .add('crypto.randomUUID', () => {
-    crypto.randomUUID()
-  })
-  .add('uuid v4', () => {
-    uuid4()
-  })
-  .add('@napi-rs/uuid', () => {
-    napiV4()
-  })
-  .add('uid/secure', () => {
-    uidSecure(32)
-  })
-  .add('@lukeed/uuid', () => {
-    lukeed4()
-  })
+  // .add('crypto.randomUUID', () => {
+  //   crypto.randomUUID()
+  // })
+  // .add('uuid v4', () => {
+  //   uuid4()
+  // })
+  // .add('@napi-rs/uuid', () => {
+  //   napiV4()
+  // })
+  // .add('uid/secure', () => {
+  //   uidSecure(32)
+  // })
+  // .add('@lukeed/uuid', () => {
+  //   lukeed4()
+  // })
   .add('nanoid', () => {
     nanoid()
   })
-  .add('customAlphabet', () => {
-    nanoid2()
-  })
-  .add('nanoid for browser', () => {
-    browser()
-  })
-  .add('secure-random-string', () => {
-    srs()
-  })
-  .add('uid-safe.sync', () => {
-    uidSafe.sync(14)
-  })
-  .add('shortid', () => {
-    shortid()
-  })
-  .add('uid', () => {
-    uid(32)
-  })
-  .add('nanoid/non-secure', () => {
-    nonSecure()
-  })
-  .add('rndm', () => {
-    rndm(21)
-  })
+// .add('customAlphabet', () => {
+//   nanoid2()
+// })
+// .add('nanoid for browser', () => {
+//   browser()
+// })
+// .add('secure-random-string', () => {
+//   srs()
+// })
+// .add('uid-safe.sync', () => {
+//   uidSafe.sync(14)
+// })
+// .add('shortid', () => {
+//   shortid()
+// })
+// .add('uid', () => {
+//   uid(32)
+// })
+// .add('nanoid/non-secure', () => {
+//   nonSecure()
+// })
+// .add('rndm', () => {
+//   rndm(21)
+// })
 
 let longestTask = bench.tasks.reduce((maxLength, task) => {
   return Math.max(maxLength, task.name.length)
