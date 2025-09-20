@@ -29,6 +29,10 @@ for (let type of ['node', 'browser']) {
       })
     }
 
+    test('is ready for 0 size', () => {
+      equal(nanoid(0), '')
+    })
+
     test(`generates URL-friendly IDs`, () => {
       for (let i = 0; i < 100; i++) {
         let id = nanoid()
@@ -179,11 +183,6 @@ for (let type of ['node', 'browser']) {
       }
     })
 
-    test(`${type} / customAlphabet / does not fall in infinite loop`, () => {
-      equal(nanoid(0), '')
-      equal(customAlphabet('abc', 0)(0), '')
-    })
-
     if (type === 'node') {
       test(`${type} / proxy number / prevent collision`, () => {
         let makeProxyNumberToReproducePreviousID = () => {
@@ -214,6 +213,11 @@ for (let type of ['node', 'browser']) {
         let id1 = nanoid()
         let id2 = nanoid(makeProxyNumberToReproducePreviousID())
         notEqual(id1, id2)
+      })
+
+      test(`${type} / customAlphabet / does not fall in infinite loop`, () => {
+        equal(customAlphabet('abc')(0), '')
+        equal(customAlphabet('abc', 0)(0), '')
       })
     }
   })
