@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.1.6
+* Fixed infinite loop on 0 size for `customAlphabet`.
+
 ## 5.1.5
 * Fixed latest version on npm after 3.x release.
 
