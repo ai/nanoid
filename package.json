@@ -57,6 +57,7 @@
     "@size-limit/file": "^11.2.0",
     "@size-limit/webpack": "^11.2.0",
     "@types/node": "^24.5.2",
+    "actions-up": "^1.4.1",
     "better-node-test": "^0.7.2",
     "c8": "^10.1.3",
     "clean-publish": "^5.2.2",
