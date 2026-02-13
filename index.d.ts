@@ -79,7 +79,7 @@ export function customRandom<Type extends string>(
   alphabet: string,
   size: number,
   random: (bytes: number) => Uint8Array
-): () => Type
+): (size?: number) => Type
 
 /**
  * URL safe symbols.
