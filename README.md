@@ -477,7 +477,7 @@ the same ID generator on the client and server side.
 * [R](https://github.com/hrbrmstr/nanoid) (with dictionaries)
 * [Ruby](https://github.com/radeno/nanoid.rb)
 * [Rust](https://github.com/nikolay-govorov/nanoid)
-* [Swift](https://github.com/antiflasher/NanoID)
+* [Swift](https://github.com/ShivaHuang/swift-nanoid)
 * [Unison](https://share.unison-lang.org/latest/namespaces/hojberg/nanoid)
 * [V](https://github.com/invipal/nanoid)
 * [Zig](https://github.com/SasLuca/zig-nanoid)
