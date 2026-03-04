@@ -5,23 +5,43 @@
 
 **English** | [日本語](./README.ja.md) | [Русский](./README.ru.md) | [简体中文](./README.zh-CN.md) | [Bahasa Indonesia](./README.id-ID.md) | [한국어](./README.ko.md)
 
+**Quick Links:** [Quick Start](#quick-start) • [Installation](#installation) • [Usage](#usage) • [React](#react) • [API](#api) • [Troubleshooting](#troubleshooting) • [FAQ](#faq)
+
 A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 
 > “An amazing level of senseless perfectionism,
 > which is simply impossible not to respect.”
 
-* **Small.** 118 bytes (minified and brotlied). No dependencies.
+- **Small.** 118 bytes (minified and brotlied). No dependencies.
   [Size Limit] controls the size.
-* **Safe.** It uses hardware random generator. Can be used in clusters.
-* **Short IDs.** It uses a larger alphabet than UUID (`A-Za-z0-9_-`).
+- **Safe.** It uses hardware random generator. Can be used in clusters.
+- **Short IDs.** It uses a larger alphabet than UUID (`A-Za-z0-9_-`).
   So ID size was reduced from 36 to 21 symbols.
-* **Portable.** Nano ID was ported
+- **Portable.** Nano ID was ported
   to over [20 programming languages](./README.md#other-programming-languages).
 
 ```js
 import { nanoid } from 'nanoid'
 model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
+
+## Quick Start
+
+### Installation
+
+```bash
+npm install nanoid
+```
+
+### Usage
+
+```js
+import { nanoid } from 'nanoid'
+
+const id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
+```
+
+For more examples, see [Installation](#installation) and [API](#api) sections.
 
 ---
 
@@ -30,9 +50,8 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 ---
 
 [online tool]: https://gitpod.io/#https://github.com/ai/nanoid/
-[with Babel]:  https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/
-[Size Limit]:  https://github.com/ai/size-limit
-
+[with Babel]: https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/
+[Size Limit]: https://github.com/ai/size-limit
 
 ## Table of Contents
 
@@ -59,7 +78,6 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
   - [Other Programming Languages](#other-programming-languages)
 - [Tools](#tools)
 
-
 ## Comparison with UUID
 
 Nano ID is quite comparable to UUID v4 (random-based).
@@ -76,6 +94,29 @@ There are two main differences between Nano ID and UUID v4:
 2. Nano ID code is **4 times smaller** than `uuid/v4` package:
    130 bytes instead of 423.
 
+### When to Use UUID Instead
+
+While Nano ID is smaller and faster, UUID v4 (and newer versions) are appropriate when:
+
+- Your database/ORM has **built-in UUID support** without extra libraries
+- You need **offline UUID generation** with mathematically zero collision risk (UUID v6+ with timestamps)
+- Your organization requires **standardized ID formats** for compliance or audit purposes
+- You're already using a UUID library in your tech stack
+- Your team is more familiar with UUID conventions
+
+**Example: PostgreSQL with native UUID support**
+
+```sql
+CREATE TABLE users (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  name TEXT,
+  created_at TIMESTAMP DEFAULT NOW()
+);
+```
+
+PostgreSQL's native UUID type and functions mean you don't need JavaScript generation.
+
+**Conclusion:** For most JavaScript projects, Nano ID's **smaller size** (21 vs 36 characters) and **faster generation** make it the better choice. UUID is appropriate if you have specific infrastructure or compliance requirements.
 
 ## Benchmark
 
@@ -101,16 +142,15 @@ rndm                       2,308,044 ops/sec
 
 Test configuration: Framework 13 7840U, Fedora 39, Node.js 21.6.
 
-
 ## Security
 
-*See a good article about random generators theory:
-[Secure random values (in Node.js)]*
+_See a good article about random generators theory:
+[Secure random values (in Node.js)]_
 
-* **Unpredictability.** Instead of using the unsafe `Math.random()`, Nano ID
+- **Unpredictability.** Instead of using the unsafe `Math.random()`, Nano ID
   uses the `crypto` module in Node.js and the Web Crypto API in browsers.
   These modules use unpredictable hardware random generator.
-* **Uniformity.** `random % alphabet` is a popular mistake to make when coding
+- **Uniformity.** `random % alphabet` is a popular mistake to make when coding
   an ID generator. The distribution will not be even; there will be a lower
   chance for some symbols to appear compared to others. So, it will reduce
   the number of tries when brute-forcing. Nano ID uses a [better algorithm]
@@ -119,16 +159,15 @@ Test configuration: Framework 13 7840U, Fedora 39, Node.js 21.6.
   <img src="img/distribution.png" alt="Nano ID uniformity"
      width="340" height="135">
 
-* **Well-documented:** all Nano ID hacks are documented. See comments
+- **Well-documented:** all Nano ID hacks are documented. See comments
   in [the source].
-* **Vulnerabilities:** to report a security vulnerability, please use
+- **Vulnerabilities:** to report a security vulnerability, please use
   the [Tidelift security contact](https://tidelift.com/security).
   Tidelift will coordinate the fix and disclosure.
 
 [Secure random values (in Node.js)]: https://gist.github.com/joepie91/7105003c3b26e65efcea63f3db82dfba
-[better algorithm]:                  https://github.com/ai/nanoid/blob/main/index.js
-[the source]:                        https://github.com/ai/nanoid/blob/main/index.js
-
+[better algorithm]: https://github.com/ai/nanoid/blob/main/index.js
+[the source]: https://github.com/ai/nanoid/blob/main/index.js
 
 ## Install
 
@@ -139,6 +178,16 @@ Nano ID 5 works with ESM projects (with `import`) in tests or Node.js scripts.
 ```bash
 npm install nanoid
 ```
+
+**Node.js Compatibility:** Nano ID 5 requires **Node.js 18.0.0 or later** for native ESM support.
+
+For browser environments, use the browser-specific entry point:
+
+```js
+import { nanoid } from 'nanoid/browser'
+```
+
+This uses the Web Crypto API instead of Node.js's `crypto` module, preventing "Cannot find module 'crypto'" errors.
 
 ### CommonJS
 
@@ -183,7 +232,6 @@ import { nanoid } from '@sitnik/nanoid'
 For Deno install it by `deno add jsr:@sitnik/nanoid` or import
 from `jsr:@sitnik/nanoid`.
 
-
 ### CDN
 
 For quick hacks, you can load Nano ID from CDN. Though, it is not recommended
@@ -199,7 +247,6 @@ Nano ID has 2 APIs: normal and non-secure.
 
 By default, Nano ID uses URL-friendly symbols (`A-Za-z0-9_-`) and returns an ID
 with 21 characters (to have a collision probability similar to UUID v4).
-
 
 ### Blocking
 
@@ -228,7 +275,6 @@ or a [random generator](#custom-random-bytes-generator).
 
 [ID collision probability]: https://zelark.github.io/nano-id-cc/
 
-
 ### Non-Secure
 
 By default, Nano ID uses hardware random bytes generation for security
@@ -240,6 +286,43 @@ import { nanoid } from 'nanoid/non-secure'
 const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
+### When to Use Non-Secure Mode
+
+The `non-secure` API uses `Math.random()` instead of cryptographic random. It's approximately 2x faster but **predictable and not suitable for security-sensitive applications**.
+
+**✅ SAFE to use non-secure for:**
+
+- Animations and visual effects
+- Game IDs and temporary game state
+- UI component keys (when ID doesn't need to survive page reload)
+- Internal analytics and tracking
+- Form field temporary placeholders
+- Non-persistent cache keys
+
+**❌ NEVER use non-secure for:**
+
+- Database primary keys
+- API keys or authentication tokens
+- User session IDs
+- URLs that need to be hard to guess
+- Anything exposed to untrusted users
+- Security tokens or verification codes
+- Anything used in production databases
+
+**Example - Correct usage in animations:**
+
+```js
+import { nanoid } from 'nanoid/non-secure'
+
+// Fast, but predictable - safe for animations
+const animationId = nanoid()
+
+// If the ID must be secure, use the standard version instead
+import { nanoid as secureNanoid } from 'nanoid'
+const secureId = secureNanoid() // Use this for databases, auth, etc.
+```
+
+**Rule of thumb:** If the ID will exist beyond the current browser session or be stored in a database, use the standard `nanoid()`. If it's temporary UI state, non-secure is fine.
 
 ### Custom Alphabet or Size
 
@@ -275,8 +358,40 @@ model.id = nanoid(5) //=> "f01a2"
 ```
 
 [ID collision probability]: https://alex7kom.github.io/nano-nanoid-cc/
-[`nanoid-dictionary`]:      https://github.com/CyberAP/nanoid-dictionary
+[`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
 
+### Choosing a Safe ID Size
+
+By default, Nano ID generates 21-character IDs, which provide excellent collision safety. If you need a different size, use the [Nano ID collision calculator](https://zelark.github.io/nano-id-cc/) to verify your choice is safe.
+
+**General guidelines for different use cases:**
+
+| ID Length | Use Case                  | Collision Safety | Example      |
+| --------- | ------------------------- | ---------------- | ------------ |
+| 6         | Temporary, short URLs     | Low              | `nanoid(6)`  |
+| 10        | Cache keys, sessions      | Medium           | `nanoid(10)` |
+| 12        | API keys, invites         | High             | `nanoid(12)` |
+| 21        | **Default**, primary keys | Very High        | `nanoid()`   |
+
+**Examples:**
+
+```js
+// 21 characters (default, safest choice)
+nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
+
+// 10 characters (suitable for cache keys, session IDs)
+nanoid(10) //=> "IRFa-VaY2b"
+
+// 6 characters (temporary IDs only)
+nanoid(6) //=> "V1StGX"
+
+// Custom alphabet + custom size
+import { customAlphabet } from 'nanoid'
+const nanoid = customAlphabet('0123456789', 12)
+nanoid() //=> "123456789012"
+```
+
+**Important Security Note:** Always verify your choice using the [collision probability calculator](https://zelark.github.io/nano-id-cc/), especially for security-critical applications like API keys or authentication tokens.
 
 ### Custom Random Bytes Generator
 
@@ -290,7 +405,7 @@ import { customRandom } from 'nanoid'
 
 const rng = seedrandom(seed)
 const nanoid = customRandom('abcdef', 10, size => {
-  return (new Uint8Array(size)).map(() => 256 * rng())
+  return new Uint8Array(size).map(() => 256 * rng())
 })
 
 nanoid() //=> "fbaefaadeb"
@@ -311,56 +426,131 @@ Note, that between Nano ID versions we may change random generator
 call sequence. If you are using seed-based generators, we do not guarantee
 the same result.
 
+## Troubleshooting
+
+### "Cannot find module 'crypto'" or "Error resolving 'crypto'"
+
+**Problem:** You see an error like:
+
+```
+Cannot find module 'crypto'
+Error resolving 'crypto'
+```
+
+**Cause:** You're using the Node.js version in a browser or browser bundler.
+
+**Solution:** Use the browser-specific entry point:
+
+```js
+// ❌ Wrong - Uses Node.js crypto module
+import { nanoid } from 'nanoid'
+
+// ✅ Correct - Uses Web Crypto API
+import { nanoid } from 'nanoid/browser'
+```
+
+### "node:crypto is not defined" in Next.js
+
+**Problem:** Error appears when using Nano ID in Next.js App Router.
+
+**Cause:** Next.js App Router code runs in the browser by default, but you imported the Node.js version.
+
+**Solution:** Mark server-only code with `'use server'`:
+
+```js
+'use server'
+
+import { nanoid } from 'nanoid'
+
+export async function generateId() {
+  return nanoid()
+}
+```
+
+Or use the browser entry point in client code:
+
+```js
+'use client'
+
+import { nanoid } from 'nanoid/browser'
+
+export default function ClientComponent() {
+  const id = nanoid()
+  return <div id={id}>...</div>
+}
+```
+
+### ESM Import Issues in CommonJS Projects
+
+**Problem:** Cannot use `import { nanoid } from 'nanoid'` in a CommonJS project.
+
+**Cause:** Nano ID 5 is ESM-only. CommonJS requires a different approach.
+
+**Solution Option 1 - Use CommonJS entry point:**
+
+```js
+const { nanoid } = require('nanoid')
+const id = nanoid()
+```
+
+**Solution Option 2 - Use dynamic import (Node.js 13.2+):**
+
+```js
+const { nanoid } = await import('nanoid')
+const id = nanoid()
+```
+
+See the [CommonJS](#commonjs) section for more details.
 
 ## Usage
 
 ### React
 
-There’s no correct way to use Nano ID for React `key` prop
-since it should be consistent among renders.
+Generate IDs during component initialization, **not** during render:
 
-```jsx
-function Todos({todos}) {
-  return (
-    <ul>
-      {todos.map(todo => (
-        <li key={nanoid()}> /* DON’T DO IT */
-          {todo.text}
-        </li>
-      ))}
-    </ul>
-  )
+```js
+import { useState } from 'react'
+import { nanoid } from 'nanoid'
+
+// ✅ Correct: ID is created once and stays stable
+export default function MyComponent() {
+  const [id] = useState(() => nanoid())
+
+  return <div id={id}>Component with unique ID</div>
 }
 ```
 
-You should rather try to reach for stable ID inside your list item.
+**Do NOT generate IDs during render:**
 
-```jsx
-const todoItems = todos.map((todo) =>
-  <li key={todo.id}>
-    {todo.text}
-  </li>
-)
+```js
+// ❌ Wrong: Creates new ID on every render, breaks React
+export default function MyComponent() {
+  const id = nanoid() // This changes every render!
+  return <div id={id}>Component with unique ID</div>
+}
 ```
 
-In case you don’t have stable IDs you'd rather use index as `key`
-instead of `nanoid()`:
+**For lists of items, generate IDs when creating items:**
 
-```jsx
-const todoItems = todos.map((text, index) =>
-  <li key={index}> /* Still not recommended but preferred over nanoid().
-                      Only do this if items have no stable IDs. */
-    {text}
-  </li>
-)
+```js
+export default function List() {
+  const [items, setItems] = useState([])
+
+  const addItem = () => {
+    // ✅ Correct: ID created once with the item
+    setItems([...items, { id: nanoid(), text: '' }])
+  }
+
+  return (
+    <>
+      <button onClick={addItem}>Add Item</button>
+      {items.map(item => (
+        <input key={item.id} defaultValue={item.text} />
+      ))}
+    </>
+  )
+}
 ```
-
-In case you just need random IDs to link elements like labels
-and input fields together, [`useId`] is recommended.
-That hook was added in React 18.
-
-[`useId`]: https://reactjs.org/docs/hooks-reference.html#useid
-
 
 ### React Native
 
@@ -377,7 +567,6 @@ import { nanoid } from 'nanoid'
 
 [`react-native-get-random-values`]: https://github.com/LinusU/react-native-get-random-values
 
-
 ### PouchDB and CouchDB
 
 In PouchDB and CouchDB, IDs can’t start with an underscore `_`.
@@ -392,7 +581,6 @@ db.put({
   …
 })
 ```
-
 
 ### CLI
 
@@ -449,52 +637,51 @@ const user: User = {
 Nano ID was ported to many languages. You can use these ports to have
 the same ID generator on the client and server side.
 
-* [C](https://github.com/lukateras/nanoid.h)
-* [C#](https://github.com/codeyu/nanoid-net)
-* [C++](https://github.com/mcmikecreations/nanoid_cpp)
-* [Clojure and ClojureScript](https://github.com/zelark/nano-id)
-* [ColdFusion/CFML](https://github.com/JamoCA/cfml-nanoid)
-* [Crystal](https://github.com/mamantoha/nanoid.cr)
-* [Dart & Flutter](https://github.com/pd4d10/nanoid-dart)
-* [Elixir](https://github.com/railsmechanic/nanoid)
-* [Gleam](https://github.com/0xca551e/glanoid)
-* [Go](https://github.com/matoous/go-nanoid)
-* [Haskell](https://github.com/MichelBoucey/NanoID)
-* [Haxe](https://github.com/flashultra/uuid)
-* [Janet](https://sr.ht/~statianzo/janet-nanoid/)
-* [Java](https://github.com/wosherco/jnanoid-enhanced)
-* [Kotlin](https://github.com/viascom/nanoid-kotlin)
-* [MySQL/MariaDB](https://github.com/viascom/nanoid-mysql-mariadb)
-* [Nim](https://github.com/icyphox/nanoid.nim)
-* [OCaml](https://github.com/routineco/ocaml-nanoid)
-* [Perl](https://github.com/tkzwtks/Nanoid-perl)
-* [PHP](https://github.com/hidehalo/nanoid-php)
-* Python [native](https://github.com/puyuan/py-nanoid) implementation
+- [C](https://github.com/lukateras/nanoid.h)
+- [C#](https://github.com/codeyu/nanoid-net)
+- [C++](https://github.com/mcmikecreations/nanoid_cpp)
+- [Clojure and ClojureScript](https://github.com/zelark/nano-id)
+- [ColdFusion/CFML](https://github.com/JamoCA/cfml-nanoid)
+- [Crystal](https://github.com/mamantoha/nanoid.cr)
+- [Dart & Flutter](https://github.com/pd4d10/nanoid-dart)
+- [Elixir](https://github.com/railsmechanic/nanoid)
+- [Gleam](https://github.com/0xca551e/glanoid)
+- [Go](https://github.com/matoous/go-nanoid)
+- [Haskell](https://github.com/MichelBoucey/NanoID)
+- [Haxe](https://github.com/flashultra/uuid)
+- [Janet](https://sr.ht/~statianzo/janet-nanoid/)
+- [Java](https://github.com/wosherco/jnanoid-enhanced)
+- [Kotlin](https://github.com/viascom/nanoid-kotlin)
+- [MySQL/MariaDB](https://github.com/viascom/nanoid-mysql-mariadb)
+- [Nim](https://github.com/icyphox/nanoid.nim)
+- [OCaml](https://github.com/routineco/ocaml-nanoid)
+- [Perl](https://github.com/tkzwtks/Nanoid-perl)
+- [PHP](https://github.com/hidehalo/nanoid-php)
+- Python [native](https://github.com/puyuan/py-nanoid) implementation
   with [dictionaries](https://pypi.org/project/nanoid-dictionary)
   and [fast](https://github.com/oliverlambson/fastnanoid) implementation (written in Rust)
-* Postgres [Extension](https://github.com/spa5k/uids-postgres)
+- Postgres [Extension](https://github.com/spa5k/uids-postgres)
   and [Native Function](https://github.com/viascom/nanoid-postgres)
-* [R](https://github.com/hrbrmstr/nanoid) (with dictionaries)
-* [Ruby](https://github.com/radeno/nanoid.rb)
-* [Rust](https://github.com/nikolay-govorov/nanoid)
-* [Swift](https://github.com/ShivaHuang/swift-nanoid)
-* [Unison](https://share.unison-lang.org/latest/namespaces/hojberg/nanoid)
-* [V](https://github.com/invipal/nanoid)
-* [Zig](https://github.com/SasLuca/zig-nanoid)
+- [R](https://github.com/hrbrmstr/nanoid) (with dictionaries)
+- [Ruby](https://github.com/radeno/nanoid.rb)
+- [Rust](https://github.com/nikolay-govorov/nanoid)
+- [Swift](https://github.com/ShivaHuang/swift-nanoid)
+- [Unison](https://share.unison-lang.org/latest/namespaces/hojberg/nanoid)
+- [V](https://github.com/invipal/nanoid)
+- [Zig](https://github.com/SasLuca/zig-nanoid)
 
 For other environments, [CLI] is available to generate IDs from a command line.
 
 [CLI]: #cli
 
-
 ## Tools
 
-* [ID size calculator] shows collision probability when adjusting
+- [ID size calculator] shows collision probability when adjusting
   the ID alphabet or size.
-* [`nanoid-dictionary`] with popular alphabets to use with [`customAlphabet`].
-* [`nanoid-good`] to be sure that your ID doesn’t contain any obscene words.
+- [`nanoid-dictionary`] with popular alphabets to use with [`customAlphabet`].
+- [`nanoid-good`] to be sure that your ID doesn’t contain any obscene words.
 
 [`nanoid-dictionary`]: https://github.com/CyberAP/nanoid-dictionary
-[ID size calculator]:  https://zelark.github.io/nano-id-cc/
-[`customAlphabet`]:    #custom-alphabet-or-size
-[`nanoid-good`]:       https://github.com/y-gagar1n/nanoid-good
+[ID size calculator]: https://zelark.github.io/nano-id-cc/
+[`customAlphabet`]: #custom-alphabet-or-size
+[`nanoid-good`]: https://github.com/y-gagar1n/nanoid-good
