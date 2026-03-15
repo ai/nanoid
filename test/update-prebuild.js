@@ -11,7 +11,7 @@ const ROOT = join(import.meta.dirname, '..')
 async function build() {
   let js = await readFile(join(ROOT, 'index.browser.js'))
   let func = js.toString().match(/(export let nanoid [\W\w]*$)/)[1]
-  let all = `let a = '${urlAlphabet}'\n${func.replaceAll('urlAlphabet', 'a')}`
+  let all = `let a = '${urlAlphabet}'\n${func.replaceAll('scopedUrlAlphabet', 'a')}`
   let { code } = await minify(all)
   await writeFile(join(ROOT, 'nanoid.js'), code)
 }
