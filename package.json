@@ -14,6 +14,7 @@
     "test:coverage": "c8 bnt",
     "test:lint": "eslint .",
     "test:size": "pnpm clean && size-limit",
+    "test:versions": "node ./test/check-versions.js",
     "test": "pnpm run /^test:/"
   },
   "type": "module",
@@ -36,7 +37,10 @@
       "react-native": "./index.browser.js",
       "default": "./index.js"
     },
-    "./non-secure": "./non-secure/index.js",
+    "./non-secure": {
+      "types": "./non-secure/index.d.ts",
+      "default": "./non-secure/index.js"
+    },
     "./package.json": "./package.json"
   },
   "browser": {
@@ -49,29 +53,30 @@
   "sideEffects": false,
   "types": "./index.d.ts",
   "devDependencies": {
-    "@babel/core": "^7.28.4",
-    "@logux/eslint-config": "^56.1.0",
+    "@babel/core": "^7.29.0",
+    "@logux/eslint-config": "^57.0.2",
     "@lukeed/uuid": "^2.0.1",
     "@napi-rs/uuid": "^0.2.2",
     "@originjs/vite-plugin-commonjs": "^1.0.3",
-    "@size-limit/file": "^11.2.0",
-    "@size-limit/webpack": "^11.2.0",
-    "@types/node": "^24.5.2",
-    "actions-up": "^1.4.1",
-    "better-node-test": "^0.7.2",
-    "c8": "^10.1.3",
-    "clean-publish": "^5.2.2",
-    "eslint": "^9.36.0",
+    "@size-limit/file": "^12.0.1",
+    "@size-limit/webpack": "^12.0.1",
+    "@types/node": "^25.5.0",
+    "actions-up": "^1.12.0",
+    "better-node-test": "^0.8.3",
+    "c8": "^11.0.0",
+    "clean-publish": "^6.0.3",
+    "eslint": "^10.0.3",
     "rndm": "^1.2.0",
     "secure-random-string": "^1.1.4",
     "shortid": "^2.2.17",
-    "size-limit": "^11.2.0",
-    "terser": "^5.44.0",
-    "tinybench": "^5.0.1",
+    "simple-git-hooks": "^2.13.1",
+    "size-limit": "^12.0.1",
+    "terser": "^5.46.0",
+    "tinybench": "^6.0.0",
     "uid": "^2.0.2",
     "uid-safe": "^2.1.5",
     "uuid": "^13.0.0",
-    "vite": "^7.1.6"
+    "vite": "^8.0.0"
   },
   "size-limit": [
     {
@@ -99,7 +104,7 @@
       "name": "non-secure customAlphabet",
       "import": "{ customAlphabet }",
       "path": "non-secure/index.js",
-      "limit": "55 B"
+      "limit": "53 B"
     }
   ],
   "prettier": {
@@ -128,5 +133,17 @@
     ],
     "skip-full": true,
     "clean": true
+  },
+  "simple-git-hooks": {
+    "pre-commit": "./test/check-versions.js"
+  },
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "esbuild",
+      "unrs-resolver"
+    ],
+    "onlyBuiltDependencies": [
+      "simple-git-hooks"
+    ]
   }
 }
