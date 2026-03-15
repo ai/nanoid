@@ -172,7 +172,7 @@ nanoid(10) //=> "IRFa-VaY2b"
 您也可以使用 [自定义字母表](#自定义字母或大小)
 或者是 [自定义生成器](#自定义随机字节生成器).
 
-[ID 碰撞概率]: https://alex7kom.github.io/nano-nanoid-cc/
+[ID 碰撞概率]: https://zelark.github.io/nano-id-cc/
 
 
 ### 不安全
@@ -215,7 +215,7 @@ const nanoid = customAlphabet('1234567890abcdef', 10)
 model.id = nanoid(5) //=> "f01a2"
 ```
 
-[ID collision probability]: https://alex7kom.github.io/nano-nanoid-cc/
+[ID collision probability]: https://zelark.github.io/nano-id-cc/
 [`nanoid-dictionary`]:      https://github.com/CyberAP/nanoid-dictionary
 
 

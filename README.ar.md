@@ -324,7 +324,7 @@ const nanoid = customAlphabet('1234567890abcdef', 10)
 model.id = nanoid(5) //=> "f01a2"
 ```
 
-[احتمالية تكرار المُعرِّف]: https://alex7kom.github.io/nano-nanoid-cc/
+[احتمالية تكرار المُعرِّف]: https://zelark.github.io/nano-id-cc/
 [`nanoid-dictionary`]:      https://github.com/CyberAP/nanoid-dictionary
 
 <div dir="rtl">
