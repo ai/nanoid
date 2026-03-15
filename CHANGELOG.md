@@ -1,6 +1,12 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.1.7
+* Added `--version` to CLI (by @mahmoodhamdi).
+* Updated `nanoid.js` for CDN (by @mahmoodhamdi).
+* Fixed docs (by @mahmoodhamdi).
+* Fixed `customRandom` types (by @oguimbal).
+
 ## 5.1.6
 * Fixed infinite loop on 0 size for `customAlphabet`.
 
