@@ -80,7 +80,7 @@ Nano ID قابل للمقارنة مع UUID v4 (المبني على العشوا
 1. يستخدم Nano ID أبجدية أكبر، لذا يتم ضغط عدد مماثل من البتّات العشوائية
    في 21 رمزًا فقط بدلاً من 36.
 2. كود Nano ID أصغر بـ **4 مرات** من حزمة `uuid/v4`:
-   130 بايت مقابل 423.
+   118 بايت مقابل 423.
 
 
 ## اختبار الأداء
@@ -429,7 +429,7 @@ const todoItems = todos.map((text, index) =>
 labels وحقول الإدخال، يُنصح باستخدام [`useId`].
 تمت إضافة هذا الـ hook في React 18.
 
-[`useId`]: https://reactjs.org/docs/hooks-reference.html#useid
+[`useId`]: https://react.dev/reference/react/useId
 
 
 ### React Native

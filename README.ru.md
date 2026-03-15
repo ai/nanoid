@@ -79,7 +79,7 @@ Nano ID похож на UUID v4 (случайный).
 1. Nano ID использует более широкий алфавит, и сравнимое количество
    битов случайности будут упакованы в более короткую строку
    (21 символ, против 36 у UUID).
-2. Код Nano ID **в 4 раз меньше**, чем у `uuid/v4` — 130 байт против 423.
+2. Код Nano ID **в 4 раз меньше**, чем у `uuid/v4` — 118 байт против 423.
 
 
 ## Сравнение производительности
@@ -340,7 +340,7 @@ function Todos({ todos }) {
 Для связи `<input>` и `<label>` лучше использовать [`useId`],
 который был добавлен в React 18.
 
-[`useId`]: https://reactjs.org/docs/hooks-reference.html#useid
+[`useId`]: https://react.dev/reference/react/useId
 
 
 ### React Native

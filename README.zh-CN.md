@@ -66,7 +66,7 @@ Nano ID 和 UUID v4之间有两个主要区别:
 
 1. Nano ID 使用更大的字母表，所以类似数量的随机位
    被包装在21个符号中，而不是36个。
-2. Nano ID 代码比 `uuid/v4` 包少 **4倍**: 130字节而不是423字节.
+2. Nano ID 代码比 `uuid/v4` 包少 **4倍**: 118字节而不是423字节.
 
 
 ## 基准值
@@ -294,7 +294,7 @@ const todoItems = todos.map((text, index) =>
 
 如果您只需要随机 ID 来将元素（如标签和输入字段）链接在一起，建议使用 [`useId`]。该钩子在 React 18 中添加。
 
-[`useId`]: https://reactjs.org/docs/hooks-reference.html#useid
+[`useId`]: https://react.dev/reference/react/useId
 
 
 ### React Native
