@@ -52,4 +52,10 @@ describe('CLI', () => {
     match(stdout, /Usage/)
     match(stdout, /\$ nanoid \[options]/)
   })
+
+  test('displays version', async () => {
+    let { stderr, stdout } = await exec(`node "${BIN}" --version`)
+    equal(stderr, '')
+    match(stdout, /^\d+\.\d+\.\d+\n$/)
+  })
 })
