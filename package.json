@@ -55,7 +55,7 @@
   "types": "./index.d.ts",
   "devDependencies": {
     "@babel/core": "^7.29.0",
-    "@logux/eslint-config": "^57.0.2",
+    "@logux/eslint-config": "^57.1.0",
     "@lukeed/uuid": "^2.0.1",
     "@napi-rs/uuid": "^0.2.2",
     "@originjs/vite-plugin-commonjs": "^1.0.3",
@@ -65,7 +65,7 @@
     "actions-up": "^1.12.0",
     "better-node-test": "^0.8.3",
     "c8": "^11.0.0",
-    "clean-publish": "^6.0.3",
+    "clean-publish": "^6.0.4",
     "eslint": "^10.0.3",
     "rndm": "^1.2.0",
     "secure-random-string": "^1.1.4",
