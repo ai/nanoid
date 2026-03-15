@@ -72,7 +72,7 @@ Nano ID와 UUID v4에는 두 가지의 주요한 차이점이 있습니다:
 
 1. Nano ID는 대문자를 사용합니다. 그래서 유사한 개수의 랜덤 값을 36개가 아닌 21개의 문자로 나타낼 수 있습니다.
 2. Nano ID 코드는 `uuid/v4` 패키지보다 **4분의 1 사이즈**입니다:
-   UUIDv4는 423 bytes, Nano ID는 130 bytes 입니다.
+   UUIDv4는 423 bytes, Nano ID는 118 bytes 입니다.
 
 
 ## 벤치마크
@@ -343,7 +343,7 @@ const todoItems = todos.map((text, index) =>
 랜덤한 아이디를 생성하여 HTML 요소간의 연결 (label과 input 등)에 사용하는 경우에는
 React 18에서 추가된 [`useId`] 를 추천합니다.
 
-[`useId`]: https://reactjs.org/docs/hooks-reference.html#useid
+[`useId`]: https://react.dev/reference/react/useId
 
 
 ### React Native

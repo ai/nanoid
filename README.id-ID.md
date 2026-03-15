@@ -60,7 +60,7 @@ Nano ID dapat dibandingkan dengan UUID v4 (yang berbasis acak / _randomly genera
 Ada dua buah perbedaan antara Nano ID dan UUID v4:
 
 1. Nano ID menggunakan alfabet yang lebih lebar, karenanya jumlah bita acak dapat 'dikemas' dalam 21 simbol, bukan 36 simbol.
-2. Kode sumber Nano ID **empat kali lebih kecil** ketimbang `uuid/v4`: 130 bytes dibanding 423 bytes.
+2. Kode sumber Nano ID **empat kali lebih kecil** ketimbang `uuid/v4`: 118 bytes dibanding 423 bytes.
 
 
 ## Benchmark

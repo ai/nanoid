@@ -73,7 +73,7 @@ Nano IDとUUID v4の主な違いは2つあります：
 1. Nano IDはより大きなアルファベットを使用するため、同様のランダムビット数が
    36文字ではなく21文字に詰め込まれています。
 2. Nano IDのコードはuuid/v4パッケージより**4倍小さい**です：
-   423バイトではなく130バイトです。
+   423バイトではなく118バイトです。
 
 
 ## ベンチマーク
@@ -339,7 +339,7 @@ const todoItems = todos.map((text, index) =>
 ラベルと入力フィールドのように要素を関連付けるためだけにランダムなIDが必要な場合は、[`useId`]が推奨されます。
 このフックはReact 18で追加されました。
 
-[`useId`]: https://reactjs.org/docs/hooks-reference.html#useid
+[`useId`]: https://react.dev/reference/react/useId
 
 
 ### React Native
