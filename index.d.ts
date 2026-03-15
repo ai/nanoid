@@ -39,7 +39,7 @@ export function nanoid<Type extends string>(size?: number): Type
  * @returns A random string generator.
  *
  * ```js
- * const { customAlphabet } = require('nanoid')
+ * import { customAlphabet } from 'nanoid'
  * const nanoid = customAlphabet('0123456789абвгдеё', 5)
  * nanoid() //=> "8ё56а"
  * ```
@@ -56,7 +56,7 @@ export function customAlphabet<Type extends string>(
  * will not be secure.
  *
  * ```js
- * import { customRandom } from 'nanoid/format'
+ * import { customRandom } from 'nanoid'
  *
  * const nanoid = customRandom('abcdef', 5, size => {
  *   const random = []
