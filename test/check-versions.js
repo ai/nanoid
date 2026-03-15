@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 
-import { readFileSync } from 'fs'
-import { join, dirname } from 'path'
-import { fileURLToPath } from 'url'
+import { readFileSync } from 'node:fs'
+import { join } from 'node:path'
 
-let dir = dirname(fileURLToPath(import.meta.url))
-let pkg = JSON.parse(readFileSync(join(dir, '../package.json'), 'utf8'))
-let jsr = JSON.parse(readFileSync(join(dir, '../jsr.json'), 'utf8'))
+let pkg = JSON.parse(
+  readFileSync(join(import.meta.dirname, '../package.json'), 'utf8')
+)
+let jsr = JSON.parse(
+  readFileSync(join(import.meta.dirname, '../jsr.json'), 'utf8')
+)
 
 if (pkg.version !== jsr.version) {
   process.stderr.write(
