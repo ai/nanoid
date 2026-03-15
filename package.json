@@ -36,7 +36,10 @@
       "react-native": "./index.browser.js",
       "default": "./index.js"
     },
-    "./non-secure": "./non-secure/index.js",
+    "./non-secure": {
+      "types": "./non-secure/index.d.ts",
+      "default": "./non-secure/index.js"
+    },
     "./package.json": "./package.json"
   },
   "browser": {
