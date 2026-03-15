@@ -70,7 +70,9 @@ let longestTask = bench.tasks.reduce((maxLength, task) => {
 }, 0)
 
 bench.addEventListener('cycle', ({ task }) => {
-  let hz = (+task.result.hz.toFixed(0)).toLocaleString('en-US').padStart(14)
+  let hz = (+task.result.throughput.mean.toFixed(0))
+    .toLocaleString('en-US')
+    .padStart(14)
 
   let name = task.name.padEnd(longestTask)
   let value = styleText('bold', hz)
