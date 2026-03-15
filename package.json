@@ -14,6 +14,7 @@
     "test:coverage": "c8 bnt",
     "test:lint": "eslint .",
     "test:size": "pnpm clean && size-limit",
+    "test:versions": "node ./test/check-versions.js",
     "test": "pnpm run /^test:/"
   },
   "type": "module",
@@ -68,6 +69,7 @@
     "rndm": "^1.2.0",
     "secure-random-string": "^1.1.4",
     "shortid": "^2.2.17",
+    "simple-git-hooks": "^2.13.1",
     "size-limit": "^12.0.1",
     "terser": "^5.46.0",
     "tinybench": "^6.0.0",
@@ -131,5 +133,17 @@
     ],
     "skip-full": true,
     "clean": true
+  },
+  "simple-git-hooks": {
+    "pre-commit": "./test/check-versions.js"
+  },
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "esbuild",
+      "unrs-resolver"
+    ],
+    "onlyBuiltDependencies": [
+      "simple-git-hooks"
+    ]
   }
 }
