@@ -1,19 +1,12 @@
 #!/usr/bin/env node
 
-import { readFile, writeFile } from 'node:fs/promises'
-import { join } from 'node:path'
-import { minify } from 'terser'
+import { writeFile } from 'node:fs/promises'
 
-import { urlAlphabet } from '../url-alphabet/index.js'
-
-const ROOT = join(import.meta.dirname, '..')
+import { prebuild, BUILD_PATH } from './prebuild.ts'
 
 async function build() {
-  let js = await readFile(join(ROOT, 'index.browser.js'))
-  let func = js.toString().match(/(export let nanoid [\W\w]*$)/)[1]
-  let all = `let a = '${urlAlphabet}'\n${func.replaceAll('scopedUrlAlphabet', 'a')}`
-  let { code } = await minify(all)
-  await writeFile(join(ROOT, 'nanoid.js'), code)
+  let code = await prebuild()
+  await writeFile(BUILD_PATH, code)
 }
 
 build().catch(e => {

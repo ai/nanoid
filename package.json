@@ -15,6 +15,7 @@
     "test:lint": "eslint .",
     "test:size": "pnpm clean && size-limit",
     "test:versions": "node ./test/check-versions.js",
+    "test:prebuild": "node ./test/check-prebuild.js",
     "test": "pnpm run /^test:/"
   },
   "type": "module",
