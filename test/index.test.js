@@ -48,6 +48,14 @@ for (let type of ['node', 'browser']) {
       equal(nanoid(10).length, 10)
     })
 
+    test(`generates large IDs`, () => {
+      let id = nanoid(1000)
+      equal(id.length, 1000)
+      for (let char of id) {
+        match(urlAlphabet, new RegExp(char, 'g'))
+      }
+    })
+
     test(`accepts string`, () => {
       equal(nanoid('10').length, 10)
     })
@@ -156,6 +164,10 @@ for (let type of ['node', 'browser']) {
 
     test(`${type} / urlAlphabet / is string`, () => {
       equal(typeof urlAlphabet, 'string')
+    })
+
+    test(`${type} / urlAlphabet / has 64 symbols`, () => {
+      equal(urlAlphabet.length, 64)
     })
 
     test(`${type} / urlAlphabet / has no duplicates`, () => {
