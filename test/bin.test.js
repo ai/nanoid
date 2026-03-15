@@ -23,7 +23,9 @@ describe('CLI', () => {
   })
 
   test('uses alphabet', async () => {
-    let { stderr, stdout } = await exec(`node "${BIN}" --alphabet abc --size 15`)
+    let { stderr, stdout } = await exec(
+      `node "${BIN}" --alphabet abc --size 15`
+    )
     equal(stderr, '')
     match(stdout, /^[abc]{15}\n$/)
   })

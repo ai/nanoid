@@ -6,9 +6,13 @@ export default [
   ...loguxConfig,
   {
     rules: {
-      'func-style': 'off',
-      'n/no-unsupported-features/node-builtins': 'off',
-      'yoda': 'off'
+      'n/no-unsupported-features/node-builtins': 'off'
+    }
+  },
+  {
+    files: ['bin/nanoid.js'],
+    rules: {
+      'n/prefer-node-protocol': 'off'
     }
   }
 ]
