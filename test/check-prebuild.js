@@ -3,7 +3,7 @@
 import { readFile } from 'node:fs/promises'
 import { styleText } from 'node:util'
 
-import { prebuild, BUILD_PATH } from './prebuild.ts'
+import { BUILD_PATH, prebuild } from './prebuild.ts'
 
 let [current, expected] = await Promise.all([
   readFile(BUILD_PATH, 'utf8'),
