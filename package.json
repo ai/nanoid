@@ -136,7 +136,7 @@
     "clean": true
   },
   "simple-git-hooks": {
-    "pre-commit": "./test/check-versions.js"
+    "pre-commit": "./test/check-versions.js && ./test/check-prebuild.js"
   },
   "pnpm": {
     "ignoredBuiltDependencies": [
