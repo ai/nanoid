@@ -5,6 +5,15 @@ import { urlAlphabet } from '../index.js'
 import { customAlphabet, nanoid } from '../non-secure/index.js'
 
 describe('non secure', () => {
+  test('is ready for 0 size', () => {
+    equal(nanoid(0), '')
+  })
+
+  test('customAlphabet / is ready for 0 size', () => {
+    equal(customAlphabet('abc')(0), '')
+    equal(customAlphabet('abc', 0)(0), '')
+  })
+
   test('generates URL-friendly IDs', () => {
     for (let i = 0; i < 10; i++) {
       let id = nanoid()
