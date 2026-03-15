@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
-import { readFileSync } from 'fs'
-import { join } from 'path'
+import { readFileSync } from 'node:fs'
+import { dirname, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 import { customAlphabet, nanoid } from '../index.js'
 
@@ -15,9 +16,8 @@ function error(msg) {
 }
 
 if (process.argv.includes('--version') || process.argv.includes('-v')) {
-  let pkg = JSON.parse(
-    readFileSync(join(import.meta.dirname, '..', 'package.json'), 'utf8')
-  )
+  let root = dirname(fileURLToPath(import.meta.url))
+  let pkg = JSON.parse(readFileSync(join(root, '..', 'package.json'), 'utf8'))
   print(pkg.version)
   process.exit()
 }
