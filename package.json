@@ -66,18 +66,18 @@
     "better-node-test": "^0.8.3",
     "c8": "^11.0.0",
     "clean-publish": "^6.0.4",
-    "eslint": "^10.0.3",
+    "eslint": "^10.1.0",
     "rndm": "^1.2.0",
     "secure-random-string": "^1.1.4",
     "shortid": "^2.2.17",
     "simple-git-hooks": "^2.13.1",
     "size-limit": "^12.0.1",
-    "terser": "^5.46.0",
+    "terser": "^5.46.1",
     "tinybench": "^6.0.0",
     "uid": "^2.0.2",
     "uid-safe": "^2.1.5",
     "uuid": "^13.0.0",
-    "vite": "^8.0.0"
+    "vite": "^8.0.1"
   },
   "size-limit": [
     {
