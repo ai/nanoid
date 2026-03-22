@@ -53,22 +53,3 @@ jobs:
         run: pnpm install --ignore-scripts
       - name: Run unit tests
         run: pnpm bnt
-  benchmark:
-    name: Benchmark
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout the repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-      - name: Install pnpm
-        uses: pnpm/action-setup@fc06bc1257f339d1d5d8b3a19a8cae5388b55320 # v4.4.0
-        with:
-          version: 10
-      - name: Install Node.js
-        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6.3.0
-        with:
-          node-version: 22
-          cache: pnpm
-      - name: Install dependencies
-        run: pnpm install --ignore-scripts
-      - name: Run benchmark
-        run: node ./test/benchmark.js
