@@ -48,8 +48,12 @@ export let customRandom = (alphabet, defaultSize, getRandom) => {
   }
 }
 
-export let customAlphabet = (alphabet, size = 21) =>
-  customRandom(alphabet, size | 0, random)
+export let customAlphabet = (alphabet, size = 21) => {
+  if (alphabet.length > 256 || alphabet.length < 1) {
+    throw new RangeError('alphabet must contain between 1 and 256 symbols')
+  }
+  return customRandom(alphabet, size | 0, random)
+}
 
 export let nanoid = (size = 21) => {
   let id = ''

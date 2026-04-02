@@ -37,6 +37,7 @@ export function nanoid<Type extends string>(size?: number): Type
  * @param defaultSize Size of the ID. The default size is 21.
  * @typeparam Type The ID type to replace `string` with some opaque type.
  * @returns A random string generator.
+ * @throws {RangeError} If alphabet length is not between 1 and 256 symbols.
  *
  * ```js
  * import { customAlphabet } from 'nanoid'

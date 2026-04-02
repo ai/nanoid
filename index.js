@@ -67,6 +67,9 @@ export function customRandom(alphabet, defaultSize, getRandom) {
 }
 
 export function customAlphabet(alphabet, size = 21) {
+  if (alphabet.length > 256 || alphabet.length < 1) {
+    throw new RangeError('alphabet must contain between 1 and 256 symbols')
+  }
   return customRandom(alphabet, size, random)
 }
 

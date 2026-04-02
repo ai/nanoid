@@ -10,6 +10,9 @@ let urlAlphabet =
   'useandom-26T198340PX75pxJACKVERYMINDBUSHWOLF_GQZbfghjklqvwyzrict'
 
 export let customAlphabet = (alphabet, defaultSize = 21) => {
+  if (alphabet.length > 256 || alphabet.length < 1) {
+    throw new RangeError('alphabet must contain between 1 and 256 symbols')
+  }
   return (size = defaultSize) => {
     let id = ''
     // A compact alternative for `for (var i = 0; i < step; i++)`.
