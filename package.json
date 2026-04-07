@@ -3,34 +3,30 @@
   "version": "5.1.7",
   "description": "A tiny (118 bytes), secure URL-friendly unique string ID generator",
   "keywords": [
-    "uuid",
-    "random",
     "id",
-    "url"
+    "random",
+    "url",
+    "uuid"
   ],
-  "scripts": {
-    "clean": "rm -rf coverage",
-    "start": "vite --host 0.0.0.0 test/demo/",
-    "test:coverage": "bnt --coverage 100 --coverage-exclude 'test/*'",
-    "test:lint": "eslint .",
-    "test:size": "pnpm clean && size-limit",
-    "test:versions": "node ./test/check-versions.js",
-    "test:prebuild": "node ./test/check-prebuild.js",
-    "test": "pnpm run /^test:/"
-  },
-  "type": "module",
-  "engines": {
-    "node": "^18 || >=20"
-  },
+  "license": "MIT",
+  "author": "Andrey Sitnik <andrey@sitnik.ru>",
+  "repository": "ai/nanoid",
   "funding": [
     {
       "type": "github",
       "url": "https://github.com/sponsors/ai"
     }
   ],
-  "author": "Andrey Sitnik <andrey@sitnik.ru>",
-  "license": "MIT",
-  "repository": "ai/nanoid",
+  "bin": "./bin/nanoid.js",
+  "type": "module",
+  "sideEffects": false,
+  "browser": {
+    "./index.js": "./index.browser.js"
+  },
+  "types": "./index.d.ts",
+  "react-native": {
+    "./index.js": "./index.browser.js"
+  },
   "exports": {
     ".": {
       "types": "./index.d.ts",
@@ -44,18 +40,19 @@
     },
     "./package.json": "./package.json"
   },
-  "browser": {
-    "./index.js": "./index.browser.js"
+  "scripts": {
+    "clean": "rm -rf coverage",
+    "start": "vite --host 0.0.0.0 test/demo/",
+    "test:coverage": "bnt --coverage 100 --coverage-exclude 'test/*'",
+    "test:lint": "oxlint",
+    "test:size": "pnpm clean && size-limit",
+    "test:versions": "node ./test/check-versions.js",
+    "test:prebuild": "node ./test/check-prebuild.js",
+    "test": "pnpm run /^test:/"
   },
-  "react-native": {
-    "./index.js": "./index.browser.js"
-  },
-  "bin": "./bin/nanoid.js",
-  "sideEffects": false,
-  "types": "./index.d.ts",
   "devDependencies": {
     "@babel/core": "^7.29.0",
-    "@logux/eslint-config": "^57.1.0",
+    "@logux/oxc-configs": "^0.2.2",
     "@lukeed/uuid": "^2.0.1",
     "@napi-rs/uuid": "^0.2.2",
     "@originjs/vite-plugin-commonjs": "^1.0.3",
@@ -65,7 +62,8 @@
     "actions-up": "^1.12.1",
     "better-node-test": "^0.8.4",
     "clean-publish": "^6.0.5",
-    "eslint": "^10.2.0",
+    "oxlint": "^1.58.0",
+    "oxlint-tsgolint": "^0.20.0",
     "rndm": "^1.2.0",
     "secure-random-string": "^1.1.4",
     "shortid": "^2.2.17",
@@ -73,10 +71,14 @@
     "size-limit": "^12.0.1",
     "terser": "^5.46.1",
     "tinybench": "^6.0.0",
+    "typescript": "^6.0.2",
     "uid": "^2.0.2",
     "uid-safe": "^2.1.5",
     "uuid": "^13.0.0",
     "vite": "^8.0.5"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "./test/check-versions.js"
   },
   "size-limit": [
     {
@@ -107,20 +109,8 @@
       "limit": "53 B"
     }
   ],
-  "prettier": {
-    "arrowParens": "avoid",
-    "jsxSingleQuote": false,
-    "quoteProps": "consistent",
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "none"
-  },
-  "clean-publish": {
-    "cleanDocs": true,
-    "cleanComments": true
-  },
-  "simple-git-hooks": {
-    "pre-commit": "./test/check-versions.js"
+  "engines": {
+    "node": "^18 || >=20"
   },
   "pnpm": {
     "ignoredBuiltDependencies": [
@@ -130,5 +120,9 @@
     "onlyBuiltDependencies": [
       "simple-git-hooks"
     ]
+  },
+  "clean-publish": {
+    "cleanDocs": true,
+    "cleanComments": true
   }
 }

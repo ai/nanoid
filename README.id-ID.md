@@ -28,7 +28,6 @@ Mendukung penjelajah (browser) modern, IE [dengan Babel](https://developer.epage
 
 ---
 
-
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
@@ -50,7 +49,6 @@ Mendukung penjelajah (browser) modern, IE [dengan Babel](https://developer.epage
   - [Bahasa Pemrograman Lainnya](#bahasa-pemrograman-lainnya)
 - [Alat](#alat)
 
-
 ## Perbandingan dengan UUID
 
 Nano ID dapat dibandingkan dengan UUID v4 (yang berbasis acak / _randomly generated_). Nano ID dan UUID v4 memiliki jumlah bita yang mirip pada ID yang dihasilkan (126 bita pada NanoID dan 122 bita pada UUID), karenanya ia memiliki probabilitas _collision_ (konflik / tabrakan) yang hampir serupa:
@@ -61,7 +59,6 @@ Ada dua buah perbedaan antara Nano ID dan UUID v4:
 
 1. Nano ID menggunakan alfabet yang lebih lebar, karenanya jumlah bita acak dapat 'dikemas' dalam 21 simbol, bukan 36 simbol.
 2. Kode sumber Nano ID **empat kali lebih kecil** ketimbang `uuid/v4`: 118 bytes dibanding 423 bytes.
-
 
 ## Benchmark
 
@@ -87,7 +84,6 @@ rndm                       2,308,044 ops/sec
 
 Konfigurasi pengujian: Framework 13 7840U, Fedora 39, Node.js 21.6.
 
-
 ## Keamanan
 
 _Lihat artikel yang informatif tentang teori angka acak: [Nilai acak yang aman dalam Node.js (English)](https://gist.github.com/joepie91/7105003c3b26e65efcea63f3db82dfba)_.
@@ -102,7 +98,6 @@ _Lihat artikel yang informatif tentang teori angka acak: [Nilai acak yang aman d
 - **Terdokumentasi secara baik.** Seluruh algoritma Nano ID sudah terdokumentasi. Lihat komentar di [kode sumber](https://github.com/ai/nanoid/blob/main/index.js).
 
 - **Kerentanan.** Untuk melaporkan sebuah _security vulnerability_ atau kerentanan, mohon menggunakan [Tidelift Security Contact](https://tidelift.com/security). Tidelift akan mengkoordinasikan pembetulan dan penyingkapan dari kerentanan tersebut.
-
 
 ## Instalasi
 
@@ -123,13 +118,11 @@ Apabila ingin 'coba-coba' terlebih dahulu, dapat digunakan Nano ID melalui CDN. 
 import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 ```
 
-
 ## API
 
 Nano ID memiliki dua API: normal dan _non-secure_.
 
 Bawaannya, Nano ID menggunakan simbol yang _URL-friendly_ (`A-Za-z0-9_-`) dan mengembalikan ID dengan 21 karakter (untuk memiliki probabilitas collision / tabrakan yang mirip dengan UUID v4).
-
 
 ### Blocking
 
@@ -152,7 +145,6 @@ Jangan lupa memeriksa tingkat keamanan dari ukuran ID dalam situs [ID collision 
 
 Dapat digunakan pula [custom alphabet](#custom-alphabet-or-size) atau [random generator](#custom-random-bytes-generator) yang lain.
 
-
 ### Non-Secure
 
 Konfigurasi bawaan Nano ID menggunakan random bytes generator yang berasal dari perangkat keras untuk keamanan dan probabilitas collision yang rendah. Apabila tidak terlalu memikirkan soal keamanan, dapat pula menggunakan non-secure generator yang lebih cepat.
@@ -161,7 +153,6 @@ Konfigurasi bawaan Nano ID menggunakan random bytes generator yang berasal dari 
 import { nanoid } from 'nanoid/non-secure'
 const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
-
 
 ### Alfabet dan Ukuran (Custom)
 
@@ -184,7 +175,6 @@ import { customAlphabet } from 'nanoid/non-secure'
 const nanoid = customAlphabet('1234567890abcdef', 10)
 user.id = nanoid()
 ```
-
 
 ### Generasi Random Bytes (Custom)
 
@@ -213,7 +203,6 @@ const nanoid = customRandom(urlAlphabet, 10, random)
 ```
 
 API asinkronus dan non-secure tidak tersedia untuk fungsi `customRandom`.
-
 
 ## Penggunaan
 
@@ -274,7 +263,6 @@ db.put({
   …
 })
 ```
-
 
 ### CLI
 
@@ -348,7 +336,6 @@ Nano ID telah bermigrasi ke berbagai macam bahasa. Seluruh versi dapat digunakan
 - [Zig](https://github.com/SasLuca/zig-nanoid)
 
 Untuk environment lainnya, [CLI](#cli) tersedia untuk melakukan generasi ID dari command line / Terminal.
-
 
 ## Alat
 
