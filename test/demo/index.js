@@ -1,4 +1,3 @@
-import shortid from 'shortid'
 import { v4 as uuid4 } from 'uuid'
 
 import * as nanoidExport from '../../index.browser.js'
@@ -76,7 +75,6 @@ let tasks = [
   () => printDistr('nanoid', () => nanoid()),
   () => printDistr('nanoid2', () => nanoid2()),
   () => printDistr('uuid/v4', () => uuid4()),
-  () => printDistr('shortid', () => shortid()),
   () => printDistr('nanoid/non-secure', () => nonSecure()),
   () =>
     printDistr('random % alphabet', () => {
