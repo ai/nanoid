@@ -11,7 +11,7 @@
   "scripts": {
     "clean": "rm -rf coverage",
     "start": "vite --host 0.0.0.0 test/demo/",
-    "test:coverage": "c8 bnt",
+    "test:coverage": "bnt --coverage 100 --coverage-exclude 'test/*'",
     "test:lint": "eslint .",
     "test:size": "pnpm clean && size-limit",
     "test:versions": "node ./test/check-versions.js",
@@ -64,7 +64,6 @@
     "@types/node": "^25.5.2",
     "actions-up": "^1.12.1",
     "better-node-test": "^0.8.4",
-    "c8": "^11.0.0",
     "clean-publish": "^6.0.5",
     "eslint": "^10.2.0",
     "rndm": "^1.2.0",
@@ -119,21 +118,6 @@
   "clean-publish": {
     "cleanDocs": true,
     "cleanComments": true
-  },
-  "c8": {
-    "exclude": [
-      "bin/nanoid.js",
-      "**/*.test.*",
-      "test/*"
-    ],
-    "lines": 100,
-    "check-coverage": true,
-    "reporter": [
-      "text",
-      "lcov"
-    ],
-    "skip-full": true,
-    "clean": true
   },
   "simple-git-hooks": {
     "pre-commit": "./test/check-versions.js"
