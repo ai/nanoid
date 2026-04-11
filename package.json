@@ -57,11 +57,10 @@
     "@napi-rs/uuid": "^0.2.2",
     "@size-limit/file": "^12.0.1",
     "@size-limit/webpack": "^12.0.1",
-    "@types/node": "^25.5.2",
-    "actions-up": "^1.12.1",
+    "actions-up": "^1.13.0",
     "better-node-test": "^0.8.4",
     "clean-publish": "^6.0.5",
-    "oxlint": "^1.58.0",
+    "oxlint": "^1.59.0",
     "oxlint-tsgolint": "^0.20.0",
     "rndm": "^1.2.0",
     "secure-random-string": "^1.1.4",
@@ -74,7 +73,7 @@
     "uid": "^2.0.2",
     "uid-safe": "^2.1.5",
     "uuid": "^13.0.0",
-    "vite": "^8.0.5"
+    "vite": "^8.0.8"
   },
   "simple-git-hooks": {
     "pre-commit": "./test/check-versions.js"
