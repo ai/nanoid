@@ -138,6 +138,11 @@ for (let type of ['node', 'browser']) {
       equal(nanoidA(10), 'aaaaaaaaaa')
     })
 
+    test(`${type} / customAlphabet / is ready for 0 size`, () => {
+      equal(customAlphabet('abc')(0), '')
+      equal(customAlphabet('abc', 0)(0), '')
+    })
+
     test(`${type} / customAlphabet / avoids pool pollution, infinite loop`, () => {
       let ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
       let nanoid2 = customAlphabet(ALPHABET)
@@ -160,6 +165,11 @@ for (let type of ['node', 'browser']) {
       let nanoid18 = customRandom('abcde', 18, fakeRandom)
       equal(nanoid4(), 'adca')
       equal(nanoid18(), 'cbadcbadcbadcbadcc')
+    })
+
+    test(`${type} / customRandom / is ready for 0 size`, () => {
+      let nanoid0 = customRandom('abc', 5, size => new Uint8Array(size))
+      equal(nanoid0(0), '')
     })
 
     test(`${type} / urlAlphabet / is string`, () => {
