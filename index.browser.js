@@ -10,28 +10,13 @@ export { urlAlphabet } from './url-alphabet/index.js'
 export let random = bytes => crypto.getRandomValues(new Uint8Array(bytes))
 
 export let customRandom = (alphabet, defaultSize, getRandom) => {
-  // First, a bitmask is necessary to generate the ID. The bitmask makes bytes
-  // values closer to the alphabet size. The bitmask calculates the closest
-  // `2^31 - 1` number, which exceeds the alphabet size.
-  // For example, the bitmask for the alphabet size 30 is 31 (00011111).
-  // `Math.clz32` is not used, because it is not available in browsers.
-  let mask = (2 << Math.log2(alphabet.length - 1)) - 1
-  // Though, the bitmask solution is not perfect since the bytes exceeding
-  // the alphabet size are refused. Therefore, to reliably generate the ID,
-  // the random bytes redundancy has to be satisfied.
-
-  // Note: every hardware random generator call is performance expensive,
-  // because the system call for entropy collection takes a lot of time.
-  // So, to avoid additional system calls, extra bytes are requested in advance.
-
-  // Next, a step determines how many random bytes to generate.
-  // The number of random bytes gets decided upon the ID size, mask,
-  // alphabet size, and magic number 1.6 (using 1.6 peaks at performance
-  // according to benchmarks).
-
-  // `-~f => Math.ceil(f)` if f is a float
-  // `-~i => i + 1` if i is an integer
-  let step = -~((1.6 * mask * defaultSize) / alphabet.length)
+  // `max` is the largest unbiased slice of the 0-255 byte range.
+  // If the alphabet size divides 256, every byte is usable.
+  // This usually rejects fewer bytes than the original bitmask approach.
+  let max = 256 - (256 % alphabet.length)
+  // Use a fixed batch size based on the unbiased byte range.
+  // `1.6` is a magic number chosen from benchmarks.
+  let step = Math.ceil((1.6 * 256 * defaultSize) / max)
 
   return (size = defaultSize) => {
     if (!size) return ''
@@ -41,10 +26,11 @@ export let customRandom = (alphabet, defaultSize, getRandom) => {
       // A compact alternative for `for (var i = 0; i < step; i++)`.
       let j = step
       while (j--) {
-        let next = alphabet[bytes[j] & mask]
-        // Adding `continue` refuses a random byte that exceeds the alphabet size.
-        if (!next) continue
-        id += next
+        if (max === 256) {
+          id += alphabet[bytes[j] & (alphabet.length - 1)]
+        } else if (bytes[j] < max) {
+          id += alphabet[bytes[j] % alphabet.length]
+        }
         if (id.length >= size) return id
       }
     }
