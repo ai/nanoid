@@ -58,8 +58,9 @@ export function customRandom(alphabet, defaultSize, getRandom) {
       // A compact alternative for `for (let i = 0; i < step; i++)`.
       let i = step
       while (i--) {
-        // Adding `|| ''` refuses a random byte that exceeds the alphabet size.
-        id += alphabet[bytes[i] & mask] || ''
+        // Adding `continue` refuses a random byte that exceeds the alphabet size.
+        if (!alphabet[bytes[i] & mask]) continue
+        id += alphabet[bytes[i] & mask]
         if (id.length >= size) return id
       }
     }

@@ -41,8 +41,9 @@ export let customRandom = (alphabet, defaultSize, getRandom) => {
       // A compact alternative for `for (var i = 0; i < step; i++)`.
       let j = step | 0
       while (j--) {
-        // Adding `|| ''` refuses a random byte that exceeds the alphabet size.
-        id += alphabet[bytes[j] & mask] || ''
+        // Adding `continue` refuses a random byte that exceeds the alphabet size.
+        if (!alphabet[bytes[j] & mask]) continue
+        id += alphabet[bytes[j] & mask]
         if (id.length >= size) return id
       }
     }
