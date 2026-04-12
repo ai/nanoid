@@ -60,6 +60,7 @@
     "actions-up": "^1.13.0",
     "better-node-test": "^0.8.4",
     "clean-publish": "^6.0.5",
+    "eslint-plugin-prefer-let": "^4.2.2",
     "oxlint": "^1.59.0",
     "oxlint-tsgolint": "^0.20.0",
     "rndm": "^1.2.0",
