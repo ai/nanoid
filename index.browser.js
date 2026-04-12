@@ -27,6 +27,7 @@ export let customRandom = (alphabet, defaultSize, getRandom) => {
       let j = step
       while (j--) {
         if (max === 256) {
+          // For power-of-two alphabets, this bitmask is the same as modulo, but faster.
           id += alphabet[bytes[j] & (alphabet.length - 1)]
         } else if (bytes[j] < max) {
           id += alphabet[bytes[j] % alphabet.length]
