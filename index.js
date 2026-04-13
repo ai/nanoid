@@ -39,6 +39,25 @@ export function customRandom(alphabet, defaultSize, getRandom) {
   // `1.6` is a magic number chosen from benchmarks.
   let step = Math.ceil((1.6 * 256 * defaultSize) / max)
 
+  if (max === 256) {
+    let mask = alphabet.length - 1
+
+    return (size = defaultSize) => {
+      if (!size) return ''
+      let id = ''
+      while (true) {
+        let bytes = getRandom(step)
+        // A compact alternative for `for (let i = 0; i < step; i++)`.
+        let i = step
+        while (i--) {
+          // For power-of-two alphabets, this bitmask is the same as modulo, but faster.
+          id += alphabet[bytes[i] & mask]
+          if (id.length >= size) return id
+        }
+      }
+    }
+  }
+
   return (size = defaultSize) => {
     if (!size) return ''
     let id = ''
@@ -47,13 +66,10 @@ export function customRandom(alphabet, defaultSize, getRandom) {
       // A compact alternative for `for (let i = 0; i < step; i++)`.
       let i = step
       while (i--) {
-        if (max === 256) {
-          // For power-of-two alphabets, this bitmask is the same as modulo, but faster.
-          id += alphabet[bytes[i] & (alphabet.length - 1)]
-        } else if (bytes[i] < max) {
+        if (bytes[i] < max) {
           id += alphabet[bytes[i] % alphabet.length]
+          if (id.length >= size) return id
         }
-        if (id.length >= size) return id
       }
     }
   }
