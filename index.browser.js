@@ -10,15 +10,26 @@ export { urlAlphabet } from './url-alphabet/index.js'
 export let random = bytes => crypto.getRandomValues(new Uint8Array(bytes))
 
 export let customRandom = (alphabet, defaultSize, getRandom) => {
-  // `max` is the largest unbiased slice of the 0-255 byte range.
-  // If the alphabet size divides 256, every byte is usable.
-  // This usually rejects fewer bytes than the original bitmask approach.
-  let max = 256 - (256 % alphabet.length)
-  // Use a fixed batch size based on the unbiased byte range.
+  // Random bytes are 0-255 and already have full entropy.
+  // `% alphabet.length` can waste that entropy by making some symbols more likely.
+  // `safeByteCutoff` is the exclusive upper bound for unbiased bytes.
+  // Bytes below it are safe. Bytes at or above it are rejected.
+  //
+  // Example: with 17 symbols, `safeByteCutoff` is 255.
+  // Bytes 0-254 preserve entropy evenly: each symbol gets 15 source bytes.
+  // Byte 255 would map to `0` again, making one symbol slightly more likely.
+  // So we reject 255.
+  let safeByteCutoff = 256 - (256 % alphabet.length)
+  // Note: secure random calls are expensive because system calls for entropy collection take time.
+  // To avoid extra calls, extra bytes are requested in advance to cover rejections.
+  //
+  // `step` determines how many random bytes to request.
+  // It depends on ID size and the share of safe bytes (`safeByteCutoff / 256`).
   // `1.6` is a magic number chosen from benchmarks.
-  let step = Math.ceil((1.6 * 256 * defaultSize) / max)
+  let step = Math.ceil((1.6 * 256 * defaultSize) / safeByteCutoff)
 
-  if (max === 256) {
+  // Power-of-two alphabets can use `& mask` instead of modulo.
+  if (safeByteCutoff === 256) {
     let mask = alphabet.length - 1
 
     return (size = defaultSize) => {
@@ -29,7 +40,7 @@ export let customRandom = (alphabet, defaultSize, getRandom) => {
         // A compact alternative for `for (var i = 0; i < step; i++)`.
         let j = step
         while (j--) {
-          // For power-of-two alphabets, this bitmask is the same as modulo, but faster.
+          // Here, `& mask` is equivalent to `% alphabet.length`, but faster
           id += alphabet[bytes[j] & mask]
           if (id.length >= size) return id
         }
@@ -45,7 +56,9 @@ export let customRandom = (alphabet, defaultSize, getRandom) => {
       // A compact alternative for `for (var i = 0; i < step; i++)`.
       let j = step
       while (j--) {
-        if (bytes[j] < max) {
+        // Reject bytes >= `safeByteCutoff` to avoid modulo bias
+        // and give each symbol an equal chance.
+        if (bytes[j] < safeByteCutoff) {
           id += alphabet[bytes[j] % alphabet.length]
           if (id.length >= size) return id
         }
