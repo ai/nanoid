@@ -25,7 +25,8 @@ function fillPool(bytes) {
 }
 
 export function random(bytes) {
-  // `|=` convert `bytes` to number to prevent `valueOf` abusing and pool pollution
+  // `|=` convert `bytes` to number to prevent `valueOf` abusing
+  // and pool pollution
   fillPool((bytes |= 0))
   return pool.subarray(poolOffset - bytes, poolOffset)
 }
