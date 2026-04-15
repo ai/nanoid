@@ -10,23 +10,17 @@ export { urlAlphabet } from './url-alphabet/index.js'
 export let random = bytes => crypto.getRandomValues(new Uint8Array(bytes))
 
 export let customRandom = (alphabet, defaultSize, getRandom) => {
-  // Random bytes are 0-255 and already have full entropy.
-  // `% alphabet.length` can waste that entropy by making some symbols more likely.
-  // `safeByteCutoff` is the exclusive upper bound for unbiased bytes.
-  // Bytes below it are safe. Bytes at or above it are rejected.
+  // Random bytes are 0-255. `random % alphabet.length` can waste
+  // that entropy by making some symbols more likely.
+  //
+  // `safeByteCutoff` will be divided by `alphabet.length` without remainder
+  // fixing issue of broken distribution.
   //
   // Example: with 17 symbols, `safeByteCutoff` is 255.
   // Bytes 0-254 preserve entropy evenly: each symbol gets 15 source bytes.
   // Byte 255 would map to `0` again, making one symbol slightly more likely.
   // So we reject 255.
   let safeByteCutoff = 256 - (256 % alphabet.length)
-  // Note: secure random calls are expensive because system calls for entropy collection take time.
-  // To avoid extra calls, extra bytes are requested in advance to cover rejections.
-  //
-  // `step` determines how many random bytes to request.
-  // It depends on ID size and the share of safe bytes (`safeByteCutoff / 256`).
-  // `1.6` is a magic number chosen from benchmarks.
-  let step = Math.ceil((1.6 * 256 * defaultSize) / safeByteCutoff)
 
   // Power-of-two alphabets can use `& mask` instead of modulo.
   if (safeByteCutoff === 256) {
@@ -36,9 +30,9 @@ export let customRandom = (alphabet, defaultSize, getRandom) => {
       if (!size) return ''
       let id = ''
       while (true) {
-        let bytes = getRandom(step)
+        let bytes = getRandom(size)
         // A compact alternative for `for (var i = 0; i < step; i++)`.
-        let j = step
+        let j = size
         while (j--) {
           // Here, `& mask` is equivalent to `% alphabet.length`, but faster
           id += alphabet[bytes[j] & mask]
@@ -47,6 +41,14 @@ export let customRandom = (alphabet, defaultSize, getRandom) => {
       }
     }
   }
+
+  // Secure random calls are expensive because system calls
+  // for entropy collection take time. To avoid extra calls,
+  // extra bytes are requested in advance to cover rejections.
+  //
+  // `step` determines how many random bytes to request.
+  // `1.6` is a magic number chosen from benchmarks.
+  let step = Math.ceil((1.6 * 256 * defaultSize) / safeByteCutoff)
 
   return (size = defaultSize) => {
     if (!size) return ''
@@ -74,9 +76,8 @@ export let nanoid = (size = 21) => {
   let id = ''
   let bytes = crypto.getRandomValues(new Uint8Array((size |= 0)))
   while (size--) {
-    // Using the bitwise AND operator to "cap" the value of
-    // the random byte from 255 to 63, in that way we can make sure
-    // that the value will be a valid index for the "chars" string.
+    // The following mask reduces the random byte in the 0-255 value
+    // range to the 0-63 value range.
     id += scopedUrlAlphabet[bytes[size] & 63]
   }
   return id

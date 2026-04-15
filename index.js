@@ -31,23 +31,17 @@ export function random(bytes) {
 }
 
 export function customRandom(alphabet, defaultSize, getRandom) {
-  // Random bytes are 0-255 and already have full entropy.
-  // `% alphabet.length` can waste that entropy by making some symbols more likely.
-  // `safeByteCutoff` is the exclusive upper bound for unbiased bytes.
-  // Bytes below it are safe. Bytes at or above it are rejected.
+  // Random bytes are 0-255. `random % alphabet.length` can waste
+  // that entropy by making some symbols more likely.
+  //
+  // `safeByteCutoff` will be divided by `alphabet.length` without remainder
+  // fixing issue of broken distribution.
   //
   // Example: with 17 symbols, `safeByteCutoff` is 255.
   // Bytes 0-254 preserve entropy evenly: each symbol gets 15 source bytes.
   // Byte 255 would map to `0` again, making one symbol slightly more likely.
   // So we reject 255.
   let safeByteCutoff = 256 - (256 % alphabet.length)
-  // Note: secure random calls are expensive because system calls for entropy collection take time.
-  // To avoid extra calls, extra bytes are requested in advance to cover rejections.
-  //
-  // `step` determines how many random bytes to request.
-  // It depends on ID size and the share of safe bytes (`safeByteCutoff / 256`).
-  // `1.6` is a magic number chosen from benchmarks.
-  let step = Math.ceil((1.6 * 256 * defaultSize) / safeByteCutoff)
 
   // Power-of-two alphabets can use `& mask` instead of modulo.
   if (safeByteCutoff === 256) {
@@ -57,9 +51,9 @@ export function customRandom(alphabet, defaultSize, getRandom) {
       if (!size) return ''
       let id = ''
       while (true) {
-        let bytes = getRandom(step)
+        let bytes = getRandom(size)
         // A compact alternative for `for (let i = 0; i < step; i++)`.
-        let i = step
+        let i = size
         while (i--) {
           // Here, `& mask` is equivalent to `% alphabet.length`, but faster
           id += alphabet[bytes[i] & mask]
@@ -68,6 +62,14 @@ export function customRandom(alphabet, defaultSize, getRandom) {
       }
     }
   }
+
+  // Secure random calls are expensive because system calls
+  // for entropy collection take time. To avoid extra calls,
+  // extra bytes are requested in advance to cover rejections.
+  //
+  // `step` determines how many random bytes to request.
+  // `1.6` is a magic number chosen from benchmarks.
+  let step = Math.ceil((1.6 * 256 * defaultSize) / safeByteCutoff)
 
   return (size = defaultSize) => {
     if (!size) return ''
@@ -93,16 +95,15 @@ export function customAlphabet(alphabet, size = 21) {
 }
 
 export function nanoid(size = 21) {
-  // `|=` convert `size` to number to prevent `valueOf` abusing and pool pollution
+  // `|=` convert `size` to number to prevent `valueOf` abusing
+  // and pool pollution
   fillPool((size |= 0))
+
   let id = ''
   // We are reading directly from the random pool to avoid creating new array
   for (let i = poolOffset - size; i < poolOffset; i++) {
-    // It is incorrect to use bytes exceeding the alphabet size.
     // The following mask reduces the random byte in the 0-255 value
-    // range to the 0-63 value range. Therefore, adding hacks, such
-    // as empty string fallback or magic numbers, is unnecessary because
-    // the bitmask trims bytes down to the alphabet size.
+    // range to the 0-63 value range.
     id += scopedUrlAlphabet[pool[i] & 63]
   }
   return id
