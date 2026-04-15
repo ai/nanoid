@@ -50,9 +50,6 @@ importers:
       secure-random-string:
         specifier: ^1.1.4
         version: 1.1.4
-      shortid:
-        specifier: ^2.2.17
-        version: 2.2.17
       simple-git-hooks:
         specifier: ^2.13.1
         version: 2.13.1
@@ -999,9 +996,6 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
-  shortid@2.2.17:
-    resolution: {integrity: sha512-GpbM3gLF1UUXZvQw6MCyulHkWbRseNO4cyBEZresZRorwl1+SLu1ZdqgVtuwqz8mB6RpwPkm541mYSqrKyJSaA==}
-
   simple-git-hooks@2.13.1:
     resolution: {integrity: sha512-WszCLXwT4h2k1ufIXAgsbiTOazqqevFCIncOuUBZJ91DdvWcC5+OFkluWRQPrcuSYd8fjq+o2y1QfWqYMoAToQ==}
     hasBin: true
@@ -1942,10 +1936,6 @@ snapshots:
   semver@6.3.1: {}
 
   semver@7.7.4: {}
-
-  shortid@2.2.17:
-    dependencies:
-      nanoid: 3.3.11
 
   simple-git-hooks@2.13.1: {}
 
