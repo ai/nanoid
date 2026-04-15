@@ -6,7 +6,6 @@ import crypto from 'node:crypto'
 import { styleText } from 'node:util'
 import rndm from 'rndm'
 import srs from 'secure-random-string'
-import shortid from 'shortid'
 import { Bench } from 'tinybench'
 import { uid } from 'uid'
 import uidSafe from 'uid-safe'
@@ -51,9 +50,6 @@ bench
   })
   .add('uid-safe.sync', () => {
     uidSafe.sync(14)
-  })
-  .add('shortid', () => {
-    shortid()
   })
   .add('uid', () => {
     uid(32)
