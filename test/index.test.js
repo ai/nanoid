@@ -101,115 +101,8 @@ for (let type of ['node', 'browser']) {
       ok(max - min <= 0.05)
     })
 
-    test(`${type} / customAlphabet / has options`, () => {
-      let nanoidA = customAlphabet('a', 5)
-      equal(nanoidA(), 'aaaaa')
-    })
-
-    test(`${type} / customAlphabet / has flat distribution`, () => {
-      let COUNT = 50 * 1000
-      let LENGTH = 30
-      let ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
-      let nanoid2 = customAlphabet(ALPHABET, LENGTH)
-
-      let chars = {}
-      for (let i = 0; i < COUNT; i++) {
-        let id = nanoid2()
-        for (let char of id) {
-          if (!chars[char]) chars[char] = 0
-          chars[char] += 1
-        }
-      }
-
-      equal(Object.keys(chars).length, ALPHABET.length)
-
-      let max = 0
-      let min = Number.MAX_SAFE_INTEGER
-      for (let k in chars) {
-        let distribution = (chars[k] * ALPHABET.length) / (COUNT * LENGTH)
-        if (distribution > max) max = distribution
-        if (distribution < min) min = distribution
-      }
-      ok(max - min <= 0.05)
-    })
-
-    test(`${type} / customAlphabet / changes size`, () => {
-      let nanoidA = customAlphabet('a')
-      equal(nanoidA(10), 'aaaaaaaaaa')
-    })
-
-    test(`${type} / customAlphabet / is ready for 0 size`, () => {
-      equal(customAlphabet('abc')(0), '')
-      equal(customAlphabet('abc', 0)(0), '')
-      equal(customAlphabet('')(0), '')
-      equal(customAlphabet('', 0)(0), '')
-    })
-
-    test(`${type} / customAlphabet / avoids pool pollution, infinite loop`, () => {
-      let ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
-      let nanoid2 = customAlphabet(ALPHABET)
-      nanoid2(2.1)
-      let second = nanoid2()
-      let third = nanoid2()
-      notEqual(second, third)
-    })
-
-    test(`${type} / customRandom / supports generator`, () => {
-      let sequence = [2, 255, 3, 7, 7, 7, 7, 7, 0, 1]
-      function fakeRandom(size) {
-        let bytes = []
-        for (let i = 0; i < size; i += sequence.length) {
-          bytes = bytes.concat(sequence.slice(0, size - i))
-        }
-        return bytes
-      }
-      let nanoid4 = customRandom('abcde', 4, fakeRandom)
-      let nanoid18 = customRandom('abcde', 18, fakeRandom)
-      equal(nanoid4(), 'cccc')
-      equal(nanoid18(), 'acccccdcbacccccdcb')
-    })
-
-    test(`${type} / customRandom / is ready for 0 size`, () => {
-      let nanoid0 = customRandom('abc', 5, size => new Uint8Array(size))
-      equal(nanoid0(0), '')
-      equal(customRandom('', 5, size => new Uint8Array(size))(0), '')
-    })
-
-    test(`${type} / urlAlphabet / is string`, () => {
-      equal(typeof urlAlphabet, 'string')
-    })
-
-    test(`${type} / urlAlphabet / has 64 symbols`, () => {
-      equal(urlAlphabet.length, 64)
-    })
-
-    test(`${type} / urlAlphabet / has no duplicates`, () => {
-      for (let i = 0; i < urlAlphabet.length; i++) {
-        equal(urlAlphabet.lastIndexOf(urlAlphabet[i]), i)
-      }
-    })
-
-    test(`${type} / random / generates small random buffers`, () => {
-      for (let i = 0; i < urlAlphabet.length; i++) {
-        equal(random(10).length, 10)
-      }
-    })
-
-    test(`${type} / random / generates random buffers`, () => {
-      let numbers = {}
-      let bytes = random(1000)
-      equal(bytes.length, 1000)
-      for (let byte of bytes) {
-        if (!numbers[byte]) numbers[byte] = 0
-        numbers[byte] += 1
-        equal(typeof byte, 'number')
-        ok(byte <= 255)
-        ok(byte >= 0)
-      }
-    })
-
     if (type === 'node') {
-      test(`${type} / proxy number / prevent collision`, () => {
+      test(`prevent collision with proxy number`, () => {
         let makeProxyNumberToReproducePreviousID = () => {
           let step = 0
           return {
@@ -239,11 +132,128 @@ for (let type of ['node', 'browser']) {
         let id2 = nanoid(makeProxyNumberToReproducePreviousID())
         notEqual(id1, id2)
       })
+    }
 
-      test(`${type} / customAlphabet / does not fall in infinite loop`, () => {
+    describe('customAlphabet', () => {
+      test(`has options`, () => {
+        let nanoidA = customAlphabet('a', 5)
+        equal(nanoidA(), 'aaaaa')
+      })
+
+      test(`has flat distribution`, () => {
+        let COUNT = 50 * 1000
+        let LENGTH = 30
+        let ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
+        let nanoid2 = customAlphabet(ALPHABET, LENGTH)
+
+        let chars = {}
+        for (let i = 0; i < COUNT; i++) {
+          let id = nanoid2()
+          for (let char of id) {
+            if (!chars[char]) chars[char] = 0
+            chars[char] += 1
+          }
+        }
+
+        equal(Object.keys(chars).length, ALPHABET.length)
+
+        let max = 0
+        let min = Number.MAX_SAFE_INTEGER
+        for (let k in chars) {
+          let distribution = (chars[k] * ALPHABET.length) / (COUNT * LENGTH)
+          if (distribution > max) max = distribution
+          if (distribution < min) min = distribution
+        }
+        ok(max - min <= 0.05)
+      })
+
+      test(`changes size`, () => {
+        let nanoidA = customAlphabet('a')
+        equal(nanoidA(10), 'aaaaaaaaaa')
+      })
+
+      test(`is ready for 0 size`, () => {
         equal(customAlphabet('abc')(0), '')
         equal(customAlphabet('abc', 0)(0), '')
+        equal(customAlphabet('')(0), '')
+        equal(customAlphabet('', 0)(0), '')
       })
-    }
+
+      test(`avoids pool pollution, infinite loop`, () => {
+        let ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
+        let nanoid2 = customAlphabet(ALPHABET)
+        nanoid2(2.1)
+        let second = nanoid2()
+        let third = nanoid2()
+        notEqual(second, third)
+      })
+
+      if (type === 'node') {
+        test(`does not fall in infinite loop`, () => {
+          equal(customAlphabet('abc')(0), '')
+          equal(customAlphabet('abc', 0)(0), '')
+        })
+      }
+    })
+
+    describe('customRandom', () => {
+      test(`supports generator`, () => {
+        let sequence = [2, 255, 3, 7, 7, 7, 7, 7, 0, 1]
+        function fakeRandom(size) {
+          let bytes = []
+          for (let i = 0; i < size; i += sequence.length) {
+            bytes = bytes.concat(sequence.slice(0, size - i))
+          }
+          return bytes
+        }
+        let nanoid4 = customRandom('abcde', 4, fakeRandom)
+        let nanoid18 = customRandom('abcde', 18, fakeRandom)
+        equal(nanoid4(), 'cccc')
+        equal(nanoid18(), 'acccccdcbacccccdcb')
+      })
+
+      test(`is ready for 0 size`, () => {
+        let nanoid0 = customRandom('abc', 5, size => new Uint8Array(size))
+        equal(nanoid0(0), '')
+        equal(customRandom('', 5, size => new Uint8Array(size))(0), '')
+      })
+    })
+
+    describe('urlAlphabet', () => {
+      test(`is string`, () => {
+        equal(typeof urlAlphabet, 'string')
+      })
+
+      test(`has 64 symbols`, () => {
+        equal(urlAlphabet.length, 64)
+      })
+
+      test(`has no duplicates`, () => {
+        for (let i = 0; i < urlAlphabet.length; i++) {
+          equal(urlAlphabet.lastIndexOf(urlAlphabet[i]), i)
+        }
+      })
+    })
+
+    describe('random', () => {
+      test(`generates small random buffers`, () => {
+        for (let i = 0; i < urlAlphabet.length; i++) {
+          equal(random(10).length, 10)
+        }
+      })
+
+      test(`generates random buffers`, () => {
+        let numbers = {}
+        let bytes = random(1000)
+        equal(bytes.length, 1000)
+        for (let byte of bytes) {
+          if (!numbers[byte]) numbers[byte] = 0
+          numbers[byte] += 1
+          equal(typeof byte, 'number')
+          ok(byte <= 255)
+          ok(byte >= 0)
+        }
+      })
+    })
   })
 }
