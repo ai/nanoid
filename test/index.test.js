@@ -76,6 +76,18 @@ for (let type of ['node', 'browser']) {
       notEqual(second, third)
     })
 
+    if (type === 'node') {
+      test(`avoids pool break`, () => {
+        nanoid()
+        try {
+          nanoid(2147483648)
+        } catch {}
+        let third = nanoid()
+        let fourth = nanoid()
+        notEqual(third, fourth)
+      })
+    }
+
     test(`has flat distribution`, () => {
       let COUNT = 100 * 1000
       let LENGTH = nanoid().length
