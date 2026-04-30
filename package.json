@@ -110,15 +110,6 @@
   "engines": {
     "node": "^18 || >=20"
   },
-  "pnpm": {
-    "ignoredBuiltDependencies": [
-      "esbuild",
-      "unrs-resolver"
-    ],
-    "onlyBuiltDependencies": [
-      "simple-git-hooks"
-    ]
-  },
   "clean-publish": {
     "cleanDocs": true,
     "cleanComments": true
