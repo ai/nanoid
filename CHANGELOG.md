@@ -4,7 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## 5.1.10
 
-- Fixed breaking nanoid by requesting big ID (by @alanzabihi).
+- Fixed breaking Nano ID by requesting big ID (by @alanzabihi).
 
 ## 5.1.9
 
@@ -106,6 +106,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
   We will support 3.x branch with CommonJS for users who can’t migrate to ESM.
 - Removed Node.js 10 and Node.js 12 support.
 - Reduced npm package size.
+
+## 3.3.12
+
+- Fixed breaking Nano ID by requesting big ID.
 
 ## 3.3.11
 
