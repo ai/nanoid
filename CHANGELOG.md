@@ -2,6 +2,10 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.1.10
+
+- Fixed breaking nanoid by requesting big ID (by @alanzabihi).
+
 ## 5.1.9
 
 - Fixed npm package size regression.
