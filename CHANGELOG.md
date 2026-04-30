@@ -2,6 +2,10 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.1.11
+
+- Fixed breaking Nano ID by requesting big ID.
+
 ## 5.1.10
 
 - Fixed breaking Nano ID by requesting big ID (by @alanzabihi).
