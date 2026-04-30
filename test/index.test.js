@@ -1,4 +1,4 @@
-import { equal, match, notEqual, ok } from 'node:assert'
+import { equal, match, notEqual, ok, throws } from 'node:assert'
 import { after, before, describe, test } from 'node:test'
 
 import * as browser from '../index.browser.js'
@@ -76,17 +76,22 @@ for (let type of ['node', 'browser']) {
       notEqual(second, third)
     })
 
-    if (type === 'node') {
-      test(`avoids pool break`, () => {
-        nanoid()
-        try {
-          nanoid(2147483648)
-        } catch {}
-        let third = nanoid()
-        let fourth = nanoid()
-        notEqual(third, fourth)
-      })
-    }
+    test('throws on negative or too big ID length', () => {
+      throws(() => {
+        nanoid(2147483648)
+      }, /Wrong ID size|Invalid typed array length/)
+      throws(() => {
+        nanoid(-10)
+      }, /Wrong ID size|Invalid typed array length/)
+      if (type === 'node') {
+        throws(() => {
+          nanoid(1025)
+        }, /Wrong ID size/)
+      }
+      let a = nanoid()
+      let b = nanoid()
+      notEqual(a, b)
+    })
 
     test(`has flat distribution`, () => {
       let COUNT = 100 * 1000

@@ -13,7 +13,7 @@ const POOL_SIZE_MULTIPLIER = 128
 let pool, poolOffset
 
 function fillPool(bytes) {
-  if (bytes < 0) bytes = 0
+  if (bytes < 0 || bytes > 1024) throw new RangeError('Wrong ID size')
   if (!pool || pool.length < bytes) {
     pool = Buffer.allocUnsafe(bytes * POOL_SIZE_MULTIPLIER)
     crypto.getRandomValues(pool)
