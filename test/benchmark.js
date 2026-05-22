@@ -37,7 +37,7 @@ bench
   .add('@lukeed/uuid', () => {
     lukeed4()
   })
-  .add('node-id', () => {
+  .add('nope-id', () => {
     nopeid()
   })
   .add('nanoid', () => {
