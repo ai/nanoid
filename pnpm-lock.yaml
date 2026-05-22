@@ -39,8 +39,8 @@ importers:
         specifier: ^4.2.2
         version: 4.2.2
       nope-id:
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.1.0
+        version: 1.1.0
       oxlint:
         specifier: ^1.66.0
         version: 1.66.0(oxlint-tsgolint@0.23.0)
@@ -922,8 +922,8 @@ packages:
     resolution: {integrity: sha512-iIbHXV9eBB2nB0wa7oTsrrXq+qQt+9SIlx9AX3T96YgobtEQfis5n6TJ6vV+3QP8DwdriEAcGhARaFCu37peBg==}
     engines: {node: '>=18'}
 
-  nope-id@1.0.0:
-    resolution: {integrity: sha512-zoeL9ayGfzs+R9s/HoEWR8AF7+DgXXCiKOH2id9DTaFj6rwfvHYktsjNf4824yJXAQo5xhDLGD3o40/8GOPjoA==}
+  nope-id@1.1.0:
+    resolution: {integrity: sha512-H4I2/pJS8c+MA1alHEet9di6TD+ELEhPfnhV01cNFT2n4KeUIusnRh2D9PHD63tUhlBFzLD9XrsgD6cBHvp/9Q==}
     engines: {node: '>=16.0.0'}
 
   oxlint-tsgolint@0.23.0:
@@ -1861,7 +1861,7 @@ snapshots:
 
   node-releases@2.0.45: {}
 
-  nope-id@1.0.0: {}
+  nope-id@1.1.0: {}
 
   oxlint-tsgolint@0.23.0:
     optionalDependencies:
