@@ -4,6 +4,7 @@ import { v4 as lukeed4 } from '@lukeed/uuid'
 import { v4 as napiV4 } from '@napi-rs/uuid'
 import crypto from 'node:crypto'
 import { styleText } from 'node:util'
+import { nopeid } from 'nope-id'
 import rndm from 'rndm'
 import srs from 'secure-random-string'
 import { Bench } from 'tinybench'
@@ -35,6 +36,9 @@ bench
   })
   .add('@lukeed/uuid', () => {
     lukeed4()
+  })
+  .add('nope-id', () => {
+    nopeid()
   })
   .add('nanoid', () => {
     nanoid()
