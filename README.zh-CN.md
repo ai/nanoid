@@ -71,21 +71,22 @@ Nano ID 和 UUID v4之间有两个主要区别:
 
 ```rust
 $ node ./test/benchmark.js
-crypto.randomUUID       21,741,317 ops/sec
-uuid v4                 21,204,378 ops/sec
-@napi-rs/uuid           10,236,615 ops/sec
-uid/secure              10,567,676 ops/sec
-@lukeed/uuid             8,647,481 ops/sec
-nanoid                   7,800,308 ops/sec
-customAlphabet           9,697,350 ops/sec
-nanoid for browser         576,759 ops/sec
-secure-random-string       529,253 ops/sec
-uid-safe.sync              526,459 ops/sec
+crypto.randomUUID       14,859,099 ops/sec
+uuid v4                  9,456,355 ops/sec
+@napi-rs/uuid            7,000,646 ops/sec
+uid/secure               7,318,120 ops/sec
+@lukeed/uuid             6,241,275 ops/sec
+nope-id                  5,567,338 ops/sec
+nanoid                   5,412,358 ops/sec
+customAlphabet           6,565,742 ops/sec
+nanoid for browser         485,023 ops/sec
+secure-random-string       414,150 ops/sec
+uid-safe.sync              413,603 ops/sec
 
 Non-secure:
-uid                     31,379,525 ops/sec
-nanoid/non-secure        3,678,505 ops/sec
-rndm                     3,767,185 ops/sec
+uid                     29,182,907 ops/sec
+nanoid/non-secure        2,702,277 ops/sec
+rndm                     2,734,241 ops/sec
 ```
 
 测试配置: Framework 13 7840U, Fedora 39, Node.js 21.6.
