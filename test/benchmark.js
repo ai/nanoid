@@ -22,6 +22,9 @@ let bench = new Bench()
 let nanoid2 = customAlphabet('1234567890abcdef-', 10)
 
 bench
+  .add('nope-id', () => {
+    nopeid()
+  })
   .add('crypto.randomUUID', () => {
     crypto.randomUUID()
   })
@@ -36,9 +39,6 @@ bench
   })
   .add('@lukeed/uuid', () => {
     lukeed4()
-  })
-  .add('nope-id', () => {
-    nopeid()
   })
   .add('nanoid', () => {
     nanoid()
