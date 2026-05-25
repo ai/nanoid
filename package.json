@@ -61,7 +61,7 @@
     "better-node-test": "^0.8.4",
     "clean-publish": "^7.1.0",
     "eslint-plugin-prefer-let": "^4.2.2",
-    "nope-id": "^1.1.0",
+    "nope-id": "^1.3.0",
     "oxlint": "^1.66.0",
     "oxlint-tsgolint": "^0.23.0",
     "rndm": "^1.2.0",
