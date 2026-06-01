@@ -114,5 +114,17 @@
   "clean-publish": {
     "cleanDocs": true,
     "cleanComments": true
-  }
+  },
+  "files": [
+    "index.js",
+    "index.browser.js",
+    "index.d.ts",
+    "nanoid.js",
+    "non-secure/",
+    "url-alphabet/",
+    "bin/",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md"
+  ]
 }
