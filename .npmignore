@@ -6,3 +6,4 @@ img/
 
 .devcontainer.json
 .claude
+pnpm-workspace.yaml
