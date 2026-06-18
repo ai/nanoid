@@ -5,3 +5,4 @@ coverage/
 img/
 
 .devcontainer.json
+.claude
