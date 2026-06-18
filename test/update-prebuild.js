@@ -2,7 +2,7 @@
 
 import { writeFile } from 'node:fs/promises'
 
-import { BUILD_PATH, prebuild } from './prebuild.ts'
+import { BUILD_PATH, prebuild } from './prebuild.js'
 
 async function build() {
   let code = await prebuild()
