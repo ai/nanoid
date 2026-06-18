@@ -3,42 +3,30 @@ on:
   push:
     tags:
       - '*'
-permissions:
-  contents: write
 jobs:
-  release:
-    name: Release On Tag
-    if: startsWith(github.ref, 'refs/tags/')
+  publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - name: Checkout the repository
         uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
-      - name: Extract the changelog
-        id: changelog
-        run: |
-          TAG_NAME=${GITHUB_REF/refs\/tags\//}
-          READ_SECTION=false
-          CHANGELOG=""
-          while IFS= read -r line; do
-            if [[ "$line" =~ ^#+\ +(.*) ]]; then
-              if [[ "${BASH_REMATCH[1]}" == "$TAG_NAME" ]]; then
-                READ_SECTION=true
-              elif [[ "$READ_SECTION" == true ]]; then
-                break
-              fi
-            elif [[ "$READ_SECTION" == true ]]; then
-              CHANGELOG+="$line"$'\n'
-            fi
-          done < "CHANGELOG.md"
-          CHANGELOG=$(echo "$CHANGELOG" | awk '/./ {$1=$1;print}')
-          echo "changelog_content<<EOF" >> $GITHUB_OUTPUT
-          echo "$CHANGELOG" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-      - name: Create the release
-        if: steps.changelog.outputs.changelog_content != ''
-        uses: softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda # v3.0.0
+      - name: Clean npm package
+        uses: ai/clean-npm-project@0360e11d62a76db910e3035fad44c6c07d5348c4 #v0.1.0
         with:
-          name: ${{ github.ref_name }}
-          body: '${{ steps.changelog.outputs.changelog_content }}'
-          draft: false
-          prerelease: false
+          clean-docs: true
+          clean-comments: true
+      - name: Publish npm package
+        run: npm stage publish
+        working-directory: cleaned-project/
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+      - name: Clean npm package
+        uses: ai/copy-changelog-to-release@907fd240473b0935f716efdedf9fa660ba874737 # 0.1.0

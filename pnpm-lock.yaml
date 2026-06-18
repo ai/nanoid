@@ -32,9 +32,6 @@ importers:
       better-node-test:
         specifier: ^0.8.4
         version: 0.8.4
-      clean-publish:
-        specifier: ^7.1.0
-        version: 7.1.0
       eslint-plugin-prefer-let:
         specifier: ^4.2.2
         version: 4.2.2
@@ -683,11 +680,6 @@ packages:
     resolution: {integrity: sha512-rNjApaLzuwaOTjCiT8lSDdGN1APCiqkChLMJxJPWLunPAt5fy8xgU9/jNOchV84wfIxrA0lRQB7oCT8jrn/wrQ==}
     engines: {node: '>=6.0'}
 
-  clean-publish@7.1.0:
-    resolution: {integrity: sha512-fnsFHW6fIq7Sr5Pf9YUsxB1up5pEA13DHg4Q/bZdphWssmIUuKV7G5Kaq2Q0X6UsCFm//uFbONOWTi7m4DvMTg==}
-    engines: {node: '>= 22.0.0'}
-    hasBin: true
-
   commander@2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
 
@@ -1074,10 +1066,6 @@ packages:
   tinybench@6.0.2:
     resolution: {integrity: sha512-FlHoQpcFvCzeXK5kVPvV7IVgW/hs/B36QWTz876iSdeJguBDfdTSRQmYmaHX+fQNt4hp+gEFB2XXw+8hT4/y8A==}
     engines: {node: '>=20.0.0'}
-
-  tinyexec@1.2.4:
-    resolution: {integrity: sha512-SHf/r48b7vOrjve9PxJo3MN5v5yuyjHvdUcrQffT3WXMUfnGmHDVbC4k3sHJaJTgZCwpUplIaAo5ANtMyp3YHg==}
-    engines: {node: '>=18'}
 
   tinyglobby@0.2.17:
     resolution: {integrity: sha512-wXR/dYpcqKmfWpEdZjiKJOwCNFndD0DMnrW/cYjVGttEkBfVgcLFHoNrlj47mjOVic9yyNu65alsgF4NQyTa2g==}
@@ -1697,13 +1685,6 @@ snapshots:
 
   chrome-trace-event@1.0.4: {}
 
-  clean-publish@7.1.0:
-    dependencies:
-      lilconfig: 3.1.3
-      picomatch: 4.0.4
-      tinyexec: 1.2.4
-      tinyglobby: 0.2.17
-
   commander@2.20.3: {}
 
   convert-source-map@2.0.0: {}
@@ -1988,8 +1969,6 @@ snapshots:
       source-map-support: 0.5.21
 
   tinybench@6.0.2: {}
-
-  tinyexec@1.2.4: {}
 
   tinyglobby@0.2.17:
     dependencies:
