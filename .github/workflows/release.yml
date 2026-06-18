@@ -13,7 +13,7 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
       - name: Clean npm package
-        uses: ai/clean-npm-project@d0515980a6388e556684ba290d8ef5733639e01c # v0.2.2
+        uses: ai/clean-npm-project@0e1fd6e68c39b972235226864d47e368c550ebed # v0.2.3
         with:
           clean-docs: true
           clean-comments: true
