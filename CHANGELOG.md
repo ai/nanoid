@@ -2,6 +2,10 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.1.13
+
+- Fixed npm package size regression.
+
 ## 5.1.12
 
 - Moved to npm Provenance and Staged Publishing.
