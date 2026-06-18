@@ -94,7 +94,6 @@ Non-secure:
 uid                     27,106,859 ops/sec
 nanoid/non-secure        2,672,540 ops/sec
 rndm                     2,666,518 ops/sec
-
 ```
 
 Test configuration: Framework 13 7840U, Fedora 39, Node.js 21.6.
