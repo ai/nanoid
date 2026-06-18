@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.3.13
+* Reduced npm package size.
+
 ## 3.3.12
 * Fixed breaking Nano ID by requesting big ID.
 
