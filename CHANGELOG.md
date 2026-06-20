@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.3.14
+* Fixed random pool corruption on big ID sizes.
+
 ## 3.3.13
 * Reduced npm package size.
 
