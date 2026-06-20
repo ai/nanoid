@@ -123,6 +123,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Removed Node.js 10 and Node.js 12 support.
 - Reduced npm package size.
 
+## 3.3.14
+
+- Fixed random pool corruption on big ID sizes.
+
 ## 3.3.13
 
 - Reduced npm package size.
