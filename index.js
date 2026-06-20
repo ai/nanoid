@@ -11,14 +11,19 @@ const POOL_SIZE_MULTIPLIER = 128
 let pool, poolOffset
 
 let fillPool = bytes => {
-  if (bytes < 0 || bytes > 512) throw new RangeError('Wrong ID size')
-  if (!pool || pool.length < bytes) {
-    pool = Buffer.allocUnsafe(bytes * POOL_SIZE_MULTIPLIER)
-    crypto.randomFillSync(pool)
-    poolOffset = 0
-  } else if (poolOffset + bytes > pool.length) {
-    crypto.randomFillSync(pool)
-    poolOffset = 0
+  if (bytes < 0) throw new RangeError('Wrong ID size')
+  try {
+    if (!pool || pool.length < bytes) {
+      pool = Buffer.allocUnsafe(bytes * POOL_SIZE_MULTIPLIER)
+      crypto.randomFillSync(pool)
+      poolOffset = 0
+    } else if (poolOffset + bytes > pool.length) {
+      crypto.randomFillSync(pool)
+      poolOffset = 0
+    }
+  } catch (e) {
+    pool = undefined
+    throw e
   }
   poolOffset += bytes
 }
