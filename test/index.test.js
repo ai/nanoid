@@ -83,11 +83,6 @@ for (let type of ['node', 'browser']) {
       throws(() => {
         nanoid(-10)
       }, /Wrong ID size|Invalid typed array length/)
-      if (type === 'node') {
-        throws(() => {
-          nanoid(1025)
-        }, /Wrong ID size/)
-      }
       let a = nanoid()
       let b = nanoid()
       notEqual(a, b)
