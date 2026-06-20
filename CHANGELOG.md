@@ -2,6 +2,10 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.1.15
+
+- Fixed random pool corruption on big ID sizes.
+
 ## 5.1.14
 
 - Fixed npm package size regression.
