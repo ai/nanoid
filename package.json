@@ -94,7 +94,6 @@
     "@originjs/vite-plugin-commonjs": "^1.0.3",
     "@types/node": "^17.0.40",
     "c8": "^7.11.3",
-    "clean-publish": "^5.1.0",
     "nanospy": "^0.5.0",
     "terser": "^5.14.0",
     "uvu": "^0.5.3"
