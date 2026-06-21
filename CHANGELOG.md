@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.3.15
+* Fixed npm provenance error.
+
 ## 3.3.14
 * Fixed random pool corruption on big ID sizes.
 
