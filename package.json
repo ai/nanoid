@@ -71,7 +71,7 @@
     "typescript": "^6.0.3",
     "uid": "^2.0.2",
     "uid-safe": "^2.1.5",
-    "uuid": "^14.0.0",
+    "uuid": "^14.0.1",
     "vite": "^8.0.16"
   },
   "simple-git-hooks": {
