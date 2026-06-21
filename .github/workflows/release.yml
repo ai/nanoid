@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: 26
       - name: Publish npm package
-        run: npm stage publish
+        run: npm stage publish --tag legacy
         working-directory: cleaned-project/
   release:
     runs-on: ubuntu-latest
