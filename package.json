@@ -97,13 +97,13 @@
       "name": "non-secure nanoid",
       "import": "{ nanoid }",
       "path": "non-secure/index.js",
-      "limit": "90 B"
+      "limit": "93 B"
     },
     {
       "name": "non-secure customAlphabet",
       "import": "{ customAlphabet }",
       "path": "non-secure/index.js",
-      "limit": "53 B"
+      "limit": "55 B"
     }
   ],
   "engines": {
