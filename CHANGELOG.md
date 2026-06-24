@@ -2,6 +2,10 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.1.16
+
+- Fixed forever loop on negative size (by @spokodev).
+
 ## 5.1.15
 
 - Fixed random pool corruption on big ID sizes.
