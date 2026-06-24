@@ -1,0 +1,4 @@
+{
+  "image": "ghcr.io/ai/devcontainer:latest",
+  "runArgs": ["--net=bridge"],
+}
