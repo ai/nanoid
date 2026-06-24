@@ -116,3 +116,13 @@ describe('non secure', () => {
     })
   })
 })
+
+test('does not hang on negative size (nanoid)', () => {
+  equal(nanoid(-1), '')
+  equal(nanoid(-100), '')
+})
+
+test('does not hang on negative size (customAlphabet)', () => {
+  equal(customAlphabet('abcdef')(-1), '')
+  equal(customAlphabet('abcdef', -5)(), '')
+})
