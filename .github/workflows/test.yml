@@ -40,7 +40,7 @@ jobs:
           version: 11
           runtime: node@${{ matrix.node }}
       - name: Install dependencies
-        run: pnpm install --ignore-scripts
+        run: pnpm ci
       - name: Run unit tests
         run: pnpm bnt
   old:
