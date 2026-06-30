@@ -104,4 +104,14 @@ test('customAlphabet / avoids pool pollution, infinite loop', () => {
   not.equal(second, third)
 })
 
+test('nanoid / does not hang on negative size', () => {
+  is(nanoid(-1), '')
+  is(nanoid(-100), '')
+})
+
+test('customAlphabet / does not hang on negative size', () => {
+  is(customAlphabet('abcdef')(-1), '')
+  is(customAlphabet('abcdef', -5)(), '')
+})
+
 test.run()
