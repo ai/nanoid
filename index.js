@@ -1,40 +1,31 @@
 import { webcrypto as crypto } from 'node:crypto'
 
-import { urlAlphabet as scopedUrlAlphabet } from './url-alphabet/index.js'
+import { urlAlphabet } from './url-alphabet/index.js'
 
-export { urlAlphabet } from './url-alphabet/index.js'
+export { urlAlphabet }
 
-// It is best to make fewer, larger requests to the crypto module to
-// avoid system call overhead. So, random numbers are generated in a
-// pool. The pool is a Buffer that is larger than the initial random
-// request size by this multiplier. The pool is enlarged if subsequent
-// requests exceed the maximum buffer size.
-const POOL_SIZE_MULTIPLIER = 128
-let pool, poolOffset
+// `crypto.getRandomValues` rejects requests over 65536 bytes,
+// so bigger buffers are filled by chunks.
+const GET_RANDOM_LIMIT = 65536
 
-function fillPool(bytes) {
-  if (bytes < 0) throw new RangeError('Wrong ID size')
-  try {
-    if (!pool || pool.length < bytes) {
-      pool = Buffer.allocUnsafe(bytes * POOL_SIZE_MULTIPLIER)
-      crypto.getRandomValues(pool)
-      poolOffset = 0
-    } else if (poolOffset + bytes > pool.length) {
-      crypto.getRandomValues(pool)
-      poolOffset = 0
-    }
-  } catch (e) {
-    pool = undefined
-    throw e
+function fillRandom(buffer) {
+  let from = 0
+  while (from < buffer.length) {
+    let to = Math.min(from + GET_RANDOM_LIMIT, buffer.length)
+    crypto.getRandomValues(buffer.subarray(from, to))
+    from = to
   }
-  poolOffset += bytes
 }
 
 export function random(bytes) {
   // `|=` convert `bytes` to number to prevent `valueOf` abusing
-  // and pool pollution
-  fillPool((bytes |= 0))
-  return pool.subarray(poolOffset - bytes, poolOffset)
+  bytes |= 0
+  if (bytes < 0) throw new RangeError('Wrong ID size')
+  // `random()` is used rarely and not in hot paths, so it makes
+  // a direct crypto call instead of using a byte pool.
+  let buffer = Buffer.allocUnsafe(bytes)
+  fillRandom(buffer)
+  return buffer
 }
 
 export function customRandom(alphabet, defaultSize, getRandom) {
@@ -97,21 +88,95 @@ export function customRandom(alphabet, defaultSize, getRandom) {
   }
 }
 
-export function customAlphabet(alphabet, size = 21) {
-  return customRandom(alphabet, size, random)
-}
+// The string pool optimizations in `customAlphabet()` and `nanoid()`
+// were ported from the nope-id project by Orhan Aydoğdu:
+// https://github.com/orhanayd/nope-id
 
-export function nanoid(size = 21) {
-  // `|=` convert `size` to number to prevent `valueOf` abusing
-  // and pool pollution
-  fillPool((size |= 0))
+// Maximum size of the pre-generated string pool in `customAlphabet()`.
+const POOL_MAX = GET_RANDOM_LIMIT / 2
 
-  let id = ''
-  // We are reading directly from the random pool to avoid creating new array
-  for (let i = poolOffset - size; i < poolOffset; i++) {
-    // The following mask reduces the random byte in the 0-255 value
-    // range to the 0-63 value range.
-    id += scopedUrlAlphabet[pool[i] & 63]
+export function customAlphabet(alphabet, defaultSize = 21) {
+  if (
+    typeof alphabet !== 'string' ||
+    !alphabet.length ||
+    alphabet.length > 256
+  ) {
+    return customRandom(alphabet, defaultSize, random)
   }
-  return id
+  for (let i = 0; i < alphabet.length; i++) {
+    if (alphabet.charCodeAt(i) > 255) {
+      // The fast path below writes char codes to a byte buffer,
+      // so it supports only single-byte characters.
+      return customRandom(alphabet, defaultSize, random)
+    }
+  }
+
+  // Alphabet char codes to write IDs into a byte buffer directly.
+  let charCodes = Uint8Array.from(alphabet, str => {
+    return str.charCodeAt(0)
+  })
+  let alphabetLen = alphabet.length
+  // The smallest `2^n - 1` covering all alphabet indexes. Rejecting
+  // `byte & mask >= alphabetLen` avoids modulo bias without `%` operation.
+  let mask = (2 << (31 - Math.clz32((alphabetLen - 1) | 1))) - 1
+
+  // IDs are pre-generated into a string pool: accepted alphabet chars are
+  // written to a byte buffer, converted to a string with one
+  // `Buffer#toString()` call, and every ID is a cheap `String#substring()`.
+  // It avoids per-character string concatenations and pays string
+  // allocation cost once per refill.
+  //
+  // The pool starts at the first requested size and grows geometrically,
+  // so short-living generators do not pay for a full pool.
+  let pool = ''
+  let poolOffset = 0
+  let poolNext = 0
+
+  return (size = defaultSize) => {
+    // `|=` convert `size` to number to prevent `valueOf` abusing
+    // and pool offset pollution
+    size |= 0
+    if (size < 0) throw new RangeError('Wrong ID size')
+    if (size === 0) return ''
+    if (poolOffset + size > pool.length) {
+      let target = Math.max(poolNext, size)
+      poolNext = Math.min(target * 16, POOL_MAX)
+      let buffer = Buffer.allocUnsafe(target)
+      if (mask === alphabetLen - 1) {
+        // Power-of-two alphabets like `urlAlphabet` accept every byte,
+        // so random bytes are translated in place without rejections.
+        fillRandom(buffer)
+        for (let i = 0; i < target; i++) {
+          buffer[i] = charCodes[buffer[i] & mask]
+        }
+      } else {
+        // Rejection sampling accepts `alphabetLen` of every `mask + 1`
+        // random bytes. `1.6` requests extra bytes to cover
+        // unlucky streaks in most fills.
+        let randomBytes = Buffer.allocUnsafe(
+          Math.ceil((1.6 * (mask + 1) * target) / alphabetLen)
+        )
+        let accepted = 0
+        while (accepted < target) {
+          fillRandom(randomBytes)
+          for (let i = 0; i < randomBytes.length; i++) {
+            let index = randomBytes[i] & mask
+            if (index < alphabetLen) {
+              buffer[accepted++] = charCodes[index]
+              if (accepted === target) break
+            }
+          }
+        }
+      }
+      pool = buffer.toString('latin1')
+      poolOffset = 0
+    }
+    poolOffset += size
+    return pool.substring(poolOffset - size, poolOffset)
+  }
 }
+
+// `nanoid()` reuses the `customAlphabet()` string pool logic.
+// The URL-safe alphabet has 64 symbols, so the generator translates
+// random bytes in place without rejections.
+export const nanoid = customAlphabet(urlAlphabet)

@@ -70,14 +70,14 @@ export function customAlphabet<Type extends string>(
  * ```
  *
  * @param alphabet Alphabet used to generate a random string.
- * @param size Size of the random string.
+ * @param defaultSize Size of the random string.
  * @param random A random bytes generator.
  * @typeparam Type The ID type to replace `string` with some opaque type.
  * @returns A random string generator.
  */
 export function customRandom<Type extends string>(
   alphabet: string,
-  size: number,
+  defaultSize: number,
   random: (bytes: number) => Uint8Array
 ): (size?: number) => Type
 

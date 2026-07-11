@@ -11,6 +11,7 @@ Sebuah generator ID yang unik dalam bentuk string yang ringan, aman, serta _URL-
 > yang mana tidak mungkin untuk tidak dihormati."
 
 - **Ringan.** Hanya 118 bytes (diperkecil dan brotlied). Tidak ada ketergantungan (dependencies) apapun. [Size Limit](https://github.com/ai/size-limit) mengatur ukuran dari generator ini.
+- **Cepat.** 50% lebih cepat ketimbang `crypto.randomUUID()` bawaan.
 - **Aman.** Nano ID menggunakan RNG yang terdapat pada perangkat keras. Dapat digunakan dalam lingkungan seperti klaster.
 - **ID yang pendek.** Nano ID menggunakan alfabet yang lebih banyak ketimbang UUID (`A-Za-z0-9_-`), karenanya ukuran ID menjadi berkurang dari 36 menjadi 21 simbol.
 - **Portabel.** Nano ID telah dimigrasi untuk [20 bahasa pemrograman lainnya](#bahasa-pemrograman-lainnya).
@@ -58,7 +59,7 @@ Nano ID dapat dibandingkan dengan UUID v4 (yang berbasis acak / _randomly genera
 Ada dua buah perbedaan antara Nano ID dan UUID v4:
 
 1. Nano ID menggunakan alfabet yang lebih lebar, karenanya jumlah bita acak dapat 'dikemas' dalam 21 simbol, bukan 36 simbol.
-2. Kode sumber Nano ID **empat kali lebih kecil** ketimbang `uuid/v4`: 118 bytes dibanding 423 bytes.
+2. Nano ID lebih cepat ketimbang `crypto.randomUUID` dan `uuid/v4`.
 
 ## Benchmark
 
