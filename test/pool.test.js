@@ -18,4 +18,3 @@ describe('pool pollution', () => {
     }
   })
 })
-
