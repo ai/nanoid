@@ -174,7 +174,4 @@ export function customAlphabet(alphabet, defaultSize = 21) {
   }
 }
 
-// `nanoid()` reuses the `customAlphabet()` string pool logic.
-// The URL-safe alphabet has 64 symbols, so the generator translates
-// random bytes in place without rejections.
 export const nanoid = customAlphabet(urlAlphabet)
