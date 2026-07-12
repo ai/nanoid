@@ -178,6 +178,8 @@ import { nanoid } from 'nanoid/non-secure'
 const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
+请注意，非安全版本比安全版本*更慢*，请仅在必要时使用。
+
 ### 自定义字母或大小
 
 `customAlphabet` 返回一个函数，允许您使用自定义字母表和ID大小创建 `nanoid`。

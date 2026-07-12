@@ -223,6 +223,8 @@ import { nanoid } from 'nanoid/non-secure'
 const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
+なお、非セキュア版はセキュア版よりも*遅い*ことに注意してください。どうしても必要な場合のみ使用してください。
+
 ### カスタムアルファベットまたはサイズ
 
 customAlphabetは、独自のアルファベットとIDサイズでnanoidを作成できる関数を返します。

@@ -232,6 +232,9 @@ import { nanoid } from 'nanoid/non-secure'
 const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
+Note, that non-secure version is _slower_ than secure.
+Use it only if you have to.
+
 ### Custom Alphabet or Size
 
 `customAlphabet` returns a function that allows you to create `nanoid`

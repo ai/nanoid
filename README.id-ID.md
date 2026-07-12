@@ -148,12 +148,14 @@ Dapat digunakan pula [custom alphabet](#custom-alphabet-or-size) atau [random ge
 
 ### Non-Secure
 
-Konfigurasi bawaan Nano ID menggunakan random bytes generator yang berasal dari perangkat keras untuk keamanan dan probabilitas collision yang rendah. Apabila tidak terlalu memikirkan soal keamanan, dapat pula menggunakan non-secure generator yang lebih cepat.
+Konfigurasi bawaan Nano ID menggunakan random bytes generator yang berasal dari perangkat keras untuk keamanan dan probabilitas collision yang rendah. Apabila tidak terlalu memikirkan soal keamanan, dapat pula menggunakannya pada lingkungan tanpa hardware random generator.
 
 ```js
 import { nanoid } from 'nanoid/non-secure'
 const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
+
+Perlu dicatat bahwa versi _non-secure_ _lebih lambat_ daripada versi _secure_. Gunakan hanya jika benar-benar diperlukan.
 
 ### Alfabet dan Ukuran (Custom)
 
