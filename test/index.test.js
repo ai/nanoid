@@ -1,5 +1,4 @@
 import { equal, match, notEqual, ok, throws } from 'node:assert'
-import { webcrypto } from 'node:crypto'
 import { after, before, describe, test } from 'node:test'
 
 import * as browser from '../index.browser.js'
@@ -156,8 +155,8 @@ for (let type of ['node', 'browser']) {
 
       test(`recovers from crypto errors`, () => {
         nanoid(1)
-        let original = webcrypto.getRandomValues
-        webcrypto.getRandomValues = () => {
+        let original = crypto.getRandomValues
+        crypto.getRandomValues = () => {
           throw new Error('Entropy failure')
         }
         try {
@@ -168,7 +167,7 @@ for (let type of ['node', 'browser']) {
             random(131072)
           }, /Entropy failure/)
         } finally {
-          webcrypto.getRandomValues = original
+          crypto.getRandomValues = original
         }
         equal(nanoid().length, 21)
         equal(random(10).length, 10)
