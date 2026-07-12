@@ -3,9 +3,9 @@
 // This file replaces `index.js` in bundlers like webpack or Rollup,
 // according to `browser` config in `package.json`.
 
-import { urlAlphabet as scopedUrlAlphabet } from './url-alphabet/index.js'
+import { urlAlphabet } from './url-alphabet/index.js'
 
-export { urlAlphabet } from './url-alphabet/index.js'
+export { urlAlphabet }
 
 export let random = bytes => crypto.getRandomValues(new Uint8Array(bytes))
 
@@ -78,7 +78,7 @@ export let nanoid = (size = 21) => {
   while (size--) {
     // The following mask reduces the random byte in the 0-255 value
     // range to the 0-63 value range.
-    id += scopedUrlAlphabet[bytes[size] & 63]
+    id += urlAlphabet[bytes[size] & 63]
   }
   return id
 }
