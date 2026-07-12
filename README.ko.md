@@ -224,7 +224,7 @@ import { nanoid } from 'nanoid/non-secure'
 const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
-단, non-secure 버전은 secure 버전보다 *느리다는* 점에 유의하세요.
+단, non-secure 버전은 secure 버전보다 _느리다는_ 점에 유의하세요.
 꼭 필요한 경우에만 사용하세요.
 
 ### 사용자 커스텀 문자열
