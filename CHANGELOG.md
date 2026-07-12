@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.3.16
+* Fixed infinite loop on negative size (by @greymoth-jp).
+
 ## 3.3.15
 * Fixed npm provenance error.
 
