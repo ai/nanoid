@@ -14,6 +14,7 @@
 
 - **صغير الحجم.** 118 بايت فقط (بعد التصغير والضغط ببروتلي). بدون أيّ اعتماديات خارجية.
   يتم التحكّم بالحجم عبر [Size Limit].
+- **سريع.** أسرع بنسبة 50% من `crypto.randomUUID()` الأصلية.
 - **آمن.** يستخدم مُولِّد أرقام عشوائية على مستوى العتاد. يمكن استخدامه في بيئات الكلستر.
 - **مُعرِّفات قصيرة.** يستخدم أبجدية أكبر من UUID وهي (`A-Za-z0-9_-`).
   لذا تم تقليص حجم المُعرِّف من 36 إلى 21 رمزًا.
@@ -77,8 +78,7 @@ Nano ID قابل للمقارنة مع UUID v4 (المبني على العشوا
 
 1. يستخدم Nano ID أبجدية أكبر، لذا يتم ضغط عدد مماثل من البتّات العشوائية
    في 21 رمزًا فقط بدلاً من 36.
-2. كود Nano ID أصغر بـ **4 مرات** من حزمة `uuid/v4`:
-   118 بايت مقابل 423.
+2. Nano ID أسرع من `crypto.randomUUID` و`uuid/v4`.
 
 ## اختبار الأداء
 
@@ -86,22 +86,22 @@ Nano ID قابل للمقارنة مع UUID v4 (المبني على العشوا
 
 ```rust
 $ node ./test/benchmark.js
-nope-id                 27,398,074 ops/sec
-crypto.randomUUID       14,055,107 ops/sec
-uuid v4                  9,256,301 ops/sec
-@napi-rs/uuid            7,100,180 ops/sec
-uid/secure               7,312,765 ops/sec
-@lukeed/uuid             5,543,254 ops/sec
-nanoid                   4,954,561 ops/sec
-customAlphabet           6,708,339 ops/sec
-nanoid for browser         497,980 ops/sec
-secure-random-string       412,049 ops/sec
-uid-safe.sync              420,669 ops/sec
+nope-id                 20,386,830 ops/sec
+nanoid                  20,434,827 ops/sec
+customAlphabet          20,544,476 ops/sec
+crypto.randomUUID       12,865,759 ops/sec
+uuid v4                  7,930,104 ops/sec
+@napi-rs/uuid            5,573,171 ops/sec
+uid/secure               6,308,267 ops/sec
+@lukeed/uuid             5,278,597 ops/sec
+nanoid for browser         311,497 ops/sec
+secure-random-string       301,667 ops/sec
+uid-safe.sync              297,815 ops/sec
 
 Non-secure:
-uid                     27,106,859 ops/sec
-nanoid/non-secure        2,672,540 ops/sec
-rndm                     2,666,518 ops/sec
+uid                     20,286,757 ops/sec
+nanoid/non-secure        2,397,594 ops/sec
+rndm                     2,445,462 ops/sec
 ```
 
 <div dir="rtl">

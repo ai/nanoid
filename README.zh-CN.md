@@ -10,6 +10,7 @@
 > “一个惊人的无意义的完美主义水平，这简直让人无法不敬佩。”
 
 - **小巧.** 118字节 (经过压缩和Brotli处理)。没有依赖。[Size Limit] 控制大小。
+- **快速.** 比原生 `crypto.randomUUID()` 快 50%。
 - **安全.** 它使用硬件随机生成器。可在集群中使用。
 - **紧凑.** 它使用比 UUID（`A-Za-z0-9_-`）更大的字母表。因此，ID 大小从36个符号减少到21个符号。
 - **可移植.** Nano ID 已被移植到 [20种编程语言](#其他编程语言)。
@@ -65,28 +66,28 @@ Nano ID 和 UUID v4之间有两个主要区别:
 
 1. Nano ID 使用更大的字母表，所以类似数量的随机位
    被包装在21个符号中，而不是36个。
-2. Nano ID 代码比 `uuid/v4` 包少 **4倍**: 118字节而不是423字节.
+2. Nano ID 比 `crypto.randomUUID` 和 `uuid/v4` 更快。
 
 ## 基准值
 
 ```rust
 $ node ./test/benchmark.js
-nope-id                 27,398,074 ops/sec
-crypto.randomUUID       14,055,107 ops/sec
-uuid v4                  9,256,301 ops/sec
-@napi-rs/uuid            7,100,180 ops/sec
-uid/secure               7,312,765 ops/sec
-@lukeed/uuid             5,543,254 ops/sec
-nanoid                   4,954,561 ops/sec
-customAlphabet           6,708,339 ops/sec
-nanoid for browser         497,980 ops/sec
-secure-random-string       412,049 ops/sec
-uid-safe.sync              420,669 ops/sec
+nope-id                 20,386,830 ops/sec
+nanoid                  20,434,827 ops/sec
+customAlphabet          20,544,476 ops/sec
+crypto.randomUUID       12,865,759 ops/sec
+uuid v4                  7,930,104 ops/sec
+@napi-rs/uuid            5,573,171 ops/sec
+uid/secure               6,308,267 ops/sec
+@lukeed/uuid             5,278,597 ops/sec
+nanoid for browser         311,497 ops/sec
+secure-random-string       301,667 ops/sec
+uid-safe.sync              297,815 ops/sec
 
 Non-secure:
-uid                     27,106,859 ops/sec
-nanoid/non-secure        2,672,540 ops/sec
-rndm                     2,666,518 ops/sec
+uid                     20,286,757 ops/sec
+nanoid/non-secure        2,397,594 ops/sec
+rndm                     2,445,462 ops/sec
 ```
 
 测试配置: Framework 13 7840U, Fedora 39, Node.js 21.6.

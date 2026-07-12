@@ -13,6 +13,7 @@ ID можно применять в URL.
 
 - **Лёгкий.** 118 байт (после минификации и Brotli). Без зависимостей.
   [Size Limit] следит за размером.
+- **Быстрый.** На 50% быстрее нативного `crypto.randomUUID()`.
 - **Безопасный.** Использует аппаратный генератор случайных чисел.
   Можно использовать в кластерах машин.
 - **Короткие ID.** Используется больший алфавит, чем у UUID (`A-Za-z0-9_-`).
@@ -77,28 +78,28 @@ Nano ID похож на UUID v4 (случайный).
 1. Nano ID использует более широкий алфавит, и сравнимое количество
    битов случайности будут упакованы в более короткую строку
    (21 символ, против 36 у UUID).
-2. Код Nano ID **в 4 раз меньше**, чем у `uuid/v4` — 118 байт против 423.
+2. Nano ID быстрее, чем `crypto.randomUUID` и `uuid/v4`.
 
 ## Сравнение производительности
 
 ```rust
 $ node ./test/benchmark.js
-nope-id                 27,398,074 ops/sec
-crypto.randomUUID       14,055,107 ops/sec
-uuid v4                  9,256,301 ops/sec
-@napi-rs/uuid            7,100,180 ops/sec
-uid/secure               7,312,765 ops/sec
-@lukeed/uuid             5,543,254 ops/sec
-nanoid                   4,954,561 ops/sec
-customAlphabet           6,708,339 ops/sec
-nanoid for browser         497,980 ops/sec
-secure-random-string       412,049 ops/sec
-uid-safe.sync              420,669 ops/sec
+nope-id                 20,386,830 ops/sec
+nanoid                  20,434,827 ops/sec
+customAlphabet          20,544,476 ops/sec
+crypto.randomUUID       12,865,759 ops/sec
+uuid v4                  7,930,104 ops/sec
+@napi-rs/uuid            5,573,171 ops/sec
+uid/secure               6,308,267 ops/sec
+@lukeed/uuid             5,278,597 ops/sec
+nanoid for browser         311,497 ops/sec
+secure-random-string       301,667 ops/sec
+uid-safe.sync              297,815 ops/sec
 
 Non-secure:
-uid                     27,106,859 ops/sec
-nanoid/non-secure        2,672,540 ops/sec
-rndm                     2,666,518 ops/sec
+uid                     20,286,757 ops/sec
+nanoid/non-secure        2,397,594 ops/sec
+rndm                     2,445,462 ops/sec
 ```
 
 Среда сравнения: Framework 13 7840U, Fedora 39, Node.js 21.6.

@@ -1,4 +1,5 @@
 import { equal, match, notEqual, ok, throws } from 'node:assert'
+import { webcrypto } from 'node:crypto'
 import { after, before, describe, test } from 'node:test'
 
 import * as browser from '../index.browser.js'
@@ -51,6 +52,14 @@ for (let type of ['node', 'browser']) {
     test(`generates large IDs`, () => {
       let id = nanoid(1000)
       equal(id.length, 1000)
+      for (let char of id) {
+        match(urlAlphabet, new RegExp(char, 'g'))
+      }
+    })
+
+    test(`generates IDs bigger than pool size`, () => {
+      let id = nanoid(70000)
+      equal(id.length, 70000)
       for (let char of id) {
         match(urlAlphabet, new RegExp(char, 'g'))
       }
@@ -144,6 +153,26 @@ for (let type of ['node', 'browser']) {
         let id2 = nanoid(makeProxyNumberToReproducePreviousID())
         notEqual(id1, id2)
       })
+
+      test(`recovers from crypto errors`, () => {
+        nanoid(1)
+        let original = webcrypto.getRandomValues
+        webcrypto.getRandomValues = () => {
+          throw new Error('Entropy failure')
+        }
+        try {
+          throws(() => {
+            nanoid(65536)
+          }, /Entropy failure/)
+          throws(() => {
+            random(131072)
+          }, /Entropy failure/)
+        } finally {
+          webcrypto.getRandomValues = original
+        }
+        equal(nanoid().length, 21)
+        equal(random(10).length, 10)
+      })
     }
 
     describe('customAlphabet', () => {
@@ -200,6 +229,32 @@ for (let type of ['node', 'browser']) {
         notEqual(second, third)
       })
 
+      test(`supports multi-byte characters`, () => {
+        let ALPHABET = 'абвгд'
+        let nanoid2 = customAlphabet(ALPHABET, 10)
+        for (let i = 0; i < 100; i++) {
+          let id = nanoid2()
+          equal(id.length, 10)
+          for (let char of id) {
+            ok(ALPHABET.includes(char))
+          }
+        }
+      })
+
+      test(`supports alphabets bigger than 256 symbols`, () => {
+        equal(customAlphabet('a'.repeat(300))(0), '')
+      })
+
+      test(`supports non-string alphabets`, () => {
+        let ALPHABET = ['a', 'b', 'c', 'd']
+        let nanoid2 = customAlphabet(ALPHABET, 10)
+        let id = nanoid2()
+        equal(id.length, 10)
+        for (let char of id) {
+          ok(ALPHABET.includes(char))
+        }
+      })
+
       if (type === 'node') {
         test(`does not fall in infinite loop`, () => {
           equal(customAlphabet('abc')(0), '')
@@ -229,6 +284,20 @@ for (let type of ['node', 'browser']) {
         equal(nanoid0(0), '')
         equal(customRandom('', 5, size => new Uint8Array(size))(0), '')
       })
+
+      test(`supports power-of-two alphabets`, () => {
+        let sequence = [2, 255, 3, 7]
+        function fakeRandom(size) {
+          let bytes = []
+          for (let i = 0; i < size; i += sequence.length) {
+            bytes = bytes.concat(sequence.slice(0, size - i))
+          }
+          return bytes
+        }
+        let nanoid4 = customRandom('abcd', 4, fakeRandom)
+        equal(nanoid4(), 'dddc')
+        equal(nanoid4(0), '')
+      })
     })
 
     describe('urlAlphabet', () => {
@@ -248,6 +317,12 @@ for (let type of ['node', 'browser']) {
     })
 
     describe('random', () => {
+      test(`throws on negative size`, () => {
+        throws(() => {
+          random(-1)
+        }, /Wrong ID size|Invalid typed array length/)
+      })
+
       test(`generates small random buffers`, () => {
         for (let i = 0; i < urlAlphabet.length; i++) {
           equal(random(10).length, 10)

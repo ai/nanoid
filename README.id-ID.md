@@ -11,6 +11,7 @@ Sebuah generator ID yang unik dalam bentuk string yang ringan, aman, serta _URL-
 > yang mana tidak mungkin untuk tidak dihormati."
 
 - **Ringan.** Hanya 118 bytes (diperkecil dan brotlied). Tidak ada ketergantungan (dependencies) apapun. [Size Limit](https://github.com/ai/size-limit) mengatur ukuran dari generator ini.
+- **Cepat.** 50% lebih cepat ketimbang `crypto.randomUUID()` bawaan.
 - **Aman.** Nano ID menggunakan RNG yang terdapat pada perangkat keras. Dapat digunakan dalam lingkungan seperti klaster.
 - **ID yang pendek.** Nano ID menggunakan alfabet yang lebih banyak ketimbang UUID (`A-Za-z0-9_-`), karenanya ukuran ID menjadi berkurang dari 36 menjadi 21 simbol.
 - **Portabel.** Nano ID telah dimigrasi untuk [20 bahasa pemrograman lainnya](#bahasa-pemrograman-lainnya).
@@ -58,28 +59,28 @@ Nano ID dapat dibandingkan dengan UUID v4 (yang berbasis acak / _randomly genera
 Ada dua buah perbedaan antara Nano ID dan UUID v4:
 
 1. Nano ID menggunakan alfabet yang lebih lebar, karenanya jumlah bita acak dapat 'dikemas' dalam 21 simbol, bukan 36 simbol.
-2. Kode sumber Nano ID **empat kali lebih kecil** ketimbang `uuid/v4`: 118 bytes dibanding 423 bytes.
+2. Nano ID lebih cepat ketimbang `crypto.randomUUID` dan `uuid/v4`.
 
 ## Benchmark
 
 ```rust
 $ node ./test/benchmark.js
-nope-id                 27,398,074 ops/sec
-crypto.randomUUID       14,055,107 ops/sec
-uuid v4                  9,256,301 ops/sec
-@napi-rs/uuid            7,100,180 ops/sec
-uid/secure               7,312,765 ops/sec
-@lukeed/uuid             5,543,254 ops/sec
-nanoid                   4,954,561 ops/sec
-customAlphabet           6,708,339 ops/sec
-nanoid for browser         497,980 ops/sec
-secure-random-string       412,049 ops/sec
-uid-safe.sync              420,669 ops/sec
+nope-id                 20,386,830 ops/sec
+nanoid                  20,434,827 ops/sec
+customAlphabet          20,544,476 ops/sec
+crypto.randomUUID       12,865,759 ops/sec
+uuid v4                  7,930,104 ops/sec
+@napi-rs/uuid            5,573,171 ops/sec
+uid/secure               6,308,267 ops/sec
+@lukeed/uuid             5,278,597 ops/sec
+nanoid for browser         311,497 ops/sec
+secure-random-string       301,667 ops/sec
+uid-safe.sync              297,815 ops/sec
 
 Non-secure:
-uid                     27,106,859 ops/sec
-nanoid/non-secure        2,672,540 ops/sec
-rndm                     2,666,518 ops/sec
+uid                     20,286,757 ops/sec
+nanoid/non-secure        2,397,594 ops/sec
+rndm                     2,445,462 ops/sec
 ```
 
 Konfigurasi pengujian: Framework 13 7840U, Fedora 39, Node.js 21.6.
