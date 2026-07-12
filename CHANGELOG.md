@@ -2,6 +2,11 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 6.0.0
+
+- Made `nanoid()` and `customAlphabet()` 4 times faster (by @orhanayd).
+- Removed Node.js 18 and 20 support.
+
 ## 5.1.16
 
 - Fixed forever loop on negative size (by @spokodev).
