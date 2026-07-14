@@ -96,8 +96,6 @@ nanoid/non-secure        2,397,594 ops/sec
 rndm                     2,445,462 ops/sec
 ```
 
-Test configuration: Framework 13 7840U, Fedora 39, Node.js 21.6.
-
 ## Security
 
 _See a good article about random generators theory:

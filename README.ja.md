@@ -95,8 +95,6 @@ nanoid/non-secure        2,397,594 ops/sec
 rndm                     2,445,462 ops/sec
 ```
 
-テスト構成：Framework 13 7840U, Fedora 39, Node.js 21.6.
-
 ## セキュリティ
 
 _乱数生成器の理論に関する良い記事を参照してください：

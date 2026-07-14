@@ -83,8 +83,6 @@ nanoid/non-secure        2,397,594 ops/sec
 rndm                     2,445,462 ops/sec
 ```
 
-Konfigurasi pengujian: Framework 13 7840U, Fedora 39, Node.js 21.6.
-
 ## Keamanan
 
 _Lihat artikel yang informatif tentang teori angka acak: [Nilai acak yang aman dalam Node.js (English)](https://gist.github.com/joepie91/7105003c3b26e65efcea63f3db82dfba)_.

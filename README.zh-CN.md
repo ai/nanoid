@@ -90,8 +90,6 @@ nanoid/non-secure        2,397,594 ops/sec
 rndm                     2,445,462 ops/sec
 ```
 
-测试配置: Framework 13 7840U, Fedora 39, Node.js 21.6.
-
 ## 安全性
 
 _请看一篇关于随机生成器理论的好文章:
