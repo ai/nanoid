@@ -22,8 +22,6 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 
 支持现代浏览器、IE [需使用 Babel]、Node.js 和 React Native。
 
-[在线工具]: https://gitpod.io/#https://github.com/ai/nanoid/
-[使用 Babel]: https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/
 [Size Limit]: https://github.com/ai/size-limit
 
 ---
@@ -40,10 +38,9 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 - [安全性](#安全性)
 - [安装](#安装)
 - [API](#api)
-  - [阻塞](#阻塞)
-  - [不安全](#不安全)
   - [自定义字母或大小](#自定义字母或大小)
   - [自定义随机字节生成器](#自定义随机字节生成器)
+  - [不安全](#不安全)
 - [用法](#用法)
   - [React](#react)
   - [React Native](#react-native)
@@ -121,13 +118,6 @@ _请看一篇关于随机生成器理论的好文章:
 npm install nanoid
 ```
 
-Nano ID 5 仅适用于 ESM 项目、测试或 Node.js 脚本。
-对于 CommonJS，您需要 Nano ID 3.x（我们仍然支持它）：
-
-```bash
-npm install nanoid@3
-```
-
 想要快速上手尝试，你可以从 CDN 加载 Nano ID。但是，它不建议
 在生产中使用，因为它的加载性能较低。
 
@@ -137,16 +127,8 @@ import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 
 ## API
 
-Nano ID 有2个 API：正常(阻塞)，和不安全。
-
 默认情况下，Nano ID 使用 URL 友好的符号（`A-Za-z0-9_-`）并返回一个
 有21个字符（类似 UUID v4 的碰撞概率）的 ID。
-
-### 阻塞
-
-使用 Nano ID 最安全、最简单的方法
-
-在极少数情况下，当收集硬件随机生成器的噪声时，可能会阻塞CPU，导致无法进行其他工作。
 
 ```js
 import { nanoid } from 'nanoid'
@@ -166,17 +148,6 @@ nanoid(10) //=> "IRFa-VaY2b"
 或者是 [自定义生成器](#自定义随机字节生成器).
 
 [ID 碰撞概率]: https://zelark.github.io/nano-id-cc/
-
-### 不安全
-
-默认情况下，Nano ID 使用硬件随机字节生成以提供安全性和较低的碰撞概率。如果您对安全性不太担心，您可以在没有硬件随机生成器的环境中使用它
-
-```js
-import { nanoid } from 'nanoid/non-secure'
-const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
-```
-
-请注意，非安全版本比安全版本*更慢*，请仅在必要时使用。
 
 ### 自定义字母或大小
 
@@ -240,6 +211,17 @@ const nanoid = customRandom(urlAlphabet, 10, random)
 ```
 
 请注意，在Nano ID的不同版本之间，我们可能会更改随机生成器的调用顺序。如果您正在使用基于种子的生成器，我们不能保证相同的结果。
+
+### 不安全
+
+Nano ID 使用硬件随机字节生成以提供安全性和较低的碰撞概率。如果您对安全性不太担心，您可以在没有硬件随机生成器的环境中使用它
+
+```js
+import { nanoid } from 'nanoid/non-secure'
+const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
+```
+
+请注意，非安全版本比安全版本*更慢*，请仅在必要时使用。
 
 ## 用法
 

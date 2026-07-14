@@ -29,8 +29,6 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 
 ---
 
-[online tool]: https://gitpod.io/#https://github.com/ai/nanoid/
-[with Babel]: https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/
 [Size Limit]: https://github.com/ai/size-limit
 
 ## 목차
@@ -40,15 +38,12 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 - [벤치마크](#벤치마크)
 - [보안](#보안)
 - [설치](#설치)
-  - [ESM](#esm)
-  - [CommonJS](#commonjs)
   - [JSR](#jsr)
   - [CDN](#cdn)
 - [API](#api)
-  - [Blocking](#blocking)
-  - [Non-Secure](#non-secure)
   - [사용자 커스텀 문자열](#사용자-커스텀-문자열)
   - [사용자 지정 랜덤 바이트 생성기](#사용자-지정-랜덤-바이트-생성기)
+  - [Non-Secure](#non-secure)
 - [사용법](#사용법)
   - [React](#react)
   - [React Native](#react-native)
@@ -121,37 +116,9 @@ _랜덤 생성기에 대한 설명은 다음 기사를 참고하세요:
 
 ## 설치
 
-### ESM
-
-Nano ID 5는 ESM 프로젝트에서 `import`를 사용하여 테스트코드나 Node.js 스크립트에 사용할 수 있습니다.
-
 ```bash
 npm install nanoid
 ```
-
-### CommonJS
-
-Nano ID는 아래와 같은 방법으로 CommonJS에 사용할 수 있습니다:
-
-- `require()`를 사용해 Nano ID를 가져올 수 있습니다.
-  최신 Node.js 22.12나 Node.js 20에서 `--experimental-require-module`
-  플래그를 이용하면 사용할 수 있습니다.
-
-- Node.js 18에서는 아래의 방법으로 동적 임포트를 해주세요:
-
-  ```js
-  let nanoid
-  module.exports.createID = async () => {
-    if (!nanoid) ({ nanoid } = await import('nanoid'))
-    return nanoid() // => "V1StGXR8_Z5jdHi6B-myT"
-  }
-  ```
-
-- Nano ID 3.x 역시 설치할 수 있습니다 (아직 지원중이에요!):
-
-  ```bash
-  npm install nanoid@3
-  ```
 
 ### JSR
 
@@ -182,16 +149,8 @@ import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 
 ## API
 
-Nano ID는 normal / non-secure의 2가지의 API를 제공합니다.
-
 기본적으로 Nano ID는 URL에 친화적인 기호들을 사용하여 21자리의 랜덤한 문자열을 생성합니다.
 (이들은 UUID v4와 유사한 중복생성 확률을 가집니다)
-
-### Blocking
-
-Nano ID를 사용하는 가장 안전하고 쉬운 방법입니다.
-
-드물게 CPU가 하드웨어 랜덤 생성을 위해 노이즈 제거를 수행하는 동안 다른 동작을 못하도록 블로킹 될 수 있습니다.
 
 ```js
 import { nanoid } from 'nanoid'
@@ -211,19 +170,6 @@ nanoid(10) //=> "IRFa-VaY2b"
 [사용자가 만든 랜덤 생성기](#사용자-지정-랜덤-바이트-생성기) 를 사용할 수도 있습니다.
 
 [아이디 중복확률]: https://zelark.github.io/nano-id-cc/
-
-### Non-Secure
-
-기본적으로 Nano ID는 보안과 낮은 충돌 확률을 위해 하드웨어 랜덤 바이트 생성기를 사용합니다.
-만약 보안이 중요하지 않다면 하드웨어 랜덤 생성기를 사용하지 않도록 설정할 수 있습니다.
-
-```js
-import { nanoid } from 'nanoid/non-secure'
-const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
-```
-
-단, non-secure 버전은 secure 버전보다 _느리다는_ 점에 유의하세요.
-꼭 필요한 경우에만 사용하세요.
 
 ### 사용자 커스텀 문자열
 
@@ -288,6 +234,19 @@ const nanoid = customRandom(urlAlphabet, 10, random)
 
 참고로, Nano ID 버전이 변경됨에 따라 랜덤 생성기의 호출 시퀀스가 변경될 수 있습니다.
 시드기반 생성기를 사용하는 경우 동일한 결과가 나오는 것을 보장할 수 없습니다.
+
+### Non-Secure
+
+Nano ID는 보안과 낮은 충돌 확률을 위해 하드웨어 랜덤 바이트 생성기를 사용합니다.
+만약 보안이 중요하지 않다면 하드웨어 랜덤 생성기를 사용하지 않도록 설정할 수 있습니다.
+
+```js
+import { nanoid } from 'nanoid/non-secure'
+const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
+```
+
+단, non-secure 버전은 secure 버전보다 _느리다는_ 점에 유의하세요.
+꼭 필요한 경우에만 사용하세요.
 
 ## 사용법
 
