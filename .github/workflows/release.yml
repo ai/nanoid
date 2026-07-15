@@ -36,7 +36,7 @@ jobs:
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           persist-credentials: false
-      - name: Clean npm package
+      - name: Copy CHANGELOG.md to Releases
         uses: ai/copy-changelog-to-release@a6dc825c34575add2da2060796794f7b84894628 # v0.2.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
