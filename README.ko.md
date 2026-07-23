@@ -25,7 +25,7 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 
 ---
 
-<img src="https://cdn.evilmartians.com/badges/logo-no-label.svg" alt="" width="22" height="16" />  Made at <b><a href="https://evilmartians.com/devtools?utm_source=nanoid&utm_campaign=devtools-button&utm_medium=github">Evil Martians</a></b>, product consulting for <b>developer tools</b>.
+<img src="https://cdn.evilmartians.com/badges/logo-no-label.svg" alt="" width="22" height="16" />  Nano ID는 <b><a href="https://evilmartians.com/">Evil Martians</a></b>가 만들었습니다. 저희는 <b>개발자 도구, AI, 사이버 보안 스타트업</b>을 위한 미국의 디자인 및 엔지니어링 컨설팅 회사입니다.
 
 ---
 
