@@ -96,7 +96,7 @@ const POOL_MAX = GET_RANDOM_LIMIT / 2
 export function customAlphabet(alphabet, defaultSize = 21) {
   if (
     typeof alphabet !== 'string' ||
-    !alphabet.length ||
+    !alphabet ||
     alphabet.length > 256
   ) {
     return customRandom(alphabet, defaultSize, random)
