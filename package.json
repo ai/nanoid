@@ -54,8 +54,8 @@
     "@logux/oxc-configs": "^1.0.0",
     "@lukeed/uuid": "^2.0.1",
     "@napi-rs/uuid": "^0.2.2",
-    "@size-limit/file": "^13.0.1",
-    "@size-limit/webpack": "^13.0.1",
+    "@size-limit/file": "^13.0.3",
+    "@size-limit/webpack": "^13.0.3",
     "actions-up": "^1.16.0",
     "better-node-test": "^1.0.0",
     "eslint-plugin-prefer-let": "^4.2.2",
@@ -65,14 +65,14 @@
     "rndm": "^1.2.0",
     "secure-random-string": "^1.1.4",
     "simple-git-hooks": "^2.13.1",
-    "size-limit": "^13.0.1",
+    "size-limit": "^13.0.3",
     "terser": "^5.49.0",
     "tinybench": "^6.1.2",
     "typescript": "^7.0.2",
     "uid": "^2.0.2",
     "uid-safe": "^2.1.5",
     "uuid": "^14.0.1",
-    "vite": "^8.1.5"
+    "vite": "^8.2.0"
   },
   "simple-git-hooks": {
     "pre-commit": "./test/check-versions.js"
