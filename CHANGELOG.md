@@ -2,6 +2,10 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 6.0.1
+
+- Fixed docs.
+
 ## 6.0.0
 
 - Made `nanoid()` and `customAlphabet()` 4 times faster (by @orhanayd).

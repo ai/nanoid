@@ -1,6 +1,6 @@
 {
   "name": "nanoid",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "A tiny (118 bytes), secure URL-friendly unique string ID generator",
   "keywords": [
     "id",
