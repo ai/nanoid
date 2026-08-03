@@ -25,6 +25,7 @@ let customAlphabet = (alphabet, defaultSize = 21) => {
   let step = -~((1.6 * mask * defaultSize) / alphabet.length)
 
   return async (size = defaultSize) => {
+    if (size <= 0) return ''
     let id = ''
     while (true) {
       let bytes = crypto.getRandomValues(new Uint8Array(step))

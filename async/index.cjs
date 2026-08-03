@@ -50,7 +50,10 @@ let customAlphabet = (alphabet, defaultSize = 21) => {
       return tick(id, size)
     })
 
-  return size => tick('', size)
+  return (size = defaultSize) => {
+    if (size <= 0) return Promise.resolve('')
+    return tick('', size)
+  }
 }
 
 let nanoid = (size = 21) =>

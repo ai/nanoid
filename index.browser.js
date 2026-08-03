@@ -30,6 +30,7 @@ let customRandom = (alphabet, defaultSize, getRandom) => {
   let step = -~((1.6 * mask * defaultSize) / alphabet.length)
 
   return (size = defaultSize) => {
+    if (size <= 0) return ''
     let id = ''
     while (true) {
       let bytes = getRandom(step)

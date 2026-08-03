@@ -183,6 +183,13 @@ for (let type of ['node', 'browser']) {
     ok(max - min <= 0.05)
   })
 
+  customAlphabetSuite('is ready for 0 and negative size', async () => {
+    is(await customAlphabet('abc')(0), '')
+    is(await customAlphabet('abc', 0)(), '')
+    is(await customAlphabet('abc')(-1), '')
+    is(await customAlphabet('abc', -5)(), '')
+  })
+
   customAlphabetSuite('changes size', async () => {
     let nanoidA = customAlphabet('a')
     let id = await nanoidA(10)
