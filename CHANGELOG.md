@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.3.18
+* Fixed infinite loop on async for React Native (by @OvergrowthBeards-JB).
+
 ## 3.3.17
 * Fixed infinite loop on zero size.
 
