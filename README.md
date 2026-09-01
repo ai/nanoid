@@ -198,8 +198,10 @@ Check the safety of your custom alphabet and ID size in our
 [ID collision probability] calculator. For more alphabets, check out the options
 in [`nanoid-dictionary`].
 
-Alphabet must contain 256 symbols or less.
-Otherwise, the security of the internal generator algorithm is not guaranteed.
+Alphabet must contain from 1 to 256 symbols.
+Otherwise, the security of the internal generator algorithm is not guaranteed,
+and a generator built from an empty or over-256-symbol alphabet
+can loop forever instead of returning an ID.
 
 In addition to setting a default size, you can change the ID size when calling
 the function:
