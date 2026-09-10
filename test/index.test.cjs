@@ -1,8 +1,13 @@
 let { test } = require('uvu')
-let { is, ok, equal, match, not } = require('uvu/assert')
+let { is, ok, equal, match, not, throws } = require('uvu/assert')
 
 let browser = require('../index.browser.js')
+let nodeCjs = require('../index.cjs')
 let node = require('../index.js')
+
+// `index.js` and `index.cjs` are two entries of the same package.
+// They must behave identically, so both are tested here.
+let entries = { browser, cjs: nodeCjs, node }
 
 test.before(() => {
   global.crypto = {
@@ -19,9 +24,9 @@ test.after(() => {
   delete global.crypto
 })
 
-for (let type of ['node', 'browser']) {
+for (let type of ['node', 'cjs', 'browser']) {
   let { nanoid, customAlphabet, customRandom, random, urlAlphabet } =
-    type === 'node' ? node : browser
+    entries[type]
 
   test(`${type} / nanoid / generates URL-friendly IDs`, () => {
     for (let i = 0; i < 100; i++) {
@@ -176,7 +181,15 @@ for (let type of ['node', 'browser']) {
     }
   })
 
-  if (type === 'node') {
+  if (type !== 'browser') {
+    test(`${type} / nanoid / limits ID size`, () => {
+      is(nanoid(1024).length, 1024)
+      throws(() => nanoid(1025), /Wrong ID size/)
+      throws(() => random(1025), /Wrong ID size/)
+      // A refused ID must not break the pool for the next request.
+      is(nanoid().length, 21)
+    })
+
     test(`${type} / proxy number / prevent collision`, () => {
       let makeProxyNumberToReproducePreviousID = () => {
         let step = 0
