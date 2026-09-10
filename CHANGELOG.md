@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.3.19
+* Fixed killing the app by setting huge user ID.
+
 ## 3.3.18
 * Fixed infinite loop on async for React Native (by @OvergrowthBeards-JB).
 
