@@ -10,7 +10,7 @@ JavaScript를 위한 가볍고 안전하며 URL 친화적인 고유 String ID �
 > “대단한 레벨의 무의미한 완벽주의,
 > 경의를 표하지 않을 수 없습니다”
 
-- **가볍습니다.** 118 bytes (minified 및 brotli 적용 후). 다른 의존성이 없습니다.
+- **가볍습니다.** 127 bytes (minified 및 brotli 적용 후). 다른 의존성이 없습니다.
   [Size Limit] 의 기능으로 컨트롤합니다.
 - **빠릅니다.** 네이티브 `crypto.randomUUID()` 보다 50% 더 빠릅니다.
 - **안전합니다.** 하드웨어의 랜덤 생성기를 사용합니다. 클러스터에서 사용할 수 있습니다.
@@ -19,8 +19,8 @@ JavaScript를 위한 가볍고 안전하며 URL 친화적인 고유 String ID �
 - **이식이 쉽습니다.** Nano ID 는 20개 이상의 언어로 포팅되었습니다 [다른 언어들](#다른-언어들).
 
 ```js
-import { nanoid } from 'nanoid'
-model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
+import { nanoid } from "nanoid";
+model.id = nanoid(); //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
 ---
@@ -132,7 +132,7 @@ Node.js, Deno, Bun 등에서 사용할 수 있습니다.
 
 ```js
 // 모든 `nanoid` import를 `@sitnik/nanoid`로 변경합니다
-import { nanoid } from '@sitnik/nanoid'
+import { nanoid } from "@sitnik/nanoid";
 ```
 
 Deno 사용시에는 `deno add jsr:@sitnik/nanoid` 명령어로 설치하고
@@ -144,7 +144,7 @@ Deno 사용시에는 `deno add jsr:@sitnik/nanoid` 명령어로 설치하고
 하지만 로딩 성능이 늦어지므로 프로덕션에서는 사용하는 것을 추천하지 않습니다.
 
 ```js
-import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
+import { nanoid } from "https://cdn.jsdelivr.net/npm/nanoid/nanoid.js";
 ```
 
 ## API
@@ -153,15 +153,15 @@ import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 (이들은 UUID v4와 유사한 중복생성 확률을 가집니다)
 
 ```js
-import { nanoid } from 'nanoid'
-model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
+import { nanoid } from "nanoid";
+model.id = nanoid(); //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
 생성되는 랜덤 아이디의 크기를 줄이고 싶으면 파라미터로 해당 길이 값을 넣어주면 됩니다.
 (이렇게 하면 중복 생성이 발생할 확률도 올라갑니다)
 
 ```js
-nanoid(10) //=> "IRFa-VaY2b"
+nanoid(10); //=> "IRFa-VaY2b"
 ```
 
 아래의 [아이디 중복확률] 계산기로 여러분의 아이디가 얼마나 안전한지 확인해보세요.
@@ -177,15 +177,15 @@ nanoid(10) //=> "IRFa-VaY2b"
 랜덤 아이디를 생성할 수 있는 `nanoid` 함수를 만들 수 있습니다
 
 ```js
-import { customAlphabet } from 'nanoid'
-const nanoid = customAlphabet('1234567890abcdef', 10)
-model.id = nanoid() //=> "4f90d13a42"
+import { customAlphabet } from "nanoid";
+const nanoid = customAlphabet("1234567890abcdef", 10);
+model.id = nanoid(); //=> "4f90d13a42"
 ```
 
 ```js
-import { customAlphabet } from 'nanoid/non-secure'
-const nanoid = customAlphabet('1234567890abcdef', 10)
-user.id = nanoid()
+import { customAlphabet } from "nanoid/non-secure";
+const nanoid = customAlphabet("1234567890abcdef", 10);
+user.id = nanoid();
 ```
 
 [아이디 충돌 확률] 계산기를 사용하여 여러분이 지정한 문자와 사이즈에 대한 중복 생성 확률을 확인해보세요.
@@ -197,9 +197,9 @@ user.id = nanoid()
 기본 사이즈를 지정한 후에, 새로 만들어진 함수를 부를 때 생성할 문자열의 개수를 다시 지정하는 것도 가능합니다
 
 ```js
-import { customAlphabet } from 'nanoid'
-const nanoid = customAlphabet('1234567890abcdef', 10)
-model.id = nanoid(5) //=> "f01a2"
+import { customAlphabet } from "nanoid";
+const nanoid = customAlphabet("1234567890abcdef", 10);
+model.id = nanoid(5); //=> "f01a2"
 ```
 
 [아이디 충돌 확률]: https://zelark.github.io/nano-id-cc/
@@ -212,14 +212,14 @@ model.id = nanoid(5) //=> "f01a2"
 아래 예시는 시드 값을 기반으로 하는 랜덤 생성기를 사용하였습니다.
 
 ```js
-import { customRandom } from 'nanoid'
+import { customRandom } from "nanoid";
 
-const rng = seedrandom(seed)
-const nanoid = customRandom('abcdef', 10, size => {
-  return new Uint8Array(size).map(() => 256 * rng())
-})
+const rng = seedrandom(seed);
+const nanoid = customRandom("abcdef", 10, (size) => {
+  return new Uint8Array(size).map(() => 256 * rng());
+});
 
-nanoid() //=> "fbaefaadeb"
+nanoid(); //=> "fbaefaadeb"
 ```
 
 콜백 함수 `random` 는 반드시 배열의 크기를 받을 수 있어야 하며, 랜덤 숫자로 이루어진 배열을 리턴해야 합니다.
@@ -228,8 +228,8 @@ URL 친화적인 기호들을 사용하여 `customRandom` 을 실행하려면,
 `urlAlphabet`을 사용해 기본 문자셋을 가져올 수 있습니다.
 
 ```js
-const { customRandom, urlAlphabet } = require('nanoid')
-const nanoid = customRandom(urlAlphabet, 10, random)
+const { customRandom, urlAlphabet } = require("nanoid");
+const nanoid = customRandom(urlAlphabet, 10, random);
 ```
 
 참고로, Nano ID 버전이 변경됨에 따라 랜덤 생성기의 호출 시퀀스가 변경될 수 있습니다.
@@ -241,8 +241,8 @@ Nano ID는 보안과 낮은 충돌 확률을 위해 하드웨어 랜덤 바이�
 만약 보안이 중요하지 않다면 하드웨어 랜덤 생성기를 사용하지 않도록 설정할 수 있습니다.
 
 ```js
-import { nanoid } from 'nanoid/non-secure'
-const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
+import { nanoid } from "nanoid/non-secure";
+const id = nanoid(); //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
 단, non-secure 버전은 secure 버전보다 _느리다는_ 점에 유의하세요.
@@ -259,22 +259,22 @@ React에서 `key` props에 Nano ID를 사용하는 것은 좋지 않습니다.
 function Todos({ todos }) {
   return (
     <ul>
-      {todos.map(todo => (
+      {todos.map((todo) => (
         <li key={nanoid()}>
-          {' '}
+          {" "}
           /* 절대 하지 마세요 */
           {todo.text}
         </li>
       ))}
     </ul>
-  )
+  );
 }
 ```
 
 랜덤값보다 리스트 내에서 가져올 수 있는 값을 사용하여 안정된 값을 키 값으로 사용하는 것이 좋습니다.
 
 ```jsx
-const todoItems = todos.map(todo => <li key={todo.id}>{todo.text}</li>)
+const todoItems = todos.map((todo) => <li key={todo.id}>{todo.text}</li>);
 ```
 
 `key` 값으로 사용할 적절한 값이 없는 경우에도 `nanoid()`를 사용하기 보다는 인덱스 값을 사용하세요:
@@ -282,11 +282,11 @@ const todoItems = todos.map(todo => <li key={todo.id}>{todo.text}</li>)
 ```jsx
 const todoItems = todos.map((text, index) => (
   <li key={index}>
-    {' '}
+    {" "}
     /* 추천되는 방식은 아니지만 nanoid()를 쓰는것 보단 낫습니다 */
     {text}
   </li>
-))
+));
 ```
 
 랜덤한 아이디를 생성하여 HTML 요소간의 연결 (label과 input 등)에 사용하는 경우에는
@@ -304,8 +304,8 @@ Nano ID를 사용할 수 있습니다.
 2. Nano ID를 import하기 전에 이 패키지를 import 해야 합니다.
 
 ```js
-import 'react-native-get-random-values'
-import { nanoid } from 'nanoid'
+import "react-native-get-random-values";
+import { nanoid } from "nanoid";
 ```
 
 [`react-native-get-random-values`]: https://github.com/LinusU/react-native-get-random-values
@@ -357,22 +357,22 @@ Nano ID는 생성된 문자열을 TypeScript의 순수 string이 아닌 타입�
 예를 들어 아래와 같이 가능합니다:
 
 ```ts
-declare const userIdBrand: unique symbol
-type UserId = string & { [userIdBrand]: true }
+declare const userIdBrand: unique symbol;
+type UserId = string & { [userIdBrand]: true };
 
 // 명시적으로 타입 파라미터를 사용:
-mockUser(nanoid<UserId>())
+mockUser(nanoid<UserId>());
 
 interface User {
-  id: UserId
-  name: string
+  id: UserId;
+  name: string;
 }
 
 const user: User = {
   // 자동으로 UserId 타입으로 캐스팅됨:
   id: nanoid(),
-  name: 'Alice'
-}
+  name: "Alice",
+};
 ```
 
 ### 다른 언어들

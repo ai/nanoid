@@ -11,7 +11,7 @@ ID можно применять в URL.
 > «Поразительный уровень бессмысленного перфекционизма,
 > который просто невозможно не уважать»
 
-- **Лёгкий.** 118 байт (после минификации и Brotli). Без зависимостей.
+- **Лёгкий.** 127 байт (после минификации и Brotli). Без зависимостей.
   [Size Limit] следит за размером.
 - **Быстрый.** На 50% быстрее нативного `crypto.randomUUID()`.
 - **Безопасный.** Использует аппаратный генератор случайных чисел.
@@ -22,8 +22,8 @@ ID можно применять в URL.
   на [20 языков программирования](#другие-языки-программирования).
 
 ```js
-import { nanoid } from 'nanoid'
-model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
+import { nanoid } from "nanoid";
+model.id = nanoid(); //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
 Поддерживает современные браузеры, IE ([с Babel]), Node.js и React Native.
@@ -147,7 +147,7 @@ npx jsr add @sitnik/nanoid
 
 ```js
 // Replace `nanoid` to `@sitnik/nanoid` in all imports
-import { nanoid } from '@sitnik/nanoid'
+import { nanoid } from "@sitnik/nanoid";
 ```
 
 Для Deno установите через `deno add jsr:@sitnik/nanoid`
@@ -160,7 +160,7 @@ import { nanoid } from '@sitnik/nanoid'
 по скорости загрузки сайта.
 
 ```js
-import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
+import { nanoid } from "https://cdn.jsdelivr.net/npm/nanoid/nanoid.js";
 ```
 
 ## API
@@ -170,14 +170,14 @@ import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 (чтобы вероятность коллизий была соизмеримой с UUID v4).
 
 ```js
-import { nanoid } from 'nanoid'
-model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
+import { nanoid } from "nanoid";
+model.id = nanoid(); //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
 Функция также принимает необязательный аргумент, задающий длину ID:
 
 ```js
-nanoid(10) //=> "IRFa-VaY2b"
+nanoid(10); //=> "IRFa-VaY2b"
 ```
 
 При изменении размера, всегда проверяйте риски
@@ -189,15 +189,15 @@ nanoid(10) //=> "IRFa-VaY2b"
 с нужным вам алфавитом и длиной ID.
 
 ```js
-import { customAlphabet } from 'nanoid'
-const nanoid = customAlphabet('1234567890abcdef', 10)
-user.id = nanoid() //=> "4f90d13a42"
+import { customAlphabet } from "nanoid";
+const nanoid = customAlphabet("1234567890abcdef", 10);
+user.id = nanoid(); //=> "4f90d13a42"
 ```
 
 ```js
-import { customAlphabet } from 'nanoid/non-secure'
-const nanoid = customAlphabet('1234567890abcdef', 10)
-user.id = nanoid()
+import { customAlphabet } from "nanoid/non-secure";
+const nanoid = customAlphabet("1234567890abcdef", 10);
+user.id = nanoid();
 ```
 
 Не забудьте проверить риски коллизии вашего алфавита и длины
@@ -211,9 +211,9 @@ user.id = nanoid()
 генератора, который она вернёт:
 
 ```js
-import { customAlphabet } from 'nanoid'
-const nanoid = customAlphabet('1234567890abcdef', 10)
-model.id = nanoid(5) //=> "f01a2"
+import { customAlphabet } from "nanoid";
+const nanoid = customAlphabet("1234567890abcdef", 10);
+model.id = nanoid(5); //=> "f01a2"
 ```
 
 [на нашем калькуляторе]: https://zelark.github.io/nano-id-cc/
@@ -227,14 +227,14 @@ model.id = nanoid(5) //=> "f01a2"
 Например, можно использовать генератор c seed для повторяемости тестов.
 
 ```js
-import { customRandom } from 'nanoid'
+import { customRandom } from "nanoid";
 
-const rng = seedrandom(seed)
-const nanoid = customRandom('abcdef', 10, size => {
-  return new Uint8Array(size).map(() => 256 * rng())
-})
+const rng = seedrandom(seed);
+const nanoid = customRandom("abcdef", 10, (size) => {
+  return new Uint8Array(size).map(() => 256 * rng());
+});
 
-nanoid() //=> "fbaefaadeb"
+nanoid(); //=> "fbaefaadeb"
 ```
 
 Функция в третьем аргументе `customRandom` должна принимать длину массива
@@ -245,8 +245,8 @@ URL-совместимый алфавит, то стандартный алфа�
 в экспорте `urlAlphabet`.
 
 ```js
-const { customRandom, urlAlphabet } = require('nanoid')
-const nanoid = customRandom(urlAlphabet, 10, random)
+const { customRandom, urlAlphabet } = require("nanoid");
+const nanoid = customRandom(urlAlphabet, 10, random);
 ```
 
 ### Небезопасный
@@ -258,8 +258,8 @@ Nano ID использует аппаратный генератор случа�
 там, где нет доступа к API аппаратного генератора случайных чисел.
 
 ```js
-import { nanoid } from 'nanoid/non-secure'
-const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
+import { nanoid } from "nanoid/non-secure";
+const id = nanoid(); //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
 Но учтите, что предсказуемость ID может быть использована для атаки на систему.
@@ -277,15 +277,15 @@ const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 function Todos({ todos }) {
   return (
     <ul>
-      {todos.map(todo => (
+      {todos.map((todo) => (
         <li key={nanoid()}>
-          {' '}
+          {" "}
           /* НЕ ДЕЛАЙТЕ ТАК */
           {todo.text}
         </li>
       ))}
     </ul>
-  )
+  );
 }
 ```
 
@@ -303,8 +303,8 @@ React Native не имеет встроенного аппаратного ге�
 2. Импортируйте эту библиотеку до импорта Nano ID.
 
 ```js
-import 'react-native-get-random-values'
-import { nanoid } from 'nanoid'
+import "react-native-get-random-values";
+import { nanoid } from "nanoid";
 ```
 
 [`react-native-get-random-values`]: https://github.com/LinusU/react-native-get-random-values
@@ -356,22 +356,22 @@ Nano ID позволяет приводить сгенерированные с�
 TypeScript. Например:
 
 ```ts
-declare const userIdBrand: unique symbol
-type UserId = string & { [userIdBrand]: true }
+declare const userIdBrand: unique symbol;
+type UserId = string & { [userIdBrand]: true };
 
 // Используйте явный параметр типа:
-mockUser(nanoid<UserId>())
+mockUser(nanoid<UserId>());
 
 interface User {
-  id: UserId
-  name: string
+  id: UserId;
+  name: string;
 }
 
 const user: User = {
   // Автоматически приводится к типу UserId:
   id: nanoid(),
-  name: 'Alice'
-}
+  name: "Alice",
+};
 ```
 
 ### Другие языки программирования

@@ -12,7 +12,7 @@
 > "مستوى مذهل من الكمالية التي لا معنى لها،
 > والتي يستحيل ألّا تحظى بالاحترام."
 
-- **صغير الحجم.** 118 بايت فقط (بعد التصغير والضغط ببروتلي). بدون أيّ اعتماديات خارجية.
+- **صغير الحجم.** 127 بايت فقط (بعد التصغير والضغط ببروتلي). بدون أيّ اعتماديات خارجية.
   يتم التحكّم بالحجم عبر [Size Limit].
 - **سريع.** أسرع بنسبة 50% من `crypto.randomUUID()` الأصلية.
 - **آمن.** يستخدم مُولِّد أرقام عشوائية على مستوى العتاد. يمكن استخدامه في بيئات الكلستر.
@@ -24,8 +24,8 @@
 </div>
 
 ```js
-import { nanoid } from 'nanoid'
-model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
+import { nanoid } from "nanoid";
+model.id = nanoid(); //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
 ---
@@ -156,7 +156,7 @@ npx jsr add @sitnik/nanoid
 
 ```js
 // استبدل `nanoid` بـ `@sitnik/nanoid` في جميع الاستيرادات
-import { nanoid } from '@sitnik/nanoid'
+import { nanoid } from "@sitnik/nanoid";
 ```
 
 <div dir="rtl">
@@ -172,7 +172,7 @@ import { nanoid } from '@sitnik/nanoid'
 </div>
 
 ```js
-import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
+import { nanoid } from "https://cdn.jsdelivr.net/npm/nanoid/nanoid.js";
 ```
 
 <div dir="rtl">
@@ -185,8 +185,8 @@ import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 </div>
 
 ```js
-import { nanoid } from 'nanoid'
-model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
+import { nanoid } from "nanoid";
+model.id = nanoid(); //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
 <div dir="rtl">
@@ -197,7 +197,7 @@ model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 </div>
 
 ```js
-nanoid(10) //=> "IRFa-VaY2b"
+nanoid(10); //=> "IRFa-VaY2b"
 ```
 
 <div dir="rtl">
@@ -218,15 +218,15 @@ nanoid(10) //=> "IRFa-VaY2b"
 </div>
 
 ```js
-import { customAlphabet } from 'nanoid'
-const nanoid = customAlphabet('1234567890abcdef', 10)
-model.id = nanoid() //=> "4f90d13a42"
+import { customAlphabet } from "nanoid";
+const nanoid = customAlphabet("1234567890abcdef", 10);
+model.id = nanoid(); //=> "4f90d13a42"
 ```
 
 ```js
-import { customAlphabet } from 'nanoid/non-secure'
-const nanoid = customAlphabet('1234567890abcdef', 10)
-user.id = nanoid()
+import { customAlphabet } from "nanoid/non-secure";
+const nanoid = customAlphabet("1234567890abcdef", 10);
+user.id = nanoid();
 ```
 
 <div dir="rtl">
@@ -244,9 +244,9 @@ user.id = nanoid()
 </div>
 
 ```js
-import { customAlphabet } from 'nanoid'
-const nanoid = customAlphabet('1234567890abcdef', 10)
-model.id = nanoid(5) //=> "f01a2"
+import { customAlphabet } from "nanoid";
+const nanoid = customAlphabet("1234567890abcdef", 10);
+model.id = nanoid(5); //=> "f01a2"
 ```
 
 [احتمالية تكرار المُعرِّف]: https://zelark.github.io/nano-id-cc/
@@ -264,14 +264,14 @@ model.id = nanoid(5) //=> "f01a2"
 </div>
 
 ```js
-import { customRandom } from 'nanoid'
+import { customRandom } from "nanoid";
 
-const rng = seedrandom(seed)
-const nanoid = customRandom('abcdef', 10, size => {
-  return new Uint8Array(size).map(() => 256 * rng())
-})
+const rng = seedrandom(seed);
+const nanoid = customRandom("abcdef", 10, (size) => {
+  return new Uint8Array(size).map(() => 256 * rng());
+});
 
-nanoid() //=> "fbaefaadeb"
+nanoid(); //=> "fbaefaadeb"
 ```
 
 <div dir="rtl">
@@ -285,8 +285,8 @@ nanoid() //=> "fbaefaadeb"
 </div>
 
 ```js
-const { customRandom, urlAlphabet } = require('nanoid')
-const nanoid = customRandom(urlAlphabet, 10, random)
+const { customRandom, urlAlphabet } = require("nanoid");
+const nanoid = customRandom(urlAlphabet, 10, random);
 ```
 
 <div dir="rtl">
@@ -303,8 +303,8 @@ const nanoid = customRandom(urlAlphabet, 10, random)
 </div>
 
 ```js
-import { nanoid } from 'nanoid/non-secure'
-const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
+import { nanoid } from "nanoid/non-secure";
+const id = nanoid(); //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
 <div dir="rtl">
@@ -325,15 +325,15 @@ const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 function Todos({ todos }) {
   return (
     <ul>
-      {todos.map(todo => (
+      {todos.map((todo) => (
         <li key={nanoid()}>
-          {' '}
+          {" "}
           /* لا تفعل هذا */
           {todo.text}
         </li>
       ))}
     </ul>
-  )
+  );
 }
 ```
 
@@ -344,7 +344,7 @@ function Todos({ todos }) {
 </div>
 
 ```jsx
-const todoItems = todos.map(todo => <li key={todo.id}>{todo.text}</li>)
+const todoItems = todos.map((todo) => <li key={todo.id}>{todo.text}</li>);
 ```
 
 <div dir="rtl">
@@ -357,12 +357,11 @@ const todoItems = todos.map(todo => <li key={todo.id}>{todo.text}</li>)
 ```jsx
 const todoItems = todos.map((text, index) => (
   <li key={index}>
-    {' '}
-    /* غير مُوصى به لكنه أفضل من nanoid(). استخدمه فقط إذا لم تكن لديك مُعرِّفات
-    ثابتة. */
+    {" "}
+    /* غير مُوصى به لكنه أفضل من nanoid(). استخدمه فقط إذا لم تكن لديك مُعرِّفات ثابتة. */
     {text}
   </li>
-))
+));
 ```
 
 <div dir="rtl">
@@ -384,8 +383,8 @@ labels وحقول الإدخال، يُنصح باستخدام [`useId`].
 </div>
 
 ```js
-import 'react-native-get-random-values'
-import { nanoid } from 'nanoid'
+import "react-native-get-random-values";
+import { nanoid } from "nanoid";
 ```
 
 [`react-native-get-random-values`]: https://github.com/LinusU/react-native-get-random-values
@@ -457,22 +456,22 @@ bccbcabaabaccab
 </div>
 
 ```ts
-declare const userIdBrand: unique symbol
-type UserId = string & { [userIdBrand]: true }
+declare const userIdBrand: unique symbol;
+type UserId = string & { [userIdBrand]: true };
 
 // استخدم معامل النوع الصريح:
-mockUser(nanoid<UserId>())
+mockUser(nanoid<UserId>());
 
 interface User {
-  id: UserId
-  name: string
+  id: UserId;
+  name: string;
 }
 
 const user: User = {
   // يتم التحويل تلقائيًا إلى UserId:
   id: nanoid(),
-  name: 'Alice'
-}
+  name: "Alice",
+};
 ```
 
 <div dir="rtl">

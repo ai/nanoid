@@ -10,15 +10,15 @@ Sebuah generator ID yang unik dalam bentuk string yang ringan, aman, serta _URL-
 > "Sebuah tingkat kesempurnaan yang luar biasa,
 > yang mana tidak mungkin untuk tidak dihormati."
 
-- **Ringan.** Hanya 118 bytes (diperkecil dan brotlied). Tidak ada ketergantungan (dependencies) apapun. [Size Limit](https://github.com/ai/size-limit) mengatur ukuran dari generator ini.
+- **Ringan.** Hanya 127 bytes (diperkecil dan brotlied). Tidak ada ketergantungan (dependencies) apapun. [Size Limit](https://github.com/ai/size-limit) mengatur ukuran dari generator ini.
 - **Cepat.** 50% lebih cepat ketimbang `crypto.randomUUID()` bawaan.
 - **Aman.** Nano ID menggunakan RNG yang terdapat pada perangkat keras. Dapat digunakan dalam lingkungan seperti klaster.
 - **ID yang pendek.** Nano ID menggunakan alfabet yang lebih banyak ketimbang UUID (`A-Za-z0-9_-`), karenanya ukuran ID menjadi berkurang dari 36 menjadi 21 simbol.
 - **Portabel.** Nano ID telah dimigrasi untuk [20 bahasa pemrograman lainnya](#bahasa-pemrograman-lainnya).
 
 ```js
-import { nanoid } from 'nanoid'
-model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
+import { nanoid } from "nanoid";
+model.id = nanoid(); //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
 Mendukung penjelajah (browser) modern, IE [dengan Babel](https://developer.epages.com/blog/coding/how-to-transpile-node-modules-with-babel-and-webpack-in-a-monorepo/), Node.js, dan React Native.
@@ -106,7 +106,7 @@ npm install nanoid
 Apabila ingin 'coba-coba' terlebih dahulu, dapat digunakan Nano ID melalui CDN. Hal ini tidak direkomendasikan untuk digunakan pada lingkungan produksi karena performa pemuatan (_loading_) yang berkurang.
 
 ```js
-import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
+import { nanoid } from "https://cdn.jsdelivr.net/npm/nanoid/nanoid.js";
 ```
 
 ## API
@@ -114,14 +114,14 @@ import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 Bawaannya, Nano ID menggunakan simbol yang _URL-friendly_ (`A-Za-z0-9_-`) dan mengembalikan ID dengan 21 karakter (untuk memiliki probabilitas collision / tabrakan yang mirip dengan UUID v4).
 
 ```js
-import { nanoid } from 'nanoid'
-model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
+import { nanoid } from "nanoid";
+model.id = nanoid(); //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
 Apabila ingin mengurangi ukuran ID (dan meningkatkan probabilitas collision), dapat dimasukkan `size` sebagai argumen dari fungsi `nanoid()`.
 
 ```js
-nanoid(10) //=> "IRFa-VaY2b"
+nanoid(10); //=> "IRFa-VaY2b"
 ```
 
 Jangan lupa memeriksa tingkat keamanan dari ukuran ID dalam situs [ID collision probability calculator](https://zelark.github.io/nano-id-cc/).
@@ -133,9 +133,9 @@ Dapat digunakan pula [custom alphabet](#custom-alphabet-or-size) atau [random ge
 `customAlphabet` digunakan untuk membuat Nano ID dengan alfabet dan ukuran ID yang sesuai dengan kebutuhan (dapat dikustomisasi).
 
 ```js
-import { customAlphabet } from 'nanoid'
-const nanoid = customAlphabet('1234567890abcdef', 10)
-model.id = nanoid() //=> "4f90d13a42"
+import { customAlphabet } from "nanoid";
+const nanoid = customAlphabet("1234567890abcdef", 10);
+model.id = nanoid(); //=> "4f90d13a42"
 ```
 
 Ketika menggunakan fungsi ini, jangan lupa untuk memeriksa keamanan alfabet dan ukuran ID dalam [ID collision probability calculator](https://zelark.github.io/nano-id-cc/). Untuk lebih banyak alfabet, dapat menggunakan [`nanoid-dictionary`](https://github.com/CyberAP/nanoid-dictionary).
@@ -145,9 +145,9 @@ Alfabet harus terbentuk dari 256 simbol atau lebih kecil. Selain itu, keamanan a
 API non-secure yang dapat dikustomisasi dengan `customAlphabet` pun tersedia disini:
 
 ```js
-import { customAlphabet } from 'nanoid/non-secure'
-const nanoid = customAlphabet('1234567890abcdef', 10)
-user.id = nanoid()
+import { customAlphabet } from "nanoid/non-secure";
+const nanoid = customAlphabet("1234567890abcdef", 10);
+user.id = nanoid();
 ```
 
 ### Generasi Random Bytes (Custom)
@@ -157,14 +157,14 @@ user.id = nanoid()
 Pada contoh berikut, digunakan _seed-based generator_:
 
 ```js
-import { customRandom } from 'nanoid'
+import { customRandom } from "nanoid";
 
-const rng = seedrandom(seed)
-const nanoid = customRandom('abcdef', 10, size => {
-  return new Uint8Array(size).map(() => 256 * rng())
-})
+const rng = seedrandom(seed);
+const nanoid = customRandom("abcdef", 10, (size) => {
+  return new Uint8Array(size).map(() => 256 * rng());
+});
 
-nanoid() //=> "fbaefaadeb"
+nanoid(); //=> "fbaefaadeb"
 ```
 
 Fungsi _callback_ pada `random` harus menerima ukuran array dan mengembalikan sebuah array dengan angka acak.
@@ -172,8 +172,8 @@ Fungsi _callback_ pada `random` harus menerima ukuran array dan mengembalikan se
 Apabila ingin menggunakan alfabet bawaan NanoID pada fungsi `customRandom`, dapat menggunakan konstanta `urlAlphabet` seperti berikut:
 
 ```js
-const { customRandom, urlAlphabet } = require('nanoid')
-const nanoid = customRandom(urlAlphabet, 10, random)
+const { customRandom, urlAlphabet } = require("nanoid");
+const nanoid = customRandom(urlAlphabet, 10, random);
 ```
 
 API asinkronus dan non-secure tidak tersedia untuk fungsi `customRandom`.
@@ -183,8 +183,8 @@ API asinkronus dan non-secure tidak tersedia untuk fungsi `customRandom`.
 Nano ID menggunakan random bytes generator yang berasal dari perangkat keras untuk keamanan dan probabilitas collision yang rendah. Apabila tidak terlalu memikirkan soal keamanan, dapat pula menggunakannya pada lingkungan tanpa hardware random generator.
 
 ```js
-import { nanoid } from 'nanoid/non-secure'
-const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
+import { nanoid } from "nanoid/non-secure";
+const id = nanoid(); //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
 Perlu dicatat bahwa versi _non-secure_ _lebih lambat_ daripada versi _secure_. Gunakan hanya jika benar-benar diperlukan.
@@ -199,19 +199,19 @@ Dalam React, tidak ada cara yang benar bila ingin menggunakan Nano ID untuk prop
 function Todos({ todos }) {
   return (
     <ul>
-      {todos.map(todo => (
+      {todos.map((todo) => (
         /* JANGAN DILAKUKAN! */
         <li key={nanoid()}>{todo.text}</li>
       ))}
     </ul>
-  )
+  );
 }
 ```
 
 Karena hal tersebut, disarankan untuk menggunakan ID yang stabil pada setiap objek yang di-render oleh React.
 
 ```jsx
-const todoItems = todos.map(todo => <li key={todo.id}>{todo.text}</li>)
+const todoItems = todos.map((todo) => <li key={todo.id}>{todo.text}</li>);
 ```
 
 Apabila tidak memiliki ID yang stabil pada setiap _item_ yang di-render pada React, lebih baik menggunakan indeks sebuah array sebagai `key` ketimbang menggunakan fungsi `nanoid()`, seperti berikut:
@@ -221,7 +221,7 @@ const todoItems = todos.map((text, index) => (
   /* Tetap tidak direkomendasikan, tetapi lebih disarankan dari 'nanoid()'. Lakukan ini
     apabila setiap objek / item dalam list tidak ada ID yang stabil. */
   <li key={index}>{text}</li>
-))
+));
 ```
 
 ### React Native
@@ -232,8 +232,8 @@ React Native tidak memiliki _built-in random generator_. Digunakan polyfill sepe
 2. Import library tersebut sebelum Nano ID.
 
 ```js
-import 'react-native-get-random-values'
-import { nanoid } from 'nanoid'
+import "react-native-get-random-values";
+import { nanoid } from "nanoid";
 ```
 
 ### PouchDB dan CouchDB
@@ -267,22 +267,22 @@ Nano ID memungkinkan untuk mengubah string yang dihasilkan menjadi string opak
 dalam TypeScript. Sebagai contoh:
 
 ```ts
-declare const userIdBrand: unique symbol
-type UserId = string & { [userIdBrand]: true }
+declare const userIdBrand: unique symbol;
+type UserId = string & { [userIdBrand]: true };
 
 // Gunakan parameter tipe secara eksplisit:
-mockUser(nanoid<UserId>())
+mockUser(nanoid<UserId>());
 
 interface User {
-  id: UserId
-  name: string
+  id: UserId;
+  name: string;
 }
 
 const user: User = {
   // Secara otomatis diubah menjadi UserId:
   id: nanoid(),
-  name: 'Alice'
-}
+  name: "Alice",
+};
 ```
 
 ### Bahasa Pemrograman Lainnya
