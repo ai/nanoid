@@ -59,9 +59,9 @@ export function customAlphabet<Type extends string>(
  * import { customRandom } from 'nanoid'
  *
  * const nanoid = customRandom('abcdef', 5, size => {
- *   const random = []
+ *   const random = new Uint8Array(size)
  *   for (let i = 0; i < size; i++) {
- *     random.push(randomByte())
+ *     random[i] = randomByte()
  *   }
  *   return random
  * })
@@ -85,7 +85,7 @@ export function customRandom<Type extends string>(
  * URL safe symbols.
  *
  * ```js
- * import { urlAlphabet } from 'nanoid'
+ * import { customAlphabet, urlAlphabet } from 'nanoid'
  * const nanoid = customAlphabet(urlAlphabet, 10)
  * nanoid() //=> "Uakgb_J5m9"
  * ```
