@@ -219,6 +219,15 @@ for (let type of ['node', 'browser']) {
         equal(customAlphabet('', 0)(0), '')
       })
 
+      test(`does not hang when default size is 0`, { timeout: 2000 }, () => {
+        let nanoid2 = customAlphabet('абв', 0)
+        let id = nanoid2(8)
+        equal(id.length, 8)
+        for (let char of id) {
+          ok('абв'.includes(char))
+        }
+      })
+
       test(`avoids pool pollution, infinite loop`, () => {
         let ALPHABET = 'abcdefghijklmnopqrstuvwxyz'
         let nanoid2 = customAlphabet(ALPHABET)
@@ -282,6 +291,11 @@ for (let type of ['node', 'browser']) {
         let nanoid0 = customRandom('abc', 5, size => new Uint8Array(size))
         equal(nanoid0(0), '')
         equal(customRandom('', 5, size => new Uint8Array(size))(0), '')
+      })
+
+      test(`does not hang when default size is 0`, { timeout: 2000 }, () => {
+        let nanoid0 = customRandom('abc', 0, size => new Uint8Array(size).fill(1))
+        equal(nanoid0(8), 'bbbbbbbb')
       })
 
       test(`supports power-of-two alphabets`, () => {

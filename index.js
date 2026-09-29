@@ -65,11 +65,10 @@ export function customRandom(alphabet, defaultSize, getRandom) {
   //
   // `step` determines how many random bytes to request.
   // `1.6` is a magic number chosen from benchmarks.
-  let step = Math.ceil((1.6 * 256 * defaultSize) / safeByteCutoff)
-
   return (size = defaultSize) => {
     if (!size) return ''
     let id = ''
+    let step = Math.ceil((1.6 * 256 * size) / safeByteCutoff)
     while (true) {
       let bytes = getRandom(step)
       // A compact alternative for `for (let i = 0; i < step; i++)`.
