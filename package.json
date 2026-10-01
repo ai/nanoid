@@ -79,7 +79,7 @@
     {
       "name": "nanoid",
       "import": "{ nanoid }",
-      "limit": "127 B"
+      "limit": "117 B"
     },
     {
       "name": "customAlphabet",
@@ -89,13 +89,13 @@
     {
       "name": "urlAlphabet",
       "import": "{ urlAlphabet }",
-      "limit": "58 B"
+      "limit": "44 B"
     },
     {
       "name": "non-secure nanoid",
       "import": "{ nanoid }",
       "path": "non-secure/index.js",
-      "limit": "103 B"
+      "limit": "93 B"
     },
     {
       "name": "non-secure customAlphabet",
