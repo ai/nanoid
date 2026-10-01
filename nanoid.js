@@ -1,1 +1,1 @@
-let a="useandom-26T198340PX75pxJACKVERYMINDBUSHWOLF_GQZbfghjklqvwyzrict";export let nanoid=(e=21)=>{let t="",r=crypto.getRandomValues(new Uint8Array(e|=0));for(;e--;)t+=a[63&r[e]];return t};
+let a="57X6y3wQZNzYjJB2L_10pxbackgroundhimselfUTF-8DEMOGRAPHICSVqvt4KW9";export let nanoid=(r=21)=>{for(var e="",t=crypto.getRandomValues(new Uint8Array(r|=0));r--;)e+=a[63&t[r]];return e};
