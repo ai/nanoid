@@ -10,7 +10,7 @@ A tiny, secure, URL-friendly, unique string ID generator for JavaScript.
 > “An amazing level of senseless perfectionism,
 > which is simply impossible not to respect.”
 
-- **Small.** 127 bytes (minified and brotlied). No dependencies.
+- **Small.** 117 bytes (minified and brotlied). No dependencies.
   [Size Limit] controls the size.
 - **Fast.** 50% faster than native `crypto.randomUUID()`.
 - **Safe.** It uses hardware random generator. Can be used in clusters.
