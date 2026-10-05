@@ -228,6 +228,17 @@ for (let type of ['node', 'browser']) {
         notEqual(second, third)
       })
 
+      test(`supports non-integer size`, () => {
+        let nanoid2 = customAlphabet('0123456789abcdef')
+        let ids = new Set()
+        for (let i = 0; i < 10; i++) {
+          let id = nanoid2(16.5)
+          equal(id.length, 16)
+          ids.add(id)
+        }
+        equal(ids.size, 10)
+      })
+
       test(`supports multi-byte characters`, () => {
         let ALPHABET = 'абвгд'
         let nanoid2 = customAlphabet(ALPHABET, 10)
@@ -296,6 +307,7 @@ for (let type of ['node', 'browser']) {
         let nanoid4 = customRandom('abcd', 4, fakeRandom)
         equal(nanoid4(), 'dddc')
         equal(nanoid4(0), '')
+        equal(nanoid4(4.5), 'dddc')
       })
     })
 
