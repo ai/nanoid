@@ -55,11 +55,11 @@
     "./async": {
       "browser": "./async/index.browser.js",
       "require": {
-        "types": "./index.d.cts",
+        "types": "./async/index.d.cts",
         "default": "./async/index.cjs"
       },
       "import": {
-        "types": "./index.d.ts",
+        "types": "./async/index.d.ts",
         "default": "./async/index.js"
       },
       "default": "./async/index.js"
