@@ -1,6 +1,9 @@
 # Change Log
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 3.3.20
+* Fixed types (by @johnemau).
+
 ## 3.3.19
 * Fixed killing the app by setting huge user ID.
 
