@@ -140,6 +140,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Removed Node.js 10 and Node.js 12 support.
 - Reduced npm package size.
 
+## 3.3.20
+
+- Fixed types (by @johnemau).
+
 ## 3.3.19
 
 - Fixed killing the app by setting huge user ID (by @geoffrey-diederichs).
