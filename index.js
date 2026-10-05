@@ -59,15 +59,15 @@ export function customRandom(alphabet, defaultSize, getRandom) {
     }
   }
 
-  // Secure random calls are expensive because system calls
-  // for entropy collection take time. To avoid extra calls,
-  // extra bytes are requested in advance to cover rejections.
-  //
-  // `step` determines how many random bytes to request.
-  // `1.6` is a magic number chosen from benchmarks.
   return (size = defaultSize) => {
     if (!size) return ''
     let id = ''
+    // Secure random calls are expensive because system calls
+    // for entropy collection take time. To avoid extra calls,
+    // extra bytes are requested in advance to cover rejections.
+    //
+    // `step` determines how many random bytes to request.
+    // `1.6` is a magic number chosen from benchmarks.
     let step = Math.ceil((1.6 * 256 * size) / safeByteCutoff)
     while (true) {
       let bytes = getRandom(step)
