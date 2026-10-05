@@ -49,7 +49,8 @@ export function customRandom(alphabet, defaultSize, getRandom) {
       while (true) {
         let bytes = getRandom(size)
         // A compact alternative for `for (let i = 0; i < step; i++)`.
-        let i = size
+        // `|=` convert `size` to integer, so it can be used as a byte index
+        let i = (size |= 0)
         while (i--) {
           // Here, `& mask` is equivalent to `% alphabet.length`, but faster
           id += alphabet[bytes[i] & mask]
