@@ -2,6 +2,13 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 6.0.2
+
+- Reduced JS bundle size (by @bayandin).
+- Fixed floats in size of `customRandom` (by @lost-signals).
+- Fixed performance of `customRandom` on changes size (by @00200200).
+- Fixed docs (by @Likio3000 & @lenamonj).
+
 ## 6.0.1
 
 - Fixed docs.
