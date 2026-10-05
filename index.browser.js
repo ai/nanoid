@@ -73,8 +73,11 @@ export let customAlphabet = (alphabet, size = 21) =>
   customRandom(alphabet, size | 0, random)
 
 export let nanoid = (size = 21) => {
-  let id = ''
-  let bytes = crypto.getRandomValues(new Uint8Array((size |= 0)))
+  // `var` lets Rolldown fold both declarations into the loop, saving 1 B.
+  // oxlint-disable-next-line no-var, prefer-let/prefer-let
+  var id = ''
+  // oxlint-disable-next-line no-var, prefer-let/prefer-let
+  var bytes = crypto.getRandomValues(new Uint8Array((size |= 0)))
   while (size--) {
     // The following mask reduces the random byte in the 0-255 value
     // range to the 0-63 value range.
