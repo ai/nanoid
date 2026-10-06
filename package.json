@@ -67,11 +67,11 @@
     "./non-secure/package.json": "./non-secure/package.json",
     "./non-secure": {
       "require": {
-        "types": "./index.d.cts",
+        "types": "./non-secure/index.d.cts",
         "default": "./non-secure/index.cjs"
       },
       "import": {
-        "types": "./index.d.ts",
+        "types": "./non-secure/index.d.ts",
         "default": "./non-secure/index.js"
       },
       "default": "./non-secure/index.js"
@@ -79,11 +79,11 @@
     "./url-alphabet/package.json": "./url-alphabet/package.json",
     "./url-alphabet": {
       "require": {
-        "types": "./index.d.cts",
+        "types": "./url-alphabet/index.d.cts",
         "default": "./url-alphabet/index.cjs"
       },
       "import": {
-        "types": "./index.d.ts",
+        "types": "./url-alphabet/index.d.ts",
         "default": "./url-alphabet/index.js"
       },
       "default": "./url-alphabet/index.js"
