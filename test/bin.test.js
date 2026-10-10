@@ -48,6 +48,15 @@ describe('CLI', () => {
     )
   })
 
+  for (let size of ['0.5', '1.5', 'Infinity']) {
+    test(`rejects non-integer size ${size}`, async () => {
+      await rejects(
+        () => exec(`node "${BIN}" --size ${size}`),
+        /Size must be positive integer/
+      )
+    })
+  }
+
   test('displays help', async () => {
     let { stderr, stdout } = await exec(`node "${BIN}" --help`)
     equal(stderr, '')

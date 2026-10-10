@@ -45,7 +45,7 @@ for (let i = 2; i < process.argv.length; i++) {
   if (arg === '--size' || arg === '-s') {
     size = Number(process.argv[i + 1])
     i += 1
-    if (Number.isNaN(size) || size <= 0) {
+    if (!Number.isInteger(size) || size <= 0) {
       error('Size must be positive integer')
     }
   } else if (arg === '--alphabet' || arg === '-a') {
