@@ -45,7 +45,6 @@ model.id = nanoid(); //=> "V1StGXR8_Z5jdHi6B-myT"
 - [اختبار الأداء](#اختبار-الأداء)
 - [الأمان](#الأمان)
 - [التثبيت](#التثبيت)
-  - [JSR](#jsr)
   - [CDN](#cdn)
 - [واجهة البرمجة (API)](#واجهة-البرمجة-api)
   - [أبجدية أو حجم مخصّص](#أبجدية-أو-حجم-مخصّص)
@@ -136,33 +135,6 @@ npm install nanoid
 ```
 
 <div dir="rtl">
-
-### JSR
-
-[JSR](https://jsr.io) هو بديل لـ npm بحوكمة مفتوحة
-وتطوير نشط (على عكس npm).
-
-</div>
-
-```bash
-npx jsr add @sitnik/nanoid
-```
-
-<div dir="rtl">
-
-يمكنك استخدامه في Node.js و Deno و Bun وغيرها.
-
-</div>
-
-```js
-// استبدل `nanoid` بـ `@sitnik/nanoid` في جميع الاستيرادات
-import { nanoid } from "@sitnik/nanoid";
-```
-
-<div dir="rtl">
-
-لـ Deno ثبّته عبر `deno add jsr:@sitnik/nanoid` أو استورده
-من `jsr:@sitnik/nanoid`.
 
 ### CDN
 

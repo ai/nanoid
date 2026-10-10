@@ -38,7 +38,6 @@ model.id = nanoid(); //=> "V1StGXR8_Z5jdHi6B-myT"
 - [벤치마크](#벤치마크)
 - [보안](#보안)
 - [설치](#설치)
-  - [JSR](#jsr)
   - [CDN](#cdn)
 - [API](#api)
   - [사용자 커스텀 문자열](#사용자-커스텀-문자열)
@@ -119,24 +118,6 @@ _랜덤 생성기에 대한 설명은 다음 기사를 참고하세요:
 ```bash
 npm install nanoid
 ```
-
-### JSR
-
-[JSR](https://jsr.io) 은 npm을 대체할 수 있는 오픈 거버넌스이며 npm과 달리 현재 활발히 개발중에 있습니다.
-
-```bash
-npx jsr add @sitnik/nanoid
-```
-
-Node.js, Deno, Bun 등에서 사용할 수 있습니다.
-
-```js
-// 모든 `nanoid` import를 `@sitnik/nanoid`로 변경합니다
-import { nanoid } from "@sitnik/nanoid";
-```
-
-Deno 사용시에는 `deno add jsr:@sitnik/nanoid` 명령어로 설치하고
-`jsr:@sitnik/nanoid`로 import 합니다.
 
 ### CDN
 

@@ -41,9 +41,6 @@ importers:
       secure-random-string:
         specifier: ^1.1.4
         version: 1.1.4
-      simple-git-hooks:
-        specifier: ^2.14.0
-        version: 2.14.0
       size-limit:
         specifier: ^14.1.0
         version: 14.1.0
@@ -755,10 +752,6 @@ packages:
   secure-random-string@1.1.4:
     resolution: {integrity: sha512-wkl2kL6/eT0II0HvuRAGW3dunWwfFV81Rdueu8+we0smnJU1B/aEksngOsoACs6XUyVeeZAM4eJvprRuPs0PPQ==}
 
-  simple-git-hooks@2.14.0:
-    resolution: {integrity: sha512-kkTORPAuxQz2g1QUuN0J8yGWT28tjGBfPOdJ4xT7Vbeu30veKUZQIoID2qGgCDAakaQn59UeZJJ4cFGB8PVP2A==}
-    hasBin: true
-
   size-limit@14.1.0:
     resolution: {integrity: sha512-ANW8IDwAK3P84y+bElmWqq8ymV/mNS8Jan+otR5XItVVS4AEyAx7MpT+1BsMULbgDaJ1cle3qN/hkOYQS0vF7g==}
     engines: {node: ^22.19.0 || ^24.5.0 || >=26.0.0}
@@ -1286,8 +1279,6 @@ snapshots:
       '@rolldown/binding-win32-x64-msvc': 1.2.12
 
   secure-random-string@1.1.4: {}
-
-  simple-git-hooks@2.14.0: {}
 
   size-limit@14.1.0:
     dependencies:

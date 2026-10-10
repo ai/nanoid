@@ -45,7 +45,6 @@ model.id = nanoid(); //=> "V1StGXR8_Z5jdHi6B-myT"
 - [Сравнение производительности](#сравнение-производительности)
 - [Безопасность](#безопасность)
 - [Подключение](#подключение)
-  - [JSR](#jsr)
   - [CDN](#cdn)
 - [API](#api)
   - [Смена алфавита или длины](#смена-алфавита-или-длины)
@@ -133,25 +132,6 @@ _См. также хорошую статью о теориях генерато
 ```bash
 npm install nanoid
 ```
-
-### JSR
-
-[JSR](https://jsr.io) это замена npm с открытым управлением
-и активной разработкой (в отличие от npm).
-
-```bash
-npx jsr add @sitnik/nanoid
-```
-
-Вы можете использовать пакет с JSR в Node.js, Deno, Bun.
-
-```js
-// Replace `nanoid` to `@sitnik/nanoid` in all imports
-import { nanoid } from "@sitnik/nanoid";
-```
-
-Для Deno установите через `deno add jsr:@sitnik/nanoid`
-или импортируйте `jsr:@sitnik/nanoid`.
 
 ### CDN
 

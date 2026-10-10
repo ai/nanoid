@@ -39,7 +39,6 @@ model.id = nanoid(); //=> "V1StGXR8_Z5jdHi6B-myT"
 - [Benchmark](#benchmark)
 - [Security](#security)
 - [Install](#install)
-  - [JSR](#jsr)
   - [CDN](#cdn)
 - [API](#api)
   - [Custom Alphabet or Size](#custom-alphabet-or-size)
@@ -123,25 +122,6 @@ _See a good article about random generators theory:
 ```bash
 npm install nanoid
 ```
-
-### JSR
-
-[JSR](https://jsr.io) is a replacement for npm with open governance
-and active development (in contrast to npm).
-
-```bash
-npx jsr add @sitnik/nanoid
-```
-
-You can use it in Node.js, Deno, Bun, etc.
-
-```js
-// Replace `nanoid` to `@sitnik/nanoid` in all imports
-import { nanoid } from "@sitnik/nanoid";
-```
-
-For Deno install it by `deno add jsr:@sitnik/nanoid` or import
-from `jsr:@sitnik/nanoid`.
 
 ### CDN
 

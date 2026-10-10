@@ -46,7 +46,6 @@
     "test:coverage": "bnt --coverage 100 --coverage-exclude 'test/*'",
     "test:lint": "oxlint",
     "test:size": "pnpm clean && size-limit",
-    "test:versions": "node ./test/check-versions.js",
     "test:prebuild": "node ./test/check-prebuild.js",
     "test": "pnpm run /^test:/"
   },
@@ -62,7 +61,6 @@
     "oxlint-tsgolint": "^7.0.2003",
     "rndm": "^1.2.0",
     "secure-random-string": "^1.1.4",
-    "simple-git-hooks": "^2.14.0",
     "size-limit": "^14.1.0",
     "terser": "^5.51.2",
     "tinybench": "^6.2.0",
@@ -71,9 +69,6 @@
     "uid-safe": "^2.1.5",
     "uuid": "^14.0.2",
     "vite": "^8.3.2"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "./test/check-versions.js"
   },
   "size-limit": [
     {

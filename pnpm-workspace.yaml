@@ -1,4 +1,2 @@
-allowBuilds:
-  simple-git-hooks: true
 minimumReleaseAgeExclude:
   - nope-id

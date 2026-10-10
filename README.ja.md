@@ -38,7 +38,6 @@ model.id = nanoid(); //=> "V1StGXR8_Z5jdHi6B-myT"
 - [ベンチマーク](#ベンチマーク)
 - [セキュリティ](#セキュリティ)
 - [インストール](#インストール)
-  - [JSR](#jsr)
   - [CDN](#cdn)
 - [API](#api)
   - [カスタムアルファベットまたはサイズ](#カスタムアルファベットまたはサイズ)
@@ -121,24 +120,6 @@ _乱数生成器の理論に関する良い記事を参照してください：
 ```bash
 npm install nanoid
 ```
-
-### JSR
-
-[JSR](https://jsr.io)はオープンなガバナンスと積極的な開発（npmとは対照的に）を持つnpmの代替です。
-
-```bash
-npx jsr add @sitnik/nanoid
-```
-
-Node.js、Deno、Bunなどで使用できます。
-
-```js
-// すべてのインポートで`nanoid`を`@sitnik/nanoid`に置き換える
-import { nanoid } from "@sitnik/nanoid";
-```
-
-Denoでは、`deno add jsr:@sitnik/nanoid`でインストールするか、
-`jsr:@sitnik/nanoid`からインポートします。
 
 ### CDN
 
