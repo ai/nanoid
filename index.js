@@ -114,9 +114,12 @@ export function customAlphabet(alphabet, defaultSize = 21) {
     return str.charCodeAt(0)
   })
   let alphabetLen = alphabet.length
-  // The smallest `2^n - 1` covering all alphabet indexes. Rejecting
-  // `byte & mask >= alphabetLen` avoids modulo bias without `%` operation.
+  // The smallest `2^n - 1` covering all alphabet indexes, to translate
+  // bytes without `%` when the alphabet size is a power of two.
   let mask = (2 << (31 - Math.clz32((alphabetLen - 1) | 1))) - 1
+  // cutoff is divided by alphabetLen without remainder, so rejecting
+  // bytes above it keeps the distribution flat, as in customRandom().
+  let cutoff = 256 - (256 % alphabetLen)
 
   // IDs are pre-generated into a string pool: accepted alphabet chars are
   // written to a byte buffer, converted to a string with one
@@ -148,19 +151,18 @@ export function customAlphabet(alphabet, defaultSize = 21) {
           buffer[i] = charCodes[buffer[i] & mask]
         }
       } else {
-        // Rejection sampling accepts `alphabetLen` of every `mask + 1`
-        // random bytes. `1.6` requests extra bytes to cover
-        // unlucky streaks in most fills.
+        // Rejection sampling accepts cutoff of every 256 random bytes.
+        // 1.6 requests extra bytes to cover unlucky streaks in most fills.
         let randomBytes = Buffer.allocUnsafe(
-          Math.ceil((1.6 * (mask + 1) * target) / alphabetLen)
+          Math.ceil((1.6 * 256 * target) / cutoff)
         )
         let accepted = 0
         while (accepted < target) {
           fillRandom(randomBytes)
           for (let i = 0; i < randomBytes.length; i++) {
-            let index = randomBytes[i] & mask
-            if (index < alphabetLen) {
-              buffer[accepted++] = charCodes[index]
+            let byte = randomBytes[i]
+            if (byte < cutoff) {
+              buffer[accepted++] = charCodes[byte % alphabetLen]
               if (accepted === target) break
             }
           }
