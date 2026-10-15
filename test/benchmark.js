@@ -75,7 +75,9 @@ let longestTask = bench.tasks.reduce((maxLength, task) => {
 }, 0)
 
 bench.addEventListener('cycle', ({ task }) => {
-  let hz = Math.round(task.result.throughput.mean * N)
+  // Total calls divided by total time. The mean of sample
+  // throughputs is too high, because slow samples count less there.
+  let hz = Math.round((N * 1000) / task.result.latency.mean)
     .toLocaleString('en-US')
     .padStart(14)
 
