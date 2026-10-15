@@ -12,7 +12,7 @@ JavaScript를 위한 가볍고 안전하며 URL 친화적인 고유 String ID �
 
 - **가볍습니다.** 117 bytes (minified 및 brotli 적용 후). 다른 의존성이 없습니다.
   [Size Limit] 의 기능으로 컨트롤합니다.
-- **빠릅니다.** 네이티브 `crypto.randomUUID()` 보다 50% 더 빠릅니다.
+- **빠릅니다.** 네이티브 `crypto.randomUUID()` 보다 더 빠릅니다.
 - **안전합니다.** 하드웨어의 랜덤 생성기를 사용합니다. 클러스터에서 사용할 수 있습니다.
 - **짧은 ID를 생성합니다.** UUID와는 다르게 대소문자를 모두 사용하여 키를 생성하므로, 36 byte를 차지하는 UUID와 다르게 21 byte만으로도 고유 아이디를 생성할 수 있습니다.
   So ID size was reduced from 36 to 21 symbols.
