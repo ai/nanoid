@@ -18,50 +18,56 @@ import { nanoid as nonSecure } from '../non-secure/index.js'
 
 let bench = new Bench()
 
+// Fast functions take less time than reading the timer,
+// so every task calls the function N times in a loop.
+const N = 1000
+// Keep the results, so V8 cannot skip creating the IDs
+let out = []
+
 let nanoid2 = customAlphabet('1234567890abcdef-', 21)
 
 bench
   .add('nope-id', () => {
-    nopeid()
+    for (let i = 0; i < N; i++) out[i] = nopeid()
   })
   .add('nanoid', () => {
-    nanoid()
+    for (let i = 0; i < N; i++) out[i] = nanoid()
   })
   .add('customAlphabet', () => {
-    nanoid2()
+    for (let i = 0; i < N; i++) out[i] = nanoid2()
   })
   .add('crypto.randomUUID', () => {
-    crypto.randomUUID()
+    for (let i = 0; i < N; i++) out[i] = crypto.randomUUID()
   })
   .add('uuid v4', () => {
-    uuid4()
+    for (let i = 0; i < N; i++) out[i] = uuid4()
   })
   .add('@napi-rs/uuid', () => {
-    napiV4()
+    for (let i = 0; i < N; i++) out[i] = napiV4()
   })
   .add('uid/secure', () => {
-    uidSecure(32)
+    for (let i = 0; i < N; i++) out[i] = uidSecure(32)
   })
   .add('@lukeed/uuid', () => {
-    lukeed4()
+    for (let i = 0; i < N; i++) out[i] = lukeed4()
   })
   .add('nanoid for browser', () => {
-    browser()
+    for (let i = 0; i < N; i++) out[i] = browser()
   })
   .add('secure-random-string', () => {
-    srs()
+    for (let i = 0; i < N; i++) out[i] = srs()
   })
   .add('uid-safe.sync', () => {
-    uidSafe.sync(14)
+    for (let i = 0; i < N; i++) out[i] = uidSafe.sync(14)
   })
   .add('uid', () => {
-    uid(32)
+    for (let i = 0; i < N; i++) out[i] = uid(32)
   })
   .add('nanoid/non-secure', () => {
-    nonSecure()
+    for (let i = 0; i < N; i++) out[i] = nonSecure()
   })
   .add('rndm', () => {
-    rndm(21)
+    for (let i = 0; i < N; i++) out[i] = rndm(21)
   })
 
 let longestTask = bench.tasks.reduce((maxLength, task) => {
@@ -69,7 +75,7 @@ let longestTask = bench.tasks.reduce((maxLength, task) => {
 }, 0)
 
 bench.addEventListener('cycle', ({ task }) => {
-  let hz = (+task.result.throughput.mean.toFixed(0))
+  let hz = Math.round(task.result.throughput.mean * N)
     .toLocaleString('en-US')
     .padStart(14)
 
