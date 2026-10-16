@@ -16,8 +16,8 @@
 - **可移植.** Nano ID 已被移植到 [20种编程语言](#其他编程语言)。
 
 ```js
-import { nanoid } from "nanoid";
-model.id = nanoid(); //=> "V1StGXR8_Z5jdHi6B-myT"
+import { nanoid } from 'nanoid'
+model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
 支持现代浏览器、IE [需使用 Babel]、Node.js 和 React Native。
@@ -69,22 +69,22 @@ Nano ID 和 UUID v4之间有两个主要区别:
 
 ```rust
 $ node ./test/benchmark.js
-nope-id                 59,034,753 ops/sec
-nanoid                  38,883,215 ops/sec
-customAlphabet          25,481,101 ops/sec
-crypto.randomUUID        6,871,047 ops/sec
-uuid v4                  6,169,740 ops/sec
-@napi-rs/uuid            8,791,173 ops/sec
-uid/secure               8,229,214 ops/sec
-@lukeed/uuid             6,687,021 ops/sec
-nanoid for browser         653,420 ops/sec
-secure-random-string       531,531 ops/sec
-uid-safe.sync              534,386 ops/sec
+nope-id                 50,866,431 ops/sec
+nanoid                  25,580,859 ops/sec
+customAlphabet           3,955,574 ops/sec
+crypto.randomUUID        6,583,303 ops/sec
+uuid v4                  5,575,055 ops/sec
+@napi-rs/uuid            8,369,981 ops/sec
+uid/secure               7,965,602 ops/sec
+@lukeed/uuid             6,301,692 ops/sec
+nanoid for browser         626,943 ops/sec
+secure-random-string       509,515 ops/sec
+uid-safe.sync              491,164 ops/sec
 
 Non-secure:
-uid                     36,726,989 ops/sec
-nanoid/non-secure        2,753,530 ops/sec
-rndm                     2,820,063 ops/sec
+uid                     34,793,413 ops/sec
+nanoid/non-secure        2,717,308 ops/sec
+rndm                     2,779,850 ops/sec
 ```
 
 ## 安全性
@@ -122,7 +122,7 @@ npm install nanoid
 在生产中使用，因为它的加载性能较低。
 
 ```js
-import { nanoid } from "https://cdn.jsdelivr.net/npm/nanoid/nanoid.js";
+import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 ```
 
 ## API
@@ -131,15 +131,15 @@ import { nanoid } from "https://cdn.jsdelivr.net/npm/nanoid/nanoid.js";
 有21个字符（类似 UUID v4 的碰撞概率）的 ID。
 
 ```js
-import { nanoid } from "nanoid";
-model.id = nanoid(); //=> "V1StGXR8_Z5jdHi6B-myT"
+import { nanoid } from 'nanoid'
+model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
 如果你想要减小 ID 大小（但是会增加碰撞概率），
 可以将大小作为参数传递
 
 ```js
-nanoid(10); //=> "IRFa-VaY2b"
+nanoid(10) //=> "IRFa-VaY2b"
 ```
 
 别忘了在我们的 [ID 碰撞概率] 计算器中检查你的 ID 大小的安全性。
@@ -154,15 +154,15 @@ nanoid(10); //=> "IRFa-VaY2b"
 `customAlphabet` 返回一个函数，允许您使用自定义字母表和ID大小创建 `nanoid`。
 
 ```js
-import { customAlphabet } from "nanoid";
-const nanoid = customAlphabet("1234567890abcdef", 10);
-model.id = nanoid(); //=> "4f90d13a42"
+import { customAlphabet } from 'nanoid'
+const nanoid = customAlphabet('1234567890abcdef', 10)
+model.id = nanoid() //=> "4f90d13a42"
 ```
 
 ```js
-import { customAlphabet } from "nanoid/non-secure";
-const nanoid = customAlphabet("1234567890abcdef", 10);
-user.id = nanoid();
+import { customAlphabet } from 'nanoid/non-secure'
+const nanoid = customAlphabet('1234567890abcdef', 10)
+user.id = nanoid()
 ```
 
 在我们的 [ID 碰撞概率] 计算器中检查您的自定义字母表和 ID 大小的安全性。
@@ -174,9 +174,9 @@ user.id = nanoid();
 除了设置默认大小外，您还可以在调用函数时更改ID大小：
 
 ```js
-import { customAlphabet } from "nanoid";
-const nanoid = customAlphabet("1234567890abcdef", 10);
-model.id = nanoid(5); //=> "f01a2"
+import { customAlphabet } from 'nanoid'
+const nanoid = customAlphabet('1234567890abcdef', 10)
+model.id = nanoid(5) //=> "f01a2"
 ```
 
 [ID collision probability]: https://zelark.github.io/nano-id-cc/
@@ -190,14 +190,14 @@ model.id = nanoid(5); //=> "f01a2"
 在此示例中，使用基于种子的生成器:
 
 ```js
-import { customRandom } from "nanoid";
+import { customRandom } from 'nanoid'
 
-const rng = seedrandom(seed);
-const nanoid = customRandom("abcdef", 10, (size) => {
-  return new Uint8Array(size).map(() => 256 * rng());
-});
+const rng = seedrandom(seed)
+const nanoid = customRandom('abcdef', 10, size => {
+  return new Uint8Array(size).map(() => 256 * rng())
+})
 
-nanoid(); //=> "fbaefaadeb"
+nanoid() //=> "fbaefaadeb"
 ```
 
 `random` 回调必须接受数组大小并返回随机数的数组。
@@ -206,8 +206,8 @@ nanoid(); //=> "fbaefaadeb"
 您可以使用 `urlAlphabet` 获取默认字母表。
 
 ```js
-const { customRandom, urlAlphabet } = require("nanoid");
-const nanoid = customRandom(urlAlphabet, 10, random);
+const { customRandom, urlAlphabet } = require('nanoid')
+const nanoid = customRandom(urlAlphabet, 10, random)
 ```
 
 请注意，在Nano ID的不同版本之间，我们可能会更改随机生成器的调用顺序。如果您正在使用基于种子的生成器，我们不能保证相同的结果。
@@ -217,8 +217,8 @@ const nanoid = customRandom(urlAlphabet, 10, random);
 Nano ID 使用硬件随机字节生成以提供安全性和较低的碰撞概率。如果您对安全性不太担心，您可以在没有硬件随机生成器的环境中使用它
 
 ```js
-import { nanoid } from "nanoid/non-secure";
-const id = nanoid(); //=> "Uakgb_J5m9g-0JDMbcJqLJ"
+import { nanoid } from 'nanoid/non-secure'
+const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
 请注意，非安全版本比安全版本*更慢*，请仅在必要时使用。
@@ -234,22 +234,22 @@ const id = nanoid(); //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 function Todos({ todos }) {
   return (
     <ul>
-      {todos.map((todo) => (
+      {todos.map(todo => (
         <li key={nanoid()}>
-          {" "}
+          {' '}
           /* 不要这样做 */
           {todo.text}
         </li>
       ))}
     </ul>
-  );
+  )
 }
 ```
 
 您应该尝试在列表项中找到稳定的 id。
 
 ```jsx
-const todoItems = todos.map((todo) => <li key={todo.id}>{todo.text}</li>);
+const todoItems = todos.map(todo => <li key={todo.id}>{todo.text}</li>)
 ```
 
 如果您没有稳定的 ID，您最好使用索引作为 `键` 而不是 `nanoid()`：
@@ -257,11 +257,11 @@ const todoItems = todos.map((todo) => <li key={todo.id}>{todo.text}</li>);
 ```jsx
 const todoItems = todos.map((text, index) => (
   <li key={index}>
-    {" "}
+    {' '}
     /* 仍然不推荐，但优于 nanoid()。 仅当项目没有稳定ID时才执行此操作。 */
     {text}
   </li>
-));
+))
 ```
 
 如果您只需要随机 ID 来将元素（如标签和输入字段）链接在一起，建议使用 [`useId`]。该钩子在 React 18 中添加。
@@ -276,8 +276,9 @@ React Native 没有内置的随机生成器。以下polyfill适用于纯 React N
 2. 在 Nano ID 之前导入它。
 
 ```js
-import "react-native-get-random-values";
-import { nanoid } from "nanoid";
+import 'react-native-get-random-values'
+
+import { nanoid } from 'nanoid'
 ```
 
 [`react-native-get-random-values`]: https://github.com/LinusU/react-native-get-random-values
@@ -327,22 +328,22 @@ bccbcabaabaccab
 Nano ID 允许将生成的字符串转换为 TypeScript 中的不透明字符串。 例如：
 
 ```ts
-declare const userIdBrand: unique symbol;
-type UserId = string & { [userIdBrand]: true };
+declare const userIdBrand: unique symbol
+type UserId = string & { [userIdBrand]: true }
 
 // 使用显式类型参数:
-mockUser(nanoid<UserId>());
+mockUser(nanoid<UserId>())
 
 interface User {
-  id: UserId;
-  name: string;
+  id: UserId
+  name: string
 }
 
 const user: User = {
   // 自动转换为 UserId:
   id: nanoid(),
-  name: "Alice",
-};
+  name: 'Alice'
+}
 ```
 
 ### 其他编程语言

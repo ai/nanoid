@@ -19,8 +19,8 @@ JavaScriptのための小さく、安全で、URL友好的なユニークな文�
 - **移植性。** Nano IDは[20以上のプログラミング言語](./README.md#other-programming-languages)に移植されています。
 
 ```js
-import { nanoid } from "nanoid";
-model.id = nanoid(); //=> "V1StGXR8_Z5jdHi6B-myT"
+import { nanoid } from 'nanoid'
+model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
 ---
@@ -71,22 +71,22 @@ Nano IDとUUID v4の主な違いは2つあります：
 
 ```rust
 $ node ./test/benchmark.js
-nope-id                 59,034,753 ops/sec
-nanoid                  38,883,215 ops/sec
-customAlphabet          25,481,101 ops/sec
-crypto.randomUUID        6,871,047 ops/sec
-uuid v4                  6,169,740 ops/sec
-@napi-rs/uuid            8,791,173 ops/sec
-uid/secure               8,229,214 ops/sec
-@lukeed/uuid             6,687,021 ops/sec
-nanoid for browser         653,420 ops/sec
-secure-random-string       531,531 ops/sec
-uid-safe.sync              534,386 ops/sec
+nope-id                 50,866,431 ops/sec
+nanoid                  25,580,859 ops/sec
+customAlphabet           3,955,574 ops/sec
+crypto.randomUUID        6,583,303 ops/sec
+uuid v4                  5,575,055 ops/sec
+@napi-rs/uuid            8,369,981 ops/sec
+uid/secure               7,965,602 ops/sec
+@lukeed/uuid             6,301,692 ops/sec
+nanoid for browser         626,943 ops/sec
+secure-random-string       509,515 ops/sec
+uid-safe.sync              491,164 ops/sec
 
 Non-secure:
-uid                     36,726,989 ops/sec
-nanoid/non-secure        2,753,530 ops/sec
-rndm                     2,820,063 ops/sec
+uid                     34,793,413 ops/sec
+nanoid/non-secure        2,717,308 ops/sec
+rndm                     2,779,850 ops/sec
 ```
 
 ## セキュリティ
@@ -126,7 +126,7 @@ npm install nanoid
 クイックハックの場合、CDNからNano IDを読み込むことができます。ただし、読み込みパフォーマンスが低いため、本番環境での使用はお勧めしません。
 
 ```js
-import { nanoid } from "https://cdn.jsdelivr.net/npm/nanoid/nanoid.js";
+import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 ```
 
 ## API
@@ -135,15 +135,15 @@ import { nanoid } from "https://cdn.jsdelivr.net/npm/nanoid/nanoid.js";
 21文字のID（UUID v4と同様の衝突確率を持つ）を返します。
 
 ```js
-import { nanoid } from "nanoid";
-model.id = nanoid(); //=> "V1StGXR8_Z5jdHi6B-myT"
+import { nanoid } from 'nanoid'
+model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
 IDのサイズを小さくしたい場合（衝突確率を高める）、
 サイズを引数として渡すことができます。
 
 ```js
-nanoid(10); //=> "IRFa-VaY2b"
+nanoid(10) //=> "IRFa-VaY2b"
 ```
 
 IDサイズの安全性を[ID衝突確率]計算機で確認することを忘れないでください。
@@ -158,15 +158,15 @@ IDサイズの安全性を[ID衝突確率]計算機で確認することを忘�
 customAlphabetは、独自のアルファベットとIDサイズでnanoidを作成できる関数を返します。
 
 ```js
-import { customAlphabet } from "nanoid";
-const nanoid = customAlphabet("1234567890abcdef", 10);
-model.id = nanoid(); //=> "4f90d13a42"
+import { customAlphabet } from 'nanoid'
+const nanoid = customAlphabet('1234567890abcdef', 10)
+model.id = nanoid() //=> "4f90d13a42"
 ```
 
 ```js
-import { customAlphabet } from "nanoid/non-secure";
-const nanoid = customAlphabet("1234567890abcdef", 10);
-user.id = nanoid();
+import { customAlphabet } from 'nanoid/non-secure'
+const nanoid = customAlphabet('1234567890abcdef', 10)
+user.id = nanoid()
 ```
 
 カスタムアルファベットとIDサイズの安全性を[ID衝突確率]計算機で確認してください。
@@ -178,9 +178,9 @@ user.id = nanoid();
 デフォルトサイズを設定するだけでなく、関数を呼び出す際にIDサイズを変更することもできます：
 
 ```js
-import { customAlphabet } from "nanoid";
-const nanoid = customAlphabet("1234567890abcdef", 10);
-model.id = nanoid(5); //=> "f01a2"
+import { customAlphabet } from 'nanoid'
+const nanoid = customAlphabet('1234567890abcdef', 10)
+model.id = nanoid(5) //=> "f01a2"
 ```
 
 [ID衝突確率]: https://zelark.github.io/nano-id-cc/
@@ -193,14 +193,14 @@ customRandomを使用すると、nanoidを作成し、アルファベットと�
 この例では、シードベースの生成器が使用されています：
 
 ```js
-import { customRandom } from "nanoid";
+import { customRandom } from 'nanoid'
 
-const rng = seedrandom(seed);
-const nanoid = customRandom("abcdef", 10, (size) => {
-  return new Uint8Array(size).map(() => 256 * rng());
-});
+const rng = seedrandom(seed)
+const nanoid = customRandom('abcdef', 10, size => {
+  return new Uint8Array(size).map(() => 256 * rng())
+})
 
-nanoid(); //=> "fbaefaadeb"
+nanoid() //=> "fbaefaadeb"
 ```
 
 randomコールバックは配列サイズを受け取り、ランダムな数値の配列を返す必要があります。
@@ -208,8 +208,8 @@ randomコールバックは配列サイズを受け取り、ランダムな数�
 customRandomで同じURL友好的な記号を使用したい場合は、urlAlphabetを使用してデフォルトのアルファベットを取得できます。
 
 ```js
-const { customRandom, urlAlphabet } = require("nanoid");
-const nanoid = customRandom(urlAlphabet, 10, random);
+const { customRandom, urlAlphabet } = require('nanoid')
+const nanoid = customRandom(urlAlphabet, 10, random)
 ```
 
 なお、Nano IDのバージョン間でランダム生成器の呼び出しシーケンスが変更される場合があります。シードベースの生成器を使用している場合、同じ結果を保証するものではありません。
@@ -219,8 +219,8 @@ const nanoid = customRandom(urlAlphabet, 10, random);
 Nano IDはセキュリティと低衝突確率のためにハードウェアランダムバイト生成を使用します。セキュリティにそれほど関心がない場合は、ハードウェア乱数生成器がない環境でも使用できます。
 
 ```js
-import { nanoid } from "nanoid/non-secure";
-const id = nanoid(); //=> "Uakgb_J5m9g-0JDMbcJqLJ"
+import { nanoid } from 'nanoid/non-secure'
+const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
 なお、非セキュア版はセキュア版よりも*遅い*ことに注意してください。どうしても必要な場合のみ使用してください。
@@ -235,22 +235,22 @@ Reactの`key` propにNano IDを使用する正しい方法はありません。�
 function Todos({ todos }) {
   return (
     <ul>
-      {todos.map((todo) => (
+      {todos.map(todo => (
         <li key={nanoid()}>
-          {" "}
+          {' '}
           /* これはやめましょう */
           {todo.text}
         </li>
       ))}
     </ul>
-  );
+  )
 }
 ```
 
 代わりに、リストアイテム内で安定したIDを使用するようにしましょう。
 
 ```jsx
-const todoItems = todos.map((todo) => <li key={todo.id}>{todo.text}</li>);
+const todoItems = todos.map(todo => <li key={todo.id}>{todo.text}</li>)
 ```
 
 安定したIDがない場合は、`nanoid()`の代わりにインデックスを`key`として使用することをお勧めします：
@@ -258,12 +258,12 @@ const todoItems = todos.map((todo) => <li key={todo.id}>{todo.text}</li>);
 ```jsx
 const todoItems = todos.map((text, index) => (
   <li key={index}>
-    {" "}
+    {' '}
     /* まだ推奨されませんが、nanoid()よりは優先されます。
     アイテムに安定したIDがない場合のみ行ってください。 */
     {text}
   </li>
-));
+))
 ```
 
 ラベルと入力フィールドのように要素を関連付けるためだけにランダムなIDが必要な場合は、[`useId`]が推奨されます。
@@ -280,8 +280,9 @@ React Nativeには組み込みのランダム生成器がありません。次�
 2. Nano IDの前にインポートします。
 
 ```js
-import "react-native-get-random-values";
-import { nanoid } from "nanoid";
+import 'react-native-get-random-values'
+
+import { nanoid } from 'nanoid'
 ```
 
 [`react-native-get-random-values`]: https://github.com/LinusU/react-native-get-random-values
@@ -333,22 +334,22 @@ Nano IDでは、生成された文字列をTypeScriptで不透明な文字列（
 例えば：
 
 ```ts
-declare const userIdBrand: unique symbol;
-type UserId = string & { [userIdBrand]: true };
+declare const userIdBrand: unique symbol
+type UserId = string & { [userIdBrand]: true }
 
 // 明示的な型パラメータを使用：
-mockUser(nanoid<UserId>());
+mockUser(nanoid<UserId>())
 
 interface User {
-  id: UserId;
-  name: string;
+  id: UserId
+  name: string
 }
 
 const user: User = {
   // 自動的にUserIdにキャストされます：
   id: nanoid(),
-  name: "Alice",
-};
+  name: 'Alice'
+}
 ```
 
 ### その他のプログラミング言語

@@ -22,8 +22,8 @@ ID можно применять в URL.
   на [20 языков программирования](#другие-языки-программирования).
 
 ```js
-import { nanoid } from "nanoid";
-model.id = nanoid(); //=> "V1StGXR8_Z5jdHi6B-myT"
+import { nanoid } from 'nanoid'
+model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
 Поддерживает современные браузеры, IE ([с Babel]), Node.js и React Native.
@@ -80,22 +80,22 @@ Nano ID похож на UUID v4 (случайный).
 
 ```rust
 $ node ./test/benchmark.js
-nope-id                 59,034,753 ops/sec
-nanoid                  38,883,215 ops/sec
-customAlphabet          25,481,101 ops/sec
-crypto.randomUUID        6,871,047 ops/sec
-uuid v4                  6,169,740 ops/sec
-@napi-rs/uuid            8,791,173 ops/sec
-uid/secure               8,229,214 ops/sec
-@lukeed/uuid             6,687,021 ops/sec
-nanoid for browser         653,420 ops/sec
-secure-random-string       531,531 ops/sec
-uid-safe.sync              534,386 ops/sec
+nope-id                 50,866,431 ops/sec
+nanoid                  25,580,859 ops/sec
+customAlphabet           3,955,574 ops/sec
+crypto.randomUUID        6,583,303 ops/sec
+uuid v4                  5,575,055 ops/sec
+@napi-rs/uuid            8,369,981 ops/sec
+uid/secure               7,965,602 ops/sec
+@lukeed/uuid             6,301,692 ops/sec
+nanoid for browser         626,943 ops/sec
+secure-random-string       509,515 ops/sec
+uid-safe.sync              491,164 ops/sec
 
 Non-secure:
-uid                     36,726,989 ops/sec
-nanoid/non-secure        2,753,530 ops/sec
-rndm                     2,820,063 ops/sec
+uid                     34,793,413 ops/sec
+nanoid/non-secure        2,717,308 ops/sec
+rndm                     2,779,850 ops/sec
 ```
 
 ## Безопасность
@@ -140,7 +140,7 @@ npm install nanoid
 по скорости загрузки сайта.
 
 ```js
-import { nanoid } from "https://cdn.jsdelivr.net/npm/nanoid/nanoid.js";
+import { nanoid } from 'https://cdn.jsdelivr.net/npm/nanoid/nanoid.js'
 ```
 
 ## API
@@ -150,14 +150,14 @@ import { nanoid } from "https://cdn.jsdelivr.net/npm/nanoid/nanoid.js";
 (чтобы вероятность коллизий была соизмеримой с UUID v4).
 
 ```js
-import { nanoid } from "nanoid";
-model.id = nanoid(); //=> "V1StGXR8_Z5jdHi6B-myT"
+import { nanoid } from 'nanoid'
+model.id = nanoid() //=> "V1StGXR8_Z5jdHi6B-myT"
 ```
 
 Функция также принимает необязательный аргумент, задающий длину ID:
 
 ```js
-nanoid(10); //=> "IRFa-VaY2b"
+nanoid(10) //=> "IRFa-VaY2b"
 ```
 
 При изменении размера, всегда проверяйте риски
@@ -169,15 +169,15 @@ nanoid(10); //=> "IRFa-VaY2b"
 с нужным вам алфавитом и длиной ID.
 
 ```js
-import { customAlphabet } from "nanoid";
-const nanoid = customAlphabet("1234567890abcdef", 10);
-user.id = nanoid(); //=> "4f90d13a42"
+import { customAlphabet } from 'nanoid'
+const nanoid = customAlphabet('1234567890abcdef', 10)
+user.id = nanoid() //=> "4f90d13a42"
 ```
 
 ```js
-import { customAlphabet } from "nanoid/non-secure";
-const nanoid = customAlphabet("1234567890abcdef", 10);
-user.id = nanoid();
+import { customAlphabet } from 'nanoid/non-secure'
+const nanoid = customAlphabet('1234567890abcdef', 10)
+user.id = nanoid()
 ```
 
 Не забудьте проверить риски коллизии вашего алфавита и длины
@@ -191,9 +191,9 @@ user.id = nanoid();
 генератора, который она вернёт:
 
 ```js
-import { customAlphabet } from "nanoid";
-const nanoid = customAlphabet("1234567890abcdef", 10);
-model.id = nanoid(5); //=> "f01a2"
+import { customAlphabet } from 'nanoid'
+const nanoid = customAlphabet('1234567890abcdef', 10)
+model.id = nanoid(5) //=> "f01a2"
 ```
 
 [на нашем калькуляторе]: https://zelark.github.io/nano-id-cc/
@@ -207,14 +207,14 @@ model.id = nanoid(5); //=> "f01a2"
 Например, можно использовать генератор c seed для повторяемости тестов.
 
 ```js
-import { customRandom } from "nanoid";
+import { customRandom } from 'nanoid'
 
-const rng = seedrandom(seed);
-const nanoid = customRandom("abcdef", 10, (size) => {
-  return new Uint8Array(size).map(() => 256 * rng());
-});
+const rng = seedrandom(seed)
+const nanoid = customRandom('abcdef', 10, size => {
+  return new Uint8Array(size).map(() => 256 * rng())
+})
 
-nanoid(); //=> "fbaefaadeb"
+nanoid() //=> "fbaefaadeb"
 ```
 
 Функция в третьем аргументе `customRandom` должна принимать длину массива
@@ -225,8 +225,8 @@ URL-совместимый алфавит, то стандартный алфа�
 в экспорте `urlAlphabet`.
 
 ```js
-const { customRandom, urlAlphabet } = require("nanoid");
-const nanoid = customRandom(urlAlphabet, 10, random);
+const { customRandom, urlAlphabet } = require('nanoid')
+const nanoid = customRandom(urlAlphabet, 10, random)
 ```
 
 ### Небезопасный
@@ -238,8 +238,8 @@ Nano ID использует аппаратный генератор случа�
 там, где нет доступа к API аппаратного генератора случайных чисел.
 
 ```js
-import { nanoid } from "nanoid/non-secure";
-const id = nanoid(); //=> "Uakgb_J5m9g-0JDMbcJqLJ"
+import { nanoid } from 'nanoid/non-secure'
+const id = nanoid() //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 ```
 
 Но учтите, что предсказуемость ID может быть использована для атаки на систему.
@@ -257,15 +257,15 @@ const id = nanoid(); //=> "Uakgb_J5m9g-0JDMbcJqLJ"
 function Todos({ todos }) {
   return (
     <ul>
-      {todos.map((todo) => (
+      {todos.map(todo => (
         <li key={nanoid()}>
-          {" "}
+          {' '}
           /* НЕ ДЕЛАЙТЕ ТАК */
           {todo.text}
         </li>
       ))}
     </ul>
-  );
+  )
 }
 ```
 
@@ -283,8 +283,9 @@ React Native не имеет встроенного аппаратного ге�
 2. Импортируйте эту библиотеку до импорта Nano ID.
 
 ```js
-import "react-native-get-random-values";
-import { nanoid } from "nanoid";
+import 'react-native-get-random-values'
+
+import { nanoid } from 'nanoid'
 ```
 
 [`react-native-get-random-values`]: https://github.com/LinusU/react-native-get-random-values
@@ -336,22 +337,22 @@ Nano ID позволяет приводить сгенерированные с�
 TypeScript. Например:
 
 ```ts
-declare const userIdBrand: unique symbol;
-type UserId = string & { [userIdBrand]: true };
+declare const userIdBrand: unique symbol
+type UserId = string & { [userIdBrand]: true }
 
 // Используйте явный параметр типа:
-mockUser(nanoid<UserId>());
+mockUser(nanoid<UserId>())
 
 interface User {
-  id: UserId;
-  name: string;
+  id: UserId
+  name: string
 }
 
 const user: User = {
   // Автоматически приводится к типу UserId:
   id: nanoid(),
-  name: "Alice",
-};
+  name: 'Alice'
+}
 ```
 
 ### Другие языки программирования
