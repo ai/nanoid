@@ -14,7 +14,7 @@
 
 - **صغير الحجم.** 117 بايت فقط (بعد التصغير والضغط ببروتلي). بدون أيّ اعتماديات خارجية.
   يتم التحكّم بالحجم عبر [Size Limit].
-- **سريع.** أسرع بنسبة 50% من `crypto.randomUUID()` الأصلية.
+- **سريع.** أسرع من `crypto.randomUUID()` الأصلية.
 - **آمن.** يستخدم مُولِّد أرقام عشوائية على مستوى العتاد. يمكن استخدامه في بيئات الكلستر.
 - **مُعرِّفات قصيرة.** يستخدم أبجدية أكبر من UUID وهي (`A-Za-z0-9_-`).
   لذا تم تقليص حجم المُعرِّف من 36 إلى 21 رمزًا.
@@ -80,22 +80,22 @@ Nano ID قابل للمقارنة مع UUID v4 (المبني على العشوا
 
 ```rust
 $ node ./test/benchmark.js
-nope-id                 20,386,830 ops/sec
-nanoid                  20,434,827 ops/sec
-customAlphabet          20,544,476 ops/sec
-crypto.randomUUID       12,865,759 ops/sec
-uuid v4                  7,930,104 ops/sec
-@napi-rs/uuid            5,573,171 ops/sec
-uid/secure               6,308,267 ops/sec
-@lukeed/uuid             5,278,597 ops/sec
-nanoid for browser         311,497 ops/sec
-secure-random-string       301,667 ops/sec
-uid-safe.sync              297,815 ops/sec
+nope-id                 59,034,753 ops/sec
+nanoid                  38,883,215 ops/sec
+customAlphabet          25,481,101 ops/sec
+crypto.randomUUID        6,871,047 ops/sec
+uuid v4                  6,169,740 ops/sec
+@napi-rs/uuid            8,791,173 ops/sec
+uid/secure               8,229,214 ops/sec
+@lukeed/uuid             6,687,021 ops/sec
+nanoid for browser         653,420 ops/sec
+secure-random-string       531,531 ops/sec
+uid-safe.sync              534,386 ops/sec
 
 Non-secure:
-uid                     20,286,757 ops/sec
-nanoid/non-secure        2,397,594 ops/sec
-rndm                     2,445,462 ops/sec
+uid                     36,726,989 ops/sec
+nanoid/non-secure        2,753,530 ops/sec
+rndm                     2,820,063 ops/sec
 ```
 
 <div dir="rtl">
