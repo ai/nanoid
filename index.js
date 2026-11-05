@@ -7,7 +7,6 @@ export { urlAlphabet }
 const GET_RANDOM_LIMIT = 65536
 
 function fillRandom(buffer) {
-  // `subarray()` clips the end of the last chunk to the buffer size
   for (let i = 0; i < buffer.length; i += GET_RANDOM_LIMIT) {
     crypto.getRandomValues(buffer.subarray(i, i + GET_RANDOM_LIMIT))
   }
