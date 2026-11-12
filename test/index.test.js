@@ -248,6 +248,19 @@ for (let type of ['node', 'browser']) {
         equal(ids.size, 10)
       })
 
+      test(
+        `does not hang on non-integer size with a multi-byte alphabet`,
+        { timeout: 2000 },
+        () => {
+          for (let alphabet of ['абвг', 'абв']) {
+            let nanoid2 = customAlphabet(alphabet)
+            equal(nanoid2(0.5), '')
+            equal(nanoid2(8.9).length, 8)
+            equal(nanoid2(-1), '')
+          }
+        }
+      )
+
       test(`supports multi-byte characters`, () => {
         let ALPHABET = 'абвгд'
         let nanoid2 = customAlphabet(ALPHABET, 10)
