@@ -23,28 +23,13 @@ export let customRandom = (alphabet, defaultSize, getRandom) => {
   let safeByteCutoff = 256 - (256 % alphabet.length)
 
   // Power-of-two alphabets can use `& mask` instead of modulo.
-  if (safeByteCutoff === 256) {
-    let mask = alphabet.length - 1
-
-    return (size = defaultSize) => {
-      if (!size) return ''
-      let id = ''
-      while (true) {
-        let bytes = getRandom(size)
-        // A compact alternative for `for (var i = 0; i < step; i++)`.
-        // `|=` convert `size` to integer, so it can be used as a byte index
-        let j = (size |= 0)
-        while (j--) {
-          // Here, `& mask` is equivalent to `% alphabet.length`, but faster
-          id += alphabet[bytes[j] & mask]
-          if (id.length >= size) return id
-        }
-      }
-    }
-  }
+  let mask = alphabet.length - 1
+  let pow2 = safeByteCutoff === 256
 
   return (size = defaultSize) => {
-    if (!size) return ''
+    // `|=` convert `size` to integer so a fractional size cannot hang
+    // the power-of-two path or yield an extra character on the other path.
+    if ((size |= 0) < 1) return ''
     let id = ''
     // Secure random calls are expensive because system calls
     // for entropy collection take time. To avoid extra calls,
@@ -52,7 +37,7 @@ export let customRandom = (alphabet, defaultSize, getRandom) => {
     //
     // `step` determines how many random bytes to request.
     // `1.6` is a magic number chosen from benchmarks.
-    let step = Math.ceil((1.6 * 256 * size) / safeByteCutoff)
+    let step = pow2 ? size : Math.ceil((1.6 * 256 * size) / safeByteCutoff)
     while (true) {
       let bytes = getRandom(step)
       // A compact alternative for `for (var i = 0; i < step; i++)`.
@@ -60,8 +45,9 @@ export let customRandom = (alphabet, defaultSize, getRandom) => {
       while (j--) {
         // Reject bytes >= `safeByteCutoff` to avoid modulo bias
         // and give each symbol an equal chance.
-        if (bytes[j] < safeByteCutoff) {
-          id += alphabet[bytes[j] % alphabet.length]
+        if (pow2 || bytes[j] < safeByteCutoff) {
+          // Here, `& mask` is equivalent to `% alphabet.length`, but faster
+          id += alphabet[pow2 ? bytes[j] & mask : bytes[j] % alphabet.length]
           if (id.length >= size) return id
         }
       }
