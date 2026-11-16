@@ -41,13 +41,13 @@ export function customRandom(alphabet, defaultSize, getRandom) {
     let mask = alphabet.length - 1
 
     return (size = defaultSize) => {
-      if (!size) return ''
+      // `|=` convert `size` to integer, so `Infinity` or `NaN` can't hang the loop
+      if (!(size |= 0)) return ''
       let id = ''
       while (true) {
         let bytes = getRandom(size)
         // A compact alternative for `for (let i = 0; i < step; i++)`.
-        // `|=` convert `size` to integer, so it can be used as a byte index
-        let i = (size |= 0)
+        let i = size
         while (i--) {
           // Here, `& mask` is equivalent to `% alphabet.length`, but faster
           id += alphabet[bytes[i] & mask]
@@ -58,7 +58,8 @@ export function customRandom(alphabet, defaultSize, getRandom) {
   }
 
   return (size = defaultSize) => {
-    if (!size) return ''
+    // `|=` convert `size` to integer, so `Infinity` or `NaN` can't hang the loop
+    if (!(size |= 0)) return ''
     let id = ''
     // Secure random calls are expensive because system calls
     // for entropy collection take time. To avoid extra calls,
