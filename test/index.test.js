@@ -309,6 +309,16 @@ for (let type of ['node', 'browser']) {
         equal(nanoid0(8), 'bbbbbbbb')
       })
 
+      test(`does not hang on non-finite size`, { timeout: 2000 }, () => {
+        let fill = size => new Uint8Array(size).fill(1)
+        for (let alphabet of ['abc', 'abcd']) {
+          let generate = customRandom(alphabet, 5, fill)
+          equal(generate(Infinity), '')
+          equal(generate(-Infinity), '')
+          equal(generate(NaN), '')
+        }
+      })
+
       test(`supports power-of-two alphabets`, () => {
         let sequence = [2, 255, 3, 7]
         function fakeRandom(size) {
