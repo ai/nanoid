@@ -45,6 +45,10 @@ export let customRandom = (alphabet, defaultSize, getRandom) => {
 
   return (size = defaultSize) => {
     if (!size) return ''
+    // Empty and bigger-than-256 alphabets make `safeByteCutoff` `NaN`
+    // and `0`. They never match the power-of-two branch above, so
+    // they always reach this check instead of looping forever.
+    if (!safeByteCutoff) throw new RangeError('Wrong alphabet size')
     let id = ''
     // Secure random calls are expensive because system calls
     // for entropy collection take time. To avoid extra calls,

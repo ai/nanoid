@@ -264,6 +264,18 @@ for (let type of ['node', 'browser']) {
         equal(customAlphabet('a'.repeat(300))(0), '')
       })
 
+      test(`throws on empty or bigger than 256 symbols alphabet`, () => {
+        throws(() => {
+          customAlphabet('')(5)
+        }, /Wrong alphabet size/)
+        throws(() => {
+          customAlphabet('', 5)()
+        }, /Wrong alphabet size/)
+        throws(() => {
+          customAlphabet('a'.repeat(300))(5)
+        }, /Wrong alphabet size/)
+      })
+
       test(`supports non-string alphabets`, () => {
         let ALPHABET = ['a', 'b', 'c', 'd']
         let nanoid2 = customAlphabet(ALPHABET, 10)
@@ -302,6 +314,19 @@ for (let type of ['node', 'browser']) {
         let nanoid0 = customRandom('abc', 5, size => new Uint8Array(size))
         equal(nanoid0(0), '')
         equal(customRandom('', 5, size => new Uint8Array(size))(0), '')
+      })
+
+      test(`throws on empty or bigger than 256 symbols alphabet`, () => {
+        let nanoid0 = customRandom('', 5, size => new Uint8Array(size))
+        throws(() => {
+          nanoid0(5)
+        }, /Wrong alphabet size/)
+        let nanoid300 = customRandom('a'.repeat(300), 5, size =>
+          new Uint8Array(size)
+        )
+        throws(() => {
+          nanoid300(5)
+        }, /Wrong alphabet size/)
       })
 
       test(`does not hang when default size is 0`, { timeout: 2000 }, () => {
