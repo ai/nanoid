@@ -181,7 +181,7 @@ in [`nanoid-dictionary`].
 Alphabet must contain from 1 to 256 symbols.
 Otherwise, the security of the internal generator algorithm is not guaranteed,
 and a generator built from an empty or over-256-symbol alphabet
-can loop forever instead of returning an ID.
+will throw a `RangeError` instead of returning an ID.
 
 In addition to setting a default size, you can change the ID size when calling
 the function:
