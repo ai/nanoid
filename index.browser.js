@@ -7,7 +7,7 @@ import { urlAlphabet } from './url-alphabet/index.js'
 
 export { urlAlphabet }
 
-export let random = bytes => crypto.getRandomValues(new Uint8Array(bytes))
+export let random = bytes => fill(new Uint8Array(bytes))
 
 export let customRandom = (alphabet, defaultSize, getRandom) => {
   // Random bytes are 0-255. `random % alphabet.length` can waste
@@ -77,11 +77,22 @@ export let nanoid = (size = 21) => {
   // oxlint-disable-next-line no-var, prefer-let/prefer-let
   var id = ''
   // oxlint-disable-next-line no-var, prefer-let/prefer-let
-  var bytes = crypto.getRandomValues(new Uint8Array((size |= 0)))
+  var bytes = fill(new Uint8Array((size |= 0)))
   while (size--) {
     // The following mask reduces the random byte in the 0-255 value
     // range to the 0-63 value range.
     id += urlAlphabet[bytes[size] & 63]
   }
   return id
+}
+
+// `crypto.getRandomValues` rejects requests over 65536 bytes,
+// so bigger buffers are filled by chunks (same as in `index.js`).
+// It is defined at the end, to keep the `nanoid.js` CDN prebuild
+// (which copies everything from `export let nanoid`) self-contained.
+let fill = bytes => {
+  for (let i = 0; i < bytes.length; i += 65536) {
+    crypto.getRandomValues(bytes.subarray(i, i + 65536))
+  }
+  return bytes
 }
